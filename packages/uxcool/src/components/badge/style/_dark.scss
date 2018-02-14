@@ -1,0 +1,10 @@
+.#{$badge-prefix-cls} {
+  &-dark#{&} {
+    color: $text-color-dark;
+  }
+  &-dark &-status {
+    &-text {
+      color: $text-color-dark;
+    }
+  }
+}

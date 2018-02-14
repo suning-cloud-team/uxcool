@@ -1,0 +1,45 @@
+.#{$popover-prefix-cls} {
+  &-dark &-inner {
+    background-color: $popover-bg-dark;
+    box-shadow: 0 0 1px $border-color-split-dark;
+
+    &-content {
+      color: $popover-color-dark;
+    }
+  }
+  &-dark &-title {
+    border-bottom-color: $border-color-split-dark;
+    color: $heading-color-dark;
+  }
+
+  &-dark &-arrow {
+    background: $popover-bg-dark;
+  }
+
+  &-placement-top > &-content > &-arrow,
+  &-placement-topLeft > &-content > &-arrow,
+  &-placement-topRight > &-content > &-arrow {
+    box-shadow: 1px 1px 0 rgba($border-color-split-dark, 0.1);
+  }
+
+  &-placement-right > &-content > &-arrow,
+  &-placement-rightTop > &-content > &-arrow,
+  &-placement-rightBottom > &-content > &-arrow {
+    left: $popover-distance - $popover-arrow-width + 2px;
+    box-shadow: -1px 1px 0 rgba($border-color-split-dark, 0.1);
+  }
+
+  &-placement-bottom > &-content > &-arrow,
+  &-placement-bottomLeft > &-content > &-arrow,
+  &-placement-bottomRight > &-content > &-arrow {
+    top: $popover-distance - $popover-arrow-width + 2px;
+    box-shadow: -1px -1px 0 rgba($border-color-split-dark, 0.1);
+  }
+
+  &-placement-left > &-content > &-arrow,
+  &-placement-leftTop > &-content > &-arrow,
+  &-placement-leftBottom > &-content > &-arrow {
+    right: $popover-distance - $popover-arrow-width + 2px;
+    box-shadow: 1px -1px 0 rgba($border-color-split-dark, 0.1);
+  }
+}

@@ -1,0 +1,36 @@
+@mixin fade-motion($className, $keyframeName) {
+  @include make-motion($className, $keyframeName);
+  .#{$className}-enter {
+    opacity: 0;
+  }
+  .#{$className}-leave {
+    opacity: 1;
+  }
+  .#{$className}-enter-to {
+    opacity: 0;
+    animation-timing-function: linear;
+  }
+  .#{$className}-leave-to {
+    animation-timing-function: linear;
+  }
+}
+
+@include fade-motion(fade, uxFade);
+
+@keyframes uxFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes uxFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

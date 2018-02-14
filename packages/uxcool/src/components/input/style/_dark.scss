@@ -1,0 +1,7 @@
+.#{$input-prefix-cls} {
+  &-dark {
+    color: $input-color-dark;
+    background: rgba($component-background-dark, 0.2);
+    border: none;
+  }
+}

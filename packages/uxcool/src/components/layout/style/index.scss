@@ -1,0 +1,163 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+$layout-prefix-cls: #{$ux-prefix}-layout;
+
+.#{$layout-prefix-cls} {
+  position: relative;
+  min-height: 100%;
+
+  // header
+  // ----------------------------------------------
+  &-header {
+    display: block;
+    position: relative;
+    min-height: $layout-header-height;
+    background: $layout-header-bg;
+    z-index: $zindex-layout-header;
+    box-shadow: $layout-header-box-shadow;
+    @include transition(left 0.2s, background-color 0.3s);
+  }
+
+  // sidebar
+  // ----------------------------------------------
+  &-sidebar-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: $layout-sidebar-width;
+    padding-top: $layout-header-height;
+    background: $layout-sidebar-bg;
+    @include transition(width 0.2s, background-color 0.3s);
+    z-index: $zindex-layout-sidebar;
+    box-shadow: $layout-sidebar-box-shadow;
+    overflow: hidden;
+  }
+
+  &-sidebar {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  // hide scrollbar with pure css tricks.
+  // might use plugin like slimscroll to beautify scrollbar as well.
+  &-sidebar-wrapper.no-scrollbar &-sidebar {
+    margin-right: -17px;
+    overflow-y: scroll;
+  }
+
+  // main
+  // ----------------------------------------------
+  &-main-wrapper {
+    // might need to specify the minimum height via javascript for compatibility reasons.
+    min-height: calc(100vh - #{$layout-header-height});
+    margin-left: $layout-sidebar-width;
+    padding-bottom: $layout-footer-height;
+    @include transition(margin-left 0.2s);
+  }
+
+  &-main {
+    padding: $layout-main-padding;
+  }
+
+  // footer
+  // ----------------------------------------------
+  &-footer {
+    position: absolute;
+    left: $layout-sidebar-width;
+    right: 0;
+    bottom: 0;
+    height: $layout-footer-height;
+    background: $layout-footer-bg;
+    box-shadow: $layout-footer-box-shadow;
+    @include transition(left 0.2s);
+  }
+
+  // no footer
+  // ----------------------------------------------
+  &.no-footer &-main-wrapper {
+    padding-bottom: 0;
+  }
+
+  // top navigation layout
+  // ----------------------------------------------
+  &-top-nav {
+    .#{$layout-prefix-cls}-main-wrapper {
+      margin-left: 0;
+    }
+
+    .#{$layout-prefix-cls}-footer {
+      left: 0;
+    }
+  }
+
+  // side navigation layout
+  // ----------------------------------------------
+  &-side-nav {
+    .#{$layout-prefix-cls}-sidebar-wrapper {
+      padding-top: 0;
+    }
+
+    .#{$layout-prefix-cls}-main-wrapper {
+      // might need to specify the minimum height via javascript for compatibility reasons.
+      min-height: 100vh;
+    }
+  }
+
+  // header fixed
+  // ----------------------------------------------
+  &-header-fixed {
+    .#{$layout-prefix-cls}-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .#{$layout-prefix-cls}-main-wrapper {
+      // might need to specify the minimum height via javascript for compatibility reasons.
+      min-height: 100vh;
+      padding-top: $layout-header-height;
+    }
+  }
+
+  // sidebar fixed
+  // ----------------------------------------------
+  &-sidebar-fixed {
+    &.#{$layout-prefix-cls}-layout-side-nav,
+    &.#{$layout-prefix-cls}-header-fixed {
+      .#{$layout-prefix-cls}-sidebar-wrapper {
+        position: fixed;
+      }
+    }
+
+    &.#{$layout-prefix-cls}-layout-side-nav.#{$layout-prefix-cls}-header-fixed
+      .#{$layout-prefix-cls}-header {
+      left: $layout-sidebar-width;
+    }
+  }
+
+  // collapsed
+  // ----------------------------------------------
+  &-sidebar-collapsed {
+    .#{$layout-prefix-cls}-sidebar-wrapper {
+      width: $layout-sidebar-collapsed-width;
+    }
+
+    .#{$layout-prefix-cls}-main-wrapper {
+      margin-left: $layout-sidebar-collapsed-width;
+    }
+
+    .#{$layout-prefix-cls}-footer {
+      left: $layout-sidebar-collapsed-width;
+    }
+
+    &.#{$layout-prefix-cls}-layout-side-nav.#{$layout-prefix-cls}-header-fixed
+      .#{$layout-prefix-cls}-header {
+      left: $layout-sidebar-collapsed-width;
+    }
+  }
+}
+
+@import './dark';

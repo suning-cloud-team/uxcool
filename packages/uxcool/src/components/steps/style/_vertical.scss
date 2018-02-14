@@ -1,0 +1,9 @@
+.#{$steps-prefix-cls}-vertical {
+  @include steps-vertical;
+}
+
+@media (max-width: $screen-xs) {
+  .#{$steps-prefix-cls}-horizontal.#{$steps-prefix-cls}-label-horizontal {
+    @include steps-vertical;
+  }
+}

@@ -1,0 +1,36 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/index';
+@import './mixin';
+
+$input-prefix-cls: #{$ux-prefix}-input;
+
+// Input styles
+.#{$input-prefix-cls} {
+  @include reset-component;
+  @include input;
+
+  &-group {
+    @include reset-component;
+    @include input-group('#{$input-prefix-cls}');
+    &-wrapper {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+    }
+  }
+
+  &-affix-wrapper {
+    @include reset-component;
+    @include input-affix-wrapper('#{$input-prefix-cls}');
+
+    .#{$input-prefix-cls} {
+      min-height: 100%;
+    }
+  }
+}
+
+textarea.#{$input-prefix-cls} {
+  height: auto;
+}
+
+@import 'dark';

@@ -1,0 +1,172 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+.#{$ux-prefix}-switch {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+
+  > input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &-toggle {
+    display: block;
+    position: relative;
+    min-width: $switch-width;
+    height: $switch-height;
+    line-height: $switch-height;
+    font-size: $switch-font-size;
+    background: $switch-unchecked-bg;
+    color: $switch-color;
+    border-radius: $switch-height;
+    white-space: nowrap;
+    overflow: hidden;
+    @include transition($switch-transition);
+    user-select: none;
+    cursor: pointer;
+
+    &::before {
+      $switch-toggle-size: $switch-height - 4;
+
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: $switch-toggle-size;
+      height: $switch-toggle-size;
+      background: $switch-toggle-bg;
+      border-radius: $switch-height;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+      @include transition($switch-toggle-transition);
+    }
+  }
+
+  &-on-text,
+  &-off-text {
+    display: block;
+    position: relative;
+    text-align: center;
+    @include transition($switch-text-transition);
+  }
+
+  $switch-padding-1: round($switch-height) + 3px;
+  $switch-padding-2: round($switch-height/2) - 3px;
+
+  &-on-text {
+    left: -120%;
+    margin-bottom: -$switch-height;
+    padding: 0 $switch-padding-1 0 $switch-padding-2;
+  }
+
+  &-off-text {
+    left: 0;
+    padding: 0 $switch-padding-2 0 $switch-padding-1;
+  }
+}
+
+// checked
+// ----------------------------------------------
+.#{$ux-prefix}-switch.checked > .#{$ux-prefix}-switch-toggle,
+.#{$ux-prefix}-switch > input:checked + .#{$ux-prefix}-switch-toggle {
+  background: $switch-checked-bg;
+
+  &::before {
+    left: 100%;
+    margin-left: -($switch-height - 2px);
+  }
+
+  .#{$ux-prefix}-switch-on-text {
+    left: 0;
+  }
+
+  .#{$ux-prefix}-switch-off-text {
+    left: 120%;
+  }
+}
+
+// inverted
+// ----------------------------------------------
+.#{$ux-prefix}-switch.inverted {
+  > .#{$ux-prefix}-switch-toggle::before {
+    left: 100%;
+    margin-left: -($switch-height - 2px);
+  }
+
+  $switch-padding-1: round($switch-height) + 3px;
+  $switch-padding-2: round($switch-height / 2) - 3px;
+
+  .#{$ux-prefix}-switch-on-text {
+    left: 120%;
+    padding: 0 $switch-padding-2 0 $switch-padding-1;
+  }
+
+  .#{$ux-prefix}-switch-off-text {
+    left: 0;
+    padding: 0 $switch-padding-1 0 $switch-padding-2;
+  }
+
+  &.checked > .#{$ux-prefix}-switch-toggle,
+  & > input:checked + .#{$ux-prefix}-switch-toggle {
+    &::before {
+      left: 2px;
+      margin-left: 0;
+    }
+
+    .#{$ux-prefix}-switch-on-text {
+      left: 0;
+    }
+
+    .#{$ux-prefix}-switch-off-text {
+      left: -120%;
+    }
+  }
+}
+
+// disabled
+// ----------------------------------------------
+.#{$ux-prefix}-switch.disabled > .#{$ux-prefix}-switch-toggle,
+.#{$ux-prefix}-switch > input:disabled + .#{$ux-prefix}-switch-toggle {
+  background: $switch-disabled-bg;
+  color: $switch-disabled-color;
+  cursor: $switch-disabled-cursor;
+}
+
+// mini
+// ----------------------------------------------
+.#{$ux-prefix}-switch.mini {
+  .#{$ux-prefix}-switch-toggle {
+    min-width: $switch-width-mini;
+    width: $switch-width-mini;
+    height: $switch-height-mini;
+
+    &::before {
+      width: $switch-height-mini - 4px;
+      height: $switch-height-mini - 4px;
+    }
+  }
+
+  // text is hidden in mini switch
+  .#{$ux-prefix}-switch-on-text,
+  .#{$ux-prefix}-switch-off-text {
+    display: none;
+  }
+
+  &.checked .#{$ux-prefix}-switch-toggle::before,
+  > input:checked + .#{$ux-prefix}-switch-toggle::before {
+    margin-left: -($switch-height-mini - 2px);
+  }
+
+  &.inverted {
+    .#{$ux-prefix}-switch-toggle::before {
+      margin-left: -($switch-height-mini - 2px);
+    }
+
+    &.checked .#{$ux-prefix}-switch-toggle::before,
+    & > input:checked + .#{$ux-prefix}-switch-toggle::before {
+      left: 2px;
+      margin-left: 0;
+    }
+  }
+}

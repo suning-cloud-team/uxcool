@@ -1,0 +1,98 @@
+.#{$calendar-prefix-cls}-picker-container {
+  @include reset-component;
+  position: absolute;
+  z-index: $zindex-picker;
+
+  &.slide-up-enter.slide-up-enter-active#{&}-placement-topLeft,
+  &.slide-up-enter.slide-up-enter-active#{&}-placement-topRight,
+  &.slide-up-appear.slide-up-appear-active#{&}-placement-topLeft,
+  &.slide-up-appear.slide-up-appear-active#{&}-placement-topRight {
+    animation-name: uxSlideDownIn;
+  }
+
+  &.slide-up-enter.slide-up-enter-active#{&}-placement-bottomLeft,
+  &.slide-up-enter.slide-up-enter-active#{&}-placement-bottomRight,
+  &.slide-up-appear.slide-up-appear-active#{&}-placement-bottomLeft,
+  &.slide-up-appear.slide-up-appear-active#{&}-placement-bottomRight {
+    animation-name: uxSlideUpIn;
+  }
+
+  &.slide-up-leave.slide-up-leave-active#{&}-placement-topLeft,
+  &.slide-up-leave.slide-up-leave-active#{&}-placement-topRight {
+    animation-name: uxSlideDownOut;
+  }
+
+  &.slide-up-leave.slide-up-leave-active#{&}-placement-bottomLeft,
+  &.slide-up-leave.slide-up-leave-active#{&}-placement-bottomRight {
+    animation-name: uxSlideUpOut;
+  }
+}
+
+.#{$calendar-prefix-cls}-picker {
+  @include reset-component;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  transition: opacity 0.3s;
+
+  &-input {
+    outline: none;
+    display: block;
+  }
+
+  &:hover &-input:not(.#{$ux-prefix}-input-disabled) {
+    border-color: $primary-color;
+  }
+
+  &:focus &-input:not(.#{$ux-prefix}-input-disabled) {
+    @include active();
+  }
+
+  &-clear,
+  &-icon {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    right: $control-padding-horizontal;
+    top: 50%;
+    margin-top: -7px;
+    line-height: 14px;
+    font-size: $font-size-sm;
+    transition: all 0.3s;
+    user-select: none;
+  }
+
+  &-clear {
+    opacity: 0;
+    z-index: 1;
+    color: $disabled-color;
+    background: $input-bg;
+    pointer-events: none;
+    cursor: pointer;
+    &:hover {
+      color: $text-color-secondary;
+    }
+  }
+
+  &:hover &-clear {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &-icon {
+    color: $disabled-color;
+    &:after {
+      content: '\e96d';
+      font-family: 'uxfont';
+      font-size: $font-size-base;
+      color: $disabled-color;
+      display: inline-block;
+      line-height: 1;
+    }
+  }
+
+  &-small &-clear,
+  &-small &-icon {
+    right: $control-padding-horizontal-sm;
+  }
+}

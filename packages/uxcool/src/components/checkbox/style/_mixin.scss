@@ -1,0 +1,13 @@
+@mixin checkbox-checker-size($checkbox-size, $checkbox-border) {
+    left: round(($checkbox-size - 2 * $checkbox-border) / 8);
+    top: round(($checkbox-size - 2 * $checkbox-border) / 8);
+    width: round(($checkbox-size - 2 * $checkbox-border) * 3 / 4 );
+    height: round(($checkbox-size - 2 * $checkbox-border) / 2) ;
+}
+
+@mixin checkbox-indeterminate-size($checkbox-size, $checkbox-border, $checker-border) {
+    left: round(($checkbox-size - 2 * $checkbox-border) * 3 / 16);
+    top: round(($checkbox-size - 2 * $checkbox-border) * 7 / 16);
+    width: round(($checkbox-size - 2 * $checkbox-border) * 5 / 8);
+    height: $checker-border;
+}

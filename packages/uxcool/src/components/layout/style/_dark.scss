@@ -1,0 +1,21 @@
+.#{$layout-prefix-cls} {
+  &-dark {
+    background: $body-background-dark;
+    color: $text-color-secondary-dark;
+  }
+
+  &-dark &-header {
+    background: $layout-header-bg-dark;
+    box-shadow: $layout-header-box-shadow-dark;
+  }
+
+  &-dark &-sidebar-wrapper {
+    background: $layout-sidebar-bg-dark;
+    box-shadow: $layout-sidebar-box-shadow-dark;
+  }
+
+  &-dark &-footer {
+    background: $layout-footer-bg-dark;
+    box-shadow: $layout-footer-box-shadow-dark;
+  }
+}

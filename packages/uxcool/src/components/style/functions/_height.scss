@@ -1,0 +1,19 @@
+@function calc-css-content-height($font-size, $line-height) {
+    @if unitless($line-height) {
+        @return ($font-size * $line-height);
+    } @else {
+        @return $line-height;
+    }
+}
+
+@function calc-css-inner-height($font-size, $padding, $line-height) {
+    @if unitless($line-height) {
+        @return ($font-size * $line-height + 2 * $padding);
+    } @else {
+        @return ($line-height + 2 * $padding);
+    }
+}
+
+@function calc-css-outer-height($font-size, $padding, $line-height, $border-width) {
+    @return calc-css-inner-height($font-size, $padding, $line-height) + 2 * $border-width;
+}

@@ -1,0 +1,5 @@
+.#{$progress-prefix-cls} {
+  &-dark &-rail {
+    background: $progress-rail-bg-dark;
+  }
+}

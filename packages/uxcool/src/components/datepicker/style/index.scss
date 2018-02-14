@@ -1,0 +1,18 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/index';
+@import '../../input/style/mixin';
+@import '../../button/style/antMixin';
+
+$calendar-prefix-cls: #{$ux-prefix}-calendar;
+$calendar-timepicker-prefix-cls: #{$ux-prefix}-calendar-time-picker;
+
+@import 'picker';
+@import 'calendar';
+@import 'rangePicker';
+@import 'timePicker';
+@import 'monthPanel';
+@import 'yearPanel';
+@import 'decadePanel';
+@import 'monthPicker';
+
+@import 'dark';

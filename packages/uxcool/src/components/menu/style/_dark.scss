@@ -1,0 +1,95 @@
+$border-color: rgba(#fff, 0.2);
+.#{$menu-prefix-cls} {
+  &-dark,
+  &-dark &-sub {
+    color: $text-color-secondary-dark;
+    background: $menu-dark-bg;
+  }
+
+  &-dark &-inline#{&}-sub {
+    background: $menu-dark-submenu-bg;
+  }
+
+  &-dark#{&}-horizontal {
+    border-bottom-color: $border-color;
+  }
+
+  &-dark#{&}-horizontal > &-item,
+  &-dark#{&}-horizontal > &-submenu {
+    &:hover,
+    &-active,
+    &-open,
+    &-selected {
+      // border-bottom: 2px solid $primary-color;
+      color: #fff;
+    }
+  }
+
+  &-dark &-item,
+  &-dark &-item-group-title,
+  &-dark &-item > a {
+    color: $text-color-secondary-dark;
+  }
+
+  &-dark#{&}-inline,
+  &-dark#{&}-vertical {
+    border-right-color: $border-color;
+  }
+
+  &-dark#{&}-inline &-item,
+  &-dark#{&}-vertical &-item {
+    border-right: 0;
+    margin-left: 0;
+    left: 0;
+    &:after {
+      border-right: 0;
+    }
+  }
+
+  &-dark &-item:hover,
+  &-dark &-item-active,
+  &-dark &-submenu-active,
+  &-dark:not(&-inline) &-submenu-open,
+  &-dark &-submenu-selected,
+  &-dark &-submenu-title:hover {
+    background-color: transparent;
+    color: #fff;
+    > a {
+      color: #fff;
+    }
+  }
+
+  &-dark &-item-selected {
+    border-right: 0;
+    color: #fff;
+    &:after {
+      border-right: 0;
+    }
+    > a,
+    > a:hover {
+      color: #fff;
+    }
+  }
+
+  &#{&}-dark#{&}-horizontal &-vertical &-item-selected,
+  &#{&}-dark:not(&-horizontal) &-item-selected {
+    background-color: $primary-color;
+  }
+
+  &#{&}-dark#{&}-horizontal > &-item-selected {
+    border-bottom: 2px solid $primary-color;
+  }
+
+  // Disabled state sets text to dark gray and nukes hover/tab effects
+  &-dark &-item-disabled,
+  &-dark &-submenu-disabled {
+    &,
+    > a {
+      opacity: 0.8;
+      color: $disabled-color-dark !important;
+    }
+    > .#{$menu-prefix-cls}-submenu-title {
+      color: $disabled-color-dark !important;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@import '../../style/themes/index';
+
+$progress-prefix-cls: #{$ux-prefix}-progress;
+
+.#{$progress-prefix-cls} {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 12px;
+
+  &-wrapper {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+
+  &-rail {
+    display: block;
+    background: $progress-rail-bg;
+    overflow: hidden;
+    border-radius: 100px;
+  }
+
+  &-bar {
+    display: block;
+    width: 100%;
+    height: 10px;
+    background: $primary-color;
+    transition: width 0.2s;
+    border-radius: 100px;
+  }
+
+  &-info {
+    display: inline-block;
+    margin-left: 5px;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  &-show-info &-wrapper {
+    margin-right: -60px;
+    padding-right: 60px;
+  }
+
+  // status
+  &-default &-bar {
+    background: $primary-color;
+  }
+  &-error &-bar {
+    background: $danger-color;
+  }
+  &-success &-bar {
+    background: $success-color;
+  }
+}
+
+@import 'dark';

@@ -1,0 +1,178 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/index';
+@import '../../style/functions/math';
+
+$popover-prefix-cls: #{$ux-prefix}-popover;
+
+.#{$popover-prefix-cls} {
+  @include reset-component;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: $zindex-popover;
+  cursor: auto;
+  user-select: text;
+  white-space: normal;
+  font-weight: normal;
+  text-align: left;
+
+  &:after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.01);
+  }
+
+  &-hidden {
+    display: none;
+  } // Offset the popover to account for the popover arrow
+  &[x-placement=top],
+  &[x-placement=top-start],
+  &[x-placement=top-end] {
+    padding-bottom: $popover-distance;
+  }
+
+  &[x-placement=right],
+  &[x-placement=right-start],
+  &[x-placement=right-bottom] {
+    padding-left: $popover-distance;
+  }
+
+  &[x-placement=bottom],
+  &[x-placement=bottom-start],
+  &[x-placement=bottom-end] {
+    padding-top: $popover-distance;
+  }
+
+  &[x-placement=left],
+  &[x-placement=left-start],
+  &[x-placement=left-end] {
+    padding-right: $popover-distance;
+  }
+
+  &-inner {
+    background-color: $popover-bg;
+    background-clip: padding-box;
+    border-radius: $border-radius-base;
+    box-shadow: $box-shadow-base;
+  }
+
+  &-title {
+    min-width: $popover-min-width;
+    margin: 0; // reset heading margin
+    padding: 5px $padding-md 4px;
+    min-height: 32px;
+    border-bottom: 1px solid $border-color-split;
+    color: $heading-color;
+    font-weight: 500;
+  }
+
+  &-inner-content {
+    padding: 12px $padding-md;
+    color: $popover-color;
+  }
+
+  &-message {
+    padding: 4px 0 12px;
+    font-size: $font-size-base;
+    color: $popover-color;
+    >.#{$iconfont-css-prefix} {
+      color: $warning-color;
+      line-height: $line-height-base + 0.1;
+      position: absolute;
+    }
+    &-title {
+      padding-left: $font-size-base + 8px;
+    }
+  }
+
+  &-buttons {
+    text-align: right;
+    margin-bottom: 4px;
+    button {
+      margin-left: 8px;
+    }
+  } // Arrows
+  &-arrow {
+    background: $popover-bg;
+    width: #{sqrt($popover-arrow-width * $popover-arrow-width * 2)}px;
+    height: #{sqrt($popover-arrow-width * $popover-arrow-width * 2)}px;
+    transform: rotate(45deg);
+    &,
+    &:after {
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+    }
+  }
+
+  &[x-placement=top]>&-content>&-arrow,
+  &[x-placement=top-start]>&-content>&-arrow,
+  &[x-placement=top-end]>&-content>&-arrow {
+    bottom: $popover-distance - $popover-arrow-width + 2px;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.07);
+  }
+  &[x-placement=top]>&-content>&-arrow {
+    left: 50%;
+    margin-left: -$popover-arrow-width;
+  }
+  &[x-placement=top-start]>&-content>&-arrow {
+    left: 16px;
+  }
+  &[x-placement=top-end]>&-content>&-arrow {
+    right: 16px;
+  }
+
+  &[x-placement=right]>&-content>&-arrow,
+  &[x-placement=right-start]>&-content>&-arrow,
+  &[x-placement=right-bottom]>&-content>&-arrow {
+    left: $popover-distance - $popover-arrow-width + 2px;
+    box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.07);
+  }
+  &[x-placement=right]>&-content>&-arrow {
+    top: 50%;
+    margin-top: -$popover-arrow-width;
+  }
+  &[x-placement=right-start]>&-content>&-arrow {
+    top: 12px;
+  }
+  &[x-placement=right-bottom]>&-content>&-arrow {
+    bottom: 12px;
+  }
+
+  &[x-placement=bottom]>&-content>&-arrow,
+  &[x-placement=bottom-start]>&-content>&-arrow,
+  &[x-placement=bottom-end]>&-content>&-arrow {
+    top: $popover-distance - $popover-arrow-width + 2px;
+    box-shadow: -1px -1px 4px rgba(0, 0, 0, 0.06);
+  }
+  &[x-placement=bottom]>&-content>&-arrow {
+    left: 50%;
+    margin-left: -$popover-arrow-width;
+  }
+  &[x-placement=bottom-start]>&-content>&-arrow {
+    left: 16px;
+  }
+  &[x-placement=bottom-end]>&-content>&-arrow {
+    right: 16px;
+  }
+
+  &[x-placement=left]>&-content>&-arrow,
+  &[x-placement=left-start]>&-content>&-arrow,
+  &[x-placement=left-end]>&-content>&-arrow {
+    right: $popover-distance - $popover-arrow-width + 2px;
+    box-shadow: 3px -3px 7px rgba(0, 0, 0, 0.07);
+  }
+  &[x-placement=left]>&-content>&-arrow {
+    top: 50%;
+    margin-top: -$popover-arrow-width;
+  }
+  &[x-placement=left-start]>&-content>&-arrow {
+    top: 12px;
+  }
+  &[x-placement=left-end]>&-content>&-arrow {
+    bottom: 12px;
+  }
+}

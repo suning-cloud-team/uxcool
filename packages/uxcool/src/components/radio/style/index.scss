@@ -1,0 +1,109 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+@import '../../style/functions/height';
+
+.#{$ux-prefix}-radio {
+  display: inline-block;
+  position: relative;
+  min-height: calc-css-content-height($radio-text-font-size, $radio-text-line-height);
+  min-width: $radio-indicator-size;
+  vertical-align: middle;
+
+  > input[type='radio'] {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: $radio-indicator-size;
+    height: $radio-indicator-size;
+    margin-top: -$radio-indicator-size / 2;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  &-indicator {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: $radio-indicator-size;
+    height: $radio-indicator-size;
+    margin-top: (-$radio-indicator-size / 2);
+    background: $radio-indicator-bg;
+    border: $radio-indicator-border-width solid $radio-indicator-border-color;
+    border-radius: 50%;
+    @include transition($radio-transition);
+    z-index: 1;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: $radio-dot-size;
+      height: $radio-dot-size;
+      margin-top: -$radio-dot-size / 2;
+      margin-left: -$radio-dot-size / 2;
+      background: $radio-indicator-color;
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0);
+      @include transition($radio-transition);
+    }
+  }
+
+  &-text {
+    position: relative;
+    display: inline-block;
+    padding-left: $radio-indicator-size + $radio-spacing;
+    line-height: $radio-text-line-height;
+    font-size: $radio-text-font-size;
+    cursor: pointer;
+    z-index: 2;
+  }
+}
+
+// checked
+// ----------------------------------------------
+// One can use `.checked` class to simulate `:checked` state but need to manually add or remove the class when nenessary.
+.#{$ux-prefix}-radio.checked .#{$ux-prefix}-radio-indicator,
+.#{$ux-prefix}-radio > input[type='radio']:checked + .#{$ux-prefix}-radio-indicator {
+  &::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// inverted
+// ----------------------------------------------
+.#{$ux-prefix}-radio.inverted {
+  & > input[type='radio']:not(:disabled):checked + .#{$ux-prefix}-radio-indicator,
+  &.checked > .#{$ux-prefix}-radio-indicator {
+    border-color: $radio-indicator-color;
+    background: $radio-indicator-color;
+
+    &::before {
+      background-color: $radio-indicator-bg;
+    }
+  }
+}
+
+// disabled
+// ----------------------------------------------
+// One can use `.disabled` class to simulate `:disabled` state but need to manually add or remove the class when nenessary.
+// Notice that use `.disabled` class cannot disable clicks.
+.#{$ux-prefix}-radio.disabled .#{$ux-prefix}-radio-indicator,
+.#{$ux-prefix}-radio > input[type='radio']:disabled + .#{$ux-prefix}-radio-indicator {
+  border-color: $radio-indicator-border-disabled-color;
+  background: $radio-indicator-disabled-bg;
+  cursor: $radio-disabled-cursor;
+
+  &::before {
+    background-color: $radio-indicator-disabled-color;
+  }
+}
+
+.#{$ux-prefix}-radio.disabled .#{$ux-prefix}-radio-text,
+.#{$ux-prefix}-radio > input[type='radio']:disabled ~ .#{$ux-prefix}-radio-text {
+  color: $radio-text-disabled-color;
+  cursor: $radio-disabled-cursor;
+}

@@ -1,0 +1,311 @@
+@mixin calendarHeaderPanelDark($calendar-prefix-cls) {
+  border-bottom-color: $border-color-split-dark;
+  a:hover {
+    color: $text-color-dark;
+  }
+
+  .#{$calendar-prefix-cls}-century-select,
+  .#{$calendar-prefix-cls}-decade-select,
+  .#{$calendar-prefix-cls}-year-select,
+  .#{$calendar-prefix-cls}-month-select {
+    color: $heading-color-dark;
+  }
+
+  .#{$calendar-prefix-cls}-prev-century-btn,
+  .#{$calendar-prefix-cls}-next-century-btn,
+  .#{$calendar-prefix-cls}-prev-decade-btn,
+  .#{$calendar-prefix-cls}-next-decade-btn,
+  .#{$calendar-prefix-cls}-prev-month-btn,
+  .#{$calendar-prefix-cls}-next-month-btn,
+  .#{$calendar-prefix-cls}-prev-year-btn,
+  .#{$calendar-prefix-cls}-next-year-btn {
+    color: $text-color-secondary-dark;
+  }
+}
+
+.#{$calendar-prefix-cls}-dark {
+  background-color: $component-background-dark;
+  border-color: rgba(#fff, 0.2);
+  color: $heading-color-dark;
+  box-shadow: 0 1px 6px rgba(255, 255, 255, 0.1);
+  .#{$calendar-prefix-cls}-input {
+    background: $input-bg-dark;
+  }
+
+  .#{$calendar-prefix-cls}-input-wrap {
+    border-bottom-color: $border-color-split-dark;
+  }
+
+  .#{$calendar-prefix-cls}-input {
+    color: $input-color-dark;
+  }
+
+  .#{$calendar-prefix-cls}-header {
+    @include calendarHeaderPanelDark($calendar-prefix-cls);
+  }
+
+  .#{$calendar-prefix-cls}-date,
+  .#{$calendar-prefix-cls}-decade-panel-decade,
+  .#{$calendar-prefix-cls}-year-panel-year,
+  .#{$calendar-prefix-cls}-month-panel-month {
+    color: $text-color-dark;
+    &:hover {
+      background: $item-hover-bg-dark;
+    }
+  }
+
+  .#{$calendar-prefix-cls}-today .#{$calendar-prefix-cls}-date {
+    border-color: $date-picker-bg-dark;
+  }
+
+  .#{$calendar-prefix-cls}-last-month-cell .#{$calendar-prefix-cls}-date,
+  .#{$calendar-prefix-cls}-next-month-btn-day .#{$calendar-prefix-cls}-date {
+    color: $disabled-color-dark;
+  }
+
+  .#{$calendar-prefix-cls}-disabled-cell .#{$calendar-prefix-cls}-date {
+    color: rgba(#fff, 0.3);
+    background: $disabled-bg-dark;
+  }
+
+  .#{$calendar-prefix-cls}-selected-day .#{$calendar-prefix-cls}-date,
+  .#{$calendar-prefix-cls}-decade-panel-selected-cell .#{$calendar-prefix-cls}-decade-panel-decade,
+  .#{$calendar-prefix-cls}-year-panel-selected-cell .#{$calendar-prefix-cls}-year-panel-year,
+  .#{$calendar-prefix-cls}-month-panel-selected-cell .#{$calendar-prefix-cls}-month-panel-month {
+    background: $date-picker-bg-dark;
+    &:hover {
+      background: $date-picker-bg-dark;
+    }
+  }
+
+  .#{$calendar-prefix-cls}-footer {
+    border-top-color: $border-color-split-dark;
+    &-extra + &-btn {
+      border-top-color: $border-color-split-dark;
+    }
+  }
+
+  .#{$calendar-prefix-cls}-today-btn,
+  .#{$calendar-prefix-cls}-clear-btn {
+    color: $text-color-dark;
+    &-disabled {
+      color: $disabled-color-dark;
+    }
+  }
+  .#{$calendar-prefix-cls}-clear-btn:after {
+    color: $disabled-color-dark;
+  }
+
+  .#{$calendar-prefix-cls}-clear-btn:hover:after {
+    color: $text-color-secondary-dark;
+  }
+
+  .#{$calendar-prefix-cls}-decade-panel,
+  .#{$calendar-prefix-cls}-year-panel,
+  .#{$calendar-prefix-cls}-month-panel {
+    background-color: $component-background-dark;
+  }
+  // decade
+  // ---
+  .#{$calendar-prefix-cls}-decade-panel-header {
+    @include calendarHeaderPanelDark(#{$calendar-prefix-cls}-decade-panel);
+  }
+  .#{$calendar-prefix-cls}-decade-panel-last-century-cell,
+  .#{$calendar-prefix-cls}-decade-panel-next-century-cell {
+    .#{$calendar-prefix-cls}-decade-panel-decade {
+      color: $disabled-color-dark;
+    }
+  }
+  // year
+  // ---
+  .#{$calendar-prefix-cls}-year-panel-header {
+    @include calendarHeaderPanelDark(#{$calendar-prefix-cls}-year-panel);
+  }
+  .#{$calendar-prefix-cls}-year-panel-last-decade-cell,
+  .#{$calendar-prefix-cls}-year-panel-next-decade-cell {
+    .#{$calendar-prefix-cls}-year-panel-year {
+      color: $disabled-color-dark;
+    }
+  }
+
+  // month
+  // ---
+  .#{$calendar-prefix-cls}-month-panel-header {
+    @include calendarHeaderPanelDark(#{$calendar-prefix-cls}-month-panel);
+  }
+
+  .#{$calendar-prefix-cls}-month-panel-cell {
+    &-disabled .#{$calendar-prefix-cls}-month-panel-month {
+      &,
+      &:hover {
+        color: #666;
+        background: $disabled-bg-dark;
+      }
+    }
+  }
+
+  // range
+  // ---
+  .#{$calendar-prefix-cls}-range-picker-separator {
+    color: $text-color-secondary-dark;
+  }
+
+  &.#{$calendar-prefix-cls}-range {
+    .#{$calendar-prefix-cls}-range-left {
+      .#{$calendar-prefix-cls}-time-picker-inner {
+        border-right-color: $border-color-split-dark;
+      }
+    }
+    .#{$calendar-prefix-cls}-range-right {
+      .#{$calendar-prefix-cls}-time-picker-inner {
+        border-left-color: $border-color-split-dark;
+      }
+    }
+    .#{$calendar-prefix-cls}-range-middle {
+      color: $text-color-secondary-dark;
+    }
+
+    .#{$calendar-prefix-cls},
+    .#{$calendar-prefix-cls}-month-panel,
+    .#{$calendar-prefix-cls}-year-panel {
+      &-body {
+        border-top-color: $border-color-split-dark;
+      }
+    }
+    &.#{$calendar-prefix-cls}-time {
+      .#{$calendar-timepicker-prefix-cls} {
+        &-combobox {
+          background-color: $component-background-dark;
+          border-top-color: $border-color-split-dark;
+        }
+      }
+    }
+
+    .#{$calendar-prefix-cls}-in-range-cell {
+      &:before {
+        background: $item-active-bg-dark;
+      }
+    }
+  }
+
+  .#{$calendar-prefix-cls}-range-quick-selector {
+    border-left-color: $border-color-split-dark;
+    a {
+      color: rgba($date-picker-bg-dark, 0.8);
+      &:hover,
+      &:focus {
+        color: $date-picker-bg-dark;
+      }
+    }
+  }
+
+  .#{$calendar-timepicker-prefix-cls} {
+    background-color: $component-background-dark;
+    // .#{$calendar-timepicker-prefix-cls}-inner {
+    //   background-color: $component-background-dark;
+    // }
+
+    .#{$calendar-timepicker-prefix-cls}-select {
+      border-right-color: $border-color-split-dark;
+      li:hover {
+        background: $item-hover-bg-dark;
+      }
+      li.#{$calendar-timepicker-prefix-cls}-select-option-selected {
+        background: $date-picker-time-selected-bg-dark;
+      }
+      li.#{$calendar-timepicker-prefix-cls}-select-option-disabled {
+        color: $btn-disable-color-dark;
+      }
+    }
+  }
+
+  &.#{$calendar-prefix-cls}-time {
+    .#{$calendar-timepicker-prefix-cls} {
+      &-inner {
+        background-color: $component-background-dark;
+      }
+    }
+    .#{$calendar-prefix-cls}-day-select {
+      color: $heading-color-dark;
+    }
+
+    .#{$calendar-prefix-cls}-footer {
+      .#{$calendar-prefix-cls}-time-picker-btn {
+        color: $text-color-dark;
+        &-disabled {
+          color: $disabled-color-dark;
+        }
+      }
+    }
+  }
+
+  .#{$calendar-prefix-cls}-ok-btn {
+    $color: $text-color-dark;
+    $background: $date-picker-bg-dark;
+    @include button-color($color, transparent, #03adcd);
+    &:hover,
+    &:focus {
+      @include button-color($color, rgba(0, 216, 255, 0.44),#03adcd);
+    }
+
+    &:active,
+    &.active {
+      @include button-color($color,rgba(0, 216, 255, 0.44), #03adcd);
+    }
+    &-disabled {
+      @include button-color($btn-disable-color-dark,$btn-disable-bg-dark, $btn-disable-border-dark);
+      cursor: not-allowed;
+      &:hover {
+        @include button-color($btn-disable-color-dark,$btn-disable-bg-dark,$btn-disable-border-dark);
+      }
+    }
+  }
+}
+
+// picker
+// ---
+.#{$calendar-prefix-cls}-picker {
+  &-dark &-input {
+    background: $date-picker-input-bg-dark;
+    border-color: $date-picker-input-bg-dark;
+    color: $text-color-dark;
+    &:hover,
+    &:focus {
+      border-color: transparent !important;
+      box-shadow: none !important;
+    }
+    &[disabled] {
+      @include placeholder($disabled-color-dark);
+    }
+  }
+
+  &-dark#{&}:hover &-input {
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  &-dark#{&}:focus &-input {
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  &-dark &-clear {
+    height: 15px;
+    margin-top: -8px;
+    color: $disabled-color-dark;
+    background: $date-picker-input-bg-dark;
+    &:hover {
+      color: $text-color-secondary-dark;
+    }
+  }
+
+  &-dark &-icon {
+    color: $disabled-color-dark;
+    &:after {
+      color: $disabled-color-dark;
+    }
+  }
+  &-dark .#{$calendar-prefix-cls}-range-picker-separator {
+    color: $text-color-secondary-dark;
+  }
+}

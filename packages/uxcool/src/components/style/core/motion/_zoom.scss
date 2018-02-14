@@ -1,0 +1,165 @@
+@mixin zoom-motion($className, $keyframeName, $duration: $animation-duration-base) {
+  @include make-motion($className, $keyframeName, $duration);
+  .#{$className}-enter {
+    transform: scale(0);
+  }
+  .#{$className}-leave {
+    transform: scale(1);
+  }
+  .#{$className}-enter-to {
+    transform: scale(0);
+    animation-timing-function: $ease-out-circ;
+  }
+  .#{$className}-leave-to {
+    animation-timing-function: $ease-in-out-circ;
+  }
+}
+
+// For Modal, Select choosen item
+@include zoom-motion(zoom, uxZoom);
+// For Popover, Popconfirm, Dropdown
+@include zoom-motion(zoom-big, uxZoomBig);
+// For Tooltip
+@include zoom-motion(zoom-big-fast, uxZoomBig, $animation-duration-fast);
+
+@include zoom-motion(zoom-up, uxZoomUp);
+@include zoom-motion(zoom-down, uxZoomDown);
+@include zoom-motion(zoom-left, uxZoomLeft);
+@include zoom-motion (zoom-right, uxzoomright);
+
+@keyframes uxZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes uxZoomOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+}
+
+@keyframes uxZoomBigIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes uxZoomBigOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes uxZoomUpIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 0%;
+    transform: scale(0.8);
+  }
+  100% {
+    transform-origin: 50% 0%;
+    transform: scale(1);
+  }
+}
+
+@keyframes uxZoomUpOut {
+  0% {
+    transform-origin: 50% 0%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 0%;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes uxZoomLeftIn {
+  0% {
+    opacity: 0;
+    transform-origin: 0% 50%;
+    transform: scale(0.8);
+  }
+  100% {
+    transform-origin: 0% 50%;
+    transform: scale(1);
+  }
+}
+
+@keyframes uxZoomLeftOut {
+  0% {
+    transform-origin: 0% 50%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 0% 50%;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes uxZoomRightIn {
+  0% {
+    opacity: 0;
+    transform-origin: 100% 50%;
+    transform: scale(0.8);
+  }
+  100% {
+    transform-origin: 100% 50%;
+    transform: scale(1);
+  }
+}
+
+@keyframes uxZoomRightOut {
+  0% {
+    transform-origin: 100% 50%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 100% 50%;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes uxZoomDownIn {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 100%;
+    transform: scale(0.8);
+  }
+  100% {
+    transform-origin: 50% 100%;
+    transform: scale(1);
+  }
+}
+
+@keyframes uxZoomDownOut {
+  0% {
+    transform-origin: 50% 100%;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 100%;
+    transform: scale(0.8);
+  }
+}

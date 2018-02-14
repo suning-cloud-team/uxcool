@@ -1,0 +1,140 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/index';
+
+$tooltip-prefix-cls: #{$ux-prefix}-tooltip;
+
+// Base class
+.#{$tooltip-prefix-cls} {
+  @include reset-component;
+  position: absolute;
+  z-index: $zindex-tooltip;
+  display: block;
+  visibility: visible;
+
+  &-hidden {
+    display: none;
+  }
+
+  &[x-placement='top'],
+  &[x-placement='top-start'],
+  &[x-placement='top-end'] {
+    padding-bottom: $tooltip-distance;
+  }
+  &[x-placement='right'],
+  &[x-placement='right-start'],
+  &[x-placement='right-end'] {
+    padding-left: $tooltip-distance;
+  }
+  &[x-placement='bottom'],
+  &[x-placement='bottom-start'],
+  &[x-placement='bottom-end'] {
+    padding-top: $tooltip-distance;
+  }
+  &[x-placement='left'],
+  &[x-placement='left-start'],
+  &[x-placement='left-end'] {
+    padding-right: $tooltip-distance;
+  } // Wrapper for the tooltip content
+  &-inner {
+    max-width: $tooltip-max-width;
+    padding: 6px 8px;
+    color: $tooltip-color;
+    text-align: left;
+    text-decoration: none;
+    background-color: $tooltip-bg;
+    border-radius: $border-radius-base;
+    box-shadow: $box-shadow-base;
+    min-height: 32px;
+  } // Arrows
+  &-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  &[x-placement='top'] &-arrow,
+  &[x-placement='top-start'] &-arrow,
+  &[x-placement='top-end'] &-arrow {
+    bottom: $tooltip-distance - $tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-top-color: $tooltip-arrow-color;
+  }
+
+  &[x-placement='top'] &-arrow {
+    left: 50%;
+    margin-left: -$tooltip-arrow-width;
+  }
+
+  &[x-placement='top-start'] &-arrow {
+    left: 16px;
+  }
+
+  &[x-placement='top-end'] &-arrow {
+    right: 16px;
+  }
+
+  &[x-placement='right'] &-arrow,
+  &[x-placement='right-start'] &-arrow,
+  &[x-placement='right-end'] &-arrow {
+    left: $tooltip-distance - $tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-right-color: $tooltip-arrow-color;
+  }
+
+  &[x-placement='right'] &-arrow {
+    top: 50%;
+    margin-top: -$tooltip-arrow-width;
+  }
+
+  &[x-placement='right-start'] &-arrow {
+    top: 8px;
+  }
+
+  &[x-placement='right-end'] &-arrow {
+    bottom: 8px;
+  }
+
+  &[x-placement='left'] &-arrow,
+  &[x-placement='left-start'] &-arrow,
+  &[x-placement='left-end'] &-arrow {
+    right: $tooltip-distance - $tooltip-arrow-width;
+    border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-left-color: $tooltip-arrow-color;
+  }
+
+  &[x-placement='left'] &-arrow {
+    top: 50%;
+    margin-top: -$tooltip-arrow-width;
+  }
+
+  &[x-placement='left-start'] &-arrow {
+    top: 8px;
+  }
+
+  &[x-placement='left-end'] &-arrow {
+    bottom: 8px;
+  }
+
+  &[x-placement='bottom'] &-arrow,
+  &[x-placement='bottom-start'] &-arrow,
+  &[x-placement='bottom-end'] &-arrow {
+    top: $tooltip-distance - $tooltip-arrow-width;
+    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-bottom-color: $tooltip-arrow-color;
+  }
+
+  &[x-placement='bottom'] &-arrow {
+    left: 50%;
+    margin-left: -$tooltip-arrow-width;
+  }
+
+  &[x-placement='bottom-start'] &-arrow {
+    left: 16px;
+  }
+
+  &[x-placement='bottom-end'] &-arrow {
+    right: 16px;
+  }
+}

@@ -1,0 +1,61 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+
+.#{$ux-prefix}-table {
+  width: 100%;
+  margin-bottom: $table-margin-bottom;
+  // background-color: $table-bg;
+
+  th,
+  td {
+    padding: $table-cell-padding;
+    border: $table-border-width solid $table-border-color;
+  }
+
+  th {
+    color: $th-color;
+    font-weight: $th-font-weight;
+  }
+}
+
+// fit
+// ----------------------------------------------
+.#{$ux-prefix}-table-fit {
+  th,
+  td {
+    &:first-child {
+      border-left: 0;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}
+
+// striped
+// ----------------------------------------------
+.#{$ux-prefix}-table-striped {
+  tbody tr:nth-child(odd) {
+    background-color: $table-accent-bg;
+  }
+
+  &-vertical {
+    th,
+    td {
+      &:nth-child(even) {
+        background-color: $table-accent-bg;
+      }
+    }
+  }
+}
+
+// hover
+// ----------------------------------------------
+.#{$ux-prefix}-table-hover {
+  tbody tr:hover {
+    background-color: $table-hover-bg;
+  }
+}
+
+@import 'dark';

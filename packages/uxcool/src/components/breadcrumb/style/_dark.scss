@@ -1,0 +1,20 @@
+.#{$breadcrumb-prefix-cls} {
+  &-dark#{&} {
+    color: $text-color-secondary-dark;
+  }
+
+  &-dark a {
+    color: $text-color-secondary-dark;
+    &:hover {
+      color: rgba(#00d8ff, 0.5);
+    }
+  }
+
+  &-dark span:last-child {
+    color: $text-color-dark;
+  }
+
+  &-dark &-separator {
+    color: $text-color-secondary-dark;
+  }
+}

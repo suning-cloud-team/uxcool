@@ -1,0 +1,158 @@
+@mixin make-row($gutter: $grid-gutter-width) {
+  display: block;
+  margin-right: ($gutter / -2);
+  margin-left: ($gutter / -2);
+  box-sizing: border-box;
+
+  @include clearfix();
+}
+
+@mixin make-flex-row() {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  &::before,
+  &::after {
+    display: flex;
+  }
+
+  &-start {
+    justify-content: flex-start;
+  }
+
+  &-center {
+    justify-content: center;
+  }
+
+  &-end {
+    justify-content: flex-end;
+  }
+
+  &-space-between {
+    justify-content: space-between;
+  }
+
+  &-space-around {
+    justify-content: space-around;
+  }
+
+  &-top {
+    align-items: flex-start;
+  }
+
+  &-middle {
+    align-items: center;
+  }
+
+  &-bottom {
+    align-items: flex-end;
+  }
+}
+
+@mixin make-col($size, $columns: $grid-columns) {
+  float: left;
+  width: percentage($size / $columns);
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  $num: $size / $columns;
+  margin-left: if($num == 0, 0, percentage($num));
+}
+
+@mixin make-grid($prefix, $columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+  // Common properties for all breakpoints
+  %grid-column {
+    display: block;
+    position: relative;
+    padding-left: ($grid-gutter-width / 2);
+    padding-right: ($grid-gutter-width / 2);
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    flex: 0 0 auto;
+  }
+
+  @for $i from 1 through $columns {
+    .#{$prefix}-#{$i} {
+      @extend %grid-column;
+    }
+
+    .#{$prefix}-#{$i} {
+      @include make-col($i, $columns);
+    }
+
+    .#{$prefix}-order-#{$i} {
+      order: $i;
+    }
+
+    @if $i < $columns {
+      .#{$prefix}-offset-#{$i} {
+        @include make-col-offset($i, $columns);
+      }
+    }
+  }
+
+  // responsive layout
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @for $i from 1 through $columns {
+      .#{$prefix}#{$infix}-#{$i} {
+        @extend %grid-column;
+      }
+    }
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      @for $i from 1 through $columns {
+        .#{$prefix}#{$infix}-#{$i} {
+          @include make-col($i, $columns);
+        }
+
+        .#{$prefix}#{$infix}-order-#{$i} {
+          order: $i;
+        }
+      }
+
+      // `$columns - 1` because offsetting by the width of an entire row isn't possible
+      @for $i from 0 through ($columns - 1) {
+        .#{$prefix}#{$infix}-offset-#{$i} {
+          @include make-col-offset($i, $columns);
+        }
+      }
+    }
+  }
+}
+
+@mixin make-responsive-visible($prefix, $breakpoints: $grid-breakpoints) {
+  %responsive-hidden {
+    display: none;
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @if breakpoint-previous($breakpoint, $breakpoints) {
+      @include media-breakpoint-only($breakpoint) {
+        .#{$prefix}#{$infix}-hidden {
+          display: none !important;
+        }
+      }
+
+      @include media-breakpoint-up($breakpoint) {
+        .#{$prefix}#{$infix}-hidden-up {
+          display: none !important;
+        }
+      }
+
+      @include media-breakpoint-down($breakpoint) {
+        .#{$prefix}#{$infix}-hidden-down {
+          display: none !important;
+        }
+      }
+    } @else {
+      .#{$prefix}-hidden {
+        display: none !important;
+      }
+    }
+  }
+}

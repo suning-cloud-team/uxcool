@@ -1,0 +1,31 @@
+.#{$ux-prefix}-table-dark {
+  th,
+  td {
+    border-color: $table-border-color-dark;
+  }
+
+  th {
+    color: $th-color-dark;
+  }
+
+  &.#{$ux-prefix}-table-striped {
+    tbody tr:nth-child(odd) {
+      background-color: $table-accent-bg-dark;
+    }
+
+    &-vertical {
+      th,
+      td {
+        &:nth-child(even) {
+          background-color: $table-accent-bg-dark;
+        }
+      }
+    }
+  }
+
+  &.#{$ux-prefix}-table-hover {
+    tbody tr:hover {
+      background-color: $table-hover-bg-dark;
+    }
+  }
+}

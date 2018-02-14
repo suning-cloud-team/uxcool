@@ -1,0 +1,146 @@
+@import '../../style/themes/index';
+@import '../../style/mixins/index';
+@import '../../style/functions/height';
+@import 'mixin';
+
+.#{$ux-prefix}-checkbox {
+  display: inline-block;
+  position: relative;
+  min-height: calc-css-content-height($checkbox-text-font-size, $checkbox-text-line-height);
+  min-width: $checkbox-indicator-size;
+  vertical-align: middle;
+
+  > input[type='checkbox'] {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: $checkbox-indicator-size;
+    height: $checkbox-indicator-size;
+    margin-top: (-$checkbox-indicator-size / 2);
+    opacity: 0;
+    z-index: 1;
+  }
+
+  &-indicator {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: $checkbox-indicator-size;
+    height: $checkbox-indicator-size;
+    margin-top: (-$checkbox-indicator-size / 2);
+    background: $checkbox-indicator-bg;
+    border: $checkbox-indicator-border-width solid $checkbox-indicator-border-color;
+    border-radius: $checkbox-indicator-border-radius;
+    @include transition($checkbox-transition);
+    z-index: 1;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      opacity: 0;
+      @include transition($checkbox-transition);
+    }
+
+    &::before {
+      @include checkbox-checker-size($checkbox-indicator-size, $checkbox-indicator-border-width);
+      border: $checkbox-checker-border-width solid $checkbox-indicator-color;
+      border-top: 0;
+      border-right: 0;
+      transform: rotate(-50deg) scale(0);
+    }
+
+    &::after {
+      @include checkbox-indeterminate-size($checkbox-indicator-size, $checkbox-indicator-border-width, $checkbox-checker-border-width);
+      background: $checkbox-indicator-color;
+      transform: scale(0);
+    }
+  }
+
+  &-text {
+    position: relative;
+    display: inline-block;
+    padding-left: $checkbox-indicator-size + $checkbox-spacing;
+    line-height: $checkbox-text-line-height;
+    font-size: $checkbox-text-font-size;
+    cursor: pointer;
+    z-index: 2;
+  }
+}
+
+// indeterminate
+// ----------------------------------------------
+// An indeterminate state can only be set in Javascript, there is no available HTML attribute for specifying it.
+// One can use `.indeterminate` class to simulate `:indeterminate` but need to manually add or remove the class when necessary.
+.#{$ux-prefix}-checkbox.indeterminate .#{$ux-prefix}-checkbox-indicator,
+.#{$ux-prefix}-checkbox > input[type='checkbox']:indeterminate + .#{$ux-prefix}-checkbox-indicator {
+  &::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// checked
+// ----------------------------------------------
+// One can use `.checked` class to simulate `:checked` state but need to manually add or remove the class when nenessary.
+.#{$ux-prefix}-checkbox.checked .#{$ux-prefix}-checkbox-indicator,
+.#{$ux-prefix}-checkbox > input[type='checkbox']:checked + .#{$ux-prefix}-checkbox-indicator {
+  &::before {
+    opacity: 1;
+    transform: rotate(-50deg) scale(1);
+  }
+
+  &::after {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+// inverted
+// ----------------------------------------------
+.#{$ux-prefix}-checkbox.inverted {
+  &.indeterminate .#{$ux-prefix}-checkbox-indicator {
+    border-color: $checkbox-indicator-color;
+    background: $checkbox-indicator-color;
+
+    &::after {
+      background: $checkbox-indicator-bg;
+    }
+  }
+
+  & > input[type='checkbox']:not(:disabled):checked + .#{$ux-prefix}-checkbox-indicator,
+  &.checked > .#{$ux-prefix}-checkbox-indicator {
+    border-color: $checkbox-indicator-color;
+    background: $checkbox-indicator-color;
+
+    &::before {
+      border-color: $checkbox-indicator-bg;
+    }
+  }
+}
+
+// disabled
+// ----------------------------------------------
+// One can use `.disabled` class to simulate `:disabled` state but need to manually add or remove the class when nenessary.
+// Notice that use `.disabled` class cannot disable clicks.
+.#{$ux-prefix}-checkbox.disabled .#{$ux-prefix}-checkbox-indicator,
+.#{$ux-prefix}-checkbox > input[type='checkbox']:disabled + .#{$ux-prefix}-checkbox-indicator {
+  border-color: $checkbox-indicator-border-disabled-color;
+  background: $checkbox-indicator-disabled-bg;
+  cursor: $checkbox-disabled-cursor;
+
+  &::before {
+    border-color: $checkbox-indicator-disabled-color;
+  }
+
+  &::after {
+    background: $checkbox-indicator-disabled-color;
+  }
+}
+
+.#{$ux-prefix}-checkbox.disabled .#{$ux-prefix}-checkbox-text,
+.#{$ux-prefix}-checkbox > input[type='checkbox']:disabled ~ .#{$ux-prefix}-checkbox-text {
+  color: $checkbox-text-disabled-color;
+  cursor: $checkbox-disabled-cursor;
+}

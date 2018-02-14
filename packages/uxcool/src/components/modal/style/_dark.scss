@@ -1,0 +1,54 @@
+$modal-content-bg: #1e3652;
+.#{$dialog-prefix-cls} {
+  &-dark &-title {
+    color: $heading-color-dark;
+  }
+
+  &-dark &-content {
+    background-color: $modal-content-bg;
+    color: $text-color-dark;
+  }
+
+  &-dark &-close {
+    color: $text-color-secondary-dark;
+    &:focus,
+    &:hover {
+      color: rgba($text-color-secondary-dark, 0.85);
+    }
+  }
+
+  &-dark &-header {
+    background: rgba(0, 0, 0, 0.2);
+    color: $text-color-dark;
+    border: none;
+  }
+
+  &-dark .#{$ux-prefix}-confirm {
+    &-body {
+      .#{$confirm-prefix-cls}-title {
+        color: $heading-color-dark;
+      }
+      .#{$confirm-prefix-cls}-content {
+        color: $text-color-dark;
+      }
+    }
+  }
+  &-dark .ux-btn {
+    border-color: rgba($white, 0.4);
+    background: transparent;
+    color: $white;
+    &:hover,
+    &:focus {
+      background: rgba($white, 0.45);
+    }
+  }
+
+  &-dark .ux-btn-primary {
+    border-color: #00d8ff;
+    box-shadow: inset 0 0 5px 0 #00d8ff;
+    &:hover,
+    &:focus {
+      background: rgba(0, 216, 255, 0.44);
+    }
+  }
+}

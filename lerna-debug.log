@@ -1,8 +1,8 @@
-0 silly input [ '..\\..\\sn-components\\v-' ]
+0 silly input [ '..\\..\\sn-project\\uxcool\\' ]
 1 silly flags { _: [ 'import' ],
 1 silly flags   'reject-cycles': false,
 1 silly flags   rejectCycles: false,
-1 silly flags   pathToRepo: '..\\..\\sn-components\\v-' }
+1 silly flags   pathToRepo: '..\\..\\sn-project\\uxcool\\' }
 2 verbose rootPath E:\sn-project\lerna-uxcool
 3 info version 2.8.0
 4 silly isInitialized
@@ -10,7 +10,136 @@
 6 silly existsSync E:\sn-project\lerna-uxcool\VERSION
 7 info versioning independent
 8 silly initialize attempt
-9 silly statSync E:\sn-components\v-
-10 error initialize callback with error
-11 error Error: No repository found at "..\..\sn-components\v-"
-11 error     at ImportCommand.initialize (C:\Users\17061765\AppData\Local\Yarn\config\global\node_modules\lerna\lib\commands\ImportCommand.js:121:27)
+9 silly statSync E:\sn-project\uxcool
+10 silly getWorkspaceRoot
+11 verbose getWorkspaceRoot E:/sn-project/lerna-uxcool
+12 silly existsSync E:\sn-project\lerna-uxcool\packages\uxcool
+13 silly getCurrentSHA
+14 verbose getCurrentSHA 2c9a1f883d4051b3f350bed9c9768b4fc71335aa
+15 info About to import 179 commits from ..\..\sn-project\uxcool\ into packages\uxcool
+16 silly initialize success
+17 silly execute attempt
+18 info 41912f9
+19 info 8e9539b
+20 info fef63cb
+21 info 913429f
+22 info e8e00e0
+23 info 392d689
+24 info ed75592
+25 info d07f5a1
+26 info ddc01df
+27 info 3466952
+28 error import Error: Failed to apply commit 3466952.
+28 error import Command failed: git am -3 --keep-non-patch
+28 error import .git/rebase-apply/patch:106: trailing whitespace.
+28 error import // Button variants
+28 error import .git/rebase-apply/patch:161: trailing whitespace.
+28 error import // outline variants
+28 error import .git/rebase-apply/patch:245: trailing whitespace.
+28 error import
+28 error import .git/rebase-apply/patch:273: trailing whitespace.
+28 error import // colored
+28 error import .git/rebase-apply/patch:335: trailing whitespace.
+28 error import
+28 error import warning: squelched 83 whitespace errors
+28 error import warning: 88 lines add whitespace errors.
+28 error import error: Failed to merge in the changes.
+28 error import Applying: add components
+28 error import Using index info to reconstruct a base tree...
+28 error import M	packages/uxcool/src/components/styles/themes/_default.scss
+28 error import Falling back to patching base and 3-way merge...
+28 error import Auto-merging packages/uxcool/src/components/styles/themes/_default.scss
+28 error import CONFLICT (content): Merge conflict in packages/uxcool/src/components/styles/themes/_default.scss
+28 error import Auto-merging packages/uxcool/src/components/input/style/index.scss
+28 error import CONFLICT (add/add): Merge conflict in packages/uxcool/src/components/input/style/index.scss
+28 error import Auto-merging packages/uxcool/src/components/input/style/_mixin.scss
+28 error import CONFLICT (add/add): Merge conflict in packages/uxcool/src/components/input/style/_mixin.scss
+28 error import Patch failed at 0001 add components
+28 error import The copy of the patch that failed is found in: .git/rebase-apply/patch
+28 error import When you have resolved this problem, run "git am --continue".
+28 error import If you prefer to skip this patch, run "git am --skip" instead.
+28 error import To restore the original branch and stop patching, run "git am --abort".
+28 error import
+28 error import Rolling back to previous HEAD (commit 2c9a1f883d4051b3f350bed9c9768b4fc71335aa).
+28 error import You may try with --flatten to import flat history.
+28 error import     at Promise.all.then.arr (C:\Users\17061765\AppData\Local\Yarn\config\global\node_modules\execa\index.js:236:11)
+28 error import     at process._tickCallback (internal/process/next_tick.js:109:7)
+28 error import  { Error: Failed to apply commit 3466952.
+28 error import Command failed: git am -3 --keep-non-patch
+28 error import .git/rebase-apply/patch:106: trailing whitespace.
+28 error import // Button variants
+28 error import .git/rebase-apply/patch:161: trailing whitespace.
+28 error import // outline variants
+28 error import .git/rebase-apply/patch:245: trailing whitespace.
+28 error import
+28 error import .git/rebase-apply/patch:273: trailing whitespace.
+28 error import // colored
+28 error import .git/rebase-apply/patch:335: trailing whitespace.
+28 error import
+28 error import warning: squelched 83 whitespace errors
+28 error import warning: 88 lines add whitespace errors.
+28 error import error: Failed to merge in the changes.
+28 error import Applying: add components
+28 error import Using index info to reconstruct a base tree...
+28 error import M	packages/uxcool/src/components/styles/themes/_default.scss
+28 error import Falling back to patching base and 3-way merge...
+28 error import Auto-merging packages/uxcool/src/components/styles/themes/_default.scss
+28 error import CONFLICT (content): Merge conflict in packages/uxcool/src/components/styles/themes/_default.scss
+28 error import Auto-merging packages/uxcool/src/components/input/style/index.scss
+28 error import CONFLICT (add/add): Merge conflict in packages/uxcool/src/components/input/style/index.scss
+28 error import Auto-merging packages/uxcool/src/components/input/style/_mixin.scss
+28 error import CONFLICT (add/add): Merge conflict in packages/uxcool/src/components/input/style/_mixin.scss
+28 error import Patch failed at 0001 add components
+28 error import The copy of the patch that failed is found in: .git/rebase-apply/patch
+28 error import When you have resolved this problem, run "git am --continue".
+28 error import If you prefer to skip this patch, run "git am --skip" instead.
+28 error import To restore the original branch and stop patching, run "git am --abort".
+28 error import
+28 error import Rolling back to previous HEAD (commit 2c9a1f883d4051b3f350bed9c9768b4fc71335aa).
+28 error import You may try with --flatten to import flat history.
+28 error import     at Promise.all.then.arr (C:\Users\17061765\AppData\Local\Yarn\config\global\node_modules\execa\index.js:236:11)
+28 error import     at process._tickCallback (internal/process/next_tick.js:109:7)
+28 error import   stack: 'Error: Failed to apply commit 3466952.\nCommand failed: git am -3 --keep-non-patch\n.git/rebase-apply/patch:106: trailing whitespace.\n// Button variants \n.git/rebase-apply/patch:161: trailing whitespace.\n// outline variants \n.git/rebase-apply/patch:245: trailing whitespace.\n\n.git/rebase-apply/patch:273: trailing whitespace.\n// colored \n.git/rebase-apply/patch:335: trailing whitespace.\n\nwarning: squelched 83 whitespace errors\nwarning: 88 lines add whitespace errors.\nerror: Failed to merge in the changes.\nApplying: add components\nUsing index info to reconstruct a base tree...\nM\tpackages/uxcool/src/components/styles/themes/_default.scss\nFalling back to patching base and 3-way merge...\nAuto-merging packages/uxcool/src/components/styles/themes/_default.scss\nCONFLICT (content): Merge conflict in packages/uxcool/src/components/styles/themes/_default.scss\nAuto-merging packages/uxcool/src/components/input/style/index.scss\nCONFLICT (add/add): Merge conflict in packages/uxcool/src/components/input/style/index.scss\nAuto-merging packages/uxcool/src/components/input/style/_mixin.scss\nCONFLICT (add/add): Merge conflict in packages/uxcool/src/components/input/style/_mixin.scss\nPatch failed at 0001 add components\nThe copy of the patch that failed is found in: .git/rebase-apply/patch\nWhen you have resolved this problem, run "git am --continue".\nIf you prefer to skip this patch, run "git am --skip" instead.\nTo restore the original branch and stop patching, run "git am --abort".\n\nRolling back to previous HEAD (commit 2c9a1f883d4051b3f350bed9c9768b4fc71335aa).\nYou may try with --flatten to import flat history.\n    at Promise.all.then.arr (C:\\Users\\17061765\\AppData\\Local\\Yarn\\config\\global\\node_modules\\execa\\index.js:236:11)\n    at process._tickCallback (internal/process/next_tick.js:109:7)',
+28 error import   code: 128,
+28 error import   killed: false,
+28 error import   stdout: 'Applying: add components\nUsing index info to reconstruct a base tree...\nM\tpackages/uxcool/src/components/styles/themes/_default.scss\nFalling back to patching base and 3-way merge...\nAuto-merging packages/uxcool/src/components/styles/themes/_default.scss\nCONFLICT (content): Merge conflict in packages/uxcool/src/components/styles/themes/_default.scss\nAuto-merging packages/uxcool/src/components/input/style/index.scss\nCONFLICT (add/add): Merge conflict in packages/uxcool/src/components/input/style/index.scss\nAuto-merging packages/uxcool/src/components/input/style/_mixin.scss\nCONFLICT (add/add): Merge conflict in packages/uxcool/src/components/input/style/_mixin.scss\nPatch failed at 0001 add components\nThe copy of the patch that failed is found in: .git/rebase-apply/patch\nWhen you have resolved this problem, run "git am --continue".\nIf you prefer to skip this patch, run "git am --skip" instead.\nTo restore the original branch and stop patching, run "git am --abort".\n',
+28 error import   stderr: '.git/rebase-apply/patch:106: trailing whitespace.\n// Button variants \n.git/rebase-apply/patch:161: trailing whitespace.\n// outline variants \n.git/rebase-apply/patch:245: trailing whitespace.\n    \n.git/rebase-apply/patch:273: trailing whitespace.\n// colored \n.git/rebase-apply/patch:335: trailing whitespace.\n    \nwarning: squelched 83 whitespace errors\nwarning: 88 lines add whitespace errors.\nerror: Failed to merge in the changes.\n',
+28 error import   failed: true,
+28 error import   signal: null,
+28 error import   cmd: 'git am -3 --keep-non-patch',
+28 error import   timedOut: false }
+29 error execute callback with error
+30 error Error: Failed to apply commit 3466952.
+30 error Command failed: git am -3 --keep-non-patch
+30 error .git/rebase-apply/patch:106: trailing whitespace.
+30 error // Button variants
+30 error .git/rebase-apply/patch:161: trailing whitespace.
+30 error // outline variants
+30 error .git/rebase-apply/patch:245: trailing whitespace.
+30 error
+30 error .git/rebase-apply/patch:273: trailing whitespace.
+30 error // colored
+30 error .git/rebase-apply/patch:335: trailing whitespace.
+30 error
+30 error warning: squelched 83 whitespace errors
+30 error warning: 88 lines add whitespace errors.
+30 error error: Failed to merge in the changes.
+30 error Applying: add components
+30 error Using index info to reconstruct a base tree...
+30 error M	packages/uxcool/src/components/styles/themes/_default.scss
+30 error Falling back to patching base and 3-way merge...
+30 error Auto-merging packages/uxcool/src/components/styles/themes/_default.scss
+30 error CONFLICT (content): Merge conflict in packages/uxcool/src/components/styles/themes/_default.scss
+30 error Auto-merging packages/uxcool/src/components/input/style/index.scss
+30 error CONFLICT (add/add): Merge conflict in packages/uxcool/src/components/input/style/index.scss
+30 error Auto-merging packages/uxcool/src/components/input/style/_mixin.scss
+30 error CONFLICT (add/add): Merge conflict in packages/uxcool/src/components/input/style/_mixin.scss
+30 error Patch failed at 0001 add components
+30 error The copy of the patch that failed is found in: .git/rebase-apply/patch
+30 error When you have resolved this problem, run "git am --continue".
+30 error If you prefer to skip this patch, run "git am --skip" instead.
+30 error To restore the original branch and stop patching, run "git am --abort".
+30 error
+30 error Rolling back to previous HEAD (commit 2c9a1f883d4051b3f350bed9c9768b4fc71335aa).
+30 error You may try with --flatten to import flat history.
+30 error     at Promise.all.then.arr (C:\Users\17061765\AppData\Local\Yarn\config\global\node_modules\execa\index.js:236:11)

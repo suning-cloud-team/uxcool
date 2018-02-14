@@ -1,0 +1,96 @@
+.#{$tab-prefix-cls} {
+  &-dark#{&} {
+    color: $text-color-dark;
+  }
+  &-dark &-ink-bar {
+    background-color: $tabs-primary-color-dark;
+  }
+
+  &-dark &-bar {
+    border-bottom-color: $border-color-split-dark;
+  }
+
+  &-dark &-tab-prev,
+  &-dark &-tab-next {
+    color: $text-color-secondary-dark;
+    &:hover {
+      color: $text-color-dark;
+    }
+  }
+
+  &-dark &-tab-btn-disabled {
+    &,
+    &:hover {
+      color: $disabled-color-dark;
+    }
+  }
+  &-dark &-nav {
+    .#{$tab-prefix-cls}-tab-disabled {
+      color: $disabled-color-dark;
+    }
+    .#{$tab-prefix-cls}-tab-active {
+      color: $tabs-primary-color-dark;
+    }
+    .#{$tab-prefix-cls}-tab {
+      &:hover {
+        color: rgba($tabs-primary-color-dark, 0.75);
+      }
+
+      &:active {
+        color: rgba($tabs-primary-color-dark, 0.55);
+      }
+    }
+  }
+
+  &-dark#{&}-vertical#{&}-left {
+    > .#{$tab-prefix-cls}-bar {
+      border-right-color: $border-color-split-dark;
+    }
+    > .#{$tab-prefix-cls}-content {
+      border-left-color: transparent;
+    }
+  }
+
+  &-dark#{&}-vertical#{&}-right {
+    > .#{$tab-prefix-cls}-bar {
+      border-left-color: $border-color-split-dark;
+    }
+
+    > .#{$tab-prefix-cls}-content {
+      border-right-color: transparent;
+    }
+  }
+
+  &-dark#{&}-card > &-bar &-tab {
+    border-color: $border-color-split-dark;
+    background: $tabs-card-head-background-dark;
+  }
+
+  &-dark#{&}-card > &-bar &-tab-active {
+    background: rgba($black, 0.8);
+    border-color: $border-color-split-dark;
+    color: $tabs-primary-color-dark;
+  }
+
+  &-dark#{&}-card > &-bar &-tab .#{$iconfont-css-prefix}-close {
+    color: $text-color-secondary-dark;
+    &:hover {
+      color: $heading-color-dark;
+    }
+  }
+
+  &-dark &-extra-content {
+    border-color: $border-color-split-dark;
+    color: $text-color-dark;
+    &:hover {
+      color: $tabs-primary-color-dark;
+      border-color: $tabs-primary-color-dark;
+    }
+  }
+
+  &-dark &-vertical#{&}-card > .#{$tab-prefix-cls}-bar {
+    .#{$tab-prefix-cls}-tab {
+      border-bottom-color: $border-color-split-dark;
+    }
+  }
+}

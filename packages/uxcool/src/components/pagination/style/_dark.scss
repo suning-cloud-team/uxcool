@@ -1,0 +1,92 @@
+.#{$pagination-prefix-cls} {
+  &-dark &-before-total-text,
+  &-dark &-after-total-text {
+    color: $text-color-dark;
+  }
+  &-dark &-item,
+  &-dark &-prev,
+  &-dark &-next {
+    border-color: $pagination-item-border-dark;
+    background-color: $pagination-item-bg-dark;
+    a {
+      color: $text-color-dark;
+    }
+    &:focus,
+    &:hover {
+      border-color: $pagination-item-color-dark;
+      a {
+        color: $pagination-item-color-dark;
+      }
+    }
+  }
+
+  &-dark &-item {
+    &-active {
+      background-color: $pagination-item-color-dark;
+      border-color: $pagination-item-color-dark;
+      &:focus,
+      &:hover {
+        background-color: $primary-5;
+        border-color: $primary-5;
+      }
+      a,
+      &:focus a,
+      &:hover a {
+        color: #fff;
+      }
+    }
+  }
+
+  &-dark &-jump-prev,
+  &-dark &-jump-next {
+    &:after {
+      color: $disabled-color-dark;
+    }
+    &:focus,
+    &:hover {
+      &:after {
+        color: $pagination-item-color-dark;
+      }
+    }
+  }
+
+  &-dark &-prev,
+  &-dark &-next,
+  &-dark &-jump-prev,
+  &-dark &-jump-next {
+    color: $text-color-dark;
+  }
+
+  &-dark &-disabled {
+    &:hover,
+    &:focus {
+      border-color: $pagination-item-border-dark;
+      a {
+        color: $disabled-color-dark;
+      }
+    }
+    a {
+      color: $disabled-color-dark;
+    }
+  }
+
+  &-dark &-options {
+    &-quick-jumper {
+      color: $text-color-dark;
+      input {
+        border-color: $pagination-item-border-dark;
+        background-color: $pagination-item-bg-dark;
+        color: $text-color-dark;
+      }
+      button {
+        @include btn-color($text-color-dark, $pagination-item-bg-dark,$pagination-item-border-dark);
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+          background: rgba($pagination-item-bg-dark, 0.3);
+        }
+      }
+    }
+  }
+}

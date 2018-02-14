@@ -1,0 +1,6 @@
+.#{$message-prefix-cls} {
+  &-dark &-notice-content {
+    background: rgba($black, 0.8);
+    color: $text-color-dark;
+  }
+}
