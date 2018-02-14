@@ -1,5 +1,7 @@
 import Vue from 'vue';
+// eslint-disable-next-line
 import Uxcool from '@suning/uxcool/es/index';
+// eslint-disable-next-line
 import UxcoolExtra from '@suning/uxcool/es/extra/index';
 
 import uxDemo from './components/Demo.vue';

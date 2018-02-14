@@ -236,7 +236,6 @@ function buildStyle(basePath) {
     extraPath = styleName;
     distStyleName = `${pkgName}-${styleName}.scss`;
   }
-
   const content = fileNames.reduce((r, f) => {
     let nr = r;
     nr += `@import './${extraPath}${extraPath ? '/' : ''}${f}';\n`;
@@ -268,5 +267,7 @@ gulp.task('style', () => {
 
   buildStyle(extraComponentsPath);
 });
+
+gulp.task('compile-js-style', ['compile', 'style']);
+
 gulp.task('default', ['compile', 'dist', 'style']);
-//

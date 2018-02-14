@@ -1,5 +1,6 @@
 {
   "name": "lerna-uxcool",
+  "pkgName": "uxcool",
   "version": "1.0.0",
   "description": "lerna uxcool",
   "main": "index.js",
@@ -8,12 +9,9 @@
   "workspaces": ["packages/*"],
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap",
-    "build": "gulp --gulpfile build/gulpfile.js",
-    "build:dist": "gulp dist --gulpfile build/gulpfile.js",
-    "build:es": "gulp compile-to-es --gulpfile build/gulpfile.js",
+    "build": "lerna run build --scope @suning/uxcool",
     "site": "webpack-dev-server --config build/site/webpack.server.js",
     "build:site": "webpack --config build/site/prd.js",
-    "build:w": "webpack --config build/webpack/dev.js",
     "build:example": "webpack  --config build/example/dev.js",
     "example": "webpack-dev-server --config build/example/server.js",
     "analyzer": "webpack --config  build/webpack/analyzer.js",

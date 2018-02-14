@@ -11,7 +11,6 @@ const { pkgName, version, uxcool = {} } = getPackageJSON(path.resolve(root, 'pac
 const uxCoolSrcPath = uxcool.srcPath || '';
 const distPath = path.resolve(root, uxCoolSrcPath, 'dist');
 
-console.log('base', uxCoolSrcPath, distPath);
 
 function getConfig(env = {}) {
   return {
