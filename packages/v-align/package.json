@@ -1,0 +1,27 @@
+{
+  "name": "@suning/v-align",
+  "version": "1.0.2",
+  "description": "html source node与 target node自动对齐",
+  "main": "./cjs/index.js",
+  "module": "./es/index.js",
+  "repository": "git@git.cnsuning.com:fedc/v-align.git",
+  "author": "'hw' <17061765@cnsuning.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "http://snpm.cnsunig.com"
+  },
+  "files": ["cjs", "es"],
+  "scripts": {
+    "compile": "v-tools run compile",
+    "server": "v-tools run server"
+  },
+  "peerDependencies": {
+    "vue": "^2.*.*"
+  },
+  "dependencies": {
+    "dom-align": "^1.6.7"
+  },
+  "devDependencies": {
+    "@suning/v-tools": "^1.0.15"
+  }
+}
