@@ -1,0 +1,50 @@
+{
+  "root": true,
+  "extends": ["plugin:vue/recommended", "airbnb-base"],
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".json", ".jsx"]
+      }
+    }
+  },
+  "rules": {
+    "comma-dangle": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "indent": "off",
+    "vue/script-indent": [
+      "error",
+      2,
+      {
+        "baseIndent": 1,
+        "switchCase": 1
+      }
+    ],
+    "vue/max-attributes-per-line": [
+      2,
+      {
+        "singleline": 1,
+        "multiline": {
+          "max": 1,
+          "allowFirstLine": true
+        }
+      }
+    ]
+  }
+}

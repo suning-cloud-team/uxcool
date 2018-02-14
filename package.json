@@ -1,0 +1,14 @@
+{
+  "name": "lerna-uxcool",
+  "version": "1.0.0",
+  "description": "lerna uxcool",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^2.8.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
