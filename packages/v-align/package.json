@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-align",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "html source node与 target node自动对齐",
   "main": "./cjs/index.js",
   "module": "./es/index.js",
@@ -10,7 +10,10 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["cjs", "es"],
+  "files": [
+    "cjs",
+    "es"
+  ],
   "scripts": {
     "compile": "v-tools run compile",
     "server": "v-tools run server"
@@ -22,6 +25,6 @@
     "dom-align": "^1.6.7"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.15"
+    "@suning/v-tools": "^1.0.24"
   }
 }

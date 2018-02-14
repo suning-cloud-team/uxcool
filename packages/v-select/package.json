@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-select",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository": "git@git.cnsuning.com:fedc/v-select.git",
@@ -19,14 +19,13 @@
     "server": "v-tools run server",
     "start": "npm run server"
   },
-  "peerDependencies": {},
   "dependencies": {
-    "@suning/v-menu": "^1.0.16",
-    "@suning/v-trigger": "^1.0.20",
+    "@suning/v-menu": "^1.0.17",
+    "@suning/v-trigger": "^1.0.22",
     "scroll-into-view-if-needed": "^1.4.0"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.19",
+    "@suning/v-tools": "^1.0.24",
     "debug": "^3.1.0"
   }
 }

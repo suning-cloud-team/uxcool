@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-tools",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "v-components tools",
   "license": "MIT",
   "bin": {
@@ -60,6 +60,5 @@
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4",
     "webpack-merge": "^4.1.1"
-  },
-  "devDependencies": {}
+  }
 }
