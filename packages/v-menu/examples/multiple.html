@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <v-menu @select="onSelect" multiple @deselect="onDeselect" :selected-keys="[ 4,21]" @open-change="onOpenChange">
+      <v-sub-menu name="1" title="测试title">
+        <v-menu-item name="11">测试11</v-menu-item>
+        <v-menu-item name="12">测试12</v-menu-item>
+      </v-sub-menu>
+      <v-sub-menu name="2">
+        <template slot="title">
+          <span style="color:red">测试title2</span>
+        </template>
+        <v-menu-item name="21">测试21</v-menu-item>
+        <v-menu-item name="22">测试22</v-menu-item>
+      </v-sub-menu>
+      <v-menu-item name="3">测试3</v-menu-item>
+      <v-menu-item name="4" disabled>测试4</v-menu-item>
+      <v-sub-menu name="5">
+        <template slot="title">
+            <span style="color:red">测试title2</span>
+          </template>
+        <v-sub-menu name="55" title="测试55">
+          <v-menu-item name="551">测试551</v-menu-item>
+          <v-menu-item name="552">测试552</v-menu-item>
+        </v-sub-menu>
+      </v-sub-menu>
+    </v-menu>
+  </div>
+</body>
+
+</html>

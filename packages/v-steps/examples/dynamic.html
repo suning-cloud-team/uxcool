@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button class="ux-btn" @click="add">add</button>
+    <button class="ux-btn" @click="remove">remove</button>
+    <v-steps style="margin-top:40px" class="custom-a">
+      <v-step v-for="(row, i) in rows" :key="i" :title="row.title" :desc="row.desc"></v-step>
+    </v-steps>
+  </div>
+</body>
+
+</html>

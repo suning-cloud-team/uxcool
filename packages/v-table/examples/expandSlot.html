@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-table :columns="columns" class="bordered" v-model="data" :scroll="{x:'110%'}" expand-icon-as-cell
+      :expanded-row-class-name="expandedRowClassName" :expanded-row-render="expandedRowRender" expand-icon-col-index="2"
+      indent-size="20" expand-row-by-click @expand="onExpand" @expanded-row-change="onExpandRowChange">
+      <div slot="expand" slot-scope="{record, indent}">
+        <v-table :columns="columns" v-model="data"></v-table>
+      </div>
+
+    </v-table>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-tabs :value="currentPane">
+      <v-tab-pane v-for="(pane,i) in panes" :key="i" :disabled="pane.disabled" :tab="pane.tab" :name="pane.name">
+        <span slot="tab" :style="pane.disabled ? '': {color: i%2===0 ? 'red':'green'}">
+           {{pane.tab}}
+        </span>
+        <span>
+          {{pane.content}}
+        </span>
+      </v-tab-pane>
+    </v-tabs>
+  </div>
+</body>
+
+</html>

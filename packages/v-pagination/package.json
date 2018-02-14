@@ -1,0 +1,34 @@
+{
+  "name": "@suning/v-pagination",
+  "version": "1.0.7",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "repository": "git@git.cnsuning.com:fedc/v-pagination.git",
+  "author": "'hw' <17061765@cnsuning.com>",
+  "license": "MIT",
+  "files": [
+    "assets/*.css",
+    "cjs",
+    "es"
+  ],
+  "publishConfig": {
+    "registry": "http://snpm.cnsuning.com"
+  },
+  "scripts": {
+    "compile": "v-tools run compile",
+    "cleanCss": "v-tools run cleanCSSCompile",
+    "clean": "v-tools run clean",
+    "server": "v-tools run server",
+    "dist": "v-tools run dist"
+  },
+  "peerDependencies": {
+    "vue": "^2.*.*"
+  },
+  "devDependencies": {
+    "@suning/v-style": "^1.0.3",
+    "@suning/v-tools": "^1.0.20"
+  },
+  "vueCompileOpts": {
+    "preserveWhitespace": false
+  }
+}

@@ -1,0 +1,155 @@
+<template>
+  <div role="selectTrigger"
+       ref="selectTrigger">
+    <trigger ref="triggerRef"
+             :visible="visible"
+             :actions="actions"
+             :popup-align="align"
+             :prefix-cls="dropDownPrefixCls"
+             :popup-class="popupClasses"
+             :popup-style="popupStyles"
+             destroy-popup-on-hide
+             @on-popup-visible-change="onPopupVisible">
+      <template slot="trigger">
+        <slot></slot>
+      </template>
+      <dropdown-menu slot="popup"
+                     @on-blur="onBlur"
+                     @on-focus="onFocus"
+                     :prefix-cls="dropDownPrefixCls"
+                     :root-uid="rootUUID"
+                     :descendants="filterDescs"
+                     :value="value"
+                     :multiple="multiple"
+                     :style="dropdownMenuStyle"
+                     :show-search="showSearch"
+                     :theme="theme"
+                     @menu-select="onMenuSelect"
+                     @menu-deselect="onMenuDeselect">
+      </dropdown-menu>
+    </trigger>
+  </div>
+</template>
+
+<script>
+  import Trigger from '@suning/v-trigger';
+  import DropdownMenu from './dropdownMenu.vue';
+  import { CMP_TYPE_ENUM } from './constants';
+  import { defaultFilterOptiontFn } from './utils';
+
+  export default {
+    name: 'SelectTrigger',
+    inject: ['root'],
+    props: {
+      prefixCls: String,
+      descendants: Array,
+      inputValue: String,
+      value: Array,
+      align: Object,
+      actions: Array,
+      visible: Boolean,
+      multiple: Boolean,
+      dropdownMatchSelectWidth: Boolean,
+      dropdownMenuStyle: [Array, Object],
+      showSearch: Boolean,
+      theme: String,
+    },
+    data() {
+      return {
+        popupWidth: -1,
+      };
+    },
+    mounted() {
+      this.setPopupWidth();
+    },
+    computed: {
+      rootUUID() {
+        return this.root.UUID;
+      },
+      dropDownPrefixCls() {
+        const { prefixCls } = this;
+        return `${prefixCls}-dropdown`;
+      },
+      popupClasses() {
+        const { multiple, dropDownPrefixCls, theme } = this;
+        return {
+          [`${dropDownPrefixCls}-${theme}`]: true,
+          [`${dropDownPrefixCls}--${multiple ? 'multiple' : 'single'}`]: true,
+        };
+      },
+      popupStyles() {
+        const { popupWidth, dropdownMatchSelectWidth } = this;
+        const style = {};
+        style[dropdownMatchSelectWidth ? 'width' : 'minWidth'] = `${popupWidth}px`;
+        return style;
+      },
+      filterDescs() {
+        const {
+          filterDescendants, showSearch, descendants, createNoDataArr
+        } = this;
+        if (descendants.length === 0) {
+          return createNoDataArr('No Data');
+        }
+
+        let descs = descendants;
+
+        if (showSearch) {
+          descs = filterDescendants();
+          if (descs.filter(v => v.type === CMP_TYPE_ENUM.OPTION).length === 0) {
+            descs = createNoDataArr('Not Found');
+          }
+        }
+        return descs;
+      },
+    },
+    methods: {
+      onBlur() {
+        console.log('blur');
+      },
+      onFocus() {
+        console.log('focus');
+      },
+      onMenuSelect(e) {
+        this.$emit('menu-select', e);
+      },
+      onMenuDeselect(e) {
+        this.$emit('menu-deselect', e);
+      },
+      onPopupVisible(e) {
+        this.$emit('popup-visible-change', e);
+      },
+      setPopupWidth() {
+        const width = this.$refs.selectTrigger.offsetWidth;
+        if (width !== this.popupWidth) {
+          this.popupWidth = width;
+        }
+      },
+      filterDescendants() {
+        const { descendants, inputValue } = this;
+        const filterFn = defaultFilterOptiontFn;
+        if (!inputValue) {
+          return descendants;
+        }
+        return descendants.filter(v => (v.type === CMP_TYPE_ENUM.OPTION ? filterFn(inputValue, v.vm, 'value') : true));
+      },
+      createNoDataArr(label) {
+        return [
+          {
+            type: CMP_TYPE_ENUM.OPTION,
+            parent: this.root,
+            vm: {
+              label,
+              value: label,
+              $slots: {},
+              disabled: true,
+            },
+          },
+        ];
+      },
+    },
+    components: {
+      Trigger,
+      DropdownMenu,
+    },
+  };
+</script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="expandAll">expandAll</button>
+    <button @click="expandedRow">expandedRow</button>
+    <v-table :columns="columns" :expand-all-rows="expandAllRows" expand-row-by-click expand-icon-col-index="2"
+      :expanded-row-keys="expandedRowKeys" class="bordered" v-model="data" :scroll="{x:'110%'}" @expand="onExpand"
+      @expanded-row-change="onExpandRowChange">
+    </v-table>
+  </div>
+</body>
+
+</html>

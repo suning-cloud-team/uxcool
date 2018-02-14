@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-steps :current="current" style="margin-bottom:20px">
+      <v-step v-for="(step,i ) in steps" :key="i" :title="step.title">
+      </v-step>
+    </v-steps>
+    <button @click="prev">prev step</button>
+    <button @click="next">next step</button>
+  </div>
+</body>
+
+</html>

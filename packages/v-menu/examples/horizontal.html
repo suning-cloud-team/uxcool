@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-menu :mode="mode" :open-keys="openKeys" :selected-keys="selectedKeys">
+      <!-- <v-menu-item-group title="b">
+        <v-menu-item>
+          测试1
+        </v-menu-item>
+      </v-menu-item-group> -->
+      <v-sub-menu name="a1" disabled>
+        <template slot="title">
+          abc
+        </template>
+        <v-menu-item name="sub-menu-item-a1">测试2</v-menu-item>
+      </v-sub-menu>
+
+      <v-sub-menu name="1">
+        <template slot="title">sub-menu-1</template>
+        <v-menu-item-group title="测试-group">
+          <v-menu-item name="sub-menu-item-1">sub-menu-item-1</v-menu-item>
+          <v-menu-item name="sub-menu-item-2">sub-menu-item-2</v-menu-item>
+        </v-menu-item-group>
+        <v-sub-menu name="2">
+          <template slot="title">sub-menu-11</template>
+          <v-menu-item name="sub-menu-item-2-1">sub-menu-item-3</v-menu-item>
+          <v-menu-item name="sub-menu-item-2-2">sub-menu-item-4</v-menu-item>
+        </v-sub-menu>
+      </v-sub-menu>
+      <v-sub-menu name="3">
+        <template slot="title">sub-menu-2</template>
+        <v-menu-item name="sub-menu-item-3-1">sub-menu-item-1</v-menu-item>
+        <v-menu-item name="sub-menu-item-3-2">sub-menu-item-2</v-menu-item>
+      </v-sub-menu>
+      <v-menu-item name="sub-menu-item-4">
+        <a href="http://www.baidu.com" target="_blank">测试3</a>
+      </v-menu-item>
+    </v-menu>
+  </div>
+</body>
+
+</html>

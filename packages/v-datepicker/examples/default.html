@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <date-picker style="width:250px" :disabled="disabled" @open-change="onOpenChange" :value="now" is-open @change="onChange"
+      :show-today="true" @ok="onOk">
+      <input slot="trigger" type="text" :class="pickerInputClass" readonly :value="formatValue" :disabled="disabled">
+    </date-picker>
+    <date-picker theme="dark" style="width:250px" :disabled="disabled" @open-change="onOpenChange" :value="now" is-open @change="onChange"
+      :show-today="true" @ok="onOk">
+      <input slot="trigger" type="text" :class="pickerInputClass" readonly :value="formatValue" :disabled="disabled">
+    </date-picker>
+  </div>
+</body>
+
+</html>

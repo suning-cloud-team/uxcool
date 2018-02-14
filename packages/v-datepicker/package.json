@@ -1,0 +1,36 @@
+{
+  "name": "@suning/v-datepicker",
+  "version": "1.0.22",
+  "description": "datepicker 基础组件",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "repositorye": "git@git.cnsuning.com:fedc/v-datepicker.git",
+  "author": "17061765@cnsuning.com",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "http://snpm.cnsunig.com"
+  },
+  "files": [
+    "assets/*.css",
+    "cjs",
+    "es"
+  ],
+  "scripts": {
+    "start": "npm run server",
+    "server": "v-tools run server",
+    "compile": "v-tools run compile"
+  },
+  "peerDependencies": {
+    "vue": "^2.*.*"
+  },
+  "devDependencies": {
+    "@suning/v-style": "^1.0.5",
+    "@suning/v-tools": "^1.0.15"
+  },
+  "dependencies": {
+    "@suning/v-timepicker": "^1.0.6",
+    "@suning/v-trigger": "^1.0.21",
+    "date-fns": "^1.29.0",
+    "deepcopy": "^0.6.3"
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-table :columns="columns" class="bordered" title="abc" footer="this is footer">
+      <!-- <div slot="title" slot-scope="props">
+        title: 测试title
+      </div> -->
+      <!-- <div slot="title" slot-scope="{records}">
+        title: {{records.length}}
+      </div> -->
+
+      <!-- <div slot="footer" slot-scope="props">
+        Items:{{props.records.length}}
+      </div> -->
+      <!-- <div slot="footer">
+        Items:slot
+      </div> -->
+    </v-table>
+  </div>
+</body>
+
+</html>

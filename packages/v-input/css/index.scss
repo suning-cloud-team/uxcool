@@ -1,0 +1,25 @@
+textarea {
+  overflow: auto;
+}
+.v-input {
+  position: relative;
+  display: inline-block;
+  padding: 4px 7px;
+  width: 100%;
+  height: 28px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+textarea.v-input {
+  max-width: 100%; // prevent textearea resize from coming out of its container
+  height: auto;
+  vertical-align: bottom;
+  transition: all 0.3s, height 0s;
+}

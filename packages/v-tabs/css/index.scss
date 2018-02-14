@@ -1,0 +1,11 @@
+$tabs-prefix-cls: v-tabs;
+
+$easing-in-out: cubic-bezier(0.35, 0, 0.25, 1);
+
+$effect-duration: 0.3s;
+
+@import 'common';
+@import 'left';
+@import 'right';
+@import 'bottom';
+@import 'top';

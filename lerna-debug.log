@@ -1,0 +1,16 @@
+0 silly input [ '..\\..\\sn-components\\v-' ]
+1 silly flags { _: [ 'import' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   pathToRepo: '..\\..\\sn-components\\v-' }
+2 verbose rootPath E:\sn-project\lerna-uxcool
+3 info version 2.8.0
+4 silly isInitialized
+5 silly isInitialized true
+6 silly existsSync E:\sn-project\lerna-uxcool\VERSION
+7 info versioning independent
+8 silly initialize attempt
+9 silly statSync E:\sn-components\v-
+10 error initialize callback with error
+11 error Error: No repository found at "..\..\sn-components\v-"
+11 error     at ImportCommand.initialize (C:\Users\17061765\AppData\Local\Yarn\config\global\node_modules\lerna\lib\commands\ImportCommand.js:121:27)

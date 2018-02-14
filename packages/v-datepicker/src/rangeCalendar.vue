@@ -1,0 +1,507 @@
+<template>
+  <div :class="classes">
+    <div :class="`${prefixCls}-panel`">
+      <a v-if="isShowClear"
+         role="button"
+         :title="locale.clear"
+         :class="`${prefixCls}-clear-btn`"
+         @click="clear">
+      </a>
+      <div :class="`${prefixCls}-date-panel`">
+        <calendar-part :prefix-cls="prefixCls"
+                       :value="startValue"
+                       :mode="innerMode[0]"
+                       :selected-value="selectedValue"
+                       :hover-values="hoverValues"
+                       direction="left"
+                       :locale="locale"
+                       :has-time-picker="hasTimePicker"
+                       :is-time-picker="isTimePicker"
+                       :format="format"
+                       :placeholder="startPlaceholder"
+                       :disabled-month="disabledStartMonth"
+                       :disabled-date="disabledDate"
+                       :disabled-time="disabledTime"
+                       enable-prev
+                       :enable-next="enableBtn"
+                       @on-value-change="onValueChange('left', $event)"
+                       @on-panel-change="onStartPanelChange"
+                       @on-day-hover="onDayHover"
+                       @on-select="onSelect">
+          <time-picker-panel slot="timePicker"
+                             v-if="hasTimePicker"
+                             :prefix-cls="`${prefixCls}-time-picker`"
+                             :value="selectedValue[0]"
+                             show-hour
+                             show-minute
+                             show-second
+                             :disabled-hours="disabledStartTime.disabledHours"
+                             :disabled-minutes="disabledStartTime.disabledMinutes"
+                             :disabled-seconds="disabledStartTime.disabledSeconds"
+                             @on-change="onTimePickerChange('left',$event)">
+          </time-picker-panel>
+        </calendar-part>
+        <span :class="`${prefixCls}-range-middle`">~</span>
+        <calendar-part :prefix-cls="prefixCls"
+                       :value="endValue"
+                       :mode="innerMode[1]"
+                       :selected-value="selectedValue"
+                       :hover-values="hoverValues"
+                       direction="right"
+                       :locale="locale"
+                       :has-time-picker="hasTimePicker"
+                       :is-time-picker="isTimePicker"
+                       :format="format"
+                       :placeholder="endPlaceholder"
+                       :disabled-month="disabledEndMonth"
+                       :disabled-date="disabledDate"
+                       :disabled-time="disabledTime"
+                       :enable-prev="enableBtn"
+                       enable-next
+                       @on-value-change="onValueChange('right', $event)"
+                       @on-panel-change="onEndPanelChange"
+                       @on-day-hover="onDayHover"
+                       @on-select="onSelect">
+          <time-picker-panel slot="timePicker"
+                             v-if="hasTimePicker"
+                             :prefix-cls="`${prefixCls}-time-picker`"
+                             :value="selectedValue[1]"
+                             show-hour
+                             show-minute
+                             show-second
+                             :disabled-hours="disabledEndTime.disabledHours"
+                             :disabled-minutes="disabledEndTime.disabledMinutes"
+                             :disabled-seconds="disabledEndTime.disabledSeconds"
+                             @on-change="onTimePickerChange('right',$event)">
+          </time-picker-panel>
+        </calendar-part>
+        <div :class="`${prefixCls}-range-quick-selector`"
+             v-if="isRanges">
+          <div :class="`${prefixCls}-range-quick-selector-item`"
+               v-for="(v,k) in ranges"
+               :key="k"
+               @mouseenter="onRangeMouseEnter(v)"
+               @mouseleave="onRangeMouseLeave"
+               @click.stop="onRangeClick(v)">
+            <a role="button">{{k}}</a>
+          </div>
+        </div>
+      </div>
+      <div :class="footerClasses">
+        <div v-if="showToday || hasTimePicker || isShowOk"
+             :class="`${prefixCls}-footer-btn`">
+          <today-button v-if="showToday"
+                        :prefix-cls="prefixCls"
+                        :locale="locale"
+                        :disabled="isTodayInView||isTimePicker"
+                        :disabled-date="disabledDate"
+                        :text="locale.backToToday"
+                        :has-time-picker="hasTimePicker"
+                        :is-show-ok="isShowOk"
+                        :format="format"
+                        @on-click="onTodayClick">
+          </today-button>
+          <time-picker-button v-if="hasTimePicker"
+                              :prefix-cls="prefixCls"
+                              :locale="locale"
+                              :disabled="isTimePickerDisabled"
+                              :is-time-picker="isTimePicker"
+                              @on-click="onTimePickerClick"></time-picker-button>
+          <ok-button v-if="isShowOk"
+                     :prefix-cls="prefixCls"
+                     :locale="locale"
+                     :disabled="isOkDisabled"
+                     @on-click="onOkClick">
+          </ok-button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>
+
+<script>
+  import deepCopy from 'deepcopy';
+  import {
+    addMonths,
+    isSameMonth,
+    isSameDay,
+    isSameHour,
+    isSameMinute,
+    isBefore,
+    isAfter,
+    isEqual,
+    getHours,
+    getMinutes,
+    getSeconds,
+  } from 'date-fns';
+  import TimePickerPanel from '@suning/v-timepicker/es/panel';
+  import { noop, isValidArray, formatDate, isAllowedDate, getTimeConfig } from './utils';
+  import CalendarPart from './rangeCalendar/calendarPart.vue';
+  import TodayButton from './calendar/todayButton.vue';
+  import TimePickerButton from './calendar/timePickerButton.vue';
+  import OkButton from './calendar/okButton.vue';
+
+  function genEndDisabledTime(start, end, cfg) {
+    let nCfg = cfg;
+    if (end && isSameDay(start, end)) {
+      const [sHour, sMinute, sSecond] = [getHours(start), getMinutes(start), getSeconds(start)];
+      const [eHour, eMinute] = [getHours(end), getMinutes(end)];
+      const hours = new Set(cfg.disabledHours());
+      for (let i = 0; i < sHour; i += 1) {
+        hours.add(i);
+      }
+
+      const minutes = new Set(cfg.disabledMinutes(eHour));
+      if (isSameHour(start, end)) {
+        for (let i = 0; i < sMinute; i += 1) {
+          minutes.add(i);
+        }
+      }
+      const seconds = new Set(cfg.disabledSeconds(eHour, eMinute));
+      if (isSameMinute(start, end)) {
+        for (let i = 0; i < sSecond; i += 1) {
+          seconds.add(i);
+        }
+      }
+      nCfg = {
+        disabledHours() {
+          return Array.from(hours);
+        },
+        disabledMinutes() {
+          return Array.from(minutes);
+        },
+        disabledSeconds() {
+          return Array.from(seconds);
+        },
+      };
+    }
+
+    return nCfg;
+  }
+
+  export default {
+    name: 'RangeCalendar',
+    props: {
+      prefixCls: String,
+      value: {
+        type: Array,
+        required: true,
+        validator(val) {
+          return val.every(v => v instanceof Date);
+        },
+      },
+      selectedValue: {
+        type: Array,
+        default() {
+          return [];
+        },
+        validator(val) {
+          return val.every(v => v instanceof Date);
+        },
+      },
+      showClear: Boolean,
+      locale: Object,
+      mode: {
+        type: Array,
+        default() {
+          return ['date', 'date'];
+        },
+        required: true,
+        validator(val) {
+          return val.every(v => ['date', 'month', 'year', 'decade'].indexOf(v) !== -1);
+        },
+      },
+      showOk: Boolean,
+      showToday: Boolean,
+      format: String,
+      disabledTime: { type: Function, default: noop },
+      disabledDate: { type: Function, default: noop },
+      dateInputPlaceholder: [String, Array],
+      hasTimePicker: Boolean,
+      ranges: Object,
+    },
+    data() {
+      return {
+        innerMode: [],
+        hoverValues: [],
+        innerValues: [],
+        isTimePicker: false,
+        firstSelectedVal: null,
+      };
+    },
+    created() {
+      const { mode, normalizeAnchor } = this;
+      this.innerMode = mode;
+      this.innerValues = normalizeAnchor();
+    },
+    computed: {
+      isSelectedValue() {
+        const { selectedValue } = this;
+        return selectedValue[0] && selectedValue[1];
+      },
+      isShowClear() {
+        const { showClear, selectedValue } = this;
+        return showClear && selectedValue[0] && selectedValue[1];
+      },
+      isShowOk() {
+        const { showOk, hasTimePicker } = this;
+        return showOk === true || (showOk !== false && !!hasTimePicker);
+      },
+      isTodayInView() {
+        const { innerValues: [start, end] } = this;
+        const today = new Date();
+        return isSameMonth(today, start) || isSameMonth(today, end);
+      },
+      isTimePickerDisabled() {
+        const { isSelectedValue, hoverValues } = this;
+        return !isSelectedValue || hoverValues.length > 0;
+      },
+      isOkDisabled() {
+        const { isAllowedDateAndTime, isTimePickerDisabled, selectedValue } = this;
+        return isTimePickerDisabled || !isAllowedDateAndTime(selectedValue);
+      },
+      classes() {
+        const { prefixCls, isTimePicker, isRanges } = this;
+        return {
+          [prefixCls]: true,
+          [`${prefixCls}-range`]: true,
+          [`${prefixCls}-range-with-ranges`]: isRanges,
+          [`${prefixCls}-show-time-picker`]: isTimePicker,
+        };
+      },
+      footerClasses() {
+        const { prefixCls, isShowOk } = this;
+        return {
+          [`${prefixCls}-footer`]: true,
+          [`${prefixCls}-range-bottom`]: true,
+          [`${prefixCls}-footer-show-ok`]: isShowOk,
+        };
+      },
+      placeholders() {
+        const { dateInputPlaceholder } = this;
+        let holders = ['', ''];
+        if (dateInputPlaceholder) {
+          if (Array.isArray(dateInputPlaceholder)) {
+            holders = dateInputPlaceholder;
+          } else {
+            holders = [dateInputPlaceholder, dateInputPlaceholder];
+          }
+        }
+        return holders;
+      },
+      startPlaceholder() {
+        const { placeholders } = this;
+        return placeholders[0];
+      },
+      endPlaceholder() {
+        const { placeholders } = this;
+        return placeholders[1];
+      },
+      startValue() {
+        const { innerValues } = this;
+        const [start] = innerValues;
+        // const [selectedStart] = selectedValue;
+        // if (selectedStart) {
+        //   start = selectedStart;
+        // }
+        return start;
+      },
+      endValue() {
+        const { innerValues } = this;
+        const [, end] = innerValues;
+        // const [, selectedEnd] = selectedValue;
+        // if (selectedEnd) {
+        //   end = selectedEnd;
+        // }
+        return end;
+      },
+      enableBtn() {
+        const { startValue, endValue } = this;
+        const next = addMonths(startValue, 1);
+        return !isSameMonth(next, endValue);
+      },
+      disabledStartTime() {
+        const { selectedValue, disabledTime } = this;
+        const disabledTimeConfig = disabledTime(selectedValue, 'start');
+        return getTimeConfig(selectedValue, disabledTimeConfig);
+      },
+      disabledEndTime() {
+        const { selectedValue, disabledTime } = this;
+        const [start, end] = selectedValue;
+
+        const cfg = getTimeConfig(selectedValue, disabledTime(selectedValue, 'end'));
+        //   结束时间和开始时间为同一天时, 结束时间的时分秒要在开始时间时分秒之后
+        return genEndDisabledTime(start, end, cfg);
+      },
+      isRanges() {
+        const { ranges } = this;
+        return ranges && Object.keys(ranges).length > 0;
+      },
+    },
+    methods: {
+      getValueFromSelectedValue(selectedValue) {
+        const [start, end] = selectedValue;
+        const newEnd = end && isSameMonth(end, start) ? addMonths(end, 1) : end;
+        return [start, newEnd];
+      },
+      normalizeAnchor() {
+        const { selectedValue, value, getValueFromSelectedValue } = this;
+        let normalizedValue = getValueFromSelectedValue(selectedValue);
+
+        if (isValidArray(normalizedValue)) {
+          return normalizedValue;
+        }
+        normalizedValue = getValueFromSelectedValue(value);
+
+        if (isValidArray(normalizedValue)) {
+          return normalizedValue;
+        }
+        const date = new Date();
+        return [date, addMonths(date, 1)];
+      },
+      updateHoverValues(values) {
+        const hoverValues = deepCopy(values);
+        this.hoverValues = hoverValues;
+        this.$emit('on-hover-change', hoverValues);
+      },
+      updateSelectedValues(values = []) {
+        const { updateHoverValues } = this;
+        const [start, end] = values;
+        if (start && !end) {
+          updateHoverValues(values);
+        }
+        if ((!start && !end) || (start && end)) {
+          this.firstSelectedVal = null;
+          updateHoverValues([]);
+          this.$emit('on-select', values);
+        }
+      },
+      disabledStartMonth(month) {
+        const { innerValues: [, end] } = this;
+        const eVal = formatDate(end, 'YYYY-MM');
+        const mVal = formatDate(month, 'YYYY-MM');
+        return isAfter(mVal, eVal) || isEqual(mVal, eVal);
+      },
+      disabledEndMonth(month) {
+        const { innerValues: [start] } = this;
+        const sVal = formatDate(start, 'YYYY-MM');
+        const mVal = formatDate(month, 'YYYY-MM');
+        return isBefore(mVal, sVal) || isEqual(mVal, sVal);
+      },
+
+      isAllowedDateAndTime(selectedValue) {
+        const {
+          disabledDate, disabledStartTime, disabledEndTime, hasTimePicker
+        } = this;
+        if (!hasTimePicker) {
+          return (
+            isAllowedDate(selectedValue[0], disabledDate) &&
+            isAllowedDate(selectedValue[1], disabledDate)
+          );
+        }
+        return (
+          isAllowedDate(selectedValue[0], disabledDate, disabledStartTime) &&
+          isAllowedDate(selectedValue[1], disabledDate, disabledEndTime)
+        );
+      },
+      onDayHover(value) {
+        const { firstSelectedVal, updateHoverValues } = this;
+        if (firstSelectedVal) {
+          const values = [firstSelectedVal];
+          if (isBefore(value, firstSelectedVal)) {
+            values.unshift(value);
+          } else {
+            values.push(value);
+          }
+          updateHoverValues(values);
+        }
+      },
+      onSelect(value) {
+        const { firstSelectedVal, updateSelectedValues } = this;
+        const values = [];
+        if (!firstSelectedVal) {
+          this.firstSelectedVal = value;
+          values.push(value);
+        } else if (isBefore(firstSelectedVal, value)) {
+          values.push(firstSelectedVal, value);
+        } else {
+          values.push(value, firstSelectedVal);
+        }
+
+        updateSelectedValues(values);
+      },
+      onValueChange(direction, value) {
+        const { innerValues } = this;
+        this.innerValues = direction === 'left' ? [value, innerValues[1]] : [innerValues[0], value];
+      },
+      onStartPanelChange(value, next) {
+        const { innerMode, selectedValue } = this;
+        this.innerMode = [next, innerMode[1]];
+        this.$emit('on-panel-change', [value || selectedValue[0], selectedValue[1]]);
+      },
+      onEndPanelChange(value, next) {
+        const { innerMode, selectedValue } = this;
+        this.innerMode = [innerMode[0], next];
+        this.$emit('on-panel-change', [selectedValue[0], value || selectedValue[1]]);
+      },
+      onTimePickerChange(type, value) {
+        const { selectedValue } = this;
+
+        const values = deepCopy(selectedValue);
+
+        const idx = type === 'left' ? 0 : 1;
+        values[idx] = value;
+        // 防止结束时间小于开始时间
+        if (isBefore(values[1], values[0])) {
+          values[1 - idx] = values[idx];
+        }
+        this.updateSelectedValues(values);
+      },
+      onTodayClick() {
+        const today = new Date();
+        this.innerValues = [today, addMonths(today, 1)];
+      },
+      onTimePickerClick() {
+        this.isTimePicker = !this.isTimePicker;
+      },
+      onOkClick() {
+        this.$emit('on-ok', this.selectedValue);
+      },
+      onRangeMouseEnter(range) {
+        if (Array.isArray(range)) {
+          this.updateHoverValues(range);
+        }
+      },
+      onRangeMouseLeave() {
+        this.updateHoverValues([]);
+      },
+      onRangeClick(range) {
+        if (Array.isArray(range)) {
+          if (range.every(v => v instanceof Date)) {
+            this.$emit('on-quick-select', range);
+          }
+        }
+      },
+    },
+    components: {
+      CalendarPart,
+      TimePickerPanel,
+      TodayButton,
+      TimePickerButton,
+      OkButton,
+    },
+    watch: {
+      value(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerValues = this.normalizeAnchor();
+        }
+      },
+      mode(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerMode = nVal;
+        }
+      },
+    },
+  };
+</script>

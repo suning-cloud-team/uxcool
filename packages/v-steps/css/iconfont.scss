@@ -1,0 +1,473 @@
+$icon-url: '//at.alicdn.com/t/font_1434092639_4910953';
+@mixin ie-rotate($rotation) {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=$rotation);
+}
+@mixin rotate($degrees) {
+  -webkit-transform: rotate($degrees);
+  -ms-transform: rotate($degrees); // IE9 only
+  -o-transform: rotate($degrees);
+  transform: rotate($degrees);
+}
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -o-animation: $animation;
+  animation: $animation;
+}
+// font-face
+// $icon-url： 字体源文件的地址
+@font-face {
+  font-family: 'anticon';
+  src: url('#{$icon-url}.eot'); /* IE9*/
+  src: url('#{$icon-url}.eot?#iefix') format('embedded-opentype'),
+    url('#{$icon-url}.woff') format('woff'), url('#{$icon-url}.ttf') format('truetype'),
+    url('#{$icon-url}.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.vicon {
+  position: relative;
+  display: inline-block;
+  font-style: normal;
+  vertical-align: baseline;
+  text-align: center;
+  text-transform: none;
+  text-rendering: auto;
+  // 更好地渲染字体
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0px;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:before {
+    display: block;
+    font-family: 'anticon' !important;
+  }
+}
+// 方向性图标
+.vicon-step-backward:before {
+  content: '\e662';
+}
+.vicon-step-forward {
+  @include ie-rotate(2);
+}
+.vicon-step-forward:before {
+  content: '\e662';
+  @include rotate(180deg);
+}
+.vicon-fast-backward:before {
+  content: '\e62a';
+}
+.vicon-fast-forward {
+  @include ie-rotate(2);
+}
+.vicon-fast-forward:before {
+  content: '\e62a';
+  @include rotate(180deg);
+}
+.vicon-shrink:before {
+  content: '\e65f';
+}
+.vicon-arrow-salt:before {
+  content: '\e608';
+}
+.vicon-caret-down:before {
+  content: '\e60f';
+}
+.vicon-caret-left {
+  @include ie-rotate(1);
+}
+.vicon-caret-left:before {
+  content: '\e60f';
+  @include rotate(90deg);
+}
+.vicon-caret-up {
+  @include ie-rotate(2);
+}
+.vicon-caret-up:before {
+  content: '\e60f';
+  @include rotate(180deg);
+}
+.vicon-caret-right {
+  @include ie-rotate(3);
+}
+.vicon-caret-right:before {
+  content: '\e60f';
+  @include rotate(270deg);
+}
+.vicon-caret-circle-right:before {
+  content: '\e60d';
+}
+.vicon-caret-circle-left {
+  @include ie-rotate(2);
+}
+.vicon-caret-circle-left:before {
+  content: '\e60d';
+  @include rotate(180deg);
+}
+.vicon-caret-circle-o-right:before {
+  content: '\e60e';
+}
+.vicon-caret-circle-o-left {
+  @include ie-rotate(2);
+}
+.vicon-caret-circle-o-left:before {
+  content: '\e60e';
+  @include rotate(180deg);
+}
+.vicon-circle-right:before {
+  content: '\e602';
+}
+.vicon-circle-left {
+  @include ie-rotate(2);
+}
+.vicon-circle-left:before {
+  content: '\e602';
+  @include rotate(180deg);
+}
+.vicon-circle-o-right:before {
+  content: '\e603';
+}
+.vicon-circle-o-left {
+  @include ie-rotate(2);
+}
+.vicon-circle-o-left:before {
+  content: '\e603';
+  @include rotate(180deg);
+}
+.vicon-double-right:before {
+  content: '\e604';
+}
+.vicon-double-left {
+  @include ie-rotate(2);
+}
+.vicon-double-left:before {
+  content: '\e604';
+  @include rotate(180deg);
+}
+.vicon-verticle-right:before {
+  content: '\e605';
+}
+.vicon-verticle-left {
+  @include ie-rotate(2);
+}
+.vicon-verticle-left:before {
+  content: '\e605';
+  @include rotate(180deg);
+}
+.vicon-forward:before {
+  content: '\e630';
+}
+.vicon-backward {
+  @include ie-rotate(2);
+}
+.vicon-backward:before {
+  content: '\e630';
+  @include rotate(180deg);
+}
+.vicon-rollback:before {
+  content: '\e65a';
+}
+.vicon-retweet:before {
+  content: '\e659';
+}
+
+.vicon-right:before {
+  content: '\e611';
+}
+.vicon-down {
+  @include ie-rotate(1);
+}
+.vicon-down:before {
+  content: '\e611';
+  @include rotate(90deg);
+}
+.vicon-left {
+  @include ie-rotate(2);
+}
+.vicon-left:before {
+  content: '\e611';
+  @include rotate(180deg);
+}
+.vicon-up {
+  @include ie-rotate(3);
+}
+.vicon-up:before {
+  content: '\e611';
+  @include rotate(270deg);
+}
+
+// 提示性图标
+.vicon-question:before {
+  content: '\e655';
+}
+.vicon-question-circle:before {
+  content: '\e656';
+}
+.vicon-question-circle-o:before {
+  content: '\e657';
+}
+.vicon-plus:before {
+  content: '\e651';
+}
+.vicon-plus-circle:before {
+  content: '\e652';
+}
+.vicon-plus-circle-o:before {
+  content: '\e653';
+}
+.vicon-pause:before {
+  content: '\e64c';
+}
+.vicon-pause-circle:before {
+  content: '\e64d';
+}
+.vicon-pause-circle-o:before {
+  content: '\e64e';
+}
+.vicon-minus:before {
+  content: '\e646';
+}
+.vicon-minus-circle:before {
+  content: '\e647';
+}
+.vicon-minus-circle-o:before {
+  content: '\e648';
+}
+.vicon-info-circle:before {
+  content: '\e637';
+}
+.vicon-info-circle-o:before {
+  content: '\e638';
+}
+.vicon-info:before {
+  content: '\e63a';
+}
+.vicon-exclamation:before {
+  content: '\e627';
+}
+.vicon-exclamation-circle:before {
+  content: '\e628';
+}
+.vicon-exclamation-circle-o:before {
+  content: '\e629';
+}
+.vicon-cross:before {
+  content: '\e61e';
+}
+.vicon-cross-circle:before {
+  content: '\e61f';
+}
+.vicon-cross-circle-o:before {
+  content: '\e620';
+}
+.vicon-check:before {
+  content: '\e613';
+}
+.vicon-check-circle:before {
+  content: '\e614';
+}
+.vicon-check-circle-o:before {
+  content: '\e615';
+}
+.vicon-clock-circle:before {
+  content: '\e616';
+}
+.vicon-clock-circle-o:before {
+  content: '\e617';
+}
+
+// 网站通用图标
+.vicon-lock:before {
+  content: '\e641';
+}
+.vicon-android:before {
+  content: '\e601';
+}
+.vicon-apple:before {
+  content: '\e606';
+}
+.vicon-area-chart:before {
+  content: '\e607';
+}
+.vicon-bar-chart:before {
+  content: '\e609';
+}
+.vicon-bars:before {
+  content: '\e60a';
+}
+.vicon-book:before {
+  content: '\e60b';
+}
+.vicon-calendar:before {
+  content: '\e60c';
+}
+.vicon-cloud:before {
+  content: '\e618';
+}
+.vicon-cloud-download:before {
+  content: '\e619';
+}
+.vicon-code:before {
+  content: '\e61a';
+}
+.vicon-copy:before {
+  content: '\e61c';
+}
+.vicon-credit-card:before {
+  content: '\e61d';
+}
+.vicon-delete:before {
+  content: '\e621';
+}
+.vicon-desktop:before {
+  content: '\e622';
+}
+.vicon-download-line:before {
+  content: '\e623';
+}
+.vicon-edit:before {
+  content: '\e624';
+}
+.vicon-ellipsis:before {
+  content: '\e625';
+}
+.vicon-environment:before {
+  content: '\e626';
+}
+.vicon-file:before {
+  content: '\e62c';
+}
+.vicon-file-text:before {
+  content: '\e62d';
+}
+.vicon-folder:before {
+  content: '\e62e';
+}
+.vicon-folder-open:before {
+  content: '\e62f';
+}
+.vicon-github:before {
+  content: '\e631';
+}
+.vicon-hdd:before {
+  content: '\e632';
+}
+.vicon-frown:before {
+  content: '\e633';
+}
+.vicon-meh:before {
+  content: '\e634';
+}
+.vicon-inbox:before {
+  content: '\e635';
+}
+.vicon-laptop:before {
+  content: '\e63d';
+}
+.vicon-large:before {
+  content: '\e63e';
+}
+.vicon-line-chart:before {
+  content: '\e63f';
+}
+.vicon-link:before {
+  content: '\e640';
+}
+.vicon-logout:before {
+  content: '\e642';
+}
+.vicon-mail:before {
+  content: '\e643';
+}
+.vicon-menu-fold:before {
+  content: '\e644';
+}
+.vicon-menu-unfold:before {
+  content: '\e645';
+}
+.vicon-mobile:before {
+  content: '\e649';
+}
+.vicon-notification:before {
+  content: '\e64a';
+}
+.vicon-paper-clip:before {
+  content: '\e64b';
+}
+.vicon-picture:before {
+  content: '\e64f';
+}
+.vicon-pie-chart:before {
+  content: '\e650';
+}
+.vicon-poweroff:before {
+  content: '\e654';
+}
+.vicon-reload:before {
+  content: '\e658';
+}
+.vicon-search:before {
+  content: '\e65b';
+}
+.vicon-setting:before {
+  content: '\e65c';
+}
+.vicon-share-alt:before {
+  content: '\e65d';
+}
+.vicon-shopping-cart:before {
+  content: '\e65e';
+}
+.vicon-smile:before {
+  content: '\e661';
+}
+.vicon-tablet:before {
+  content: '\e664';
+}
+.vicon-tag:before {
+  content: '\e665';
+}
+.vicon-tags:before {
+  content: '\e666';
+}
+.vicon-to-top:before {
+  content: '\e667';
+}
+.vicon-unlock:before {
+  content: '\e668';
+}
+.vicon-upload:before {
+  content: '\e669';
+}
+.vicon-user:before {
+  content: '\e66a';
+}
+.vicon-video-camera:before {
+  content: '\e66b';
+}
+.vicon-windows:before {
+  content: '\e66c';
+}
+.vicon-loading:before {
+  display: inline-block;
+  @include animation(loadingCircle 1s infinite linear);
+  content: '\e610';
+}
+
+:root {
+  .vicon-step-forward,
+  .vicon-fast-forward,
+  .vicon-left,
+  .vicon-up,
+  .vicon-down,
+  .vicon-caret-left,
+  .vicon-caret-up,
+  .vicon-caret-right,
+  .vicon-caret-circle-left,
+  .vicon-caret-circle-o-left,
+  .vicon-circle-left,
+  .vicon-circle-o-left,
+  .vicon-double-left,
+  .vicon-verticle-left,
+  .vicon-backward {
+    filter: none;
+  }
+}

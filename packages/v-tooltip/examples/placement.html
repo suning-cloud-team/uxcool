@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>palcement</title>
+  <style>
+    .reference {
+      display: inline-block;
+      line-height: 40px;
+      height: 40px;
+      width: 80px;
+      text-align: center;
+      background: #f6f6f6;
+      margin-right: 1em;
+      margin-bottom: 1em;
+      border-radius: 6px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="app" style="margin:200px 0 0 200px">
+    <tooltip placement="top" visible content="tooltip测试内容">
+      <a href="#" class="reference">上</a>
+    </tooltip>
+    <tooltip placement="bottom" destroy-tooltip-on-hide content="tooltip测试内容"><a href="#" class="reference">下</a></tooltip>
+    <tooltip placement="left" content="tooltip测试内容"><a href="#" class="reference">左</a></tooltip>
+    <tooltip placement="right" content="tooltip测试内容"><a href="#" class="reference">右</a></tooltip>
+    <br>
+    <tooltip placement="topLeft" content="tooltip测试内容"><a href="#" class="reference">上左</a></tooltip>
+    <tooltip placement="topRight" content="tooltip测试内容"><a href="#" class="reference">上右</a></tooltip>
+    <tooltip placement="bottomLeft" content="tooltip测试内容"><a href="#" class="reference">下左</a></tooltip>
+    <tooltip placement="bottomRight" content="tooltip测试内容"><a href="#" class="reference">下右</a></tooltip>
+    <br>
+    <tooltip placement="leftTop" content="tooltip测试内容"><a href="#" class="reference">左上</a></tooltip>
+    <tooltip placement="leftBottom" content="tooltip测试内容"><a href="#" class="reference">左下</a></tooltip>
+    <tooltip placement="rightTop" content="tooltip测试内容"><a href="#" class="reference">右上</a></tooltip>
+    <tooltip placement="rightBottom" content="tooltip测试内容">
+      <a href="#" class="reference">右下</a>
+    </tooltip>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,379 @@
+@import '~@suning/v-style/assets/themes/default';
+@import '~@suning/v-style/assets/core/index';
+
+$pagination-prefix-cls: #{$ux-prefix}-pagination;
+@mixin iconfont-size-under-12px($size, $rotate: 0deg) {
+  display: inline-block;
+  $font-scale: unit($size / 12px);
+  font-size: $font-size-base; // ie8-9
+  font-size:'#{$size}/9'; // lesshint duplicateProperty: false
+  transform: scale($font-scale) rotate($rotate);
+}
+
+@mixin placeholder($color: $input-placeholder-color) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1;
+  } // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: $color;
+  } // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+@mixin hover($color: $input-hover-border-color) {
+  border-color: mix(#fff, $color, 50%);
+}
+
+@mixin disabled() {
+  background-color: $input-disabled-bg;
+  opacity: 1;
+  cursor: not-allowed;
+  color: $disabled-color;
+  &:hover {
+    @include hover($input-border-color);
+  }
+}
+
+@mixin active($color: $outline-color) {
+  border-color: mix(#fff, $color, 50%);
+  outline: 0;
+  box-shadow: 0 0 $outline-blur-size $outline-width rgba($color, 0.2);
+}
+
+@mixin input() {
+  position: relative;
+  display: inline-block;
+  padding: $input-padding-vertical-base $input-padding-horizontal;
+  width: 100%;
+  height: $input-height-base;
+  cursor: text;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $input-color;
+  background-color: $input-bg;
+  background-image: none;
+  border: $border-width-base $border-style-base $input-border-color;
+  border-radius: $border-radius-base;
+  @include placeholder(); // Reset placeholder
+  transition: all .3s;
+  &:hover {
+    @include hover();
+  }
+  &:focus {
+    @include active();
+  }
+  &[disabled] {
+    @include disabled();
+  }
+}
+
+@mixin button-size($height, $padding, $font-size, $border-radius) {
+  padding: $padding;
+  font-size: $font-size;
+  border-radius: $border-radius;
+  height: $height;
+}
+
+@mixin btn() {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: $border-width-base $border-style-base transparent;
+  white-space: nowrap;
+  line-height: $line-height-base;
+  @include button-size($btn-height-base, $btn-padding-base, $font-size-base, $btn-border-radius-base);
+  user-select: none;
+  transition: all .3s $ease-in-out;
+  position: relative;
+  &,
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+  &:not([disabled]):hover {
+    text-decoration: none;
+  }
+  &:not([disabled]):active {
+    outline: 0;
+    transition: none;
+  }
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    >* {
+      pointer-events: none;
+    }
+  }
+}
+
+@mixin btn-color($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+}
+
+ul {
+  list-style: none;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.#{$pagination-prefix-cls} {
+  font-size: $font-size-base;
+  * {
+    box-sizing: border-box;
+  }
+  &:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  &-before-total-text,
+  &-after-total-text {
+    display: inline-block;
+    vertical-align: middle;
+    height: 28px;
+    line-height: 28px;
+  }
+  &-before-total-text {
+    margin-right: 8px;
+  }
+  &-after-total-text {
+    margin-left: 8px;
+  }
+  &-item {
+    cursor: pointer;
+    border-radius: $border-radius-base;
+    user-select: none;
+    min-width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    list-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    border: $border-width-base $border-style-base $border-color-base;
+    background-color: $component-background;
+    margin-right: 8px;
+    font-family: Arial;
+    outline: 0;
+    a {
+      text-decoration: none;
+      color: $text-color;
+      transition: none;
+      margin: 0 6px;
+    }
+    &:focus,
+    &:hover {
+      transition: all .3s;
+      border-color: $primary-color;
+      a {
+        color: $primary-color;
+      }
+    }
+    &-active {
+      background-color: $primary-color;
+      border-color: $primary-color;
+      &:focus,
+      &:hover {
+        background-color: $primary-5;
+        border-color: $primary-5;
+      }
+      a,
+      &:focus a,
+      &:hover a {
+        color: #fff;
+      }
+    }
+  }
+  &-jump-prev,
+  &-jump-next {
+    outline: 0;
+    &:after {
+      content: "•••";
+      display: block;
+      letter-spacing: 2px;
+      color: $disabled-color;
+      text-align: center;
+    }
+    &:focus,
+    &:hover {
+      &:after {
+        color: $primary-color;
+        @include iconfont-size-under-12px(8px);
+        letter-spacing: -1px;
+        font-family: "uxfont";
+      }
+    }
+  }
+  &-jump-prev {
+    &:focus,
+    &:hover {
+      &:after {
+        content: "\e902\e902";
+      }
+    }
+  }
+  &-jump-next {
+    &:focus,
+    &:hover {
+      &:after {
+        content: "\e903\e903";
+      }
+    }
+  }
+  &-prev,
+  &-jump-prev,
+  &-jump-next {
+    margin-right: 8px;
+  }
+  &-prev,
+  &-next,
+  &-jump-prev,
+  &-jump-next {
+    font-family: Arial;
+    cursor: pointer;
+    color: $text-color;
+    border-radius: $border-radius-base;
+    list-style: none;
+    min-width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    transition: all .3s;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &-prev,
+  &-next {
+    border: $border-width-base $border-style-base $border-color-base;
+    background-color: $component-background;
+    outline: 0;
+    a {
+      color: $text-color;
+      outline: none;
+      &:after {
+        @include iconfont-size-under-12px(8px);
+        display: block;
+        height: 26px;
+        line-height: 26px;
+        font-family: "uxfont";
+        text-align: center;
+      }
+    }
+    &:focus,
+    &:hover {
+      border-color: $primary-color;
+      a {
+        color: $primary-color;
+      }
+    }
+  }
+  &-prev {
+    a {
+      &:after {
+        content: "\e902";
+        display: block;
+      }
+    }
+  }
+  &-next {
+    a {
+      &:after {
+        content: "\e903";
+        display: block;
+      }
+    }
+  }
+  &-disabled {
+    &:hover {
+      border-color: $border-color-base;
+      a {
+        color: $disabled-color;
+        cursor: not-allowed;
+      }
+    }
+    cursor: not-allowed;
+    a {
+      color: $disabled-color;
+    }
+  }
+  &-slash {
+    margin: 0 10px 0 5px;
+  }
+  &-options {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+    &-size-changer {
+      display: inline-block;
+      margin-right: 8px;
+    }
+    &-quick-jumper {
+      display: inline-block;
+      height: $input-height-base;
+      line-height: $input-height-base;
+      input {
+        @include input();
+        margin: 0 8px;
+        width: 50px;
+      }
+      button {
+        @include btn();
+        @include btn-color($btn-default-color, $btn-default-bg, $btn-default-border);
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+          background: #fff;
+        }
+        margin-left: 8px;
+      }
+    }
+  }
+  &-simple &-prev,
+  &-simple &-next {
+    border: 0;
+    height: 24px;
+    line-height: 24px;
+    margin: 0;
+    font-size: 18px;
+    a:after {
+      font-size: 16px;
+    }
+  }
+  &-simple &-sep {
+    display: inline-block;
+    border: 0;
+    width: 1px;
+    height: 20px;
+    line-height: 20px;
+    background: $border-color-base;
+    margin: 0 8px;
+    vertical-align: middle;
+  }
+  &-simple &-simple-pager {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+}

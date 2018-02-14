@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div style="margin:100px;">
+      <trigger @on-click="onTriggerClick" popup-class="custom-popup-class" :popup-style="{width:'300px'}" @on-mousedown="onTriggerClick"
+        :actions="['click','hover']" :popup-align="{points:['tl','bl']}" popup-transition-name="ux-trigger-popup-zoom">
+        <a style="margin:20px" slot="trigger" @click="onClick" :disabled="inputDisabled" @mousedown="onClick" @mouseenter="onClick">click</a>
+        <div slot="popup" style="border: 1px solid red; padding: 10px; background: white">
+          i am a popup
+        </div>
+      </trigger>
+    </div>
+
+  </div>
+</body>
+
+</html>

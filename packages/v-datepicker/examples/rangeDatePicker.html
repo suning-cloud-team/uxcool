@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-range-date-picker style="width:200px;" show-time picker-prefix-cls="v-calendar-picker-container" :disabled="disabled"
+      @ok="onOk" @change="onChange" @open-change="onOpenChange" show-today :selected-value="selectedValues" :disabled-time="disabledTime">
+      <div slot="trigger">
+        <input type="text" :class="[pickerInputClass]" :value="formatValue" readonly :disabled="disabled">
+        <span @click.stop.prevent="onClear">clear</span>
+      </div>
+    </v-range-date-picker>
+    <br>
+    <v-range-date-picker theme="dark" style="width:200px;" show-time picker-prefix-cls="v-calendar-picker-container" :disabled="disabled"
+      @ok="onOk" @change="onChange" @open-change="onOpenChange" show-today :selected-value="selectedValues" :disabled-time="disabledTime">
+      <div slot="trigger">
+        <input type="text" :class="[pickerInputClass]" :value="formatValue" readonly :disabled="disabled">
+        <span @click.stop.prevent="onClear">clear</span>
+      </div>
+    </v-range-date-picker>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>default</title>
+</head>
+
+<body>
+  <div id="app" style="width:250px;">
+    <v-select class="abc" style="width:500px;" mode="multiple" :value="[ '10', '14']" allow-clear :dropdown-menu-style="dropdownMenuStyle"
+      @select="onSelect" @deselect="onDeselect" placeholder="测试select" @change="onChange" @focus="onFocus">
+      <v-option v-for="(item, i) in options" :key="i" :disabled="i===10" :value="item.value">
+      </v-option>
+    </v-select>
+  </div>
+</body>
+
+</html>

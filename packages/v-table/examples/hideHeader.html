@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-table :columns="columns" v-model="data" class="bordered" hide-header>
+    </v-table>
+    <h3>use scroll y</h3>
+    <v-table :columns="columns" v-model="data" :scroll="{y:300}" class="bordered">
+    </v-table>
+    <h3>use fixed header</h3>
+    <v-table :columns="columns" v-model="data" use-fixed-header class="bordered">
+    </v-table>
+  </div>
+</body>
+
+</html>

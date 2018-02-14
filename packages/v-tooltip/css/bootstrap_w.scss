@@ -1,0 +1,189 @@
+$tooltip-prefix-cls: v-tooltip;
+@import "bootstrap/anim";
+
+//
+// Tooltips
+// --------------------------------------------------
+$font-size-base: 12px;
+$line-height-base: 1.5;
+$border-radius-base: 3px;
+$overlay-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+//** Tooltip text color
+$tooltip-color: #333333;
+//** Tooltip background color
+$tooltip-bg: #ffffff;
+$tooltip-opacity: 0.9;
+
+$tooltip-border-width: 1px;
+$tooltip-border-color: #b1b1b1;
+$tooltip-shadow-width: 1px;
+
+//** Tooltip arrow width
+$tooltip-arrow-width: 6px;
+//** Tooltip distance with trigger
+//** Tooltip arrow color
+$tooltip-arrow-color: $tooltip-border-color;
+$tooltip-arrow-inner-color: $tooltip-bg;
+
+// Base class
+.#{$tooltip-prefix-cls} {
+  position: absolute;
+  z-index: 1070;
+  display: block;
+  visibility: visible;
+  line-height: $line-height-base;
+  font-size: $font-size-base;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: $tooltip-shadow-width;
+  opacity: $tooltip-opacity;
+
+  &-hidden {
+    display: none;
+  }
+}
+
+// Wrapper for the tooltip content
+.#{$tooltip-prefix-cls}-inner {
+  padding: 8px 10px;
+  color: $tooltip-color;
+  text-align: left;
+  text-decoration: none;
+  background-color: $tooltip-bg;
+  border-radius: $border-radius-base;
+  min-height: 34px;
+  border: $tooltip-border-width solid $tooltip-border-color;
+}
+
+// Arrows
+.#{$tooltip-prefix-cls}-arrow,
+.#{$tooltip-prefix-cls}-arrow-inner {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.#{$tooltip-prefix-cls} {
+  &[x-placement=top] &-arrow,
+  &[x-placement=top-start] &-arrow,
+  &[x-placement=top-end] &-arrow {
+    bottom: -$tooltip-arrow-width + $tooltip-shadow-width;
+    margin-left: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-top-color: $tooltip-arrow-color;
+  }
+
+  &[x-placement=top] &-arrow-inner,
+  &[x-placement=top-start] &-arrow-inner,
+  &[x-placement=top-end] &-arrow-inner {
+    bottom: $tooltip-border-width;
+    margin-left: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-top-color: $tooltip-arrow-inner-color;
+  }
+
+  &[x-placement=top] &-arrow {
+    left: 50%;
+  }
+
+  &[x-placement=top-start] &-arrow {
+    left: 15%;
+  }
+
+  &[x-placement=top-end] &-arrow {
+    right: 15%;
+  }
+
+  &[x-placement=right] &-arrow,
+  &[x-placement=right-start] &-arrow,
+  &[x-placement=right-end] &-arrow {
+    left: -$tooltip-arrow-width + $tooltip-shadow-width;
+    margin-top: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-right-color: $tooltip-arrow-color;
+  }
+
+  &[x-placement=right] &-arrow-inner,
+  &[x-placement=right-start] &-arrow-inner,
+  &[x-placement=right-end] &-arrow-inner {
+    left: $tooltip-border-width;
+    margin-top: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-right-color: $tooltip-arrow-inner-color;
+  }
+
+  &[x-placement=right] &-arrow {
+    top: 50%;
+  }
+
+  &[x-placement=right-start] &-arrow {
+    top: 15%;
+    margin-top: 0;
+  }
+
+  &[x-placement=right-end] &-arrow {
+    bottom: 15%;
+  }
+
+  &[x-placement=left] &-arrow,
+  &[x-placement=left-start] &-arrow,
+  &[x-placement=left-end] &-arrow {
+    right: -$tooltip-arrow-width + $tooltip-shadow-width;
+    margin-top: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-left-color: $tooltip-arrow-color;
+  }
+
+  &[x-placement=left] &-arrow-inner,
+  &[x-placement=left-start] &-arrow-inner,
+  &[x-placement=left-end] &-arrow-inner {
+    right: $tooltip-border-width;
+    margin-top: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-left-color: $tooltip-arrow-inner-color;
+  }
+
+  &[x-placement=left] &-arrow {
+    top: 50%;
+  }
+
+  &[x-placement=left-start] &-arrow {
+    top: 15%;
+    margin-top: 0;
+  }
+
+  &[x-placement=left-end] &-arrow {
+    bottom: 15%;
+  }
+
+  &[x-placement=bottom] &-arrow,
+  &[x-placement=bottom-start] &-arrow,
+  &[x-placement=bottom-end] &-arrow {
+    top: -$tooltip-arrow-width + $tooltip-shadow-width;
+    margin-left: -$tooltip-arrow-width;
+    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-bottom-color: $tooltip-arrow-color;
+  }
+
+  &[x-placement=bottom] &-arrow-inner,
+  &[x-placement=bottom-start] &-arrow-inner,
+  &[x-placement=bottom-end] &-arrow-inner {
+    top: $tooltip-border-width;
+    margin-left: -$tooltip-arrow-width;
+    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-bottom-color: $tooltip-arrow-inner-color;
+  }
+
+  &[x-placement=bottom] &-arrow {
+    left: 50%;
+  }
+
+  &[x-placement=bottom-start] &-arrow {
+    left: 15%;
+  }
+
+  &[x-placement=bottom-end] &-arrow {
+    right: 15%;
+  }
+}

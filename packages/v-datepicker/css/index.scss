@@ -1,0 +1,28 @@
+@import '~@suning/v-style/assets/functions/color';
+$prefixClass: v-calendar;
+$timePickerClass: v-time-picker;
+
+.#{$prefixClass} {
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+}
+.#{$prefixClass}-hidden {
+  display: none;
+}
+
+@import 'common/picker';
+@import 'common/calendar';
+@import 'index/calendar';
+@import 'index/monthPanel';
+@import 'index/yearPanel';
+@import 'index/decadePanel';
+@import 'index/timePanel';
+@import 'common/rangeCalendar';
+@import 'index/input';
+
+input {
+  @include input;
+  outline: none;
+}

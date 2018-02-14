@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'uxfont';
+  src: url('#{$icon-url}.eot');
+  /* IE9*/
+  src :/* IE6-IE8 */
+  url('#{$icon-url}.eot?#iefix') format('embedded-opentype'),
+  /* chrome、firefox */
+  url('#{$icon-url}.woff') format('woff'),
+  /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('#{$icon-url}.ttf') format('truetype'),
+  /* iOS 4.1- */
+  url('#{$icon-url}.svg#iconfont') format('svg');
+}
+
+.fu {
+  display: inline-block;
+  font: normal normal normal 16px/1 uxfont;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fu-left:before {
+  content: "\e902";
+}
+
+.fu-right:before {
+  content: "\e903";
+}
+
+.fu-search:before {
+  content: "\e925";
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <v-tabs :value="currentPane">
+      <v-tab-pane v-for="(pane,i) in panes" :key="i" :disabled="pane.disabled" :tab="pane.tab" :name="pane.name">{{pane.content}}</v-tab-pane>
+      <v-tab-pane name="add" disabled>
+        <a slot="tab" @click="onAdd" style="color: #333;cursor: pointer">+ add</a>
+      </v-tab-pane>
+    </v-tabs> -->
+    <c-tabs :value="currentPane">
+      <c-tab-pane v-for="(pane,i) in panes" :key="i" :disabled="pane.disabled" :tab="pane.tab" :name="pane.name">{{pane.content}}</c-tab-pane>
+
+      <c-tab-pane name="add" disabled>
+        <a slot="tab" @click="onAdd" style="color: #333;cursor: pointer">+ add</a>
+      </c-tab-pane>
+    </c-tabs>
+    <!-- <c-tabs :value="currentPane">
+      <c-tab-pane v-for="(pane,i) in panes" :key="i" :disabled="pane.disabled" :tab="pane.tab" :name="pane.name">{{pane.content}}</c-tab-pane>
+      <c-tab-pane name="add" disabled>
+        <a slot="tab" @click="onAdd" style="color: #333;cursor: pointer">+ add</a>
+      </c-tab-pane>
+    </c-tabs> -->
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+// Compatibility for browsers.
+// support rotate for all browsers
+@mixin cross-rotate($degrees) {
+  @include rotate($degrees);
+}
+
+// Placeholder text
+@mixin placeholder($color: $input-placeholder-color) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1;
+  } // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: $color;
+  } // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
