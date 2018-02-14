@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="onClick">click</button>
+    <v-dialog v-model="visible" :get-container="getContainer" width="300px" :body-style="{'height':'1200px'}">
+      <div style=" height:300px">测试body</div>
+      <span slot="footer">footer</span>
+    </v-dialog>
+  </div>
+
+  <div id="dialogContainer">
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app" style="height: 2000px">
+    <button @click="onClick">show dialog</button> {{visible}}
+    <button @click="onDestroy">destroy</button>
+    <v-dialog v-model="visible" mask-animation="fade" animation="zoom" :closable="false">
+      <span slot="title">{{title}}</span>
+      <div style=" height:300px">测试body</div>
+      <span slot="footer">footer</span>
+    </v-dialog>
+  </div>
+</body>
+
+</html>

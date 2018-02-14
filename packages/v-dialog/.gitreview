@@ -1,0 +1,4 @@
+[gerrit]
+host=10.37.77.181
+port=29418
+project=v-dialog.git
