@@ -7,8 +7,9 @@ const devCfgFn = require('./dev');
 const { getRoot, getPackageJSON } = require('../utils');
 
 const root = getRoot();
-const { pkgName } = getPackageJSON(path.resolve(root, 'package.json'));
-const srcPath = path.resolve(root, 'src');
+const { pkgName, uxcool = {} } = getPackageJSON(path.resolve(root, 'package.json'));
+const uxCoolSrcPath = uxcool.srcPath || '';
+const srcPath = path.resolve(root, uxCoolSrcPath, 'src');
 
 const asyncFns = [
   {
@@ -62,5 +63,5 @@ const extraCfgs = asyncFns.map(v => (env = {}) =>
           root: 'dagre',
         },
       },
-    })));
+})));
 module.exports = [prdCfgFn, devCfgFn, ...extraCfgs];

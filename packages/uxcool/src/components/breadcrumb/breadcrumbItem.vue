@@ -5,7 +5,10 @@
     name: buildComponentName('BreadcrumbItem'),
     inject: ['root'],
     props: {
-      href: String,
+      href: {
+        type: String,
+        default: '',
+      },
     },
     computed: {
       rootPrefixCls() {
@@ -24,7 +27,7 @@
         <a class={`${rootPrefixCls}-link`} href={href} {...{ attrs: $attrs }}>
           {$slots.default}
         </a>
-      ) : (
+        ) : (
         <span class={`${rootPrefixCls}-link`} {...{ attrs: $attrs }}>
           {$slots.default}
         </span>

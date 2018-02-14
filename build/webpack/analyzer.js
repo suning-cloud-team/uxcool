@@ -43,13 +43,13 @@ function extraAnalyzer(env) {
           root: 'dagre',
         },
       },
-    }));
+  }));
 }
 
 function prdAnalyzer(env) {
   return config(env).then(cfg =>
     merge(cfg, {
       plugins: [new BundleAnalyzerPlugin()],
-    }));
+  }));
 }
 module.exports = env => prdAnalyzer(env);

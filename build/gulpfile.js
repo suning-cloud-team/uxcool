@@ -21,18 +21,19 @@ const { getRoot, getPackageJSON, normalizeExtraSassContentImportPath } = require
 const log = debug('tools:gulpfile');
 
 const root = getRoot();
+
 const nodeModuleRoot = path.resolve(root, 'node_modules');
 const pkgJSON = getPackageJSON(path.resolve(root, 'package.json'));
-const { pkgName } = pkgJSON;
+const { pkgName, uxcool = {} } = pkgJSON;
 const babelrc = fs.readFileSync(path.resolve(root, '.babelrc'), {
   encoding: 'utf8',
 });
-const componentsPath = path.resolve(root, 'src/components');
-const extraComponentsPath = path.resolve(root, 'src/extra');
-
-const distDir = path.resolve(root, 'dist');
-const esDir = path.resolve(root, 'es');
-const libDir = path.resolve(root, 'cjs');
+const uxcoolSrcPath = uxcool.srcPath;
+const componentsPath = path.resolve(root, uxcoolSrcPath, 'src/components');
+const extraComponentsPath = path.resolve(root, uxcoolSrcPath, 'src/extra');
+const distDir = path.resolve(root, uxcoolSrcPath, 'dist');
+const esDir = path.resolve(root, uxcoolSrcPath, 'es');
+const libDir = path.resolve(root, uxcoolSrcPath, 'cjs');
 const postcssCfg = getPostCssCfg();
 
 function getCompileTaskName(esModule) {
@@ -192,7 +193,9 @@ function compile(basePath, esModule = false, extraPath) {
 
   // fonts
   gulp
-    .src(path.resolve(root, 'src/**/fonts/*.@(eot|svg|ttf|woff)'), { base: basePath })
+    .src(path.resolve(root, uxcoolSrcPath, 'src/**/fonts/*.@(eot|svg|ttf|woff)'), {
+      base: basePath,
+    })
     .pipe(gulp.dest(tgt));
 }
 

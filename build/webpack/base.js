@@ -7,8 +7,11 @@ const { getRoot, getPackageJSON } = require('../utils');
 const postCssCfg = require('../postCss').getContext();
 
 const root = getRoot();
-const { pkgName, version } = getPackageJSON(path.resolve(root, 'package.json'));
-const distPath = path.resolve(root, 'dist');
+const { pkgName, version, uxcool = {} } = getPackageJSON(path.resolve(root, 'package.json'));
+const uxCoolSrcPath = uxcool.srcPath || '';
+const distPath = path.resolve(root, uxCoolSrcPath, 'dist');
+
+console.log('base', uxCoolSrcPath, distPath);
 
 function getConfig(env = {}) {
   return {

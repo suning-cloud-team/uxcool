@@ -1,8 +1,11 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Message<span class="subtitle">全局提示</span></h1>
+    <h1 class="ux-heading">Message
+      <span class="subtitle">全局提示</span>
+    </h1>
 
-    <ux-heading level="2" id="overview">概述</ux-heading>
+    <ux-heading level="2"
+                id="overview">概述</ux-heading>
     <p>全局展示操作提示，在顶部展示，并自动消失。</p>
 
     <demo-basic></demo-basic>
@@ -11,25 +14,37 @@
     <demo-html></demo-html>
 
     <hr>
-    <ux-heading level="2" id="api">API</ux-heading>
-    <ux-heading level="3" id="methods">UxMessage.method()</ux-heading>
+    <ux-heading level="2"
+                id="api">API</ux-heading>
+    <ux-heading level="3"
+                id="methods">UxMessage.method()</ux-heading>
 
     <p>包括:</p>
     <ul class="list-styled">
       <li>
-        <p><code>UxMessage.info</code></p>
+        <p>
+          <code>UxMessage.info</code>
+        </p>
       </li>
       <li>
-        <p><code>UxMessage.success</code></p>
+        <p>
+          <code>UxMessage.success</code>
+        </p>
       </li>
       <li>
-        <p><code>UxMessage.error</code></p>
+        <p>
+          <code>UxMessage.error</code>
+        </p>
       </li>
       <li>
-        <p><code>UxMessage.warning</code></p>
+        <p>
+          <code>UxMessage.warning</code>
+        </p>
       </li>
       <li>
-        <p><code>UxMessage.warn</code></p>
+        <p>
+          <code>UxMessage.warn</code>
+        </p>
         <!-- * `UxMessage.loading` -->
       </li>
     </ul>
@@ -89,13 +104,18 @@
       <p>content 为 JSX 类型时, 需要编译环境支持</p>
     </blockquote>
 
-    <ux-heading level="3" id="global">全局配置和销毁</ux-heading>
+    <ux-heading level="3"
+                id="global">全局配置和销毁</ux-heading>
     <ul class="list-styled">
       <li>
-        <p><code>UxMessage.config</code></p>
+        <p>
+          <code>UxMessage.config</code>
+        </p>
       </li>
       <li>
-        <p><code>UxMessage.detroy</code></p>
+        <p>
+          <code>UxMessage.detroy</code>
+        </p>
       </li>
     </ul>
     <p>
@@ -137,17 +157,17 @@
 </template>
 
 <script>
-import demoBasic from './basic.vue';
-import demoType from './type.vue';
-import demoDuration from './duration.vue';
-import demoHtml from './html.vue';
+  import demoBasic from './basic.vue';
+  import demoType from './type.vue';
+  import demoDuration from './duration.vue';
+  import demoHtml from './html.vue';
 
-export default {
-  components: {
-    demoBasic,
-    demoType,
-    demoDuration,
-    demoHtml,
-  },
-};
+  export default {
+    components: {
+      demoBasic,
+      demoType,
+      demoDuration,
+      demoHtml,
+    },
+  };
 </script>

@@ -6,8 +6,9 @@ const merge = require('webpack-merge');
 const { getRoot, getPackageJSON } = require('../utils');
 
 const root = getRoot();
-const { pkgName } = getPackageJSON(path.resolve(root, 'package.json'));
-const srcPath = path.resolve(root, 'src');
+const { pkgName, uxcool = {} } = getPackageJSON(path.resolve(root, 'package.json'));
+const uxCoolSrcPath = uxcool.srcPath || '';
+const srcPath = path.resolve(root, uxCoolSrcPath, 'src');
 
 module.exports = (env = {}) => {
   process.env.NODE_ENV = 'development';
@@ -21,5 +22,5 @@ module.exports = (env = {}) => {
           NODE_ENV: 'development',
         }),
       ],
-    }));
+  }));
 };

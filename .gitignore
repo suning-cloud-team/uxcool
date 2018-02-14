@@ -2,8 +2,9 @@ node_modules
 npm-debug.log*
 yarn-error.log*
 yarn-debug.log*
+*.log*
 *.tgz
-es/
-cjs/
-dist/
-assets/
+es
+cjs
+dist
+assets
