@@ -74,13 +74,13 @@
   // import 'echarts/lib/component/visualMap';
   // import 'echarts';
 
-  import UxChart from '../../../src/extra/chart/Chart.vue';
-  import UxButton from '../../../src/components/button/index';
-  import UxMessage from '../../../src/components/message/index';
+  import UxChart from '@suning/uxcool/src/extra/chart/Chart.vue';
+  import UxButton from '@suning/uxcool/src/components/button/index';
+  import UxMessage from '@suning/uxcool/src/components/message/index';
 
-  import '../../../src/components/button/style/index.scss';
-  import '../../../src/components/message/style/index.scss';
-  import '../../../src/extra/chart/style/index.scss';
+  import '@suning/uxcool/src/components/button/style/index.scss';
+  import '@suning/uxcool/src/components/message/style/index.scss';
+  import '@suning/uxcool/src/extra/chart/style/index.scss';
 
   import { getPieOption, getBarOption, getLineOption, getAreaOption, getMapOption } from './data';
   import chinaGeo from './chinaGeo';

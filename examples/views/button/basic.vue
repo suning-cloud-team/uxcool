@@ -33,8 +33,8 @@
 
 
 <script>
-  import '../../../src/components/button/style/index.scss';
-  import UxButton from '../../../src/components/button/index';
+  import '@suning/uxcool/src/components/button/style/index.scss';
+  import UxButton from '@suning/uxcool/src/components/button/index';
 
   export default {
     components: {

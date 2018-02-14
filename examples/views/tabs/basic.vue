@@ -151,9 +151,9 @@
 
 
 <script>
-  import '../../../src/components/tabs/style/index.scss';
-  import { UxSelect, UxOption } from '../../../src/components/select';
-  import { UxTabs, UxTabPane } from '../../../src/components/tabs';
+  import '@suning/uxcool/src/components/tabs/style/index.scss';
+  import { UxSelect, UxOption } from '@suning/uxcool/src/components/select';
+  import { UxTabs, UxTabPane } from '@suning/uxcool/src/components/tabs';
 
   export default {
     data() {

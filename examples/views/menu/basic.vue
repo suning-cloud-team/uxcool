@@ -139,8 +139,8 @@
 </template>
 
 <script>
-  import '../../../src/components/menu/style/index.scss';
-  import { UxMenu, UxMenuItem, UxMenuItemGroup, UxSubMenu } from '../../../src/components/menu';
+  import '@suning/uxcool/src/components/menu/style/index.scss';
+  import { UxMenu, UxMenuItem, UxMenuItemGroup, UxSubMenu } from '@suning/uxcool/src/components/menu';
 
   export default {
     props: {},

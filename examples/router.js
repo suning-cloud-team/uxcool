@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import UxModal from '../src/components/modal';
+import UxModal from '@suning/uxcool/src/components/modal';
 import Badge from './views/badge/index';
 import Input from './views/input/index';
 import Tooltip from './views/tooltip/index';

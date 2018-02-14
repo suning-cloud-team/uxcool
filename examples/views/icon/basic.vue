@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import UxIcon from '../../../src/components/icon';
+  import UxIcon from '@suning/uxcool/src/components/icon';
   import list from './icon';
 
   export default {

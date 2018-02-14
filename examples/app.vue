@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <ul class="routes">
-      <li v-for="route in routes">
+      <li v-for="(route,i) in routes"
+          :key="i">
         <router-link :to="route.path">{{route.name}}</router-link>
       </li>
     </ul>
@@ -10,7 +11,7 @@
 </template>
 
 <script>
-  import '../src/components/style/index.scss';
+  import '@suning/uxcool/src/components/style/index.scss';
   import './index.scss';
 
   export default {

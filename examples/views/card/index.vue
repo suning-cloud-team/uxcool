@@ -130,11 +130,11 @@
 </template>
 
 <script>
-  import { UxRow, UxCol } from '../../../src/components/grid';
-  import UxIcon from '../../../src/components/icon';
-  import UxCard from '../../../src/extra/card';
-  import '../../../src/components/grid/style/index.scss';
-  import '../../../src/extra/card/style/index.scss';
+  import { UxRow, UxCol } from '@suning/uxcool/src/components/grid';
+  import UxIcon from '@suning/uxcool/src/components/icon';
+  import UxCard from '@suning/uxcool/src/extra/card';
+  import '@suning/uxcool/src/components/grid/style/index.scss';
+  import '@suning/uxcool/src/extra/card/style/index.scss';
 
   export default {
     components: {

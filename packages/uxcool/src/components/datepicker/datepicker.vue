@@ -16,8 +16,8 @@
       <icon v-if="isCanClear"
             type="close_circle"
             :class="`${prefixCls}-picker-clear`"
-            @click.prevent.stop="onClearClick"></icon>
-      <span :class="`${prefixCls}-picker-icon`"></span>
+            @click.prevent.stop="onClearClick" />
+      <span :class="`${prefixCls}-picker-icon`" />
     </div>
   </v-date-picker>
 </template>

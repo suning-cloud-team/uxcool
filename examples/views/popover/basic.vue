@@ -160,10 +160,10 @@
 
 
 <script>
-  import '../../../src/components/button/style/index.scss';
-  import '../../../src/components/table/style/index.scss';
-  import '../../../src/components/popover/style/index.scss';
-  import UxPopover from '../../../src/components/popover';
+  import '@suning/uxcool/src/components/button/style/index.scss';
+  import '@suning/uxcool/src/components/table/style/index.scss';
+  import '@suning/uxcool/src/components/popover/style/index.scss';
+  import UxPopover from '@suning/uxcool/src/components/popover';
 
   export default {
     data() {

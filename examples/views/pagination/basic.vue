@@ -53,8 +53,8 @@
 
 
 <script>
-  import '../../../src/components/pagination/style/index.scss';
-  import UxPagination from '../../../src/components/pagination';
+  import '@suning/uxcool/src/components/pagination/style/index.scss';
+  import UxPagination from '@suning/uxcool/src/components/pagination';
 
   export default {
     data() {

@@ -24,8 +24,8 @@
 
 
 <script>
-  import '../../../src/components/input/style/index.scss';
-  import { UxTextarea } from '../../../src/components/input';
+  import '@suning/uxcool/src/components/input/style/index.scss';
+  import { UxTextarea } from '@suning/uxcool/src/components/input';
 
   export default {
     data() {

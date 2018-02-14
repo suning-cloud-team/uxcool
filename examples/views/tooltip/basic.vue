@@ -105,9 +105,9 @@
 
 
 <script>
-  import '../../../src/components/button/style/index.scss';
-  import '../../../src/components/tooltip/style/index.scss';
-  import UxTooltip from '../../../src/components/tooltip/index';
+  import '@suning/uxcool/src/components/button/style/index.scss';
+  import '@suning/uxcool/src/components/tooltip/style/index.scss';
+  import UxTooltip from '@suning/uxcool/src/components/tooltip/index';
 
   export default {
     data() {

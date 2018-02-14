@@ -1,5 +1,6 @@
 const alias = require('../build/example/alias');
-
+const path = require('path');
+console.log(path.resolve(__dirname, '..', 'packages'));
 module.exports = {
   settings: {
     'import/resolver': {
@@ -11,5 +12,6 @@ module.exports = {
         },
       },
     },
+    'import/core-modules': ['@suning/uxcool'],
   },
 };

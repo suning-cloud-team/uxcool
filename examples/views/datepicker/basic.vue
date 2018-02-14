@@ -82,8 +82,8 @@
     endOfMonth,
     addMonths,
   } from 'date-fns';
-  import '../../../src/components/datepicker/style/index.scss';
-  import { UxDatePicker, UxRangeDatePicker } from '../../../src/components/datepicker';
+  import '@suning/uxcool/src/components/datepicker/style/index.scss';
+  import { UxDatePicker, UxRangeDatePicker } from '@suning/uxcool/src/components/datepicker';
 
   export default {
     data() {

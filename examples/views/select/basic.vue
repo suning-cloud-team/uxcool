@@ -87,8 +87,8 @@
 </template>
 
 <script>
-  import '../../../src/components/select/style/index.scss';
-  import { UxSelect, UxOption, UxOptionGroup } from '../../../src/components/select';
+  import '@suning/uxcool/src/components/select/style/index.scss';
+  import { UxSelect, UxOption, UxOptionGroup } from '@suning/uxcool/src/components/select';
 
   export default {
     data() {

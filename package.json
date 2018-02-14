@@ -6,7 +6,12 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
+  "uxcool": {
+    "srcPath": "packages/uxcool"
+  },
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap",
     "build": "lerna run build --scope @suning/uxcool",
@@ -19,7 +24,6 @@
     "pub": "yarn pack"
   },
   "devDependencies": {
-    "lerna": "^2.8.0",
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
@@ -53,6 +57,7 @@
     "html-webpack-plugin": "^2.30.1",
     "jquery": "^3.3.1",
     "jsplumb": "^2.6.3",
+    "lerna": "^2.8.0",
     "mathsass": "^0.10.1",
     "node-sass": "^4.6.0",
     "postcss": "^6.0.14",
@@ -76,8 +81,5 @@
     "webpack-bundle-analyzer": "^2.9.2",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
-  },
-  "uxcool": {
-    "srcPath": "packages/uxcool"
   }
 }

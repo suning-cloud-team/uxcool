@@ -66,8 +66,8 @@
 
 
 <script>
-  import '../../../src/components/message/style/index.scss';
-  import UxMessage from '../../../src/components/message';
+  import '@suning/uxcool/src/components/message/style/index.scss';
+  import UxMessage from '@suning/uxcool/src/components/message';
 
   export default {
     data() {

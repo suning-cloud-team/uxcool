@@ -95,9 +95,9 @@
 
 
 <script>
-  import '../../../src/components/breadcrumb/style/index.scss';
-  import UxIcon from '../../../src/components/icon';
-  import { UxBreadcrumb, UxBreadcrumbItem } from '../../../src/components/breadcrumb';
+  import '@suning/uxcool/src/components/breadcrumb/style/index.scss';
+  import UxIcon from '@suning/uxcool/src/components/icon';
+  import { UxBreadcrumb, UxBreadcrumbItem } from '@suning/uxcool/src/components/breadcrumb';
 
   export default {
     data() {

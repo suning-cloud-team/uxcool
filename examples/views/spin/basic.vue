@@ -73,9 +73,9 @@
 
 <script>
   import { addDays } from 'date-fns';
-  import '../../../src/components/spin/style/index.scss';
-  import UxSpin from '../../../src/components/spin/index';
-  import Icon from '../../../src/components/icon';
+  import '@suning/uxcool/src/components/spin/style/index.scss';
+  import UxSpin from '@suning/uxcool/src/components/spin/index';
+  import Icon from '@suning/uxcool/src/components/icon';
 
   export default {
     data() {

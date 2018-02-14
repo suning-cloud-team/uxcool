@@ -308,8 +308,8 @@
 </template>
 
 <script>
-  import { UxRow, UxCol } from '../../../src/components/grid';
-  import '../../../src/components/grid/style/index.scss';
+  import { UxRow, UxCol } from '@suning/uxcool/src/components/grid';
+  import '@suning/uxcool/src/components/grid/style/index.scss';
 
   export default {
     components: {

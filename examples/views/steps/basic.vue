@@ -311,9 +311,9 @@
 
 
 <script>
-  import '../../../src/components/steps/style/index.scss';
-  import UxPopover from '../../../src/components/popover';
-  import { UxSteps, UxStep } from '../../../src/components/steps';
+  import '@suning/uxcool/src/components/steps/style/index.scss';
+  import UxPopover from '@suning/uxcool/src/components/popover';
+  import { UxSteps, UxStep } from '@suning/uxcool/src/components/steps';
 
   export default {
     data() {

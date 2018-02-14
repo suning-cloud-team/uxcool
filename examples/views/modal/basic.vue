@@ -178,9 +178,9 @@
 
 
 <script>
-  import '../../../src/components/button/style/index.scss';
-  import '../../../src/components/modal/style/index.scss';
-  import UxModal from '../../../src/components/modal';
+  import '@suning/uxcool/src/components/button/style/index.scss';
+  import '@suning/uxcool/src/components/modal/style/index.scss';
+  import UxModal from '@suning/uxcool/src/components/modal';
 
   export default {
     data() {

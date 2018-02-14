@@ -1,6 +1,6 @@
 <template>
   <v-textarea v-bind="bindProps"
-              :class="`${prefixCls}-${theme}`"></v-textarea>
+              :class="`${prefixCls}-${theme}`" />
 </template>
 
 
@@ -11,6 +11,9 @@
 
   export default {
     name: buildComponentName('Textarea'),
+    components: {
+      VTextarea,
+    },
     props: {
       prefixCls: {
         type: String,
@@ -22,8 +25,14 @@
           return false;
         },
       },
-      disabled: Boolean,
-      value: String,
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
+      value: {
+        type: String,
+        default: '',
+      },
       theme: {
         type: String,
         default: 'light',
@@ -38,9 +47,6 @@
       onChange(e) {
         console.log(e.target.value);
       },
-    },
-    components: {
-      VTextarea,
     },
   };
 </script>
