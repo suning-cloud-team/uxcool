@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UXCool</title>
+  <link rel="stylesheet" href="../dist/uxcool.css">
+  <link rel="stylesheet" href="../dist/uxcool-extra.css">
+  <style>
+    .item {
+      position: absolute;
+      width: 150px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ccc;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-radius: 10px;
+      z-index: 10;
+      text-align: left;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ux-textarea novalidate placeholder="测试用" class="custom-class" style="resize:none" :auto-size="{minRows:2, maxRows:6}">
+    </ux-textarea>
+
+    <ux-topo :links="links" node-clz="item" :js-plumb-option="jsPlumbOption" :graph-option="graphOption">
+      <div class="item" :key="item.id" v-for="item in list" :id="item.id">{{item.name}}</div>
+    </ux-topo>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script>
+  <script src="https://cdn.bootcss.com/jsPlumb/2.5.13/js/jsplumb.min.js"></script>
+  <script src="https://cdn.bootcss.com/dagre/0.8.1/dagre.min.js"></script>
+  <script src="../dist/uxcool.js"></script>
+  <script src="../dist/uxcool-extra.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        jsPlumbOption: {
+          //   // 覆盖默认的flowchart类型
+          // Connector: [
+          //   'Bezier',
+          //   {
+          //     curviness: 100,
+          //   },
+          // ],
+        },
+        graphOption: {
+          align: 'DR',
+          nodesep: 30, // 节点与节点之间上下间距
+          ranksep: 200, // 节点左右间距
+        },
+        // 这块是用来渲染节点的
+        list: [{
+            id: 'node1',
+            name: 'act 1',
+          },
+          {
+            id: 'node2',
+            name: 'act 2',
+          },
+          {
+            id: 'node3',
+            name: 'act 3',
+          },
+          {
+            id: 'node4',
+            name: 'act 4',
+          },
+          {
+            id: 'node5',
+            name: 'act 5',
+          },
+          {
+            id: 'node6',
+            name: 'act 6',
+          },
+          {
+            id: 'node7',
+            name: 'act 7',
+          },
+          {
+            id: 'node8',
+            name: 'act 8',
+          },
+          {
+            id: 'node9',
+            name: 'act 9',
+          },
+          {
+            id: 'node10',
+            name: 'act 10',
+          },
+        ],
+        // 这个用来指定边的关系
+        links: [{
+            from: 'node1',
+            to: 'node2',
+          },
+          {
+            from: 'node1',
+            to: 'node3',
+          },
+          {
+            from: 'node1',
+            to: 'node4',
+          },
+          {
+            from: 'node3',
+            to: 'node5',
+          },
+          {
+            from: 'node3',
+            to: 'node6',
+          },
+          {
+            from: 'node3',
+            to: 'node7',
+          },
+          {
+            from: 'node3',
+            to: 'node8',
+          },
+          {
+            from: 'node5',
+            to: 'node9',
+          },
+          {
+            from: 'node6',
+            to: 'node9',
+          },
+          {
+            from: 'node7',
+            to: 'node9',
+          },
+          {
+            from: 'node8',
+            to: 'node10',
+          },
+        ],
+      }
+    });
+
+  </script>
+</body>
+
+</html>

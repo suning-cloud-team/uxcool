@@ -1,0 +1,110 @@
+<template>
+  <div>
+    <button class="ux-btn"
+            @click="changeTheme">{{theme}}</button>
+    <div class="demo">
+      <ux-select style="width:200px;"
+                 :theme="theme">
+        <ux-option value="A">A</ux-option>
+        <ux-option value="B">B</ux-option>
+        <ux-option value="C">C</ux-option>
+      </ux-select>
+
+      <ux-select style="width:200px;"
+                 disabled
+                 :theme="theme">
+        <ux-option value="A">A</ux-option>
+        <ux-option value="B">B</ux-option>
+        <ux-option value="C">C</ux-option>
+      </ux-select>
+    </div>
+
+    <div class="demo">
+      <ux-select style="width:200px;"
+                 show-search
+                 :theme="theme">
+        <ux-option value="A">A</ux-option>
+        <ux-option value="B">B</ux-option>
+        <ux-option value="C">C</ux-option>
+      </ux-select>
+    </div>
+
+    <div class="demo">
+      <ux-select style="width:200px;"
+                 mode="multiple"
+                 allow-clear
+                 :theme="theme">
+        <ux-option value="A"
+                   label="A10">A10</ux-option>
+        <ux-option value="B">B</ux-option>
+        <ux-option value="C">C</ux-option>
+      </ux-select>
+      <ux-select allow-clear
+                 disabled
+                 mode="multiple"
+                 :theme="theme"
+                 style="width:200px;margin-left:200px;">
+        <ux-option value="A">A</ux-option>
+        <ux-option value="B">B</ux-option>
+        <ux-option value="C">C</ux-option>
+      </ux-select>
+    </div>
+
+    <div class="demo">
+      <ux-select allow-clear
+                 :theme="theme"
+                 style="width:200px;margin-left:200px;">
+        <ux-option value="A">A</ux-option>
+        <ux-option value="B"
+                   disabled>B</ux-option>
+        <ux-option value="C">C</ux-option>
+      </ux-select>
+    </div>
+    <div class="demo">
+      <ux-select :theme="theme"
+                 allow-clear
+                 mode="multiple"
+                 style="width:200px;margin-left:200px;">
+        <ux-option value="A">A</ux-option>
+        <ux-option value="B"
+                   disabled>B</ux-option>
+        <ux-option value="C">C</ux-option>
+      </ux-select>
+    </div>
+
+    <div class="demo">
+      <ux-select :theme="theme"
+                 allow-clear
+                 disabled
+                 mode="multiple"
+                 style="width:200px;margin-left:200px;">
+        <ux-option value="A">A</ux-option>
+        <ux-option value="B">B</ux-option>
+        <ux-option value="C">C</ux-option>
+      </ux-select>
+    </div>
+  </div>
+</template>
+
+<script>
+  import '../../../src/components/select/style/index.scss';
+  import { UxSelect, UxOption, UxOptionGroup } from '../../../src/components/select';
+
+  export default {
+    data() {
+      return {
+        theme: 'light',
+      };
+    },
+    methods: {
+      changeTheme() {
+        this.theme = this.theme === 'light' ? 'dark' : 'light';
+      },
+    },
+    components: {
+      UxSelect,
+      UxOption,
+      UxOptionGroup,
+    },
+  };
+</script>
