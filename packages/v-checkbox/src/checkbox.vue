@@ -4,9 +4,8 @@
            :type="type"
            :class="`${prefixCls}-input`"
            v-bind="$attrs"
-           :checked="checked"
+           :checked="innerChecked"
            :value="value"
-           :readonly="readonly"
            :disabled="disabled"
            @change="onChange">
     <span :class="`${prefixCls}-inner`" />
@@ -34,7 +33,6 @@
       },
       checked: {
         type: Boolean,
-        required: true,
         default: false,
       },
       value: {
@@ -45,20 +43,31 @@
         type: Boolean,
         default: false,
       },
-      readonly: {
-        type: Boolean,
-        default: false,
-      },
+    },
+    data() {
+      return {
+        innerChecked: false,
+      };
     },
     computed: {
       classes() {
-        const { prefixCls, checked, disabled } = this;
+        const { prefixCls, innerChecked, disabled } = this;
         return {
           [prefixCls]: true,
-          [`${prefixCls}-checked`]: checked,
+          [`${prefixCls}-checked`]: innerChecked,
           [`${prefixCls}-disabled`]: disabled,
         };
       },
+    },
+    watch: {
+      checked(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerChecked = nVal;
+        }
+      },
+    },
+    created() {
+      this.innerChecked = this.checked;
     },
     methods: {
       onChange(e) {
@@ -67,6 +76,7 @@
           return;
         }
         const { checked } = e.target;
+        this.innerChecked = checked;
         this.$emit('input', checked);
         this.$emit('change', {
           target: {

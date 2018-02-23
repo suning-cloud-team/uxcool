@@ -31,3 +31,5 @@ export * from './grid';
 export * from './breadcrumb';
 
 export { default as UxProgress } from './progress';
+
+export * from './checkbox';

@@ -585,31 +585,53 @@ $menu-dark-bg: $layout-header-bg-dark !default;
 $menu-dark-submenu-bg: $layout-header-bg-dark !default;
 $menu-collapsed-width: 64px !default;
 
-// checkbox
-$checkbox-indicator-size: 18px !default;
+// Buttons
+$btn-font-weight: 500 !default;
+$btn-border-radius-base: $border-radius-base !default;
+$btn-border-radius-sm: $border-radius-base !default;
 
-$checkbox-indicator-border-width: 1px !default;
-$checkbox-indicator-border-color: $border-color-base !default;
-$checkbox-indicator-border-disabled-color: $border-color-base !default;
-$checkbox-indicator-border-radius: $border-radius-base !default;
+$btn-primary-color: #fff !default;
+$btn-primary-bg: $primary-color !default;
 
-$checkbox-indicator-color: $primary-color !default;
-$checkbox-indicator-disabled-color: $gray-6 !default;
+$btn-default-color: $text-color !default;
+$btn-default-bg: #fff !default;
+$btn-default-border: $border-color-base !default;
 
-$checkbox-indicator-bg: $white !default;
-$checkbox-indicator-disabled-bg: $gray-3 !default;
+$btn-danger-color: $error-color !default;
+$btn-danger-bg: $background-color-base !default;
+$btn-danger-border: $border-color-base !default;
 
-$checkbox-checker-border-width: 2px !default;
+$btn-disable-color: $disabled-color !default;
+$btn-disable-color-dark: $disabled-color-dark !default;
+$btn-disable-bg: $disabled-bg !default;
+$btn-disable-bg-dark: $disabled-bg-dark !default;
+$btn-disable-border: $border-color-base !default;
+$btn-disable-border-dark: $border-color-split-dark !default;
 
-$checkbox-spacing: 10px !default;
+$btn-padding-base: 0 15px !default;
+$btn-font-size-lg: $font-size-lg !default;
+$btn-padding-lg: $btn-padding-base !default;
+$btn-padding-sm: 0 7px !default;
 
-$checkbox-text-font-size: $font-size-base !default;
-$checkbox-text-line-height: 20px !default;
-$checkbox-text-disabled-color: $gray-6 !default;
+$btn-height-base: 28px !default;
+$btn-height-lg: 32px !default;
+$btn-height-sm: 22px !default;
 
-$checkbox-disabled-cursor: not-allowed !default;
+$btn-circle-size: $btn-height-base !default;
+$btn-circle-size-lg: $btn-height-lg !default;
+$btn-circle-size-sm: $btn-height-sm !default;
 
-$checkbox-transition: all 0.15s !default;
+$btn-group-border: $primary-7 !default;
+
+// Checkbox
+$checkbox-size: 16;
+
+// Radio
+$radio-size: 16px;
+
+// Radio buttons
+$radio-button-bg: $btn-default-bg;
+$radio-button-color: $btn-default-color;
 
 // radio
 $radio-indicator-size: 18px !default;
@@ -713,44 +735,6 @@ $time-picker-panel-column-width: 56px !default;
 $time-picker-panel-width: $time-picker-panel-column-width * 3 !default;
 $time-picker-selected-bg: $background-color-base !default;
 $time-picker-selected-bg-dark: $background-color-dark !default;
-
-// Buttons
-$btn-font-weight: 500 !default;
-$btn-border-radius-base: $border-radius-base !default;
-$btn-border-radius-sm: $border-radius-base !default;
-
-$btn-primary-color: #fff !default;
-$btn-primary-bg: $primary-color !default;
-
-$btn-default-color: $text-color !default;
-$btn-default-bg: #fff !default;
-$btn-default-border: $border-color-base !default;
-
-$btn-danger-color: $error-color !default;
-$btn-danger-bg: $background-color-base !default;
-$btn-danger-border: $border-color-base !default;
-
-$btn-disable-color: $disabled-color !default;
-$btn-disable-color-dark: $disabled-color-dark !default;
-$btn-disable-bg: $disabled-bg !default;
-$btn-disable-bg-dark: $disabled-bg-dark !default;
-$btn-disable-border: $border-color-base !default;
-$btn-disable-border-dark: $border-color-split-dark !default;
-
-$btn-padding-base: 0 15px !default;
-$btn-font-size-lg: $font-size-lg !default;
-$btn-padding-lg: $btn-padding-base !default;
-$btn-padding-sm: 0 7px !default;
-
-$btn-height-base: 28px !default;
-$btn-height-lg: 32px !default;
-$btn-height-sm: 22px !default;
-
-$btn-circle-size: $btn-height-base !default;
-$btn-circle-size-lg: $btn-height-lg !default;
-$btn-circle-size-sm: $btn-height-sm !default;
-
-$btn-group-border: $primary-7 !default;
 
 // Spin
 // ---

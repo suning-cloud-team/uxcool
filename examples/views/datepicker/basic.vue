@@ -63,9 +63,7 @@
       </ux-date-picker>
       <br>
       <ux-range-date-picker :theme="theme"
-                            disabled>
-      </ux-range-date-picker>
-
+                            disabled />
     </div>
 
   </div>
