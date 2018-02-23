@@ -21,10 +21,13 @@ function getConfig(env = {}) {
       library: pkgName,
       libraryTarget: 'umd',
     },
+    resolve: {
+      extensions: ['.js', '.json', '.jsx'],
+    },
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.js(x)?$/,
           loader: 'babel-loader',
           exclude: /node_modules/,
         },

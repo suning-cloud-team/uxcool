@@ -43,11 +43,12 @@ function getConfig(env) {
     },
     resolve: {
       alias,
+      extensions: ['.js', '.json', '.jsx'],
     },
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.js(x)?$/,
           loader: 'babel-loader',
           exclude: /node_modules/,
         },
