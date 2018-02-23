@@ -5,10 +5,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const rimraf = require('rimraf');
 
 const postCssUtils = require('../postCss');
-const { getRoot } = require('../utils');
+const { getRoot, getPackageJSON } = require('../utils');
 const alias = require('./alias');
 
 const root = getRoot();
+const { vueCompileOpts = {} } = getPackageJSON(path.resolve(root, 'package.json'));
 const srcPath = path.resolve(root, 'examples');
 const distPath = path.resolve(root, 'examples/dist');
 
@@ -54,6 +55,7 @@ function getConfig(env) {
           test: /\.vue$/,
           loader: 'vue-loader',
           options: {
+            preserveWhitespace: vueCompileOpts.preserveWhitespace !== false,
             postcss: postCssCtx,
             loaders: {
               css: vueStyleCfg,

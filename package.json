@@ -6,11 +6,12 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "uxcool": {
     "srcPath": "packages/uxcool"
+  },
+  "vueCompileOpts": {
+    "preserveWhitespace": false
   },
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap",

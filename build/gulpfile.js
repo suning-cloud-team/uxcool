@@ -24,7 +24,7 @@ const root = getRoot();
 
 const nodeModuleRoot = path.resolve(root, 'node_modules');
 const pkgJSON = getPackageJSON(path.resolve(root, 'package.json'));
-const { pkgName, uxcool = {} } = pkgJSON;
+const { pkgName, uxcool = {}, vueCompileOpts = {} } = pkgJSON;
 const babelrc = fs.readFileSync(path.resolve(root, '.babelrc'), {
   encoding: 'utf8',
 });
@@ -104,6 +104,7 @@ function transformJS(file, esModule = false) {
 function transformVue(content, filePath, esModule) {
   const transformOpts = {
     compileOptions: {
+      preserveWhitespace: vueCompileOpts.preserveWhitespace !== false,
       warn(msg) {
         console.warn(chalk.yellow(`Error compiling template:\n${msg}\n${filePath}\n`)); // eslint-disable-line
       },

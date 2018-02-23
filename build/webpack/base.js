@@ -7,10 +7,11 @@ const { getRoot, getPackageJSON } = require('../utils');
 const postCssCfg = require('../postCss').getContext();
 
 const root = getRoot();
-const { pkgName, version, uxcool = {} } = getPackageJSON(path.resolve(root, 'package.json'));
+const {
+  pkgName, version, uxcool = {}, vueCompileOpts = {}
+} = getPackageJSON(path.resolve(root, 'package.json'));
 const uxCoolSrcPath = uxcool.srcPath || '';
 const distPath = path.resolve(root, uxCoolSrcPath, 'dist');
-
 
 function getConfig(env = {}) {
   return {
@@ -30,7 +31,9 @@ function getConfig(env = {}) {
         {
           test: /\.vue$/,
           loader: 'vue-loader',
-          options: {},
+          options: {
+            preserveWhitespace: vueCompileOpts.preserveWhitespace !== false,
+          },
           exclude: /node_modules/,
         },
         {
