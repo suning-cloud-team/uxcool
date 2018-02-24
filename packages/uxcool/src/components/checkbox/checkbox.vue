@@ -66,7 +66,7 @@
         const {
           $props, isChildren, rootValue, value, rootDisabled
         } = this;
-        const p = omit($props, 'label');
+        const p = omit($props, ['label', 'indeterminate']);
         if (isChildren) {
           p.checked = rootValue.indexOf(value) > -1;
           p.disabled = p.disabled !== undefined ? p.disabled : rootDisabled;
