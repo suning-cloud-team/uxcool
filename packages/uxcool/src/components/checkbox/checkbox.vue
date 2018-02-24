@@ -36,7 +36,7 @@
         default: false,
       },
       value: {
-        type: [String, Number],
+        type: String,
         default: '',
       },
       disabled: {
