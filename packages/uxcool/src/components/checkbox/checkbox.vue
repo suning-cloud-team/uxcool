@@ -83,8 +83,5 @@
         return p;
       },
     },
-    created() {
-      console.log('isChildren', this.isChildren);
-    },
   };
 </script>
