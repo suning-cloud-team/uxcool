@@ -86,18 +86,18 @@
           domEvent: e,
         });
       },
-    },
-    focus() {
-      const { $refs: { inputRef } } = this;
-      if (inputRef) {
-        inputRef.focus();
-      }
-    },
-    blur() {
-      const { $refs: { inputRef } } = this;
-      if (inputRef) {
-        inputRef.blur();
-      }
+      focus() {
+        const { $refs: { inputRef } } = this;
+        if (inputRef) {
+          inputRef.focus();
+        }
+      },
+      blur() {
+        const { $refs: { inputRef } } = this;
+        if (inputRef) {
+          inputRef.blur();
+        }
+      },
     },
   };
 </script>

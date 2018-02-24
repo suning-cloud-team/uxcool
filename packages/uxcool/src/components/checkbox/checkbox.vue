@@ -1,6 +1,7 @@
 <template>
   <label :class="classes">
-    <v-checkbox :class="indeterminateClasses"
+    <v-checkbox ref="checkboxRef"
+                :class="indeterminateClasses"
                 v-bind="[$attrs, bindProps]"
                 v-on="bindListeners" />
     <span v-if="label||$slots.default">
@@ -81,6 +82,20 @@
           };
         }
         return p;
+      },
+    },
+    methods: {
+      focus() {
+        const { $refs: { checkboxRef } } = this;
+        if (checkboxRef) {
+          checkboxRef.focus();
+        }
+      },
+      blur() {
+        const { $refs: { checkboxRef } } = this;
+        if (checkboxRef) {
+          checkboxRef.blur();
+        }
       },
     },
   };

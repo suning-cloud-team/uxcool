@@ -53,6 +53,13 @@
     <ux-checkbox-group v-model="ieCheckedList"
                        :options="opts2"
                        @change="onCheckedOpts2" />
+
+    <div>--------------focus, blur------------</div>
+    <ux-checkbox ref="checkboxRef" />
+    <button class="ux-btn"
+            @click="onFocus">focus</button>
+    <button class="ux-btn"
+            @click="onBlur">blur</button>
   </div>
 </template>
 
@@ -114,6 +121,18 @@
       onCheckedOpts2(checkedList) {
         this.indeterminate = checkedList.length > 0 && checkedList.length < this.opts2.length;
         this.indeterminateChecked = checkedList.length === this.opts2.length;
+      },
+      onFocus() {
+        const { $refs: { checkboxRef } } = this;
+        if (checkboxRef) {
+          checkboxRef.focus();
+        }
+      },
+      onBlur() {
+        const { $refs: { checkboxRef } } = this;
+        if (checkboxRef) {
+          checkboxRef.blur();
+        }
       },
     },
   };
