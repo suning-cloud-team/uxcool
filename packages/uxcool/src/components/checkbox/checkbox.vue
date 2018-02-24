@@ -39,8 +39,10 @@
         type: [String, Number],
         default: '',
       },
-      // eslint-disable-next-line
-      disabled: Boolean,
+      disabled: {
+        type: Boolean,
+        default: null,
+      },
       indeterminate: {
         type: Boolean,
         default: false,
@@ -70,7 +72,7 @@
         const p = omit($props, ['label', 'indeterminate']);
         if (isChildren) {
           p.checked = rootValue.indexOf(value) > -1;
-          p.disabled = p.disabled !== undefined ? p.disabled : rootDisabled;
+          p.disabled = p.disabled !== null ? !!p.disabled : rootDisabled;
         }
         return p;
       },
