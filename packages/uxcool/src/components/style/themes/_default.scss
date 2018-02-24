@@ -633,31 +633,6 @@ $radio-size: 16px;
 $radio-button-bg: $btn-default-bg;
 $radio-button-color: $btn-default-color;
 
-// radio
-$radio-indicator-size: 18px !default;
-
-$radio-indicator-border-width: 1px !default;
-$radio-indicator-border-color: $border-color-base !default;
-$radio-indicator-border-disabled-color: $border-color-base !default;
-
-$radio-indicator-color: $primary-color !default;
-$radio-indicator-disabled-color: $gray-6 !default;
-
-$radio-indicator-bg: $white !default;
-$radio-indicator-disabled-bg: $gray-3 !default;
-
-$radio-dot-size: 6px !default;
-
-$radio-spacing: 10px !default;
-
-$radio-text-font-size: $font-size-base !default;
-$radio-text-line-height: 20px !default;
-$radio-text-disabled-color: $gray-6 !default;
-
-$radio-disabled-cursor: not-allowed !default;
-
-$radio-transition: all 0.15s !default;
-
 // switch
 $switch-width: 60px !default;
 $switch-width-mini: 40px !default;

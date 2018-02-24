@@ -21,6 +21,7 @@ import Icon from './views/icon/index';
 import Progress from './views/progress/index';
 import Card from './views/card/index';
 import Checkbox from './views/checkbox/index';
+import Radio from './views/radio/index';
 
 Vue.use(Router);
 const routes = [
@@ -128,6 +129,11 @@ const routes = [
     name: 'Checkbox',
     path: '/checkbox',
     component: Checkbox,
+  },
+  {
+    name: 'Radio',
+    path: '/radio',
+    component: Radio,
   },
 ];
 

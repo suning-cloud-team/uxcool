@@ -33,3 +33,5 @@ export * from './breadcrumb';
 export { default as UxProgress } from './progress';
 
 export * from './checkbox';
+
+export * from './radio';
