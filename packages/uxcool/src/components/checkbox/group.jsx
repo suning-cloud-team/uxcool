@@ -45,19 +45,7 @@ export default {
         [prefixCls]: true,
       };
     },
-  },
-  watch: {
-    value(nVal) {
-      if (nVal) {
-        this.innerValue = nVal;
-      }
-    },
-  },
-  created() {
-    this.innerValue = this.value;
-  },
-  methods: {
-    getOptions() {
+    normalizeOptions() {
       const { options = [] } = this;
       return options.map((v) => {
         let ret = v;
@@ -70,6 +58,18 @@ export default {
         return ret;
       });
     },
+  },
+  watch: {
+    value(nVal) {
+      if (nVal) {
+        this.innerValue = nVal;
+      }
+    },
+  },
+  created() {
+    this.innerValue = this.value;
+  },
+  methods: {
     toggleCheckbox(optVal) {
       if (!optVal) {
         return;
@@ -89,8 +89,8 @@ export default {
     },
   },
   render() {
-    const { prefixCls, classes, getOptions } = this;
-    const opts = getOptions();
+    const { prefixCls, classes, normalizeOptions } = this;
+    const opts = normalizeOptions;
     const checkboxs =
       opts.length > 0
         ? opts.map(v => (
