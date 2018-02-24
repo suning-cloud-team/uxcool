@@ -22,6 +22,7 @@
       VCheckbox,
     },
     mixins: [Mixin],
+    inheritAttrs: false,
     model: {
       prop: 'checked',
     },
