@@ -15,7 +15,7 @@
     "echarts": "^3.*",
     "jquery": "^*",
     "jsplumb": "^2.5.*",
-    "vue": "^2.2.*"
+    "vue": "^2.5.*"
   },
   "dependencies": {
     "@suning/v-checkbox": "^1.0.0",
