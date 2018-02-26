@@ -54,9 +54,10 @@ export default {
   },
   computed: {
     classes() {
-      const { prefixCls } = this;
+      const { prefixCls, size } = this;
       return {
         [prefixCls]: true,
+        [`${prefixCls}-${size}`]: size,
       };
     },
     normalizeOptions() {
@@ -83,7 +84,7 @@ export default {
       }
       const { innerValue } = this;
       if (innerValue !== optVal) {
-        this.$emit('change', optVal);
+        this.$emit('change', optVal, innerValue);
         this.$emit('input', optVal);
         this.innerValue = optVal;
       }

@@ -132,6 +132,22 @@
                       name="button"
                       :options="opts2" />
     </div>
+
+    <div class="demo">
+      <h6>size</h6>
+      <ux-radio-group type="button"
+                      size="large"
+                      :options="opts2" />
+      <br>
+      <br>
+      <ux-radio-group type="button"
+                      :options="opts2" />
+      <br>
+      <br>
+      <ux-radio-group type="button"
+                      size="small"
+                      :options="opts2" />
+    </div>
   </div>
 </template>
 
@@ -175,8 +191,8 @@
       onChangeChecked1(e) {
         console.log('onChangeChecked1', e);
       },
-      onOpts1Change(e) {
-        console.log('onOpts1Change1', e);
+      onOpts1Change(e, prevVal) {
+        console.log('onOpts1Change1', e, prevVal);
       },
     },
   };

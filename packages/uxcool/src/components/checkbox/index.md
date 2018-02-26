@@ -6,7 +6,7 @@
 
 | 参数名        | 描述                    | 类型    | 默认  |
 | ------------- | ----------------------- | ------- | ----- |
-| checked       | 是否选中                | Boolean | false |
+| checked       | 是否选中(v-model 绑定)  | Boolean | false |
 | value         | 值                      | String  |       |
 | disabled      | 是否禁用                | Boolean | null  |
 | indeterminate | 设置 indeterminate 状态 | Boolean | false |
@@ -37,6 +37,6 @@
 
 #### Events
 
-| 事件名 | 描述       | 回调                       |
-| ------ | ---------- | -------------------------- |
-| change | 切换时调用 | Function(checkedVal:Array) |
+| 事件名 | 描述       | 回调                                              |
+| ------ | ---------- | ------------------------------------------------- |
+| change | 切换时调用 | Function(checkedVal:Array, prevCheckedVal: Array) |

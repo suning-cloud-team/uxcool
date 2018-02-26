@@ -83,7 +83,7 @@ export default {
         nVal.push(optVal);
       }
 
-      this.$emit('change', nVal);
+      this.$emit('change', nVal, [...innerValue]);
       this.$emit('input', nVal);
       this.innerValue = nVal;
     },
