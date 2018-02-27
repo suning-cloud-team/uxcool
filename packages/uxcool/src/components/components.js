@@ -35,3 +35,5 @@ export { default as UxProgress } from './progress';
 export * from './checkbox';
 
 export * from './radio';
+
+export { default as UxTable } from './table';

@@ -160,8 +160,8 @@ export default {
       };
     },
     flatRecords() {
-      const { value, rowKey } = this;
-      const records = flatRows(value);
+      const { childColName, value, rowKey } = this;
+      const records = flatRows(value, childColName);
       return records.map((v, i) => {
         const nv = v;
         nv.$$_key = getRowKey(rowKey, v, i);
@@ -324,9 +324,13 @@ export default {
       } else {
         nRowKeys = innerExpanderRowKeys.filter(v => v !== rowKey);
       }
-      this.innerExpanderRowKeys = nRowKeys;
-      this.$emit('expanded-row-change', flatRecords.filter(v => nRowKeys.indexOf(v.$$_key) > -1));
+      this.$emit(
+        'expanded-row-change',
+        nRowKeys,
+        flatRecords.filter(v => nRowKeys.indexOf(v.$$_key) > -1)
+      );
       this.$emit('expand', expanded, record, rowIdx);
+      this.innerExpanderRowKeys = nRowKeys;
     },
   },
   render() {

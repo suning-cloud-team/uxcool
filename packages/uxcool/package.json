@@ -27,12 +27,14 @@
     "@suning/v-pagination": "^1.0.9",
     "@suning/v-select": "^1.0.14",
     "@suning/v-steps": "^1.0.5",
+    "@suning/v-table": "^1.0.2",
     "@suning/v-tabs": "^1.0.10",
     "@suning/v-tooltip": "^1.0.9",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "date-fns": "^1.29.0",
     "lodash": "^4.0.8",
-    "object.omit": "^3.0.0"
+    "object.omit": "^3.0.0",
+    "warning": "^3.0.0"
   },
   "engines": {
     "node": ">=6.11.0"
@@ -40,7 +42,11 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["es/*", "dist/*", "cjs/*"],
+  "files": [
+    "es/*",
+    "dist/*",
+    "cjs/*"
+  ],
   "vueCompileOpts": {
     "preserveWhitespace": false
   }

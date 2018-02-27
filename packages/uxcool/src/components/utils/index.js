@@ -1,3 +1,4 @@
+import warn from 'warning';
 import { COMPONENT_NAME_PREFIX } from './constants';
 
 export function buildComponentName(name) {
@@ -12,4 +13,12 @@ export function isFlexSupported() {
     return ['flex', 'webkitFlex', 'Flex', 'msFlex'].some(v => v in documentElement.style);
   }
   return false;
+}
+
+const warned = {};
+export function warning(valid = true, message = '') {
+  if (!valid && !warned[message]) {
+    warn(false, message);
+    warned[message] = true;
+  }
 }

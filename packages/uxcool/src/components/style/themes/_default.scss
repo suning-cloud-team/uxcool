@@ -656,25 +656,14 @@ $switch-disabled-color: $gray-6 !default;
 
 $switch-disabled-cursor: not-allowed !default;
 
-// table
-// $table-bg: $white !default;
-$table-margin-bottom: $spacer !default;
-
-$table-border-width: 1px !default;
-$table-border-color: $gray-3 !default;
-$table-border-color-dark: rgba(#fff, 0.1) !default;
-
-$table-cell-padding: 9px !default;
-
-$th-color: $gray-7 !default;
-$th-color-dark: rgba(#fff, 0.5) !default;
-
-$th-font-weight: $font-weight-normal !default;
-
-$table-accent-bg: $gray-1 !default;
-$table-accent-bg-dark: rgba(252, 252, 252, 0.05) !default;
-$table-hover-bg: $gray-2 !default;
-$table-hover-bg-dark: rgba(#fff, 0.1) !default;
+// Table
+// --
+$table-header-bg: $background-color-light;
+$table-header-sort-bg: $background-color-base;
+$table-row-hover-bg: $primary-1;
+$table-selected-row-bg: #fafafa;
+$table-padding-vertical: 16px;
+$table-padding-horizontal: 16px;
 
 // Tag
 // --

@@ -22,6 +22,7 @@ import Progress from './views/progress/index';
 import Card from './views/card/index';
 import Checkbox from './views/checkbox/index';
 import Radio from './views/radio/index';
+import Table from './views/table/index';
 
 Vue.use(Router);
 const routes = [
@@ -100,11 +101,11 @@ const routes = [
     path: '/grid',
     component: Grid,
   },
-  {
-    name: 'Chart',
-    path: '/chart',
-    component: () => import('./views/chart/index'),
-  },
+  // {
+  //   name: 'Chart',
+  //   path: '/chart',
+  //   component: () => import('./views/chart/index'),
+  // },
   {
     name: 'Breadcrumb',
     path: '/breadcrumb',
@@ -134,6 +135,11 @@ const routes = [
     name: 'Radio',
     path: '/radio',
     component: Radio,
+  },
+  {
+    name: 'Table',
+    path: '/table',
+    component: Table,
   },
 ];
 

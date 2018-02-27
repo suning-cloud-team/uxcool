@@ -79,6 +79,9 @@ function recursiveCols(columns = [], rowIdx = 0, rows = []) {
   return groups;
 }
 
+/**
+ * 保持columns结构,并计算colspan和rowspan
+ */
 export function groupCols(columns = []) {
   const rows = [];
   const groups = recursiveCols(columns, 0, rows);
@@ -124,6 +127,9 @@ function recursiveRow(columns = [], rowIdx = 0, rows = []) {
   return rows;
 }
 
+/**
+ * 汇总表头行的列
+ */
 export function groupRows(columns = []) {
   return recursiveRow(columns, 0, []);
 }
