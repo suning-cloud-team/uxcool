@@ -64,6 +64,11 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      selectedRowKeys: [],
+    };
+  },
   computed: {
     classes() {
       const { prefixCls } = this;
@@ -80,7 +85,6 @@ export default {
     normalizeData() {
       const { value, childColName, rowSelection } = this;
       const { getCheckboxProps } = rowSelection || {};
-      console.log('value', value);
       return normalizeRows(
         value,
         (v) => {
@@ -107,12 +111,44 @@ export default {
       return flatRows(normalizeData, childColName);
     },
     bindProps() {
-      const { $props, renderRowSelection, normalizeData } = this;
+      const {
+        $props, renderRowSelection, normalizeData, expandIconColIndex
+      } = this;
       const cols = renderRowSelection();
-      return { ...$props, columns: cols, value: normalizeData };
+      const iconColIdx = Math.max(
+        Math.min(
+          cols[0].key === 'selection-column' ? expandIconColIndex + 1 : expandIconColIndex,
+          cols.length - 1
+        ),
+        0
+      );
+      return {
+        ...$props,
+        columns: cols,
+        value: normalizeData,
+        expandIconColIndex: iconColIdx,
+      };
     },
   },
+  watch: {
+    'rowSelection.selectedRowKeys': function selectionW(nVal) {
+      if (nVal) {
+        console.log('selectedRow', nVal);
+        this.initSelectedRowkeys();
+      }
+    },
+  },
+  created() {
+    this.initSelectedRowkeys();
+  },
   methods: {
+    initSelectedRowkeys() {
+      const { rowSelection = {}, setSelectedRowKeys } = this;
+      setSelectedRowKeys([...(rowSelection.selectedRowKeys || [])]);
+    },
+    setSelectedRowKeys(keys) {
+      this.selectedRowKeys = keys;
+    },
     getScopedSlots() {
       const { $scopedSlots } = this;
 

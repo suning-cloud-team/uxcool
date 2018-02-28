@@ -33,7 +33,7 @@ function recursiveRows(rows = [], cb, childColName, deep = true) {
     ret.push(isFunction(cb) ? cb(r) : r);
     const child = row[childColName];
     if (Array.isArray(child) && child.length > 0) {
-      row[childColName] = recursiveRows(child, cb, childColName, deep);
+      r[childColName] = recursiveRows(child, cb, childColName, deep);
     }
   }
   return ret;

@@ -11,6 +11,10 @@
       </ux-table>   -->
   <div>
     <div class="demo">
+      <!-- {{data1}} -->
+      <!-- <ux-table :columns="cols1"
+                v-model="data1"
+                expand-icon-col-index="-1" /> -->
       <ux-table ref="t1"
                 :scroll="{x:'130%'}"
                 :columns="cols1"
@@ -50,7 +54,10 @@
           },
         ],
         data1: getData(12),
+        data2: getData(1),
         rowSelection: {
+          selectedRowKeys: [21, 23],
+          type: 'checkbox',
           getCheckboxProps() {
             return {
               defaultChecked: true,
@@ -78,7 +85,9 @@
           defaultChecked: item.key === 3,
           disabled: item.key % 2 === 0,
         });
-        this.cols1[0].fixed = true;
+        this.rowSelection.type = 'checkbox';
+        this.rowSelection.selectedRowKeys = [1, 2, 3];
+        // this.cols1[0].fixed = true;
       }, 2500);
 
       console.log('refs', this.$refs.t1);

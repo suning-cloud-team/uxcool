@@ -7,12 +7,18 @@ export default {
       const { flatData } = this;
       return flatData.every(v => v.$$_checkboxDisabled);
     },
-    checkboxColumn() {
+    selectionColumn() {
       const {
-        flatData, rowSelection, isAnyColumnsLeftFixed, isAllCheckboxDisabled
+        flatData,
+        rowSelection,
+        isAnyColumnsLeftFixed,
+        isAllCheckboxDisabled,
+        getPopupContainer,
       } = this;
-      console.log('flatRow', flatData);
-      const { fixed, type } = rowSelection || {};
+      console.log('flatData', flatData);
+      const {
+        fixed, type, selections, hideDefaultSelections
+      } = rowSelection || {};
       const col = {
         key: 'selection-column',
         fixed: fixed || isAnyColumnsLeftFixed,
@@ -22,18 +28,29 @@ export default {
       };
 
       if (type !== 'radio') {
-        col.title = <CheckboxAll data={flatData} disabled={isAllCheckboxDisabled} />;
+        col.title = (
+          <CheckboxAll
+            data={flatData}
+            disabled={isAllCheckboxDisabled}
+            selections={selections}
+            hideDefaultSelections={hideDefaultSelections}
+            getPopupContainer={getPopupContainer}
+          />
+        );
       }
 
       return col;
     },
   },
   methods: {
+    getPopupContainer() {
+      return this.$el;
+    },
     renderRowSelection() {
-      const { normalizeColumns, checkboxColumn, rowSelection } = this;
+      const { normalizeColumns, selectionColumn, rowSelection } = this;
       const columns = [...normalizeColumns];
       if (rowSelection) {
-        columns.unshift(checkboxColumn);
+        columns.unshift(selectionColumn);
       }
 
       return columns;
