@@ -3,7 +3,8 @@
     <checkbox :class="boxClasses"
               :checked="checked"
               :disabled="disabled"
-              :indeterminate="indeterminate" />
+              :indeterminate="indeterminate"
+              @change="onChange" />
   </div>
 </template>
 
@@ -71,9 +72,6 @@
           [`${boxPrefixCls}-select-all-custom`]: normalizeSelections.length > 0,
         };
       },
-      normalizeData() {
-        return this.data.filter(v => !v.$$_checkboxDisable);
-      },
       normalizeSelections() {
         const { selections, hideDefaultSelections } = this;
         const dSelections = hideDefaultSelections ? [] : defaultSelections;
@@ -88,12 +86,20 @@
         return ret;
       },
       checked() {
-        const { selectedRowKeys } = this;
-        console.log('selectedRowKeys===>', selectedRowKeys);
-        return selectedRowKeys.length > 0;
+        const { data, selectedRowKeys } = this;
+        return data.every(v => selectedRowKeys.indexOf(v.$$_key) > -1);
       },
       indeterminate() {
-        return false;
+        const { selectedRowKeys, data } = this;
+        const some = data.some(v => selectedRowKeys.indexOf(v.$$_key) > -1);
+        const every = data.every(v => selectedRowKeys.indexOf(v.$$_key) > -1);
+        return !every && some;
+      },
+    },
+    methods: {
+      onChange(e) {
+        const { checked } = e.target;
+        this.$emit('change', checked ? 'all' : 'removeAll');
       },
     },
   };

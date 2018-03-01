@@ -19,7 +19,7 @@ export function flatRows(rows = [], childColName = 'children', deep = true) {
     nr.push(deep ? { ...v } : v);
     const child = v[childColName];
     if (Array.isArray(child) && child.length > 0) {
-      nr.push(...flatRows(v[childColName]));
+      nr.push(...flatRows(v[childColName], childColName, deep));
     }
     return nr;
   }, []);

@@ -1,7 +1,7 @@
 import VTable from '@suning/v-table';
 import { buildComponentName } from '../utils';
 import SelectMixin from './mixins/selection';
-import { normalizeRows, flatRows, isFunction } from './utils';
+import { getRowKey, normalizeRows, flatRows, isFunction } from './utils';
 
 export default {
   name: buildComponentName('Table'),
@@ -45,7 +45,7 @@ export default {
     rowSelection: {
       type: Object,
       default() {
-        return null;
+        return undefined;
       },
     },
     size: {
@@ -83,8 +83,8 @@ export default {
      * 获取checkbox的disabled和checked状态
      */
     normalizeData() {
-      const { value, childColName, rowSelection } = this;
-      const { getCheckboxProps } = rowSelection || {};
+      const { value, childColName, rowSelection = {} } = this;
+      const { getCheckboxProps } = rowSelection;
       return normalizeRows(
         value,
         (v) => {
@@ -107,8 +107,15 @@ export default {
       return leftColumns.length > 0;
     },
     flatData() {
-      const { childColName, normalizeData } = this;
-      return flatRows(normalizeData, childColName);
+      const { childColName, normalizeData, rowKey } = this;
+      return flatRows(normalizeData, childColName, false).map((v, i) => {
+        const nv = v;
+        nv.$$_key = getRowKey(rowKey, v, i);
+        return nv;
+      });
+    },
+    changeableFlatData() {
+      return this.flatData.filter(v => !v.$$_checkboxDisabled);
     },
     bindProps() {
       const {
@@ -129,6 +136,10 @@ export default {
         expandIconColIndex: iconColIdx,
       };
     },
+    defaultSelectedRowKeys() {
+      const { flatData } = this;
+      return flatData.filter(v => v.$$_checkboxChecked).map(v => v.$$_key);
+    },
   },
   watch: {
     'rowSelection.selectedRowKeys': function selectionW(nVal) {
@@ -143,8 +154,26 @@ export default {
   },
   methods: {
     initSelectedRowkeys() {
-      const { rowSelection = {}, setSelectedRowKeys } = this;
-      setSelectedRowKeys([...(rowSelection.selectedRowKeys || [])]);
+      const {
+        rowSelection = {},
+        addSelectedRowKeys,
+        setSelectedRowKeys,
+        defaultSelectedRowKeys,
+      } = this;
+      const keys = addSelectedRowKeys(
+        [...(rowSelection.selectedRowKeys || []).map(v => String(v))],
+        defaultSelectedRowKeys
+      );
+      setSelectedRowKeys(keys);
+    },
+    addSelectedRowKeys(selectedKeys = [], keys = []) {
+      for (let i = 0, l = keys.length; i < l; i += 1) {
+        const key = keys[i];
+        if (selectedKeys.indexOf(key) === -1) {
+          selectedKeys.push(key);
+        }
+      }
+      return selectedKeys;
     },
     setSelectedRowKeys(keys) {
       this.selectedRowKeys = keys;

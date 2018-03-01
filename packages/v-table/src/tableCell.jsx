@@ -48,7 +48,12 @@ export default {
       const {
         dataIndex, className, cellRender, onCell
       } = column;
-      const val = !dataIndex ? '' : get(record, dataIndex) || '';
+      // const val = !dataIndex ? '' : get(record, dataIndex) || '';
+      let val = '';
+      if (dataIndex) {
+        const v = get(record, dataIndex);
+        val = v === undefined || v === null ? '' : v;
+      }
       let cellProps = {
         content: val,
         className,

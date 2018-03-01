@@ -39,6 +39,10 @@
       return {
         cols1: [
           {
+            title: 'key',
+            dataIndex: 'key',
+          },
+          {
             fixed: false,
             width: 200,
             title: 'Name',
@@ -56,13 +60,25 @@
         data1: getData(12),
         data2: getData(1),
         rowSelection: {
-          selectedRowKeys: [21, 23],
+          selectedRowKeys: ['c0', 23],
           type: 'checkbox',
           getCheckboxProps() {
             return {
               defaultChecked: true,
               disabled: true,
             };
+          },
+          onChange(...args) {
+            console.log('onChange', args);
+          },
+          onSelect(...args) {
+            console.log('onSelect', args);
+          },
+          onSelectAll(...args) {
+            console.log('onSelectAll', args);
+          },
+          onSelectInvert(...args) {
+            console.log('onSelectInvert', args);
           },
         },
       };
@@ -82,11 +98,11 @@
         //   },
         // };
         this.rowSelection.getCheckboxProps = item => ({
-          defaultChecked: item.key === 3,
+          // defaultChecked: item,
           disabled: item.key % 2 === 0,
         });
         this.rowSelection.type = 'checkbox';
-        this.rowSelection.selectedRowKeys = [1, 2, 3];
+        this.rowSelection.selectedRowKeys = ['c0', 'c2'];
         // this.cols1[0].fixed = true;
       }, 2500);
 
