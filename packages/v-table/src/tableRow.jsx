@@ -106,6 +106,7 @@ export default {
     },
     renderCells() {
       const {
+        rowPrefixCls,
         record,
         cols,
         rowIdx,
@@ -117,6 +118,7 @@ export default {
       } = this;
       return cols.map((col, i) => (
         <table-cell
+          rowPrefixCls={rowPrefixCls}
           record={record}
           rowIdx={rowIdx}
           colIdx={i}

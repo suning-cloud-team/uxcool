@@ -7,6 +7,10 @@ export default {
   name: 'TableCell',
   mixins: [SubMixin],
   props: {
+    rowPrefixCls: {
+      type: String,
+      default: '',
+    },
     record: {
       type: Object,
       default() {
@@ -76,7 +80,7 @@ export default {
   },
   render() {
     const {
-      prefixCls, getCellProps, indent, indentSize, expandIcon
+      rowPrefixCls: prefixCls, getCellProps, indent, indentSize, expandIcon
     } = this;
     const {
       dangerouslySetInnerHTML,
