@@ -175,10 +175,10 @@ export default {
         this.initSelectedRowkeys();
       }
     },
-    pagination() {
-      console.log('before', this.innerPager.current);
-      this.initPager();
-      console.log('after', this.innerPager.current);
+    pagination(nVal) {
+      if (nVal !== undefined) {
+        this.initPager();
+      }
     },
   },
   created() {
