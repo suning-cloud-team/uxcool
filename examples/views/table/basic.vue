@@ -10,18 +10,20 @@
         </span>
       </ux-table>   -->
   <div>
+    <pagination-demo />
     <div class="demo">
       <!-- {{data1}} -->
       <!-- <ux-table :columns="cols1"
                 v-model="data1"
                 expand-icon-col-index="-1" /> -->
-      <ux-table ref="t1"
+      <!-- <ux-table ref="t1"
                 :scroll="{x:'130%'}"
                 :columns="cols1"
                 :row-selection="rowSelection"
-                v-model="data1" />
+                v-model="data1" /> -->
 
     </div>
+
   </div>
 </template>
 
@@ -30,10 +32,12 @@
   import '@suning/uxcool/src/components/table/style/index.scss';
   import UxTable from '@suning/uxcool/src/components/table';
   import { getData } from './data';
+  import PaginationDemo from './pagination.vue';
 
   export default {
     components: {
       UxTable,
+      PaginationDemo,
     },
     data() {
       return {
@@ -61,7 +65,7 @@
         data2: getData(1),
         rowSelection: {
           selectedRowKeys: ['c0', 23],
-          type: 'checkbox',
+          // type: 'radio',
           getCheckboxProps() {
             return {
               defaultChecked: true,
@@ -98,11 +102,11 @@
         //   },
         // };
         this.rowSelection.getCheckboxProps = item => ({
-          // defaultChecked: item,
+          defaultChecked: item.key === 0,
           disabled: item.key % 2 === 0,
         });
-        this.rowSelection.type = 'checkbox';
-        this.rowSelection.selectedRowKeys = ['c0', 'c2'];
+        // this.rowSelection.type = 'checkbox';
+        this.rowSelection.selectedRowKeys = ['2'];
         // this.cols1[0].fixed = true;
       }, 2500);
 

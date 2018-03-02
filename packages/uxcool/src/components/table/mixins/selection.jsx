@@ -5,8 +5,8 @@ import Checkbox from '../checkbox.vue';
 export default {
   computed: {
     isAllCheckboxDisabled() {
-      const { flatData } = this;
-      return flatData.every(v => v.$$_checkboxDisabled);
+      const { changeablePagerFlatData } = this;
+      return changeablePagerFlatData.length === 0;
     },
     selectionColumnClasses() {
       const { prefixCls, rowSelection = {} } = this;
@@ -17,7 +17,7 @@ export default {
     },
     selectionColumn() {
       const {
-        changeableFlatData,
+        changeablePagerFlatData,
         rowSelection = {},
         isAnyColumnsLeftFixed,
         isAllCheckboxDisabled,
@@ -48,7 +48,7 @@ export default {
       if (type !== 'radio') {
         col.title = (
           <CheckboxAll
-            data={changeableFlatData}
+            data={changeablePagerFlatData}
             disabled={isAllCheckboxDisabled}
             selections={selections}
             hideDefaultSelections={hideDefaultSelections}
@@ -107,9 +107,9 @@ export default {
       }
     },
     handleAllSelectionChange(op) {
-      const { changeableFlatData, onRowSelectionChange } = this;
+      const { changeablePagerFlatData, onRowSelectionChange } = this;
       let selectedRowKeys = [...this.selectedRowKeys];
-      const changeableFlatDataKeys = changeableFlatData.map(v => v.$$_key);
+      const changeableFlatDataKeys = changeablePagerFlatData.map(v => v.$$_key);
       const p = {
         type: op,
         checked: false,

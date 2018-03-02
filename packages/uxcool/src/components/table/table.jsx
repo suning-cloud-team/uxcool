@@ -1,6 +1,7 @@
 import VTable from '@suning/v-table';
 import { buildComponentName } from '../utils';
-import SelectMixin from './mixins/selection';
+import SelectionMixin from './mixins/selection';
+import PaginationMixin from './mixins/pagination';
 import { getRowKey, normalizeRows, flatRows, isFunction } from './utils';
 
 export default {
@@ -13,7 +14,7 @@ export default {
   components: {
     VTable,
   },
-  mixins: [SelectMixin],
+  mixins: [SelectionMixin, PaginationMixin],
   inheritAttrs: false,
   props: {
     ...VTable.props,
@@ -59,14 +60,15 @@ export default {
       type: Boolean,
       default: false,
     },
-    footer: {
-      type: String,
-      default: '',
+    pagination: {
+      type: [Object, Boolean],
+      default: false,
     },
   },
   data() {
     return {
       selectedRowKeys: [],
+      innerPager: {},
     };
   },
   computed: {
@@ -76,6 +78,9 @@ export default {
         [`${prefixCls}-wrapper`]: true,
       };
     },
+    hasPagination() {
+      return !!this.pagination;
+    },
     normalizeColumns() {
       return [...this.columns];
     },
@@ -83,9 +88,11 @@ export default {
      * 获取checkbox的disabled和checked状态
      */
     normalizeData() {
-      const { value, childColName, rowSelection = {} } = this;
+      const {
+        rowKey, value, childColName, rowSelection = {}
+      } = this;
       const { getCheckboxProps } = rowSelection;
-      return normalizeRows(
+      const data = normalizeRows(
         value,
         (v) => {
           const nv = v;
@@ -100,6 +107,12 @@ export default {
         },
         childColName
       );
+      // 所有行绑定key
+      flatRows(data, childColName, false).forEach((v, i) => {
+        const nv = v;
+        nv.$$_key = getRowKey(rowKey, v, i);
+      });
+      return data;
     },
     isAnyColumnsLeftFixed() {
       const { normalizeColumns } = this;
@@ -107,19 +120,28 @@ export default {
       return leftColumns.length > 0;
     },
     flatData() {
-      const { childColName, normalizeData, rowKey } = this;
-      return flatRows(normalizeData, childColName, false).map((v, i) => {
-        const nv = v;
-        nv.$$_key = getRowKey(rowKey, v, i);
-        return nv;
-      });
+      const { childColName, normalizeData } = this;
+      return flatRows(normalizeData, childColName, false);
     },
-    changeableFlatData() {
-      return this.flatData.filter(v => !v.$$_checkboxDisabled);
+    pagerNormalizeData() {
+      const { normalizeData, hasPagination, innerPager } = this;
+      let pagerData = normalizeData;
+      if (hasPagination) {
+        const { current, pageSize } = innerPager;
+        pagerData = normalizeData.slice((current - 1) * pageSize, current * pageSize);
+      }
+      return pagerData;
+    },
+    pagerFlatData() {
+      const { childColName, pagerNormalizeData } = this;
+      return flatRows(pagerNormalizeData, childColName, false);
+    },
+    changeablePagerFlatData() {
+      return this.pagerFlatData.filter(v => !v.$$_checkboxDisabled);
     },
     bindProps() {
       const {
-        $props, renderRowSelection, normalizeData, expandIconColIndex
+        $props, renderRowSelection, pagerNormalizeData, expandIconColIndex
       } = this;
       const cols = renderRowSelection();
       const iconColIdx = Math.max(
@@ -132,7 +154,7 @@ export default {
       return {
         ...$props,
         columns: cols,
-        value: normalizeData,
+        value: pagerNormalizeData,
         expandIconColIndex: iconColIdx,
       };
     },
@@ -142,15 +164,26 @@ export default {
     },
   },
   watch: {
+    value(nVal) {
+      if (nVal) {
+        const { setInnerPager, innerPager } = this;
+        setInnerPager({ ...innerPager, total: nVal.length });
+      }
+    },
     'rowSelection.selectedRowKeys': function selectionW(nVal) {
       if (nVal) {
-        console.log('selectedRow', nVal);
         this.initSelectedRowkeys();
       }
+    },
+    pagination() {
+      console.log('before', this.innerPager.current);
+      this.initPager();
+      console.log('after', this.innerPager.current);
     },
   },
   created() {
     this.initSelectedRowkeys();
+    this.initPager();
   },
   methods: {
     initSelectedRowkeys() {
@@ -160,10 +193,14 @@ export default {
         setSelectedRowKeys,
         defaultSelectedRowKeys,
       } = this;
-      const keys = addSelectedRowKeys(
-        [...(rowSelection.selectedRowKeys || []).map(v => String(v))],
+      const { selectedRowKeys = [], type } = rowSelection;
+      let keys = addSelectedRowKeys(
+        [...selectedRowKeys.map(v => String(v))],
         defaultSelectedRowKeys
       );
+      if (type === 'radio' && keys.length > 0) {
+        keys = [keys[0]];
+      }
       setSelectedRowKeys(keys);
     },
     addSelectedRowKeys(selectedKeys = [], keys = []) {
@@ -192,6 +229,12 @@ export default {
 
       return scopedSlots;
     },
+    onPagerOrFiterOrSortChange() {
+      const { innerPager } = this;
+      const pager = { ...innerPager };
+      delete pager.on;
+      this.$emit('change', [pager]);
+    },
     renderTable() {
       const {
         $attrs, bindProps, $listeners, $slots, getScopedSlots
@@ -215,8 +258,14 @@ export default {
     },
   },
   render() {
-    const { classes, renderTable } = this;
+    const { classes, renderTable, renderPagination } = this;
     const table = renderTable();
-    return <div class={classes}>{table}</div>;
+    const pagination = renderPagination();
+    return (
+      <div class={classes}>
+        {table}
+        {pagination}
+      </div>
+    );
   },
 };

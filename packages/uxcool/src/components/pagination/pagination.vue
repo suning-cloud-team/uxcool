@@ -1,8 +1,7 @@
 <template>
   <v-pagination v-bind="bindProps"
                 :class-name="`${prefixCls}-${theme}`"
-                v-on="$listeners">
-  </v-pagination>
+                v-on="$listeners" />
 </template>
 
 <script>
@@ -12,6 +11,9 @@
 
   export default {
     name: buildComponentName('Pagination'),
+    components: {
+      VPagination,
+    },
     props: {
       prefixCls: {
         type: String,
@@ -39,9 +41,6 @@
       bindProps() {
         return omit(this.$props, ['theme']);
       },
-    },
-    components: {
-      VPagination,
     },
   };
 </script>
