@@ -6,6 +6,11 @@ import '@suning/v-menu/assets/index.css';
 
 const vm = new Vue({
   el: '#app',
+  components: {
+    VMenu,
+    VMenuItem,
+    VSubMenu,
+  },
   data: {
     mode: 'horizontal',
   },
@@ -16,10 +21,5 @@ const vm = new Vue({
     onChange(e) {
       console.log('cjange');
     },
-  },
-  components: {
-    VMenu,
-    VMenuItem,
-    VSubMenu,
   },
 });
