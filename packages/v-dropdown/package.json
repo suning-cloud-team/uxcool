@@ -1,0 +1,18 @@
+{
+  "name": "@suning/v-dropdown",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "http://snpm.cnsunig.com"
+  },
+  "files": ["assets/*css", "cjs", "es"],
+  "scripts": {
+    "start": "npm run server",
+    "compile": "v-tools run compile",
+    "server": "v-tools run server"
+  },
+  "devDependencies": {
+    "@suning/v-tools": "^1.0.25"
+  }
+}
