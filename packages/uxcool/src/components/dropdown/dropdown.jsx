@@ -1,32 +1,7 @@
 import VDropdown from '@suning/v-dropdown';
-import { isVNode, warning, isFunction } from '@suning/v-utils';
+import { warning, updateVNodeProps, getVNodeOptions } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
 
-function updateVNodeProps(
-  node,
-  propNames = [],
-  cb = prop => prop
-) {
-  if (!isVNode(node)) {
-    return node;
-  }
-  const componentOptions = node.componentOptions;
-  let attrs = {};
-  if (componentOptions) {
-    attrs = componentOptions.propData;
-    props.forEach();
-  } else {
-    attrs = node.data.attrs;
-  }
-
-  propNames.forEach((v) => {
-    if (isFunction(cb)) {
-      attrs[v] = cb(attrs[v]);
-    }
-  });
-
-  return node;
-}
 export default {
   name: buildComponentName('Dropdown'),
   props: {
@@ -72,12 +47,19 @@ export default {
       }
       return name;
     },
+    bindProps() {
+      const { $props, actions, normalizeTransitionName } = this;
+      return {
+        ...$props,
+        transitionName: normalizeTransitionName,
+        trigger: actions,
+      };
+    },
   },
   render() {
     const {
-      $slots, disabled, actions, normalizeTransitionName
+      $listeners, $slots, prefixCls, disabled, bindProps, closeOnSelect
     } = this;
-
     const { trigger, overlay } = $slots;
     if (!trigger) {
       warning(false, 'You need an `trigger` slot element.');
@@ -89,8 +71,34 @@ export default {
     }
     const triggerNode = trigger[0];
     // updateVNodeProps(triggerNode,['prefixCls'])
-
+    const { data: triggerData } = triggerNode;
+    triggerData.class = [triggerData.class, `${prefixCls}-trigger`];
+    updateVNodeProps(triggerNode, {
+      disabled() {
+        return disabled;
+      },
+    });
     const overlayNode = overlay[0];
-    return <div>abc</div>;
+    updateVNodeProps(overlayNode, {
+      mode() {
+        return 'vertical';
+      },
+    });
+    const opts = getVNodeOptions(overlayNode);
+
+    let { multiple } = opts.propsData || { multiple: false };
+    multiple = multiple === '' || multiple;
+    let closeOverlay = closeOnSelect;
+    if (multiple) {
+      closeOverlay = false;
+    }
+    bindProps.closeOnSelect = closeOverlay;
+
+    return (
+      <VDropdown {...{ props: bindProps, on: $listeners }}>
+        <template slot="trigger">{triggerNode}</template>
+        <template slot="overlay">{overlayNode}</template>
+      </VDropdown>
+    );
   },
 };

@@ -2,9 +2,7 @@ import warn from 'warning';
 
 export * from './vnode';
 
-export function isFunction(fn) {
-  return typeof fn === 'function';
-}
+export * from './utils';
 
 const warned = {};
 export function warning(valid = true, message = '') {
