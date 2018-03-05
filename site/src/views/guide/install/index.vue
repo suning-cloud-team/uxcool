@@ -5,7 +5,7 @@
       <h1 class="ux-heading"
           >UXCool</h1>
 
-      <blockquote>有问题请联系 荀啟龙（13075766）</blockquote>
+      <blockquote>有问题请联系 荀啟龙（13075766）。</blockquote>
 
       <h2 class="ux-heading"
           id="%E6%94%AF%E6%8C%81%E7%8E%AF%E5%A2%83">支持环境</h2>
