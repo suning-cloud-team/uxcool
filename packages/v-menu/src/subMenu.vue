@@ -5,13 +5,19 @@
 
   export default {
     name: 'SubMenu',
+    components: {
+      vMenu,
+    },
     mixins: [commonMixin],
     props: {
       name: {
         type: String,
         required: true,
       },
-      title: String,
+      title: {
+        type: String,
+        default: '',
+      },
       disabled: {
         type: Boolean,
         default: false,
@@ -22,89 +28,6 @@
         descendants: null,
         timerFn: null,
       };
-    },
-    render(h) {
-      const {
-        $slots,
-        title,
-        classes,
-        isInlineMode,
-        disabled,
-        onClick,
-        onTitleMouseEnter,
-        onTitleMouseLeave,
-        onMouseEnter,
-        onMouseLeave,
-        titleClasses,
-        paddingStyle,
-        subClasses,
-        isOpen,
-        subMenuMode,
-      } = this;
-
-      const slotTitle = $slots.title;
-      const attrs = {
-        class: classes,
-      };
-
-      if (!disabled && !isInlineMode) {
-        attrs.on = {
-          mouseenter(e) {
-            e.stopPropagation();
-            onMouseEnter();
-          },
-          mouseleave(e) {
-            e.stopPropagation();
-            onMouseLeave();
-          },
-        };
-      }
-
-      const titleAttrs = {
-        class: titleClasses,
-        style: [paddingStyle],
-      };
-      if (!disabled && isInlineMode) {
-        titleAttrs.on = {
-          click(e) {
-            e.stopPropagation();
-            onClick(e);
-          },
-          mouseenter: onTitleMouseEnter,
-          mouseleave: onTitleMouseLeave,
-        };
-      }
-      if (!slotTitle && !title) {
-        if (process.env.NODE_ENV !== 'production') {
-          console.warn('submenu需要一个标题');
-        }
-      }
-      // 标题元素
-      const titleElement = h('div', titleAttrs, [slotTitle || title]);
-
-      // 子菜单
-      const menuElement = h(
-        'v-menu',
-        {
-          class: subClasses,
-          props: {
-            isRoot: false,
-            visible: isOpen,
-            mode: subMenuMode,
-          },
-        },
-        $slots.default
-      );
-      return h('li', attrs, [titleElement, menuElement]);
-    },
-    created() {
-      this.rootMenu.addDescendants(this);
-    },
-    mounted() {
-      this.init();
-    },
-    beforeDestroy() {
-      this.rootMenu.removeDescendants(this);
     },
     computed: {
       prefixCls() {
@@ -161,6 +84,15 @@
           [`${rootPrefixCls}-sub`]: true,
         };
       },
+    },
+    created() {
+      this.rootMenu.addDescendants(this);
+    },
+    mounted() {
+      this.init();
+    },
+    beforeDestroy() {
+      this.rootMenu.removeDescendants(this);
     },
     methods: {
       init() {
@@ -242,8 +174,82 @@
         });
       },
     },
-    components: {
-      vMenu,
+
+    render(h) {
+      const {
+        rootPrefixCls,
+        $slots,
+        title,
+        classes,
+        isInlineMode,
+        disabled,
+        onClick,
+        onTitleMouseEnter,
+        onTitleMouseLeave,
+        onMouseEnter,
+        onMouseLeave,
+        titleClasses,
+        paddingStyle,
+        subClasses,
+        isOpen,
+        subMenuMode,
+      } = this;
+
+      const slotTitle = $slots.title;
+      const attrs = {
+        class: classes,
+      };
+
+      if (!disabled && !isInlineMode) {
+        attrs.on = {
+          mouseenter(e) {
+            e.stopPropagation();
+            onMouseEnter();
+          },
+          mouseleave(e) {
+            e.stopPropagation();
+            onMouseLeave();
+          },
+        };
+      }
+
+      const titleAttrs = {
+        class: titleClasses,
+        style: [paddingStyle],
+      };
+      if (!disabled && isInlineMode) {
+        titleAttrs.on = {
+          click(e) {
+            e.stopPropagation();
+            onClick(e);
+          },
+          mouseenter: onTitleMouseEnter,
+          mouseleave: onTitleMouseLeave,
+        };
+      }
+      if (!slotTitle && !title) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.warn('submenu需要一个标题');
+        }
+      }
+      // 标题元素
+      const titleElement = h('div', titleAttrs, [slotTitle || title]);
+
+      // 子菜单
+      const menuElement = h(
+        'v-menu',
+        {
+          class: subClasses,
+          props: {
+            prefixCls: rootPrefixCls,
+            isRoot: false,
+            visible: isOpen,
+            mode: subMenuMode,
+          },
+        },
+        $slots.default
+      );
+      return h('li', attrs, [titleElement, menuElement]);
     },
   };
 </script>
