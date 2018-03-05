@@ -10,9 +10,9 @@
 
 <body>
   <div id="app">
-    <v-dropdown @overlay-click="onClick">
+    <v-dropdown :close-on-select="false" :trigger="['click']" @overlay-click="onClick">
       <span slot="trigger">trigger</span>
-      <v-menu slot="overlay" @click="onClick">
+      <v-menu slot="overlay" multiple @click="onClick">
         <v-menu-item name="sub-menu-item-3-1">sub-menu-item-1</v-menu-item>
         <v-menu-item name="sub-menu-item-3-2">sub-menu-item-2</v-menu-item>
         <v-menu-item name="sub-menu-item-4">
@@ -22,7 +22,6 @@
           测试4
         </v-menu-item>
       </v-menu>
-      <!-- <div slot="overlay">overlay</div> -->
     </v-dropdown>
   </div>
 </body>

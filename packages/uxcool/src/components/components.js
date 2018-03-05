@@ -36,4 +36,6 @@ export * from './checkbox';
 
 export * from './radio';
 
+export * from './dropdown';
+
 export { default as UxTable } from './table';
