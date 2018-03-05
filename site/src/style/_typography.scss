@@ -106,6 +106,10 @@ h3.#{$ux-prefix}-heading {
       }
     }
   }
+
+  .table-custom {
+    @extend .api-table;
+  }
 }
 
 // dark theme
@@ -195,9 +199,5 @@ h3.#{$ux-prefix}-heading {
     th {
       color: rgba(255, 255, 255, 0.5);
     }
-  }
-
-  .table-custom {
-    @extend .api-table;
   }
 }
