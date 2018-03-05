@@ -1,6 +1,8 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">DatePicker<span class="subtitle">日期控件</span></h1>
+    <h1 class="ux-heading">DatePicker
+      <span class="subtitle">日期控件</span>
+    </h1>
     <demo-basic></demo-basic>
     <demo-format></demo-format>
     <demo-show-time></demo-show-time>
@@ -10,8 +12,9 @@
 
     <hr>
 
-    <ux-heading level="2" id="api">API</ux-heading>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <ux-heading level="2"
+                id="api">API</ux-heading>
+    <table class="api-table">
       <caption>UxDatePicker Props</caption>
       <thead>
         <tr>
@@ -102,8 +105,8 @@
           <td></td>
         </tr>
       </tbody>
-    </table class="ux-table">
-    <table class="ux-table ux-table-striped-vertical api-table">
+    </table>
+    <table class="api-table">
       <caption>UxDatePicker Events</caption>
       <thead>
         <tr>
@@ -129,8 +132,8 @@
           <td>Function(values:Date[])</td>
         </tr>
       </tbody>
-    </table class="ux-table">
-    <table class="ux-table ux-table-striped-vertical api-table">
+    </table>
+    <table class="api-table">
       <caption>UxRangeDatePicker Props</caption>
       <thead>
         <tr>
@@ -227,8 +230,8 @@
           <td></td>
         </tr>
       </tbody>
-    </table class="ux-table">
-    <table class="ux-table ux-table-striped-vertical api-table">
+    </table>
+    <table class="api-table">
       <caption>UxRangeDatePicker Events</caption>
       <thead>
         <tr>
@@ -254,25 +257,25 @@
           <td>Function(values:Date[])</td>
         </tr>
       </tbody>
-    </table class="ux-table">
+    </table>
   </article>
 </template>
 <script>
-import DemoBasic from './basic.vue';
-import DemoFormat from './format.vue';
-import DemoShowTime from './showTime.vue';
-import DemoDisabledDate from './disabledDate.vue';
-import DemoDisabled from './disabled.vue';
-import DemoQuickSelector from './quickSelector.vue';
+  import DemoBasic from './basic.vue';
+  import DemoFormat from './format.vue';
+  import DemoShowTime from './showTime.vue';
+  import DemoDisabledDate from './disabledDate.vue';
+  import DemoDisabled from './disabled.vue';
+  import DemoQuickSelector from './quickSelector.vue';
 
-export default {
-  components: {
-    DemoBasic,
-    DemoFormat,
-    DemoShowTime,
-    DemoDisabledDate,
-    DemoDisabled,
-    DemoQuickSelector,
-  },
-};
+  export default {
+    components: {
+      DemoBasic,
+      DemoFormat,
+      DemoShowTime,
+      DemoDisabledDate,
+      DemoDisabled,
+      DemoQuickSelector,
+    },
+  };
 </script>

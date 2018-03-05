@@ -18,7 +18,7 @@
     <hr>
     <ux-heading level="2"
                 id="api">API</ux-heading>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>Props</caption>
       <thead>
         <tr>
@@ -93,7 +93,7 @@
       </tbody>
     </table>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>Methods</caption>
       <thead>
         <tr>
@@ -114,7 +114,7 @@
       </tbody>
     </table>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>Events</caption>
       <thead>
         <tr>

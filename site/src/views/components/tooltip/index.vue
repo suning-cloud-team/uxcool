@@ -1,6 +1,8 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Tooltip<span class="subtitle">工具提示</span></h1>
+    <h1 class="ux-heading">Tooltip
+      <span class="subtitle">工具提示</span>
+    </h1>
 
     <demo-basic>
     </demo-basic>
@@ -9,8 +11,9 @@
     <demo-custom></demo-custom>
     <hr>
 
-    <ux-heading level="2" id="api">API</ux-heading>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <ux-heading level="2"
+                id="api">API</ux-heading>
+    <table class="api-table">
       <caption>Props</caption>
       <thead>
         <tr>
@@ -91,7 +94,7 @@
         </tr>
       </tbody>
     </table>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>Events</caption>
       <thead>
         <tr>
@@ -112,15 +115,15 @@
 </template>
 
 <script>
-import DemoBasic from './basic.vue';
-import DemoPosition from './position.vue';
-import DemoCustom from './custom.vue';
+  import DemoBasic from './basic.vue';
+  import DemoPosition from './position.vue';
+  import DemoCustom from './custom.vue';
 
-export default {
-  components: {
-    DemoBasic,
-    DemoPosition,
-    DemoCustom,
-  },
-};
+  export default {
+    components: {
+      DemoBasic,
+      DemoPosition,
+      DemoCustom,
+    },
+  };
 </script>

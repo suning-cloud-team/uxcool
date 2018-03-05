@@ -23,7 +23,7 @@ import '@suning/uxcool/dist/uxcool.css';
 Vue.use(VueRouter);
 Vue.use(Uxcool);
 
-/* 
+/*
  * 或者按需引入
  * import { UxBadge, UxProgress} from '@suning/uxcool/es/components';
  * import '@suning/uxcool/es/badge/style/index.css';
@@ -92,7 +92,6 @@ new Vue({
 
     <ux-code non-copyable>
 // custom.scss
-
 $layout-sidebar-width: 200px;
 $layout-main-padding: 25px 0 25px 25px;
 
@@ -135,5 +134,6 @@ Vue.use(UxcoolExtra);
 </template>
 
 <script>
-export default {};
+  export default {};
+
 </script>

@@ -1,15 +1,18 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Select<span class="subtitle">下拉框</span></h1>
+    <h1 class="ux-heading">Select
+      <span class="subtitle">下拉框</span>
+    </h1>
 
     <demo-basic></demo-basic>
     <demo-multiple></demo-multiple>
     <demo-search></demo-search>
 
     <hr>
-    <ux-heading level="2" id="api">API</ux-heading>
+    <ux-heading level="2"
+                id="api">API</ux-heading>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxSelect Props</caption>
       <thead>
         <tr>
@@ -70,7 +73,7 @@
         </tr>
       </tbody>
     </table>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxSelect Events</caption>
       <thead>
         <tr>
@@ -97,7 +100,7 @@
         </tr>
       </tbody>
     </table>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxOption Props</caption>
       <thead>
         <tr>
@@ -128,7 +131,7 @@
         </tr>
       </tbody>
     </table>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxOptionGroup Props</caption>
       <thead>
         <tr>
@@ -152,15 +155,15 @@
 
 
 <script>
-import DemoBasic from './basic.vue';
-import DemoMultiple from './multiple.vue';
-import DemoSearch from './search.vue';
+  import DemoBasic from './basic.vue';
+  import DemoMultiple from './multiple.vue';
+  import DemoSearch from './search.vue';
 
-export default {
-  components: {
-    DemoBasic,
-    DemoMultiple,
-    DemoSearch,
-  },
-};
+  export default {
+    components: {
+      DemoBasic,
+      DemoMultiple,
+      DemoSearch,
+    },
+  };
 </script>

@@ -83,7 +83,7 @@ h3.#{$ux-prefix}-heading {
 
     caption {
       padding: 10px;
-      border: 1px solid $table-border-color;
+      border: 1px solid #eee;
       border-bottom: 0;
       line-height: 30px;
       color: #000;
@@ -179,7 +179,7 @@ h3.#{$ux-prefix}-heading {
 
   .api-table {
     caption {
-      border-color: $table-border-color-dark;
+      border-color: rgba(255, 255, 255, 0.1);
       color: #fff;
     }
 
@@ -195,5 +195,9 @@ h3.#{$ux-prefix}-heading {
     th {
       color: rgba(255, 255, 255, 0.5);
     }
+  }
+
+  .table-custom {
+    @extend .api-table;
   }
 }

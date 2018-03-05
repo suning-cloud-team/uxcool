@@ -10,7 +10,7 @@
       <ux-spin :spinning="spinning"
                wrap-style="width:100%">
         <div style="width:100%; max-height: 150px;overflow:auto">
-          <table class="ux-table ux-table-striped-vertical"
+          <table class="table-custom"
                  :class="{'ux-table-dark': theme === 'dark'}">
             <thead>
               <th>name</th>

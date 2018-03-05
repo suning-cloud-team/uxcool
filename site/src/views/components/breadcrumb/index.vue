@@ -14,7 +14,7 @@
     <ux-heading level="2"
                 id="api">API</ux-heading>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxBreadcrumb Props</caption>
       <thead>
         <tr>
@@ -40,7 +40,7 @@
       </tbody>
     </table>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxBreadcrumbItem Props</caption>
       <thead>
         <tr>

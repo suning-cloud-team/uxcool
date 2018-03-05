@@ -38,6 +38,7 @@
       };
     },
   };
+
 </script>
 
 <style lang="scss" scoped>
@@ -59,5 +60,5 @@
       font-size: 12px;
     }
   }
-</style>
 
+</style>
