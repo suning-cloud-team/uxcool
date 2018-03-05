@@ -8,8 +8,6 @@ $text-color-secondary: #999;
 $layout-sidebar-width: 230px;
 $layout-main-padding: 25px 0 25px 25px;
 
-$table-cell-padding: 10px 20px;
-
 // sass不提供url rewriting功能，所有的链接资源都是相对输出文件而言，所以需要手动覆盖字体图标路径
 $icon-url: '~@suning/uxcool/dist/assets/fonts/uxcool';
 
