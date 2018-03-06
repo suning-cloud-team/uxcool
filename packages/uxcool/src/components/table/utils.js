@@ -1,5 +1,8 @@
 import { warning } from '../utils';
 
+export function getColKey(col, colIdx) {
+  return col.key || `$$_id${colIdx}`;
+}
 export function getRowKey(rowKey, record, rowIdx) {
   const key = typeof rowKey === 'function' ? rowKey(record, rowIdx) : record[rowKey];
   warning(
@@ -41,4 +44,19 @@ function recursiveRows(rows = [], cb, childColName, deep = true) {
 
 export function normalizeRows(rows = [], cb = null, childColName = 'children', deep = true) {
   return recursiveRows(rows, cb, childColName, deep);
+}
+
+export function normalizeCols(cols = [], cb = null, childColName = 'children', deep = true) {
+  return recursiveRows(cols, cb, childColName, deep);
+}
+
+export function recursiveSort(data = [], sortFn, childColName = 'children') {
+  return data.sort(sortFn).map((v) => {
+    const nv = v;
+    const child = nv[childColName];
+    if (Array.isArray(child) && child.length > 0) {
+      nv[childColName] = recursiveSort(child, sortFn, childColName);
+    }
+    return nv;
+  });
 }

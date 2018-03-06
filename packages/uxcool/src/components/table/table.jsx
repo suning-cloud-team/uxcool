@@ -1,8 +1,10 @@
 import VTable from '@suning/v-table';
+import Icon from '../icon';
 import { buildComponentName } from '../utils';
 import SelectionMixin from './mixins/selection';
 import PaginationMixin from './mixins/pagination';
-import { getRowKey, normalizeRows, flatRows, isFunction } from './utils';
+import SortMixin from './mixins/sortable';
+import { getColKey, getRowKey, normalizeCols, normalizeRows, flatRows, isFunction } from './utils';
 
 export default {
   name: buildComponentName('Table'),
@@ -14,7 +16,7 @@ export default {
   components: {
     VTable,
   },
-  mixins: [SelectionMixin, PaginationMixin],
+  mixins: [SelectionMixin, PaginationMixin, SortMixin],
   inheritAttrs: false,
   props: {
     ...VTable.props,
@@ -69,6 +71,7 @@ export default {
     return {
       selectedRowKeys: [],
       innerPager: {},
+      sortInfo: {},
     };
   },
   computed: {
@@ -82,10 +85,20 @@ export default {
       return !!this.pagination;
     },
     normalizeColumns() {
-      return [...this.columns];
+      const { columns } = this;
+      const cols = normalizeCols(columns);
+      flatRows(cols, 'children', false).forEach((v, i) => {
+        const nv = v;
+        nv.$$_key = getColKey(v, i);
+      });
+      return cols;
+    },
+    flatColumns() {
+      const { normalizeColumns } = this;
+      return flatRows(normalizeColumns, 'children', false);
     },
     /**
-     * 获取checkbox的disabled和checked状态
+     * 设置checkbox的disabled和checked状态
      */
     normalizeData() {
       const {
@@ -124,12 +137,15 @@ export default {
       return flatRows(normalizeData, childColName, false);
     },
     pagerNormalizeData() {
-      const { normalizeData, hasPagination, innerPager } = this;
+      const {
+        normalizeData, hasPagination, innerPager, sortData
+      } = this;
       let pagerData = normalizeData;
       if (hasPagination) {
         const { current, pageSize } = innerPager;
         pagerData = normalizeData.slice((current - 1) * pageSize, current * pageSize);
       }
+      pagerData = sortData(pagerData);
       return pagerData;
     },
     pagerFlatData() {
@@ -141,9 +157,13 @@ export default {
     },
     bindProps() {
       const {
-        $props, renderRowSelection, pagerNormalizeData, expandIconColIndex
+        $props,
+        renderRowSelection,
+        renderSortAndFilter,
+        pagerNormalizeData,
+        expandIconColIndex,
       } = this;
-      const cols = renderRowSelection();
+      let cols = renderRowSelection();
       const iconColIdx = Math.max(
         Math.min(
           cols[0].key === 'selection-column' ? expandIconColIndex + 1 : expandIconColIndex,
@@ -151,6 +171,7 @@ export default {
         ),
         0
       );
+      cols = renderSortAndFilter(cols);
       return {
         ...$props,
         columns: cols,
@@ -164,6 +185,11 @@ export default {
     },
   },
   watch: {
+    columns(nVal, oVal) {
+      if (nVal && nVal !== oVal) {
+        this.initSortInfo();
+      }
+    },
     value(nVal) {
       if (nVal) {
         const { setInnerPager, innerPager } = this;
@@ -184,6 +210,7 @@ export default {
   created() {
     this.initSelectedRowkeys();
     this.initPager();
+    this.initSortInfo(true);
   },
   methods: {
     initSelectedRowkeys() {
@@ -234,6 +261,45 @@ export default {
       const pager = { ...innerPager };
       delete pager.on;
       this.$emit('change', [pager]);
+    },
+    renderSortAndFilter(cols) {
+      const { prefixCls, isSortColumn } = this;
+      return flatRows(cols, 'children', false).map((v) => {
+        const nv = v;
+        let sortButton = null;
+        if (nv.sorter) {
+          const isSortCol = isSortColumn(nv);
+          let [isAscend, isDescend] = [false, false];
+          if (isSortCol) {
+            const clz = { [`${prefixCls}-column-sort`]: true };
+            nv.className = nv.className ? [nv.className, clz] : clz;
+            isAscend = nv.sortOrder === 'ascend';
+            isDescend = nv.sortOrder === 'descend';
+          }
+
+          sortButton = (
+            <div class={`${prefixCls}-column-sorter`}>
+              <span class={`${prefixCls}-column-sorter-up ${isAscend ? 'on' : 'off'}`} title="↑">
+                <Icon type="caret_up" />
+              </span>
+              <span class={`${prefixCls}-column-sorter-down ${isDescend ? 'on' : 'off'}`} title="↓">
+                <Icon type="caret_down" />
+              </span>
+            </div>
+          );
+        }
+        nv.title = (
+          <span>
+            {nv.title}
+            {sortButton}
+          </span>
+        );
+        if (sortButton) {
+          const filterClz = `${prefixCls}-column-has-filters`;
+          nv.className = nv.className ? [nv.className, filterClz] : filterClz;
+        }
+        return nv;
+      });
     },
     renderTable() {
       const {

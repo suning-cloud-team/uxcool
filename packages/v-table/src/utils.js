@@ -42,7 +42,7 @@ export function addEventListener(element, eventName, fn) {
 }
 
 export function getKey(column, defaultKey) {
-  return column.key || `$$id${defaultKey}`;
+  return column.key || `$$_id${defaultKey}`;
 }
 export function flatCols(columns = []) {
   return columns.reduce((r, v) => {
