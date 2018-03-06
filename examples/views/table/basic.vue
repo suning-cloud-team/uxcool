@@ -10,7 +10,8 @@
         </span>
       </ux-table>   -->
   <div>
-    <pagination-demo />
+    <sortable-demo />
+    <!-- <pagination-demo /> -->
     <div class="demo">
       <!-- {{data1}} -->
       <!-- <ux-table :columns="cols1"
@@ -33,11 +34,13 @@
   import UxTable from '@suning/uxcool/src/components/table';
   import { getData } from './data';
   import PaginationDemo from './pagination.vue';
+  import SortableDemo from './sortable.vue';
 
   export default {
     components: {
       UxTable,
       PaginationDemo,
+      SortableDemo,
     },
     data() {
       return {
