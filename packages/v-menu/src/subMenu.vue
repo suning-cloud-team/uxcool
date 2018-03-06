@@ -92,7 +92,7 @@
         {
           class: subClasses,
           props: {
-            prefix: rootPrefixCls,
+            prefixCls: rootPrefixCls,
             isRoot: false,
             visible: isOpen,
             mode: subMenuMode,
