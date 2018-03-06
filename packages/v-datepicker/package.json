@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-datepicker",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "datepicker 基础组件",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@suning/v-timepicker": "^1.0.8",
-    "@suning/v-trigger": "^1.0.23",
+    "@suning/v-trigger": "^1.0.24",
     "date-fns": "^1.29.0",
     "deepcopy": "^0.6.3"
   }
