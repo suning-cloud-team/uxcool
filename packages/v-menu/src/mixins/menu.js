@@ -4,7 +4,7 @@ export default {
   props: {
     prefixCls: {
       type: String,
-      default: 'ux-menu',
+      default: 'v-menu',
     },
     isRoot: {
       type: Boolean,

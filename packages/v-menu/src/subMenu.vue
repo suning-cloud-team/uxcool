@@ -8,10 +8,13 @@
     mixins: [commonMixin],
     props: {
       name: {
-        type: String,
+        type: [String, Number],
         required: true,
       },
-      title: String,
+      title: {
+        type: String,
+        default: '',
+      },
       disabled: {
         type: Boolean,
         default: false,
@@ -25,6 +28,7 @@
     },
     render(h) {
       const {
+        rootPrefixCls,
         $slots,
         title,
         classes,
@@ -88,6 +92,7 @@
         {
           class: subClasses,
           props: {
+            prefix: rootPrefixCls,
             isRoot: false,
             visible: isOpen,
             mode: subMenuMode,
