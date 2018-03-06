@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-menu :selected-keys="selectedKeys">
+      <v-menu-item v-for="(v,i) in menus" :name="v.name" :key="i">
+        {{v.value}}
+      </v-menu-item>
+    </v-menu>
+
+  </div>
+</body>
+
+</html>

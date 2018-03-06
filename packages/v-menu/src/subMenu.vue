@@ -11,7 +11,7 @@
     mixins: [commonMixin],
     props: {
       name: {
-        type: String,
+        type: [String, Number],
         required: true,
       },
       title: {
@@ -110,21 +110,6 @@
           trigger: type,
         });
       },
-      // onClick($event) {
-      //   const {
-      //     isInlineMode, eventName, tirggerOpenChange, isOpen, disabled
-      //   } = this;
-      //   if (disabled) {
-      //     return;
-      //   }
-      //   this.$emit('click', {
-      //     name: eventName,
-      //     domEvent: $event,
-      //   });
-      //   if (isInlineMode) {
-      //     tirggerOpenChange(!isOpen, 'click');
-      //   }
-      // },
       onClick($event) {
         const {
           isInlineMode, eventName, tirggerOpenChange, isOpen

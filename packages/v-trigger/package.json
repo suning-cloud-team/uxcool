@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-trigger",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "trigger ",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -10,7 +10,11 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["assets/*css", "cjs", "es"],
+  "files": [
+    "assets/*css",
+    "cjs",
+    "es"
+  ],
   "scripts": {
     "compile": "v-tools run compile",
     "server": "v-tools run server",

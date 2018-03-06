@@ -17,7 +17,7 @@
     mixins: [commonMixin],
     props: {
       name: {
-        type: String,
+        type: [String, Number],
         required: true,
       },
       label: String,

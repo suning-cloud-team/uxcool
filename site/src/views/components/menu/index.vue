@@ -119,7 +119,7 @@
           <tr>
             <td>name</td>
             <td>唯一标识</td>
-            <td>String</td>
+            <td>String|Number</td>
             <td>''</td>
           </tr>
           <tr>
@@ -144,7 +144,7 @@
           <tr>
             <td>name</td>
             <td>唯一标识</td>
-            <td>String</td>
+            <td>String|Number</td>
             <td>''</td>
           </tr>
           <tr>
