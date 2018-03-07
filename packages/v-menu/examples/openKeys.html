@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-menu :open-keys="openKeys" :selected-keys="selectedKeys">
+      <template v-for="(v,i) in menus">
+        <v-sub-menu v-if="v.children" :name="v.name" :title="v.value">
+          <v-menu-item v-for="(v1 ,j) in v.children" :key="j" :name="v1.name">
+            {{v1.value}} | {{v1.name}}
+          </v-menu-item>
+        </v-sub-menu>
+        <v-menu-item v-else :name="v.name">
+            {{v.value}}
+          </v-menu-item>
+      </template>
+
+    </v-menu>
+
+  </div>
+</body>
+
+</html>

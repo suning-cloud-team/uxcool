@@ -38,7 +38,7 @@
       },
       isSelected() {
         const { selectedItems, descendants } = this;
-        return selectedItems.some(v => descendants.has(v));
+        return selectedItems.some(v => descendants.indexOf(v) > -1);
       },
       isOpen() {
         const { openedSubMenus } = this;
@@ -159,7 +159,6 @@
         });
       },
     },
-
     render(h) {
       const {
         rootPrefixCls,
