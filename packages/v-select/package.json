@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-select",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository": "git@git.cnsuning.com:fedc/v-select.git",
@@ -20,7 +20,7 @@
     "start": "npm run server"
   },
   "dependencies": {
-    "@suning/v-menu": "^1.0.20",
+    "@suning/v-menu": "^1.0.21",
     "@suning/v-trigger": "^1.0.24",
     "scroll-into-view-if-needed": "^1.4.0"
   },
