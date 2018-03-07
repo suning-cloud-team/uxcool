@@ -53,7 +53,6 @@
           if (this.isRoot) {
             this.init();
           }
-          console.log('descendants', nVal);
         }
       },
     },
