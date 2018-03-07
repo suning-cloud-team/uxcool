@@ -16,7 +16,7 @@
         activeItem: null,
         selectedItems: [],
         openedSubMenus: [],
-        descendants: new Set(),
+        descendants: [],
       };
     },
     computed: {
@@ -46,6 +46,14 @@
           this.$nextTick(() => {
             this.reloadSelectedKeys();
           });
+        }
+      },
+      descendants(nVal) {
+        if (nVal) {
+          if (this.isRoot) {
+            this.init();
+          }
+          console.log('descendants', nVal);
         }
       },
     },
@@ -81,10 +89,14 @@
         });
       },
       addDescendants(item) {
-        this.descendants.add(item);
+        this.descendants.push(item);
       },
       removeDescendants(item) {
-        this.descendants.delete(item);
+        const { descendants } = this;
+        const idx = descendants.indexOf(item);
+        if (idx > -1) {
+          this.descendants.splice(idx, 1);
+        }
       },
       reloadOpenKeys() {
         const { descendants, openKeys, openedSubMenus } = this;
@@ -113,7 +125,7 @@
       },
       onMenuItemClick(e) {
         const { item } = e;
-        if (this.descendants.has(item)) {
+        if (this.descendants.indexOf(item) > -1) {
           this.$emit('click', {
             ...e,
             item: {
@@ -128,7 +140,7 @@
         const { uniqueOpened } = this;
         let { openedSubMenus } = this;
         const { open, item } = e;
-        if (this.descendants.has(item)) {
+        if (this.descendants.indexOf(item) > -1) {
           let changed = false;
           const pos = openedSubMenus.indexOf(item);
           if (open) {
@@ -137,7 +149,7 @@
               if (uniqueOpened) {
                 const { rootSubMenu } = item;
                 const { descendants: rootSubMenuDescendants } = rootSubMenu;
-                openedSubMenus = openedSubMenus.filter(v => v === rootSubMenu || rootSubMenuDescendants.has(v));
+                openedSubMenus = openedSubMenus.filter(v => v === rootSubMenu || rootSubMenuDescendants.indexOf(v) > -1);
               }
               openedSubMenus.push(item);
               changed = true;

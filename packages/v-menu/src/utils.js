@@ -15,12 +15,12 @@ export function getRootMenu(inst) {
 
 // 获取所有后代元素
 export function getAllDescendants(inst) {
-  const ret = new Set();
+  const ret = [];
 
   function recursive(children) {
     if (children.length) {
       children.forEach((c) => {
-        ret.add(c);
+        ret.push(c);
         recursive(c.$children);
       });
     }
