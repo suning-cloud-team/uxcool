@@ -13,7 +13,8 @@ const vm = new Vue({
   },
   data: {
     mode: 'horizontal',
-    selectedKeys: ['2', 3],
+    openKeys: ['2', 3],
+    selectedKeys: ['c-22', 'c-55'],
     menus: [],
   },
   created() {
@@ -23,6 +24,16 @@ const vm = new Vue({
         .map((v, i) => ({
           name: i,
           value: `a-${i}`,
+          children: [
+            {
+              name: `c-${i}${i}`,
+              value: `ccc-${i}${i}`,
+            },
+            {
+              name: `c-${i}${i}${i}`,
+              value: `ccc-${i}${i}${i}`,
+            },
+          ],
         }));
     }, 2500);
   },
