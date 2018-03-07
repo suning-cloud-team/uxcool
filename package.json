@@ -6,9 +6,7 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "uxcool": {
     "srcPath": "packages/uxcool"
   },
@@ -21,7 +19,7 @@
     "example": "webpack-dev-server --config build/example/server.js",
     "analyzer": "webpack --config  build/webpack/analyzer.js",
     "analyzer:site": "webpack --config  build/site/analyzer.js",
-    "pub": "yarn pack"
+    "pub": "lerna run compile && yarn run build && lerna publish"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
