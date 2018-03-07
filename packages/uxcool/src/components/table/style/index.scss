@@ -209,21 +209,23 @@ $table-header-icon-color: $text-color-secondary;
   }
 
   &-column-sorter {
+    $scale: 8px / 12px;
     position: relative;
-    margin-left: 8px;
     display: inline-block;
-    width: 14px;
+    width: 20px;
     height: 14px;
+    margin: -4px 0 0 8px;
     vertical-align: middle;
     text-align: center;
     font-weight: normal;
     color: $table-header-icon-color;
+    transform: scale($scale) rotate(0);
 
     &-up,
     &-down {
       line-height: 6px;
       display: block;
-      width: 14px;
+      width: 20px;
       height: 6px;
       cursor: pointer;
       position: relative;
@@ -231,8 +233,8 @@ $table-header-icon-color: $text-color-secondary;
         color: $primary-4;
       }
       &.on {
-        .#{$iconfont-css-prefix}-caret-up,
-        .#{$iconfont-css-prefix}-caret-down {
+        .#{$iconfont-css-prefix}-caret_up,
+        .#{$iconfont-css-prefix}-caret_down {
           color: $primary-color;
         }
       }
@@ -240,26 +242,29 @@ $table-header-icon-color: $text-color-secondary;
       &:after {
         position: absolute;
         content: '';
-        height: 30px;
-        width: 14px;
+        height: 50px;
+        width: 20px;
         left: 0;
       }
     }
-
+    &-up {
+      margin-bottom: 4px;
+    }
     &-up:after {
-      bottom: -2px;
+      bottom: 0;
     }
 
     &-down:after {
-      top: 2px;
+      top: 0;
     }
 
-    .#{$iconfont-css-prefix}-caret-up,
-    .#{$iconfont-css-prefix}-caret-down {
+    .#{$iconfont-css-prefix}-caret_up,
+    .#{$iconfont-css-prefix}-caret_down {
       @include iconfont-size-under-12px(8px);
       line-height: 4px;
       height: 4px;
       transition: all 0.3s;
+      transform: none;
     }
   }
 

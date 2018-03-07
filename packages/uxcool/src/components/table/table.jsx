@@ -257,15 +257,26 @@ export default {
       return scopedSlots;
     },
     onPagerOrFiterOrSortChange() {
-      const { innerPager } = this;
+      const { innerPager, sortInfo: { column: sortColumn, order: sortOrder } } = this;
       const pager = { ...innerPager };
       delete pager.on;
-      this.$emit('change', [pager]);
+      let sort = {};
+      if (sortColumn && sortOrder) {
+        sort = {
+          column: sortColumn,
+          order: sortOrder,
+          field: sortColumn.dataIndex,
+          columnKey: sortColumn.$$_key,
+        };
+      }
+      this.$emit('change', [pager, sort]);
     },
     renderSortAndFilter(cols) {
-      const { prefixCls, isSortColumn } = this;
-      return flatRows(cols, 'children', false).map((v) => {
-        const nv = v;
+      const {
+        prefixCls, isSortColumn, toggleOrder, sortInfo: { order }
+      } = this;
+      return flatRows(cols, 'children', false).map((col) => {
+        const nv = { ...col };
         let sortButton = null;
         if (nv.sorter) {
           const isSortCol = isSortColumn(nv);
@@ -273,16 +284,28 @@ export default {
           if (isSortCol) {
             const clz = { [`${prefixCls}-column-sort`]: true };
             nv.className = nv.className ? [nv.className, clz] : clz;
-            isAscend = nv.sortOrder === 'ascend';
-            isDescend = nv.sortOrder === 'descend';
+            isAscend = order === 'ascend';
+            isDescend = order === 'descend';
           }
 
           sortButton = (
             <div class={`${prefixCls}-column-sorter`}>
-              <span class={`${prefixCls}-column-sorter-up ${isAscend ? 'on' : 'off'}`} title="↑">
+              <span
+                class={`${prefixCls}-column-sorter-up ${isAscend ? 'on' : 'off'}`}
+                title="↑"
+                on-click={() => {
+                  toggleOrder(nv, 'ascend');
+                }}
+              >
                 <Icon type="caret_up" />
               </span>
-              <span class={`${prefixCls}-column-sorter-down ${isDescend ? 'on' : 'off'}`} title="↓">
+              <span
+                class={`${prefixCls}-column-sorter-down ${isDescend ? 'on' : 'off'}`}
+                title="↓"
+                on-click={() => {
+                  toggleOrder(nv, 'descend');
+                }}
+              >
                 <Icon type="caret_down" />
               </span>
             </div>

@@ -60,5 +60,32 @@ export default {
       };
       return recursiveSort(data, sortFn, childColName);
     },
+    toggleOrder(column, order) {
+      const {
+        isSortColumn,
+        sortInfo: { order: sortOrder },
+        setSortInfo,
+        onPagerOrFiterOrSortChange,
+      } = this;
+      let r = {
+        column: null,
+        order: null,
+      };
+      if (isSortColumn(column)) {
+        if (order !== sortOrder) {
+          r = {
+            column,
+            order,
+          };
+        }
+      } else {
+        r = {
+          column,
+          order,
+        };
+      }
+      setSortInfo(r);
+      onPagerOrFiterOrSortChange();
+    },
   },
 };

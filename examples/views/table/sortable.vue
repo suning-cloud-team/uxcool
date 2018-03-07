@@ -3,6 +3,7 @@
   <div class="demo">
     <ux-table :columns="cols1"
               v-model="data1"
+              :expand-icon-col-index="1"
               :pagination="pagination"
               :row-selection="rowSelection"
               @change="onChange" />
@@ -24,8 +25,10 @@
       return {
         cols1: [
           {
+            key: 1,
             title: 'key',
             dataIndex: 'key',
+            width: 150,
           },
           {
             fixed: false,
@@ -33,13 +36,21 @@
             title: 'Name',
             dataIndex: 'name',
             sorter(a, b) {
-              return a.name - b.name;
+              let r = 0;
+              if (a.name > b.name) {
+                r = -1;
+              } else if (a.name < b.name) {
+                r = 1;
+              }
+              return r;
             },
-            sortOrder: 'descend',
           },
           {
             title: 'Age',
             dataIndex: 'age',
+            sorter(a, b) {
+              return a.age - b.age;
+            },
           },
           {
             title: 'Addr',
