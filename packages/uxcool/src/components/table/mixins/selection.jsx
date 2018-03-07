@@ -62,9 +62,6 @@ export default {
     },
   },
   methods: {
-    getPopupContainer() {
-      return this.$el;
-    },
     renderRowSelection() {
       const { normalizeColumns, selectionColumn, rowSelection } = this;
       const columns = [...normalizeColumns];

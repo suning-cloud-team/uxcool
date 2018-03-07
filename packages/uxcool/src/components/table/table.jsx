@@ -1,5 +1,6 @@
 import VTable from '@suning/v-table';
 import Icon from '../icon';
+import FilterDropdown from './filterDropdown';
 import { buildComponentName } from '../utils';
 import SelectionMixin from './mixins/selection';
 import PaginationMixin from './mixins/pagination';
@@ -213,6 +214,9 @@ export default {
     this.initSortInfo(true);
   },
   methods: {
+    getPopupContainer() {
+      return this.$el;
+    },
     initSelectedRowkeys() {
       const {
         rowSelection = {},
@@ -273,12 +277,28 @@ export default {
     },
     renderSortAndFilter(cols) {
       const {
-        prefixCls, isSortColumn, toggleOrder, sortInfo: { order }
+        prefixCls,
+        dropdownPrefixCls,
+        isSortColumn,
+        toggleOrder,
+        sortInfo: { order },
+        getPopupContainer,
       } = this;
       return flatRows(cols, 'children', false).map((col) => {
         const nv = { ...col };
-        let sortButton = null;
-        if (nv.sorter) {
+        const { filters, sorter } = nv;
+        let [sortButton, filterDropdown] = [null, null];
+        if ((Array.isArray(filters) && filters.length > 0) || nv.filterDropdown) {
+          filterDropdown = (
+            <FilterDropdown
+              dropdownPrefixCls={dropdownPrefixCls}
+              column={nv}
+              selectedKeys={[]}
+              getPopupContainer={getPopupContainer}
+            />
+          );
+        }
+        if (sorter) {
           const isSortCol = isSortColumn(nv);
           let [isAscend, isDescend] = [false, false];
           if (isSortCol) {
@@ -315,9 +335,10 @@ export default {
           <span>
             {nv.title}
             {sortButton}
+            {filterDropdown}
           </span>
         );
-        if (sortButton) {
+        if (sortButton || filterDropdown) {
           const filterClz = `${prefixCls}-column-has-filters`;
           nv.className = nv.className ? [nv.className, filterClz] : filterClz;
         }

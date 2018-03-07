@@ -10,7 +10,8 @@
         </span>
       </ux-table>   -->
   <div>
-    <sortable-demo />
+    <filter-demo />
+    <!-- <sortable-demo /> -->
     <!-- <pagination-demo /> -->
     <div class="demo">
       <!-- {{data1}} -->
@@ -35,12 +36,14 @@
   import { getData } from './data';
   import PaginationDemo from './pagination.vue';
   import SortableDemo from './sortable.vue';
+  import FilterDemo from './filter.vue';
 
   export default {
     components: {
       UxTable,
       PaginationDemo,
       SortableDemo,
+      FilterDemo,
     },
     data() {
       return {

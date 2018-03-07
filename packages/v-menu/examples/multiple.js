@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import '@suning/v-menu/assets/index.css';
+import '@suning/v-menu/css/index.scss';
 import VMenu, { VMenuItem, VMenuItemGroup, VSubMenu } from '@suning/v-menu';
 
 const vue = new Vue({
