@@ -3,10 +3,12 @@ import Dropdown from '../dropdown';
 import Icon from '../icon';
 import Checkbox from '../checkbox';
 import Radio from '../radio';
+import SubMixin from './mixins/sub';
 import { buildComponentName } from '../utils';
 
 export default {
   name: buildComponentName('filterDropdown'),
+  mixins: [SubMixin],
   props: {
     dropdownPrefixCls: {
       type: String,
@@ -32,6 +34,7 @@ export default {
   data() {
     return {
       innerSelectedKeys: [],
+      dropdownVisible: false,
     };
   },
   computed: {
@@ -64,8 +67,12 @@ export default {
       };
       const on = {
         click() {},
-        select() {},
-        deselect() {},
+        select(...args) {
+          console.log(...args);
+        },
+        deselect(...args) {
+          console.log(...args);
+        },
       };
       return <Menu {...{ props, on }}>{renderMenus(filters)}</Menu>;
     },
@@ -84,6 +91,9 @@ export default {
     setInnerSelectedKeys(keys) {
       this.innerSelectedKeys = keys;
     },
+    handleConfirm() {},
+    handleClearFilters() {},
+    onVisibleChange() {},
     renderFilterIcon() {
       const { filterPrefixCls, selectedKeys } = this;
       return (
@@ -121,15 +131,41 @@ export default {
     },
   },
   render() {
-    const { filterIcon, filterMenu } = this;
-    const menu = <div>{filterMenu}</div>;
+    const {
+      filterIcon,
+      filterMenu,
+      filterPrefixCls,
+      handleConfirm,
+      handleClearFilters,
+      onVisibleChange,
+      dropdownVisible,
+      getPopupContainer,
+    } = this;
+    const menus = (
+      <div class={`${filterPrefixCls}-dropdown`}>
+        {filterMenu}
+        <div class={`${filterPrefixCls}-dropdown-btns`}>
+          <a class={`${filterPrefixCls}-dropdown-link confirm`} onClick={handleConfirm}>
+            确定
+          </a>
+          <a class={`${filterPrefixCls}-dropdown-link clear`} onClick={handleClearFilters}>
+            重置
+          </a>
+        </div>
+      </div>
+    );
     const props = {
       trigger: ['click'],
+      visible: dropdownVisible,
+      getPopupContainer,
+    };
+    const on = {
+      'visible-change': onVisibleChange,
     };
     return (
-      <Dropdown {...{ props }}>
+      <Dropdown {...{ props, on }}>
         <template slot="trigger">{filterIcon}</template>
-        <template slot="overlay">{menu}</template>
+        <template slot="overlay">{menus}</template>
       </Dropdown>
     );
   },
