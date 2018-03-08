@@ -227,6 +227,7 @@
     },
     mounted() {
       this.setPopupVisible(this.visible);
+      this.mountPortal();
     },
     beforeDestroy() {
       this.clearDelayTimer();
@@ -393,7 +394,7 @@
       createPortal() {
         const {
           prefixCls: rootPrefixCls,
-          popupContainer,
+          // popupContainer,
           actions,
           onPopupMouseEnter,
           onPopupMouseLeave,
@@ -496,8 +497,12 @@
             return h('popup', data, popupVNode);
           },
         }).$mount();
-        popupContainer.appendChild(portal.$el);
+        // popupContainer.appendChild(portal.$el);
         return portal;
+      },
+      mountPortal() {
+        const { portal, popupContainer } = this;
+        popupContainer.appendChild(portal.$el);
       },
     },
     render(h) {
