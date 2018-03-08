@@ -36,14 +36,19 @@
             title: 'Name',
             dataIndex: 'name',
             sorter(a, b) {
-              let r = 0;
-              if (a.name > b.name) {
-                r = -1;
-              } else if (a.name < b.name) {
-                r = 1;
-              }
-              return r;
+              const m1 = a.name.match(/\d+/);
+              const m2 = b.name.match(/\d+/);
+              return parseInt(m1[0], 10) - parseInt(m2[0], 10);
             },
+            // sorter(a, b) {
+            //   let r = 0;
+            //   if (a.name > b.name) {
+            //     r = -1;
+            //   } else if (a.name < b.name) {
+            //     r = 1;
+            //   }
+            //   return r;
+            // },
           },
           {
             title: 'Age',

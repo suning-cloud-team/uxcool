@@ -5,7 +5,6 @@
               v-model="data1"
               :expand-icon-col-index="1"
               :pagination="pagination"
-              :row-selection="rowSelection"
               @change="onChange" />
 
   </div>
@@ -36,13 +35,9 @@
             title: 'Name',
             dataIndex: 'name',
             sorter(a, b) {
-              let r = 0;
-              if (a.name > b.name) {
-                r = -1;
-              } else if (a.name < b.name) {
-                r = 1;
-              }
-              return r;
+              const m1 = a.name.match(/\d+/);
+              const m2 = b.name.match(/\d+/);
+              return parseInt(m1[0], 10) - parseInt(m2[0], 10);
             },
             filters: [
               {
@@ -68,6 +63,9 @@
                 ],
               },
             ],
+            onFilter(v, record) {
+              return v === 'Joe' && record.name.indexOf('12') > -1;
+            },
           },
           {
             title: 'Age',
@@ -83,12 +81,6 @@
         ],
         data1: getData(12),
         pagination: {},
-        rowSelection: {
-          selectedRowKeys: [],
-          onChange(...args) {
-            console.log('row onChange', ...args);
-          },
-        },
       };
     },
     created() {
@@ -102,7 +94,6 @@
               console.log('pagination change', args);
             },
           };
-          this.rowSelection.selectedRowKeys = [];
         }, 1500);
       }, 3500);
     },

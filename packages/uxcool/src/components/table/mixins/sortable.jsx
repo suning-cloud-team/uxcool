@@ -47,8 +47,9 @@ export default {
     },
     sortData(data = []) {
       const { childColName, sortInfo: { column: sortColumn, order } } = this;
+      const nData = [...data];
       if (!sortColumn || !order || !isFunction(sortColumn.sorter)) {
-        return data;
+        return nData;
       }
       const { sorter } = sortColumn;
       const sortFn = (a, b) => {
@@ -58,7 +59,7 @@ export default {
         }
         return r;
       };
-      return recursiveSort(data, sortFn, childColName);
+      return recursiveSort(nData, sortFn, childColName);
     },
     toggleOrder(column, order) {
       const {

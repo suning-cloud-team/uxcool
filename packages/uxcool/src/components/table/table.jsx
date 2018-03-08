@@ -5,6 +5,7 @@ import { buildComponentName } from '../utils';
 import SelectionMixin from './mixins/selection';
 import PaginationMixin from './mixins/pagination';
 import SortMixin from './mixins/sortable';
+import FilterMixin from './mixins/filter';
 import { getColKey, getRowKey, normalizeCols, normalizeRows, flatRows, isFunction } from './utils';
 
 export default {
@@ -17,7 +18,7 @@ export default {
   components: {
     VTable,
   },
-  mixins: [SelectionMixin, PaginationMixin, SortMixin],
+  mixins: [SelectionMixin, PaginationMixin, SortMixin, FilterMixin],
   inheritAttrs: false,
   props: {
     ...VTable.props,
@@ -73,6 +74,7 @@ export default {
       selectedRowKeys: [],
       innerPager: {},
       sortInfo: {},
+      innerFilters: {},
     };
   },
   computed: {
@@ -126,6 +128,7 @@ export default {
         const nv = v;
         nv.$$_key = getRowKey(rowKey, v, i);
       });
+
       return data;
     },
     isAnyColumnsLeftFixed() {
@@ -137,16 +140,39 @@ export default {
       const { childColName, normalizeData } = this;
       return flatRows(normalizeData, childColName, false);
     },
-    pagerNormalizeData() {
+    filterAndSortData() {
       const {
-        normalizeData, hasPagination, innerPager, sortData
+        normalizeData, sortData, flatColumns, innerFilters
       } = this;
-      let pagerData = normalizeData;
+      let filterData = normalizeData;
+
+      // 排序
+      filterData = sortData(filterData);
+
+      // 筛选
+      const filterKeys = Object.keys(innerFilters);
+      if (filterKeys.length > 0) {
+        const filterCols = flatColumns.filter(col => filterKeys.indexOf(col.$$_key) > -1);
+        filterData = filterCols.reduce((r, col) => {
+          const { onFilter } = col;
+          const filteredVal = innerFilters[col.$$_key] || [];
+          return isFunction(onFilter) && filteredVal.length
+            ? r.filter(record => filteredVal.some(v => onFilter(v, record, col)))
+            : r;
+        }, filterData);
+      }
+      return filterData;
+    },
+    pagerNormalizeData() {
+      const { filterAndSortData, hasPagination, innerPager } = this;
+      let pagerData = filterAndSortData;
+
+      // 分页
       if (hasPagination) {
         const { current, pageSize } = innerPager;
-        pagerData = normalizeData.slice((current - 1) * pageSize, current * pageSize);
+        pagerData = pagerData.slice((current - 1) * pageSize, current * pageSize);
       }
-      pagerData = sortData(pagerData);
+
       return pagerData;
     },
     pagerFlatData() {
@@ -186,15 +212,18 @@ export default {
     },
   },
   watch: {
-    columns(nVal, oVal) {
-      if (nVal && nVal !== oVal) {
+    columns(nVal) {
+      if (nVal) {
         this.initSortInfo();
+        this.initFilters();
       }
     },
-    value(nVal) {
+    filterAndSortData(nVal) {
       if (nVal) {
-        const { setInnerPager, innerPager } = this;
-        setInnerPager({ ...innerPager, total: nVal.length });
+        const { hasPagination, setInnerPager, innerPager } = this;
+        if (hasPagination) {
+          setInnerPager({ ...innerPager, total: nVal.length });
+        }
       }
     },
     'rowSelection.selectedRowKeys': function selectionW(nVal) {
@@ -203,7 +232,7 @@ export default {
       }
     },
     pagination(nVal) {
-      if (nVal !== undefined) {
+      if (nVal) {
         this.initPager();
       }
     },
@@ -212,6 +241,7 @@ export default {
     this.initSelectedRowkeys();
     this.initPager();
     this.initSortInfo(true);
+    this.initFilters();
   },
   methods: {
     getPopupContainer() {
@@ -261,7 +291,7 @@ export default {
       return scopedSlots;
     },
     onPagerOrFiterOrSortChange() {
-      const { innerPager, sortInfo: { column: sortColumn, order: sortOrder } } = this;
+      const { innerPager, innerFilters, sortInfo: { column: sortColumn, order: sortOrder } } = this;
       const pager = { ...innerPager };
       delete pager.on;
       let sort = {};
@@ -273,7 +303,7 @@ export default {
           columnKey: sortColumn.$$_key,
         };
       }
-      this.$emit('change', [pager, sort]);
+      this.$emit('change', [pager, { ...innerFilters }, sort]);
     },
     renderSortAndFilter(cols) {
       const {
@@ -282,19 +312,23 @@ export default {
         isSortColumn,
         toggleOrder,
         sortInfo: { order },
+        innerFilters,
         getPopupContainer,
+        onFilterDropdownConfirm,
       } = this;
       return flatRows(cols, 'children', false).map((col) => {
         const nv = { ...col };
         const { filters, sorter } = nv;
         let [sortButton, filterDropdown] = [null, null];
-        if ((Array.isArray(filters) && filters.length > 0) || nv.filterDropdown) {
+        if (!nv.children && ((Array.isArray(filters) && filters.length > 0) || nv.filterDropdown)) {
+          const selectedKeys = innerFilters[nv.$$_key] || [];
           filterDropdown = (
             <FilterDropdown
               dropdownPrefixCls={dropdownPrefixCls}
               column={nv}
-              selectedKeys={[]}
+              selectedKeys={selectedKeys}
               getPopupContainer={getPopupContainer}
+              on-confirm-filter={onFilterDropdownConfirm}
             />
           );
         }

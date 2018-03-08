@@ -1,4 +1,6 @@
+import { isFunction } from '@suning/v-utils';
 import { VMenu as Menu, VSubMenu as SubMenu, VMenuItem as MenuItem } from '@suning/v-menu';
+
 import Dropdown from '../dropdown';
 import Icon from '../icon';
 import Checkbox from '../checkbox';
@@ -55,6 +57,7 @@ export default {
         column: { filters = [] },
         renderMenus,
         innerSelectedKeys,
+        setInnerSelectedKeys,
       } = this;
       if (filters.length === 0) {
         return [];
@@ -67,11 +70,11 @@ export default {
       };
       const on = {
         click() {},
-        select(...args) {
-          console.log(...args);
+        select({ selectedKeys }) {
+          setInnerSelectedKeys(selectedKeys);
         },
-        deselect(...args) {
-          console.log(...args);
+        deselect({ selectedKeys }) {
+          setInnerSelectedKeys(selectedKeys);
         },
       };
       return <Menu {...{ props, on }}>{renderMenus(filters)}</Menu>;
@@ -88,12 +91,39 @@ export default {
     this.setInnerSelectedKeys(this.selectedKeys);
   },
   methods: {
+    setDropdownVisible(visible) {
+      const { column } = this;
+      this.dropdownVisible = visible;
+      if (isFunction(column.onFilterDropdownVisibleChange)) {
+        column.onFilterDropdownVisibleChange();
+      }
+    },
     setInnerSelectedKeys(keys) {
       this.innerSelectedKeys = keys;
     },
-    handleConfirm() {},
-    handleClearFilters() {},
-    onVisibleChange() {},
+    confirmFilter() {
+      const { column, innerSelectedKeys, selectedKeys } = this;
+      if (innerSelectedKeys !== selectedKeys) {
+        this.$emit('confirm-filter', column, innerSelectedKeys);
+      }
+    },
+    handleConfirm() {
+      const { setDropdownVisible, confirmFilter } = this;
+      setDropdownVisible(false);
+      confirmFilter();
+    },
+    handleClearFilters() {
+      const { setInnerSelectedKeys, handleConfirm } = this;
+      setInnerSelectedKeys([]);
+      handleConfirm();
+    },
+    onVisibleChange(visible) {
+      const { setDropdownVisible, confirmFilter } = this;
+      setDropdownVisible(visible);
+      if (!visible) {
+        confirmFilter();
+      }
+    },
     renderFilterIcon() {
       const { filterPrefixCls, selectedKeys } = this;
       return (
@@ -156,7 +186,7 @@ export default {
     );
     const props = {
       trigger: ['click'],
-      visible: dropdownVisible,
+      value: dropdownVisible,
       getPopupContainer,
     };
     const on = {
