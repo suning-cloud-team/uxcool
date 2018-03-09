@@ -87,7 +87,7 @@
       },
       checked() {
         const { data, selectedRowKeys } = this;
-        return data.every(v => selectedRowKeys.indexOf(v.$$_key) > -1);
+        return data.length > 0 && data.every(v => selectedRowKeys.indexOf(v.$$_key) > -1);
       },
       indeterminate() {
         const { selectedRowKeys, data } = this;

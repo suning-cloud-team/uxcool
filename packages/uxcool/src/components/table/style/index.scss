@@ -41,7 +41,6 @@ $table-header-icon-color: $text-color-secondary;
     .#{$iconfont-css-prefix}-filter,
     .#{$table-prefix-cls}-filter-icon {
       position: relative;
-      margin-left: 8px;
       font-size: $font-size-base;
       cursor: pointer;
       color: $table-header-icon-color;
@@ -55,12 +54,18 @@ $table-header-icon-color: $text-color-secondary;
       }
     }
 
-    .#{$table-prefix-cls}-column-sorter + .#{$iconfont-css-prefix}-filter {
+    .#{$table-prefix-cls}-filter-icon {
+      margin-left: 8px;
+    }
+    // modify
+    .#{$table-prefix-cls}-column-sorter + .#{$table-prefix-cls}-filter-icon {
       margin-left: 4px;
     }
-
-    .#{$table-prefix-cls}-filter-selected.#{$iconfont-css-prefix}-filter {
-      color: $primary-color;
+    // modify
+    .#{$table-prefix-cls}-filter-selected.#{$table-prefix-cls}-filter-icon {
+      .#{$iconfont-css-prefix} {
+        color: $primary-color;
+      }
     }
 
     // https://github.com/ant-design/ant-design/issues/8979
@@ -361,7 +366,17 @@ $table-header-icon-color: $text-color-secondary;
         box-shadow: $box-shadow-base;
       }
 
-      .#{$ux-prefix}-dropdown-submenu-contain-selected {
+      &-submenu-title:after {
+        font-family: uxfont !important;
+        position: absolute;
+        content: '\e903';
+        right: 8px;
+        color: rgba(0, 0, 0, 0.43);
+        @include iconfont-size-under-12px(8px);
+      }
+
+      // modify
+      .#{$ux-prefix}-dropdown-menu-submenu-selected {
         .#{$ux-prefix}-dropdown-menu-submenu-title:after {
           color: $primary-color;
           font-weight: bold;

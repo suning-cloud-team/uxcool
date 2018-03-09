@@ -43,12 +43,24 @@ export default {
     filterPrefixCls() {
       return `${this.prefixCls}-filter`;
     },
+    iconClasses() {
+      const { filterPrefixCls, selectedKeys, column } = this;
+      const filtered = 'filtered' in column ? !!column.filtered : true;
+      return {
+        [`${filterPrefixCls}-icon`]: true,
+        [`${filterPrefixCls}-selected`]: filtered && selectedKeys.length > 0,
+      };
+    },
     isMultiple() {
       const { column } = this;
       return 'filterMultiple' in column ? column.filterMultiple : true;
     },
     filterIcon() {
       return this.renderFilterIcon();
+    },
+    hasSubMenu() {
+      const { column: { filters = [] } } = this;
+      return filters.filter(v => Array.isArray(v.children) && v.children.length > 0).length > 0;
     },
     filterMenu() {
       const {
@@ -58,6 +70,7 @@ export default {
         renderMenus,
         innerSelectedKeys,
         setInnerSelectedKeys,
+        hasSubMenu,
       } = this;
       if (filters.length === 0) {
         return [];
@@ -77,7 +90,14 @@ export default {
           setInnerSelectedKeys(selectedKeys);
         },
       };
-      return <Menu {...{ props, on }}>{renderMenus(filters)}</Menu>;
+      return (
+        <Menu
+          class={{ [`${dropdownPrefixCls}-menu-without-submenu`]: !hasSubMenu }}
+          {...{ props, on }}
+        >
+          {renderMenus(filters)}
+        </Menu>
+      );
     },
   },
   watch: {
@@ -86,11 +106,22 @@ export default {
         this.setInnerSelectedKeys(nVal);
       }
     },
+    'column.filterDropdownVisible': function filterDropdownVisibleW(nVal, oVal) {
+      if (nVal !== oVal) {
+        this.initDropdownVisible();
+      }
+    },
   },
   created() {
     this.setInnerSelectedKeys(this.selectedKeys);
+    this.initDropdownVisible();
   },
   methods: {
+    initDropdownVisible() {
+      const { column } = this;
+      const visible = 'filterDropdownVisible' in column ? !!column.filterDropdownVisible : false;
+      this.dropdownVisible = visible;
+    },
     setDropdownVisible(visible) {
       const { column } = this;
       this.dropdownVisible = visible;
@@ -125,13 +156,12 @@ export default {
       }
     },
     renderFilterIcon() {
-      const { filterPrefixCls, selectedKeys } = this;
+      const { column, iconClasses } = this;
+      const filterIcon = column.filterIcon ? column.filterIcon : <Icon type="filter" />;
       return (
-        <Icon
-          type="filter"
-          title="筛选"
-          class={{ [`${filterPrefixCls}-selected`]: selectedKeys.length > 0 }}
-        />
+        <span class={iconClasses} title="筛选">
+          {filterIcon}
+        </span>
       );
     },
     renderMenuItem(item) {
@@ -162,6 +192,7 @@ export default {
   },
   render() {
     const {
+      column,
       filterIcon,
       filterMenu,
       filterPrefixCls,
@@ -171,7 +202,9 @@ export default {
       dropdownVisible,
       getPopupContainer,
     } = this;
-    const menus = (
+    const menus = column.filterDropdown ? (
+      <div>{column.filterDropdown}</div>
+      ) : (
       <div class={`${filterPrefixCls}-dropdown`}>
         {filterMenu}
         <div class={`${filterPrefixCls}-dropdown-btns`}>
