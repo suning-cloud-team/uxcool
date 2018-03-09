@@ -84,15 +84,6 @@ export default {
       if (colspan === 0) {
         return null;
       }
-      // if (process.env.NODE_ENV !== 'production') {
-      //   if (!isFunction(title) && isVNode(title)) {
-      //     warning(
-      //       false,
-      //       'when using JSX or $createElement, `title` must be a function,' +
-      //         'because VNodes must be unique.(https://vuejs.org/v2/guide/render-function.html#Constraints)'
-      //     );
-      //   }
-      // }
       // 解决使用JSX或$createElement,生成 title时,由于table和fixed table共用VNode,导致不渲染的问题,
       // VNodes must be unique.(https://vuejs.org/v2/guide/render-function.html#Constraints)
       const normalizeTitle = getNormalizeContent($createElement, column.$$_fixed, fixed, title);
