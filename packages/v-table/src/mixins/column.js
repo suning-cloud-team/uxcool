@@ -20,8 +20,8 @@ export default {
       return groupColumns.filter(v => v.fixed === 'right');
     },
     isAnyColumnsFixed() {
-      const { normalizeColumns } = this;
-      return normalizeColumns.some(v => !!v.fixed);
+      const { groupColumns } = this;
+      return groupColumns.some(v => !!v.fixed);
     },
     isAnyColumnsLeftFixed() {
       const { leftColumns } = this;
@@ -32,7 +32,7 @@ export default {
       return rightColumns.length > 0;
     },
     flatColumns() {
-      return flatCols(this.normalizeColumns);
+      return flatCols(this.groupColumns);
     },
     leftFlatColumns() {
       return flatCols(this.leftColumns);

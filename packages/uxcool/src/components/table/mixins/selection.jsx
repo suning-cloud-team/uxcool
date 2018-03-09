@@ -46,7 +46,7 @@ export default {
       };
 
       if (type !== 'radio') {
-        col.title = () => (
+        col.title = (
           <CheckboxAll
             data={changeablePagerFlatData}
             disabled={isAllCheckboxDisabled}

@@ -1,4 +1,4 @@
-import { isFunction, chainFns, getRowStyle, add } from './utils';
+import { isFunction, chainFns, getRowStyle } from './utils';
 import SubMixin from './mixins/sub';
 import ExpanderRowMixin from './mixins/expanderRow';
 import TableCell from './tableCell';
@@ -107,6 +107,7 @@ export default {
     renderCells() {
       const {
         rowPrefixCls,
+        fixed,
         record,
         cols,
         rowIdx,
@@ -119,6 +120,7 @@ export default {
       return cols.map((col, i) => (
         <table-cell
           rowPrefixCls={rowPrefixCls}
+          fixed={fixed}
           record={record}
           rowIdx={rowIdx}
           colIdx={i}

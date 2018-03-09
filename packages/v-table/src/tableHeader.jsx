@@ -1,5 +1,4 @@
-import { isFunction, isVNode, warning } from '@suning/v-utils';
-import { getKey, getRefName } from './utils';
+import { getKey, getRefName, isFunction, getNormalizeContent } from './utils';
 import SubMixin from './mixins/sub';
 import ExpanderMixin from './mixins/expander';
 
@@ -76,24 +75,27 @@ export default {
       return p;
     },
     renderCell(cell, rowIdx, colIdx) {
-      const { getCellProps } = this;
+      const { $createElement, getCellProps, fixed } = this;
       const {
         className, style, on, title, ...cellProps
       } = getCellProps(cell, rowIdx, colIdx);
+      const { column } = cell;
       const { colspan = 1 } = cellProps;
       if (colspan === 0) {
         return null;
       }
-      if (process.env.NODE_ENV !== 'production') {
-        if (!isFunction(title) && isVNode(title)) {
-          warning(
-            false,
-            'when using JSX or $createElement, `title` must be a function,' +
-              'because VNodes must be unique.(https://vuejs.org/v2/guide/render-function.html#Constraints)'
-          );
-        }
-      }
-      const normalizeTitle = isFunction(title) ? title() : title;
+      // if (process.env.NODE_ENV !== 'production') {
+      //   if (!isFunction(title) && isVNode(title)) {
+      //     warning(
+      //       false,
+      //       'when using JSX or $createElement, `title` must be a function,' +
+      //         'because VNodes must be unique.(https://vuejs.org/v2/guide/render-function.html#Constraints)'
+      //     );
+      //   }
+      // }
+      // 解决使用JSX或$createElement,生成 title时,由于table和fixed table共用VNode,导致不渲染的问题,
+      // VNodes must be unique.(https://vuejs.org/v2/guide/render-function.html#Constraints)
+      const normalizeTitle = getNormalizeContent($createElement, column.$$_fixed, fixed, title);
       return (
         <th
           class={className}

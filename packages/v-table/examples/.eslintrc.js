@@ -1,4 +1,6 @@
 const path = require('path');
 module.exports = {
-  settings: {},
+  settings: {
+    'import/core-modules': ['@suning/v-table'],
+  },
 };
