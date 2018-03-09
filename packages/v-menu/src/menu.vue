@@ -76,10 +76,14 @@
         const selectedStrKeys = selectedKeys.map(v => String(v));
         descendants.forEach((v) => {
           const eventName = String(v.eventName);
-          if (openStrKeys.indexOf(eventName) > -1) {
+          if (openStrKeys.indexOf(eventName) > -1 && openedSubMenus.indexOf(v) === -1) {
             openedSubMenus.push(v);
           }
-          if (selectedStrKeys.indexOf(eventName) > -1 && (multiple || selectedItems.length === 0)) {
+          if (
+            selectedStrKeys.indexOf(eventName) > -1 &&
+            selectedItems.indexOf(v) === -1 &&
+            (multiple || selectedItems.length === 0)
+          ) {
             selectedItems.push(v);
           }
           if (activeKey && eventName === activeKey) {
@@ -88,7 +92,10 @@
         });
       },
       addDescendants(item) {
-        this.descendants.push(item);
+        const { descendants } = this;
+        if (descendants.indexOf(item) === -1) {
+          descendants.push(item);
+        }
       },
       removeDescendants(item) {
         const { descendants } = this;
@@ -114,7 +121,11 @@
         const selectedStrKeys = selectedKeys.map(v => String(v));
         descendants.forEach((v) => {
           const eventName = String(v.eventName);
-          if (selectedStrKeys.indexOf(eventName) > -1 && (multiple || selectedItems.length === 0)) {
+          if (
+            selectedStrKeys.indexOf(eventName) > -1 &&
+            selectedItems.indexOf(v) === -1 &&
+            (multiple || selectedItems.length === 0)
+          ) {
             selectedItems.push(v);
           }
         });
