@@ -13,18 +13,19 @@
     <filter-demo />
     <!-- <sortable-demo /> -->
     <!-- <pagination-demo /> -->
-    <div class="demo">
-      <!-- {{data1}} -->
-      <!-- <ux-table :columns="cols1"
+
+    <!-- {{data1}} -->
+    <!-- <ux-table :columns="cols1"
                 v-model="data1"
                 expand-icon-col-index="-1" /> -->
-      <!-- <ux-table ref="t1"
+    <!-- <div class="demo">
+      <ux-table ref="t1"
                 :scroll="{x:'130%'}"
                 :columns="cols1"
                 :row-selection="rowSelection"
-                v-model="data1" /> -->
+                v-model="data1" />
 
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -33,7 +34,7 @@
 <script>
   import '@suning/uxcool/src/components/table/style/index.scss';
   import UxTable from '@suning/uxcool/src/components/table';
-  import { getData } from './data';
+  import { getData as originGetData } from './data';
   import PaginationDemo from './pagination.vue';
   import SortableDemo from './sortable.vue';
   import FilterDemo from './filter.vue';
@@ -53,7 +54,7 @@
             dataIndex: 'key',
           },
           {
-            fixed: false,
+            fixed: true,
             width: 200,
             title: 'Name',
             dataIndex: 'name',
@@ -67,8 +68,8 @@
             dataIndex: 'addr',
           },
         ],
-        data1: getData(12),
-        data2: getData(1),
+        data1: this.getData(12),
+        data2: this.getData(1),
         rowSelection: {
           selectedRowKeys: ['c0', 23],
           // type: 'radio',
@@ -117,6 +118,9 @@
       }, 2500);
 
       console.log('refs', this.$refs.t1);
+    },
+    methods: {
+      getData: originGetData,
     },
   };
 </script>
