@@ -12,7 +12,7 @@ export default {
       const { prefixCls, rowSelection = {} } = this;
       return {
         [`${prefixCls}-selection-column`]: true,
-        [`${prefixCls}-selection-column-custom`]: rowSelection.selections,
+        [`${prefixCls}-selection-column-custom`]: !!rowSelection.selections,
       };
     },
     selectionColumn() {
@@ -46,7 +46,7 @@ export default {
       };
 
       if (type !== 'radio') {
-        col.title = (
+        col.title = () => (
           <CheckboxAll
             data={changeablePagerFlatData}
             disabled={isAllCheckboxDisabled}

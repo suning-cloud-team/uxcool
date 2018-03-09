@@ -365,9 +365,10 @@ export default {
             </div>
           );
         }
-        nv.title = (
+        const originTitle = nv.title;
+        nv.title = () => (
           <span>
-            {nv.title}
+            {originTitle}
             {sortButton}
             {filterDropdown}
           </span>

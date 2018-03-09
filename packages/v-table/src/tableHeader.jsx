@@ -1,4 +1,5 @@
-import { getKey, getRefName, isFunction } from './utils';
+import { isFunction, isVNode, warning } from '@suning/v-utils';
+import { getKey, getRefName } from './utils';
 import SubMixin from './mixins/sub';
 import ExpanderMixin from './mixins/expander';
 
@@ -83,6 +84,16 @@ export default {
       if (colspan === 0) {
         return null;
       }
+      if (process.env.NODE_ENV !== 'production') {
+        if (!isFunction(title) && isVNode(title)) {
+          warning(
+            false,
+            'when using JSX or $createElement, `title` must be a function,' +
+              'because VNodes must be unique.(https://vuejs.org/v2/guide/render-function.html#Constraints)'
+          );
+        }
+      }
+      const normalizeTitle = isFunction(title) ? title() : title;
       return (
         <th
           class={className}
@@ -90,7 +101,7 @@ export default {
           {...{ attrs: cellProps, on }}
           key={getKey(cell.column, colIdx)}
         >
-          {title}
+          {normalizeTitle}
         </th>
       );
     },
