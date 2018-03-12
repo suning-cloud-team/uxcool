@@ -7,8 +7,11 @@
 </template>
 
 <script>
-  import '@suning/uxcool/src/components/table/style/index.scss';
-  import UxTable from '@suning/uxcool/src/components/table';
+  // import '@suning/uxcool/src/components/divider/style/index.scss';
+  // import Divider from '@suning/uxcool/src/components/divider';
+  // import '@suning/uxcool/src/components/table/style/index.scss';
+  // import UxTable from '@suning/uxcool/src/components/table';
+  import { Divider, UxTable } from '@suning/uxcool';
 
   function getCols() {
     return [
@@ -36,6 +39,7 @@
           return (
             <span>
               <a href="#">Action-{record.name}</a>
+              <Divider type="vertical" />
               <a href="#">Delete</a>
             </span>
           );
@@ -70,6 +74,7 @@
   export default {
     components: {
       UxTable,
+      Divider,
     },
     data() {
       return {
