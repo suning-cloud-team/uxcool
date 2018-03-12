@@ -182,6 +182,17 @@ export default {
     changeablePagerFlatData() {
       return this.pagerFlatData.filter(v => !v.$$_checkboxDisabled);
     },
+    tableClasses() {
+      const {
+        prefixCls, size, bordered, pagerNormalizeData, hideHeader
+      } = this;
+      return {
+        [`${prefixCls}-${size}`]: true,
+        [`${prefixCls}-bordered`]: bordered,
+        [`${prefixCls}-empty`]: pagerNormalizeData.length === 0,
+        [`${prefixCls}-without-column-header`]: hideHeader,
+      };
+    },
     bindProps() {
       const {
         $props,
@@ -381,12 +392,13 @@ export default {
     },
     renderTable() {
       const {
-        $attrs, bindProps, $listeners, $slots, getScopedSlots
+        $attrs, tableClasses, bindProps, $listeners, $slots, getScopedSlots
       } = this;
 
       const scopedSlots = getScopedSlots();
       return (
         <v-table
+          class={tableClasses}
           {...{
             scopedSlots,
             attrs: $attrs,

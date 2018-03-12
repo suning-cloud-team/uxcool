@@ -10,7 +10,8 @@
         </span>
       </ux-table>   -->
   <div>
-    <filter-demo />
+    <normal-demo/>
+    <!-- <filter-demo /> -->
     <!-- <sortable-demo /> -->
     <!-- <pagination-demo /> -->
 
@@ -35,6 +36,7 @@
   import '@suning/uxcool/src/components/table/style/index.scss';
   import UxTable from '@suning/uxcool/src/components/table';
   import { getData as originGetData } from './data';
+  import NormalDemo from './normal.vue';
   import PaginationDemo from './pagination.vue';
   import SortableDemo from './sortable.vue';
   import FilterDemo from './filter.vue';
@@ -42,6 +44,7 @@
   export default {
     components: {
       UxTable,
+      NormalDemo,
       PaginationDemo,
       SortableDemo,
       FilterDemo,
