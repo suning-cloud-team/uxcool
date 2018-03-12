@@ -204,7 +204,7 @@
       if (!disabled && isInlineMode) {
         titleAttrs.on = {
           click(e) {
-            e.stopPropagation();
+            // e.stopPropagation();
             onClick(e);
           },
           mouseenter: onTitleMouseEnter,

@@ -9,11 +9,10 @@ export function isVNode(node = {}) {
 
 export function getVNodeOptions(node) {
   if (!isVNode(node)) {
-    return {};
+    return null;
   }
 
-  const componentOptions = node.componentOptions || {};
-  return componentOptions;
+  return node.componentOptions;
 }
 
 export function updateVNodeProps(node, handler = {}) {

@@ -1,5 +1,5 @@
 import VDropdown from '@suning/v-dropdown';
-import { warning, updateVNodeProps, getVNodeOptions } from '@suning/v-utils';
+import { warning, isPlainObject, updateVNodeProps, getVNodeOptions } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
 
 export default {
@@ -72,7 +72,15 @@ export default {
     const triggerNode = trigger[0];
     // updateVNodeProps(triggerNode,['prefixCls'])
     const { data: triggerData } = triggerNode;
-    triggerData.class = [triggerData.class, `${prefixCls}-trigger`];
+    const [clazz, nClazz] = [triggerData.class, `${prefixCls}-trigger`];
+    if (
+      (isPlainObject(clazz) && !(nClazz in clazz)) ||
+      ((Array.isArray(clazz) || typeof clazz === 'string') && clazz.indexOf(nClazz) === -1)
+    ) {
+      triggerData.class = [triggerData.class, `${prefixCls}-trigger`];
+    } else if (!clazz) {
+      triggerData.class = nClazz;
+    }
     updateVNodeProps(triggerNode, {
       disabled() {
         return disabled;
@@ -86,13 +94,15 @@ export default {
     });
     const opts = getVNodeOptions(overlayNode);
 
-    let { multiple } = opts.propsData || { multiple: false };
-    multiple = multiple === '' || multiple;
-    let closeOverlay = closeOnSelect;
-    if (multiple) {
-      closeOverlay = false;
+    if (opts) {
+      let { multiple } = opts.propsData || { multiple: false };
+      multiple = multiple === '' || multiple;
+      let closeOverlay = closeOnSelect;
+      if (multiple) {
+        closeOverlay = false;
+      }
+      bindProps.closeOnSelect = closeOverlay;
     }
-    bindProps.closeOnSelect = closeOverlay;
 
     return (
       <VDropdown {...{ props: bindProps, on: $listeners }}>

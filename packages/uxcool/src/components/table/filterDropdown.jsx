@@ -221,6 +221,7 @@ export default {
       trigger: ['click'],
       value: dropdownVisible,
       getPopupContainer,
+      closeOnSelect: false,
     };
     const on = {
       'visible-change': onVisibleChange,
