@@ -39,3 +39,5 @@ export * from './radio';
 export * from './dropdown';
 
 export { default as UxTable } from './table';
+
+export { default as UxDivider } from './divider';

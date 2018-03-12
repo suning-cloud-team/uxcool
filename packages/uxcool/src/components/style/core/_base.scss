@@ -2,7 +2,7 @@
 @font-face {
   font-family: 'Helvetica Neue For Number';
   src: local('Helvetica Neue');
-  unicode-range: U+30-39;
+  unicode-range: U + 30-39;
 }
 
 *,
@@ -141,14 +141,6 @@ a {
     cursor: not-allowed;
     pointer-events: none;
   }
-}
-
-.#{$ux-prefix}-divider {
-  margin: 0 6px;
-  display: inline-block;
-  height: 8px;
-  width: 1px;
-  background: #ccc;
 }
 
 code,
