@@ -103,7 +103,7 @@ export default {
         }
       }
     },
-    handleAllSelectionChange(op) {
+    handleAllSelectionChange(op, onSelectFn, isDefaultSelection) {
       const { changeablePagerFlatData, onRowSelectionChange } = this;
       let selectedRowKeys = [...this.selectedRowKeys];
       const changeableFlatDataKeys = changeablePagerFlatData.map(v => v.$$_key);
@@ -133,7 +133,12 @@ export default {
         default:
           break;
       }
-      onRowSelectionChange(selectedRowKeys, p);
+
+      if (!isDefaultSelection && isFunction(onSelectFn)) {
+        onSelectFn(changeableFlatDataKeys);
+      } else {
+        onRowSelectionChange(selectedRowKeys, p);
+      }
     },
     handleSelectionChange(record, e) {
       const { onRowSelectionChange, rowSelection: { type } } = this;

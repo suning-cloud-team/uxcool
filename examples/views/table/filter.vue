@@ -130,6 +130,7 @@
         data1: this.getData(12),
         pagination: {},
         rowSelection: {
+          selections: true,
           selectedRowKeys: [],
           onChange(...args) {
             console.log('row onChange', ...args);

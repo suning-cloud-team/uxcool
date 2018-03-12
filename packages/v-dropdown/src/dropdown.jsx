@@ -131,19 +131,17 @@ export default {
     }
     const overlayNode = overlay[0];
     const componentOptions = getVNodeOptions(overlayNode);
-    const nodeData = overlayNode.data || {};
-    overlayNode.data = nodeData;
+
     if (componentOptions) {
       const { propsData: overlayAttrs } = componentOptions;
       componentOptions.propsData = {
         ...overlayAttrs,
         prefixCls: `${prefixCls}-menu`,
       };
-      nodeData.nativeOn = { ...nodeData.nativeOn, click: onClick };
-    } else {
-      nodeData.on = { ...nodeData.on, click: onClick };
     }
-
+    const nodeData = overlayNode.data || {};
+    overlayNode.data = nodeData;
+    nodeData.on = { ...nodeData.on, click: onClick };
     return (
       <Trigger {...{ attrs: $attrs, props, on }}>
         <template slot="trigger">{$slots.trigger}</template>

@@ -5,23 +5,46 @@
               :disabled="disabled"
               :indeterminate="indeterminate"
               @change="onChange" />
+    <dropdown v-if="normalizeSelections.length > 0"
+              :get-popup-container="getPopupContainer">
+      <div slot="trigger"
+           :class="`${boxPrefixCls}-down`">
+        <icon type="down" />
+      </div>
+      <ux-menu slot="overlay"
+               :selected-keys="[]">
+        <menu-item v-for="(selection, i) in normalizeSelections"
+                   :key="i"
+                   :name="selection.key||i">
+          <div @click="onMenuItemClick(selection)">
+            {{ selection.text }}
+          </div>
+        </menu-item>
+      </ux-menu>
+
+    </dropdown>
   </div>
 </template>
 
 <script>
   import { buildComponentName } from '../utils';
   import SubMixin from './mixins/sub';
+  import Icon from '../icon';
   import Checkbox from '../checkbox';
+  import Dropdown from '../dropdown';
+  import { UxMenu, UxMenuItem as MenuItem } from '../menu';
 
   const defaultSelections = [
     {
       key: 'all',
       text: '全选当页',
+      isDefault: true,
       onSelect: () => {},
     },
     {
       key: 'invert',
       text: '反选当页',
+      isDefault: true,
       onSelect: () => {},
     },
   ];
@@ -30,6 +53,10 @@
     name: buildComponentName('SelectionCheckboxAll'),
     components: {
       Checkbox,
+      Dropdown,
+      Icon,
+      UxMenu,
+      MenuItem,
     },
     mixins: [SubMixin],
     props: {
@@ -45,7 +72,7 @@
       },
       selections: {
         type: [Array, Boolean],
-        default: true,
+        default: false,
       },
       hideDefaultSelections: {
         type: Boolean,
@@ -100,6 +127,10 @@
       onChange(e) {
         const { checked } = e.target;
         this.$emit('change', checked ? 'all' : 'removeAll');
+      },
+      onMenuItemClick(selection) {
+        const { key, isDefault = false, onSelect } = selection;
+        this.$emit('change', key, onSelect, isDefault);
       },
     },
   };

@@ -12,7 +12,7 @@
   <div id="app">
     <v-dropdown @overlay-click="onOverlayClick">
       <span slot="trigger">trigger</span>
-      <v-menu slot="overlay" @click="onClick" @click.native="onClick">
+      <v-menu slot="overlay" @click="onClick" @click.native="onNativeClick">
         <v-menu-item name="sub-menu-item-3-1">sub-menu-item-1</v-menu-item>
         <v-menu-item name="sub-menu-item-3-2">sub-menu-item-2</v-menu-item>
         <v-menu-item name="sub-menu-item-4">

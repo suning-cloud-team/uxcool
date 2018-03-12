@@ -18,5 +18,8 @@ const vm = new Vue({
     onOverlayClick(e) {
       console.log('on overlay click', e);
     },
+    onNativeClick(e) {
+      console.log('on native click', e);
+    },
   },
 });
