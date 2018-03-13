@@ -22,7 +22,6 @@ const babelOpts = {
       {
         libraryName: '@suning/uxcool',
         customName(methodName) {
-          console.log('methodName', methodName);
           const name = /^ux-/.test(methodName) ? methodName.replace(/^ux-/, '') : methodName;
           return path.join('@suning/uxcool', 'src/components', name);
         },
