@@ -46,7 +46,7 @@
       colStyle(col) {
         const { width } = col;
         let style = null;
-        if (width) {
+        if ('width' in col) {
           const w = isPxOrPercentage(width) ? width : `${width}px`;
           style = {
             width: w,

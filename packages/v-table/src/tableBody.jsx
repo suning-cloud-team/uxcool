@@ -30,6 +30,14 @@ export default {
     }
   },
   methods: {
+    /**
+     * 渲染数据行
+     * @param {Array} rowDatas 数据
+     * @param {Number} indent 层级
+     * @param {Object} rowProps 行的额外属性
+     * @param {Boolean} needExpand 是否可展开
+     * @param {Array} ancestorKeys 当前行的所有父级, 用于判断当前行的隐藏和显示
+     */
     renderRows(rowDatas, indent, rowProps, needExpand = true, ancestorKeys = []) {
       const {
         prefixCls,
