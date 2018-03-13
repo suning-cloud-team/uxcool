@@ -8,7 +8,7 @@ export default {
     },
     sortColumns() {
       const { flatColumns } = this;
-      return flatColumns.filter(v => 'sortOrder' in v && v.sortOrder);
+      return flatColumns.filter(v => 'sortOrder' in v);
     },
   },
   methods: {
@@ -24,13 +24,13 @@ export default {
       this.sortInfo = sortInfo;
     },
     initSortInfo(useDefaultSortOrder = false) {
-      const { defaultSortColumn, sortColumns, setSortInfo } = this;
-      let sort = {
-        column: null,
-        order: null,
-      };
+      const {
+        defaultSortColumn, sortColumns, sortInfo, setSortInfo
+      } = this;
+      let sort = sortInfo;
+      // 受控模式
       if (sortColumns.length > 0) {
-        const col = sortColumns[0];
+        const col = sortColumns.filter(v => v.sortOrder)[0] || { order: null };
         sort = {
           column: col,
           order: col.sortOrder,

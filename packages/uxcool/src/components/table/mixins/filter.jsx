@@ -5,7 +5,7 @@ export default {
     filteredValueColumns() {
       const { flatColumns } = this;
       // 只支持最下层的列,及没有下级且有filterValue的列
-      return flatColumns.filter(v => !v.children && v.filteredValue);
+      return flatColumns.filter(v => !v.children && 'filteredValue' in v);
     },
   },
   methods: {
@@ -19,7 +19,11 @@ export default {
         (r, v) => {
           const nr = r;
           const val = v.filteredValue;
-          nr[v.$$_key] = Array.isArray(val) ? val : [val];
+          if (val) {
+            nr[v.$$_key] = Array.isArray(val) ? val : [val];
+          } else {
+            nr[v.$$_key] = null;
+          }
           return nr;
         },
         { ...innerFilters }

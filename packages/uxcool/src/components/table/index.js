@@ -1,3 +1,3 @@
-import UxTable from './table';
+import Table from './table';
 
-export default UxTable;
+export default Table;

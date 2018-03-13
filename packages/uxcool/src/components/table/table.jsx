@@ -84,6 +84,9 @@ export default {
         [`${prefixCls}-wrapper`]: true,
       };
     },
+    hasRowSelection() {
+      return !!this.rowSelection;
+    },
     hasPagination() {
       return !!this.pagination;
     },
@@ -114,6 +117,7 @@ export default {
           const nv = v;
           nv.$$_checkboxDisabled = false;
           nv.$$_checkboxChecked = false;
+          nv.$$_selected = false;
           if (isFunction(getCheckboxProps)) {
             const { defaultChecked = false, disabled = false } = getCheckboxProps(v);
             nv.$$_checkboxDisabled = !!disabled;
@@ -164,8 +168,27 @@ export default {
       return filterData;
     },
     pagerNormalizeData() {
-      const { filterAndSortData, hasPagination, innerPager } = this;
+      const {
+        filterAndSortData,
+        hasPagination,
+        innerPager,
+        hasRowSelection,
+        selectedRowKeys,
+      } = this;
       let pagerData = filterAndSortData;
+
+      if (hasRowSelection) {
+        // 确定数据行是否选中
+        pagerData = pagerData.map((v) => {
+          const nv = v;
+          if (selectedRowKeys.indexOf(v.$$_key) > -1) {
+            nv.$$_selected = true;
+          } else {
+            nv.$$_selected = false;
+          }
+          return nv;
+        });
+      }
 
       // 分页
       if (hasPagination) {
@@ -249,7 +272,7 @@ export default {
     },
   },
   created() {
-    this.initSelectedRowkeys();
+    this.initSelectedRowkeys(true);
     this.initPager();
     this.initSortInfo(true);
     this.initFilters();
@@ -258,7 +281,7 @@ export default {
     getPopupContainer() {
       return this.$el;
     },
-    initSelectedRowkeys() {
+    initSelectedRowkeys(init = false) {
       const {
         rowSelection = {},
         addSelectedRowKeys,
@@ -266,10 +289,10 @@ export default {
         defaultSelectedRowKeys,
       } = this;
       const { selectedRowKeys = [], type } = rowSelection;
-      let keys = addSelectedRowKeys(
-        [...selectedRowKeys.map(v => String(v))],
-        defaultSelectedRowKeys
-      );
+      let keys = selectedRowKeys.map(v => String(v));
+      if (init) {
+        keys = addSelectedRowKeys(keys, defaultSelectedRowKeys);
+      }
       if (type === 'radio' && keys.length > 0) {
         keys = [keys[0]];
       }
@@ -314,7 +337,7 @@ export default {
           columnKey: sortColumn.$$_key,
         };
       }
-      this.$emit('change', [pager, { ...innerFilters }, sort]);
+      this.$emit('change', pager, { ...innerFilters }, sort);
     },
     renderSortAndFilter(cols) {
       const {

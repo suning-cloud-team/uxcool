@@ -11,6 +11,13 @@
       </ux-table>   -->
   <div>
     <normal-demo/>
+    <selection-single-demo/>
+    <selection-demo/>
+    <selection-row-demo/>
+    <selection-op-demo/>
+    <selection-custom-demo/>
+    <sort-filter-demo/>
+    <sort-filter-reset-demo/>
     <!-- <filter-demo /> -->
     <!-- <sortable-demo /> -->
     <!-- <pagination-demo /> -->
@@ -37,6 +44,13 @@
   import UxTable from '@suning/uxcool/src/components/table';
   import { getData as originGetData } from './data';
   import NormalDemo from './normal.vue';
+  import SelectionSingleDemo from './selectionSingle.vue';
+  import SelectionDemo from './selection.vue';
+  import SelectionRowDemo from './selectionRow.vue';
+  import SelectionOpDemo from './selectionOp.vue';
+  import SelectionCustomDemo from './selectionCustom.vue';
+  import SortFilterDemo from './sortFilter.vue';
+  import sortFilterResetDemo from './sortFilterReset.vue';
   import PaginationDemo from './pagination.vue';
   import SortableDemo from './sortable.vue';
   import FilterDemo from './filter.vue';
@@ -45,6 +59,13 @@
     components: {
       UxTable,
       NormalDemo,
+      SelectionSingleDemo,
+      SelectionDemo,
+      SelectionRowDemo,
+      SelectionOpDemo,
+      SelectionCustomDemo,
+      SortFilterDemo,
+      sortFilterResetDemo,
       PaginationDemo,
       SortableDemo,
       FilterDemo,

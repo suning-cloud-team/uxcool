@@ -18,6 +18,7 @@ export default {
     selectionColumn() {
       const {
         changeablePagerFlatData,
+        hasRowSelection,
         rowSelection = {},
         isAnyColumnsLeftFixed,
         isAllCheckboxDisabled,
@@ -26,36 +27,41 @@ export default {
         handleAllSelectionChange,
         handleSelectionChange,
       } = this;
-      const {
-        fixed, type, selections, hideDefaultSelections
-      } = rowSelection;
-      const col = {
-        key: 'selection-column',
-        fixed: fixed || isAnyColumnsLeftFixed,
-        className: selectionColumnClasses,
-        cellRender(_, record) {
-          return (
-            <Checkbox
-              type={type}
-              disabled={record.$$_checkboxDisabled}
-              record={record}
-              on-change={handleSelectionChange}
+      let col = {};
+
+      if (hasRowSelection) {
+        const {
+          fixed, type, selections, hideDefaultSelections, columnWidth
+        } = rowSelection;
+        col = {
+          key: 'selection-column',
+          fixed: fixed || isAnyColumnsLeftFixed,
+          className: selectionColumnClasses,
+          width: columnWidth,
+          cellRender(_, record) {
+            return (
+              <Checkbox
+                type={type}
+                disabled={record.$$_checkboxDisabled}
+                record={record}
+                on-change={handleSelectionChange}
+              />
+            );
+          },
+        };
+
+        if (type !== 'radio') {
+          col.title = (
+            <CheckboxAll
+              data={changeablePagerFlatData}
+              disabled={isAllCheckboxDisabled}
+              selections={selections}
+              hideDefaultSelections={hideDefaultSelections}
+              getPopupContainer={getPopupContainer}
+              on-change={handleAllSelectionChange}
             />
           );
-        },
-      };
-
-      if (type !== 'radio') {
-        col.title = (
-          <CheckboxAll
-            data={changeablePagerFlatData}
-            disabled={isAllCheckboxDisabled}
-            selections={selections}
-            hideDefaultSelections={hideDefaultSelections}
-            getPopupContainer={getPopupContainer}
-            on-change={handleAllSelectionChange}
-          />
-        );
+        }
       }
 
       return col;
@@ -63,9 +69,9 @@ export default {
   },
   methods: {
     renderRowSelection() {
-      const { normalizeColumns, selectionColumn, rowSelection } = this;
+      const { normalizeColumns, selectionColumn, hasRowSelection } = this;
       const columns = [...normalizeColumns];
-      if (rowSelection) {
+      if (hasRowSelection) {
         columns.unshift(selectionColumn);
       }
 

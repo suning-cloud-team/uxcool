@@ -1,8 +1,9 @@
 <template>
   <div class="demo">
-    <h6>normal</h6>
+    <h6>selection</h6>
     <ux-table :columns="columns"
-              v-model="data" />
+              v-model="data"
+              :row-selection="rowSelection" />
   </div>
 </template>
 
@@ -16,7 +17,7 @@
         title: 'Name',
         dataIndex: 'name',
         cellRender(text) {
-          return <a href="#">{text}</a>;
+          return <a>{text}</a>;
         },
       },
       {
@@ -28,18 +29,6 @@
         key: 'addr',
         title: 'Addr',
         dataIndex: 'address',
-      },
-      {
-        title: 'Action',
-        cellRender(_, record) {
-          return (
-            <span>
-              <a href="#">Action-{record.name}</a>
-              <Divider type="vertical" />
-              <a href="#">Delete</a>
-            </span>
-          );
-        },
       },
     ];
   }
@@ -64,6 +53,12 @@
         age: 32,
         address: 'Sidney No. 1 Lake Park',
       },
+      {
+        key: '4',
+        name: 'Disabled User',
+        age: 99,
+        address: 'Sidney No. 1 Lake Park',
+      },
     ];
   }
 
@@ -76,6 +71,18 @@
       return {
         columns: [],
         data: [],
+        rowSelection: {
+          selectedRowKeys: ['3'],
+          onChange(selectedRowKeys, selectedRow, op, prevSelectRowKeys) {
+            console.log('selectedRowKeys', selectedRowKeys, selectedRow, op, prevSelectRowKeys);
+            this.selectedRowKeys = selectedRowKeys;
+          },
+          getCheckboxProps(record) {
+            return {
+              disabled: record.name === 'Disabled User',
+            };
+          },
+        },
       };
     },
     created() {
