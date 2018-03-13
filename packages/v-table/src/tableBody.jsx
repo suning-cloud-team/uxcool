@@ -44,7 +44,8 @@ export default {
       const needIndentSpaced = getNeedIndentSpaced(rowDatas);
       return rowDatas.map((record) => {
         const { idx } = nRowProps;
-        const key = getRowKey(rowKey, record, idx);
+        const nRecord = { ...record };
+        const key = getRowKey(rowKey, nRecord, idx);
         const nextAcestorKeys = [...ancestorKeys, key];
         const rows = [
           <table-row
@@ -53,7 +54,7 @@ export default {
             refInFor
             key={key}
             cols={cols}
-            record={record}
+            record={nRecord}
             rowIdx={idx}
             fixed={fixed}
             uid={key}
@@ -64,7 +65,7 @@ export default {
           />,
         ];
         nRowProps.idx += 1;
-        rows.push(...renderExpandRows(record, indent, nRowProps, nextAcestorKeys));
+        rows.push(...renderExpandRows(nRecord, indent, nRowProps, nextAcestorKeys));
         return rows;
       });
     },

@@ -44,11 +44,15 @@ export default {
       const { currentHoverRow } = this;
       return this.uid === currentHoverRow;
     },
+    isSelected() {
+      return this.record.$$_selected;
+    },
     classes() {
-      const { rowPrefixCls, isHover } = this;
+      const { rowPrefixCls, isHover, isSelected } = this;
       return {
         [rowPrefixCls]: true,
         [`${rowPrefixCls}-hover`]: isHover,
+        [`${rowPrefixCls}-selected`]: isSelected,
       };
     },
     rowStyle() {
