@@ -1,6 +1,8 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Modal<span class="subtitle">模态框</span></h1>
+    <h1 class="ux-heading">Modal
+      <span class="subtitle">模态框</span>
+    </h1>
 
     <demo-basic></demo-basic>
     <demo-hide-footer></demo-hide-footer>
@@ -12,10 +14,11 @@
     <demo-message></demo-message>
 
     <hr>
-    <ux-heading level="2" id="api">API</ux-heading>
+    <ux-heading level="2"
+                id="api">API</ux-heading>
 
     <div class="api">
-      <table class="ux-table ux-table-striped-vertical api-table">
+      <table class="api-table">
         <caption>UxModal Props</caption>
         <thead>
           <tr>
@@ -142,7 +145,7 @@
           </tr>
         </tbody>
       </table>
-      <table class="ux-table ux-table-striped-vertical api-table">
+      <table class="api-table">
         <caption>UxModal Events</caption>
         <thead>
           <tr>
@@ -169,7 +172,7 @@
           </tr>
         </tbody>
       </table>
-      <table class="ux-table ux-table-striped-vertical api-table">
+      <table class="api-table">
         <caption>UxModal Slots</caption>
         <thead>
           <tr>
@@ -189,7 +192,8 @@
         </tbody>
       </table>
 
-      <ux-heading level="3" id="methods">UxModal.method()</ux-heading>
+      <ux-heading level="3"
+                  id="methods">UxModal.method()</ux-heading>
 
       <p>包括:</p>
       <ul class="list-styled">
@@ -227,7 +231,7 @@
         <code>rejected</code>; 接收一个
         <code>Object</code> 作为参数, 具体属性如下:</p>
 
-      <table class="ux-table ux-table-striped-vertical api-table">
+      <table class="api-table">
         <caption>Params</caption>
         <thead>
           <tr>
@@ -310,25 +314,25 @@
 </template>
 
 <script>
-import demoBasic from './basic.vue';
-import demoHideFooter from './hideFooter.vue';
-import demoCustom from './custom.vue';
-import demoPosition from './position.vue';
-import demoDisableClose from './disableClose.vue';
-import demoNest from './nest.vue';
-import demoConfirm from './confirm.vue';
-import demoMessage from './message.vue';
+  import demoBasic from './basic.vue';
+  import demoHideFooter from './hideFooter.vue';
+  import demoCustom from './custom.vue';
+  import demoPosition from './position.vue';
+  import demoDisableClose from './disableClose.vue';
+  import demoNest from './nest.vue';
+  import demoConfirm from './confirm.vue';
+  import demoMessage from './message.vue';
 
-export default {
-  components: {
-    demoBasic,
-    demoHideFooter,
-    demoCustom,
-    demoPosition,
-    demoDisableClose,
-    demoNest,
-    demoConfirm,
-    demoMessage,
-  },
-};
+  export default {
+    components: {
+      demoBasic,
+      demoHideFooter,
+      demoCustom,
+      demoPosition,
+      demoDisableClose,
+      demoNest,
+      demoConfirm,
+      demoMessage,
+    },
+  };
 </script>

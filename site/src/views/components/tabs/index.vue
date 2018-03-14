@@ -1,6 +1,8 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Tabs<span class="subtitle">标签页</span></h1>
+    <h1 class="ux-heading">Tabs
+      <span class="subtitle">标签页</span>
+    </h1>
     <demo-basic></demo-basic>
     <demo-disabled></demo-disabled>
     <demo-custom-icon></demo-custom-icon>
@@ -10,8 +12,9 @@
     <demo-card></demo-card>
 
     <hr>
-    <ux-heading level="2" id="api">API</ux-heading>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <ux-heading level="2"
+                id="api">API</ux-heading>
+    <table class="api-table">
       <caption>UxTabs Props</caption>
       <thead>
         <tr>
@@ -49,7 +52,7 @@
       </tbody>
     </table>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxTabs Events</caption>
       <thead>
         <tr>
@@ -77,7 +80,7 @@
       </tbody>
     </table>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxTabPane Props</caption>
       <thead>
         <tr>
@@ -109,7 +112,7 @@
       </tbody>
     </table>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxTabPane Slots</caption>
       <thead>
         <tr>
@@ -128,23 +131,23 @@
 </template>
 
 <script>
-import DemoBasic from './basic.vue';
-import DemoDisabled from './disabled.vue';
-import DemoCustomIcon from './customIcon.vue';
-import DemoScroll from './scroll.vue';
-import DemoSize from './size.vue';
-import DemoPosition from './position.vue';
-import DemoCard from './card.vue';
+  import DemoBasic from './basic.vue';
+  import DemoDisabled from './disabled.vue';
+  import DemoCustomIcon from './customIcon.vue';
+  import DemoScroll from './scroll.vue';
+  import DemoSize from './size.vue';
+  import DemoPosition from './position.vue';
+  import DemoCard from './card.vue';
 
-export default {
-  components: {
-    DemoBasic,
-    DemoDisabled,
-    DemoCustomIcon,
-    DemoScroll,
-    DemoSize,
-    DemoPosition,
-    DemoCard,
-  },
-};
+  export default {
+    components: {
+      DemoBasic,
+      DemoDisabled,
+      DemoCustomIcon,
+      DemoScroll,
+      DemoSize,
+      DemoPosition,
+      DemoCard,
+    },
+  };
 </script>

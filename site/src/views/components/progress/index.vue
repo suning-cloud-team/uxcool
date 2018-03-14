@@ -1,14 +1,17 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Progress<span class="subtitle">进度条</span></h1>
+    <h1 class="ux-heading">Progress
+      <span class="subtitle">进度条</span>
+    </h1>
 
     <demo-basic></demo-basic>
     <demo-custom></demo-custom>
 
     <hr>
 
-    <ux-heading level="2" id="api">API</ux-heading>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <ux-heading level="2"
+                id="api">API</ux-heading>
+    <table class="api-table">
       <caption>Props</caption>
       <thead>
         <tr>
@@ -49,13 +52,13 @@
 </template>
 
 <script>
-import demoBasic from './basic.vue';
-import demoCustom from './custom.vue';
+  import demoBasic from './basic.vue';
+  import demoCustom from './custom.vue';
 
-export default {
-  components: {
-    demoBasic,
-    demoCustom,
-  },
-};
+  export default {
+    components: {
+      demoBasic,
+      demoCustom,
+    },
+  };
 </script>

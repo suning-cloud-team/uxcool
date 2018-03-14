@@ -13,7 +13,7 @@
                 id="api">API</ux-heading>
 
     <div class="api">
-      <table class="ux-table ux-table-striped-vertical api-table">
+      <table class="api-table">
         <caption>UxMenu Props</caption>
         <thead>
           <tr>
@@ -68,7 +68,7 @@
           </tr>
         </tbody>
       </table>
-      <table class="ux-table ux-table-striped-vertical api-table">
+      <table class="api-table">
         <caption>UxMenu Events</caption>
         <thead>
           <tr>
@@ -105,7 +105,7 @@
           </tr>
         </tbody>
       </table>
-      <table class="ux-table ux-table-striped-vertical api-table">
+      <table class="api-table">
         <caption>UxMenuItem Props</caption>
         <thead>
           <tr>
@@ -130,7 +130,7 @@
           </tr>
         </tbody>
       </table>
-      <table class="ux-table ux-table-striped-vertical api-table">
+      <table class="api-table">
         <caption>UxSubMenu Props</caption>
         <thead>
           <tr>
@@ -155,7 +155,7 @@
           </tr>
         </tbody>
       </table>
-      <table class="ux-table ux-table-striped-vertical api-table">
+      <table class="api-table">
         <caption>UxSubMenu Events</caption>
         <thead>
           <tr>
@@ -174,7 +174,7 @@
           </tr>
         </tbody>
       </table>
-      <table class="ux-table ux-table-striped-vertical api-table">
+      <table class="api-table">
         <caption>UxMenuItemGroup Props</caption>
         <thead>
           <tr>

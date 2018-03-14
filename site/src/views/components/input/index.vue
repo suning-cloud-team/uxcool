@@ -1,13 +1,16 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Input<span class="subtitle">输入框</span></h1>
+    <h1 class="ux-heading">Input
+      <span class="subtitle">输入框</span>
+    </h1>
     <demo-textarea>
     </demo-textarea>
     <demo-textarea-autosize>
     </demo-textarea-autosize>
     <hr>
-    <ux-heading level="2" id="api">API</ux-heading>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <ux-heading level="2"
+                id="api">API</ux-heading>
+    <table class="api-table">
       <caption>UxTextarea Props</caption>
       <thead>
         <tr>
@@ -40,7 +43,7 @@
     </table>
     <p>以及原生
       <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea">textarea</a> 自带的属性</p>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <thead>
         <tr>
           <th>事件名</th>
@@ -75,13 +78,14 @@
 </template>
 
 <script>
-import DemoTextarea from './textarea.vue';
-import DemoTextareaAutosize from './textareaAutosize.vue';
+  import DemoTextarea from './textarea.vue';
+  import DemoTextareaAutosize from './textareaAutosize.vue';
 
-export default {
-  components: {
-    DemoTextarea,
-    DemoTextareaAutosize,
-  },
-};
+  export default {
+    components: {
+      DemoTextarea,
+      DemoTextareaAutosize,
+    },
+  };
+
 </script>
