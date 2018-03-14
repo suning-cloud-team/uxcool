@@ -1,5 +1,5 @@
 <template>
-  <div :class="[classes,{[`${prefixCls}-with-text`]: $slots.default}]">
+  <div :class="[classes,{[`${prefixCls}-with-text${orientation ? `-${orientation}` : ''}`]: $slots.default}]">
     <span v-if="$slots.default"
           :class="`${prefixCls}-inner-text`">
       <slot/>
@@ -28,6 +28,13 @@
       dashed: {
         type: Boolean,
         default: false,
+      },
+      orientation: {
+        type: String,
+        default: '',
+        validate(val) {
+          return ['left', 'right'].indexOf(val) > -1;
+        },
       },
     },
     computed: {
