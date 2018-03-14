@@ -23,6 +23,8 @@ import Card from './views/card/index';
 import Checkbox from './views/checkbox/index';
 import Radio from './views/radio/index';
 import Table from './views/table/index';
+import Dropdown from './views/dropdown/index';
+import Divider from './views/divider/index';
 
 Vue.use(Router);
 const routes = [
@@ -140,6 +142,16 @@ const routes = [
     name: 'Table',
     path: '/table',
     component: Table,
+  },
+  {
+    name: 'Dropdown',
+    path: '/dropdown',
+    component: Dropdown,
+  },
+  {
+    name: 'Divider',
+    path: '/divider',
+    component: Divider,
   },
 ];
 

@@ -10,19 +10,30 @@
         </span>
       </ux-table>   -->
   <div>
-    <pagination-demo />
-    <div class="demo">
-      <!-- {{data1}} -->
-      <!-- <ux-table :columns="cols1"
+    <normal-demo/>
+    <selection-single-demo/>
+    <selection-demo/>
+    <selection-row-demo/>
+    <selection-op-demo/>
+    <selection-custom-demo/>
+    <sort-filter-demo/>
+    <sort-filter-reset-demo/>
+    <!-- <filter-demo /> -->
+    <!-- <sortable-demo /> -->
+    <!-- <pagination-demo /> -->
+
+    <!-- {{data1}} -->
+    <!-- <ux-table :columns="cols1"
                 v-model="data1"
                 expand-icon-col-index="-1" /> -->
-      <!-- <ux-table ref="t1"
+    <!-- <div class="demo">
+      <ux-table ref="t1"
                 :scroll="{x:'130%'}"
                 :columns="cols1"
                 :row-selection="rowSelection"
-                v-model="data1" /> -->
+                v-model="data1" />
 
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -31,13 +42,33 @@
 <script>
   import '@suning/uxcool/src/components/table/style/index.scss';
   import UxTable from '@suning/uxcool/src/components/table';
-  import { getData } from './data';
+  import { getData as originGetData } from './data';
+  import NormalDemo from './normal.vue';
+  import SelectionSingleDemo from './selectionSingle.vue';
+  import SelectionDemo from './selection.vue';
+  import SelectionRowDemo from './selectionRow.vue';
+  import SelectionOpDemo from './selectionOp.vue';
+  import SelectionCustomDemo from './selectionCustom.vue';
+  import SortFilterDemo from './sortFilter.vue';
+  import sortFilterResetDemo from './sortFilterReset.vue';
   import PaginationDemo from './pagination.vue';
+  import SortableDemo from './sortable.vue';
+  import FilterDemo from './filter.vue';
 
   export default {
     components: {
       UxTable,
+      NormalDemo,
+      SelectionSingleDemo,
+      SelectionDemo,
+      SelectionRowDemo,
+      SelectionOpDemo,
+      SelectionCustomDemo,
+      SortFilterDemo,
+      sortFilterResetDemo,
       PaginationDemo,
+      SortableDemo,
+      FilterDemo,
     },
     data() {
       return {
@@ -47,7 +78,7 @@
             dataIndex: 'key',
           },
           {
-            fixed: false,
+            fixed: true,
             width: 200,
             title: 'Name',
             dataIndex: 'name',
@@ -61,8 +92,8 @@
             dataIndex: 'addr',
           },
         ],
-        data1: getData(12),
-        data2: getData(1),
+        data1: this.getData(12),
+        data2: this.getData(1),
         rowSelection: {
           selectedRowKeys: ['c0', 23],
           // type: 'radio',
@@ -111,6 +142,9 @@
       }, 2500);
 
       console.log('refs', this.$refs.t1);
+    },
+    methods: {
+      getData: originGetData,
     },
   };
 </script>

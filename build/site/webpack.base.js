@@ -56,7 +56,7 @@ function getConfig() {
       rules: [
         {
           test: /\.js(x)?$/,
-          loader: 'babel-loader',
+          loader: 'babel-loader?cacheDirectory',
           exclude: /node_modules/,
         },
         {

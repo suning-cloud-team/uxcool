@@ -1,8 +1,10 @@
+import { getVNodeOptions, warning } from '@suning/v-utils';
 import Trigger from '@suning/v-trigger';
 import placements from './placements';
 
 export default {
   name: 'Dropdown',
+  inheritAttrs: false,
   props: {
     prefixCls: {
       type: String,
@@ -50,18 +52,47 @@ export default {
       type: Function,
       default: null,
     },
-  },
-  computed: {
-    popupVisible() {
-      return this.value;
+    closeOnSelect: {
+      type: Boolean,
+      default: true,
     },
   },
+  data() {
+    return {
+      popupVisible: false,
+    };
+  },
+  watch: {
+    value(nVal, oVal) {
+      if (nVal !== oVal) {
+        this.setPopupVisible(nVal);
+      }
+    },
+  },
+  created() {
+    this.setPopupVisible(this.value);
+  },
   methods: {
-    onPopupVisibleChange() {},
+    setPopupVisible(visible) {
+      this.popupVisible = visible;
+    },
+    onPopupVisibleChange(visible) {
+      this.setPopupVisible(visible);
+      this.$emit('input', visible);
+      this.$emit('visible-change', visible);
+    },
+    onClick(e) {
+      const { closeOnSelect, setPopupVisible } = this;
+      if (closeOnSelect) {
+        setPopupVisible(false);
+      }
+      this.$emit('overlay-click', e);
+    },
   },
   render() {
     const {
       $slots,
+      $attrs,
       prefixCls,
       overlayClass,
       overlayStyle,
@@ -73,6 +104,7 @@ export default {
       popupVisible,
       onPopupVisibleChange,
       getPopupContainer,
+      onClick,
     } = this;
 
     const props = {
@@ -93,19 +125,25 @@ export default {
     };
 
     const { overlay } = $slots;
-
+    if (!overlay) {
+      warning(false, 'You need an `overlay` slot element.');
+      return null;
+    }
     const overlayNode = overlay[0];
-    // const { class: className } = overlayNode.data;
-    // overlayNode.data.class = { ...className, [`${prefixCls}-trigger`]: true };
-    const { propsData: overlayAttrs } = overlayNode.componentOptions;
-    overlayNode.componentOptions.propsData = {
-      ...overlayAttrs,
-      prefixCls: `${prefixCls}-menu`,
-      mode: 'vertical',
-    };
+    const componentOptions = getVNodeOptions(overlayNode);
 
+    if (componentOptions) {
+      const { propsData: overlayAttrs } = componentOptions;
+      componentOptions.propsData = {
+        ...overlayAttrs,
+        prefixCls: `${prefixCls}-menu`,
+      };
+    }
+    const nodeData = overlayNode.data || {};
+    overlayNode.data = nodeData;
+    nodeData.on = { ...nodeData.on, click: onClick };
     return (
-      <Trigger {...{ props, on }}>
+      <Trigger {...{ attrs: $attrs, props, on }}>
         <template slot="trigger">{$slots.trigger}</template>
         <template slot="popup">{overlay}</template>
       </Trigger>

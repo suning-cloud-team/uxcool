@@ -11,4 +11,15 @@ const vm = new Vue({
     VMenuItem,
     VDropdown,
   },
+  methods: {
+    onClick(e) {
+      console.log('menu click', e);
+    },
+    onOverlayClick(e) {
+      console.log('on overlay click', e);
+    },
+    onNativeClick(e) {
+      console.log('on native click', e);
+    },
+  },
 });

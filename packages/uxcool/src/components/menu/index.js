@@ -1,9 +1,13 @@
-import menu from './menu.vue';
-import subMenu from './subMenu.vue';
-import menuItemGroup from './menuItemGroup.vue';
-import menuItem from './menuItem.vue';
+import Menu from './menu.vue';
+import SubMenu from './subMenu.vue';
+import MenuItemGroup from './menuItemGroup.vue';
+import MenuItem from './menuItem.vue';
 
-const UxMenu = menu;
+const UxMenu = Menu;
+UxMenu.SubMenu = SubMenu;
+UxMenu.MenuItemGroup = MenuItemGroup;
+UxMenu.MenuItem = MenuItem;
 
-export { UxMenu, subMenu as UxSubMenu, menuItemGroup as UxMenuItemGroup, menuItem as UxMenuItem };
+export { UxMenu, SubMenu as UxSubMenu, MenuItemGroup as UxMenuItemGroup, MenuItem as UxMenuItem };
+
 export default UxMenu;

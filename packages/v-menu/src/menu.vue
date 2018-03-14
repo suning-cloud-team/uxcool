@@ -1,7 +1,7 @@
 <template>
   <ul role="menu"
       :class="classes">
-    <slot></slot>
+    <slot />
   </ul>
 </template>
 
@@ -16,13 +16,8 @@
         activeItem: null,
         selectedItems: [],
         openedSubMenus: [],
-        descendants: new Set(),
+        descendants: [],
       };
-    },
-    mounted() {
-      if (this.isRoot) {
-        this.init();
-      }
     },
     computed: {
       classes() {
@@ -38,6 +33,34 @@
         };
       },
     },
+    watch: {
+      openKeys(newVal, oldVal) {
+        if (newVal !== oldVal) {
+          this.$nextTick(() => {
+            this.reloadOpenKeys();
+          });
+        }
+      },
+      selectedKeys(newVal, oldVal) {
+        if (newVal !== oldVal) {
+          this.$nextTick(() => {
+            this.reloadSelectedKeys();
+          });
+        }
+      },
+      descendants(nVal) {
+        if (nVal) {
+          if (this.isRoot) {
+            this.init();
+          }
+        }
+      },
+    },
+    mounted() {
+      if (this.isRoot) {
+        this.init();
+      }
+    },
     methods: {
       init() {
         const {
@@ -52,28 +75,41 @@
         const openStrKeys = openKeys.map(v => String(v));
         const selectedStrKeys = selectedKeys.map(v => String(v));
         descendants.forEach((v) => {
-          if (openStrKeys.indexOf(v.eventName) > -1) {
+          const eventName = String(v.eventName);
+          if (openStrKeys.indexOf(eventName) > -1 && openedSubMenus.indexOf(v) === -1) {
             openedSubMenus.push(v);
           }
-          if (selectedStrKeys.indexOf(v.eventName) > -1 && (multiple || selectedItems.length === 0)) {
+          if (
+            selectedStrKeys.indexOf(eventName) > -1 &&
+            selectedItems.indexOf(v) === -1 &&
+            (multiple || selectedItems.length === 0)
+          ) {
             selectedItems.push(v);
           }
-          if (activeKey && v.eventName === activeKey) {
+          if (activeKey && eventName === activeKey) {
             this.activeItem = v;
           }
         });
       },
       addDescendants(item) {
-        this.descendants.add(item);
+        const { descendants } = this;
+        if (descendants.indexOf(item) === -1) {
+          descendants.push(item);
+        }
       },
       removeDescendants(item) {
-        this.descendants.delete(item);
+        const { descendants } = this;
+        const idx = descendants.indexOf(item);
+        if (idx > -1) {
+          this.descendants.splice(idx, 1);
+        }
       },
       reloadOpenKeys() {
         const { descendants, openKeys, openedSubMenus } = this;
         const openStrKeys = openKeys.map(v => String(v));
         descendants.forEach((v) => {
-          if (openStrKeys.indexOf(v.eventName) > -1 && openedSubMenus.indexOf(v) === -1) {
+          const eventName = String(v.eventName);
+          if (openStrKeys.indexOf(eventName) > -1 && openedSubMenus.indexOf(v) === -1) {
             openedSubMenus.push(v);
           }
         });
@@ -84,7 +120,12 @@
         this.selectedItems = selectedItems;
         const selectedStrKeys = selectedKeys.map(v => String(v));
         descendants.forEach((v) => {
-          if (selectedStrKeys.indexOf(v.eventName) > -1 && (multiple || selectedItems.length === 0)) {
+          const eventName = String(v.eventName);
+          if (
+            selectedStrKeys.indexOf(eventName) > -1 &&
+            selectedItems.indexOf(v) === -1 &&
+            (multiple || selectedItems.length === 0)
+          ) {
             selectedItems.push(v);
           }
         });
@@ -94,7 +135,7 @@
       },
       onMenuItemClick(e) {
         const { item } = e;
-        if (this.descendants.has(item)) {
+        if (this.descendants.indexOf(item) > -1) {
           this.$emit('click', {
             ...e,
             item: {
@@ -109,7 +150,7 @@
         const { uniqueOpened } = this;
         let { openedSubMenus } = this;
         const { open, item } = e;
-        if (this.descendants.has(item)) {
+        if (this.descendants.indexOf(item) > -1) {
           let changed = false;
           const pos = openedSubMenus.indexOf(item);
           if (open) {
@@ -118,7 +159,7 @@
               if (uniqueOpened) {
                 const { rootSubMenu } = item;
                 const { descendants: rootSubMenuDescendants } = rootSubMenu;
-                openedSubMenus = openedSubMenus.filter(v => v === rootSubMenu || rootSubMenuDescendants.has(v));
+                openedSubMenus = openedSubMenus.filter(v => v === rootSubMenu || rootSubMenuDescendants.indexOf(v) > -1);
               }
               openedSubMenus.push(item);
               changed = true;
@@ -175,22 +216,6 @@
           },
           selectedKeys: selectedItems.map(v => v.eventName),
         });
-      },
-    },
-    watch: {
-      openKeys(newVal, oldVal) {
-        if (newVal !== oldVal) {
-          this.$nextTick(() => {
-            this.reloadOpenKeys();
-          });
-        }
-      },
-      selectedKeys(newVal, oldVal) {
-        if (newVal !== oldVal) {
-          this.$nextTick(() => {
-            this.reloadSelectedKeys();
-          });
-        }
       },
     },
   };

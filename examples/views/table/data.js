@@ -1,4 +1,6 @@
 export function getData(cnt = 10, extra = '') {
+  // eslint-disable-next-line
+  const h = this.$createElement;
   const ret = [];
   for (let i = 0; i < cnt; i += 1) {
     ret.push({
@@ -11,7 +13,7 @@ export function getData(cnt = 10, extra = '') {
           key: `${extra}c${i}`,
           name: `ssss${i}${i}`,
           age: i + cnt + 10,
-          addr: `a.b.c.d.${i}`,
+          addr: <a-b>`a.b.c.d.${i}`</a-b>,
         },
       ],
     });

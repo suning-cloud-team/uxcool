@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-select",
-  "version": "1.0.14",
+  "version": "1.0.17",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository": "git@git.cnsuning.com:fedc/v-select.git",
@@ -9,19 +9,15 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": [
-    "assets/*.css",
-    "cjs",
-    "es"
-  ],
+  "files": ["assets/*.css", "cjs", "es"],
   "scripts": {
     "compile": "v-tools run compile",
     "server": "v-tools run server",
     "start": "npm run server"
   },
   "dependencies": {
-    "@suning/v-menu": "^1.0.18",
-    "@suning/v-trigger": "^1.0.23",
+    "@suning/v-menu": "^1.0.21",
+    "@suning/v-trigger": "^1.0.24",
     "scroll-into-view-if-needed": "^1.4.0"
   },
   "devDependencies": {

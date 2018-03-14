@@ -1,0 +1,26 @@
+{
+  "name": "@suning/v-utils",
+  "version": "1.0.0",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "http://snpm.cnsunig.com"
+  },
+  "files": [
+    "assets/*css",
+    "cjs",
+    "es"
+  ],
+  "scripts": {
+    "start": "npm run server",
+    "compile": "v-tools run compile",
+    "server": "v-tools run server"
+  },
+  "devDependencies": {
+    "@suning/v-tools": "^1.0.25"
+  },
+  "dependencies": {
+    "warning": "^3.0.0"
+  }
+}

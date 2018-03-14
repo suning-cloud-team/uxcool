@@ -12,12 +12,13 @@ export default {
       const { prefixCls, rowSelection = {} } = this;
       return {
         [`${prefixCls}-selection-column`]: true,
-        [`${prefixCls}-selection-column-custom`]: rowSelection.selections,
+        [`${prefixCls}-selection-column-custom`]: !!rowSelection.selections,
       };
     },
     selectionColumn() {
       const {
         changeablePagerFlatData,
+        hasRowSelection,
         rowSelection = {},
         isAnyColumnsLeftFixed,
         isAllCheckboxDisabled,
@@ -26,49 +27,51 @@ export default {
         handleAllSelectionChange,
         handleSelectionChange,
       } = this;
-      const {
-        fixed, type, selections, hideDefaultSelections
-      } = rowSelection;
-      const col = {
-        key: 'selection-column',
-        fixed: fixed || isAnyColumnsLeftFixed,
-        className: selectionColumnClasses,
-        cellRender(_, record) {
-          return (
-            <Checkbox
-              type={type}
-              disabled={record.$$_checkboxDisabled}
-              record={record}
-              on-change={handleSelectionChange}
+      let col = {};
+
+      if (hasRowSelection) {
+        const {
+          fixed, type, selections, hideDefaultSelections, columnWidth
+        } = rowSelection;
+        col = {
+          key: 'selection-column',
+          fixed: fixed || isAnyColumnsLeftFixed,
+          className: selectionColumnClasses,
+          width: columnWidth,
+          cellRender(_, record) {
+            return (
+              <Checkbox
+                type={type}
+                disabled={record.$$_checkboxDisabled}
+                record={record}
+                on-change={handleSelectionChange}
+              />
+            );
+          },
+        };
+
+        if (type !== 'radio') {
+          col.title = (
+            <CheckboxAll
+              data={changeablePagerFlatData}
+              disabled={isAllCheckboxDisabled}
+              selections={selections}
+              hideDefaultSelections={hideDefaultSelections}
+              getPopupContainer={getPopupContainer}
+              on-change={handleAllSelectionChange}
             />
           );
-        },
-      };
-
-      if (type !== 'radio') {
-        col.title = (
-          <CheckboxAll
-            data={changeablePagerFlatData}
-            disabled={isAllCheckboxDisabled}
-            selections={selections}
-            hideDefaultSelections={hideDefaultSelections}
-            getPopupContainer={getPopupContainer}
-            on-change={handleAllSelectionChange}
-          />
-        );
+        }
       }
 
       return col;
     },
   },
   methods: {
-    getPopupContainer() {
-      return this.$el;
-    },
     renderRowSelection() {
-      const { normalizeColumns, selectionColumn, rowSelection } = this;
+      const { normalizeColumns, selectionColumn, hasRowSelection } = this;
       const columns = [...normalizeColumns];
-      if (rowSelection) {
+      if (hasRowSelection) {
         columns.unshift(selectionColumn);
       }
 
@@ -106,7 +109,7 @@ export default {
         }
       }
     },
-    handleAllSelectionChange(op) {
+    handleAllSelectionChange(op, onSelectFn, isDefaultSelection) {
       const { changeablePagerFlatData, onRowSelectionChange } = this;
       let selectedRowKeys = [...this.selectedRowKeys];
       const changeableFlatDataKeys = changeablePagerFlatData.map(v => v.$$_key);
@@ -136,7 +139,12 @@ export default {
         default:
           break;
       }
-      onRowSelectionChange(selectedRowKeys, p);
+
+      if (!isDefaultSelection && isFunction(onSelectFn)) {
+        onSelectFn(changeableFlatDataKeys);
+      } else {
+        onRowSelectionChange(selectedRowKeys, p);
+      }
     },
     handleSelectionChange(record, e) {
       const { onRowSelectionChange, rowSelection: { type } } = this;

@@ -48,7 +48,7 @@ import VMenu, { VMenuItem, VMenuItemGroup, VSubMenu } from '@suning/v-menu';
 | theme        | 主题                               | string               | light  |
 | mode         | 菜单类型 , 支持水平 , 内嵌两种模式 | horizontal \| inline | inline |
 | inlineIndent | inline 模式时菜单缩进宽度          | 24                   |
-| selectedKeys | 选中的菜单项                       | string[]             |        |
+| selectedKeys | 选中的菜单项, 与 name 属性关联     | string[]             |        |
 | openKeys     | 展开的 vSubMenu 项 ,name 属性关联  | string[]             |        |
 | visible      | 是否展示                           | boolean              | true   |
 | className    | 类名                               | string               | ''     |
@@ -68,12 +68,12 @@ import VMenu, { VMenuItem, VMenuItemGroup, VSubMenu } from '@suning/v-menu';
 
 #### Props
 
-| 参数名    | 描述     | 类型    | 默认  |
-| --------- | -------- | ------- | ----- |
-| name      | 唯一标识 | string  | ''    |
-| disabled  | 是否禁用 | boolean | false |
-| styles    | 样式     | string  | ''    |
-| className | 类名     | string  | ''    |
+| 参数名    | 描述     | 类型           | 默认  |
+| --------- | -------- | -------------- | ----- |
+| name      | 唯一标识 | String\|Number | ''    |
+| disabled  | 是否禁用 | Boolean        | false |
+| styles    | 样式     | String         | ''    |
+| className | 类名     | String         | ''    |
 
 #### Events
 
@@ -83,12 +83,12 @@ import VMenu, { VMenuItem, VMenuItemGroup, VSubMenu } from '@suning/v-menu';
 
 #### Props
 
-| 参数名    | 描述     | 类型    | 默认  |
-| --------- | -------- | ------- | ----- |
-| name      | 唯一标识 | string  | ''    |
-| disabled  | 是否禁用 | boolean | false |
-| styles    | 样式     | string  | ''    |
-| className | 类名     | string  | ''    |
+| 参数名    | 描述     | 类型           | 默认  |
+| --------- | -------- | -------------- | ----- |
+| name      | 唯一标识 | String\|Number | ''    |
+| disabled  | 是否禁用 | Boolean        | false |
+| styles    | 样式     | String         | ''    |
+| className | 类名     | String         | ''    |
 
 #### Events
 

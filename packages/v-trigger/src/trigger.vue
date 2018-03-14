@@ -21,6 +21,7 @@
       },
       getPopupContainer: {
         type: Function,
+        default: null,
       },
       getPopupClassNameFromAlign: {
         type: Function,
@@ -38,21 +39,40 @@
           return {};
         },
       },
-      popupPlacement: String,
+      popupPlacement: {
+        type: String,
+        default: '',
+      },
       builtinPlacements: {
         type: Object,
         default() {
           return {};
         },
       },
-      wrapClass: [String, Object, Array],
-      wrapStyle: Object,
+      wrapClass: {
+        type: [String, Object, Array],
+        default: '',
+      },
+      wrapStyle: {
+        type: Object,
+        default: null,
+      },
       popupTransitionName: {
         type: String,
+        default: '',
       },
-      popupClass: [String, Object, Array],
-      popupStyle: Object,
-      zIndex: Number,
+      popupClass: {
+        type: [String, Object, Array],
+        default: '',
+      },
+      popupStyle: {
+        type: Object,
+        default: null,
+      },
+      zIndex: {
+        type: Number,
+        default: null,
+      },
       mouseEnterDelay: {
         type: Number,
         // ms
@@ -71,7 +91,10 @@
         type: Number,
         default: 150,
       },
-      destroyPopupOnHide: Boolean,
+      destroyPopupOnHide: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -83,66 +106,12 @@
         mouseDownTime: 0,
       };
     },
-    render(h) {
-      const {
-        $slots,
-        $el,
-        triggerEvents,
-        buildEventBind,
-        portal,
-        popupVisible,
-        align,
-        popupTransitionName,
-        destroyPopupOnHide,
-        createPortal,
-        popupStyle,
-        popupClass,
-        actions,
-      } = this;
-      const { trigger = [], popup: popupVNode } = $slots;
-      const triggerSlot = trigger.filter(v => v.tag || (v.text || '').trim() !== '');
-      if (triggerSlot.length === 0) {
-        if (process.env.NODE_ENV !== 'production') {
-          console.warn('未找到trigger node!');
-        }
-        return trigger;
-      }
-      let node = triggerSlot[0];
-
-      if (!node.tag) {
-        node = h('span', [node]);
-      }
-
-      Object.keys(triggerEvents).forEach((eventName) => {
-        if (actions.indexOf(eventName) !== -1) {
-          const fns = triggerEvents[eventName].action;
-          buildEventBind(node, fns);
-        }
-      });
-      if (portal) {
-        portal.visible = popupVisible;
-        portal.align = align;
-        portal.popupTransitionName = popupTransitionName;
-        portal.destroyPopupOnHide = destroyPopupOnHide;
-        portal.popupVNode = popupVNode;
-        portal.rootDomNode = $el;
-        portal.popupStyle = popupStyle;
-        portal.popupClass = popupClass;
-      } else {
-        this.portal = createPortal();
-      }
-
-      return node;
-    },
-    mounted() {
-      this.setPopupVisible(this.visible);
-    },
     computed: {
       popupContainer() {
-        const { getPopupContainer, getDocument } = this;
+        const { $el, getPopupContainer, getDocument } = this;
         let container = getDocument().body;
         if (typeof getPopupContainer === 'function') {
-          container = getPopupContainer();
+          container = getPopupContainer($el);
         }
 
         return container;
@@ -234,6 +203,36 @@
         }
         return popupAlign;
       },
+    },
+    watch: {
+      visible(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.setPopupVisible(nVal);
+        }
+      },
+      popupVisible(nVal, oVal) {
+        if (nVal !== oVal) {
+          const {
+            clearAllHandler, closeHandler, actions, getDocument, onDocumentClick
+          } = this;
+          if (nVal) {
+            if (!closeHandler && actions.indexOf('click') !== -1) {
+              this.closeHandler = addEventListener(getDocument(), 'mousedown', onDocumentClick);
+            }
+          } else {
+            clearAllHandler();
+          }
+        }
+      },
+    },
+    mounted() {
+      this.setPopupVisible(this.visible);
+      this.mountPortal();
+    },
+    beforeDestroy() {
+      this.clearDelayTimer();
+      this.clearAllHandler();
+      this.clearPortal();
     },
     methods: {
       buildEventBind(node, events) {
@@ -395,7 +394,7 @@
       createPortal() {
         const {
           prefixCls: rootPrefixCls,
-          popupContainer,
+          // popupContainer,
           actions,
           onPopupMouseEnter,
           onPopupMouseLeave,
@@ -408,6 +407,9 @@
         } = this;
 
         const portal = new Vue({
+          components: {
+            Popup,
+          },
           props: {
             visible: {
               type: Boolean,
@@ -423,8 +425,14 @@
               type: String,
               default: originTransitionName,
             },
-            popupClass: String,
-            popupStyle: String,
+            popupClass: {
+              type: [String, Object, Array],
+              default: '',
+            },
+            popupStyle: {
+              type: Object,
+              default: null,
+            },
             destroyPopupOnHide: {
               type: Boolean,
               default: originDestroyPopupOnHide,
@@ -435,12 +443,21 @@
                 return originSlots.popup;
               },
             },
-            rootDomNode: HTMLElement,
+            rootDomNode: {
+              type: HTMLElement,
+              default: null,
+            },
           },
           data: {
             init: false,
           },
-
+          destroyed() {
+            const { $el } = this;
+            const { parentNode } = $el;
+            if (parentNode) {
+              parentNode.removeChild($el);
+            }
+          },
           render(h) {
             const {
               visible,
@@ -479,46 +496,65 @@
             }
             return h('popup', data, popupVNode);
           },
-          destroyed() {
-            const { $el } = this;
-            const { parentNode } = $el;
-            if (parentNode) {
-              parentNode.removeChild($el);
-            }
-          },
-          components: {
-            Popup,
-          },
         }).$mount();
-        popupContainer.appendChild(portal.$el);
+        // popupContainer.appendChild(portal.$el);
         return portal;
       },
-    },
-    watch: {
-      visible(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.setPopupVisible(nVal);
-        }
-      },
-      popupVisible(nVal, oVal) {
-        if (nVal !== oVal) {
-          const {
-            clearAllHandler, closeHandler, actions, getDocument, onDocumentClick
-          } = this;
-          if (nVal) {
-            if (!closeHandler && actions.indexOf('click') !== -1) {
-              this.closeHandler = addEventListener(getDocument(), 'mousedown', onDocumentClick);
-            }
-          } else {
-            clearAllHandler();
-          }
-        }
+      mountPortal() {
+        const { portal, popupContainer } = this;
+        popupContainer.appendChild(portal.$el);
       },
     },
-    beforeDestroy() {
-      this.clearDelayTimer();
-      this.clearAllHandler();
-      this.clearPortal();
+    render(h) {
+      const {
+        $slots,
+        $el,
+        triggerEvents,
+        buildEventBind,
+        portal,
+        popupVisible,
+        align,
+        popupTransitionName,
+        destroyPopupOnHide,
+        createPortal,
+        popupStyle,
+        popupClass,
+        actions,
+      } = this;
+      const { trigger = [], popup: popupVNode } = $slots;
+      const triggerSlot = trigger.filter(v => v.tag || (v.text || '').trim() !== '');
+      if (triggerSlot.length === 0) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.warn('未找到trigger node!');
+        }
+        return trigger;
+      }
+      let node = triggerSlot[0];
+
+      if (!node.tag) {
+        node = h('span', [node]);
+      }
+
+      Object.keys(triggerEvents).forEach((eventName) => {
+        if (actions.indexOf(eventName) !== -1) {
+          const fns = triggerEvents[eventName].action;
+          buildEventBind(node, fns);
+        }
+      });
+      if (portal) {
+        portal.visible = popupVisible;
+        portal.align = align;
+        portal.popupTransitionName = popupTransitionName;
+        portal.destroyPopupOnHide = destroyPopupOnHide;
+        portal.popupVNode = popupVNode;
+        portal.rootDomNode = $el;
+        portal.popupStyle = popupStyle;
+        portal.popupClass = popupClass;
+      } else {
+        this.portal = createPortal();
+      }
+
+      return node;
     },
   };
 </script>

@@ -13,6 +13,24 @@ const { vueCompileOpts = {} } = getPackageJSON(path.resolve(root, 'package.json'
 const srcPath = path.resolve(root, 'examples');
 const distPath = path.resolve(root, 'examples/dist');
 
+// support babel-plugin-import
+const babelOpts = {
+  extends: path.resolve(root, '.babelrc'),
+  plugins: [
+    [
+      'import',
+      {
+        libraryName: '@suning/uxcool',
+        customName(methodName) {
+          const name = /^ux-/.test(methodName) ? methodName.replace(/^ux-/, '') : methodName;
+          return path.join('@suning/uxcool', 'src/components', name);
+        },
+        style: true,
+      },
+    ],
+  ],
+};
+
 // const postCssCfg = postCssUtils.getPostCssCfg();
 const postCssCtx = postCssUtils.getContext();
 const vueStyleCfg = [
@@ -49,8 +67,9 @@ function getConfig(env) {
       rules: [
         {
           test: /\.js(x)?$/,
-          loader: 'babel-loader',
+          loader: 'babel-loader?cacheDirectory',
           exclude: /node_modules/,
+          options: babelOpts,
         },
         {
           test: /\.vue$/,
@@ -61,6 +80,10 @@ function getConfig(env) {
             loaders: {
               css: vueStyleCfg,
               scss: vueStyleCfg,
+              js: {
+                loader: 'babel-loader',
+                options: babelOpts,
+              },
             },
           },
         },
