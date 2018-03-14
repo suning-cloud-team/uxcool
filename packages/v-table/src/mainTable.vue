@@ -44,6 +44,7 @@
       classes() {
         const { prefixCls, scrollable } = this;
         return {
+          [`${prefixCls}-main-table`]: true,
           [`${prefixCls}-scroll`]: scrollable,
         };
       },

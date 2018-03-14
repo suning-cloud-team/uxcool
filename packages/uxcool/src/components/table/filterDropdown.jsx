@@ -126,7 +126,7 @@ export default {
       const { column } = this;
       this.dropdownVisible = visible;
       if (isFunction(column.onFilterDropdownVisibleChange)) {
-        column.onFilterDropdownVisibleChange();
+        column.onFilterDropdownVisibleChange(visible);
       }
     },
     setInnerSelectedKeys(keys) {
@@ -202,8 +202,12 @@ export default {
       dropdownVisible,
       getPopupContainer,
     } = this;
-    const menus = column.filterDropdown ? (
-      <div>{column.filterDropdown}</div>
+    const filterDropdown = isFunction(column.filterDropdown)
+      ? column.filterDropdown(this.$createElement)
+      : column.filterDropdown;
+
+    const menus = filterDropdown ? (
+      <div>{filterDropdown}</div>
       ) : (
       <div class={`${filterPrefixCls}-dropdown`}>
         {filterMenu}

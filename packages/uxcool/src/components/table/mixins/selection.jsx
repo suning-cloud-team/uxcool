@@ -78,7 +78,7 @@ export default {
       return columns;
     },
     onRowSelectionChange(selectedRowKeys, {
-      type, record, checked, changedRowKeys
+      type, record, checked, changedRowKeys, domEvent
     }) {
       const {
         selectedRowKeys: prevSelectRowKeys,
@@ -95,7 +95,7 @@ export default {
 
       if (isFunction(rowSelection[type])) {
         if (type === 'onSelect') {
-          rowSelection.onSelect(record, checked, selectedRows);
+          rowSelection.onSelect(record, checked, selectedRows, domEvent);
         } else if (type === 'onSelectAll') {
           rowSelection.onSelectAll(
             checked,
@@ -167,6 +167,7 @@ export default {
         type: 'onSelect',
         record,
         checked,
+        domEvent: e.domEvent,
       });
     },
   },

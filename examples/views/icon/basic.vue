@@ -4,9 +4,9 @@
          v-for="(icon,i) in list"
          :key="i">
       <ux-icon :type="icon.name"
-               :key="i"></ux-icon>
-      <div class="icon-item-name">{{icon.name}}</div>
-      <div>{{icon.font}}</div>
+               :key="i" />
+      <div class="icon-item-name">{{ icon.name }}</div>
+      <div>{{ icon.font }}</div>
     </div>
   </div>
 </template>

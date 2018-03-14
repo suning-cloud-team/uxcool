@@ -159,11 +159,14 @@
         this.filterInfo = {};
         this.columns = this.getCols();
       },
+      // 当设置了sortOrder或filteredValue时,需要与onChange配合使用,
+      // 因为当组件内部更新filter或sort时,外部并不知晓内部变动,
+      // 所以需要手工设置一下, 防止变动columns时,丢失内部变动的值
       onChange(_, filterInfo, sort) {
         console.log('sort', sort);
         this.filterInfo = filterInfo;
         this.sortInfo = sort;
-        this.columns = this.getCols();
+        // this.columns = this.getCols();
       },
     },
   };

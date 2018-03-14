@@ -18,23 +18,9 @@
     <selection-custom-demo/>
     <sort-filter-demo/>
     <sort-filter-reset-demo/>
-    <!-- <filter-demo /> -->
-    <!-- <sortable-demo /> -->
-    <!-- <pagination-demo /> -->
-
-    <!-- {{data1}} -->
-    <!-- <ux-table :columns="cols1"
-                v-model="data1"
-                expand-icon-col-index="-1" /> -->
-    <!-- <div class="demo">
-      <ux-table ref="t1"
-                :scroll="{x:'130%'}"
-                :columns="cols1"
-                :row-selection="rowSelection"
-                v-model="data1" />
-
-    </div> -->
-
+    <custom-filter-panel-demo/>
+    <ajax-demo/>
+    <size-demo/>
   </div>
 </template>
 
@@ -50,10 +36,10 @@
   import SelectionOpDemo from './selectionOp.vue';
   import SelectionCustomDemo from './selectionCustom.vue';
   import SortFilterDemo from './sortFilter.vue';
-  import sortFilterResetDemo from './sortFilterReset.vue';
-  import PaginationDemo from './pagination.vue';
-  import SortableDemo from './sortable.vue';
-  import FilterDemo from './filter.vue';
+  import SortFilterResetDemo from './sortFilterReset.vue';
+  import CustomFilterPanelDemo from './customFilterPanel.vue';
+  import AjaxDemo from './ajax.vue';
+  import SizeDemo from './size.vue';
 
   export default {
     components: {
@@ -65,10 +51,10 @@
       SelectionOpDemo,
       SelectionCustomDemo,
       SortFilterDemo,
-      sortFilterResetDemo,
-      PaginationDemo,
-      SortableDemo,
-      FilterDemo,
+      SortFilterResetDemo,
+      CustomFilterPanelDemo,
+      AjaxDemo,
+      SizeDemo,
     },
     data() {
       return {

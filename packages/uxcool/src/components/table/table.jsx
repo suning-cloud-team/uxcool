@@ -171,7 +171,7 @@ export default {
       const {
         filterAndSortData,
         hasPagination,
-        innerPager,
+        innerPager: { current, pageSize },
         hasRowSelection,
         selectedRowKeys,
       } = this;
@@ -191,8 +191,8 @@ export default {
       }
 
       // 分页
-      if (hasPagination) {
-        const { current, pageSize } = innerPager;
+      // pagerData.length > pageSize 服务端分页后,前端不再切分数据
+      if (hasPagination && pagerData.length > pageSize) {
         pagerData = pagerData.slice((current - 1) * pageSize, current * pageSize);
       }
 

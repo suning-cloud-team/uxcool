@@ -2,7 +2,6 @@
   <colgroup>
     <col v-for="(col, i) in expandCellCols"
          :key="getKey(col, i)"
-         :class="col.className"
          :style="colStyle(col)">
   </colgroup>
 </template>

@@ -77,6 +77,9 @@
             console.log('selectedRowKeys', selectedRowKeys, selectedRow, op, prevSelectRowKeys);
             this.selectedRowKeys = selectedRowKeys;
           },
+          onSelect(...args) {
+            console.log('onSelect', ...args);
+          },
           getCheckboxProps(record) {
             return {
               disabled: record.name === 'Disabled User',
