@@ -18,7 +18,6 @@
     "vue": "^2.5.*"
   },
   "dependencies": {
-    "@suning/v-checkbox": "^1.0.0",
     "@suning/v-datepicker": "^1.0.25",
     "@suning/v-dialog": "^1.0.5",
     "@suning/v-dropdown": "^1.0.0",
@@ -31,7 +30,6 @@
     "@suning/v-table": "^1.0.2",
     "@suning/v-tabs": "^1.0.10",
     "@suning/v-tooltip": "^1.0.10",
-    "@suning/v-utils": "^1.0.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "date-fns": "^1.29.0",
     "lodash": "^4.0.8",
