@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import globalState from './state';
-import { UPDATE_NAV_PAGE_INDEX, CHANGE_TOGGLE_THEME } from './mutation-types';
+import { UPDATE_NAV_PAGE_INDEX, CHANGE_TOGGLE_THEME, CHANGE_PAGE_NAME } from './mutation-types';
 
 const isDebug = process.env.NODE_ENV === 'development';
 
@@ -49,6 +49,10 @@ const store = new Vuex.Store({
     [UPDATE_NAV_PAGE_INDEX](state, idx) {
       const nState = state;
       nState.navPageIndex = idx;
+    },
+    [CHANGE_PAGE_NAME](state, name) {
+      const nState = state;
+      nState.pageName = name;
     },
   },
 });

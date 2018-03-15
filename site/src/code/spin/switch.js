@@ -9,7 +9,7 @@ export default `
   <ux-spin :spinning="spinning"
         wrap-style="width:100%">
     <div style="width:100%; max-height: 150px;overflow:auto">
-      <table class="ux-table">
+      <table class="table-custom">
         <thead>
           <th>name</th>
           <th>date</th>

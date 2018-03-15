@@ -17,7 +17,9 @@
               :sm="8"
               v-for="(icon, i) in list"
               :key="i">
-        <div class="icon-item">
+        <div class="icon-item"
+             v-clipboard="copyText(icon)"
+             @success="onCopySuccess">
           <ux-icon :type="icon.name"></ux-icon>
           <div class="icon-item-name">{{icon.name}}</div>
           <div class="icon-item-code">{{icon.font}}</div>
@@ -29,6 +31,7 @@
 
 <script>
   import list from './icon';
+  import UxMessage from '@suning/uxcool/es/message';
 
   export default {
     data() {
@@ -37,18 +40,26 @@
         code: '<ux-icon type="down"></ux-icon>',
       };
     },
+    methods: {
+      copyText({ name }) {
+        return `<ux-icon type="${name}"></ux-icon>`;
+      },
+      onCopySuccess() {
+        UxMessage.success('图标组件代码已复制到剪贴板');
+      },
+    },
   };
-
 </script>
 
 <style lang="scss" scoped>
   .icon-item {
     padding: 20px;
     text-align: center;
+    cursor: pointer;
 
     i {
-      margin-bottom: 10px;
-      font-size: 30px;
+      margin-bottom: 15px;
+      font-size: 34px;
     }
 
     &-name {
@@ -58,7 +69,7 @@
 
     &-code {
       font-size: 12px;
+      margin-bottom: 10px;
     }
   }
-
 </style>

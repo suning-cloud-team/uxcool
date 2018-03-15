@@ -98,6 +98,7 @@ const footerNavData = buildFooterNavData(menuData);
 // });
 export default {
   theme: 'light',
+  pageName: '',
   codeExpanded: false,
   navPageIndex: 0,
   menuData,

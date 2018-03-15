@@ -10,6 +10,29 @@
 
 <body>
   <div id="app"></div>
+
+  <script>
+    (function () {
+      var hostname = location.hostname;
+      var protocol = location.protocol;
+      var isPRE = /^(\w)+pre\.cnsuning\.com$/.test(hostname);
+      var isPRD = /^uxcool\.cnsuning\.com$/.test(hostname);
+      var script = document.createElement('script');
+      var scripts = document.getElementsByTagName('script');
+      var src = '//sitres.suning.cn/javascript/sn_da/sa_simple.js';
+
+      if (isPRD) {
+        src = '//res.suning.cn/javascript/sn_da/sa_simple.js';
+      } else if (isPRE) {
+        src = '//resprexg.suning.cn/javascript/sn_da/sa_simple.js';
+      }
+
+      script.type = 'text/javascript';
+      script.src = protocol + src;
+      scripts[0].parentNode.insertBefore(script, scripts[0]);
+    })();
+
+  </script>
 </body>
 
 </html>
