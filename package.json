@@ -65,7 +65,7 @@
     "jsplumb": "^2.6.3",
     "lerna": "^2.8.0",
     "mathsass": "^0.10.1",
-    "node-sass": "^4.6.0",
+    "node-sass": "^4.7.2",
     "postcss": "^6.0.14",
     "postcss-loader": "^2.0.8",
     "resolve-url-loader": "^2.2.1",
