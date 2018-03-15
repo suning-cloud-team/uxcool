@@ -21,6 +21,7 @@
     "@suning/v-tools": "^1.0.25"
   },
   "dependencies": {
+    "lodash": "^4.17.5",
     "warning": "^3.0.0"
   }
 }
