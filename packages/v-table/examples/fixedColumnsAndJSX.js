@@ -84,6 +84,10 @@ function getColumns() {
       title: <a-b>姓名</a-b>,
       dataIndex: 'name',
       key: 'name',
+      cellRender(text) {
+        console.log(text);
+        return [text, 'extra name'];
+      },
     },
     {
       title: '其它',

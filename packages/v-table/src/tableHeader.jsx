@@ -1,4 +1,5 @@
-import { getKey, getRefName, isFunction, getNormalizeContent } from './utils';
+import { isFunction } from '@suning/v-utils';
+import { getKey, getRefName, getNormalizeContent } from './utils';
 import SubMixin from './mixins/sub';
 import ExpanderMixin from './mixins/expander';
 

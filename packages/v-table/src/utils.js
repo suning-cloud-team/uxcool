@@ -1,3 +1,5 @@
+import { cloneVNode } from '@suning/v-utils';
+
 export function noop() {}
 
 export function isFunction(fn) {
@@ -209,5 +211,9 @@ export function getRowStyle(rowId, rowsHeight) {
 }
 
 export function getNormalizeContent(h, columnFixed, tableFixed, content) {
-  return columnFixed && !tableFixed ? <span>&nbsp;</span> : content;
+  let ret = content;
+  if (columnFixed && !tableFixed) {
+    ret = Array.isArray(content) ? content.map(v => cloneVNode(v)) : cloneVNode(content);
+  }
+  return ret;
 }

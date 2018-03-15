@@ -1,6 +1,6 @@
 import get from 'lodash/get';
-import isPlainObject from 'lodash/isPlainObject';
-import { isVNode, isFunction, getNormalizeContent } from './utils';
+import { isVNode, isFunction, isPlainObject } from '@suning/v-utils';
+import { getNormalizeContent } from './utils';
 import SubMixin from './mixins/sub';
 
 export default {
@@ -75,7 +75,8 @@ export default {
         // Object
         if (rv && isPlainObject(rv) && !isVNode(rv)) {
           cellProps = { ...cellProps, ...rv };
-        } else if (isVNode(rv) || typeof rv === 'string' || typeof rv === 'number') {
+          // } else if (isVNode(rv) || typeof rv === 'string' || typeof rv === 'number') {
+        } else if (rv !== undefined && rv !== null) {
           cellProps.content = rv;
         }
       }
