@@ -1,5 +1,6 @@
 import VTable from '@suning/v-table';
 import Icon from '../icon';
+import Spin from '../spin';
 import FilterDropdown from './filterDropdown';
 import { buildComponentName } from '../utils';
 import SelectionMixin from './mixins/selection';
@@ -65,6 +66,10 @@ export default {
       default: false,
     },
     pagination: {
+      type: [Object, Boolean],
+      default: false,
+    },
+    loading: {
       type: [Object, Boolean],
       default: false,
     },
@@ -243,6 +248,32 @@ export default {
     defaultSelectedRowKeys() {
       const { flatData } = this;
       return flatData.filter(v => v.$$_checkboxChecked).map(v => v.$$_key);
+    },
+    spinLoading() {
+      const { loading } = this;
+      let ret = loading;
+      if (typeof loading === 'boolean') {
+        ret = {
+          spinning: loading,
+        };
+      }
+      return ret;
+    },
+    spinClasses() {
+      const {
+        prefixCls, spinLoading, hasPagination, normalizeData
+      } = this;
+      const spinPagerClass =
+        hasPagination && normalizeData.length > 0
+          ? `${prefixCls}-with-pagination`
+          : `${prefixCls}-without-pagination`;
+
+      return spinLoading.spinning
+        ? {
+          [spinPagerClass]: true,
+          [`${prefixCls}-spin-holder`]: true,
+        }
+        : '';
     },
   },
   watch: {
@@ -437,13 +468,20 @@ export default {
     },
   },
   render() {
-    const { classes, renderTable, renderPagination } = this;
+    const {
+      prefixCls, classes, spinClasses, spinLoading, renderTable, renderPagination
+    } = this;
     const table = renderTable();
-    const pagination = renderPagination();
+    const topPager = renderPagination('top');
+    const bottomPager = renderPagination('bottom');
+    const props = { ...spinLoading, spinClass: [spinLoading.spinClass, spinClasses] };
     return (
       <div class={classes}>
-        {table}
-        {pagination}
+        <Spin {...{ class: { [`${prefixCls}-loading`]: spinLoading.spinning }, props }}>
+          {topPager}
+          {table}
+          {bottomPager}
+        </Spin>
       </div>
     );
   },

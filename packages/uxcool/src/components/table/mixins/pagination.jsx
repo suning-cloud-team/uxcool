@@ -38,6 +38,7 @@ export default {
         total: normalizeData.length,
         current: 1,
         pageSize: 10,
+        position: 'bottom',
       };
       pager = { ...pager, ...innerPager };
       if (typeof pagination !== 'boolean') {
@@ -47,17 +48,17 @@ export default {
       pager.on = { change: handlePagerChange };
       setInnerPager(pager);
     },
-    renderPagination() {
+    renderPagination(pagerPosition) {
       const { prefixCls, hasPagination, innerPager } = this;
       if (!hasPagination) {
         return null;
       }
 
       const {
-        className, style, on, ...props
+        position, className, style, on, ...props
       } = innerPager;
 
-      return props.total > 0 ? (
+      return props.total > 0 && (position === pagerPosition || position === 'both') ? (
         <Pagination
           class={[`${prefixCls}-pagination`, className]}
           style={style}

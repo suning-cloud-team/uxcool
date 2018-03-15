@@ -17,7 +17,7 @@
       <div :class="`${prefixCls}-text`"
            v-if="tip||$slots.tip">
         <slot name="tip">
-          {{tip}}
+          {{ tip }}
         </slot>
       </div>
     </template>
@@ -44,14 +44,14 @@
         <div :class="`${prefixCls}-text`"
              v-if="tip||$slots.tip">
           <slot name="tip">
-            {{tip}}
+            {{ tip }}
           </slot>
         </div>
       </template>
     </spin-element>
 
     <div :class="containClasses">
-      <slot></slot>
+      <slot/>
     </div>
   </div>
 </template>
@@ -61,17 +61,23 @@
 
   export default {
     name: buildComponentName('Spin'),
+    components: {
+      SpinElement,
+    },
     props: {
       prefixCls: {
         type: String,
         default: 'ux-spin',
       },
       size: String,
-      spinning: { type: Boolean, default: true },
-      spinClass: [String, Object],
-      spinStyle: [String, Object],
-      wrapClass: [String, Object],
-      wrapStyle: [String, Object],
+      spinning: {
+        type: Boolean,
+        default: true,
+      },
+      spinClass: [String, Object, Array],
+      spinStyle: Object,
+      wrapClass: [String, Object, Array],
+      wrapStyle: Object,
       tip: String,
     },
     computed: {
@@ -97,9 +103,6 @@
           [`${prefixCls}-blur`]: isSpinning,
         };
       },
-    },
-    components: {
-      SpinElement,
     },
   };
 </script>

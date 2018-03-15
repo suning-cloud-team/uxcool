@@ -6,6 +6,13 @@ $table-header-icon-color: $text-color-secondary;
 
 .#{$table-prefix-cls}-wrapper {
   @include clearfix;
+  // add
+  .#{$ux-prefix}-spin-nested-loading {
+    width: 100%;
+  }
+  .#{$table-prefix-cls}-loading {
+    z-index: 1051;
+  }
 }
 
 .#{$table-prefix-cls} {
@@ -195,7 +202,6 @@ $table-header-icon-color: $text-color-secondary;
     position: relative;
     .#{$table-prefix-cls}-body {
       background: $component-background;
-      opacity: 0.5;
     }
     .#{$table-prefix-cls}-spin-holder {
       height: 20px;
@@ -205,9 +211,11 @@ $table-header-icon-color: $text-color-secondary;
       margin-left: -30px;
       position: absolute;
     }
+    // modify
     .#{$table-prefix-cls}-with-pagination {
       margin-top: -20px;
     }
+    // modify
     .#{$table-prefix-cls}-without-pagination {
       margin-top: 10px;
     }
