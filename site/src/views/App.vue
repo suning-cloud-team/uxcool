@@ -1,16 +1,16 @@
 <template>
-    <div id="app">
-        <router-view></router-view>
-        <!-- <transition name="fade">
+  <div id="app">
+    <router-view/>
+    <!-- <transition name="fade">
             <div class="loading" v-show="loading">
                 加载中...
             </div>
         </transition> -->
-    </div>
+  </div>
 </template>
 
 <script>
-export default {
-  name: 'App',
-};
+  export default {
+    name: 'App',
+  };
 </script>

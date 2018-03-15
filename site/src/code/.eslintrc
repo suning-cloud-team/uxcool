@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "vue/script-indent": 0
+  }
+}

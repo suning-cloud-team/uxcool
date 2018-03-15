@@ -40,7 +40,7 @@ export default `
       margin-left: 20px;
     }
   }
-    
+
   .demo-badge {
     display: inline-block;
     width: 50px;
