@@ -243,7 +243,13 @@ export default {
       return null;
     },
     saveRef(refName, refElement) {
-      this.elementRefs[refName] = refElement;
+      const { elementRefs, $set } = this;
+      if (refName in elementRefs) {
+        elementRefs[refName] = refElement;
+      } else {
+        $set(elementRefs, refName, refElement);
+      }
+      console.log('elementRefs', this.elementRefs);
     },
     handleScrollPostion() {
       const { bodyTableRef } = this.elementRefs;
