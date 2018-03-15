@@ -73,6 +73,10 @@ export default {
       type: [Object, Boolean],
       default: false,
     },
+    expandIconAsCell: {
+      type: Boolean,
+      default: null,
+    },
   },
   data() {
     return {
@@ -228,21 +232,29 @@ export default {
         renderSortAndFilter,
         pagerNormalizeData,
         expandIconColIndex,
+        expandIconAsCell,
+        expandedRowRender,
       } = this;
       let cols = renderRowSelection();
-      const iconColIdx = Math.max(
-        Math.min(
-          cols[0].key === 'selection-column' ? expandIconColIndex + 1 : expandIconColIndex,
-          cols.length - 1
-        ),
-        0
-      );
+
+      const iconColIdx =
+        cols.length > 0
+          ? Math.max(
+            Math.min(
+              cols[0].key === 'selection-column' ? expandIconColIndex + 1 : expandIconColIndex,
+              cols.length - 1
+            ),
+            0
+          )
+          : expandIconColIndex;
+
       cols = renderSortAndFilter(cols);
       return {
         ...$props,
         columns: cols,
         value: pagerNormalizeData,
         expandIconColIndex: iconColIdx,
+        expandIconAsCell: !!expandedRowRender && expandIconAsCell !== false,
       };
     },
     defaultSelectedRowKeys() {

@@ -249,7 +249,6 @@ export default {
       } else {
         $set(elementRefs, refName, refElement);
       }
-      console.log('elementRefs', this.elementRefs);
     },
     handleScrollPostion() {
       const { bodyTableRef } = this.elementRefs;

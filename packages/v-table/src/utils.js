@@ -74,11 +74,11 @@ function recursiveCols(columns = [], rowIdx = 0, rows = [], parentFixed = false)
 
     if (Array.isArray(item.children)) {
       item.children = recursiveCols(item.children, rowIdx + 1, rows, item.$$_fixed);
-      item.colSpan = 0;
+      item.colspan = 0;
       for (let j = 0, ll = item.children.length; j < ll; j += 1) {
         const child = item.children[j];
         // 有层级的column,上级colspan重新计算, 忽略用户设置的colSpan, 否则会造成异常
-        item.colSpan += child.children ? child.colSpan : 1;
+        item.colspan += child.children ? child.colspan : 1;
       }
     }
     groups.push(item);
@@ -101,7 +101,7 @@ export function groupCols(columns = []) {
       for (let j = 0, l = rl.length; j < l; j += 1) {
         const item = rl[j];
         if (!item.children) {
-          item.rowSpan = deep - i;
+          item.rowspan = deep - i;
         }
       }
     }
@@ -121,11 +121,11 @@ function recursiveRow(columns = [], rowIdx = 0, rows = []) {
       title: item.title,
       column: item,
     };
-    if ('colSpan' in item) {
-      cell.colspan = item.colSpan;
+    if ('colspan' in item) {
+      cell.colspan = item.colspan;
     }
-    if ('rowSpan' in item) {
-      cell.rowspan = item.rowSpan;
+    if ('rowspan' in item) {
+      cell.rowspan = item.rowspan;
     }
     row.push(cell);
     if (item.children) {

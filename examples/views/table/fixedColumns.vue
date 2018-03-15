@@ -1,14 +1,20 @@
 <template>
   <div class="demo">
-    <h4>size</h4>
-    <h6>middle</h6>
+    <h6>fixed columns</h6>
+    <p>
+      1. 表头和数据可能不对齐,请设置column的`width`属性,
+      <br>
+      <b>
+        2. `fixed`列必须设置`width`属性,且不能使用百分比;
+      </b>
+      <br>
+      <b>
+        2. scroll.x 设置一个大于实际表格宽度的百分比或固定值,并且`fixed`列的总宽度不要超过表格宽度
+      </b>
+    </p>
     <ux-table :columns="columns"
               v-model="data"
-              size="middle" />
-    <h6>small</h6>
-    <ux-table :columns="columns"
-              v-model="data"
-              size="small" />
+              :scroll="{x: '150%'}" />
   </div>
 </template>
 
@@ -19,32 +25,36 @@
     return [
       {
         fixed: 'left',
-        width: 200,
+        width: 150,
         key: 'name',
         title: 'Name',
         dataIndex: 'name',
         cellRender(text) {
-          return <a>{text}</a>;
+          return <a href="#">{text}</a>;
         },
       },
       {
-        fixed: true,
-        width: 200,
+        fixed: 'left',
+        width: 100,
         key: 'age',
         title: 'Age',
         dataIndex: 'age',
       },
-      {
-        key: 'sex',
-        title: 'Sex',
-        dataIndex: 'sex',
-      },
+      ...Array(10)
+        .fill(0)
+        .map((v, i) => ({
+          key: `addr${i}`,
+          title: `Addr${i}`,
+          dataIndex: 'address',
+        })),
       {
         fixed: 'right',
-        width: 80,
-        key: 'addr',
-        title: 'Addr',
-        dataIndex: 'address',
+        width: 200,
+        key: 'action',
+        title: 'Action',
+        cellRender() {
+          return <a>Action</a>;
+        },
       },
     ];
   }
@@ -55,9 +65,8 @@
       .map((v, i) => ({
         key: i,
         name: `a${i}`,
-        sex: 'male',
         age: 10 + i,
-        address: 'address ',
+        address: `address address ${i}`,
       }));
   }
 

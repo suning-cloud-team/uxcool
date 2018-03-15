@@ -1,16 +1,6 @@
 <template>
-  <!-- <ux-table :columns="cols1"
-                footer="cccc">
-        <span slot="title"
-              slot-scope="props">
-          abc
-        </span>
-        <span slot="footer">
-          footer 11
-        </span>
-      </ux-table>   -->
   <div>
-    <normal-demo/>
+    <!-- <normal-demo/>
     <selection-single-demo/>
     <selection-demo/>
     <selection-row-demo/>
@@ -19,8 +9,17 @@
     <sort-filter-demo/>
     <sort-filter-reset-demo/>
     <custom-filter-panel-demo/>
+    <filter-demo />
     <ajax-demo/>
     <size-demo/>
+    <border-title-footer-demo/>
+    <expander-row-demo/>
+    <colspan-rowspan-demo/>
+    <tree-data-demo/>
+    <fixed-header-demo/>
+    <fixed-columns-demo/>
+    <fixed-columns-header-demo/>-->
+    <group-header-demo/>
   </div>
 </template>
 
@@ -28,7 +27,6 @@
 <script>
   import '@suning/uxcool/src/components/table/style/index.scss';
   import UxTable from '@suning/uxcool/src/components/table';
-  import { getData as originGetData } from './data';
   import NormalDemo from './normal.vue';
   import SelectionSingleDemo from './selectionSingle.vue';
   import SelectionDemo from './selection.vue';
@@ -40,6 +38,15 @@
   import CustomFilterPanelDemo from './customFilterPanel.vue';
   import AjaxDemo from './ajax.vue';
   import SizeDemo from './size.vue';
+  import FilterDemo from './filter.vue';
+  import BorderTitleFooterDemo from './borderTitleFooter.vue';
+  import ExpanderRowDemo from './expanderRow.vue';
+  import ColspanRowspanDemo from './colSpanRowSpan.vue';
+  import TreeDataDemo from './treeData.vue';
+  import FixedHeaderDemo from './fixedHeader.vue';
+  import FixedColumnsDemo from './fixedColumns.vue';
+  import FixedColumnsHeaderDemo from './fixedColumnsHeader.vue';
+  import GroupHeaderDemo from './groupHeader.vue';
 
   export default {
     components: {
@@ -55,82 +62,15 @@
       CustomFilterPanelDemo,
       AjaxDemo,
       SizeDemo,
-    },
-    data() {
-      return {
-        cols1: [
-          {
-            title: 'key',
-            dataIndex: 'key',
-          },
-          {
-            fixed: true,
-            width: 200,
-            title: 'Name',
-            dataIndex: 'name',
-          },
-          {
-            title: 'Age',
-            dataIndex: 'age',
-          },
-          {
-            title: 'Addr',
-            dataIndex: 'addr',
-          },
-        ],
-        data1: this.getData(12),
-        data2: this.getData(1),
-        rowSelection: {
-          selectedRowKeys: ['c0', 23],
-          // type: 'radio',
-          getCheckboxProps() {
-            return {
-              defaultChecked: true,
-              disabled: true,
-            };
-          },
-          onChange(...args) {
-            console.log('onChange', args);
-          },
-          onSelect(...args) {
-            console.log('onSelect', args);
-          },
-          onSelectAll(...args) {
-            console.log('onSelectAll', args);
-          },
-          onSelectInvert(...args) {
-            console.log('onSelectInvert', args);
-          },
-        },
-      };
-    },
-    mounted() {
-      setTimeout(() => {
-        // this.$set(this.rowSelection, 'getCheckboxProps', item => ({
-        //   defaultChecked: item.key === 3,
-        //   disabled: item.key % 2 === 0,
-        // }));
-        // this.rowSelection = {
-        //   getCheckboxProps(item) {
-        //     return {
-        //       defaultChecked: item.key === 3,
-        //       disabled: item.key % 2 === 0,
-        //     };
-        //   },
-        // };
-        this.rowSelection.getCheckboxProps = item => ({
-          defaultChecked: item.key === 0,
-          disabled: item.key % 2 === 0,
-        });
-        // this.rowSelection.type = 'checkbox';
-        this.rowSelection.selectedRowKeys = ['2'];
-        // this.cols1[0].fixed = true;
-      }, 2500);
-
-      console.log('refs', this.$refs.t1);
-    },
-    methods: {
-      getData: originGetData,
+      FilterDemo,
+      BorderTitleFooterDemo,
+      ExpanderRowDemo,
+      ColspanRowspanDemo,
+      TreeDataDemo,
+      FixedHeaderDemo,
+      FixedColumnsDemo,
+      FixedColumnsHeaderDemo,
+      GroupHeaderDemo,
     },
   };
 </script>

@@ -1,14 +1,10 @@
 <template>
   <div class="demo">
-    <h4>size</h4>
-    <h6>middle</h6>
+    <h6>fixed header</h6>
+    <p>表头和数据可能不对齐,请设置column的`width`属性</p>
     <ux-table :columns="columns"
               v-model="data"
-              size="middle" />
-    <h6>small</h6>
-    <ux-table :columns="columns"
-              v-model="data"
-              size="small" />
+              :scroll="{y:250}" />
   </div>
 </template>
 
@@ -18,30 +14,21 @@
   function getCols() {
     return [
       {
-        fixed: 'left',
-        width: 200,
         key: 'name',
+        width: '25%',
         title: 'Name',
         dataIndex: 'name',
         cellRender(text) {
-          return <a>{text}</a>;
+          return <a href="#">{text}</a>;
         },
       },
       {
-        fixed: true,
-        width: 200,
         key: 'age',
+        width: 100,
         title: 'Age',
         dataIndex: 'age',
       },
       {
-        key: 'sex',
-        title: 'Sex',
-        dataIndex: 'sex',
-      },
-      {
-        fixed: 'right',
-        width: 80,
         key: 'addr',
         title: 'Addr',
         dataIndex: 'address',
@@ -55,9 +42,8 @@
       .map((v, i) => ({
         key: i,
         name: `a${i}`,
-        sex: 'male',
         age: 10 + i,
-        address: 'address ',
+        address: `address address ${i}`,
       }));
   }
 
