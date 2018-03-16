@@ -3,9 +3,10 @@
     <h6>group header</h6>
     <p>
       <b>
-        1. 多层header时,只支持最内层元素添加`filter`功能
+        1. 多级header时,只支持最内层元素添加`filter`功能
       </b>
       <br> 2. `sort`各层级都支持
+      <br> 3. 通过`column[n].children` 嵌套头部
     </p>
     <ux-table :columns="columns"
               v-model="data"

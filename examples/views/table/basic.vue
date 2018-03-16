@@ -13,13 +13,16 @@
     <ajax-demo/>
     <size-demo/>
     <border-title-footer-demo/>
-    <expander-row-demo/>
+<expander-row-demo/>
     <colspan-rowspan-demo/>
     <tree-data-demo/>
     <fixed-header-demo/>
     <fixed-columns-demo/>
-    <fixed-columns-header-demo/>-->
+    <fixed-columns-header-demo/>
     <group-header-demo/>
+    <editable-cells-demo/>
+    <editable-rows-demo/>-->
+    <nest-table-demo/>
   </div>
 </template>
 
@@ -47,6 +50,9 @@
   import FixedColumnsDemo from './fixedColumns.vue';
   import FixedColumnsHeaderDemo from './fixedColumnsHeader.vue';
   import GroupHeaderDemo from './groupHeader.vue';
+  import EditableCellsDemo from './editableCells.vue';
+  import EditableRowsDemo from './editableRows.vue';
+  import NestTableDemo from './nestTable.vue';
 
   export default {
     components: {
@@ -71,6 +77,9 @@
       FixedColumnsDemo,
       FixedColumnsHeaderDemo,
       GroupHeaderDemo,
+      EditableCellsDemo,
+      EditableRowsDemo,
+      NestTableDemo,
     },
   };
 </script>

@@ -3,7 +3,6 @@
     <h6>expander row</h6>
     <ux-table :columns="columns"
               v-model="data"
-              bordered
               :expanded-row-render="expandedRowRender" />
   </div>
 </template>
