@@ -60,18 +60,11 @@ export default {
       };
 
       if (isFunction(onCell)) {
-        cellProps = { ...cellProps, ...onCell(record, rowIdx, colIdx, column) };
+        cellProps = { ...cellProps, ...onCell(record, rowIdx, column, colIdx) };
       }
 
       if (isFunction(cellRender)) {
-        const rv = cellRender.call(
-          { $createElement: this.$createElement },
-          val,
-          record,
-          rowIdx,
-          colIdx,
-          column
-        );
+        const rv = cellRender(this.$createElement, val, record, rowIdx, column, colIdx);
         // Object
         if (rv && isPlainObject(rv) && !isVNode(rv)) {
           cellProps = { ...cellProps, ...rv };
