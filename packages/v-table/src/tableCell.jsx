@@ -64,7 +64,14 @@ export default {
       }
 
       if (isFunction(cellRender)) {
-        const rv = cellRender(this.$createElement, val, record, rowIdx, column, colIdx);
+        const rv = cellRender.call(
+          { $createElement: this.$createElement },
+          val,
+          record,
+          rowIdx,
+          column,
+          colIdx
+        );
         // Object
         if (rv && isPlainObject(rv) && !isVNode(rv)) {
           cellProps = { ...cellProps, ...rv };
