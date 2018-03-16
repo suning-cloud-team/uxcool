@@ -1,6 +1,12 @@
 <template>
   <div class="demo">
-    <h6>normal</h6>
+    <h6>group header</h6>
+    <p>
+      <b>
+        1. 多层header时,只支持最内层元素添加`filter`功能
+      </b>
+      <br> 2. `sort`各层级都支持
+    </p>
     <ux-table :columns="columns"
               v-model="data"
               bordered
