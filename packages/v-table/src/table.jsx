@@ -42,10 +42,10 @@ export default {
         return {};
       },
     },
-    // rowClass: {
-    //   type: [Object, String, Array],
-    //   default: '',
-    // },
+    rowClass: {
+      type: [Object, String, Array, Function],
+      default: '',
+    },
     onRow: {
       type: Function,
       default: noop,

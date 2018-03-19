@@ -44,10 +44,6 @@ export default {
         return [];
       },
     },
-    useFixedHeader: {
-      type: Boolean,
-      default: false,
-    },
     rowSelection: {
       type: Object,
       default() {
@@ -234,6 +230,8 @@ export default {
         expandIconColIndex,
         expandIconAsCell,
         expandedRowRender,
+        spinLoading,
+        emptyText,
       } = this;
       let cols = renderRowSelection();
 
@@ -255,6 +253,7 @@ export default {
         value: pagerNormalizeData,
         expandIconColIndex: iconColIdx,
         expandIconAsCell: !!expandedRowRender && expandIconAsCell !== false,
+        emptyText: spinLoading.spinning ? '' : emptyText,
       };
     },
     defaultSelectedRowKeys() {

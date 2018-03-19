@@ -4,7 +4,8 @@
     <ux-table class="components-table-demo-nested"
               :columns="columns"
               v-model="data"
-              :expanded-row-render="expandedRowRender" />
+              :expanded-row-render="expandedRowRender"
+              @expand="onExpand" />
   </div>
 </template>
 
@@ -102,9 +103,10 @@
         name: `a${i}`,
         age: 10 + i,
         address: `address address ${i}`,
+        loading: false,
         nest: {
           columns: getNestCols(),
-          datas: getNestData(3),
+          datas: [],
         },
       }));
   }
@@ -126,8 +128,22 @@
     },
     methods: {
       expandedRowRender(record) {
-        const { nest: { columns, datas } } = record;
-        return <UxTable columns={columns} value={datas} />;
+        const { nest: { columns, datas }, loading } = record;
+        return <UxTable columns={columns} value={datas} loading={loading} />;
+      },
+      onExpand(isExpand, record) {
+        const { data } = this;
+        if (isExpand) {
+          const item = data.filter(v => v.key === record.key)[0];
+          if (item) {
+            item.loading = true;
+            setTimeout(() => {
+              item.nest.datas = getNestData(4);
+              item.loading = false;
+            }, 1500);
+          }
+        }
+        console.log('onExpand', arguments);
       },
     },
   };

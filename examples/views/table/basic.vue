@@ -21,8 +21,9 @@
     <fixed-columns-header-demo/>
     <group-header-demo/>
     <editable-cells-demo/>
-    <editable-rows-demo/>-->
-    <nest-table-demo/>
+    <editable-rows-demo/>
+    <nest-table-demo/>-->
+    <async-nest-table-demo/>
   </div>
 </template>
 
@@ -53,6 +54,7 @@
   import EditableCellsDemo from './editableCells.vue';
   import EditableRowsDemo from './editableRows.vue';
   import NestTableDemo from './nestTable.vue';
+  import AsyncNestTableDemo from './asyncNestTable.vue';
 
   export default {
     components: {
@@ -80,6 +82,7 @@
       EditableCellsDemo,
       EditableRowsDemo,
       NestTableDemo,
+      AsyncNestTableDemo,
     },
   };
 </script>

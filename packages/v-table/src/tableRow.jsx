@@ -184,6 +184,7 @@ export default {
       fixed,
       visible,
       expandRow,
+      rowClass,
       classes,
       rowStyle,
       expandRowStyle,
@@ -191,6 +192,7 @@ export default {
       onRow,
       record,
       rowIdx,
+      indent,
       reBindRowEvents,
       expandIconAsCell,
       renderExpandIconAsCell,
@@ -202,7 +204,7 @@ export default {
     if (!expandRow && isFunction(onRow)) {
       rowProps = { ...rowProps, ...onRow(record, rowIdx) };
     }
-
+    const rowClassName = isFunction(rowClass) ? rowClass(record, rowIdx, indent) : rowClass;
     const {
       className, style, on, ...otherProps
     } = rowProps;
@@ -216,7 +218,7 @@ export default {
     return (
       <tr
         v-show={visible}
-        class={[classes, className]}
+        class={[classes, className, rowClassName]}
         style={[style, nRowStyle]}
         {...{ attrs: otherProps, on: events }}
       >

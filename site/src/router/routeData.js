@@ -23,7 +23,7 @@ import Message from '@/views/components/message/index.vue';
 import Breadcrumb from '@/views/components/breadcrumb/index.vue';
 import Icon from '@/views/components/icon/index.vue';
 import Progress from '@/views/components/progress/index.vue';
-// import Table from '@/views/components/table/index.vue';
+import Table from '@/views/components/table/index.vue';
 
 export const groups = {
   general: {
@@ -297,16 +297,16 @@ export default [
         },
         component: Progress,
       },
-      // {
-      //   name: 'table',
-      //   path: 'table',
-      //   meta: {
-      //     title: 'Table',
-      //     subTitle: '表格',
-      //     group: 'data',
-      //   },
-      //   component: Table,
-      // },
+      {
+        name: 'table',
+        path: 'table',
+        meta: {
+          title: 'Table',
+          subTitle: '表格',
+          group: 'data',
+        },
+        component: Table,
+      },
     ],
   },
   {
