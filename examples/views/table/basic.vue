@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <normal-demo/>
+    <normal-demo/>
     <selection-single-demo/>
     <selection-demo/>
     <selection-row-demo/>
@@ -13,7 +13,7 @@
     <ajax-demo/>
     <size-demo/>
     <border-title-footer-demo/>
-<expander-row-demo/>
+    <expander-row-demo/>
     <colspan-rowspan-demo/>
     <tree-data-demo/>
     <fixed-header-demo/>
@@ -22,7 +22,7 @@
     <group-header-demo/>
     <editable-cells-demo/>
     <editable-rows-demo/>
-    <nest-table-demo/>-->
+    <nest-table-demo/>
     <async-nest-table-demo/>
   </div>
 </template>

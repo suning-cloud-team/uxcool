@@ -1,6 +1,6 @@
 import pick from 'lodash/pick';
 import assign from 'lodash/assign';
-import { isFunction } from './utils';
+import { isFunction, isDef } from './utils';
 
 const DATA_KEYS = [
   'class',
@@ -23,6 +23,10 @@ export function isVNode(node = {}) {
     return false;
   }
   return !!('componentOptions' in node && 'tag' in node && 'ns' in node);
+}
+
+export function isTextNode(node) {
+  return isDef(node) && isDef(node.text) && node.isComment === false;
 }
 
 function mutateKey(key) {

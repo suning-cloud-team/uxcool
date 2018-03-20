@@ -1,5 +1,8 @@
 import isPlainObject from 'lodash/isPlainObject';
 
+export function isDef(v) {
+  return v !== null && v !== undefined;
+}
 export function isFunction(fn) {
   return typeof fn === 'function';
 }

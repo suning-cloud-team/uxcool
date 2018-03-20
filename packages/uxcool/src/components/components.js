@@ -20,8 +20,6 @@ export * from './steps';
 
 export * from './tabs';
 
-export { default as UxButton } from './button';
-
 export { default as UxIcon } from './icon';
 
 export { default as UxModal } from './modal';
@@ -41,3 +39,5 @@ export * from './dropdown';
 export { default as UxTable } from './table';
 
 export { default as UxDivider } from './divider';
+
+export * from './button';
