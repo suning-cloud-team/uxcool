@@ -19,7 +19,7 @@ $table-header-icon-color: $text-color-secondary;
   @include reset-component;
   position: relative;
   border-radius: $border-radius-base $border-radius-base 0 0;
-
+  clear: both;
   &-body {
     transition: opacity 0.3s;
   }
