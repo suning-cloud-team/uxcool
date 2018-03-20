@@ -48,8 +48,11 @@
       },
       createPortal(dialog) {
         const vm = new Vue({
-          props: {
-            dialogVNode: Object,
+          parent: this,
+          data() {
+            return {
+              dialogVNode: null,
+            };
           },
           render() {
             const { dialogVNode } = this;
@@ -63,7 +66,6 @@
           },
         }).$mount();
         const container = this.getContainer();
-        container.appendChild(vm.$el);
         vm.dialogVNode = dialog;
         return vm;
       },

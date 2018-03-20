@@ -98,11 +98,11 @@ const routes = [
     path: '/grid',
     component: Grid,
   },
-  {
-    name: 'Chart',
-    path: '/chart',
-    component: () => import('./views/chart/index'),
-  },
+  // {
+  //   name: 'Chart',
+  //   path: '/chart',
+  //   component: () => import('./views/chart/index'),
+  // },
   {
     name: 'Breadcrumb',
     path: '/breadcrumb',

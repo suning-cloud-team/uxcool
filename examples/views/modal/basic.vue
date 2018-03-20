@@ -173,15 +173,36 @@
     </div>
 
     <button @click="onDestroy">Destroy</button>
+
+    <div class="demo">
+      <h6>store</h6>
+      <button class="ux-btn ux-btn-error"
+              @click="storeOpen">error</button>
+      <ux-modal v-model="storeVisible"
+                :theme="theme">
+        <store-cmp />
+        <p>error Content</p>
+      </ux-modal>
+      <store-cmp/>
+    </div>
   </div>
 </template>
 
 
 <script>
+  import Vue from 'vue';
   import '@suning/uxcool/src/components/button/style/index.scss';
   import '@suning/uxcool/src/components/modal/style/index.scss';
   import UxModal from '@suning/uxcool/src/components/modal';
 
+  Vue.component('StoreCmp', {
+    created() {
+      console.log('store-cmp', this.$store);
+    },
+    render() {
+      return 'store';
+    },
+  });
   export default {
     data() {
       return {
@@ -194,6 +215,7 @@
         verticalCenterVisible: false,
         nestParentVisible: false,
         nestVisible: false,
+        storeVisible: false,
       };
     },
     methods: {
@@ -225,6 +247,9 @@
       },
       nestOpen() {
         this.nestVisible = true;
+      },
+      storeOpen() {
+        this.storeVisible = true;
       },
       onOk(e, from) {
         console.log(`${from} ok`, e);

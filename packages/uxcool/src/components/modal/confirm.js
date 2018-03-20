@@ -25,9 +25,25 @@ function modalConfrim(props) {
     document.body.appendChild(container);
 
     const vm = new Vue({
-      props: {
-        attrs: Object,
-        listeners: Object,
+      components: {
+        Modal,
+        Icon,
+      },
+      data() {
+        return {
+          attrs: null,
+          listeners: null,
+        };
+      },
+      created() {
+        confirms.add(this);
+      },
+      destroyed() {
+        confirms.delete(this);
+        const { parentNode } = container;
+        if (parentNode) {
+          parentNode.removeChild(container);
+        }
       },
       render() {
         const { attrs, listeners } = this;
@@ -64,11 +80,11 @@ function modalConfrim(props) {
           <button class="ux-btn" on-click={listeners.cancel}>
             {cancelText}
           </button>
-        ) : null;
+          ) : null;
 
         const modalContent = dangerouslySetInnerHTML ? (
           <div class={`${prefixCls}-content`} {...{ domProps: { innerHTML: content } }} />
-        ) : (
+          ) : (
           <div class={`${prefixCls}-content`}>{content}</div>
         );
         return (
@@ -88,20 +104,6 @@ function modalConfrim(props) {
             </div>
           </modal>
         );
-      },
-      created() {
-        confirms.add(this);
-      },
-      destroyed() {
-        confirms.delete(this);
-        const { parentNode } = container;
-        if (parentNode) {
-          parentNode.removeChild(container);
-        }
-      },
-      components: {
-        Modal,
-        Icon,
       },
     }).$mount();
 
