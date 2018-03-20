@@ -50,12 +50,13 @@ function getConfig() {
     },
     resolve: {
       alias,
+      extensions: ['.js', '.json', '.jsx'],
     },
     module: {
       rules: [
         {
-          test: /\.js$/,
-          loader: 'babel-loader',
+          test: /\.js(x)?$/,
+          loader: 'babel-loader?cacheDirectory',
           exclude: /node_modules/,
         },
         {

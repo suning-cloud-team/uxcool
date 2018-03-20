@@ -1,24 +1,22 @@
 <template>
   <div>
     <button class="ux-btn"
-            @click="changeTheme">{{theme}}</button>
+            @click="changeTheme">{{ theme }}</button>
 
     <ux-textarea novalidate
                  :theme="theme"
                  placeholder="测试用"
                  class="custom-class"
                  style="resize:none"
-                 :auto-size="{minRows:2, maxRows:6}">
-    </ux-textarea>
+                 :auto-size="{minRows:2, maxRows:6}" />
 
     <ux-textarea spellcheck="false"
                  :theme="theme"
                  :value="value"
-                 :auto-size="true">
-    </ux-textarea>
+                 :auto-size="true" />
 
     <ux-textarea :value="value"
-                 :theme="theme"></ux-textarea>
+                 :theme="theme" />
   </div>
 </template>
 

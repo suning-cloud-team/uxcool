@@ -2,7 +2,7 @@
 @import '~@suning/v-style/assets/mixins/index';
 @import '~@suning/v-style/assets/core/index';
 
-$menu-prefix-cls: #{$ux-prefix}-menu; // default theme
+$menu-prefix-cls: v-menu; // default theme
 .#{$menu-prefix-cls} {
   outline: none;
   margin-bottom: 0;

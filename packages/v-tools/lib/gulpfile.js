@@ -18,7 +18,7 @@ const getPostCssCfg = require('./getPostCssCfg');
 const { getRoot, getBabelrc, getPackageJSON } = require('./utils');
 
 const log = debug('tools:gulpfile');
-// debug.enabled('tools:*');
+// debug.enable('tools:*');
 const root = getRoot();
 const nodeModuleRoot = path.resolve(root, 'node_modules');
 log(`Root: ${root}, nodeModuleRoot: ${nodeModuleRoot}`);
@@ -74,8 +74,14 @@ function transformSCSS(file) {
         importer(url, prev, done) {
           log(`sass compile: use importer: ${url}, path: ${prev}`);
           if (REG_MODULE_SCSS.test(url)) {
-            const modulePath = path.resolve(nodeModuleRoot, url.replace(REG_MODULE_SCSS, ''));
-            log(`sass compile: replace url to module path: ${modulePath}`);
+            let modulePath = nodeModuleRoot;
+            // lerna compatible
+            if (/[\\/]packages[\\/]/.test(root)) {
+              modulePath = path.resolve(root, '../..', 'node_modules');
+            }
+            log(`sass compile: importer replace url to module path: ${modulePath}`);
+
+            modulePath = path.resolve(modulePath, url.replace(REG_MODULE_SCSS, ''));
             done({
               file: modulePath,
             });

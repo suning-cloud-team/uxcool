@@ -51,7 +51,6 @@
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
-  float: left;
   width: percentage($size / $columns);
 }
 
@@ -63,6 +62,7 @@
 @mixin make-grid($prefix, $columns: $grid-columns, $breakpoints: $grid-breakpoints) {
   // Common properties for all breakpoints
   %grid-column {
+    float: left;
     display: block;
     position: relative;
     padding-left: ($grid-gutter-width / 2);
@@ -70,6 +70,7 @@
     // Prevent columns from collapsing when empty
     min-height: 1px;
     flex: 0 0 auto;
+    box-sizing: border-box;
   }
 
   @for $i from 1 through $columns {

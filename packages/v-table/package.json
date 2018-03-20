@@ -14,16 +14,13 @@
     "@suning/v-tools": "^1.0.25"
   },
   "dependencies": {
+    "@suning/v-utils": "^1.0.0",
     "lodash": "^4.17.4"
   },
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": [
-    "assets/*.css",
-    "cjs",
-    "es"
-  ],
+  "files": ["assets/*.css", "cjs", "es"],
   "scripts": {
     "compile": "v-tools run compile",
     "server": "v-tools run server",

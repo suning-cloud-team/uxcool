@@ -23,7 +23,7 @@ import Message from '@/views/components/message/index.vue';
 import Breadcrumb from '@/views/components/breadcrumb/index.vue';
 import Icon from '@/views/components/icon/index.vue';
 import Progress from '@/views/components/progress/index.vue';
-import Table from '@/views/components/table/index.vue';
+// import Table from '@/views/components/table/index.vue';
 
 export const groups = {
   general: {
@@ -60,6 +60,7 @@ export const groups = {
   },
 };
 
+// title不止充当文档标题作用，还充当埋点名称角色
 export default [
   {
     path: '/guide',
@@ -100,7 +101,8 @@ export default [
         name: 'grid',
         path: 'grid',
         meta: {
-          title: 'Grid 栅格',
+          title: 'Grid',
+          subTitle: '栅格',
           group: 'layout',
         },
         component: Grid,
@@ -295,16 +297,16 @@ export default [
         },
         component: Progress,
       },
-      {
-        name: 'table',
-        path: 'table',
-        meta: {
-          title: 'Table',
-          subTitle: '表格',
-          group: 'data',
-        },
-        component: Table,
-      },
+      // {
+      //   name: 'table',
+      //   path: 'table',
+      //   meta: {
+      //     title: 'Table',
+      //     subTitle: '表格',
+      //     group: 'data',
+      //   },
+      //   component: Table,
+      // },
     ],
   },
   {

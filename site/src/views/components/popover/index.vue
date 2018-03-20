@@ -1,6 +1,8 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Popover<span class="subtitle">悬浮框</span></h1>
+    <h1 class="ux-heading">Popover
+      <span class="subtitle">悬浮框</span>
+    </h1>
     <demo-basic></demo-basic>
     <demo-trigger></demo-trigger>
     <demo-title></demo-title>
@@ -9,9 +11,10 @@
     <demo-visible></demo-visible>
 
     <hr>
-    <ux-heading level="2" id="api">API</ux-heading>
+    <ux-heading level="2"
+                id="api">API</ux-heading>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>Props</caption>
       <thead>
         <tr>
@@ -96,7 +99,7 @@
         </tr>
       </tbody>
     </table>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>Events</caption>
       <thead>
         <tr>
@@ -117,21 +120,21 @@
 </template>
 
 <script>
-import DemoBasic from './basic.vue';
-import DemoStyle from './style.vue';
-import DemoContent from './content.vue';
-import DemoTitle from './title.vue';
-import DemoTrigger from './trigger.vue';
-import DemoVisible from './visible.vue';
+  import DemoBasic from './basic.vue';
+  import DemoStyle from './style.vue';
+  import DemoContent from './content.vue';
+  import DemoTitle from './title.vue';
+  import DemoTrigger from './trigger.vue';
+  import DemoVisible from './visible.vue';
 
-export default {
-  components: {
-    DemoBasic,
-    DemoStyle,
-    DemoContent,
-    DemoTitle,
-    DemoTrigger,
-    DemoVisible,
-  },
-};
+  export default {
+    components: {
+      DemoBasic,
+      DemoStyle,
+      DemoContent,
+      DemoTitle,
+      DemoTrigger,
+      DemoVisible,
+    },
+  };
 </script>

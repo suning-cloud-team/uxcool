@@ -31,3 +31,13 @@ export * from './grid';
 export * from './breadcrumb';
 
 export { default as UxProgress } from './progress';
+
+export * from './checkbox';
+
+export * from './radio';
+
+export * from './dropdown';
+
+export { default as UxTable } from './table';
+
+export { default as UxDivider } from './divider';

@@ -4,8 +4,8 @@
       :style="[paddingStyle]"
       @mouseenter="onMouseEnter"
       @mouseleave="onMouseLeave"
-      @click.stop="onClick($event)">
-    <slot></slot>
+      @click="onClick($event)">
+    <slot />
   </li>
 </template>
 
@@ -20,20 +20,14 @@
         type: [String, Number],
         required: true,
       },
-      label: String,
+      label: {
+        type: String,
+        default: '',
+      },
       disabled: {
         type: Boolean,
         default: false,
       },
-    },
-    data() {
-      return {};
-    },
-    created() {
-      this.rootMenu.addDescendants(this);
-    },
-    beforeDestroy() {
-      this.rootMenu.removeDescendants(this);
     },
     computed: {
       prefixCls() {
@@ -55,6 +49,12 @@
           [`${prefixCls}-disabled`]: disabled,
         };
       },
+    },
+    created() {
+      this.rootMenu.addDescendants(this);
+    },
+    beforeDestroy() {
+      this.rootMenu.removeDescendants(this);
     },
     methods: {
       onMenuActive(e) {

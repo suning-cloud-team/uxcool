@@ -50,7 +50,7 @@
     </ul>
     <p>以上方法, 接收一个
       <code>Object</code> 作为参数, 具体属性如下:</p>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>Params</caption>
       <thead>
         <tr>
@@ -122,7 +122,7 @@
       <code>UxMessage.config</code> 接收一个
       <code>Object</code>作为参数, 具体属性如下</p>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>Params</caption>
       <thead>
         <tr>

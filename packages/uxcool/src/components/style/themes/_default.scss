@@ -585,135 +585,6 @@ $menu-dark-bg: $layout-header-bg-dark !default;
 $menu-dark-submenu-bg: $layout-header-bg-dark !default;
 $menu-collapsed-width: 64px !default;
 
-// checkbox
-$checkbox-indicator-size: 18px !default;
-
-$checkbox-indicator-border-width: 1px !default;
-$checkbox-indicator-border-color: $border-color-base !default;
-$checkbox-indicator-border-disabled-color: $border-color-base !default;
-$checkbox-indicator-border-radius: $border-radius-base !default;
-
-$checkbox-indicator-color: $primary-color !default;
-$checkbox-indicator-disabled-color: $gray-6 !default;
-
-$checkbox-indicator-bg: $white !default;
-$checkbox-indicator-disabled-bg: $gray-3 !default;
-
-$checkbox-checker-border-width: 2px !default;
-
-$checkbox-spacing: 10px !default;
-
-$checkbox-text-font-size: $font-size-base !default;
-$checkbox-text-line-height: 20px !default;
-$checkbox-text-disabled-color: $gray-6 !default;
-
-$checkbox-disabled-cursor: not-allowed !default;
-
-$checkbox-transition: all 0.15s !default;
-
-// radio
-$radio-indicator-size: 18px !default;
-
-$radio-indicator-border-width: 1px !default;
-$radio-indicator-border-color: $border-color-base !default;
-$radio-indicator-border-disabled-color: $border-color-base !default;
-
-$radio-indicator-color: $primary-color !default;
-$radio-indicator-disabled-color: $gray-6 !default;
-
-$radio-indicator-bg: $white !default;
-$radio-indicator-disabled-bg: $gray-3 !default;
-
-$radio-dot-size: 6px !default;
-
-$radio-spacing: 10px !default;
-
-$radio-text-font-size: $font-size-base !default;
-$radio-text-line-height: 20px !default;
-$radio-text-disabled-color: $gray-6 !default;
-
-$radio-disabled-cursor: not-allowed !default;
-
-$radio-transition: all 0.15s !default;
-
-// switch
-$switch-width: 60px !default;
-$switch-width-mini: 40px !default;
-$switch-height: 24px !default;
-$switch-height-mini: 20px !default;
-
-$switch-unchecked-bg: $gray-4 !default;
-$switch-checked-bg: $primary-color !default;
-$switch-disabled-bg: $gray-3 !default;
-
-$switch-toggle-bg: $white !default;
-$switch-toggle-disabled-bg: $white !default;
-
-$switch-toggle-transition: all 0.2s !default;
-$switch-transition: background-color 0.4s !default;
-$switch-text-transition: left 0.2s !default;
-
-$switch-font-size: 12px !default;
-$switch-color: $white !default;
-$switch-disabled-color: $gray-6 !default;
-
-$switch-disabled-cursor: not-allowed !default;
-
-// table
-// $table-bg: $white !default;
-$table-margin-bottom: $spacer !default;
-
-$table-border-width: 1px !default;
-$table-border-color: $gray-3 !default;
-$table-border-color-dark: rgba(#fff, 0.1) !default;
-
-$table-cell-padding: 9px !default;
-
-$th-color: $gray-7 !default;
-$th-color-dark: rgba(#fff, 0.5) !default;
-
-$th-font-weight: $font-weight-normal !default;
-
-$table-accent-bg: $gray-1 !default;
-$table-accent-bg-dark: rgba(252, 252, 252, 0.05) !default;
-$table-hover-bg: $gray-2 !default;
-$table-hover-bg-dark: rgba(#fff, 0.1) !default;
-
-// Tag
-// --
-$tag-default-bg: #f3f3f3 !default;
-$tag-default-bg-dark: $background-color-dark !default;
-$tag-default-color: $text-color !default;
-$tag-default-color-dark: $text-color-dark !default;
-$tag-font-size: $font-size-base !default;
-
-// Badge
-// ---
-$badge-height: 20px !default;
-$badge-dot-size: 8px !default;
-$badge-font-size: $font-size-sm !default;
-$badge-status-size: 6px !default;
-
-// Pagination
-// ---
-$pagination-item-size: 32px!default;
-$pagination-item-size-sm: 24px!default;
-$pagination-item-bg-dark: rgba(#fff, 0.1) !default;
-$pagination-item-border-dark: rgba(#fff, 0.1) !default;
-$pagination-item-color-dark: #008dff!default;
-
-// DatePicker
-// ---
-$date-picker-bg-dark: #03adcd !default;
-$date-picker-time-selected-bg-dark: #03adcd!default;
-$date-picker-input-bg-dark: rgba($black, 0.2) !default;
-// TimePicker
-// ---
-$time-picker-panel-column-width: 56px !default;
-$time-picker-panel-width: $time-picker-panel-column-width * 3 !default;
-$time-picker-selected-bg: $background-color-base !default;
-$time-picker-selected-bg-dark: $background-color-dark !default;
-
 // Buttons
 $btn-font-weight: 500 !default;
 $btn-border-radius-base: $border-radius-base !default;
@@ -751,6 +622,83 @@ $btn-circle-size-lg: $btn-height-lg !default;
 $btn-circle-size-sm: $btn-height-sm !default;
 
 $btn-group-border: $primary-7 !default;
+
+// Checkbox
+$checkbox-size: 16;
+
+// Radio
+$radio-size: 16px;
+
+// Radio buttons
+$radio-button-bg: $btn-default-bg;
+$radio-button-color: $btn-default-color;
+
+// switch
+$switch-width: 60px !default;
+$switch-width-mini: 40px !default;
+$switch-height: 24px !default;
+$switch-height-mini: 20px !default;
+
+$switch-unchecked-bg: $gray-4 !default;
+$switch-checked-bg: $primary-color !default;
+$switch-disabled-bg: $gray-3 !default;
+
+$switch-toggle-bg: $white !default;
+$switch-toggle-disabled-bg: $white !default;
+
+$switch-toggle-transition: all 0.2s !default;
+$switch-transition: background-color 0.4s !default;
+$switch-text-transition: left 0.2s !default;
+
+$switch-font-size: 12px !default;
+$switch-color: $white !default;
+$switch-disabled-color: $gray-6 !default;
+
+$switch-disabled-cursor: not-allowed !default;
+
+// Table
+// --
+$table-header-bg: $background-color-light;
+$table-header-sort-bg: $background-color-base;
+$table-row-hover-bg: $primary-1;
+$table-selected-row-bg: #fafafa;
+$table-padding-vertical: 16px;
+$table-padding-horizontal: 16px;
+
+// Tag
+// --
+$tag-default-bg: #f3f3f3 !default;
+$tag-default-bg-dark: $background-color-dark !default;
+$tag-default-color: $text-color !default;
+$tag-default-color-dark: $text-color-dark !default;
+$tag-font-size: $font-size-base !default;
+
+// Badge
+// ---
+$badge-height: 20px !default;
+$badge-dot-size: 8px !default;
+$badge-font-size: $font-size-sm !default;
+$badge-status-size: 6px !default;
+
+// Pagination
+// ---
+$pagination-item-size: 32px!default;
+$pagination-item-size-sm: 24px!default;
+$pagination-item-bg-dark: rgba(#fff, 0.1) !default;
+$pagination-item-border-dark: rgba(#fff, 0.1) !default;
+$pagination-item-color-dark: #008dff!default;
+
+// DatePicker
+// ---
+$date-picker-bg-dark: #03adcd !default;
+$date-picker-time-selected-bg-dark: #03adcd!default;
+$date-picker-input-bg-dark: rgba($black, 0.2) !default;
+// TimePicker
+// ---
+$time-picker-panel-column-width: 56px !default;
+$time-picker-panel-width: $time-picker-panel-column-width * 3 !default;
+$time-picker-selected-bg: $background-color-base !default;
+$time-picker-selected-bg-dark: $background-color-dark !default;
 
 // Spin
 // ---

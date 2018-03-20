@@ -46,7 +46,7 @@
                          :disabled="disabled"
                          :value="inputValue"
                          @input="onSearchInput"
-                         @keydown="onInputKeydown" />
+                         @keydown="onInputKeydown" >
                   <span :class="`${prefixCls}-search__field__mirror`">
                     {{inputValue}}
                   </span>

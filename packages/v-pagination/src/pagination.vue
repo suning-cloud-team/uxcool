@@ -1,87 +1,75 @@
 <template>
-  <div>
-    <!-- simple -->
-    <template v-if="simple">
-      <ul :class="[simpleClasses,className]">
-        <li v-if="showBeforeTotal !== noop"
-            :class="beforeTotalClasses"
-            v-html="beforeTotalLiteral"></li>
-        <li :title="genTitle(locale.next_page)"
-            tabindex="0"
-            :class="prevClasses"
-            @click="prev"
-            @keypress.enter="prev"
-            v-html="itemRender(prevPageNo, 'prev')">
-        </li>
-        <li :class="simpleSepClasses"></li>
-        <li :title="genTitle(locale.next_page)"
-            tabindex="0"
-            :class="nextClasses"
-            @click="next"
-            @keypress.enter="next"
-            v-html="itemRender(nextPageNo,'next')">
-        </li>
-      </ul>
+  <!-- simple -->
+  <ul v-if="simple"
+      :class="[simpleClasses,className]">
+    <li v-if="showBeforeTotal !== noop"
+        :class="beforeTotalClasses"
+        v-html="beforeTotalLiteral" />
+    <li :title="genTitle(locale.next_page)"
+        tabindex="0"
+        :class="prevClasses"
+        @click="prev"
+        @keypress.enter="prev"
+        v-html="itemRender(prevPageNo, 'prev')" />
+    <li :class="simpleSepClasses" />
+    <li :title="genTitle(locale.next_page)"
+        tabindex="0"
+        :class="nextClasses"
+        @click="next"
+        @keypress.enter="next"
+        v-html="itemRender(nextPageNo,'next')" />
+  </ul>
+  <ul v-else
+      :class="[classes,className]"
+      :style="styles"
+      unselectable="unselectable">
+
+    <li v-if="showBeforeTotal !== noop"
+        :class="beforeTotalClasses"
+        v-html="beforeTotalLiteral" />
+
+    <li :title="genTitle(locale.next_page)"
+        tabindex="0"
+        :class="prevClasses"
+        @click="prev"
+        @keypress.enter="prev"
+        v-html="itemRender(prevPageNo, 'prev')" />
+    <template v-for="(item,idx) in pagers">
+      <li v-if="item.type === 'jump'"
+          :title="item.title"
+          tabindex="0"
+          :class="item.classes"
+          @click="item.onClick"
+          @keypress="item.onKeyPress"
+          v-html="itemRender(item.getPage(), `jump-${item.key}`)" />
+      <pager v-if="item.type==='pager'"
+             :page="item.page"
+             :active="item.active"
+             :show-title="item.showTitle"
+             :root-prefix-cls="item.prefixCls"
+             :class-name="item.classes"
+             @click.native="item.onClick"
+             @keypress.native.enter="item.onKeyPress"
+             v-html="itemRender(item.page, 'page')" />
     </template>
-    <template v-else>
-      <ul :class="[classes,className]"
-          :style="styles"
-          unselectable="unselectable">
+    <li :title="genTitle(locale.next_page)"
+        tabindex="0"
+        :class="nextClasses"
+        @click="next"
+        @keypress.enter="next"
+        v-html="itemRender(nextPageNo,'next')" />
+    <li v-if="showAfterTotal !== noop"
+        :class="afterTotalClasses"
+        v-html="afterTotalLiteral" />
 
-        <li v-if="showBeforeTotal !== noop"
-            :class="beforeTotalClasses"
-            v-html="beforeTotalLiteral"></li>
+    <options :root-prefix-cls="prefixCls"
+             :have-quick-jumper="showQuickJumper"
+             :locale="locale"
+             :current="pageNo"
+             :have-confirm-btn="showQuickJumperConfirmBtn"
+             @on-quick-jumper="handleChange" />
+  </ul>
 
-        <li :title="genTitle(locale.next_page)"
-            tabindex="0"
-            :class="prevClasses"
-            @click="prev"
-            @keypress.enter="prev"
-            v-html="itemRender(prevPageNo, 'prev')">
-        </li>
-        <template v-for="(item,idx) in pagers">
-          <li v-if="item.type === 'jump'"
-              :title="item.title"
-              tabindex="0"
-              :class="item.classes"
-              @click="item.onClick"
-              @keypress="item.onKeyPress"
-              v-html="itemRender(item.getPage(), `jump-${item.key}`)">
-          </li>
-
-          <pager v-if="item.type==='pager'"
-                 :page="item.page"
-                 :active="item.active"
-                 :show-title="item.showTitle"
-                 :root-prefix-cls="item.prefixCls"
-                 :class-name="item.classes"
-                 @click.native="item.onClick"
-                 @keypress.native.enter="item.onKeyPress"
-                 v-html="itemRender(item.page, 'page')">
-          </pager>
-        </template>
-        <li :title="genTitle(locale.next_page)"
-            tabindex="0"
-            :class="nextClasses"
-            @click="next"
-            @keypress.enter="next"
-            v-html="itemRender(nextPageNo,'next')">
-        </li>
-        <li v-if="showAfterTotal !== noop"
-            :class="afterTotalClasses"
-            v-html="afterTotalLiteral"></li>
-
-        <options :root-prefix-cls="prefixCls"
-                 :have-quick-jumper="showQuickJumper"
-                 :locale="locale"
-                 :current="pageNo"
-                 :have-confirm-btn="showQuickJumperConfirmBtn"
-                 @on-quick-jumper="handleChange">
-        </options>
-      </ul>
-    </template>
-
-  </div>
 </template>
 
 <script>

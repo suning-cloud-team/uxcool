@@ -12,6 +12,12 @@ module.exports = {
         },
       },
     },
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        packageDir: '../packages/uxcool/',
+      },
+    ],
     'import/core-modules': ['@suning/uxcool'],
   },
 };

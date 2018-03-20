@@ -1,11 +1,7 @@
 import Vue from 'vue';
 
-import '@suning/v-menu/assets/index.css';
-import VMenu, {
-  VMenuItem,
-  VMenuItemGroup,
-  VSubMenu
-} from '@suning/v-menu';
+import '@suning/v-menu/css/index.scss';
+import VMenu, { VMenuItem, VMenuItemGroup, VSubMenu } from '@suning/v-menu';
 
 const vm = new Vue({
   el: '#app',

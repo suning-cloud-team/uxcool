@@ -73,7 +73,7 @@
 
     <ux-heading level="2"
                 id="api">API</ux-heading>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxRow Props</caption>
       <thead>
         <tr>
@@ -121,7 +121,7 @@
       </tbody>
     </table>
 
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxCol Props</caption>
       <thead>
         <tr>

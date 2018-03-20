@@ -1,0 +1,127 @@
+.#{$radio-prefix-cls}-button-wrapper {
+  margin: 0;
+  height: $btn-height-base;
+  line-height: $btn-height-base - 2px;
+  color: $radio-button-color;
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: $border-width-base $border-style-base $border-color-base;
+  border-left: 0;
+  background: $radio-button-bg;
+  padding: 0 $padding-md - 1px;
+  position: relative;
+
+  a {
+    color: $radio-button-color;
+  }
+
+  > .#{$radio-prefix-cls}-button {
+    margin-left: 0;
+    display: block;
+    width: 0;
+    height: 0;
+  }
+
+  .#{$radio-group-prefix-cls}-large & {
+    height: $input-height-lg;
+    line-height: $input-height-lg - 2px;
+  }
+
+  .#{$radio-group-prefix-cls}-small & {
+    height: $input-height-sm;
+    line-height: $input-height-sm - 2px;
+    padding: 0 $control-padding-horizontal-sm - 1px;
+  }
+
+  &:not(:first-child) {
+    &::before {
+      content: '';
+      display: block;
+      top: 0;
+      left: -1px;
+      width: 1px;
+      height: 100%;
+      position: absolute;
+      background-color: $border-color-base;
+    }
+  }
+  &:first-child {
+    border-radius: $border-radius-base 0 0 $border-radius-base;
+    border-left: $border-width-base $border-style-base $border-color-base;
+  }
+
+  &:last-child {
+    border-radius: 0 $border-radius-base $border-radius-base 0;
+  }
+
+  &:first-child:last-child {
+    border-radius: $border-radius-base;
+  }
+
+  &:hover,
+  &-focused {
+    color: $primary-color;
+    position: relative;
+  }
+
+  .#{$radio-prefix-cls}-inner,
+  input[type='checkbox'],
+  input[type='radio'] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &-checked {
+    background: $radio-button-bg;
+    border-color: $primary-color;
+    color: $primary-color;
+    box-shadow: -1px 0 0 0 $primary-color;
+    z-index: 1;
+    &::before {
+      background-color: $primary-color !important;
+      opacity: 0.1;
+    }
+    &:first-child {
+      border-color: $primary-color;
+      box-shadow: none !important;
+    }
+
+    &:hover {
+      border-color: $primary-5;
+      box-shadow: -1px 0 0 0 $primary-5;
+      color: $primary-5;
+    }
+
+    &:active {
+      border-color: $primary-7;
+      box-shadow: -1px 0 0 0 $primary-7;
+      color: $primary-7;
+    }
+  }
+
+  &-disabled {
+    border-color: $border-color-base;
+    background-color: $input-disabled-bg;
+    cursor: not-allowed;
+    color: $disabled-color;
+
+    &:first-child,
+    &:hover {
+      border-color: $border-color-base;
+      background-color: $input-disabled-bg;
+      color: $disabled-color;
+    }
+    &:first-child {
+      border-left-color: $border-color-base;
+    }
+  }
+
+  &-disabled#{&}-checked {
+    color: #fff;
+    background-color: #e6e6e6;
+    border-color: $border-color-base;
+    box-shadow: none;
+  }
+}

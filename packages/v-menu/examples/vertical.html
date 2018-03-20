@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <v-menu style="width: 200px;" mode="vertical" :unique-opened="true" :open-keys="['2' ,'3','22']" :selected-keys="['sub-menu-3-1']"
+      @open-change="openSubMenu">
+      <v-sub-menu name="1">
+        <template slot="title">
+          测试1
+        </template>
+        <v-menu-item name="sub-menu-1-1">
+          v-menu-item-1
+        </v-menu-item>
+        <v-menu-item name="sub-menu-1-2">v-menu-item-2</v-menu-item>
+      </v-sub-menu>
+      <v-sub-menu name="2" title="sub-menu-2">
+        <template slot="title">
+          测试2
+        </template>
+        <v-menu-item name="sub-menu-2-1" disabled>v-menu-item-1</v-menu-item>
+        <v-menu-item name="sub-menu-2-2">v-menu-item-2</v-menu-item>
+        <v-sub-menu name="22" title="sub-menu-22">
+          <template slot="title">
+            测试22
+          </template>
+          <v-menu-item name="sub-menu-22-1">v-menu-item-11</v-menu-item>
+          <v-menu-item name="sub-menu-22-2">v-menu-item-22</v-menu-item>
+        </v-sub-menu>
+        <v-sub-menu name="33" title="sub-menu-33">
+          <template slot="title">
+            测试33
+          </template>
+          <v-menu-item name="sub-menu-33-1">v-menu-item-331</v-menu-item>
+          <v-menu-item name="sub-menu-33-2">v-menu-item-332</v-menu-item>
+        </v-sub-menu>
+      </v-sub-menu>
+      <v-sub-menu name="3" title="sub-menu-3" disabled>
+        <template slot="title">
+          测试3
+        </template>
+        <v-menu-item name="sub-menu-3-1">v-menu-item-1</v-menu-item>
+        <v-menu-item name="sub-menu-3-2">v-menu-item-2</v-menu-item>
+      </v-sub-menu>
+      <v-sub-menu name="4" title="sub-menu-4">
+        <template slot="title">
+          测试4
+        </template>
+        <v-menu-item name="sub-menu-4-1">v-menu-item-1</v-menu-item>
+        <v-menu-item name="sub-menu-4-2">v-menu-item-2</v-menu-item>
+        <v-menu-item-group title="sub-menu-441">
+          <v-menu-item name="item-4">v-menu-item-11</v-menu-item>
+          <v-menu-item name="sub-menu-44-1">v-menu-item-22</v-menu-item>
+        </v-menu-item-group>
+        <v-menu-item-group title="sub-menu-442">
+          <v-menu-item name="item-5">v-menu-item-11</v-menu-item>
+          <v-menu-item name="sub-menu-5-1">v-menu-item-22</v-menu-item>
+        </v-menu-item-group>
+      </v-sub-menu>
+    </v-menu>
+  </div>
+</body>
+
+</html>

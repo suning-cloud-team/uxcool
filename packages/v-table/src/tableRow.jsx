@@ -1,4 +1,4 @@
-import { isFunction, chainFns, getRowStyle, add } from './utils';
+import { isFunction, chainFns, getRowStyle } from './utils';
 import SubMixin from './mixins/sub';
 import ExpanderRowMixin from './mixins/expanderRow';
 import TableCell from './tableCell';
@@ -44,11 +44,15 @@ export default {
       const { currentHoverRow } = this;
       return this.uid === currentHoverRow;
     },
+    isSelected() {
+      return this.record.$$_selected;
+    },
     classes() {
-      const { rowPrefixCls, isHover } = this;
+      const { rowPrefixCls, isHover, isSelected } = this;
       return {
         [rowPrefixCls]: true,
         [`${rowPrefixCls}-hover`]: isHover,
+        [`${rowPrefixCls}-selected`]: isSelected,
       };
     },
     rowStyle() {
@@ -106,6 +110,8 @@ export default {
     },
     renderCells() {
       const {
+        rowPrefixCls,
+        fixed,
         record,
         cols,
         rowIdx,
@@ -117,6 +123,8 @@ export default {
       } = this;
       return cols.map((col, i) => (
         <table-cell
+          rowPrefixCls={rowPrefixCls}
+          fixed={fixed}
           record={record}
           rowIdx={rowIdx}
           colIdx={i}

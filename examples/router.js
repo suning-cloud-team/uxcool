@@ -20,6 +20,11 @@ import Breadcrumb from './views/breadcrumb/index';
 import Icon from './views/icon/index';
 import Progress from './views/progress/index';
 import Card from './views/card/index';
+import Checkbox from './views/checkbox/index';
+import Radio from './views/radio/index';
+import Table from './views/table/index';
+import Dropdown from './views/dropdown/index';
+import Divider from './views/divider/index';
 
 Vue.use(Router);
 const routes = [
@@ -122,6 +127,31 @@ const routes = [
     name: 'Card',
     path: '/card',
     component: Card,
+  },
+  {
+    name: 'Checkbox',
+    path: '/checkbox',
+    component: Checkbox,
+  },
+  {
+    name: 'Radio',
+    path: '/radio',
+    component: Radio,
+  },
+  {
+    name: 'Table',
+    path: '/table',
+    component: Table,
+  },
+  {
+    name: 'Dropdown',
+    path: '/dropdown',
+    component: Dropdown,
+  },
+  {
+    name: 'Divider',
+    path: '/divider',
+    component: Divider,
   },
 ];
 

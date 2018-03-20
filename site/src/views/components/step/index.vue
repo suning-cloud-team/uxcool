@@ -1,6 +1,8 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Step<span class="subtitle">步骤条</span></h1>
+    <h1 class="ux-heading">Step
+      <span class="subtitle">步骤条</span>
+    </h1>
 
     <demo-basic></demo-basic>
     <demo-icon></demo-icon>
@@ -12,8 +14,9 @@
 
     <hr>
 
-    <ux-heading level="2" id="api">API</ux-heading>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <ux-heading level="2"
+                id="api">API</ux-heading>
+    <table class="api-table">
       <caption>UxSteps Props</caption>
       <thead>
         <tr>
@@ -74,7 +77,7 @@
         </tr>
       </tbody>
     </table>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxStep Props</caption>
       <thead>
         <tr>
@@ -105,7 +108,7 @@
         </tr>
       </tbody>
     </table>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>UxStep Slots</caption>
       <thead>
         <tr>
@@ -132,23 +135,23 @@
 </template>
 
 <script>
-import demoBasic from './basic.vue';
-import demoVertical from './vertical.vue';
-import demoIcon from './icon.vue';
-import demoChange from './change.vue';
-import demoSmall from './small.vue';
-import demoError from './error.vue';
-import demoDot from './dot.vue';
+  import demoBasic from './basic.vue';
+  import demoVertical from './vertical.vue';
+  import demoIcon from './icon.vue';
+  import demoChange from './change.vue';
+  import demoSmall from './small.vue';
+  import demoError from './error.vue';
+  import demoDot from './dot.vue';
 
-export default {
-  components: {
-    demoBasic,
-    demoVertical,
-    demoIcon,
-    demoChange,
-    demoSmall,
-    demoError,
-    demoDot,
-  },
-};
+  export default {
+    components: {
+      demoBasic,
+      demoVertical,
+      demoIcon,
+      demoChange,
+      demoSmall,
+      demoError,
+      demoDot,
+    },
+  };
 </script>

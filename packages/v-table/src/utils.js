@@ -1,3 +1,5 @@
+import { cloneVNode } from '@suning/v-utils';
+
 export function noop() {}
 
 export function isFunction(fn) {
@@ -42,7 +44,7 @@ export function addEventListener(element, eventName, fn) {
 }
 
 export function getKey(column, defaultKey) {
-  return column.key || `$$id${defaultKey}`;
+  return column.key || `$$_id${defaultKey}`;
 }
 export function flatCols(columns = []) {
   return columns.reduce((r, v) => {
@@ -56,17 +58,22 @@ export function flatCols(columns = []) {
   }, []);
 }
 
-function recursiveCols(columns = [], rowIdx = 0, rows = []) {
+function recursiveCols(columns = [], rowIdx = 0, rows = [], parentFixed = false) {
   const groups = [];
   const nRows = rows;
   nRows[rowIdx] = nRows[rowIdx] || [];
   const row = nRows[rowIdx];
   for (let i = 0, l = columns.length; i < l; i += 1) {
     const item = { ...columns[i] };
+    let fixed = parentFixed;
+    if (rowIdx === 0) {
+      fixed = item.fixed === 'right' || item.fixed === 'left' || item.fixed === true;
+    }
+    item.$$_fixed = fixed;
     row.push(item);
 
     if (Array.isArray(item.children)) {
-      item.children = recursiveCols(item.children, rowIdx + 1, rows);
+      item.children = recursiveCols(item.children, rowIdx + 1, rows, item.$$_fixed);
       item.colSpan = 0;
       for (let j = 0, ll = item.children.length; j < ll; j += 1) {
         const child = item.children[j];
@@ -79,10 +86,14 @@ function recursiveCols(columns = [], rowIdx = 0, rows = []) {
   return groups;
 }
 
+/**
+ * 保持columns结构,并计算colspan和rowspan
+ */
 export function groupCols(columns = []) {
   const rows = [];
   const groups = recursiveCols(columns, 0, rows);
 
+  // 计算每行元素实际的rowspan
   const deep = rows.length;
   if (deep >= 1) {
     for (let i = 0; i < deep - 1; i += 1) {
@@ -124,15 +135,11 @@ function recursiveRow(columns = [], rowIdx = 0, rows = []) {
   return rows;
 }
 
+/**
+ * 汇总表头行的列
+ */
 export function groupRows(columns = []) {
   return recursiveRow(columns, 0, []);
-}
-
-export function isVNode(node = {}) {
-  if (node === null || typeof node !== 'object' || !node.constructor) {
-    return false;
-  }
-  return !!('componentOptions' in node && 'tag' in node && 'ns' in node);
 }
 
 const scrollBarStyle = {
@@ -175,7 +182,7 @@ export function flatRows(rows = [], childColName = 'children', deep = true) {
     const nr = r;
     nr.push(deep ? { ...v } : v);
     if (v[childColName]) {
-      nr.push(...flatRows(v[childColName]));
+      nr.push(...flatRows(v[childColName], childColName, deep));
     }
     return nr;
   }, []);
@@ -203,9 +210,10 @@ export function getRowStyle(rowId, rowsHeight) {
   return style;
 }
 
-let count = 0;
-
-export function add() {
-  count += 1;
-  return count;
+export function getNormalizeContent(h, columnFixed, tableFixed, content) {
+  let ret = content;
+  if (columnFixed && !tableFixed) {
+    ret = Array.isArray(content) ? content.map(v => cloneVNode(v)) : cloneVNode(content);
+  }
+  return ret;
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-checkbox v-model="checked" @change="onChange"></v-checkbox> this is checkbox
+    <v-checkbox v-model="checked" @change="onChange" disabled></v-checkbox> this is disabled checkbox
+    <v-checkbox v-model="readonlyChecked" @change="onReadonlyChange" readonly></v-checkbox> this is readonly checkbox
+    <v-checkbox v-model="checked" autofocus tabindex="-1"></v-checkbox> this is autofocus checkbox
+    <br>
+    <v-checkbox v-model="checked" value="ab-c" @change="onChange"></v-checkbox> this is value checkbox
+    <br>
+    <v-checkbox v-model="checked" name="name1" value="ab-c" @change="onChange"></v-checkbox> this is name checkbox
+    <br>
+    <v-checkbox name="radio1" v-model="radioChecked" type="radio"></v-checkbox> this is radio
+  </div>
+</body>
+
+</html>

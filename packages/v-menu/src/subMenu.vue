@@ -60,9 +60,7 @@
         return rootMode === 'horizontal' ? 'vertical' : rootMode;
       },
       classes() {
-        const {
-          prefixCls, disabled, mode, isActive, isSelected, isOpen
-        } = this;
+        const { prefixCls, disabled, mode, isActive, isSelected, isOpen } = this;
         return {
           [prefixCls]: true,
           [`${prefixCls}-${mode}`]: true,
@@ -110,25 +108,8 @@
           trigger: type,
         });
       },
-      // onClick($event) {
-      //   const {
-      //     isInlineMode, eventName, tirggerOpenChange, isOpen, disabled
-      //   } = this;
-      //   if (disabled) {
-      //     return;
-      //   }
-      //   this.$emit('click', {
-      //     name: eventName,
-      //     domEvent: $event,
-      //   });
-      //   if (isInlineMode) {
-      //     tirggerOpenChange(!isOpen, 'click');
-      //   }
-      // },
       onClick($event) {
-        const {
-          isInlineMode, eventName, tirggerOpenChange, isOpen
-        } = this;
+        const { isInlineMode, eventName, tirggerOpenChange, isOpen } = this;
         this.$emit('click', {
           name: eventName,
           domEvent: $event,
@@ -138,9 +119,7 @@
         }
       },
       mouseEvent(open, triggerName) {
-        const {
-          timerFn, isInlineMode, tirggerOpenChange, disabled
-        } = this;
+        const { timerFn, isInlineMode, tirggerOpenChange, disabled } = this;
         if (isInlineMode || disabled) {
           return;
         }
@@ -219,7 +198,7 @@
       if (!disabled && isInlineMode) {
         titleAttrs.on = {
           click(e) {
-            e.stopPropagation();
+            // e.stopPropagation();
             onClick(e);
           },
           mouseenter: onTitleMouseEnter,

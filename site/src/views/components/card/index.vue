@@ -1,16 +1,20 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Card<span class="subtitle">卡片</span></h1>
+    <h1 class="ux-heading">Card
+      <span class="subtitle">卡片</span>
+    </h1>
 
-    <ux-heading level="2" id="overview">概述</ux-heading>
+    <ux-heading level="2"
+                id="overview">概述</ux-heading>
     <p>聚合信息的一种容器，通常包含标题、内容和操作区域。</p>
     <demo-basic></demo-basic>
     <demo-flat></demo-flat>
     <demo-vertical></demo-vertical>
 
     <hr>
-    <ux-heading level="2" id="api">API</ux-heading>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <ux-heading level="2"
+                id="api">API</ux-heading>
+    <table class="api-table">
       <caption>Props</caption>
       <thead>
         <tr>
@@ -41,7 +45,7 @@
         </tr>
       </tbody>
     </table>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>Slots</caption>
       <thead>
         <tr>
@@ -56,7 +60,8 @@
         </tr>
         <tr>
           <td>action</td>
-          <td>操作，通常放一个<code>a</code>标签包裹的字体图标。</td>
+          <td>操作，通常放一个
+            <code>a</code>标签包裹的字体图标。</td>
         </tr>
         <tr>
           <td>无</td>
@@ -68,15 +73,15 @@
 </template>
 
 <script>
-import demoBasic from './basic.vue';
-import demoFlat from './flat.vue';
-import demoVertical from './vertical.vue';
+  import demoBasic from './basic.vue';
+  import demoFlat from './flat.vue';
+  import demoVertical from './vertical.vue';
 
-export default {
-  components: {
-    demoBasic,
-    demoFlat,
-    demoVertical,
-  },
-};
+  export default {
+    components: {
+      demoBasic,
+      demoFlat,
+      demoVertical,
+    },
+  };
 </script>

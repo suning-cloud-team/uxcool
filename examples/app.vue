@@ -17,7 +17,12 @@
   export default {
     name: 'App',
     props: {
-      routes: Array,
+      routes: {
+        type: Array,
+        default() {
+          return [];
+        },
+      },
     },
   };
 </script>

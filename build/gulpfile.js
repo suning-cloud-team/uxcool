@@ -24,7 +24,7 @@ const root = getRoot();
 
 const nodeModuleRoot = path.resolve(root, 'node_modules');
 const pkgJSON = getPackageJSON(path.resolve(root, 'package.json'));
-const { pkgName, uxcool = {} } = pkgJSON;
+const { pkgName, uxcool = {}, vueCompileOpts = {} } = pkgJSON;
 const babelrc = fs.readFileSync(path.resolve(root, '.babelrc'), {
   encoding: 'utf8',
 });
@@ -104,6 +104,7 @@ function transformJS(file, esModule = false) {
 function transformVue(content, filePath, esModule) {
   const transformOpts = {
     compileOptions: {
+      preserveWhitespace: vueCompileOpts.preserveWhitespace !== false,
       warn(msg) {
         console.warn(chalk.yellow(`Error compiling template:\n${msg}\n${filePath}\n`)); // eslint-disable-line
       },
@@ -154,7 +155,7 @@ function compile(basePath, esModule = false, extraPath) {
       log(`${getCompileTaskName(esModule)} task: ${file.path} compile`);
       const content = file.contents.toString(enc);
       transformVue(content, file.path, esModule).then((code) => {
-        file.contents = Buffer.from(code.replace(/\.vue/g, '.js'), enc);
+        file.contents = Buffer.from(code.replace(/\.(vue|jsx)/g, '.js'), enc);
         file.path = file.path.replace(/\.vue$/, '.js');
         this.push(file);
         next();
@@ -164,7 +165,7 @@ function compile(basePath, esModule = false, extraPath) {
 
   // js
   gulp
-    .src(path.resolve(basePath, '**/*.js'), { base: basePath })
+    .src(path.resolve(basePath, '**/*.js?(x)'), { base: basePath })
     .pipe(through2.obj(function p(chunk, enc, next) {
       const file = chunk;
       log(`${getCompileTaskName(esModule)} task: ${file.path} compile`);
@@ -172,7 +173,8 @@ function compile(basePath, esModule = false, extraPath) {
       transformJS(content, esModule)
         .then((code) => {
           const originFile = file.clone();
-          originFile.contents = Buffer.from(code.replace(/\.vue/g, '.js'), enc);
+          originFile.contents = Buffer.from(code.replace(/\.(vue|jsx)/g, '.js'), enc);
+          originFile.path = originFile.path.replace(/\.jsx$/, '.js');
           this.push(originFile);
           // style 目录下的js
           if (/[/\\]style[/\\]index.js/.test(file.path)) {

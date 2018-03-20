@@ -22,7 +22,12 @@ $pagination-prefix-cls: #{$ux-prefix}-pagination;
   border: $border-width-base $border-style-base transparent;
   white-space: nowrap;
   line-height: $line-height-base;
-  @include button-size($btn-height-base, $btn-padding-base, $font-size-base, $btn-border-radius-base);
+  @include button-size(
+    $btn-height-base,
+    $btn-padding-base,
+    $font-size-base,
+    $btn-border-radius-base
+  );
   user-select: none;
   transition: all 0.3s $ease-in-out;
   position: relative;
@@ -191,7 +196,7 @@ li {
     height: 28px;
     line-height: 28px;
     text-align: center;
-    transition: all 0.3s;
+    transition: color 0.3s;
     display: inline-block;
     vertical-align: middle;
   }

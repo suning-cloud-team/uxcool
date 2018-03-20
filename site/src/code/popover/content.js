@@ -2,7 +2,7 @@ export default `
 <ux-popover trigger="click" title="表格">
   <button class="ux-btn">展开表格</button>
   <table slot="content"
-    class="ux-table"
+    class="table-custom"
     style="width:550px">
     <tr>
       <th>名称</th>
@@ -29,5 +29,4 @@ export default {
     };
   },
 };
-</script>
-`;
+</script>`;

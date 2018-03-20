@@ -4,6 +4,9 @@
     <div class="mume markdown-preview   ">
       <h1 class="ux-heading"
           >UXCool</h1>
+
+      <blockquote>有问题请联系 荀啟龙（13075766）。</blockquote>
+
       <h2 class="ux-heading"
           id="%E6%94%AF%E6%8C%81%E7%8E%AF%E5%A2%83">支持环境</h2>
 
@@ -17,11 +20,11 @@
       <ux-code >
 npm config set registry=http://snpm.cnsuning.com
 npm config set @suning:registry=http://snpm.cnsuning.com
-// 如未用到sass则无需此配置
+// 如未用到sass则无需此配置(需proxy配置)
 npm config set SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
       </ux-code>
       <blockquote>
-        <p>若 npm 配置了 proxy 或 http-proxy 则需先移除</p>
+        <p>当使用snpm registry时, 若 npm 配置了 proxy 或 http-proxy, 则需先移除; 使用 tabao registry 时, 需要配置 proxy, 两者互斥。</p>
       </blockquote>
       <p>下面可以安装 UXCool 了</p>
       <ux-code>npm install @suning/uxcool --save</ux-code>
@@ -63,4 +66,5 @@ import { UxSelect,  UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/selec
 
 <script>
   export default {};
+
 </script>

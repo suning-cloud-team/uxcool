@@ -20,11 +20,11 @@ npm config set registry=http://snpm.cnsuning.com
 
 npm config set @suning:registry=http://snpm.cnsuning.com
 
-// 如未用到sass则不需此配置
+// 如未用到sass则不需此配置(需proxy配置)
 npm config set SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
 ```
 
-> 若 npm 配置了 proxy 或 http-proxy 则需先移除
+> 当使用 snpm registry 时,若 npm 配置了 proxy 或 http-proxy 则需先移除;使用 tabao registry 时,需要 proxy 配置, 两者互斥
 
 下面可以安装 UXCool 了
 

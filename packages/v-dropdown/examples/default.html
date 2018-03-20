@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-dropdown @overlay-click="onOverlayClick">
+      <span slot="trigger">trigger</span>
+      <v-menu slot="overlay" @click="onClick" @click.native="onNativeClick">
+        <v-menu-item name="sub-menu-item-3-1">sub-menu-item-1</v-menu-item>
+        <v-menu-item name="sub-menu-item-3-2">sub-menu-item-2</v-menu-item>
+        <v-menu-item name="sub-menu-item-4">
+          测试3
+        </v-menu-item>
+        <v-menu-item name="sub-menu-item-4">
+          测试4
+        </v-menu-item>
+      </v-menu>
+      <!-- <div slot="overlay">overlay</div> -->
+    </v-dropdown>
+  </div>
+</body>
+
+</html>

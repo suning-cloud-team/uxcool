@@ -30,6 +30,14 @@ export default {
     }
   },
   methods: {
+    /**
+     * 渲染数据行
+     * @param {Array} rowDatas 数据
+     * @param {Number} indent 层级
+     * @param {Object} rowProps 行的额外属性
+     * @param {Boolean} needExpand 是否可展开
+     * @param {Array} ancestorKeys 当前行的所有父级, 用于判断当前行的隐藏和显示
+     */
     renderRows(rowDatas, indent, rowProps, needExpand = true, ancestorKeys = []) {
       const {
         prefixCls,
@@ -44,7 +52,8 @@ export default {
       const needIndentSpaced = getNeedIndentSpaced(rowDatas);
       return rowDatas.map((record) => {
         const { idx } = nRowProps;
-        const key = getRowKey(rowKey, record, idx);
+        const nRecord = { ...record };
+        const key = getRowKey(rowKey, nRecord, idx);
         const nextAcestorKeys = [...ancestorKeys, key];
         const rows = [
           <table-row
@@ -53,7 +62,7 @@ export default {
             refInFor
             key={key}
             cols={cols}
-            record={record}
+            record={nRecord}
             rowIdx={idx}
             fixed={fixed}
             uid={key}
@@ -64,7 +73,7 @@ export default {
           />,
         ];
         nRowProps.idx += 1;
-        rows.push(...renderExpandRows(record, indent, nRowProps, nextAcestorKeys));
+        rows.push(...renderExpandRows(nRecord, indent, nRowProps, nextAcestorKeys));
         return rows;
       });
     },

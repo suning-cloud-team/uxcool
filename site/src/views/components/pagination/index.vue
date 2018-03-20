@@ -1,6 +1,8 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Pagination<span class="subtitle">分页</span></h1>
+    <h1 class="ux-heading">Pagination
+      <span class="subtitle">分页</span>
+    </h1>
     <demo-basic></demo-basic>
     <demo-more></demo-more>
     <demo-simple></demo-simple>
@@ -9,8 +11,9 @@
 
     <hr>
 
-    <ux-heading level="2" id="api">API</ux-heading>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <ux-heading level="2"
+                id="api">API</ux-heading>
+    <table class="api-table">
       <caption>Props</caption>
       <thead>
         <tr>
@@ -84,7 +87,7 @@
         </tr>
       </tbody>
     </table>
-    <table class="ux-table ux-table-striped-vertical api-table">
+    <table class="api-table">
       <caption>Events</caption>
       <thead>
         <tr>
@@ -105,19 +108,19 @@
 </template>
 
 <script>
-import DemoBasic from './basic.vue';
-import DemoMore from './more.vue';
-import DemoSimple from './simple.vue';
-import DemoGoto from './goto.vue';
-import DemoCustom from './custom.vue';
+  import DemoBasic from './basic.vue';
+  import DemoMore from './more.vue';
+  import DemoSimple from './simple.vue';
+  import DemoGoto from './goto.vue';
+  import DemoCustom from './custom.vue';
 
-export default {
-  components: {
-    DemoBasic,
-    DemoMore,
-    DemoSimple,
-    DemoGoto,
-    DemoCustom,
-  },
-};
+  export default {
+    components: {
+      DemoBasic,
+      DemoMore,
+      DemoSimple,
+      DemoGoto,
+      DemoCustom,
+    },
+  };
 </script>

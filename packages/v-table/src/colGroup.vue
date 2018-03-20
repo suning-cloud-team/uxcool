@@ -2,7 +2,6 @@
   <colgroup>
     <col v-for="(col, i) in expandCellCols"
          :key="getKey(col, i)"
-         :class="col.className"
          :style="colStyle(col)">
   </colgroup>
 </template>
@@ -46,7 +45,7 @@
       colStyle(col) {
         const { width } = col;
         let style = null;
-        if (width) {
+        if ('width' in col) {
           const w = isPxOrPercentage(width) ? width : `${width}px`;
           style = {
             width: w,

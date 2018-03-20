@@ -1,12 +1,16 @@
 import get from 'lodash/get';
-import isPlainObject from 'lodash/isPlainObject';
-import { isVNode, isFunction } from './utils';
+import { isVNode, isFunction, isPlainObject } from '@suning/v-utils';
+import { getNormalizeContent } from './utils';
 import SubMixin from './mixins/sub';
 
 export default {
   name: 'TableCell',
   mixins: [SubMixin],
   props: {
+    rowPrefixCls: {
+      type: String,
+      default: '',
+    },
     record: {
       type: Object,
       default() {
@@ -44,7 +48,12 @@ export default {
       const {
         dataIndex, className, cellRender, onCell
       } = column;
-      const val = !dataIndex ? '' : get(record, dataIndex) || '';
+      // const val = !dataIndex ? '' : get(record, dataIndex) || '';
+      let val = '';
+      if (dataIndex) {
+        const v = get(record, dataIndex);
+        val = v === undefined || v === null ? '' : v;
+      }
       let cellProps = {
         content: val,
         className,
@@ -66,7 +75,8 @@ export default {
         // Object
         if (rv && isPlainObject(rv) && !isVNode(rv)) {
           cellProps = { ...cellProps, ...rv };
-        } else if (isVNode(rv) || typeof rv === 'string' || typeof rv === 'number') {
+          // } else if (isVNode(rv) || typeof rv === 'string' || typeof rv === 'number') {
+        } else if (rv !== undefined && rv !== null) {
           cellProps.content = rv;
         }
       }
@@ -76,7 +86,14 @@ export default {
   },
   render() {
     const {
-      prefixCls, getCellProps, indent, indentSize, expandIcon
+      $createElement,
+      rowPrefixCls: prefixCls,
+      fixed,
+      getCellProps,
+      column,
+      indent,
+      indentSize,
+      expandIcon,
     } = this;
     const {
       dangerouslySetInnerHTML,
@@ -109,12 +126,14 @@ export default {
     //     {content}
     //   </td>
     // );
-
+    // 解决使用JSX或$createElement,生成 title时,由于table和fixed table共用VNode,导致不渲染的问题,
+    // VNodes must be unique.(https://vuejs.org/v2/guide/render-function.html#Constraints)
+    const normalizeContent = getNormalizeContent($createElement, column.$$_fixed, fixed, content);
     const tdElement = (
       <td class={className} style={style} {...{ attrs: cellProps, on }}>
         {indentElement}
         {expandIcon}
-        {content}
+        {normalizeContent}
       </td>
     );
     return tdElement;

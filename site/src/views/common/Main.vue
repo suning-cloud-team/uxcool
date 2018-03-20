@@ -21,13 +21,20 @@
         </router-link>
       </div>
     </div>
+
+    <input type="hidden"
+           id="pagename"
+           v-model="pageName">
+    <input type="hidden"
+           id="resourceType"
+           value="uxcoolVue">
   </main>
 </template>
 <script>
-  import { mapGetters } from 'vuex';
+  import { mapState, mapGetters } from 'vuex';
 
   export default {
-    computed: mapGetters(['footerNavs']),
+    computed: { ...mapState(['pageName']), ...mapGetters(['footerNavs']) },
     methods: {
       linkClasses(i) {
         return {

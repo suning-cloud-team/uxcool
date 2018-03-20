@@ -115,7 +115,7 @@ function getColumns() {
       title: 'html',
       dataIndex: 'b',
       cellRender(text, ...args) {
-        // 不支持html渲染,请使用jsx
+        // 暂不支持html渲染,请使用jsx
         return {
           content: <span style="color:red"> {text} </span>,
           // dangerouslySetInnerHTML: true,
