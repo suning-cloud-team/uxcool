@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-menu",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "uxcool menu 基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -10,7 +10,11 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["assets/*css", "cjs", "es"],
+  "files": [
+    "assets/*css",
+    "cjs",
+    "es"
+  ],
   "scripts": {
     "compile": "v-tools run compile",
     "server": "v-tools run server",
@@ -20,7 +24,7 @@
     "vue": "^2.*.*"
   },
   "devDependencies": {
-    "@suning/v-style": "^1.0.7",
-    "@suning/v-tools": "^1.0.25"
+    "@suning/v-style": "^1.0.8",
+    "@suning/v-tools": "^1.0.26"
   }
 }

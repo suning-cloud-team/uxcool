@@ -407,49 +407,20 @@
         } = this;
 
         const portal = new Vue({
+          parent: this,
           components: {
             Popup,
           },
-          props: {
-            visible: {
-              type: Boolean,
-              default: popupVisible,
-            },
-            align: {
-              type: Object,
-              default() {
-                return originAlign;
-              },
-            },
-            popupTransitionName: {
-              type: String,
-              default: originTransitionName,
-            },
-            popupClass: {
-              type: [String, Object, Array],
-              default: '',
-            },
-            popupStyle: {
-              type: Object,
-              default: null,
-            },
-            destroyPopupOnHide: {
-              type: Boolean,
-              default: originDestroyPopupOnHide,
-            },
-            popupVNode: {
-              type: Array,
-              default() {
-                return originSlots.popup;
-              },
-            },
-            rootDomNode: {
-              type: HTMLElement,
-              default: null,
-            },
-          },
           data: {
             init: false,
+            visible: popupVisible,
+            align: originAlign,
+            popupTransitionName: originTransitionName,
+            popupClass: '',
+            popupStyle: '',
+            destroyPopupOnHide: originDestroyPopupOnHide,
+            popupVNode: originSlots.popup,
+            rootDomNode: null,
           },
           destroyed() {
             const { $el } = this;

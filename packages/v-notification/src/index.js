@@ -9,16 +9,14 @@ Notification.newInstance = function newInstance(props) {
   } = props;
 
   const vm = new Vue({
-    props: {
-      attrs: Object,
-      listeners: Object,
+    components: {
+      Notification,
     },
-    render() {
-      const { attrs, listeners } = this;
-      if (!attrs) {
-        return null;
-      }
-      return <notification {...{ props: attrs, on: listeners }} />;
+    data() {
+      return {
+        attrs: null,
+        listeners: null,
+      };
     },
     destroyed() {
       const { $el } = this;
@@ -27,8 +25,12 @@ Notification.newInstance = function newInstance(props) {
         parentNode.removeChild($el);
       }
     },
-    components: {
-      Notification,
+    render() {
+      const { attrs, listeners } = this;
+      if (!attrs) {
+        return null;
+      }
+      return <notification {...{ props: attrs, on: listeners }} />;
     },
   }).$mount();
 

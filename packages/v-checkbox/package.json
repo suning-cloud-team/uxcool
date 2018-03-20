@@ -1,13 +1,17 @@
 {
   "name": "@suning/v-checkbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["assets/*.css", "cjs", "es"],
+  "files": [
+    "assets/*.css",
+    "cjs",
+    "es"
+  ],
   "scripts": {
     "start": "npm run server",
     "server": "v-tools run server",
@@ -17,6 +21,6 @@
     "vue": "^2.*.*"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.25"
+    "@suning/v-tools": "^1.0.26"
   }
 }
