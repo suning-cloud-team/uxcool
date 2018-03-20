@@ -5,6 +5,9 @@
 
   export default {
     name: 'DialogWrap',
+    components: {
+      InnerDialog,
+    },
     mixins: [Mixin],
     props: {
       getContainer: {
@@ -19,60 +22,6 @@
         init: false,
         portal: null,
       };
-    },
-    render() {
-      const {
-        $props, $listeners, $slots, value, init, portal, createPortal, getDialogVNode
-      } = this;
-      if (!init && !value) {
-        return;
-      }
-      this.init = true;
-
-      const dialog = getDialogVNode($props, $listeners, $slots);
-      if (portal) {
-        portal.dialogVNode = dialog;
-      } else {
-        this.portal = createPortal(dialog);
-      }
-    },
-    methods: {
-      getDialogVNode(props, listeners, slots) {
-        return (
-          <inner-dialog {...{ props, on: listeners, ref: 'innerDialogRef' }}>
-            <template slot="title">{slots.title}</template>
-            {slots.default}
-            <template slot="footer">{slots.footer}</template>
-          </inner-dialog>
-        );
-      },
-      createPortal(dialog) {
-        const vm = new Vue({
-          props: {
-            dialogVNode: Object,
-          },
-          render() {
-            const { dialogVNode } = this;
-            return dialogVNode;
-          },
-          destroyed() {
-            const { parentNode } = this.$el;
-            if (parentNode) {
-              parentNode.removeChild(this.$el);
-            }
-          },
-        }).$mount();
-        const container = this.getContainer();
-        container.appendChild(vm.$el);
-        vm.dialogVNode = dialog;
-        return vm;
-      },
-      clearPortal() {
-        const { portal } = this;
-        if (portal) {
-          portal.$destroy();
-        }
-      },
     },
     beforeDestroy() {
       const {
@@ -90,8 +39,71 @@
         this.clearPortal();
       }
     },
-    components: {
-      InnerDialog,
+    methods: {
+      getDialogVNode(props, listeners, slots) {
+        return (
+          <inner-dialog {...{ props, on: listeners, ref: 'innerDialogRef' }}>
+            <template slot="title">{slots.title}</template>
+            {slots.default}
+            <template slot="footer">{slots.footer}</template>
+          </inner-dialog>
+        );
+      },
+      mountPortal(vm) {
+        let { portal } = this;
+        portal = vm || portal;
+        const container = this.getContainer();
+        if (portal) {
+          container.appendChild(portal.$el);
+        }
+      },
+      createPortal(dialog) {
+        const vm = new Vue({
+          parent: this,
+          data() {
+            return {
+              dialogVNode: null,
+            };
+          },
+          destroyed() {
+            const { parentNode } = this.$el;
+            if (parentNode) {
+              parentNode.removeChild(this.$el);
+            }
+          },
+          render() {
+            const { dialogVNode } = this;
+            return dialogVNode;
+          },
+        }).$mount();
+        vm.dialogVNode = dialog;
+        this.mountPortal(vm);
+        return vm;
+      },
+
+      clearPortal() {
+        const { portal } = this;
+        if (portal) {
+          portal.$destroy();
+        }
+      },
+    },
+    // eslint-disable-next-line
+    render() {
+      const {
+        $props, $listeners, $slots, value, init, portal, createPortal, getDialogVNode
+      } = this;
+      if (!init && !value) {
+        return;
+      }
+      this.init = true;
+
+      const dialog = getDialogVNode($props, $listeners, $slots);
+      if (portal) {
+        portal.dialogVNode = dialog;
+      } else {
+        this.portal = createPortal(dialog);
+      }
     },
   };
 </script>
