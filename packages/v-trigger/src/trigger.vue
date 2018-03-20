@@ -408,39 +408,18 @@
         } = this;
 
         const portal = new Vue({
-          props: {
-            visible: {
-              type: Boolean,
-              default: popupVisible,
-            },
-            align: {
-              type: Object,
-              default() {
-                return originAlign;
-              },
-            },
-            popupTransitionName: {
-              type: String,
-              default: originTransitionName,
-            },
-            popupClass: String,
-            popupStyle: String,
-            destroyPopupOnHide: {
-              type: Boolean,
-              default: originDestroyPopupOnHide,
-            },
-            popupVNode: {
-              type: Array,
-              default() {
-                return originSlots.popup;
-              },
-            },
-            rootDomNode: HTMLElement,
-          },
+          parent: this,
           data: {
             init: false,
+            visible: popupVisible,
+            align: originAlign,
+            popupTransitionName: originTransitionName,
+            popupClass: '',
+            popupStyle: '',
+            destroyPopupOnHide: originDestroyPopupOnHide,
+            popupVNode: originSlots.popup,
+            rootDomNode: null,
           },
-
           render(h) {
             const {
               visible,

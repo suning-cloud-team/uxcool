@@ -177,7 +177,8 @@
     <div class="demo">
       <h6>store</h6>
       <button class="ux-btn ux-btn-error"
-              @click="storeOpen">error</button>
+              @click="storeOpen">store modal</button>
+      storeVisible {{storeVisible}}
       <ux-modal v-model="storeVisible"
                 :theme="theme">
         <store-cmp />
@@ -204,6 +205,9 @@
     },
   });
   export default {
+    components: {
+      UxModal,
+    },
     data() {
       return {
         theme: 'light',
@@ -351,9 +355,6 @@
       onDestroy() {
         UxModal.destroy();
       },
-    },
-    components: {
-      UxModal,
     },
   };
 </script>
