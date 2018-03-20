@@ -1,13 +1,17 @@
 {
   "name": "@suning/v-dropdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["assets/*css", "cjs", "es"],
+  "files": [
+    "assets/*css",
+    "cjs",
+    "es"
+  ],
   "scripts": {
     "start": "npm run server",
     "compile": "v-tools run compile",
@@ -17,10 +21,10 @@
     "vue": "^2.*.*"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.25"
+    "@suning/v-tools": "^1.0.26"
   },
   "dependencies": {
-    "@suning/v-trigger": "^1.0.23",
-    "@suning/v-utils": "^1.0.0"
+    "@suning/v-trigger": "^1.0.25",
+    "@suning/v-utils": "^1.0.1"
   }
 }
