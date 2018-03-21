@@ -6,10 +6,13 @@ module.exports = {
       webpack: {
         config: {
           resolve: {
-            alias
-          }
-        }
-      }
-    }
-  }
-}
+            alias,
+          },
+        },
+      },
+    },
+  },
+  rules: {
+    'vue/html-self-closing': 0,
+  },
+};

@@ -57,6 +57,26 @@
 // ------------------------------------------------------------------------
 $ux-prefix: ux !default;
 
+$colors: () !default;
+$colors: map-merge(
+  (
+    pink: #eb2f96,
+    magenta: #eb2f96,
+    red: #f5222d,
+    volcano: #fa541c,
+    orange: #fa8c16,
+    yellow: #fadb14,
+    gold: #faad14,
+    cyan: #13c2c2,
+    lime: #a0d911,
+    green: #52c41a,
+    blue: #108ee9,
+    geekblue: #2f54eb,
+    purple: #722ed1
+  ),
+  $colors
+);
+
 // colors
 $white: #fff !default;
 $gray-1: #fcfcfc !default;
@@ -588,11 +608,11 @@ $table-padding-horizontal: 16px;
 
 // Tag
 // --
-$tag-default-bg: #f3f3f3 !default;
+$tag-default-bg: $background-color-light !default;
 $tag-default-bg-dark: $background-color-dark !default;
 $tag-default-color: $text-color !default;
 $tag-default-color-dark: $text-color-dark !default;
-$tag-font-size: $font-size-base !default;
+$tag-font-size: $font-size-sm !default;
 
 // Badge
 // ---

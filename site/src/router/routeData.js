@@ -24,6 +24,7 @@ import Breadcrumb from '@/views/components/breadcrumb/index.vue';
 import Icon from '@/views/components/icon/index.vue';
 import Progress from '@/views/components/progress/index.vue';
 import Table from '@/views/components/table/index.vue';
+import Tag from '@/views/components/tag/index.vue';
 
 export const groups = {
   general: {
@@ -306,6 +307,16 @@ export default [
           group: 'data',
         },
         component: Table,
+      },
+      {
+        name: 'tag',
+        path: 'tag',
+        meta: {
+          title: 'Tag',
+          subTitle: '标签',
+          group: 'data',
+        },
+        component: Tag,
       },
     ],
   },

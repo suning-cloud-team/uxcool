@@ -1,0 +1,17 @@
+@mixin make-color-classes($colors) {
+  @each $key, $color in $colors {
+    $lightColor: getLevelColor($color, 1);
+    $lightBorderColor: getLevelColor($color, 3);
+    $darkColor: getLevelColor($color, 6);
+    &-#{$key} {
+      color: $color;
+      background: $lightColor;
+      border-color: $lightBorderColor;
+    }
+    &-#{$key}-inverse {
+      color: #fff;
+      background: $darkColor;
+      border-color: $darkColor;
+    }
+  }
+}
