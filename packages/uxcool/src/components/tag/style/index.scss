@@ -37,7 +37,7 @@ $tag-prefix-cls: #{$ux-prefix}-tag;
     padding: 0 8px;
   }
 
-  .#{$iconfont-css-prefix}-cross {
+  .#{$iconfont-css-prefix}-close {
     @include iconfont-size-under-12px(10px);
     cursor: pointer;
     margin-left: 3px;
@@ -55,8 +55,8 @@ $tag-prefix-cls: #{$ux-prefix}-tag;
     &,
     a,
     a:hover,
-    .#{$iconfont-css-prefix}-cross,
-    .#{$iconfont-css-prefix}-cross:hover {
+    .#{$iconfont-css-prefix}-close,
+    .#{$iconfont-css-prefix}-close:hover {
       color: #fff;
     }
   }
@@ -85,16 +85,27 @@ $tag-prefix-cls: #{$ux-prefix}-tag;
     margin: 0;
   }
 
-  &-zoom-enter,
-  &-zoom-appear {
-    animation: antFadeIn 0.2s $ease-in-out-circ;
+  &-zoom-enter-active {
+    animation: uxFadeIn 2.2s $ease-in-out-circ;
     animation-fill-mode: both;
   }
 
-  &-zoom-leave {
-    animation: antZoomOut 0.3s $ease-in-out-circ;
+  &-zoom-leave-active {
+    animation: uxTagOut 0.3s $ease-in-out-circ;
+    transform-origin: 0 center;
     animation-fill-mode: both;
   }
 
+  @keyframes uxTagOut {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      width: 0;
+      padding: 0;
+      margin: 0;
+      transform: scale(0);
+    }
+  }
   @include make-color-classes($colors);
 }

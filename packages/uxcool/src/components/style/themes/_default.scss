@@ -608,11 +608,11 @@ $table-padding-horizontal: 16px;
 
 // Tag
 // --
-$tag-default-bg: #f3f3f3 !default;
+$tag-default-bg: $background-color-light !default;
 $tag-default-bg-dark: $background-color-dark !default;
 $tag-default-color: $text-color !default;
 $tag-default-color-dark: $text-color-dark !default;
-$tag-font-size: $font-size-base !default;
+$tag-font-size: $font-size-sm !default;
 
 // Badge
 // ---

@@ -1,3 +1,4 @@
+import Icon from '../icon';
 import { buildComponentName } from '../utils';
 
 const regColor = /^(pink|red|yellow|orange|cyan|green|blue|purple|geekblue|magenta|volcano|gold|lime)(-inverse)?$/;
@@ -12,10 +13,15 @@ export default {
       type: String,
       default: '',
     },
-    colsable: {
+    closable: {
       type: Boolean,
       default: false,
     },
+  },
+  data() {
+    return {
+      closed: false,
+    };
   },
   computed: {
     isPresetColor() {
@@ -27,8 +33,7 @@ export default {
       return {
         [prefixCls]: true,
         [`${prefixCls}-${color}`]: isPresetColor,
-        [`${prefixCls}-has-color`]: color && !isPresetColor,
-        // [`${prefixCls}-close`]: this.state.closing,
+        [`${prefixCls}-has-color`]: !!(color && !isPresetColor),
       };
     },
     style() {
@@ -38,23 +43,37 @@ export default {
       };
     },
     closeIcon() {
-      const { colsable, onClose } = this;
-      return colsable ? <Icon type="close" on-click={onClose} /> : null;
+      const { closable, onClose } = this;
+      return closable ? <Icon type="close" on-click={onClose} /> : null;
     },
   },
   methods: {
+    onAfterLeave() {
+      this.$emit('after-close');
+    },
     onClose(e) {
+      const { $refs } = this;
+      const { tagRef } = $refs;
+      if (tagRef) {
+        tagRef.style.width = `${tagRef.getBoundingClientRect().width}px`;
+      }
+      this.closed = true;
       this.$emit('close', e);
     },
   },
   render() {
-    const { classes, style, closeIcon } = this;
+    const {
+      prefixCls, classes, style, closeIcon, closed, onAfterLeave
+    } = this;
+    const element = closed ? null : (
+      <div ref="tagRef" class={classes} style={style}>
+        {this.$slots.default}
+        {closeIcon}
+      </div>
+    );
     return (
-      <transition>
-        <div class={classes} style={style}>
-          {this.$slots.default}
-          {closeIcon}
-        </div>
+      <transition name={`${prefixCls}-zoom`} on-after-leave={onAfterLeave}>
+        {element}
       </transition>
     );
   },

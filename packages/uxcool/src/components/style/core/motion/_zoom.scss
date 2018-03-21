@@ -25,7 +25,7 @@
 @include zoom-motion(zoom-up, uxZoomUp);
 @include zoom-motion(zoom-down, uxZoomDown);
 @include zoom-motion(zoom-left, uxZoomLeft);
-@include zoom-motion (zoom-right, uxzoomright);
+@include zoom-motion(zoom-right, uxZoomright);
 
 @keyframes uxZoomIn {
   0% {
