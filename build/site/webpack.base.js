@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const postCssUtils = require('../postCss');
 const { getRoot } = require('../utils');
 const alias = require('./alias');
+const { version } = require('../../packages/uxcool/package.json');
 
 const root = getRoot();
 const srcPath = path.resolve(root, 'site/src');
@@ -118,6 +119,9 @@ function getConfig() {
       }),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
+      }),
+      new webpack.DefinePlugin({
+        'process.env.PKG_VERSION': JSON.stringify(version),
       }),
     ],
     // externals: {
