@@ -26,12 +26,12 @@
   @include button-color($color, $background, $background);
   &:hover,
   &:focus {
-    @include button-color($color, tint($background, 20%), tint($background, 20%));
+    @include button-color($color, coloPalette($background, 5), coloPalette($background, 5));
   }
 
   &:active,
   &.active {
-    @include button-color($color, shade($background, 15%), shade($background, 15%));
+    @include button-color($color, coloPalette($background, 7), coloPalette($background, 7));
   }
 
   @include button-disabled();
@@ -56,14 +56,16 @@
 @mixin button-variant-danger($color, $background, $border) {
   @include button-color($color, $background, $border);
 
-  &:hover,
+  &:hover {
+    @include button-color($btn-primary-color, coloPalette($color, 5), coloPalette($color, 5));
+  }
   &:focus {
-    @include button-color($btn-primary-color, tint($color, 20%), tint($color, 20%));
+    @include button-color(coloPalette($color, 5), #fff, coloPalette($color, 5));
   }
 
   &:active,
   &.active {
-    @include button-color($btn-primary-color, shade($color, 5%), shade($color, 5%));
+    @include button-color($btn-primary-color, coloPalette($color, 7), coloPalette($color, 7));
   }
   @include button-disabled();
 }
@@ -73,12 +75,12 @@
 
   &:hover,
   &:focus {
-    @include button-color(tint($color, 20%), transparent, tint($color, 20%));
+    @include button-color(coloPalette($color, 5), transparent, coloPalette($color, 5));
   }
 
   &:active,
   &.active {
-    @include button-color(shade($color, 5%), transparent, shade($color, 5%));
+    @include button-color(coloPalette($color, 7), transparent, coloPalette($color, 7));
   }
 
   @include button-disabled();

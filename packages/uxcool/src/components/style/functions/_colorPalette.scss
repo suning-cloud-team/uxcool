@@ -1,0 +1,111 @@
+// returns: {h, s, v} in [0, 1]
+@function _toHsv($color) {
+  $r: _bound01(red($color), 255);
+  $g: _bound01(green($color), 255);
+  $b: _bound01(blue($color), 255);
+  $max: max($r, $g, $b);
+  $min: min($r, $g, $b);
+  $v: $max;
+  $d: $max - $min;
+  $s: if($max==0, 0, $d / $max);
+  $h: 0;
+  @if $max == $min {
+    $h: 0;
+  } @else if $max == $r {
+    $h: if($g < $b, ($g - $b) / $d + 6, ($g - $b) / $d);
+  } @else if $max == $g {
+    $h: ($b - $r) / $d + 2;
+  } @else if $max == $b {
+    $h: ($r - $g) / $d + 4;
+  }
+  @return (h: $h / 6, s: $s, v: $v);
+}
+
+@function _bound01($n, $max) {
+  $n: min($n, $max);
+  @return if(abs($n - $max) < 0.000001, 1, $n / $max);
+}
+
+// assumes: h is contained in [0, 360], s and v are contained in [0, 100]
+// returns: {r, g, b} in the set [0, 255]
+@function _hsvToRgb($h, $s, $v) {
+  $h: _bound01($h, 360) * 6;
+  $s: _bound01($s, 100);
+  $v: _bound01($v, 100);
+
+  $i: floor($h);
+  $f: $h - $i;
+  $p: $v * (1 - $s);
+  $q: $v * (1 - $f * $s);
+  $t: $v * (1 - (1 - $f) * $s);
+  $n: $i % 6 + 1;
+  $r: nth(($v, $q, $p, $p, $t, $v), $n);
+  $g: nth(($t, $v, $v, $q, $p, $p), $n);
+  $b: nth(($p, $p, $t, $v, $v, $q), $n);
+
+  @return (r: $r * 255, g: $g * 255, b: $b * 255);
+}
+
+@function _getHue($hue, $count, $isLight) {
+  $step: 2;
+  $result: 0;
+  @if $hue >= 60 and $hue <= 240 {
+    $result: if($isLight, $hue - $step * $count, $hue + $step * $count);
+  } @else {
+    $result: if($isLight, $hue + $step * $count, $hue - $step * $count);
+  }
+  @if $result < 0 {
+    $result: $result + 360;
+  } @else if $result >= 360 {
+    $result: $result - 360;
+  }
+  @return round($result);
+}
+
+@function _getSaturation($saturation, $count, $isLight) {
+  $step1: 16;
+  $step2: 5;
+  $result: 0;
+  @if $isLight {
+    $result: round($saturation * 100) - $step1 * $count;
+  } @else if $count == 4 {
+    $result: round($saturation * 100) + $step1;
+  } @else {
+    $result: round($saturation * 100) + $step2 * $count;
+  }
+  @if $result > 100 {
+    $result: 100;
+  }
+  @if $isLight and $count == 5 and $result > 10 {
+    $result: 10;
+  }
+  @if $result < 6 {
+    $result: 6;
+  }
+  @return round($result);
+}
+
+@function _getValue($value, $count, $isLight) {
+  $step1: 5;
+  $step2: 15;
+  @return if(
+    $isLight,
+    round($value * 100) + $step1 * $count,
+    round($value * 100) - $step2 * $count
+  );
+}
+
+@function colorPalette($color, $index) {
+  $isLight: $index <= 6;
+  $count: abs(6 - $index);
+  $hsv: _toHsv($color);
+  $h: _getHue(map-get($hsv, 'h') * 360, $count, $isLight);
+  $s: _getSaturation(map-get($hsv, 's'), $count, $isLight);
+  $v: _getValue(map-get($hsv, 'v'), $count, $isLight);
+  $rgb: _hsvToRgb($h, $s, $v);
+  $r: map-get($rgb, 'r');
+  $g: map-get($rgb, 'g');
+  $b: map-get($rgb, 'b');
+
+  @return rgba($r, $g, $b, alpha($color));
+}

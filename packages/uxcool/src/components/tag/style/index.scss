@@ -1,5 +1,7 @@
 @import '../../style/themes/default';
 @import '../../style/mixins/index';
+@import '../../style/functions/color';
+@import 'mixin';
 
 $tag-prefix-cls: #{$ux-prefix}-tag;
 
@@ -92,56 +94,6 @@ $tag-prefix-cls: #{$ux-prefix}-tag;
   &-zoom-leave {
     animation: antZoomOut 0.3s $ease-in-out-circ;
     animation-fill-mode: both;
-  }
-
-  $colors: (
-    pink: #eb2f96,
-    magenta: #eb2f96,
-    red: #f5222d,
-    volcano: #fa541c,
-    orange: #fa8c16,
-    yellow: #fadb14,
-    gold: #faad14,
-    cyan: #13c2c2,
-    lime: #a0d911,
-    green: #52c41a,
-    blue: #108ee9,
-    geekblue: #2f54eb,
-    purple: #722ed1
-  );
-
-  // // mixin to iterate over colors and create CSS class for each one
-  // @mixin make-color-classes($i: length($colors)) when ($i > 0) {
-  //   @include make-color-classes($i - 1);
-  //   $color: extract($colors, $i);
-  //   $lightColor: "#{$color}-1";
-  //   $lightBorderColor: "#{$color}-3";
-  //   $darkColor: "#{$color}-6";
-  //   &-#{$color} {
-  //     color: $$darkColor;
-  //     background: $$lightColor;
-  //     border-color: $$lightBorderColor;
-  //   }
-  //   &-#{$color}-inverse {
-  //     background: $$darkColor;
-  //     border-color: $$darkColor;
-  //     color: #fff;
-  //   }
-  // }
-
-  // .make-color-classes();
-
-  @mixin make-color-classes($colors) {
-    @each $key, $color in $colors {
-      @for $i from 1 through 10 {
-        $p: $i * 10;
-        $c: tint($color, $p);
-        @debug '#{$key}--#{$color} -- #{$c}--#{shade($color, $i * 100 / 100%)}-#{$p} ';
-      }
-      &-#{$color} {
-        color: $color;
-      }
-    }
   }
 
   @include make-color-classes($colors);
