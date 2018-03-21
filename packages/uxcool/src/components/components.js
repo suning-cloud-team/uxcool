@@ -41,3 +41,5 @@ export { default as UxTable } from './table';
 export { default as UxDivider } from './divider';
 
 export * from './button';
+
+export * from './tag';

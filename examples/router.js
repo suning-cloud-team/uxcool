@@ -25,6 +25,7 @@ import Radio from './views/radio/index';
 import Table from './views/table/index';
 import Dropdown from './views/dropdown/index';
 import Divider from './views/divider/index';
+import Tag from './views/tag/index';
 
 Vue.use(Router);
 const routes = [
@@ -152,6 +153,11 @@ const routes = [
     name: 'Divider',
     path: '/divider',
     component: Divider,
+  },
+  {
+    name: 'Tag',
+    path: '/tag',
+    component: Tag,
   },
 ];
 
