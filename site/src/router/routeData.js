@@ -25,6 +25,7 @@ import Icon from '@/views/components/icon/index.vue';
 import Progress from '@/views/components/progress/index.vue';
 import Table from '@/views/components/table/index.vue';
 import Tag from '@/views/components/tag/index.vue';
+import Switch from '@/views/components/switch/index.vue';
 
 export const groups = {
   general: {
@@ -317,6 +318,16 @@ export default [
           group: 'data',
         },
         component: Tag,
+      },
+      {
+        name: 'switch',
+        path: 'switch',
+        meta: {
+          title: 'Switch',
+          subTitle: '开关',
+          group: 'form',
+        },
+        component: Switch,
       },
     ],
   },

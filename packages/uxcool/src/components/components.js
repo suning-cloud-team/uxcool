@@ -43,3 +43,5 @@ export { default as UxDivider } from './divider';
 export * from './button';
 
 export * from './tag';
+
+export { default as UxSwitch } from './switch';

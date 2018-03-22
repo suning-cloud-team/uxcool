@@ -26,6 +26,7 @@ import Table from './views/table/index';
 import Dropdown from './views/dropdown/index';
 import Divider from './views/divider/index';
 import Tag from './views/tag/index';
+import Switch from './views/switch/index';
 
 Vue.use(Router);
 const routes = [
@@ -158,6 +159,11 @@ const routes = [
     name: 'Tag',
     path: '/tag',
     component: Tag,
+  },
+  {
+    name: 'Switch',
+    path: '/switch',
+    component: Switch,
   },
 ];
 

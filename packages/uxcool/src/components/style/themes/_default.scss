@@ -574,29 +574,6 @@ $radio-size: 16px;
 $radio-button-bg: $btn-default-bg;
 $radio-button-color: $btn-default-color;
 
-// switch
-$switch-width: 60px !default;
-$switch-width-mini: 40px !default;
-$switch-height: 24px !default;
-$switch-height-mini: 20px !default;
-
-$switch-unchecked-bg: $gray-4 !default;
-$switch-checked-bg: $primary-color !default;
-$switch-disabled-bg: $gray-3 !default;
-
-$switch-toggle-bg: $white !default;
-$switch-toggle-disabled-bg: $white !default;
-
-$switch-toggle-transition: all 0.2s !default;
-$switch-transition: background-color 0.4s !default;
-$switch-text-transition: left 0.2s !default;
-
-$switch-font-size: 12px !default;
-$switch-color: $white !default;
-$switch-disabled-color: $gray-6 !default;
-
-$switch-disabled-cursor: not-allowed !default;
-
 // Table
 // --
 $table-header-bg: $background-color-light;
@@ -628,6 +605,13 @@ $pagination-item-size-sm: 24px !default;
 $pagination-item-bg-dark: rgba(#fff, 0.1) !default;
 $pagination-item-border-dark: rgba(#fff, 0.1) !default;
 $pagination-item-color-dark: #008dff !default;
+
+// Switch
+// ---
+$switch-height: 22px !default;
+$switch-sm-height: 16px !default;
+$switch-disabled-opacity: 0.4 !default;
+$switch-color: $primary-color !default;
 
 // DatePicker
 // ---
