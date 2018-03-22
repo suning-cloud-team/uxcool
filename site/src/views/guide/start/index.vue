@@ -128,8 +128,10 @@ Vue.use(UxcoolExtra);
       如果使用babel,则推荐使用babel-polyfill来替换上面的shim
     </p>
      <blockquote>
-        <p>不要同时使用<a href="https://babeljs.io/docs/usage/polyfill/">babel-polyfill</a>和<a href="https://github.com/paulmillr/es6-shim">es6-shim</a></p>
-      </blockquote>
+        不要同时使用<a href="https://babeljs.io/docs/usage/polyfill/">babel-polyfill</a>和<a href="https://github.com/paulmillr/es6-shim">es6-shim</a>
+    </blockquote>
+    <h2 class="ux-heading">小贴士</h2>
+    <p>button组件之间可能会存在间隙, 这是由于空白字符占位, 可以通过设置vue-loader的<code>options.preserveWhitespace=false</code>在编译时将空白字符移除</p>
   </article>
 </template>
 
