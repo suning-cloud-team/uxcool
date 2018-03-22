@@ -26,12 +26,12 @@
   @include button-color($color, $background, $background);
   &:hover,
   &:focus {
-    @include button-color($color, coloPalette($background, 5), coloPalette($background, 5));
+    @include button-color($color, colorPalette($background, 5), colorPalette($background, 5));
   }
 
   &:active,
   &.active {
-    @include button-color($color, coloPalette($background, 7), coloPalette($background, 7));
+    @include button-color($color, colorPalette($background, 7), colorPalette($background, 7));
   }
 
   @include button-disabled();
@@ -57,15 +57,15 @@
   @include button-color($color, $background, $border);
 
   &:hover {
-    @include button-color($btn-primary-color, coloPalette($color, 5), coloPalette($color, 5));
+    @include button-color($btn-primary-color, colorPalette($color, 5), colorPalette($color, 5));
   }
   &:focus {
-    @include button-color(coloPalette($color, 5), #fff, coloPalette($color, 5));
+    @include button-color(colorPalette($color, 5), #fff, colorPalette($color, 5));
   }
 
   &:active,
   &.active {
-    @include button-color($btn-primary-color, coloPalette($color, 7), coloPalette($color, 7));
+    @include button-color($btn-primary-color, colorPalette($color, 7), colorPalette($color, 7));
   }
   @include button-disabled();
 }
@@ -75,12 +75,12 @@
 
   &:hover,
   &:focus {
-    @include button-color(coloPalette($color, 5), transparent, coloPalette($color, 5));
+    @include button-color(colorPalette($color, 5), transparent, colorPalette($color, 5));
   }
 
   &:active,
   &.active {
-    @include button-color(coloPalette($color, 7), transparent, coloPalette($color, 7));
+    @include button-color(colorPalette($color, 7), transparent, colorPalette($color, 7));
   }
 
   @include button-disabled();
@@ -290,7 +290,8 @@
     border-top-left-radius: 0;
   }
 
-  & > & {
+  & > &,
+  & > .#{$btnClassName} {
     float: left;
   }
 

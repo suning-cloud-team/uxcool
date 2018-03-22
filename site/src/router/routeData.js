@@ -26,6 +26,7 @@ import Progress from '@/views/components/progress/index.vue';
 import Table from '@/views/components/table/index.vue';
 import Tag from '@/views/components/tag/index.vue';
 import Switch from '@/views/components/switch/index.vue';
+import Button from '@/views/components/button/index.vue';
 
 export const groups = {
   general: {
@@ -328,6 +329,16 @@ export default [
           group: 'form',
         },
         component: Switch,
+      },
+      {
+        name: 'button',
+        path: 'button',
+        meta: {
+          title: 'Button',
+          subTitle: '按钮',
+          group: 'general',
+        },
+        component: Button,
       },
     ],
   },

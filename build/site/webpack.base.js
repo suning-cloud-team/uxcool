@@ -3,10 +3,11 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const postCssUtils = require('../postCss');
-const { getRoot } = require('../utils');
+const { getRoot, getPackageJSON } = require('../utils');
 const alias = require('./alias');
 
 const root = getRoot();
+const { vueCompileOpts = {} } = getPackageJSON(path.resolve(root, 'package.json'));
 const srcPath = path.resolve(root, 'site/src');
 const distPath = path.resolve(root, 'site/dist');
 
@@ -65,6 +66,7 @@ function getConfig() {
           exclude: /node_modules/,
           options: {
             postcss: postCssCtx,
+            preserveWhitespace: vueCompileOpts.preserveWhitespace !== false,
             loaders: {
               css: vueStyleCfg,
               scss: vueStyleCfg,

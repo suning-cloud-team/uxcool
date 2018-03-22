@@ -3,7 +3,13 @@
     <h1 class="ux-heading">Button
       <span class="subtitle">按钮</span>
     </h1>
-
+    <basic-demo />
+    <icon-demo />
+    <disabled-demo />
+    <ghost-demo />
+    <group-demo />
+    <loading-demo />
+    <size-demo />
     <hr>
     <ux-heading level="2"
                 id="api">API</ux-heading>
@@ -135,5 +141,23 @@
 
 
 <script>
-  export default {};
+  import BasicDemo from './basic.vue';
+  import DisabledDemo from './disabled.vue';
+  import GhostDemo from './ghost.vue';
+  import GroupDemo from './group.vue';
+  import IconDemo from './icon.vue';
+  import LoadingDemo from './loading.vue';
+  import SizeDemo from './size.vue';
+
+  export default {
+    components: {
+      BasicDemo,
+      DisabledDemo,
+      GhostDemo,
+      GroupDemo,
+      IconDemo,
+      LoadingDemo,
+      SizeDemo,
+    },
+  };
 </script>
