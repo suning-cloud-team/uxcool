@@ -10,6 +10,7 @@ const root = getRoot();
 const { vueCompileOpts = {} } = getPackageJSON(path.resolve(root, 'package.json'));
 const srcPath = path.resolve(root, 'site/src');
 const distPath = path.resolve(root, 'site/dist');
+const codePath = path.resolve(srcPath, 'code');
 
 const postCssCtx = postCssUtils.getContext();
 const vueStyleCfg = [
@@ -63,7 +64,7 @@ function getConfig() {
         {
           test: /\.vue$/,
           loader: 'vue-loader',
-          exclude: /node_modules/,
+          exclude: [/node_modules/, codePath],
           options: {
             postcss: postCssCtx,
             preserveWhitespace: vueCompileOpts.preserveWhitespace !== false,
@@ -107,6 +108,11 @@ function getConfig() {
             limit: 8192,
             name: 'static/[name].[ext]',
           },
+        },
+        {
+          test: /\.vue/,
+          include: [codePath],
+          loader: 'raw-loader',
         },
       ],
     },

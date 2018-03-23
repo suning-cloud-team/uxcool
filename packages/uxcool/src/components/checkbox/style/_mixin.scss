@@ -89,7 +89,7 @@
     $indeterminate-height: ($checkbox-size / 14) * 1px;
     content: ' ';
     position: absolute;
-    left: ($checkbox-size - 2 - $indeterminate-width) / 2;
+    left: round(($checkbox-size - 2 - $indeterminate-width) / 2);
     top: ($checkbox-size - 3 - $indeterminate-height) / 2;
     width: $indeterminate-width;
     height: $indeterminate-height;

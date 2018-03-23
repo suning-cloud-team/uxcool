@@ -6,7 +6,9 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "uxcool": {
     "srcPath": "packages/uxcool"
   },
@@ -66,6 +68,7 @@
     "node-sass": "^4.6.0",
     "postcss": "^6.0.14",
     "postcss-loader": "^2.0.8",
+    "raw-loader": "^0.5.1",
     "resolve-url-loader": "^2.2.1",
     "rimraf": "^2.6.2",
     "rollup-plugin-vue": "^2.5.2",

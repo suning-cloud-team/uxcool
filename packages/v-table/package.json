@@ -20,16 +20,15 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": [
-    "assets/*.css",
-    "cjs",
-    "es"
-  ],
+  "files": ["assets/*.css", "cjs", "es"],
   "scripts": {
     "compile": "v-tools run compile",
     "server": "v-tools run server",
     "clean": "v-tools run clean",
     "start": "npm run server",
     "commit": "git-cz"
+  },
+  "vueCompileOpts": {
+    "preserveWhitespace": false
   }
 }

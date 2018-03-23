@@ -6,13 +6,15 @@
         <router-link :to="route.path">{{route.name}}</router-link>
       </li>
     </ul>
-    <router-view></router-view>
+    {{ amd }}
+    <router-view/>
   </div>
 </template>
 
 <script>
   import '@suning/uxcool/src/components/style/index.scss';
   import './index.scss';
+  import amd from './a.md';
 
   export default {
     name: 'App',
@@ -23,6 +25,11 @@
           return [];
         },
       },
+    },
+    data() {
+      return {
+        amd,
+      };
     },
   };
 </script>

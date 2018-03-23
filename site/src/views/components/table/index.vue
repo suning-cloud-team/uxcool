@@ -3,15 +3,33 @@
     <h1 class="ux-heading">Table
       <span class="subtitle">表格</span>
     </h1>
-
     <ux-heading level="2"
                 id="overview">概览</ux-heading>
-    <p>目前表格组件只提供了几种简单的样式，后期会扩展功能并封装成组件。</p>
-
-    <demo-basic></demo-basic>
-    <demo-strip></demo-strip>
-    <demo-merge></demo-merge>
-    <demo-tree></demo-tree>
+    <normal-demo/>
+    <selection-single-demo/>
+    <selection-demo/>
+    <selection-row-demo/>
+    <selection-op-demo/>
+    <selection-custom-demo/>
+    <sort-filter-demo/>
+    <sort-filter-reset-demo/>
+    <custom-filter-panel-demo/>
+    <filter-demo />
+    <ajax-demo/>
+    <size-demo/>
+    <border-title-footer-demo/>
+    <expander-row-demo/>
+    <colspan-rowspan-demo/>
+    <tree-data-demo/>
+    <fixed-header-demo/>
+    <fixed-columns-demo/>
+    <fixed-columns-header-demo/>
+    <group-header-demo/>
+    <editable-cells-demo/>
+    <editable-rows-demo/>
+    <nest-table-demo/>
+    <async-nest-table-demo/>
+    <hr>
 
     <ux-heading level="2"
                 id="api">API</ux-heading>
@@ -244,7 +262,8 @@
         <tr>
           <td>cellRender</td>
           <td>数据 cell 内容渲染,支持自定义属性和事件 ,class 字段名请用
-            <code>className</code> 代替</td>
+            <code>className</code> 代替
+          </td>
           <td>Function(text, record, rowIdx,column, colIdx)=&gt;Object</td>
           <td></td>
         </tr>
@@ -281,7 +300,8 @@
         <tr>
           <td>filteredValue</td>
           <td>筛选的受控属性，外界可用此控制列的筛选状态，值为已筛选的 value 数组;需要与 table 的
-            <code>change</code> 事件配合使用</td>
+            <code>change</code> 事件配合使用
+          </td>
           <td>String[]</td>
           <td></td>
         </tr>
@@ -312,7 +332,8 @@
         <tr>
           <td>sorter</td>
           <td>排序函数，本地排序使用一个函数(参考 Array.sort 的
-            <code>compareFunction</code>)，如需服务端排序可设为 true</td>
+            <code>compareFunction</code>)，如需服务端排序可设为 true
+          </td>
           <td>Function|Boolean</td>
           <td></td>
         </tr>
@@ -369,7 +390,8 @@
         <tr>
           <td>selectedRowKeys</td>
           <td>指定选中项 key 的数组, 需和
-            <code>rowSlection.onChange</code>配合使用</td>
+            <code>rowSlection.onChange</code>配合使用
+          </td>
           <td>String[]</td>
           <td></td>
         </tr>
@@ -476,7 +498,8 @@
       <a href="/vue/index.html#/components/pagintaion">
         <code>Pagination</code>
       </a>
-      组件</p>
+      组件
+    </p>
     <h3 class="mume-header"
         id="onrow-onheaderrow-oncell-onheadercell-%E7%94%A8%E6%B3%95">onRow, onHeaderRow, onCell, onHeaderCell 用法</h3>
     <p>
@@ -485,10 +508,12 @@
       <code>table</code> 上设置,
       <code>onCell</code>,
       <code>onHeaderCell</code> 在
-      <code>column</code> 中设置, 两者用法类似</p>
+      <code>column</code> 中设置, 两者用法类似
+    </p>
     <pre data-role="codeBlock"
          data-info="javascript"
-         class="language-javascript"><span class="token operator">&lt;</span>ux<span class="token operator">-</span>table v<span class="token operator">-</span>bind<span class="token punctuation">:</span>on<span class="token operator">-</span>row<span class="token operator">=</span><span class="token string">"{prop: '', on:{click(record){}, mouseenter(){}}}"</span> <span class="token operator">/</span><span class="token operator">></span>
+         class="language-javascript">
+         <span class="token operator">&lt;</span>ux<span class="token operator">-</span>table v<span class="token operator">-</span>bind<span class="token punctuation">:</span>on<span class="token operator">-</span>row<span class="token operator">=</span><span class="token string">"{prop: '', on:{click(record){}, mouseenter(){}}}"</span> <span class="token operator">/</span><span class="token operator">></span>
     </pre>
     <h4 class="mume-header"
         id="slots">Slots</h4>
@@ -552,17 +577,57 @@
 </template>
 
 <script>
-  import demoBasic from './basic.vue';
-  import demoStrip from './strip.vue';
-  import demoMerge from './merge.vue';
-  import demoTree from './tree.vue';
+  import NormalDemo from './normal.vue';
+  import SelectionSingleDemo from './selectionSingle.vue';
+  import SelectionDemo from './selection.vue';
+  import SelectionRowDemo from './selectionRow.vue';
+  import SelectionOpDemo from './selectionOp.vue';
+  import SelectionCustomDemo from './selectionCustom.vue';
+  import SortFilterDemo from './sortFilter.vue';
+  import SortFilterResetDemo from './sortFilterReset.vue';
+  import CustomFilterPanelDemo from './customFilterPanel.vue';
+  import AjaxDemo from './ajax.vue';
+  import SizeDemo from './size.vue';
+  import FilterDemo from './filter.vue';
+  import BorderTitleFooterDemo from './borderTitleFooter.vue';
+  import ExpanderRowDemo from './expanderRow.vue';
+  import ColspanRowspanDemo from './colSpanRowSpan.vue';
+  import TreeDataDemo from './treeData.vue';
+  import FixedHeaderDemo from './fixedHeader.vue';
+  import FixedColumnsDemo from './fixedColumns.vue';
+  import FixedColumnsHeaderDemo from './fixedColumnsHeader.vue';
+  import GroupHeaderDemo from './groupHeader.vue';
+  import EditableCellsDemo from './editableCells.vue';
+  import EditableRowsDemo from './editableRows.vue';
+  import NestTableDemo from './nestTable.vue';
+  import AsyncNestTableDemo from './asyncNestTable.vue';
 
   export default {
     components: {
-      demoBasic,
-      demoStrip,
-      demoMerge,
-      demoTree,
+      NormalDemo,
+      SelectionSingleDemo,
+      SelectionDemo,
+      SelectionRowDemo,
+      SelectionOpDemo,
+      SelectionCustomDemo,
+      SortFilterDemo,
+      SortFilterResetDemo,
+      CustomFilterPanelDemo,
+      AjaxDemo,
+      SizeDemo,
+      FilterDemo,
+      BorderTitleFooterDemo,
+      ExpanderRowDemo,
+      ColspanRowspanDemo,
+      TreeDataDemo,
+      FixedHeaderDemo,
+      FixedColumnsDemo,
+      FixedColumnsHeaderDemo,
+      GroupHeaderDemo,
+      EditableCellsDemo,
+      EditableRowsDemo,
+      NestTableDemo,
+      AsyncNestTableDemo,
     },
   };
 </script>

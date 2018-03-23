@@ -10,9 +10,9 @@ $table-header-icon-color: $text-color-secondary;
   .#{$ux-prefix}-spin-nested-loading {
     width: 100%;
   }
-  .#{$table-prefix-cls}-loading {
-    z-index: 1051;
-  }
+  // .#{$table-prefix-cls}-loading {
+  //   z-index: 1051;
+  // }
 }
 
 .#{$table-prefix-cls} {
@@ -206,7 +206,9 @@ $table-header-icon-color: $text-color-secondary;
     .#{$table-prefix-cls}-spin-holder {
       height: 20px;
       line-height: 20px;
-      left: 50%;
+      // left: 50%;
+      // modify
+      left: 0;
       top: 50%;
       margin-left: -30px;
       position: absolute;
