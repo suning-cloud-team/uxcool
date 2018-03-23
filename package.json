@@ -6,9 +6,7 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "uxcool": {
     "srcPath": "packages/uxcool"
   },
@@ -18,6 +16,7 @@
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap",
     "build": "lerna run build --scope @suning/uxcool",
+    "compile:all": "lerna run compile && yarn run build",
     "compile:uxcool": "lerna run compile --scope @suning/uxcool",
     "site": "webpack-dev-server --config build/site/webpack.server.js",
     "build:site": "webpack --config build/site/prd.js",
