@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const postCssUtils = require('../postCss');
@@ -17,8 +18,19 @@ const vueStyleCfg = [
   'vue-style-loader',
   {
     loader: 'css-loader',
+  },
+  {
+    loader: 'postcss-loader',
+    options: postCssCtx,
+  },
+  'sass-loader',
+];
+
+const sassCfg = [
+  {
+    loader: 'css-loader',
     options: {
-      a: 1,
+      minimize: process.env.NODE_ENV === 'production',
     },
   },
   {
@@ -76,22 +88,13 @@ function getConfig() {
         },
         {
           test: /\.(s)?css$/,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  minimize: process.env.NODE_ENV === 'production',
-                },
-              },
-              {
-                loader: 'postcss-loader',
-                options: postCssCtx,
-              },
-              'sass-loader',
-            ],
-          }),
+          use:
+            process.env.NODE_ENV === 'production'
+              ? ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: sassCfg,
+              })
+              : ['style-loader', ...sassCfg],
         },
         {
           test: /\.(woff2?|ttf|eot|svg)/,
@@ -117,7 +120,6 @@ function getConfig() {
       ],
     },
     plugins: [
-      new ExtractTextPlugin('site.css'),
       new HtmlWebpackPlugin({
         title: 'MyApp',
         filename: 'index.html',
@@ -138,4 +140,7 @@ function getConfig() {
   };
 }
 
-module.exports = () => Promise.resolve(getConfig());
+module.exports = () =>
+  Promise.resolve(merge(getConfig(), {
+    plugins: process.env.NODE_ENV === 'production' ? [new ExtractTextPlugin('site.css')] : [],
+  }));

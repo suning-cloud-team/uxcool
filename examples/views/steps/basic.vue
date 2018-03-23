@@ -174,6 +174,22 @@
       </ux-steps>
     </div>
 
+    <div class="demo">
+      <h6>dot vertical</h6>
+      <ux-steps current="4"
+                :theme="theme"
+                direction="vertical"
+                progress-dot>
+        <ux-step title="4"
+                 :desc="description" />
+        <ux-step title="3"
+                 :desc="description" />
+        <ux-step title="2"
+                 :desc="description" />
+        <ux-step title="1"
+                 :desc="description" />
+      </ux-steps>
+    </div>
     <!-- <div class="demo">
       <h6>dot popover</h6>
       <ux-steps current="1"
