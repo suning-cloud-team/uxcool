@@ -27,6 +27,7 @@ import Table from '@/views/components/table/index.vue';
 import Tag from '@/views/components/tag/index.vue';
 import Switch from '@/views/components/switch/index.vue';
 import Button from '@/views/components/button/index.vue';
+import Checkbox from '@/views/components/checkbox/index.vue';
 
 export const groups = {
   general: {
@@ -339,6 +340,16 @@ export default [
           group: 'general',
         },
         component: Button,
+      },
+      {
+        name: 'checkbox',
+        path: 'checkbox',
+        meta: {
+          title: 'Checkbox',
+          subTitle: '按钮',
+          group: 'form',
+        },
+        component: Checkbox,
       },
     ],
   },
