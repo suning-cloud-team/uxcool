@@ -79,7 +79,11 @@
         color: $text-color-dark;
       }
       button {
-        @include btn-color($text-color-dark, $pagination-item-bg-dark,$pagination-item-border-dark);
+        @include button-color(
+          $text-color-dark,
+          $pagination-item-bg-dark,
+          $pagination-item-border-dark
+        );
         &:hover,
         &:focus,
         &:active,

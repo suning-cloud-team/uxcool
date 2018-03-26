@@ -6,6 +6,7 @@
               v-model="data"
               :row-key="rowKey"
               :pagination="pagination"
+              :loading="loading"
               @change="onChange" />
   </div>
 </template>
@@ -71,6 +72,7 @@
     },
     data() {
       return {
+        loading: false,
         pagination: {
           current: 1,
           pageSize: 10,
@@ -109,10 +111,14 @@
           sortOrder,
           ...filterInfo,
         };
+        this.loading = true;
         return Axios.get('http://dippre.cnsuning.com:80/service/2698/1.0.0/table', { params }).then(({ data }) => {
           this.pagination = { ...pagination, total: data.total };
           this.data = data.data;
-          // console.log(response);
+          // effect
+          setTimeout(() => {
+            this.loading = false;
+          }, 1500);
         });
       },
       onChange(pager, filterInfo, sort) {

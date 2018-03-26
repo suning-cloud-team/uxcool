@@ -16,6 +16,7 @@
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap",
     "build": "lerna run build --scope @suning/uxcool",
+    "compile:all": "lerna run compile && yarn run build",
     "compile:uxcool": "lerna run compile --scope @suning/uxcool",
     "site": "webpack-dev-server --config build/site/webpack.server.js",
     "build:site": "webpack --config build/site/prd.js",
@@ -66,6 +67,7 @@
     "node-sass": "^4.6.0",
     "postcss": "^6.0.14",
     "postcss-loader": "^2.0.8",
+    "raw-loader": "^0.5.1",
     "resolve-url-loader": "^2.2.1",
     "rimraf": "^2.6.2",
     "rollup-plugin-vue": "^2.5.2",

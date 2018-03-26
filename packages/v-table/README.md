@@ -64,16 +64,16 @@ import Pagination from '@suning/v-table';
 
 ## Column API
 
-| 参数名       | 描述                                                                     | 类型                                                 | 默认 |
-| ------------ | ------------------------------------------------------------------------ | ---------------------------------------------------- | ---- |
-| title        | header 列名                                                              | String                                               |      |
-| className    | 自定义 header class                                                      | String\|Object\|Array                                |      |
-| width        | 列宽                                                                     | Number                                               |      |
-| align        | 对齐方式(center\| left\|right)                                           | String                                               |      |
-| dataIndex    | 列数据索引,对应数据中的键名                                              | String                                               |      |
-| onHeaderCell | 自定义 渲染 header cell 属性 ,支持自定义事件{on:{click(){}}}             | Function(column, rowIdx,colIdx)=>Object              |      |
-| onCell       | 自定义渲染 cell 属性 ,支持自定义属性和事件                               | Function(record, rowIdx, colIdx, column)=>Object     |      |
-| cellRender   | 数据 cell 内容渲染,支持自定义属性和事件 ,class 字段名请用 className 代替 | Function(text, record, rowIdx,colIdx,column)=>Object |      |
+| 参数名       | 描述                                                                     | 类型                                                  | 默认 |
+| ------------ | ------------------------------------------------------------------------ | ----------------------------------------------------- | ---- |
+| title        | header 列名                                                              | String                                                |      |
+| className    | 自定义 header class                                                      | String\|Object\|Array                                 |      |
+| width        | 列宽                                                                     | Number                                                |      |
+| align        | 对齐方式(center\| left\|right)                                           | String                                                |      |
+| dataIndex    | 列数据索引,对应数据中的键名                                              | String                                                |      |
+| onHeaderCell | 自定义 渲染 header cell 属性 ,支持自定义事件{on:{click(){}}}             | Function(column, rowIdx,colIdx)=>Object               |      |
+| onCell       | 自定义渲染 cell 属性 ,支持自定义属性和事件                               | Function(record, rowIdx, column, colIdx)=>Object      |      |
+| cellRender   | 数据 cell 内容渲染,支持自定义属性和事件 ,class 字段名请用 className 代替 | Function(text, record, rowIdx,column, colIdx)=>Object |      |
 
 ## Slots
 

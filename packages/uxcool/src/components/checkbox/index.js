@@ -1,6 +1,8 @@
-import UxCheckbox from './checkbox.vue';
-import UxCheckboxGroup from './group';
+import Checkbox from './checkbox.vue';
+import Group from './group';
 
-export { UxCheckbox, UxCheckboxGroup };
+Checkbox.Group = Group;
 
-export default UxCheckbox;
+export { Checkbox as UxCheckbox, Group as UxCheckboxGroup };
+
+export default Checkbox;

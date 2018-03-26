@@ -1,5 +1,6 @@
 import VTable from '@suning/v-table';
 import Icon from '../icon';
+import Spin from '../spin';
 import FilterDropdown from './filterDropdown';
 import { buildComponentName } from '../utils';
 import SelectionMixin from './mixins/selection';
@@ -43,10 +44,6 @@ export default {
         return [];
       },
     },
-    useFixedHeader: {
-      type: Boolean,
-      default: false,
-    },
     rowSelection: {
       type: Object,
       default() {
@@ -67,6 +64,14 @@ export default {
     pagination: {
       type: [Object, Boolean],
       default: false,
+    },
+    loading: {
+      type: [Object, Boolean],
+      default: false,
+    },
+    expandIconAsCell: {
+      type: Boolean,
+      default: null,
     },
   },
   data() {
@@ -223,26 +228,63 @@ export default {
         renderSortAndFilter,
         pagerNormalizeData,
         expandIconColIndex,
+        expandIconAsCell,
+        expandedRowRender,
+        spinLoading,
+        emptyText,
       } = this;
       let cols = renderRowSelection();
-      const iconColIdx = Math.max(
-        Math.min(
-          cols[0].key === 'selection-column' ? expandIconColIndex + 1 : expandIconColIndex,
-          cols.length - 1
-        ),
-        0
-      );
+
+      const iconColIdx =
+        cols.length > 0
+          ? Math.max(
+            Math.min(
+              cols[0].key === 'selection-column' ? expandIconColIndex + 1 : expandIconColIndex,
+              cols.length - 1
+            ),
+            0
+          )
+          : expandIconColIndex;
+
       cols = renderSortAndFilter(cols);
       return {
         ...$props,
         columns: cols,
         value: pagerNormalizeData,
         expandIconColIndex: iconColIdx,
+        expandIconAsCell: !!expandedRowRender && expandIconAsCell !== false,
+        emptyText: spinLoading.spinning ? '' : emptyText,
       };
     },
     defaultSelectedRowKeys() {
       const { flatData } = this;
       return flatData.filter(v => v.$$_checkboxChecked).map(v => v.$$_key);
+    },
+    spinLoading() {
+      const { loading } = this;
+      let ret = loading;
+      if (typeof loading === 'boolean') {
+        ret = {
+          spinning: loading,
+        };
+      }
+      return ret;
+    },
+    spinClasses() {
+      const {
+        prefixCls, spinLoading, hasPagination, normalizeData
+      } = this;
+      const spinPagerClass =
+        hasPagination && normalizeData.length > 0
+          ? `${prefixCls}-with-pagination`
+          : `${prefixCls}-without-pagination`;
+
+      return spinLoading.spinning
+        ? {
+          [spinPagerClass]: true,
+          [`${prefixCls}-spin-holder`]: true,
+        }
+        : '';
     },
   },
   watch: {
@@ -350,68 +392,76 @@ export default {
         getPopupContainer,
         onFilterDropdownConfirm,
       } = this;
-      return flatRows(cols, 'children', false).map((col) => {
-        const nv = { ...col };
-        const { filters, sorter } = nv;
-        let [sortButton, filterDropdown] = [null, null];
-        if (!nv.children && ((Array.isArray(filters) && filters.length > 0) || nv.filterDropdown)) {
-          const selectedKeys = innerFilters[nv.$$_key] || [];
-          filterDropdown = (
-            <FilterDropdown
-              dropdownPrefixCls={dropdownPrefixCls}
-              column={nv}
-              selectedKeys={selectedKeys}
-              getPopupContainer={getPopupContainer}
-              on-confirm-filter={onFilterDropdownConfirm}
-            />
-          );
-        }
-        if (sorter) {
-          const isSortCol = isSortColumn(nv);
-          let [isAscend, isDescend] = [false, false];
-          if (isSortCol) {
-            const clz = { [`${prefixCls}-column-sort`]: true };
-            nv.className = nv.className ? [nv.className, clz] : clz;
-            isAscend = order === 'ascend';
-            isDescend = order === 'descend';
+      return normalizeCols(
+        cols,
+        (col) => {
+          const nv = col;
+          const { filters, sorter } = nv;
+          let [sortButton, filterDropdown] = [null, null];
+          const isCanFilter = (Array.isArray(filters) && filters.length > 0) || nv.filterDropdown;
+          // 只支持最内层元素过滤
+          if (!nv.children && isCanFilter) {
+            const selectedKeys = innerFilters[nv.$$_key] || [];
+            filterDropdown = (
+              <FilterDropdown
+                dropdownPrefixCls={dropdownPrefixCls}
+                column={nv}
+                selectedKeys={selectedKeys}
+                getPopupContainer={getPopupContainer}
+                on-confirm-filter={onFilterDropdownConfirm}
+              />
+            );
+          }
+          if (sorter) {
+            const isSortCol = isSortColumn(nv);
+            let [isAscend, isDescend] = [false, false];
+            if (isSortCol) {
+              const clz = { [`${prefixCls}-column-sort`]: true };
+              nv.className = nv.className ? [nv.className, clz] : clz;
+              isAscend = order === 'ascend';
+              isDescend = order === 'descend';
+            }
+
+            sortButton = (
+              <div class={`${prefixCls}-column-sorter`}>
+                <span
+                  class={`${prefixCls}-column-sorter-up ${isAscend ? 'on' : 'off'}`}
+                  title="↑"
+                  on-click={() => {
+                    toggleOrder(nv, 'ascend');
+                  }}
+                >
+                  <Icon type="caret_up" />
+                </span>
+                <span
+                  class={`${prefixCls}-column-sorter-down ${isDescend ? 'on' : 'off'}`}
+                  title="↓"
+                  on-click={() => {
+                    toggleOrder(nv, 'descend');
+                  }}
+                >
+                  <Icon type="caret_down" />
+                </span>
+              </div>
+            );
           }
 
-          sortButton = (
-            <div class={`${prefixCls}-column-sorter`}>
-              <span
-                class={`${prefixCls}-column-sorter-up ${isAscend ? 'on' : 'off'}`}
-                title="↑"
-                on-click={() => {
-                  toggleOrder(nv, 'ascend');
-                }}
-              >
-                <Icon type="caret_up" />
+          if (sortButton || filterDropdown) {
+            nv.title = (
+              <span>
+                {nv.title}
+                {sortButton}
+                {filterDropdown}
               </span>
-              <span
-                class={`${prefixCls}-column-sorter-down ${isDescend ? 'on' : 'off'}`}
-                title="↓"
-                on-click={() => {
-                  toggleOrder(nv, 'descend');
-                }}
-              >
-                <Icon type="caret_down" />
-              </span>
-            </div>
-          );
-        }
-        nv.title = (
-          <span>
-            {nv.title}
-            {sortButton}
-            {filterDropdown}
-          </span>
-        );
-        if (sortButton || filterDropdown) {
-          const filterClz = `${prefixCls}-column-has-filters`;
-          nv.className = nv.className ? [nv.className, filterClz] : filterClz;
-        }
-        return nv;
-      });
+            );
+            const filterClz = `${prefixCls}-column-has-filters`;
+            nv.className = nv.className ? [nv.className, filterClz] : filterClz;
+          }
+          return nv;
+        },
+        'children',
+        true
+      );
     },
     renderTable() {
       const {
@@ -437,13 +487,20 @@ export default {
     },
   },
   render() {
-    const { classes, renderTable, renderPagination } = this;
+    const {
+      prefixCls, classes, spinClasses, spinLoading, renderTable, renderPagination
+    } = this;
     const table = renderTable();
-    const pagination = renderPagination();
+    const topPager = renderPagination('top');
+    const bottomPager = renderPagination('bottom');
+    const props = { ...spinLoading, spinClass: [spinLoading.spinClass, spinClasses] };
     return (
       <div class={classes}>
-        {table}
-        {pagination}
+        <Spin {...{ class: { [`${prefixCls}-loading`]: spinLoading.spinning }, props }}>
+          {topPager}
+          {table}
+          {bottomPager}
+        </Spin>
       </div>
     );
   },

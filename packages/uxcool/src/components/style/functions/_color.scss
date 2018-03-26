@@ -1,3 +1,9 @@
+@import 'colorPalette';
+
+@function getLevelColor($color, $level: 6) {
+  @return colorPalette($color, $level);
+}
+
 @function tint($color, $percentage) {
   @return mix(#fff, $color, $percentage);
 }
@@ -26,20 +32,20 @@
 }
 
 // Retreive color Sass maps
-@function color($key: "blue") {
+@function color($key: 'blue') {
   @return map-get($colors, $key);
 }
 
-@function theme-color($key: "primary") {
+@function theme-color($key: 'primary') {
   @return map-get($theme-colors, $key);
 }
 
-@function gray($key: "1") {
+@function gray($key: '1') {
   @return map-get($grays, $key);
 }
 
 // Request a theme color level
-@function theme-color-level($color-name: "primary", $level: 0) {
+@function theme-color-level($color-name: 'primary', $level: 0) {
   $color: theme-color($color-name);
   $color-base: if($level > 0, #000, #fff);
   $level: abs($level);

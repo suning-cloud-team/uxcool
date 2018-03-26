@@ -1,6 +1,9 @@
-import UxRadio from './radio.vue';
-import UxRadioGroup from './group';
-import UxRadioButton from './button.vue';
+import Radio from './radio.vue';
+import Group from './group';
+import Button from './button.vue';
 
-export { UxRadio, UxRadioGroup, UxRadioButton };
-export default UxRadio;
+Radio.Group = Group;
+Radio.Button = Button;
+
+export { Radio as UxRadio, Group as UxRadioGroup, Button as UxRadioButton };
+export default Radio;

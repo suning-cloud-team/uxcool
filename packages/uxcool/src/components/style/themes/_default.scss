@@ -29,7 +29,7 @@
   $values: map-values($map);
   $first-value: nth($values, 1);
   @if $first-value !=0 {
-    @warn "First breakpoint in `$grid-breakpoints` must start at 0, but starts at #{$first-value}.";
+    @warn 'First breakpoint in `$grid-breakpoints` must start at 0, but starts at #{$first-value}.';
   }
 }
 
@@ -40,14 +40,14 @@
   $len2: length($map2-keys);
 
   @if $len1 !=$len2 {
-    @warn "Invalid value for #{$map2-name}: #{$map1-name} and #{$map2-name} must have the same keys!";
+    @warn 'Invalid value for #{$map2-name}: #{$map1-name} and #{$map2-name} must have the same keys!';
   } @else {
     @each $i in $len1 {
       $key1: nth($map1-keys, $i);
       $key2: nth($map2-keys, $i);
 
       @if $key1 !=$key2 {
-        @warn "Invalid value for #{$map2-name}: #{$map1-name} and #{$map2-name} must have the same keys!";
+        @warn 'Invalid value for #{$map2-name}: #{$map1-name} and #{$map2-name} must have the same keys!';
       }
     }
   }
@@ -56,6 +56,26 @@
 // variables
 // ------------------------------------------------------------------------
 $ux-prefix: ux !default;
+
+$colors: () !default;
+$colors: map-merge(
+  (
+    pink: #eb2f96,
+    magenta: #eb2f96,
+    red: #f5222d,
+    volcano: #fa541c,
+    orange: #fa8c16,
+    yellow: #fadb14,
+    gold: #faad14,
+    cyan: #13c2c2,
+    lime: #a0d911,
+    green: #52c41a,
+    blue: #108ee9,
+    geekblue: #2f54eb,
+    purple: #722ed1
+  ),
+  $colors
+);
 
 // colors
 $white: #fff !default;
@@ -72,7 +92,6 @@ $black: #000 !default;
 
 $grays: () !default;
 $grays: map-merge(
-
   (
     '1': $gray-1,
     '2': $gray-2,
@@ -129,7 +148,6 @@ $processing-color: $primary-color !default;
 
 $theme-colors: () !default;
 $theme-colors: map-merge(
-
   (
     'primary': $primary-color,
     'default': $normal-color,
@@ -174,9 +192,10 @@ $body-background: $white !default;
 $body-background-dark: #061e3c !default;
 $component-background: $white !default;
 $component-background-dark: $black !default;
-$font-family-no-number: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC',
-  'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
-$font-family: 'Helvetica Neue For Number', $font-family-no-number !default;
+$font-family-no-number: 'Chinese Quote', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
+  sans-serif !default;
+$font-family: 'Monospaced Number', $font-family-no-number !default;
 $code-family: Consolas, Menlo, Courier, monospace !default;
 $heading-color: fade(#000, 85%) !default;
 $text-color: fade(#000, 65%) !default;
@@ -352,7 +371,13 @@ $shadow-2: 0 2px 8px $shadow-color !default;
 $box-shadow-base: $shadow-1-down !default;
 
 // Grid
-$grid-breakpoints: (xs: 576px, sm: 768px, md: 992px, lg: 1200px, xl: 1600px) !default;
+$grid-breakpoints: (
+  xs: 576px,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px,
+  xl: 1600px
+) !default;
 @include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
 
 $grid-columns: 24 !default;
@@ -362,14 +387,13 @@ $enable-flex: false !default;
 // spacing
 $spacer: 10px !default;
 $spacers: (
-    0: 0,
-    1: ($spacer * 0.5),
-    2: $spacer,
-    3: ($spacer * 1.5),
-    4: ($spacer * 2),
-    5: ($spacer * 3)
-  )
-  !default;
+  0: 0,
+  1: ($spacer * 0.5),
+  2: $spacer,
+  3: ($spacer * 1.5),
+  4: ($spacer * 2),
+  5: ($spacer * 3)
+) !default;
 
 // components
 // $line-height-base:            1.5 !default;
@@ -391,124 +415,41 @@ $scrollbar-thumb-border-width: 5px !default;
 $scrollbar-thumb-border-radius: 10px !default;
 
 // button
-$btn-padding-y: 8px !default;
-$btn-padding-y-xs: 3px !default;
-$btn-padding-y-sm: 6px !default;
-$btn-padding-y-lg: 11px !default;
-$btn-padding-y-xl: 10px !default;
+// Buttons
+$btn-font-weight: 400;
+$btn-border-radius-base: $border-radius-base;
+$btn-border-radius-sm: $border-radius-base;
 
-$btn-padding-ys: () !default;
-$btn-padding-ys: map-merge(
+$btn-primary-color: #fff;
+$btn-primary-bg: $primary-color;
 
-  (
-    'xs': $btn-padding-y-xs,
-    'sm': $btn-padding-y-sm,
-    'lg': $btn-padding-y-lg,
-    'xl': $btn-padding-y-xl
-  ),
-  $btn-padding-ys
-);
+$btn-default-color: $text-color;
+$btn-default-bg: #fff;
+$btn-default-border: $border-color-base;
 
-$btn-padding-x: 14px !default;
-$btn-padding-x-xs: 5px !default;
-$btn-padding-x-sm: 10px !default;
-$btn-padding-x-lg: 16px !default;
-$btn-padding-x-xl: 20px !default;
+$btn-danger-color: $error-color;
+$btn-danger-bg: $background-color-base;
+$btn-danger-border: $border-color-base;
 
-$btn-padding-xs: () !default;
-$btn-padding-xs: map-merge(
+$btn-disable-color: $disabled-color;
+$btn-disable-bg: $disabled-bg;
+$btn-disable-border: $border-color-base;
 
-  (
-    'xs': $btn-padding-x-xs,
-    'sm': $btn-padding-x-sm,
-    'lg': $btn-padding-x-lg,
-    'xl': $btn-padding-x-xl
-  ),
-  $btn-padding-xs
-);
-@include _assert-same-key($btn-padding-ys, $btn-padding-xs, '$btn-padding-ys', '$btn-padding-xs');
+$btn-padding-base: 0 $padding-md - 1px;
+$btn-font-size-lg: $font-size-lg;
+$btn-font-size-sm: $font-size-base;
+$btn-padding-lg: $btn-padding-base;
+$btn-padding-sm: 0 $padding-xs - 1px;
 
-$btn-font-size: $font-size-base !default;
-$btn-font-size-xs: $font-size-sm !default;
-$btn-font-size-sm: $font-size-sm !default;
-$btn-font-size-lg: $font-size-lg !default;
-$btn-font-size-xl: 28px !default;
+$btn-height-base: 32px;
+$btn-height-lg: 40px;
+$btn-height-sm: 24px;
 
-$btn-font-sizes: () !default;
-$btn-font-sizes: map-merge(
+$btn-circle-size: $btn-height-base;
+$btn-circle-size-lg: $btn-height-lg;
+$btn-circle-size-sm: $btn-height-sm;
 
-  (
-    'xs': $btn-font-size-xs,
-    'sm': $btn-font-size-sm,
-    'lg': $btn-font-size-lg,
-    'xl': $btn-font-size-xl
-  ),
-  $btn-font-sizes
-);
-@include _assert-same-key($btn-padding-ys, $btn-font-sizes, '$btn-padding-ys', '$btn-font-sizes');
-
-$btn-border-width: 1px !default;
-$btn-border-color: $border-color-base !default;
-
-$btn-border-radius: $border-radius-base !default;
-$btn-border-radius-xs: $border-radius-sm !default;
-$btn-border-radius-sm: $border-radius-sm !default;
-$btn-border-radius-lg: $border-radius-base !default;
-$btn-border-radius-xl: $border-radius-base !default;
-
-$btn-border-radiuses: () !default;
-$btn-border-radiuses: map-merge(
-
-  (
-    'xs': $btn-border-radius-xs,
-    'sm': $btn-border-radius-sm,
-    'lg': $btn-border-radius-lg,
-    'xl': $btn-border-radius-xl
-  ),
-  $btn-border-radiuses
-);
-@include _assert-same-key($btn-padding-ys, $btn-border-radiuses, '$btn-padding-ys', '$btn-border-radiuses');
-
-$btn-bg: $white !default;
-
-$btn-line-height: 1 !default;
-$btn-line-height-xs: 1 !default;
-$btn-line-height-sm: 1 !default;
-$btn-line-height-lg: 1 !default;
-$btn-line-height-xl: 1 !default;
-
-$btn-line-heights: () !default;
-$btn-line-heights: map-merge(
-
-  (
-    'xs': $btn-line-height-xs,
-    'sm': $btn-line-height-sm,
-    'lg': $btn-line-height-lg,
-    'xl': $btn-line-height-xl
-  ),
-  $btn-line-heights
-);
-@include _assert-same-key($btn-padding-ys, $btn-line-heights, '$btn-padding-ys', '$btn-line-heights');
-
-$btn-font-weight: 400 !default;
-
-$btn-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
-
-$btn-box-shadow: none !default;
-$btn-focus-width: 5px !default;
-
-$btn-link-disabled-color: $gray-6 !default;
-$btn-disabled-cursor: not-allowed !default;
-$btn-loading-cursor: default !default;
-
-$btn-loading-spin-speed: 0.6s !default;
-$btn-loading-spin-function: linear !default;
-$btn-loading-rail-color: rgba(0, 0, 0, 0.3) !default;
-$btn-loading-color: $white !default;
-$btn-loading-width: 2px !default;
-
-$btn-icon-spacing: 5px !default;
+$btn-group-border: $primary-5;
 
 // Input
 // ---
@@ -568,7 +509,7 @@ $popover-arrow-color-dark: $popover-bg-dark !default;
 $popover-arrow-outer-color: $popover-bg !default;
 $popover-arrow-outer-color-dark: $popover-bg-dark !default;
 //** Popover distance with trigger
-$popover-distance: $popover-arrow-width+4px !default;
+$popover-distance: $popover-arrow-width + 4px !default;
 
 // Modal
 // --
@@ -633,29 +574,6 @@ $radio-size: 16px;
 $radio-button-bg: $btn-default-bg;
 $radio-button-color: $btn-default-color;
 
-// switch
-$switch-width: 60px !default;
-$switch-width-mini: 40px !default;
-$switch-height: 24px !default;
-$switch-height-mini: 20px !default;
-
-$switch-unchecked-bg: $gray-4 !default;
-$switch-checked-bg: $primary-color !default;
-$switch-disabled-bg: $gray-3 !default;
-
-$switch-toggle-bg: $white !default;
-$switch-toggle-disabled-bg: $white !default;
-
-$switch-toggle-transition: all 0.2s !default;
-$switch-transition: background-color 0.4s !default;
-$switch-text-transition: left 0.2s !default;
-
-$switch-font-size: 12px !default;
-$switch-color: $white !default;
-$switch-disabled-color: $gray-6 !default;
-
-$switch-disabled-cursor: not-allowed !default;
-
 // Table
 // --
 $table-header-bg: $background-color-light;
@@ -667,11 +585,11 @@ $table-padding-horizontal: 16px;
 
 // Tag
 // --
-$tag-default-bg: #f3f3f3 !default;
+$tag-default-bg: $background-color-light !default;
 $tag-default-bg-dark: $background-color-dark !default;
 $tag-default-color: $text-color !default;
 $tag-default-color-dark: $text-color-dark !default;
-$tag-font-size: $font-size-base !default;
+$tag-font-size: $font-size-sm !default;
 
 // Badge
 // ---
@@ -682,16 +600,23 @@ $badge-status-size: 6px !default;
 
 // Pagination
 // ---
-$pagination-item-size: 32px!default;
-$pagination-item-size-sm: 24px!default;
+$pagination-item-size: 32px !default;
+$pagination-item-size-sm: 24px !default;
 $pagination-item-bg-dark: rgba(#fff, 0.1) !default;
 $pagination-item-border-dark: rgba(#fff, 0.1) !default;
-$pagination-item-color-dark: #008dff!default;
+$pagination-item-color-dark: #008dff !default;
+
+// Switch
+// ---
+$switch-height: 22px !default;
+$switch-sm-height: 16px !default;
+$switch-disabled-opacity: 0.4 !default;
+$switch-color: $primary-color !default;
 
 // DatePicker
 // ---
 $date-picker-bg-dark: #03adcd !default;
-$date-picker-time-selected-bg-dark: #03adcd!default;
+$date-picker-time-selected-bg-dark: #03adcd !default;
 $date-picker-input-bg-dark: rgba($black, 0.2) !default;
 // TimePicker
 // ---

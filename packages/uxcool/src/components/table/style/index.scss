@@ -6,13 +6,20 @@ $table-header-icon-color: $text-color-secondary;
 
 .#{$table-prefix-cls}-wrapper {
   @include clearfix;
+  // add
+  .#{$ux-prefix}-spin-nested-loading {
+    width: 100%;
+  }
+  // .#{$table-prefix-cls}-loading {
+  //   z-index: 1051;
+  // }
 }
 
 .#{$table-prefix-cls} {
   @include reset-component;
   position: relative;
   border-radius: $border-radius-base $border-radius-base 0 0;
-
+  clear: both;
   &-body {
     transition: opacity 0.3s;
   }
@@ -195,19 +202,22 @@ $table-header-icon-color: $text-color-secondary;
     position: relative;
     .#{$table-prefix-cls}-body {
       background: $component-background;
-      opacity: 0.5;
     }
     .#{$table-prefix-cls}-spin-holder {
       height: 20px;
       line-height: 20px;
-      left: 50%;
+      // left: 50%;
+      // modify
+      left: 0;
       top: 50%;
       margin-left: -30px;
       position: absolute;
     }
+    // modify
     .#{$table-prefix-cls}-with-pagination {
       margin-top: -20px;
     }
+    // modify
     .#{$table-prefix-cls}-without-pagination {
       margin-top: 10px;
     }

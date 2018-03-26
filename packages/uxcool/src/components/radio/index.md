@@ -45,7 +45,7 @@
 | -------- | ----------------------------------------------------------------- | ---------------------------------------------- | ------- |
 | type     | radio 组类型 defalut\|button                                      | String                                         | default |
 | name     | 设置 group 中 radio 的 name                                       | String                                         |         |
-| options  | checkbox 列表                                                     | Array\<Object:{label,value,disabled}\|String\> |         |
+| options  | radio 列表                                                        | Array\<Object:{label,value,disabled}\|String\> |         |
 | value    | 选中值                                                            | String                                         |         |
 | disabled | 是否禁用                                                          | disabled                                       |         |
 | size     | 设置 radioButton 大小, type='button'时有效. large\|default\|small | String                                         | default |

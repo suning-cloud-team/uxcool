@@ -42,10 +42,10 @@ export default {
         return {};
       },
     },
-    // rowClass: {
-    //   type: [Object, String, Array],
-    //   default: '',
-    // },
+    rowClass: {
+      type: [Object, String, Array, Function],
+      default: '',
+    },
     onRow: {
       type: Function,
       default: noop,
@@ -249,7 +249,6 @@ export default {
       } else {
         $set(elementRefs, refName, refElement);
       }
-      console.log('elementRefs', this.elementRefs);
     },
     handleScrollPostion() {
       const { bodyTableRef } = this.elementRefs;

@@ -1,401 +1,195 @@
-@import '../../style/themes/index';
+@import '../../style/themes/default';
 @import '../../style/mixins/index';
-@import '../../style/functions/height';
 @import 'mixin';
 
-@function calc-button-height($font-size, $padding, $line-height: $btn-line-height, $border: $btn-border-width) {
-  @return calc-css-outer-height($font-size, $padding, $line-height, $border);
-}
+$btn-prefix-cls: #{$ux-prefix}-btn;
 
-// Base style
-.#{$ux-prefix}-btn {
-  $btn-color: color-yiq($btn-bg);
+// for compatibile
+$btn-ghost-color: $text-color;
+$btn-ghost-bg: transparent;
+$btn-ghost-border: $border-color-base;
 
-  display: inline-block;
-  background: $btn-bg;
-  border: $btn-border-width solid $btn-border-color;
-  color: $btn-color;
-  font-weight: $btn-font-weight;
-  white-space: nowrap;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  user-select: none;
-  outline: none;
-  cursor: pointer;
+// Button styles
+// -----------------------------
+.#{$btn-prefix-cls} {
+  line-height: $line-height-base;
+  @include btn;
+  @include btn-default;
 
-  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
-  @include transition($btn-transition);
-
-  &:hover,
-  &:focus,
-  &.focus {
-    color: $primary-color;
-    border-color: darken($primary-color, 7.5%);
-  }
-
-  &:active,
-  &.active {
-    color: darken($primary-color, 10%);
-    border-color: darken($primary-color, 10%);
-  }
-
-  &.disabled,
-  &:disabled {
-    border-color: $btn-border-color;
-    color: $btn-color;
-    opacity: 0.65;
-    cursor: $btn-disabled-cursor;
-  }
-}
-
-a.#{$ux-prefix}-btn {
-  &.disabled,
-  fieldset[disabled] & {
+  // Make sure that the target of Button's click event always be `button`
+  // Ref: https://github.com/ant-design/ant-design/issues/7034
+  > i,
+  > span {
     pointer-events: none;
   }
-}
 
-// basic button
-// ----------------------------------------------
-// theme style
-@each $color, $value in $theme-colors {
-  @if $color != 'default' {
-    .#{$ux-prefix}-btn-#{$color} {
-      @include button-variant($value, $value);
+  &-primary {
+    @include btn-primary;
+
+    .#{$btn-prefix-cls}-group &:not(:first-child):not(:last-child) {
+      border-right-color: $btn-group-border;
+      border-left-color: $btn-group-border;
+
+      &:disabled {
+        border-color: $btn-default-border;
+      }
     }
-  }
-}
 
-// colored
-// @each $color, $value in $colors {
-//     .#{$ux-prefix}-btn.#{$color} {
-//       @include button-variant($value, $value);
-//     }
-// }
+    .#{$btn-prefix-cls}-group &:first-child {
+      &:not(:last-child) {
+        border-right-color: $btn-group-border;
+        &[disabled] {
+          border-right-color: $btn-default-border;
+        }
+      }
+    }
 
-// inverted variant
-// ----------------------------------------------
-.#{$ux-prefix}-btn-inverted {
-  @include button-inverted-variant($btn-bg, darken($primary-color, 7.5%), darken($primary-color, 12.5%));
-
-  // theme style
-  @each $color, $value in $theme-colors {
-    @if $color != 'default' {
-      &.#{$ux-prefix}-btn-#{$color} {
-        @include button-inverted-variant($value);
+    .#{$btn-prefix-cls}-group &:last-child:not(:first-child),
+    .#{$btn-prefix-cls}-group & + & {
+      border-left-color: $btn-group-border;
+      &[disabled] {
+        border-left-color: $btn-default-border;
       }
     }
   }
 
-  // colored style
-  // @each $color, $value in $colors {
-  //     &.#{$color} {
-  //       @include button-inverted-variant($value);
-  //     }
-  // }
-}
-
-// outline variant
-// ----------------------------------------------
-.#{$ux-prefix}-btn-outline {
-  @include button-outline-variant($btn-bg, $primary-color, $primary-color, darken($primary-color, 7.5%));
-
-  // theme style
-  @each $color, $value in $theme-colors {
-    @if $color != 'default' {
-      &.#{$ux-prefix}-btn-#{$color} {
-        @include button-outline-variant($value);
-      }
-    }
-  }
-  // colored style
-  // @each $color, $value in $colors {
-  //     &.#{$color} {
-  //       @include button-outline-variant($value);
-  //     }
-  // }
-}
-
-// link button
-// ----------------------------------------------
-.#{$ux-prefix}-btn-link {
-  padding-left: 0;
-  padding-right: 0;
-  font-weight: $font-weight-normal;
-  color: $link-color;
-  border-color: transparent;
-  background-color: transparent;
-
-  &:hover,
-  &:focus,
-  &.focus {
-    color: $link-hover-color;
-    border-color: transparent;
+  &-ghost {
+    @include btn-ghost;
   }
 
-  &:disabled,
-  &.disabled {
-    border-color: transparent;
-    color: $btn-link-disabled-color;
-  }
-}
-
-// with icon
-// ----------------------------------------------
-.#{$ux-prefix}-btn {
-  i {
-    height: $btn-font-size;
-    margin-right: $btn-icon-spacing;
-    vertical-align: baseline;
-
-    &.right {
-      margin-left: $btn-icon-spacing;
-      margin-right: 0;
-    }
+  &-dashed {
+    @include btn-dashed;
   }
 
-}
-
-// square button
-// ----------------------------------------------
-.#{$ux-prefix}-btn-square {
-  $size: round(calc-button-height($btn-font-size, $btn-padding-y));
-  width: $size;
-  height: $size;
-  // prevent btn from collapsing in btn-group
-  min-width: $size;
-  padding-left: 0;
-  padding-right: 0;
-
-  > i {
-    margin: 0;
+  &-danger {
+    @include btn-danger;
   }
-}
 
-// circular button
-// ----------------------------------------------
-.#{$ux-prefix}-btn-circle {
-  @extend .#{$ux-prefix}-btn-square;
-  @extend .#{$ux-prefix}-btn-oval;
-}
+  &-circle,
+  &-circle-outline {
+    @include btn-circle($btn-prefix-cls);
+  }
 
-// oval button
-// ----------------------------------------------
-.#{$ux-prefix}-btn-oval {
-  border-radius: round(calc-button-height($btn-font-size, $btn-padding-y));
-}
-
-// block
-// ----------------------------------------------
-.#{$ux-prefix}-btn-block {
-  display: block;
-  width: 100%;
-}
-
-// loading
-// ----------------------------------------------
-.#{$ux-prefix}-btn.#{$ux-prefix}-btn-loading {
-  position: relative;
-  pointer-events: none;
-  
-  // TODO replace with iconfont
-  &::before {
+  &:before {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    background: #fff;
+    opacity: 0.35;
     content: '';
-    display: inline-block;
-    width: $btn-font-size;
-    height: $btn-font-size;
-    margin-right: $btn-icon-spacing;
-    border-color: $btn-loading-color $btn-loading-rail-color $btn-loading-rail-color;
-    border-width: $btn-loading-width;
-    border-style: solid;
-    border-radius: $btn-font-size;
-    animation: #{$ux-prefix}-spin $btn-loading-spin-speed $btn-loading-spin-function;
-    animation-iteration-count: infinite;
-    vertical-align: top;
-    cursor: $btn-loading-cursor;
+    border-radius: inherit;
+    z-index: 1;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    display: none;
   }
-  
-  &::after {
+
+  .#{$iconfont-css-prefix} {
+    transition: margin-left 0.3s $ease-in-out;
+  }
+
+  &#{&}-loading:before {
+    display: block;
+  }
+
+  &#{&}-loading:not(&-circle):not(&-circle-outline):not(&-icon-only) {
+    padding-left: 29px;
+    pointer-events: none;
+    position: relative;
+    .#{$iconfont-css-prefix} {
+      margin-left: -14px;
+    }
+  }
+
+  &-sm#{&}-loading:not(&-circle):not(&-circle-outline):not(&-icon-only) {
+    padding-left: 24px;
+    .#{$iconfont-css-prefix} {
+      margin-left: -17px;
+    }
+  }
+
+  &-group {
+    @include btn-group($btn-prefix-cls);
+  }
+
+  &:not(&-circle):not(&-circle-outline)#{&}-icon-only {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  // http://stackoverflow.com/a/21281554/3040605
+  &:focus > span,
+  &:active > span {
+    position: relative;
+  }
+
+  // To ensure that a space will be placed between character and `Icon`.
+  > .#{$iconfont-css-prefix} + span,
+  > span + .#{$iconfont-css-prefix} {
+    margin-left: 8px;
+  }
+
+  &-clicked:after {
     content: '';
     position: absolute;
     top: -1px;
-    right: -1px;
-    bottom: -1px;
     left: -1px;
-    background: rgba(255,255,255,.35);
-    z-index: 1;
+    bottom: -1px;
+    right: -1px;
+    border-radius: inherit;
+    border: 0 solid $primary-color;
+    opacity: 0.4;
+    animation: buttonEffect 0.4s;
+    display: block;
   }
 
-  // &:hover,
-  // &:focus,
-  // &.focus,
-  // &:active,
-  // &.active {
-  //   color: transparent;
-  // }
-}
-
-// button group
-// ----------------------------------------------
-.#{$ux-prefix}-btn-group,
-.#{$ux-prefix}-btn-group-vertical {
-  @if $enable-flex {
-    display: inline-flex;
-  } @else {
-    display: inline-block;
+  &-danger#{&}-clicked:after {
+    border-color: $btn-danger-color;
   }
-  position: relative;
-  vertical-align: middle;
 
-  > .#{$ux-prefix}-btn {
-    @if $enable-flex {
-      flex: 1 1 auto;
-    }
+  &-background-ghost {
+    background: transparent !important;
+    border-color: #fff;
+    color: #fff;
+  }
 
-    margin: 0;
+  &-background-ghost#{&}-primary {
+    @include button-variant-ghost($btn-primary-bg);
+  }
 
-    &:hover,
-    &:focus,
-    &.focus,
-    &:active,
-    &.active {
-      z-index: 2;
-    }
+  &-background-ghost#{&}-danger {
+    @include button-variant-ghost($btn-danger-color);
+  }
+
+  &-two-chinese-chars:first-letter {
+    letter-spacing: 0.34em;
+  }
+
+  &-two-chinese-chars > * {
+    letter-spacing: 0.34em;
+    margin-right: -0.34em;
   }
 }
 
-// horizontal
-.#{$ux-prefix}-btn-group {
-  > .#{$ux-prefix}-btn {
-    @if not $enable-flex {
-      float: left;
-    }
-  }
-
-  & > &:not(:last-child) > .#{$ux-prefix}-btn,
-  & > .#{$ux-prefix}-btn:not(:last-child) {
-    @include border-right-radius(0);
-  }
-  & > &:not(:first-child) > .#{$ux-prefix}-btn,
-  & > .#{$ux-prefix}-btn:not(:first-child) {
-    @include border-left-radius(0);
-  }
-
-  .#{$ux-prefix}-btn + .#{$ux-prefix}-btn,
-  .#{$ux-prefix}-btn + .#{$ux-prefix}-btn-group,
-  .#{$ux-prefix}-btn-group + .#{$ux-prefix}-btn,
-  .#{$ux-prefix}-btn-group + .#{$ux-prefix}-btn-group {
-    margin-left: -$btn-border-width;
+@keyframes buttonEffect {
+  to {
+    opacity: 0;
+    top: -6px;
+    left: -6px;
+    bottom: -6px;
+    right: -6px;
+    border-width: 6px;
   }
 }
 
-// vertical
-.#{$ux-prefix}-btn-group-vertical {
-  @if $enable-flex {
-    flex-direction: column;
-  } @else {
-    > .#{$ux-prefix}-btn,
-    > .#{$ux-prefix}-btn-group > .#{$ux-prefix}-btn-group > .#{$ux-prefix}-btn {
-      display: block;
-      width: 100%;
-    }
+a.#{$btn-prefix-cls} {
+  line-height: $btn-height-base - 2px;
+  &-lg {
+    line-height: $btn-height-lg - 2px;
   }
-
-  & > &:not(:last-child) > .#{$ux-prefix}-btn,
-  & > .#{$ux-prefix}-btn:not(:last-child) {
-    @include border-bottom-radius(0);
-  }
-  & > &:not(:first-child) > .#{$ux-prefix}-btn,
-  & > .#{$ux-prefix}-btn:not(:first-child) {
-    @include border-top-radius(0);
-  }
-
-  .#{$ux-prefix}-btn + .#{$ux-prefix}-btn,
-  .#{$ux-prefix}-btn + .#{$ux-prefix}-btn-group,
-  .#{$ux-prefix}-btn-group + .#{$ux-prefix}-btn,
-  .#{$ux-prefix}-btn-group + .#{$ux-prefix}-btn-group {
-    margin-top: -$btn-border-width;
-  }
-}
-
-// justified
-.#{$ux-prefix}-btn-group-justified {
-  width: 100%;
-
-  @if $enable-flex {
-    > .#{$ux-prefix}-btn-group,
-    .#{$ux-prefix}-btn {
-      flex: 1 1 0;
-      // allow shrinking below minimum content width.
-      // need user to override style when there is no more space for too long content.
-      min-width: 0;
-      overflow: hidden;
-    }
-  } @else {
-    display: table;
-    table-layout: fixed;
-    border-collapse: separate;
-
-    > .#{$ux-prefix}-btn,
-    > .#{$ux-prefix}-btn-group {
-      float: none;
-      display: table-cell;
-      width: 1%;
-    }
-    > .#{$ux-prefix}-btn-group .#{$ux-prefix}-btn {
-      width: 100%;
-    }
-  }
-}
-
-// size
-// ----------------------------------------------
-@each $suffix in map-keys($btn-padding-ys) {
-  .#{$ux-prefix}-btn-#{$suffix} {
-    $padding-y: map-get($btn-padding-ys, $suffix);
-    $padding-x: map-get($btn-padding-xs, $suffix);
-    $font-size: map-get($btn-font-sizes, $suffix);
-    $line-height: map-get($btn-line-heights, $suffix);
-    $border-radius: map-get($btn-border-radiuses, $suffix);
-
-    @include button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius);
-
-    > i {
-      height: $font-size;
-    }
-
-    &.#{$ux-prefix}-btn-link {
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    $size: round(calc-button-height($font-size, $padding-y, $line-height));
-
-    &.#{$ux-prefix}-btn-square {
-      width: $size;
-      height: $size;
-      min-width: $size;
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    &.#{$ux-prefix}-btn-oval {
-      border-radius: $size;
-    }
-
-    &.#{$ux-prefix}-btn-loading {
-      &::before {
-        width: $font-size;
-        height: $font-size;
-      }
-    }
-  }
-
-  .#{$ux-prefix}-btn-group-#{$suffix} {
-    & > .#{$ux-prefix}-btn-group > .#{$ux-prefix}-btn,
-    > .#{$ux-prefix}-btn {
-      @extend .#{$ux-prefix}-btn-#{$suffix};
-    }
+  &-sm {
+    line-height: $btn-height-sm - 2px;
   }
 }

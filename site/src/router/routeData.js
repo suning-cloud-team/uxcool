@@ -23,7 +23,12 @@ import Message from '@/views/components/message/index.vue';
 import Breadcrumb from '@/views/components/breadcrumb/index.vue';
 import Icon from '@/views/components/icon/index.vue';
 import Progress from '@/views/components/progress/index.vue';
-// import Table from '@/views/components/table/index.vue';
+import Table from '@/views/components/table/index.vue';
+import Tag from '@/views/components/tag/index.vue';
+import Switch from '@/views/components/switch/index.vue';
+import Button from '@/views/components/button/index.vue';
+import Checkbox from '@/views/components/checkbox/index.vue';
+import Radio from '@/views/components/radio/index.vue';
 
 export const groups = {
   general: {
@@ -297,16 +302,66 @@ export default [
         },
         component: Progress,
       },
-      // {
-      //   name: 'table',
-      //   path: 'table',
-      //   meta: {
-      //     title: 'Table',
-      //     subTitle: '表格',
-      //     group: 'data',
-      //   },
-      //   component: Table,
-      // },
+      {
+        name: 'table',
+        path: 'table',
+        meta: {
+          title: 'Table',
+          subTitle: '表格',
+          group: 'data',
+        },
+        component: Table,
+      },
+      {
+        name: 'tag',
+        path: 'tag',
+        meta: {
+          title: 'Tag',
+          subTitle: '标签',
+          group: 'data',
+        },
+        component: Tag,
+      },
+      {
+        name: 'switch',
+        path: 'switch',
+        meta: {
+          title: 'Switch',
+          subTitle: '开关',
+          group: 'form',
+        },
+        component: Switch,
+      },
+      {
+        name: 'button',
+        path: 'button',
+        meta: {
+          title: 'Button',
+          subTitle: '按钮',
+          group: 'general',
+        },
+        component: Button,
+      },
+      {
+        name: 'checkbox',
+        path: 'checkbox',
+        meta: {
+          title: 'Checkbox',
+          subTitle: '多选框',
+          group: 'form',
+        },
+        component: Checkbox,
+      },
+      {
+        name: 'radio',
+        path: 'radio',
+        meta: {
+          title: 'Radio',
+          subTitle: '单选框',
+          group: 'form',
+        },
+        component: Radio,
+      },
     ],
   },
   {

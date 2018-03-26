@@ -17,14 +17,14 @@ $input-affix-width: 19px;
 // input status
 // == when focus or actived
 @mixin active($color: $outline-color) {
-  border-color: tint($color, 50%);
+  border-color: coloPalette($color, 5);
   outline: 0;
   box-shadow: 0 0 $outline-blur-size $outline-width fade($color, 20%);
 }
 
 // == when hoverd
 @mixin hover($color: $input-hover-border-color) {
-  border-color: tint($color, 50%);
+  border-color: coloPalette($color, 5);
 }
 
 @mixin disabled() {

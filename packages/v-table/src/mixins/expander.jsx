@@ -28,7 +28,7 @@ export default {
           cellRender() {
             return {
               colspan: cols.length,
-              content: fixed !== 'right' ? renderFn(record, idx, indent) : '',
+              content: fixed !== 'right' ? renderFn(idx) : '',
             };
           },
         },

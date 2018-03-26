@@ -87,9 +87,10 @@
   .#{$checkbox-prefix-cls}-indeterminate .#{$checkbox-inner-prefix-cls}:after {
     $indeterminate-width: ($checkbox-size / 14) * 8px;
     $indeterminate-height: ($checkbox-size / 14) * 1px;
+    $left: ($checkbox-size - 2 - $indeterminate-width) / 2;
     content: ' ';
     position: absolute;
-    left: ($checkbox-size - 2 - $indeterminate-width) / 2;
+    left: ceil($left * 10) / 10;
     top: ($checkbox-size - 3 - $indeterminate-height) / 2;
     width: $indeterminate-width;
     height: $indeterminate-height;

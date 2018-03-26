@@ -19,6 +19,9 @@ export default {
     prefixCls() {
       return this.rootVM.prefixCls;
     },
+    rowClass() {
+      return this.rootVM.rowClass;
+    },
     useFixedHeader() {
       return this.rootVM.useFixedHeader;
     },
