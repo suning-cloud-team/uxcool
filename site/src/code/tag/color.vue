@@ -1,4 +1,3 @@
-export default `
 <template>
   <div>
     <h6>preset</h6>
@@ -9,16 +8,17 @@ export default `
     </ux-tag>
 
     <h6>custom</h6>
-    <ux-tag v-for="(color, i) in customColors"
-            :key="i"
-            :color="color"
-            closable>
-      {{ color }}
-    </ux-tag>
+    <div>
+      <ux-tag v-for="(color, i) in customColors"
+              :key="i"
+              :color="color"
+              closable>
+        {{ color }}
+      </ux-tag>
+    </div>
   </div>
 </template>
 <script>
-
   export default {
     data() {
       return {
@@ -51,4 +51,3 @@ export default `
     },
   };
 </script>
-`;

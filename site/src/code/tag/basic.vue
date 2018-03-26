@@ -1,5 +1,3 @@
-export default `
-
 <template>
   <div>
     <ux-tag>Tag 1</ux-tag>
@@ -20,14 +18,7 @@ export default `
   </div>
 </template>
 <script>
-  import code from '@/code/tag/basic';
-
   export default {
-    data() {
-      return {
-        code,
-      };
-    },
     methods: {
       onClose(e) {
         console.log('close', e);
@@ -38,4 +29,3 @@ export default `
     },
   };
 </script>
-`;
