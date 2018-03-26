@@ -4,7 +4,6 @@
   </radio>
 </template>
 
-
 <script>
   import { buildComponentName } from '../utils';
   import Radio from './radio.vue';

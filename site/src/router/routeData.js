@@ -28,6 +28,7 @@ import Tag from '@/views/components/tag/index.vue';
 import Switch from '@/views/components/switch/index.vue';
 import Button from '@/views/components/button/index.vue';
 import Checkbox from '@/views/components/checkbox/index.vue';
+import Radio from '@/views/components/radio/index.vue';
 
 export const groups = {
   general: {
@@ -346,10 +347,20 @@ export default [
         path: 'checkbox',
         meta: {
           title: 'Checkbox',
-          subTitle: '按钮',
+          subTitle: '多选框',
           group: 'form',
         },
         component: Checkbox,
+      },
+      {
+        name: 'radio',
+        path: 'radio',
+        meta: {
+          title: 'Radio',
+          subTitle: '单选框',
+          group: 'form',
+        },
+        component: Radio,
       },
     ],
   },
