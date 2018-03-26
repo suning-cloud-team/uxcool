@@ -8,7 +8,7 @@
         </button>
       </div>
       <ux-spin :spinning="spinning"
-               wrap-style="width:100%">
+               :wrap-style="{width:'100%'}">
         <div style="width:100%; max-height: 150px;overflow:auto">
           <table class="table-custom"
                  :class="{'ux-table-dark': theme === 'dark'}">

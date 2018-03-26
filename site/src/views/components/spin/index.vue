@@ -44,25 +44,25 @@
         <tr>
           <td>spin-class</td>
           <td>spin类名。</td>
-          <td>String | Object</td>
+          <td>String | Object | Array</td>
           <td>-</td>
         </tr>
         <tr>
           <td>spin-style</td>
           <td>spin样式。</td>
-          <td>String | Object</td>
+          <td>Object</td>
           <td>-</td>
         </tr>
         <tr>
           <td>wrap-class</td>
           <td>容器类。</td>
-          <td>String | Object</td>
+          <td>String | Object | Array</td>
           <td>-</td>
         </tr>
         <tr>
           <td>wrap-style</td>
           <td>容器样式。</td>
-          <td>String | Object</td>
+          <td>Object</td>
           <td>-</td>
         </tr>
         <tr>

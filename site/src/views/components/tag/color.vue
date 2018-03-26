@@ -11,7 +11,7 @@
 
       <h6>custom</h6>
       <ux-tag v-for="(color, i) in customColors"
-              :key="i"
+              :key="`c-${i}`"
               :color="color"
               closable>
         {{ color }}
@@ -19,7 +19,7 @@
     </div>
     <div slot="desc">标签可设置为各种颜色</div>
     <ux-code slot="code">
-      {{code}}
+      {{ code }}
     </ux-code>
   </ux-demo>
 </template>
