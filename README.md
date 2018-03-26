@@ -65,3 +65,5 @@ import '@suning/uxcool/dist/uxcool.css';
 import '@suning/uxcool/es/select/style/css';
 import { UxSelect, UxOption, UxOptionGroup } from '@suning/uxcool/es/select';
 ```
+
+> PS：附送前后端分离开发利器，[数据接口平台 DIP](http://dippre.cnsuning.com)

@@ -1,7 +1,8 @@
 @import './normalize.scss';
 @font-face {
-  font-family: "Helvetica Neue For Number";
-  src: local("Helvetica Neue");
+  font-family: 'Helvetica Neue For Number';
+  src: local('Helvetica Neue');
+  /* prettier-ignore */
   unicode-range: U+30-39;
 }
 
@@ -116,7 +117,7 @@ a {
   text-decoration: none;
   outline: none;
   cursor: pointer;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
   &:focus {
     text-decoration: underline;
     text-decoration-skip: ink;

@@ -394,8 +394,9 @@ template {
   display: none; }
 
 @font-face {
-  font-family: "Helvetica Neue For Number";
+  font-family: 'Helvetica Neue For Number';
   src: local("Helvetica Neue");
+  /* prettier-ignore */
   unicode-range: U+30-39; }
 
 * {
@@ -500,8 +501,8 @@ a {
   text-decoration: none;
   outline: none;
   cursor: pointer;
-  -webkit-transition: color .3s ease;
-  transition: color .3s ease; }
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease; }
   a:focus {
     text-decoration: underline;
     -webkit-text-decoration-skip: ink;
