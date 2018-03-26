@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import code from '@/code/tag/checkable';
+  import code from '@/code/tag/checkable.vue';
 
   export default {
     data() {

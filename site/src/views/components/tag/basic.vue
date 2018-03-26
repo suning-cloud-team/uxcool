@@ -27,7 +27,7 @@
   </ux-demo>
 </template>
 <script>
-  import code from '@/code/tag/basic';
+  import code from '@/code/tag/basic.vue';
 
   export default {
     data() {

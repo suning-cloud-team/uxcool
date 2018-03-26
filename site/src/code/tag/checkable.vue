@@ -1,4 +1,3 @@
-export default `
 <template>
   <div>
     LIST:
@@ -12,12 +11,9 @@ export default `
 </template>
 
 <script>
-  import code from '@/code/tag/checkable';
-
   export default {
     data() {
       return {
-        code,
         tags: ['Movies', 'Books', 'Music', 'Sports'],
         checkedTags: ['Books'],
       };
@@ -33,4 +29,3 @@ export default `
     },
   };
 </script>
-`;

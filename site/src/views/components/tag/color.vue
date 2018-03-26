@@ -10,12 +10,15 @@
       </ux-tag>
 
       <h6>custom</h6>
-      <ux-tag v-for="(color, i) in customColors"
-              :key="`c-${i}`"
-              :color="color"
-              closable>
-        {{ color }}
-      </ux-tag>
+      <div>
+        <ux-tag v-for="(color, i) in customColors"
+                :key="i"
+                :color="color"
+                closable>
+          {{ color }}
+        </ux-tag>
+      </div>
+
     </div>
     <div slot="desc">标签可设置为各种颜色</div>
     <ux-code slot="code">
@@ -24,7 +27,7 @@
   </ux-demo>
 </template>
 <script>
-  import code from '@/code/tag/color';
+  import code from '@/code/tag/color.vue';
 
   export default {
     data() {
