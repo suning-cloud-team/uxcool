@@ -157,7 +157,12 @@ export default {
     },
     renderFilterIcon() {
       const { column, iconClasses } = this;
-      const filterIcon = column.filterIcon ? column.filterIcon : <Icon type="filter" />;
+      let filterIcon = <Icon type="filter" />;
+      if (column.filterIcon) {
+        filterIcon = isFunction(column.filterIcon)
+          ? column.filterIcon(this.$createElement)
+          : column.filterIcon;
+      }
       return (
         <span class={iconClasses} title="筛选">
           {filterIcon}

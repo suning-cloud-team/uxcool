@@ -6,7 +6,7 @@
         <router-link :to="route.path">{{route.name}}</router-link>
       </li>
     </ul>
-    <router-view></router-view>
+    <router-view/>
   </div>
 </template>
 

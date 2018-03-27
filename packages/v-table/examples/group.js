@@ -5,38 +5,56 @@ import VTable from '@suning/v-table';
 function getColumns() {
   return [
     {
-      title: '姓名',
+      title: 'Name',
       dataIndex: 'name',
       key: 'name',
-    },
-    {
-      title: '其它',
-      children: [
+      width: 100,
+      fixed: 'left',
+      filters: [
         {
-          title: '年龄',
-          dataIndex: 'age',
-          key: 'age',
+          text: 'Joe',
+          value: 'Joe',
         },
         {
-          title: '住址',
+          text: 'John',
+          value: 'John',
+        },
+      ],
+      onFilter: (value, record) => record.name.indexOf(value) === 0,
+    },
+    {
+      title: 'Other',
+      children: [
+        {
+          title: 'Age',
+          dataIndex: 'age',
+          key: 'age',
+          width: 200,
+          sorter: (a, b) => a.age - b.age,
+        },
+        {
+          title: 'Address',
           children: [
             {
-              title: '街道',
+              title: 'Street',
               dataIndex: 'street',
               key: 'street',
+              width: 200,
             },
             {
-              title: '小区',
+              title: 'Block',
               children: [
                 {
-                  title: '单元',
+                  title: 'Building',
                   dataIndex: 'building',
                   key: 'building',
+                  width: 100,
                 },
                 {
-                  title: '门牌',
+                  title: 'Door No.',
                   dataIndex: 'number',
                   key: 'number',
+                  width: 100,
                 },
               ],
             },
@@ -45,52 +63,46 @@ function getColumns() {
       ],
     },
     {
-      title: '公司',
+      title: 'Company',
       children: [
         {
-          title: '地址',
-          dataIndex: 'companyAddress',
           key: 'companyAddress',
+          title: 'Company Address',
+          dataIndex: 'companyAddress',
         },
         {
-          title: '名称',
-          dataIndex: 'companyName',
           key: 'companyName',
+          title: 'Company Name',
+          dataIndex: 'companyName',
         },
       ],
     },
     {
-      title: '性别',
+      title: 'Gender',
       dataIndex: 'gender',
       key: 'gender',
+      width: 60,
+      fixed: 'right',
     },
   ];
 }
 
-const data = [
-  {
-    key: '1',
-    name: 'abc',
-    age: 32,
-    street: 'street1123',
-    building: 1,
-    number: 2033,
-    companyAddress: 'street1123 company',
-    companyName: '123123',
-    gender: '男',
-  },
-  {
-    key: '2',
-    name: 'adfsdf',
-    age: 42,
-    street: 'street 11111',
-    building: 3,
-    number: 2035,
-    companyAddress: '123111',
-    companyName: '1aadsfas',
-    gender: '男',
-  },
-];
+function getData(cnt = 10) {
+  return Array(cnt)
+    .fill(0)
+    .map((v, i) => ({
+      key: i,
+      name: 'John Brown',
+      age: i + 1,
+      street: 'Lake Park',
+      building: 'C',
+      number: 2035,
+      companyAddress: 'Lake Street 42',
+      companyName: 'SoftLake Co',
+      gender: 'M',
+    }));
+}
+
 const vm = new Vue({
   el: '#app',
   components: {
@@ -98,7 +110,7 @@ const vm = new Vue({
   },
   data: {
     columns: [],
-    data,
+    data: getData.call(this, 100),
   },
   created() {
     this.columns = getColumns.call(this);

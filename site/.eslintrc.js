@@ -6,10 +6,14 @@ module.exports = {
       webpack: {
         config: {
           resolve: {
-            alias
-          }
-        }
-      }
-    }
-  }
-}
+            alias,
+          },
+        },
+      },
+    },
+    'import/core-modules': ['@suning/uxcool'],
+  },
+  rules: {
+    'vue/html-self-closing': 0,
+  },
+};

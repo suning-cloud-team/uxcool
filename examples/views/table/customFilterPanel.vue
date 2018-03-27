@@ -32,6 +32,7 @@
             value: 'John',
           },
         ],
+        // `h` 不可少
         // eslint-disable-next-line
         filterDropdown(h) {
           return (
@@ -53,6 +54,11 @@
               </button>
             </div>
           );
+        },
+        // `h` 不可少
+        // eslint-disable-next-line
+        filterIcon(h) {
+          return <Icon type="info_circle_o" />;
         },
         filterDropdownVisible: columnFilter.name.filterDropdownVisible,
         filteredValue: columnFilter.name.searchVal,

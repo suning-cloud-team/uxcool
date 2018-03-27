@@ -4,13 +4,11 @@
     <h6>middle</h6>
     <ux-table :columns="columns"
               v-model="data"
-              size="middle"
-              :scroll="{x:'130%',y:300}" />
+              size="middle" />
     <h6>small</h6>
     <ux-table :columns="columns"
               v-model="data"
-              size="small"
-              :scroll="{x:'130%',y:300}" />
+              size="small" />
   </div>
 </template>
 
@@ -59,7 +57,7 @@
         name: `a${i}`,
         sex: 'male',
         age: 10 + i,
-        address: `address address ${i}`,
+        address: 'address ',
       }));
   }
 

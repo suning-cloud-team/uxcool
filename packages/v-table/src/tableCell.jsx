@@ -60,7 +60,7 @@ export default {
       };
 
       if (isFunction(onCell)) {
-        cellProps = { ...cellProps, ...onCell(record, rowIdx, colIdx, column) };
+        cellProps = { ...cellProps, ...onCell(record, rowIdx, column, colIdx) };
       }
 
       if (isFunction(cellRender)) {
@@ -69,8 +69,8 @@ export default {
           val,
           record,
           rowIdx,
-          colIdx,
-          column
+          column,
+          colIdx
         );
         // Object
         if (rv && isPlainObject(rv) && !isVNode(rv)) {

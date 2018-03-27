@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-table",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "table基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -14,22 +14,21 @@
     "@suning/v-tools": "^1.0.26"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.1",
+    "@suning/v-utils": "^1.0.2",
     "lodash": "^4.17.4"
   },
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": [
-    "assets/*.css",
-    "cjs",
-    "es"
-  ],
+  "files": ["assets/*.css", "cjs", "es"],
   "scripts": {
     "compile": "v-tools run compile",
     "server": "v-tools run server",
     "clean": "v-tools run clean",
     "start": "npm run server",
     "commit": "git-cz"
+  },
+  "vueCompileOpts": {
+    "preserveWhitespace": false
   }
 }

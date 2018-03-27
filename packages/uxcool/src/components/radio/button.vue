@@ -1,7 +1,8 @@
 <template>
-  <radio v-bind="[$attrs, $props]" />
+  <radio v-bind="[$attrs, $props]">
+    <slot/>
+  </radio>
 </template>
-
 
 <script>
   import { buildComponentName } from '../utils';

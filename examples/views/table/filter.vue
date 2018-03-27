@@ -1,7 +1,9 @@
 <template>
 
   <div class="demo">
-    <ux-table :scroll="{x:'130%'}"
+    <button class="ux-btn"
+            @click="onClick">{{ fixed ? 'clear': 'set' }} fixed</button>
+    <ux-table :scroll="{x:'130%', y: '200'}"
               :columns="cols1"
               v-model="data1"
               :expand-icon-col-index="1"
@@ -32,7 +34,7 @@
     return [
       {
         key: 1,
-        fixed: true,
+        fixed: this.fixed,
         title: 'key',
         dataIndex: 'key',
         width: 150,
@@ -125,10 +127,13 @@
     },
     data() {
       return {
+        fixed: true,
         filterDropdownVisible: true,
         cols1: [],
         data1: this.getData(12),
-        pagination: {},
+        pagination: {
+          position: 'both',
+        },
         rowSelection: {
           selections: true,
           selectedRowKeys: [],
@@ -160,6 +165,10 @@
       getData: originGetData,
       onChange(...args) {
         console.log('table change', args);
+      },
+      onClick() {
+        this.fixed = !this.fixed;
+        this.cols1 = genCols.call(this);
       },
     },
   };

@@ -1,81 +1,13 @@
 @import '../../style/themes/default';
 @import '../../style/mixins/index';
 @import '../../input/style/mixin';
+@import '../../button/style/mixin';
 
 $pagination-prefix-cls: #{$ux-prefix}-pagination;
-
-@mixin button-size($height, $padding, $font-size, $border-radius) {
-  padding: $padding;
-  font-size: $font-size;
-  border-radius: $border-radius;
-  height: $height;
-}
-
-@mixin btn() {
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: $btn-font-weight;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  background-image: none;
-  border: $border-width-base $border-style-base transparent;
-  white-space: nowrap;
-  line-height: $line-height-base;
-  @include button-size(
-    $btn-height-base,
-    $btn-padding-base,
-    $font-size-base,
-    $btn-border-radius-base
-  );
-  user-select: none;
-  transition: all 0.3s $ease-in-out;
-  position: relative;
-  &,
-  &:active,
-  &:focus {
-    outline: 0;
-  }
-  &:not([disabled]):hover {
-    text-decoration: none;
-  }
-  &:not([disabled]):active {
-    outline: 0;
-    transition: none;
-  }
-  &.disabled,
-  &[disabled] {
-    cursor: not-allowed;
-    > * {
-      pointer-events: none;
-    }
-  }
-}
-
-@mixin btn-color($color, $background, $border) {
-  color: $color;
-  background-color: $background;
-  border-color: $border;
-}
-ul {
-  list-style: none;
-}
-
-ul,
-li {
-  padding: 0;
-  margin: 0;
-}
-
-* {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
 .#{$pagination-prefix-cls} {
   font-size: $font-size-base;
-  * {
-    box-sizing: border-box;
-  }
+  @include reset-component();
+
   &:after {
     content: ' ';
     display: block;
@@ -277,7 +209,7 @@ li {
       }
       button {
         @include btn();
-        @include btn-color($btn-default-color, $btn-default-bg, $btn-default-border);
+        @include button-color($btn-default-color, $btn-default-bg, $btn-default-border);
         &:hover,
         &:focus,
         &:active,
