@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Basic</title>
+</head>
+
+<body>
+  <div id="app" style="width:800px; margin: 0 auto;">
+    <v-slider :marks="marks"></v-slider>
+    <v-slider :marks="marks" :value="40" :step="false"></v-slider>
+    <v-slider :marks="marks" dots :step="10"></v-slider>
+    <v-slider-range :value="[20,30,40]" :included="false" :marks="marks" @change="onChange"></v-slider-range>
+    <v-slider-range style="height:300px" vertical :value="[20,30,40,60]" :marks="marks"></v-slider-range>
+    <br>
+    <v-slider style="height:300px" vertical :marks="marks"></v-slider>
+    <br>
+    <v-slider style="height:300px" vertical :marks="marks" dots :step="10"></v-slider>
+
+  </div>
+</body>
+
+</html>

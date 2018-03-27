@@ -1,8 +1,9 @@
 <template>
-  <v-tooltip v-bind="bindProps"
+  <v-tooltip ref="tooltipRef"
+             v-bind="bindProps"
              :builtin-placements="buildinPlacements"
              v-on="$listeners">
-    <slot></slot>
+    <slot/>
     <template slot="content">
       <slot name="content">
         {{content}}
@@ -20,6 +21,9 @@
 
   export default {
     name: buildComponentName('Tooltip'),
+    components: {
+      VTooltip,
+    },
     props: {
       prefixCls: {
         type: String,
@@ -75,8 +79,19 @@
         );
       },
     },
-    components: {
-      VTooltip,
+    methods: {
+      setOpen(visible) {
+        const { $refs: { tooltipRef } } = this;
+        if (tooltipRef) {
+          tooltipRef.setOpen(visible);
+        }
+      },
+      updateTooltipAlign() {
+        const { $refs: { tooltipRef } } = this;
+        if (tooltipRef) {
+          tooltipRef.updateTooltipAlign();
+        }
+      },
     },
   };
 </script>

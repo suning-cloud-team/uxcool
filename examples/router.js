@@ -28,6 +28,7 @@ import Divider from './views/divider/index';
 import Tag from './views/tag/index';
 import Switch from './views/switch/index';
 import Alert from './views/alert/index';
+import Slider from './views/slider/index';
 
 Vue.use(Router);
 const routes = [
@@ -170,6 +171,11 @@ const routes = [
     name: 'Alert',
     path: '/alert',
     component: Alert,
+  },
+  {
+    name: 'Slider',
+    path: '/slider',
+    component: Slider,
   },
 ];
 

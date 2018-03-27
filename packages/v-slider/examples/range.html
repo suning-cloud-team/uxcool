@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Basic</title>
+</head>
+
+<body>
+  <div id="app" style="width:800px; margin: 0 auto;">
+    <v-slider-range :value="[20,40,40,50,60]" @change="onChange"></v-slider-range>
+    <v-slider-range :value="value" @change="onChange"></v-slider-range>
+    <v-slider-range :value="[60,20, 40,]" @change="onChange"></v-slider-range>
+    <v-slider-range :value="[20,30,40]" :allow-cross="false" @change="onChange"></v-slider-range>
+    <v-slider-range :value="[20,30,40,60]" :allow-cross="false" :pushable="false"></v-slider-range>
+    <!-- <v-slider-range style="height:200px" vertical :value="value"></v-slider-range> -->
+    <v-slider-range style="height:300px" vertical :value="[20,30,40,60]" :allow-cross="false" :pushable="false"></v-slider-range>
+  </div>
+</body>
+
+</html>

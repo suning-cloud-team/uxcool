@@ -47,3 +47,5 @@ export * from './tag';
 export { default as UxSwitch } from './switch';
 
 export { default as UxAlert } from './alert';
+
+export { default as UxSlider } from './slider';

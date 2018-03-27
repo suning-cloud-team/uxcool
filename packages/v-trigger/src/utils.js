@@ -24,7 +24,7 @@ function isPointsEq(a1, a2) {
 export function getClassNameFromAlign(builtinPlacements, prefixCls, align) {
   const { points } = align;
   const placements = Object.keys(builtinPlacements).filter(v =>
-    isPointsEq(builtinPlacements[v].points, points));
+  isPointsEq(builtinPlacements[v].points, points));
 
   if (placements.length > 0) {
     return `${prefixCls}-placement-${placements[0]}`;
