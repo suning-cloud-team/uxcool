@@ -29,6 +29,7 @@ import Switch from '@/views/components/switch/index.vue';
 import Button from '@/views/components/button/index.vue';
 import Checkbox from '@/views/components/checkbox/index.vue';
 import Radio from '@/views/components/radio/index.vue';
+import Alert from '@/views/components/alert/index.vue';
 
 export const groups = {
   general: {
@@ -362,6 +363,16 @@ export default [
         },
         component: Radio,
       },
+      {
+        name: 'alert',
+        path: 'alert',
+        meta: {
+          title: 'Alert',
+          subTitle: '警告提示',
+          group: 'notice',
+        },
+        component: Alert,
+      }
     ],
   },
   {
