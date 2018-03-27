@@ -162,24 +162,24 @@ $theme-colors: map-merge(
 // stylelint-enable
 // Color used by default to control hover and active backgrounds and for
 // alert info backgrounds.
-$primary-1: tint($primary-color, 90%) !default; // replace tint($primary-color, 90%)
-$primary-2: tint($primary-color, 80%) !default; // replace tint($primary-color, 80%)
+$primary-1: colorPalette($primary-color, 1) !default; // replace tint($primary-color, 90%)
+$primary-2: colorPalette($primary-color, 2) !default; // replace tint($primary-color, 80%)
 // unused
-$primary-3: tint($primary-color, 70%) !default;
-$primary-4: tint($primary-color, 60%) !default;
+$primary-3: colorPalette($primary-color, 3) !default;
+$primary-4: colorPalette($primary-color, 4) !default;
 // Color used to control the text color in many active and hover states.
 // replace tint($primary-color, 20%)
-$primary-5: tint($primary-color, 20%) !default;
+$primary-5: colorPalette($primary-color, 5) !default;
 $primary-6: $primary-color !default; // don't use, use $primary-color
 // Color used to control the text color of active buttons.
 // replace shade($primary-color, 5%)
-$primary-7: tint($primary-color, 5%) !default;
+$primary-7: colorPalette($primary-color,7) !default;
 // unused
-$primary-8: tint($primary-color, 30%) !default;
+$primary-8: colorPalette($primary-color, 8) !default;
 // unused
-$primary-9: tint($primary-color, 50%) !default;
+$primary-9: colorPalette($primary-color, 9) !default;
 // unused
-$primary-10: tint($primary-color, 10%) !default;
+$primary-10: colorPalette($primary-color, 10) !default;
 
 // Set a specific jump point for requesting color jumps
 $theme-color-interval: 8% !default;
@@ -658,3 +658,23 @@ $steps-bg-dark: rgba(#00d8ff, 0.7) !default;
 // Progress
 $progress-rail-bg: #ddd !default;
 $progress-rail-bg-dark: fade(#000, 60%) !default;
+
+// Slider
+// ---
+
+// Slider
+// ---
+$slider-margin: 14px 6px 10px;
+$slider-rail-background-color: $background-color-base;
+$slider-rail-background-color-hover: #e1e1e1;
+$slider-track-background-color: $primary-3;
+$slider-track-background-color-hover: $primary-4;
+$slider-handle-color: $primary-3;
+$slider-handle-color-hover: $primary-4;
+$slider-handle-color-focus: tint($primary-color, 20%);
+$slider-handle-color-focus-shadow: tint($primary-color, 50%);
+$slider-handle-color-tooltip-open: $primary-color;
+$slider-dot-border-color: $border-color-split;
+$slider-dot-border-color-active: tint($primary-color, 50%);
+$slider-disabled-color: $disabled-color;
+$slider-disabled-background-color: $component-background;

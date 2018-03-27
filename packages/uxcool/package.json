@@ -27,6 +27,7 @@
     "@suning/v-notification": "^1.0.4",
     "@suning/v-pagination": "^1.0.11",
     "@suning/v-select": "^1.0.19",
+    "@suning/v-slider": "^1.0.0",
     "@suning/v-steps": "^1.0.6",
     "@suning/v-table": "^1.0.4",
     "@suning/v-tabs": "^1.0.11",

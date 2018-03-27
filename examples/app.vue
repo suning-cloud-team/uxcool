@@ -1,5 +1,5 @@
 <template>
-  <div class="container"
+  <div class="container  clearfix"
        :style="style">
     <ul class="routes">
       <li v-for="(route,i) in routes"
@@ -8,7 +8,7 @@
       </li>
     </ul>
     <ux-button @click="changeTheme">theme: {{ theme }}</ux-button>
-    <router-view/>
+    <router-view style="margin-left:200px;overflow:hidden" />
   </div>
 </template>
 
@@ -59,6 +59,7 @@
       list-style: none;
     }
     &.routes {
+      float: left;
       margin-bottom: 20px;
     }
   }

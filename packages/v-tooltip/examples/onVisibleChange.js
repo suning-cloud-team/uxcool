@@ -9,10 +9,12 @@ const vm = new Vue({
   data: {
     visible: false,
     disabled: true,
+    popupVisible: true,
   },
   created() {
     setTimeout(() => {
       this.disabled = false;
+      this.popupVisible = true;
     }, 2500);
   },
   methods: {

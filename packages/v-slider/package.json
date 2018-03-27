@@ -1,6 +1,6 @@
 {
-  "name": "@suning/v-utils",
-  "version": "1.0.2",
+  "name": "@suning/v-slider",
+  "version": "1.0.0",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -13,11 +13,14 @@
     "compile": "v-tools run compile",
     "server": "v-tools run server"
   },
+  "peerDependencies": {
+    "vue": "^2.5.*"
+  },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.26"
+    "@suning/v-tools": "^1.0.26",
+    "@suning/v-utils": "^1.0.2"
   },
   "dependencies": {
-    "lodash": "^4.17.5",
     "warning": "^3.0.0"
   }
 }

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Basic</title>
+</head>
+
+<body>
+  <div id="app" style="width:800px; margin: 0 auto;">
+    <v-slider ref="sliderRef"></v-slider>
+    <v-slider-range ref="sliderRef1" :value="[20, 30]"></v-slider-range>
+    <button @click="focus" @focus="onFocus">focus</button>
+    <button @click="blur">blur</button>
+  </div>
+</body>
+
+</html>
