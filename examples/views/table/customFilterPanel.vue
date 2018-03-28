@@ -2,12 +2,14 @@
   <div class="demo">
     <h6> custom filter panel</h6>
     <p>filterDropdown, filterDropdownVisible ,onFilterDropdownVisibleChange需配合使用</p>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable, Icon } from '@suning/uxcool';
 
   function getCols() {
@@ -150,6 +152,7 @@
         },
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = this.getCols();
 

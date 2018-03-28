@@ -3,11 +3,13 @@
            vertical>
     <div slot="demo">
       <h6>middle</h6>
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 size="middle" />
       <h6>small</h6>
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 size="small" />
     </div>

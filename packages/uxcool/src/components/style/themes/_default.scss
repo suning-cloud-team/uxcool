@@ -577,9 +577,14 @@ $radio-button-color: $btn-default-color;
 // Table
 // --
 $table-header-bg: $background-color-light;
+// $table-header-bg-dark: rgba(26, 26, 26, 1);
+$table-header-bg-dark: getLevelColor($black, 4);
 $table-header-sort-bg: $background-color-base;
+$table-header-sort-bg-dark: $background-color-dark;
 $table-row-hover-bg: $primary-1;
+$table-row-hover-bg-dark: getLevelColor($black, 2);
 $table-selected-row-bg: #fafafa;
+$table-selected-row-bg-dark: getLevelColor($black, 2);
 $table-padding-vertical: 16px;
 $table-padding-horizontal: 16px;
 

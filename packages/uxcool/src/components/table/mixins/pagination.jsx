@@ -49,7 +49,9 @@ export default {
       setInnerPager(pager);
     },
     renderPagination(pagerPosition) {
-      const { prefixCls, hasPagination, innerPager } = this;
+      const {
+        prefixCls, theme, hasPagination, innerPager
+      } = this;
       if (!hasPagination) {
         return null;
       }
@@ -62,6 +64,7 @@ export default {
         <Pagination
           class={[`${prefixCls}-pagination`, className]}
           style={style}
+          theme={theme}
           {...{ props, on }}
         />
         ) : null;

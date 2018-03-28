@@ -3,7 +3,8 @@
            vertical>
     <div slot="demo">
       <ux-button @click="add">Add</ux-button>
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data" />
     </div>
     <div slot="desc">

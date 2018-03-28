@@ -2,7 +2,8 @@
   <ux-demo title="表头分组"
            vertical>
     <div slot="demo">
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 bordered
                 :pagination="true"
