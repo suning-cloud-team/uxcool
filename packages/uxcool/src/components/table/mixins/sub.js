@@ -7,5 +7,8 @@ export default {
     selectedRowKeys() {
       return this.uRootVM.selectedRowKeys;
     },
+    theme() {
+      return this.uRootVM.theme;
+    },
   },
 };

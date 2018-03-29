@@ -1,12 +1,14 @@
 <template>
   <div class="demo">
     <h6>editable rows</h6>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable, Modal } from '@suning/uxcool';
 
   // @vue/components
@@ -144,6 +146,7 @@
         editData: {},
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this);

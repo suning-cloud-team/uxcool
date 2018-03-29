@@ -4,7 +4,8 @@
     <div slot="demo">
       <ux-button :loading="loading"
                  @click="reload()">reload</ux-button>
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 :row-selection="rowSelection" />
     </div>

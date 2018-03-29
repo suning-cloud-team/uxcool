@@ -2,7 +2,8 @@
   <div class="demo">
     <h6> ajax</h6>
     <p>请打开devtools,查看请求参数 </p>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data"
               :row-key="rowKey"
               :pagination="pagination"
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import Axios from 'axios';
   import { Divider, Table as UxTable } from '@suning/uxcool';
 
@@ -91,6 +93,7 @@
         data: [],
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.queryData();
       this.columns = this.getCols();

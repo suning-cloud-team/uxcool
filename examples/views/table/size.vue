@@ -2,17 +2,20 @@
   <div class="demo">
     <h4>size</h4>
     <h6>middle</h6>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data"
               size="middle" />
     <h6>small</h6>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data"
               size="small" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable } from '@suning/uxcool';
 
   function getCols() {
@@ -72,6 +75,7 @@
         data: [],
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this);

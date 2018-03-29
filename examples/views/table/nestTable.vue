@@ -2,6 +2,7 @@
   <div class="demo">
     <h6>expander row</h6>
     <ux-table class="components-table-demo-nested"
+              :theme="theme"
               :columns="columns"
               v-model="data"
               :expanded-row-render="expandedRowRender" />
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable, Badge, Tooltip } from '@suning/uxcool';
 
   function getCols() {
@@ -120,6 +122,7 @@
         data: [],
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this, 5);
