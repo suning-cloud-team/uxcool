@@ -1,6 +1,7 @@
 <template>
   <ux-demo title="禁用关闭">
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <button class="ux-btn"
               @click="visible = true">禁用关闭按钮</button>
       <ux-modal v-model="visible"

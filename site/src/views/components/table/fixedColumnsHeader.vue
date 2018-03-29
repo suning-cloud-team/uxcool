@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="固定头和列"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-table :theme="theme"

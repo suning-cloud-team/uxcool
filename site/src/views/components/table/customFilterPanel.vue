@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="自定义筛选菜单"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-table :theme="theme"
@@ -52,13 +53,13 @@
               <input
                 type="text"
                 class="ux-input"
-                on-input={(e) => {
+                on-input={e => {
                   onInputChange(e, 'name');
                 }}
               />
               <button
                 class="ux-btn ux-btn-primary"
-                on-click={(e) => {
+                on-click={e => {
                   onSearch(e, 'name');
                 }}
               >
@@ -198,9 +199,9 @@
                 .split(reg)
                 .map((rv, i) => (i > 0 ? [<span class="highlight">{searchVal}</span>, rv] : rv))}
             </span>
-            ) : (
-              v[key]
-            ),
+          ) : (
+            v[key]
+          ),
         }));
       },
     },

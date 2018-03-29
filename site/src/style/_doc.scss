@@ -65,6 +65,24 @@
     margin: 30px 0;
     border: 0;
   }
+
+  .gutter-group {
+    .ux-btn,
+    .ux-select,
+    .ux-switch {
+      margin-top: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .ux-btn-group {
+      margin-right: 10px;
+
+      > .ux-btn {
+        margin-right: 0;
+      }
+    }
+  }
 }
 
 .api-table,

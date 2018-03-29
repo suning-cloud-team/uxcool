@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="可编辑行"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-table :theme="theme"
@@ -51,9 +52,7 @@
   };
 
   function getCols() {
-    const {
-      cellRender, onEdit, onSave, onCancel
-    } = this;
+    const { cellRender, onEdit, onSave, onCancel } = this;
     return [
       {
         key: 'name',
@@ -166,7 +165,7 @@
           <EditableCell
             editable={record.editable}
             value={text}
-            on-change={(val) => {
+            on-change={val => {
               onChange(record.key, column.dataIndex, val);
             }}
           />
@@ -192,7 +191,7 @@
         const item = data.filter(v => v.key === key)[0];
         const editItem = editData[key];
         if (item && editItem) {
-          Object.keys(editItem).forEach((k) => {
+          Object.keys(editItem).forEach(k => {
             item[k] = editItem[k];
           });
           item.editable = false;

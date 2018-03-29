@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="大小"
+           :height="200"
            vertical>
     <div slot="demo">
       <h6>middle</h6>

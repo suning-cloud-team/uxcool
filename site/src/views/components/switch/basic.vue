@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="基本用法"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-switch />
       <ux-switch checked />
     </div>

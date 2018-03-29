@@ -1,6 +1,7 @@
 <template>
   <ux-demo title="自定义位置">
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <button class="ux-btn"
               @click="customStyleOpen">
         距离顶部10像素

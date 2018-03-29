@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="边框,表头,表尾"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-table :theme="theme"

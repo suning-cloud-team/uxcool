@@ -1,6 +1,7 @@
 <template>
   <ux-demo title="确认框">
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <button class="ux-btn"
               @click="confirm">基本确认</button>
       <button class="ux-btn"
