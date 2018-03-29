@@ -1,9 +1,9 @@
 <template>
 
   <div class="demo">
-    <button class="ux-btn"
-            @click="onClick">{{ fixed ? 'clear': 'set' }} fixed</button>
-    <ux-table :scroll="{x:'130%', y: '200'}"
+    <ux-button @click="onClick">{{ fixed ? 'clear': 'set' }} fixed</ux-button>
+    <ux-table :theme="theme"
+              :scroll="{x:'130%', y: '200'}"
               :columns="cols1"
               v-model="data1"
               :expand-icon-col-index="1"
@@ -16,10 +16,10 @@
 
 
 <script>
+  import { mapState } from 'vuex';
   import Vue from 'vue';
   import Icon from '@suning/uxcool/src/components/icon';
-  import '@suning/uxcool/src/components/table/style/index.scss';
-  import UxTable from '@suning/uxcool/src/components/table';
+  import { UxTable, Button } from '@suning/uxcool';
   import { getData as originGetData } from './data';
 
   Vue.component('AB', {
@@ -124,6 +124,7 @@
   export default {
     components: {
       UxTable,
+      UxButton: Button,
     },
     data() {
       return {
@@ -143,6 +144,7 @@
         },
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.cols1 = genCols.call(this);
       setTimeout(() => {

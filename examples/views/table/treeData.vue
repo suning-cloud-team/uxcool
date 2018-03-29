@@ -2,13 +2,15 @@
   <div class="demo">
     <h6>tree data</h6>
     <p>未实现 父子级间 selection关联选中</p>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data"
               :row-selection="rowSelection" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable } from '@suning/uxcool';
 
   function getCols() {
@@ -124,6 +126,7 @@
         },
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this);

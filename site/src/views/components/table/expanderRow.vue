@@ -2,7 +2,8 @@
   <ux-demo title="可展开"
            vertical>
     <div slot="demo">
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 :expanded-row-render="expandedRowRender" />
     </div>

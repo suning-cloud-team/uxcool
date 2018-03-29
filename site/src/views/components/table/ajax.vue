@@ -2,7 +2,9 @@
   <ux-demo title="ajax"
            vertical>
     <div slot="demo">
-      <ux-table :columns="columns"
+      {{theme}}
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 :row-key="rowKey"
                 :pagination="pagination"
@@ -95,14 +97,17 @@
         data: [],
       };
     },
+
+    computed: {
+      theme() {
+        return this.$store.state.theme;
+      },
+    },
     created() {
       this.queryData();
       this.columns = this.getCols();
     },
     methods: {
-      theme() {
-        return this.$store.state.theme;
-      },
       getCols,
       rowKey(record) {
         return `${record.name}-${record.age}`;

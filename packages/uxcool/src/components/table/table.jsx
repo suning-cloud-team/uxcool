@@ -73,6 +73,13 @@ export default {
       type: Boolean,
       default: null,
     },
+    theme: {
+      type: String,
+      default: 'light',
+      validate(val) {
+        return ['light', 'dark'].indexOf(val) > -1;
+      },
+    },
   },
   data() {
     return {
@@ -84,9 +91,10 @@ export default {
   },
   computed: {
     classes() {
-      const { prefixCls } = this;
+      const { prefixCls, theme } = this;
       return {
         [`${prefixCls}-wrapper`]: true,
+        [`${prefixCls}-${theme}`]: true,
       };
     },
     hasRowSelection() {
