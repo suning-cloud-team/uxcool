@@ -1,18 +1,4 @@
 .demo {
-  &-title {
-    margin: 10px 0;
-    font-size: 20px;
-
-    a {
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
-    &:hover a {
-      opacity: 1;
-    }
-  }
-
   &-desc {
     margin-bottom: 20px;
     line-height: 30px;
@@ -39,7 +25,8 @@
     bottom: 0;
     width: 100%;
     height: 30px;
-    border: 1px solid transparent;
+    border-width: 1px;
+    border-style: solid;
     line-height: 30px;
     text-align: center;
     cursor: pointer;
@@ -48,22 +35,6 @@
 
     &.fixed {
       position: fixed;
-    }
-  }
-
-  &.light {
-    .demo-code-more {
-      background: #fff;
-      border-color: #eee;
-      color: #3b8beb;
-    }
-  }
-
-  &.dark {
-    .demo-code-more {
-      background: #18293f;
-      border-top-color: rgba(255, 255, 255, 0.1);
-      color: #00d8ff;
     }
   }
 }

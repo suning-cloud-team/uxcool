@@ -1,0 +1,82 @@
+// 嵌套一层提高优先级，防止在线编译样式后样式又被编译后的样式覆盖；
+// 跟外观相关的样式尽量放到skin中定义，这样在线预览编译时只需要编译皮肤文件
+.uxcool {
+  .header-brand {
+    float: left;
+    display: block;
+    height: $layout-header-height;
+    padding: 0 15px;
+    line-height: $layout-header-height;
+
+    .logo {
+      float: left;
+      margin-top: ($layout-header-height - 32) / 2;
+      line-height: 32px;
+      font-size: 24px;
+      text-decoration: none;
+      cursor: pointer;
+
+      svg {
+        float: left;
+        margin: 4px 10px 0 0;
+        width: 40px;
+        height: 24px;
+      }
+    }
+
+    .version {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+
+  .header-menu {
+    float: right;
+    border-bottom: 0;
+    line-height: ($layout-header-height - 1);
+  }
+
+  .sidebar-menu {
+    margin-bottom: 30px;
+    border-right: 0;
+  }
+
+  .footer-nav {
+    padding: 20px 20px 0;
+    text-align: right;
+    overflow: hidden;
+
+    .previous,
+    .next {
+      &,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+    .next {
+      margin-left: 30px;
+    }
+
+    .previous i {
+      margin-right: 8px;
+    }
+    .next i {
+      margin-left: 8px;
+    }
+  }
+
+  .footer-links {
+    float: left;
+    margin: 9px;
+
+    a {
+      margin: 0 15px;
+    }
+  }
+
+  .copyright {
+    float: right;
+    padding: 9px;
+  }
+}
