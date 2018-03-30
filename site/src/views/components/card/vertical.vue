@@ -1,8 +1,10 @@
 <template>
-  <ux-demo title="竖直卡片" :height="200">
+  <ux-demo title="竖直卡片"
+           :height="200">
     <div slot="demo">
       <ux-row :gutter="10">
-        <ux-col :md="12" :lg="8">
+        <ux-col :md="12"
+                :lg="8">
           <ux-card flat
                    vertical
                    class="bg-red">
@@ -55,7 +57,8 @@
             </ul>
           </ux-card>
         </ux-col>
-        <ux-col :md="12" :lg="8">
+        <ux-col :md="12"
+                :lg="8">
           <ux-card flat
                    vertical>
             <template slot="title">卡片标题</template>
@@ -116,96 +119,99 @@
 </template>
 
 <script>
-import code from '@/code/card/vertical';
+  import code from '@/code/card/vertical';
 
-export default {
-  data() {
-    return {
-      code,
-    };
-  },
-};
+  export default {
+    data() {
+      return {
+        code,
+      };
+    },
+  };
 </script>
 
 <style lang="scss" scoped>
-.list {
-  display: flex;
+  .list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
-  li {
-    flex: 1;
-    position: relative;
-    margin-top: -1px;
-    text-align: center;
+    li {
+      flex: 1;
+      position: relative;
+      margin-top: -1px;
+      text-align: center;
 
-    & + li::before {
-      content: '';
-      position: absolute;
-      top: 10px;
-      bottom: 10px;
-      left: -1px;
-      width: 1px;
-      background: rgba(255, 255, 255, 0.3);
+      & + li::before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        left: -1px;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      > a {
+        color: #fff;
+      }
     }
 
-    > a {
-      color: #fff;
+    &.vertical {
+      flex-direction: column;
+      height: 100%;
+
+      > li:first-child {
+        margin-top: 0;
+      }
+
+      > li + li::before {
+        top: -1px;
+        bottom: auto;
+        left: 10px;
+        right: 10px;
+        width: auto;
+        height: 1px;
+      }
     }
   }
 
-  &.vertical {
-    flex-direction: column;
+  .stats-wrapper {
+    display: table;
+    width: 100%;
     height: 100%;
+    border: 1px solid transparent;
 
-    > li:first-child {
-      margin-top: 0;
-    }
-
-    > li + li::before {
-      top: -1px;
-      bottom: auto;
-      left: 10px;
-      right: 10px;
-      width: auto;
-      height: 1px;
+    &:hover {
+      border-color: #fff;
     }
   }
-}
 
-.stats-wrapper {
-  display: table;
-  width: 100%;
-  height: 100%;
-  border: 1px solid transparent;
+  .stats {
+    display: table-cell;
+    padding: 15px;
+    font-size: 12px;
+    vertical-align: middle;
 
-  &:hover {
-    border-color: #fff;
-  }
-}
+    &.total {
+      padding: 24px 0;
 
-.stats {
-  display: table-cell;
-  padding: 15px;
-  font-size: 12px;
-  vertical-align: middle;
+      .stats-text {
+        margin-right: 0;
+        font-size: 14px;
+        line-height: 24px;
+      }
 
-  &.total {
-    padding: 24px 0;
-
-    .stats-text {
-      margin-right: 0;
-      font-size: 14px;
-      line-height: 24px;
-    }
-
-    .stats-number {
-      font-size: 20px;
-      line-height: 30px;
+      .stats-number {
+        font-size: 20px;
+        line-height: 30px;
+      }
     }
   }
-}
 
-.stats-text {
-  margin-right: 10px;
-  color: rgba(255, 255, 255, 0.8);
-}
+  .stats-text {
+    margin-right: 10px;
+    color: rgba(255, 255, 255, 0.8);
+  }
 </style>
