@@ -17,6 +17,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    theme: {
+      type: String,
+      default: 'light',
+      validate(val) {
+        return ['light', 'dark'].indexOf(val) > -1;
+      },
+    },
   },
   data() {
     return {
@@ -29,9 +36,12 @@ export default {
       return regColor.test(color);
     },
     classes() {
-      const { prefixCls, color, isPresetColor } = this;
+      const {
+        prefixCls, color, isPresetColor, theme
+      } = this;
       return {
         [prefixCls]: true,
+        [`${prefixCls}-${theme}`]: true,
         [`${prefixCls}-${color}`]: isPresetColor,
         [`${prefixCls}-has-color`]: !!(color && !isPresetColor),
       };

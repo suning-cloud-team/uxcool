@@ -197,6 +197,7 @@ export default {
   },
   render() {
     const {
+      theme,
       column,
       filterIcon,
       filterMenu,
@@ -231,6 +232,7 @@ export default {
       value: dropdownVisible,
       getPopupContainer,
       closeOnSelect: false,
+      theme,
     };
     const on = {
       'visible-change': onVisibleChange,

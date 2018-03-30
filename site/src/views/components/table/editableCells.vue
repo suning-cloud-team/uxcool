@@ -1,9 +1,12 @@
 <template>
   <ux-demo title="可编辑单元格"
+           :height="200"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-button @click="add">Add</ux-button>
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data" />
     </div>
     <div slot="desc">
@@ -51,15 +54,13 @@
       },
     },
     render() {
-      const {
-        value, editable, onKeyup, onOk, onEdit
-      } = this;
+      const { value, editable, onKeyup, onOk, onEdit } = this;
       const editElement = editable ? (
         <div class="editable-cell-input-wrapper">
           <input ref="inputRef" type="text" value={value} class="ux-input" on-keyup={onKeyup} />
           <ux-icon type="ok" class="editable-cell-icon-check" on-click={onOk} />
         </div>
-        ) : (
+      ) : (
         <div class="editable-cell-text-wrapper" on-dblclick={onEdit}>
           {value}
           <ux-icon type="edit" class="editable-cell-icon" on-click={onEdit} />
@@ -82,7 +83,7 @@
           return (
             <EditableCell
               value={text}
-              on-change={(val) => {
+              on-change={val => {
                 onChange(record.key, 'name', val);
               }}
             />
@@ -112,7 +113,7 @@
                 Delete
               </a>
             </span>
-            ) : null;
+          ) : null;
         },
       },
     ];

@@ -1,10 +1,13 @@
 <template>
   <ux-demo title="选择与操作"
+           :height="200"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-button :loading="loading"
                  @click="reload()">reload</ux-button>
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 :row-selection="rowSelection" />
     </div>

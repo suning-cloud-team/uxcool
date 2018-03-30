@@ -2,13 +2,15 @@
   <div class="demo">
     <h6> sort and filter</h6>
 
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data"
               @change="onChange" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable } from '@suning/uxcool';
 
   function getCols() {
@@ -112,6 +114,7 @@
         data: [],
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = this.getCols();
       this.data = getData.call(this);

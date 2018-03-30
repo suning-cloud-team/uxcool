@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="图表按钮"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-button type="primary"
                  @click="onClick"
                  @click.native="onNativeClick"

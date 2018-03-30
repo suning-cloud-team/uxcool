@@ -1,6 +1,7 @@
 <template>
   <ux-demo title="三种触发方式">
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-popover trigger="hover"
                   :theme="theme"
                   content="hover激活">

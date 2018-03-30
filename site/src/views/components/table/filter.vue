@@ -1,10 +1,12 @@
 <template>
   <ux-demo title="筛选"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-button class="ux-btn"
                  @click="onClick">{{ fixed ? 'clear': 'set' }} fixed</ux-button>
-      <ux-table :scroll="{x:'130%', y: '200'}"
+      <ux-table :theme="theme"
+                :scroll="{x:'130%', y: '200'}"
                 :columns="cols1"
                 v-model="data1"
                 :expand-icon-col-index="1"
@@ -143,7 +145,7 @@
             key: `${extra}c${i}`,
             name: `ssss${i}${i}`,
             age: i + cnt + 10,
-            addr: <a-b>`a.b.c.d.${i}`</a-b>,
+            addr: `a.b.c.d.${i}`,
           },
         ],
       });

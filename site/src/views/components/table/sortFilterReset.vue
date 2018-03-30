@@ -1,12 +1,15 @@
 <template>
   <ux-demo title="可控筛选和排序"
+           :height="200"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-button @click="setNameFilter">set name filter = John</ux-button>
       <ux-button @click="sortAge">sort Age</ux-button>
       <ux-button @click="clearFilter">clear filter</ux-button>
       <ux-button @click="clearSort">clear sort</ux-button>
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 @change="onChange" />
     </div>

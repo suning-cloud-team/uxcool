@@ -26,6 +26,7 @@ export default {
         selectionColumnClasses,
         handleAllSelectionChange,
         handleSelectionChange,
+        dropdownPrefixCls,
       } = this;
       let col = {};
 
@@ -53,6 +54,7 @@ export default {
         if (type !== 'radio') {
           col.title = (
             <CheckboxAll
+              dropdownPrefixCls={dropdownPrefixCls}
               data={changeablePagerFlatData}
               disabled={isAllCheckboxDisabled}
               selections={selections}

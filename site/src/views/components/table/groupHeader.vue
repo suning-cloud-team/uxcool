@@ -1,8 +1,10 @@
 <template>
   <ux-demo title="表头分组"
+           :height="200"
            vertical>
     <div slot="demo">
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 bordered
                 :pagination="true"

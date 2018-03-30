@@ -1,8 +1,10 @@
 <template>
   <ux-demo title="嵌套子表格"
+           :height="200"
            vertical>
     <div slot="demo">
-      <ux-table class="components-table-demo-nested"
+      <ux-table :theme="theme"
+                class="components-table-demo-nested"
                 :columns="columns"
                 v-model="data"
                 :expanded-row-render="expandedRowRender" />

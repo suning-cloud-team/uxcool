@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="基本用法"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-button type="primary">Primary</ux-button>
       <ux-button>Default</ux-button>
       <ux-button type="dashed">Dashed</ux-button>

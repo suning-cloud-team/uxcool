@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="大小"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-switch />
       <ux-switch size="small" />
     </div>

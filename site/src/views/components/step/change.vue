@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="步骤切换"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-steps :current="current"
                 :theme="theme">
         <ux-step title="Login"

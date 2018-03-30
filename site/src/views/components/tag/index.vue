@@ -11,6 +11,7 @@
                 id="api">API</ux-heading>
 
     <table class="api-table">
+      <caption>UxTag Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -34,9 +35,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events">Events</h4>
+
     <table class="api-table">
+      <caption>UxTag Events</caption>
       <thead>
         <tr>
           <th>事件名</th>
@@ -57,13 +58,9 @@
         </tr>
       </tbody>
     </table>
-    <h3 class="mume-header"
-        id="uxcheckabletag">UxCheckableTag</h3>
-
-    <h4 class="mume-header"
-        id="props-1">Props</h4>
 
     <table class="api-table">
+      <caption>UxCheckableTag Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -81,10 +78,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events-1">Events</h4>
 
     <table class="api-table">
+      <caption>UxCheckableTag Events</caption>
       <thead>
         <tr>
           <th>事件名</th>

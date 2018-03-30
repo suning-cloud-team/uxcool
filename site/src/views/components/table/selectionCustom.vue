@@ -1,8 +1,10 @@
 <template>
   <ux-demo title="自定义选择项"
+           :height="200"
            vertical>
     <div slot="demo">
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 :row-selection="rowSelection" />
     </div>

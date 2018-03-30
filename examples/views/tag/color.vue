@@ -5,13 +5,15 @@
     <h6>preset</h6>
     <tag v-for="(color, i) in colors"
          :key="i"
+         :theme="theme"
          :color="color">
       {{ color }}
     </tag>
 
     <h6>custom</h6>
     <tag v-for="(color, i) in customColors"
-         :key="i"
+         :key="`custom${i}`"
+         :theme="theme"
          :color="color"
          closable>
       {{ color }}
@@ -19,6 +21,7 @@
   </div>
 </template>
 <script>
+  import { mapState } from 'vuex';
   import { Tag } from '@suning/uxcool';
 
   export default {
@@ -45,6 +48,7 @@
         customColors: ['#f50', '#2db7f5', '#87d068', '#108ee9'],
       };
     },
+    computed: mapState(['theme']),
     methods: {
       isChecked(tag) {
         return this.checkedTags.indexOf(tag) > -1;

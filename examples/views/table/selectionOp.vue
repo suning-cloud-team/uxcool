@@ -3,13 +3,15 @@
     <h6>selection and operator</h6>
     <button class="ux-btn"
             @click="reload()">reload</button>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data"
               :row-selection="rowSelection" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable } from '@suning/uxcool';
 
   function getCols() {
@@ -61,6 +63,7 @@
         },
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this);

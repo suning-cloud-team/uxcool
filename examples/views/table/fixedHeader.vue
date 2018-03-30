@@ -2,13 +2,15 @@
   <div class="demo">
     <h6>fixed header</h6>
     <p>表头和数据可能不对齐,请设置column的`width`属性</p>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data"
               :scroll="{y:250}" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable } from '@suning/uxcool';
 
   function getCols() {
@@ -58,6 +60,7 @@
         data: [],
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this);

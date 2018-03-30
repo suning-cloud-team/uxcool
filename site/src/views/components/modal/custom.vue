@@ -1,6 +1,7 @@
 <template>
   <ux-demo title="自定义页头页脚">
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <button class="ux-btn"
               @click="headerOpen">自定义标题</button>
       <ux-modal v-model="headerVisible"

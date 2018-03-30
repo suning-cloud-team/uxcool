@@ -1,6 +1,7 @@
 <template>
   <ux-demo title="消息通知">
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <button class="ux-btn"
               @click="showInfo">Info</button>
       <button class="ux-btn"

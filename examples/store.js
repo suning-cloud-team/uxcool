@@ -3,10 +3,17 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+const mutations = {
+  changeTheme(state, theme) {
+    const nState = state;
+    nState.theme = theme;
+  },
+};
 const store = new Vuex.Store({
   state: {
-    a: 1,
+    theme: 'dark',
   },
+  mutations,
 });
 
 export default store;

@@ -8,7 +8,8 @@
       <br> 2. `sort`各层级都支持
       <br> 3. 通过`column[n].children` 嵌套头部
     </p>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data"
               bordered
               :pagination="true"
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable } from '@suning/uxcool';
 
   function getCols() {
@@ -131,6 +133,7 @@
         data: [],
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this, 100);

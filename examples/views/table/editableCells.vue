@@ -3,12 +3,14 @@
     <h6>editable table</h6>
     <button class="ux-btn"
             @click="add">Add</button>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable, Icon, UxModal } from '@suning/uxcool';
 
   // @vue/components
@@ -146,6 +148,7 @@
         seed: 0,
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this);

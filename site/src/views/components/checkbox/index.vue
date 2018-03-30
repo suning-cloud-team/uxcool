@@ -13,6 +13,7 @@
                 id="api">API</ux-heading>
 
     <table class="api-table">
+      <caption>UxCheckbox Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -54,10 +55,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events">Events</h4>
 
     <table class="api-table">
+      <caption>UxCheckbox Events</caption>
       <thead>
         <tr>
           <th>事件名</th>
@@ -73,10 +73,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="methods">Methods</h4>
 
     <table class="api-table">
+      <caption>UxCheckbox Methods</caption>
       <thead>
         <tr>
           <th>名称</th>
@@ -94,13 +93,9 @@
         </tr>
       </tbody>
     </table>
-    <h3 class="mume-header"
-        id="uxcheckboxgroup">UxCheckboxGroup</h3>
-
-    <h4 class="mume-header"
-        id="props-1">Props</h4>
 
     <table class="api-table">
+      <caption>UxCheckboxGroup Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -130,10 +125,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events-1">Events</h4>
 
     <table class="api-table">
+      <caption>UxCheckboxGroup Events</caption>
       <thead>
         <tr>
           <th>事件名</th>

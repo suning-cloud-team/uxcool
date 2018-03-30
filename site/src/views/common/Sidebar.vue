@@ -4,7 +4,8 @@
       <ux-menu @click="onMenuClick"
                :inline-indent="40"
                :theme="theme"
-               :selected-keys="activeKeys">
+               :selected-keys="activeKeys"
+               class="sidebar-menu">
         <template v-for="item in menuData">
           <ux-menu-item-group v-if="item.children"
                               :title="item.group">
@@ -20,31 +21,23 @@
   </aside>
 </template>
 
-<style lang="scss">
-.ux-layout-sidebar .ux-menu {
-  margin-bottom: 30px;
-  border-right: 0;
-}
-</style>
-
-
 <script>
-import { mapGetters } from 'vuex';
+  import { mapGetters } from 'vuex';
 
-export default {
-  computed: {
-    theme() {
-      return this.$store.state.theme;
+  export default {
+    computed: {
+      theme() {
+        return this.$store.state.theme;
+      },
+      ...mapGetters(['menuData', 'selectedRouteName']),
+      activeKeys() {
+        return [this.selectedRouteName];
+      },
     },
-    ...mapGetters(['menuData', 'selectedRouteName']),
-    activeKeys() {
-      return [this.selectedRouteName];
+    methods: {
+      onMenuClick({ name }) {
+        this.$router.push({ name });
+      },
     },
-  },
-  methods: {
-    onMenuClick({ name }) {
-      this.$router.push({ name });
-    },
-  },
-};
+  };
 </script>

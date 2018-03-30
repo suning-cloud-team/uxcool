@@ -1,8 +1,10 @@
 <template>
   <ux-demo title="固定头和列"
+           :height="200"
            vertical>
     <div slot="demo">
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 :pagination="pagination"
                 :scroll="{x: '150%', y:250}" />
