@@ -9,26 +9,9 @@
          target="_blank">ITP日志</a>
 
     </div>
-    <div class="copyright ux-sm-hidden-down">copyright@2017 - {{year}} UXCOOL</div>
+    <div class="copyright ux-sm-hidden-down">Copyright &copy; 2017 - {{year}} UXCOOL</div>
   </footer>
 </template>
-
-<style lang="scss">
-  // .links {
-  //   float: left;
-  //   margin: 10px;
-
-  //   a {
-  //     margin: 0 20px;
-  //   }
-  // }
-
-  // .copyright {
-  //   float: right;
-  //   padding: 10px;
-  //   color: #666;
-  // }
-</style>
 
 <script>
   export default {

@@ -153,6 +153,12 @@
             <td>Boolean</td>
             <td>false</td>
           </tr>
+          <tr>
+            <td>title</td>
+            <td>分组标题</td>
+            <td>String</td>
+            <td>''</td>
+          </tr>
         </tbody>
       </table>
       <table class="api-table">

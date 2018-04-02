@@ -1,5 +1,5 @@
 export default `
-<ux-menu slot="demo" mode="horizontal">
+<ux-menu mode="horizontal">
   <ux-sub-menu name="sub-menu-1" title="sub-menu-1">
     <ux-menu-item name="sub-menu-1-1">sub-menu-1-1</ux-menu-item>
     <ux-menu-item name="sub-menu-1-2">sub-menu-1-2</ux-menu-item>
