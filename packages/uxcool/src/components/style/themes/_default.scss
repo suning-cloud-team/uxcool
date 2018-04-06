@@ -652,3 +652,12 @@ $steps-bg-dark: rgba(#00d8ff, 0.7) !default;
 // Progress
 $progress-rail-bg: #ddd !default;
 $progress-rail-bg-dark: fade(#000, 60%) !default;
+
+// Form
+// ---
+$label-required-color: $highlight-color;
+$label-color: $heading-color;
+$form-item-margin-bottom: 24px;
+$form-item-trailing-colon: true;
+$form-vertical-label-padding: 0 0 8px;
+$form-vertical-label-margin: 0;

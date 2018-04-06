@@ -45,3 +45,5 @@ export * from './button';
 export * from './tag';
 
 export { default as UxSwitch } from './switch';
+
+export { default as UxForm } from './form';
