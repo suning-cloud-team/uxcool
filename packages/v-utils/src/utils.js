@@ -1,5 +1,6 @@
 import isPlainObject from 'lodash/isPlainObject';
 import isNumber from 'lodash/isNumber';
+import raf from 'raf';
 
 export function isDef(v) {
   return v !== null && v !== undefined;
@@ -16,4 +17,4 @@ export function isArray(arr) {
 //   return Object.prototype.toString.call(obj) === '[object Object]';
 // }
 
-export { isPlainObject, isNumber };
+export { raf, isPlainObject, isNumber };

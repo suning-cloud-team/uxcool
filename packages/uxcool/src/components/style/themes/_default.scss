@@ -678,6 +678,7 @@ $slider-dot-border-color: $border-color-split;
 $slider-dot-border-color-active: tint($primary-color, 50%);
 $slider-disabled-color: $disabled-color;
 $slider-disabled-background-color: $component-background;
+
 // Form
 // ---
 $label-required-color: $highlight-color;
@@ -686,3 +687,9 @@ $form-item-margin-bottom: 24px;
 $form-item-trailing-colon: true;
 $form-vertical-label-padding: 0 0 8px;
 $form-vertical-label-margin: 0;
+
+// BackTop
+// ---
+$back-top-color: #fff;
+$back-top-bg: $text-color-secondary;
+$back-top-hover-bg: $text-color;

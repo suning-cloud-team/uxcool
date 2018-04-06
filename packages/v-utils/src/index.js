@@ -1,5 +1,7 @@
 import warn from 'warning';
 
+export * from './easing';
+
 export * from './vnode';
 
 export * from './utils';

@@ -30,6 +30,7 @@ import Switch from './views/switch/index';
 import Alert from './views/alert/index';
 import Slider from './views/slider/index';
 import Form from './views/form/index';
+import BackTop from './views/backtop/index';
 
 Vue.use(Router);
 const routes = [
@@ -182,6 +183,11 @@ const routes = [
     name: 'Form',
     path: '/form',
     component: Form,
+  },
+  {
+    name: 'BackTop',
+    path: '/backtop',
+    component: BackTop,
   },
 ];
 

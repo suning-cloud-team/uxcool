@@ -15,3 +15,24 @@ export function isTransform3dSupported() {
   }
   return false;
 }
+
+export function getScroll(w, top = true) {
+  let ret = 0;
+  if (!w) {
+    return ret;
+  }
+  const method = `scroll${top ? 'Top' : 'Left'}`;
+  if (w === w.window) {
+    ret = w[`page${top ? 'Y' : 'X'}Offset`];
+    if (typeof ret !== 'number') {
+      const d = w.document;
+      ret = d.documentElement[method];
+      if (typeof ret !== 'number') {
+        ret = d.body[method];
+      }
+    }
+  } else {
+    ret = w[method];
+  }
+  return ret;
+}

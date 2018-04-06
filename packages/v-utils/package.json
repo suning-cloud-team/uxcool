@@ -7,7 +7,11 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["assets/*css", "cjs", "es"],
+  "files": [
+    "assets/*css",
+    "cjs",
+    "es"
+  ],
   "scripts": {
     "start": "npm run server",
     "compile": "v-tools run compile",
@@ -18,6 +22,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
+    "raf": "^3.4.0",
     "warning": "^3.0.0"
   }
 }
