@@ -13,8 +13,9 @@ const router = new Router({
 });
 
 NProgress.configure({
+  minimum: 0.2,
   speed: 500,
-  showSpinner: false
+  showSpinner: false,
 });
 
 router.beforeEach((to, from, next) => {
@@ -25,6 +26,10 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
+router.beforeResolve((to, from, next) => {
+  NProgress.done();
+  next();
+});
 
 router.afterEach(({ meta = {} }) => {
   const { title, subTitle = '' } = meta;
@@ -32,7 +37,7 @@ router.afterEach(({ meta = {} }) => {
   document.title = title ? `${title}${subTitle ? ' ' : ''}${subTitle}` : 'UXCool Vue组件';
   store.commit(CHANGE_PAGE_NAME, `pgtitle=vue组件-${subTitle || title}`);
   window.scrollTo(0, 0);
-  NProgress.done();
+  // NProgress.done();
 
   /* eslint-disable no-underscore-dangle */
   // 这边埋点函数会读取dom 所以要延迟一下
