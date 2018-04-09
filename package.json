@@ -6,7 +6,9 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "uxcool": {
     "srcPath": "packages/uxcool"
   },
@@ -87,5 +89,8 @@
     "webpack-bundle-analyzer": "^2.9.2",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "nprogress": "^0.2.0"
   }
 }

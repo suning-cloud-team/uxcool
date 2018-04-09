@@ -1,10 +1,3 @@
-// @import './custom';
-
-// // @import 'hightjs';
-// @import 'demo';
-// @import 'code';
-// @import 'typography';
-
 // 覆盖uxcool的变量文件需在uxcool之前引入，而网站的自定义变量文件放在uxcool后面引入，因为自定义变量文件中可能引入uxcool中的变量
 @import 'override';
 @import '~@suning/uxcool/dist/uxcool';
@@ -16,6 +9,7 @@
 @import 'code';
 @import 'demo';
 @import 'skin';
+@import '~nprogress/nprogress.css';
 
 // TODO
 @import 'dark-patch';
