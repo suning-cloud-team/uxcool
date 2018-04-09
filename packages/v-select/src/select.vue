@@ -46,7 +46,7 @@
                          :disabled="disabled"
                          :value="inputValue"
                          @input="onSearchInput"
-                         @keydown="onInputKeydown" >
+                         @keydown="onInputKeydown">
                   <span :class="`${prefixCls}-search__field__mirror`">
                     {{inputValue}}
                   </span>
@@ -216,7 +216,7 @@
       },
       classes() {
         const {
-          prefixCls, isCombobox, disabled, allowClear, open, isFocused,theme
+          prefixCls, isCombobox, disabled, allowClear, open, isFocused, theme
         } = this;
         return {
           [prefixCls]: true,
@@ -307,6 +307,10 @@
       },
       triggerChange() {
         const { innerValues: values, isMultipleOrTags, forcePopupAlign } = this;
+        this.$emit(
+          'input',
+          isMultipleOrTags ? values.map(v => v.value) : (values[0] || {}).value || ''
+        );
         this.$emit('change', isMultipleOrTags ? values : values[0]);
         forcePopupAlign();
       },

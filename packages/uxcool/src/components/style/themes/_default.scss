@@ -173,7 +173,7 @@ $primary-5: colorPalette($primary-color, 5) !default;
 $primary-6: $primary-color !default; // don't use, use $primary-color
 // Color used to control the text color of active buttons.
 // replace shade($primary-color, 5%)
-$primary-7: colorPalette($primary-color,7) !default;
+$primary-7: colorPalette($primary-color, 7) !default;
 // unused
 $primary-8: colorPalette($primary-color, 8) !default;
 // unused
@@ -678,3 +678,11 @@ $slider-dot-border-color: $border-color-split;
 $slider-dot-border-color-active: tint($primary-color, 50%);
 $slider-disabled-color: $disabled-color;
 $slider-disabled-background-color: $component-background;
+// Form
+// ---
+$label-required-color: $highlight-color;
+$label-color: $heading-color;
+$form-item-margin-bottom: 24px;
+$form-item-trailing-colon: true;
+$form-vertical-label-padding: 0 0 8px;
+$form-vertical-label-margin: 0;

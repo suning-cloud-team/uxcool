@@ -29,6 +29,7 @@ import Tag from './views/tag/index';
 import Switch from './views/switch/index';
 import Alert from './views/alert/index';
 import Slider from './views/slider/index';
+import Form from './views/form/index';
 
 Vue.use(Router);
 const routes = [
@@ -176,6 +177,11 @@ const routes = [
     name: 'Slider',
     path: '/slider',
     component: Slider,
+  },
+  {
+    name: 'Form',
+    path: '/form',
+    component: Form,
   },
 ];
 

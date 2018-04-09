@@ -7,9 +7,8 @@ const { getRoot, getPackageJSON } = require('../utils');
 const postCssCfg = require('../postCss').getContext();
 
 const root = getRoot();
-const {
-  pkgName, version, uxcool = {}, vueCompileOpts = {}
-} = getPackageJSON(path.resolve(root, 'package.json'));
+const { pkgName, uxcool = {}, vueCompileOpts = {} } = getPackageJSON(path.resolve(root, 'package.json'));
+const { version } = getPackageJSON(path.resolve(root, 'packages/uxcool', 'package.json'));
 const uxCoolSrcPath = uxcool.srcPath || '';
 const distPath = path.resolve(root, uxCoolSrcPath, 'dist');
 

@@ -26,8 +26,8 @@
           <icon v-if="isCanClear"
                 type="close_circle"
                 :class="`${prefixCls}-picker-clear`"
-                @click.prevent.stop="onClearClick"></icon>
-          <span :class="`${prefixCls}-picker-icon`"></span>
+                @click.prevent.stop="onClearClick" />
+          <span :class="`${prefixCls}-picker-icon`" />
         </div>
 
       </div>
@@ -46,6 +46,13 @@
 
   export default {
     name: buildComponentName('DatePicker'),
+    components: {
+      VRangeDatePicker,
+      Icon,
+    },
+    model: {
+      prop: 'selectedValue',
+    },
     props: {
       prefixCls: {
         type: String,
@@ -57,8 +64,16 @@
           return locale.lang;
         },
       },
-      isOpen: Boolean,
-      selectedValue: Array,
+      isOpen: {
+        type: Boolean,
+        default: false,
+      },
+      selectedValue: {
+        type: Array,
+        default() {
+          return [];
+        },
+      },
       mode: {
         type: Array,
         validator(val) {
@@ -72,32 +87,53 @@
         type: String,
         default: 'light',
       },
-      disabled: Boolean,
-      format: String,
-      showTime: [Boolean, Object],
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
+      format: {
+        type: String,
+        default: null,
+      },
+      showTime: {
+        type: [Boolean, Object],
+        default: false,
+      },
       showOk: {
         type: Boolean,
         default() {
           return !!this.showTime;
         },
       },
-      disabledDate: Function,
-      disabledTime: Function,
-      placeholder: [String, Array],
-      showToday: Boolean,
+      disabledDate: {
+        type: Function,
+        default: undefined,
+      },
+      disabledTime: {
+        type: Function,
+        default: undefined,
+      },
+      placeholder: {
+        type: [String, Array],
+        default: '',
+      },
+      showToday: {
+        type: Boolean,
+        default: false,
+      },
       allowClear: {
         type: Boolean,
         default: true,
       },
-      ranges: Object,
+      ranges: {
+        type: Object,
+        default: undefined,
+      },
     },
     data() {
       return {
         innerValue: null,
       };
-    },
-    created() {
-      this.innerValue = this.selectedValue;
     },
     computed: {
       bindProps() {
@@ -177,9 +213,20 @@
         return end ? formatDate(end, dateFormat) : '';
       },
     },
+    watch: {
+      selectedValue(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerValue = nVal;
+        }
+      },
+    },
+    created() {
+      this.innerValue = this.selectedValue;
+    },
     methods: {
       setValue(values) {
         this.innerValue = values;
+        this.$emit('input', values);
         this.$emit('change', values);
       },
       onChange(values) {
@@ -187,17 +234,6 @@
       },
       onClearClick() {
         this.setValue([]);
-      },
-    },
-    components: {
-      VRangeDatePicker,
-      Icon,
-    },
-    watch: {
-      selectedValue(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.innerValue = nVal;
-        }
       },
     },
   };

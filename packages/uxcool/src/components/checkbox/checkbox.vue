@@ -18,11 +18,16 @@
 
   export default {
     name: buildComponentName('Checkbox'),
+    // vee-validate compatibility (http://vee-validate.logaretm.com/advanced.html#ctor)
+    $_veeValidate: {
+      rejectsFalse: true,
+    },
     components: {
       VCheckbox,
     },
     mixins: [Mixin],
     inheritAttrs: false,
+
     model: {
       prop: 'checked',
     },

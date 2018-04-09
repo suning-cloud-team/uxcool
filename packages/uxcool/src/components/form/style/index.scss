@@ -1,0 +1,620 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/index';
+@import '../../input/style/mixin';
+@import '../../button/style/mixin';
+@import '../../grid/style/mixin';
+@import './mixin';
+
+$form-prefix-cls: #{$ux-prefix}-form;
+$form-component-height: $input-height-base;
+$form-component-max-height: $input-height-lg;
+$form-feedback-icon-size: 14px;
+$form-help-margin-top: ($form-component-height - $form-component-max-height) / 2 + 2px;
+
+.#{$form-prefix-cls} {
+  @include reset-component;
+  @include reset-form;
+}
+
+.#{$form-prefix-cls}-item-required:before {
+  display: inline-block;
+  margin-right: 4px;
+  content: '*';
+  font-family: SimSun;
+  line-height: 1;
+  font-size: $font-size-base;
+  color: $label-required-color;
+  .#{$form-prefix-cls}-hide-required-mark & {
+    display: none;
+  }
+}
+
+// Radio && Checkbox
+input[type='radio'],
+input[type='checkbox'] {
+  &[disabled],
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
+
+// These classes are used directly on <label>s
+.#{$ux-prefix}-radio-inline,
+.#{$ux-prefix}-radio-vertical,
+.#{$ux-prefix}-checkbox-inline,
+.#{$ux-prefix}-checkbox-vertical {
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
+
+// These classes are used on elements with <label> descendants
+.#{$ux-prefix}-radio,
+.#{$ux-prefix}-checkbox {
+  &.disabled {
+    label {
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Form items
+// You should wrap labels and controls in .#{$form-prefix-cls}-item for optimum spacing
+.#{$form-prefix-cls}-item {
+  label {
+    position: relative;
+
+    > .#{$iconfont-css-prefix} {
+      vertical-align: top;
+      font-size: $font-size-base;
+    }
+  }
+
+  @include reset-component;
+  margin-bottom: $form-item-margin-bottom;
+  vertical-align: top;
+
+  // nested FormItem
+  &-control > &:last-child,
+  & [class^='#{$ux-prefix}-col-'] > &:only-child {
+    margin-bottom: -$form-item-margin-bottom;
+  }
+
+  &-control {
+    line-height: $form-component-max-height - 0.0001px; // https://github.com/ant-design/ant-design/issues/8220
+    position: relative;
+    @include clearfix;
+  }
+
+  &-children {
+    position: relative;
+  }
+
+  &-with-help {
+    margin-bottom: $form-item-margin-bottom - $font-size-base * $line-height-base -
+      $form-help-margin-top;
+  }
+
+  &-label {
+    text-align: right;
+    vertical-align: middle;
+    line-height: $form-component-max-height - 0.0001px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+
+    label {
+      color: $label-color;
+
+      &:after {
+        content: if($form-item-trailing-colon, ':', ' ');
+        margin: 0 8px 0 2px;
+        position: relative;
+        top: -0.5px;
+      }
+    }
+  }
+
+  .#{$ux-prefix}-switch {
+    margin: 2px 0 4px;
+  }
+
+  &-no-colon &-label label:after {
+    content: ' ';
+  }
+}
+
+.#{$form-prefix-cls}-explain,
+.#{$form-prefix-cls}-extra {
+  color: $text-color-secondary;
+  line-height: $line-height-base;
+  transition: color 0.15s $ease-out;
+  margin-top: $form-help-margin-top;
+}
+
+.#{$form-prefix-cls}-extra {
+  padding-top: 4px;
+}
+
+.#{$form-prefix-cls}-text {
+  display: inline-block;
+  padding-right: 8px;
+}
+
+.#{$form-prefix-cls}-split {
+  display: block;
+  text-align: center;
+}
+
+// 表单下的输入框尺寸唯一: 大尺寸
+form {
+  .has-feedback {
+    .#{$ux-prefix}-input {
+      padding-right: 24px;
+    }
+
+    // Fix overlapping between feedback icon and <Select>'s arrow.
+    // https://github.com/ant-design/ant-design/issues/4431
+    > .#{$ux-prefix}-select .#{$ux-prefix}-select-arrow,
+    > .#{$ux-prefix}-select .#{$ux-prefix}-select-selection__clear,
+    :not(.#{$ux-prefix}-input-group-addon) > .#{$ux-prefix}-select .#{$ux-prefix}-select-arrow,
+    :not(.#{$ux-prefix}-input-group-addon)
+      > .#{$ux-prefix}-select
+      .#{$ux-prefix}-select-selection__clear {
+      right: 28px;
+    }
+    > .#{$ux-prefix}-select .#{$ux-prefix}-select-selection-selected-value,
+    :not(.#{$ux-prefix}-input-group-addon)
+      > .#{$ux-prefix}-select
+      .#{$ux-prefix}-select-selection-selected-value {
+      padding-right: 42px;
+    }
+
+    .#{$ux-prefix}-cascader-picker {
+      &-arrow {
+        margin-right: 17px;
+      }
+      &-clear {
+        right: 28px;
+      }
+    }
+
+    // Fix issue: https://github.com/ant-design/ant-design/issues/7854
+    .#{$ux-prefix}-input-search:not(.#{$ux-prefix}-input-search-enter-button) {
+      .#{$ux-prefix}-input-suffix {
+        right: 28px;
+      }
+    }
+
+    // Fix issue: https://github.com/ant-design/ant-design/issues/4783
+    .#{$ux-prefix}-calendar-picker,
+    .#{$ux-prefix}-time-picker {
+      &-icon,
+      &-clear {
+        right: 28px;
+      }
+    }
+  }
+
+  textarea.#{$ux-prefix}-input {
+    height: auto;
+  }
+
+  // input[type=file]
+  .#{$ux-prefix}-upload {
+    background: transparent;
+  }
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    width: 14px;
+    height: 14px;
+  }
+
+  // Radios and checkboxes on same line
+  .#{$ux-prefix}-radio-inline,
+  .#{$ux-prefix}-checkbox-inline {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: normal;
+    cursor: pointer;
+    margin-left: 8px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .#{$ux-prefix}-checkbox-vertical,
+  .#{$ux-prefix}-radio-vertical {
+    display: block;
+  }
+
+  .#{$ux-prefix}-checkbox-vertical + .#{$ux-prefix}-checkbox-vertical,
+  .#{$ux-prefix}-radio-vertical + .#{$ux-prefix}-radio-vertical {
+    margin-left: 0;
+  }
+
+  .#{$ux-prefix}-input-number + .#{$form-prefix-cls}-text {
+    margin-left: 8px;
+  }
+
+  .#{$ux-prefix}-select,
+  .#{$ux-prefix}-cascader-picker {
+    width: 100%;
+  }
+
+  // Don't impact select inside input group
+  .#{$ux-prefix}-input-group .#{$ux-prefix}-select,
+  .#{$ux-prefix}-input-group .#{$ux-prefix}-cascader-picker {
+    width: auto;
+  }
+
+  // fix input with addon position. https://github.com/ant-design/ant-design/issues/8243
+  .#{$ux-prefix}-input-group-wrapper {
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+}
+
+// Input combined with select
+.#{$ux-prefix}-input-group-wrap {
+  .#{$ux-prefix}-select-selection {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    &:hover {
+      border-color: $border-color-base;
+    }
+  }
+
+  .#{$ux-prefix}-select-selection--single {
+    margin-left: -1px;
+    height: $input-height-lg;
+    background-color: #eee;
+    .#{$ux-prefix}-select-selection__rendered {
+      padding-left: 8px;
+      padding-right: 25px;
+      line-height: 30px;
+    }
+  }
+
+  .#{$ux-prefix}-select-open .#{$ux-prefix}-select-selection {
+    border-color: $border-color-base;
+    box-shadow: none;
+  }
+}
+
+// Form layout
+//== Vertical Form
+@mixin make-vertical-layout-label() {
+  padding: $form-vertical-label-padding;
+  margin: $form-vertical-label-margin;
+  display: block;
+  text-align: left;
+  line-height: $line-height-base;
+
+  label:after {
+    display: none;
+  }
+}
+
+@mixin make-vertical-layout() {
+  .#{$form-prefix-cls}-item-label,
+  .#{$form-prefix-cls}-item-control-wrapper {
+    display: block;
+    width: 100%;
+  }
+  .#{$form-prefix-cls}-item-label {
+    @include make-vertical-layout-label();
+  }
+}
+
+.#{$form-prefix-cls}-vertical .#{$form-prefix-cls}-item-label,
+  // when labelCol is 24, it is a vertical form
+.#{$ux-prefix}-col-24.#{$form-prefix-cls}-item-label,
+.#{$ux-prefix}-col-xl-24.#{$form-prefix-cls}-item-label {
+  @include make-vertical-layout-label();
+}
+
+.#{$form-prefix-cls}-vertical {
+  .#{$form-prefix-cls}-item {
+    padding-bottom: 8px;
+  }
+  .#{$form-prefix-cls}-item-control {
+    line-height: $line-height-base;
+  }
+  .#{$form-prefix-cls}-explain,
+  .#{$form-prefix-cls}-extra {
+    margin-top: 2px;
+    margin-bottom: -4px;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  @include make-vertical-layout();
+  .#{$ux-prefix}-col-xs-24.#{$form-prefix-cls}-item-label {
+    @include make-vertical-layout-label();
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  .#{$ux-prefix}-col-sm-24.#{$form-prefix-cls}-item-label {
+    @include make-vertical-layout-label();
+  }
+}
+
+@media (max-width: $screen-md-max) {
+  .#{$ux-prefix}-col-md-24.#{$form-prefix-cls}-item-label {
+    @include make-vertical-layout-label();
+  }
+}
+
+@media (max-width: $screen-lg-max) {
+  .#{$ux-prefix}-col-lg-24.#{$form-prefix-cls}-item-label {
+    @include make-vertical-layout-label();
+  }
+}
+
+@media (max-width: $screen-xl-max) {
+  .#{$ux-prefix}-col-xl-24.#{$form-prefix-cls}-item-label {
+    @include make-vertical-layout-label();
+  }
+}
+
+//== Inline Form
+.#{$form-prefix-cls}-inline {
+  .#{$form-prefix-cls}-item {
+    display: inline-block;
+    margin-right: 16px;
+    margin-bottom: 0;
+
+    &-with-help {
+      margin-bottom: 24px;
+    }
+
+    > .#{$form-prefix-cls}-item-control-wrapper,
+    > .#{$form-prefix-cls}-item-label {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .#{$form-prefix-cls}-text {
+    display: inline-block;
+  }
+
+  .has-feedback {
+    display: inline-block;
+  }
+
+  // Fix https://github.com/ant-design/ant-design/issues/1040
+  .#{$form-prefix-cls}-explain {
+    position: absolute;
+  }
+}
+
+// Validation state
+.has-success,
+.has-warning,
+.has-error,
+.is-validating {
+  &.has-feedback .#{$form-prefix-cls}-item-children:after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    visibility: visible;
+    pointer-events: none;
+    width: $form-component-height;
+    height: 20px;
+    line-height: 20px;
+    margin-top: -10px;
+    text-align: center;
+    font-size: $form-feedback-icon-size;
+    animation: zoomIn 0.3s $ease-out-back;
+    @include iconfont-font('');
+    z-index: 1;
+  }
+}
+
+.has-success {
+  &.has-feedback .#{$form-prefix-cls}-item-children:after {
+    animation-name: diffZoomIn1 !important;
+    content: '\e630';
+    color: $success-color;
+  }
+}
+
+.has-warning {
+  @include form-control-validation($warning-color, $warning-color);
+
+  &.has-feedback .#{$form-prefix-cls}-item-children:after {
+    content: '\e62c';
+    color: $warning-color;
+    animation-name: diffZoomIn3 !important;
+  }
+
+  //select
+  .#{$ux-prefix}-select {
+    &-selection {
+      border-color: $warning-color;
+    }
+    &-open .#{$ux-prefix}-select-selection,
+    &-focused .#{$ux-prefix}-select-selection {
+      @include active($warning-color);
+    }
+  }
+
+  // arrow and icon
+  .#{$ux-prefix}-calendar-picker-icon:after,
+  .#{$ux-prefix}-time-picker-icon:after,
+  .#{$ux-prefix}-picker-icon:after,
+  .#{$ux-prefix}-select-arrow,
+  .#{$ux-prefix}-cascader-picker-arrow {
+    color: $warning-color;
+  }
+
+  //input-number, timepicker
+  .#{$ux-prefix}-input-number,
+  .#{$ux-prefix}-time-picker-input {
+    border-color: $warning-color;
+    &-focused,
+    &:focus {
+      @include active($warning-color);
+    }
+    &:not([disabled]):hover {
+      border-color: $warning-color;
+    }
+  }
+
+  .#{$ux-prefix}-cascader-picker:focus .#{$ux-prefix}-cascader-input {
+    @include active($warning-color);
+  }
+}
+
+.has-error {
+  @include form-control-validation($error-color, $error-color);
+
+  &.has-feedback .#{$form-prefix-cls}-item-children:after {
+    content: '\e62e';
+    color: $error-color;
+    animation-name: diffZoomIn2 !important;
+  }
+
+  //select
+  .#{$ux-prefix}-select {
+    &-selection {
+      border-color: $error-color;
+    }
+    &-open .#{$ux-prefix}-select-selection,
+    &-focused .#{$ux-prefix}-select-selection {
+      @include active($error-color);
+    }
+  }
+
+  .#{$ux-prefix}-select.#{$ux-prefix}-select-auto-complete {
+    .#{$ux-prefix}-input:focus {
+      border-color: $error-color;
+    }
+  }
+
+  .#{$ux-prefix}-input-group-addon .#{$ux-prefix}-select {
+    &-selection {
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  // arrow and icon
+  .#{$ux-prefix}-calendar-picker-icon:after,
+  .#{$ux-prefix}-time-picker-icon:after,
+  .#{$ux-prefix}-picker-icon:after,
+  .#{$ux-prefix}-select-arrow,
+  .#{$ux-prefix}-cascader-picker-arrow {
+    color: $error-color;
+  }
+
+  //input-number, timepicker
+  .#{$ux-prefix}-input-number,
+  .#{$ux-prefix}-time-picker-input {
+    border-color: $error-color;
+    &-focused,
+    &:focus {
+      @include active($error-color);
+    }
+    &:not([disabled]):hover {
+      border-color: $error-color;
+    }
+  }
+  .#{$ux-prefix}-mention-wrapper {
+    .#{$ux-prefix}-mention-editor {
+      &,
+      &:not([disabled]):hover {
+        border-color: $error-color;
+      }
+    }
+    &.#{$ux-prefix}-mention-active:not([disabled]) .#{$ux-prefix}-mention-editor,
+    .#{$ux-prefix}-mention-editor:not([disabled]):focus {
+      @include active($error-color);
+    }
+  }
+
+  .#{$ux-prefix}-cascader-picker:focus .#{$ux-prefix}-cascader-input {
+    @include active($error-color);
+  }
+}
+
+.is-validating {
+  &.has-feedback .#{$form-prefix-cls}-item-children:after {
+    display: inline-block;
+    animation: loadingCircle 1s infinite linear;
+    content: '\e64d';
+    color: $primary-color;
+  }
+}
+
+.#{$ux-prefix}-advanced-search-form {
+  .#{$form-prefix-cls}-item {
+    margin-bottom: 24px;
+  }
+}
+
+@mixin show-help-motion($className, $keyframeName, $duration: $animation-duration-slow) {
+  @include make-motion($className, $keyframeName, $duration);
+  .#{$className}-enter-to {
+    opacity: 0;
+    animation-timing-function: $ease-in-out;
+  }
+  .#{$className}-leave-to {
+    animation-timing-function: $ease-in-out;
+  }
+}
+
+@include show-help-motion(show-help, uxShowHelp, 0.15s);
+
+@keyframes uxShowHelpIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes uxShowHelpOut {
+  to {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
+// need there different zoom animation
+// otherwise won't trigger anim
+@keyframes diffZoomIn1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes diffZoomIn2 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes diffZoomIn3 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
