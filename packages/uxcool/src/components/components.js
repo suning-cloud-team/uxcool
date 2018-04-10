@@ -53,3 +53,5 @@ export { default as UxSlider } from './slider';
 export { default as UxForm } from './form';
 
 export { default as UxBacktop } from './backtop';
+
+export { default as UxAvatar } from './backtop';

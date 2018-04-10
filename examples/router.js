@@ -31,6 +31,7 @@ import Alert from './views/alert/index';
 import Slider from './views/slider/index';
 import Form from './views/form/index';
 import BackTop from './views/backtop/index';
+import Avatar from './views/avatar/index';
 
 Vue.use(Router);
 const routes = [
@@ -188,6 +189,11 @@ const routes = [
     name: 'BackTop',
     path: '/backtop',
     component: BackTop,
+  },
+  {
+    name: 'Avatar',
+    path: '/avatar',
+    component: Avatar,
   },
 ];
 
