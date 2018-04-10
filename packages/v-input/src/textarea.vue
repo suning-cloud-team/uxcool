@@ -91,6 +91,7 @@
         this.innerValue = value;
         this.$emit('input', value);
         this.$emit('on-change', e);
+        this.$emit('change', e);
       },
       onKeyDown(e) {
         if (e.keyCode === 13) {
