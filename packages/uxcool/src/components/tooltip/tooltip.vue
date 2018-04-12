@@ -1,12 +1,12 @@
 <template>
   <v-tooltip ref="tooltipRef"
              v-bind="bindProps"
-             :builtin-placements="buildinPlacements"
+             :builtin-placements="builtinPlacements"
              v-on="$listeners">
     <slot/>
     <template slot="content">
       <slot name="content">
-        {{content}}
+        {{ content }}
       </slot>
     </template>
   </v-tooltip>
@@ -25,19 +25,15 @@
       VTooltip,
     },
     props: {
+      ...omit(VTooltip.props, 'builtinPlacements'),
       prefixCls: {
         type: String,
         default: 'ux-tooltip',
       },
-      visible: Boolean,
       placement: {
         type: String,
         default: 'top',
       },
-      trigger: [String, Array],
-      transitionName: String,
-      tooltipClass: [String, Array, Object],
-      tooltipStyle: Object,
       mouseEnterDelay: {
         type: Number,
         default: 100,
@@ -46,10 +42,14 @@
         type: Number,
         default: 100,
       },
-      content: String,
-      disabled: Boolean,
-      placements: Object,
-      arrowPointAtCenter: Boolean,
+      placements: {
+        type: Object,
+        default: null,
+      },
+      arrowPointAtCenter: {
+        type: Boolean,
+        default: false,
+      },
       autoAdjustOverflow: {
         type: Boolean,
         default: true,
@@ -67,7 +67,7 @@
           'autoAdjustOverflow',
         ]);
       },
-      buildinPlacements() {
+      builtinPlacements() {
         const { placements, arrowPointAtCenter, autoAdjustOverflow } = this;
         return (
           placements ||
