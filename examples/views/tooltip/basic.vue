@@ -110,6 +110,9 @@
   import UxTooltip from '@suning/uxcool/src/components/tooltip/index';
 
   export default {
+    components: {
+      UxTooltip,
+    },
     data() {
       return {
         disabled: false,
@@ -122,9 +125,6 @@
       changeDisabled() {
         this.disabled = !this.disabled;
       },
-    },
-    components: {
-      UxTooltip,
     },
   };
 </script>

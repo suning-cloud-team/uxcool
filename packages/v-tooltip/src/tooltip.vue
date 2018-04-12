@@ -71,7 +71,7 @@
           if (vals.length === 0) {
             return false;
           }
-          return vals.every(v => ['click', 'hover', 'focus'].indexOf(v) > -1);
+          return vals.every(v => ['none', 'click', 'hover', 'focus'].indexOf(v) > -1);
         },
       },
       destroyTooltipOnHide: {
