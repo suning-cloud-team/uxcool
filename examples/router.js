@@ -32,6 +32,7 @@ import Slider from './views/slider/index';
 import Form from './views/form/index';
 import BackTop from './views/backtop/index';
 import Avatar from './views/avatar/index';
+import Popconfirm from './views/popconfirm/index';
 
 Vue.use(Router);
 const routes = [
@@ -194,6 +195,11 @@ const routes = [
     name: 'Avatar',
     path: '/avatar',
     component: Avatar,
+  },
+  {
+    name: 'Popconfirm',
+    path: '/popconfirm',
+    component: Popconfirm,
   },
 ];
 
