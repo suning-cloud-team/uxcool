@@ -34,6 +34,7 @@ export default {
       const {
         prefixCls,
         vertical,
+        marks,
         points,
         included,
         lowerBound,
@@ -45,9 +46,10 @@ export default {
       const elements = [];
       for (let i = 0, l = points.length; i < l; i += 1) {
         const point = points[i];
+        const mark = marks[point] || {};
         const isActive = isMarkActive(point, included, lowerBound, upperBound);
         const className = {
-          [`${prefixCls}-dot`]: true,
+          [`${prefixCls}-dot`]: mark.isDot !== false,
           [`${prefixCls}-dot-active`]: isActive,
         };
 
