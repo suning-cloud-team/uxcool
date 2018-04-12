@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-input",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "vue input components",
   "main": "cjs/index.js",
   "module": "es/index.js",
