@@ -118,6 +118,9 @@
         disabled: false,
       };
     },
+    created() {
+      console.log(UxTooltip.props);
+    },
     methods: {
       buildContent(prefix) {
         return `${prefix}提示文字`;
