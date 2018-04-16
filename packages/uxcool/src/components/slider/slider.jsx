@@ -170,9 +170,12 @@ export default {
 
       let visible = false;
       let tooltipProps = {
-        // hack!!下面两个设置的作用等于不使用tooltip内部控制显示和隐藏的逻辑,完全手工控制显示和隐藏
-        mouseEnterDelay: DELAY_TIME,
-        mouseLeaveDelay: DELAY_TIME,
+        // // hack!!下面两个设置的作用等于不使用tooltip内部控制显示和隐藏的逻辑,完全手工控制显示和隐藏
+        // mouseEnterDelay: DELAY_TIME,
+        // mouseLeaveDelay: DELAY_TIME,
+
+        // 手工控制tooltip 显示/隐藏
+        trigger: 'none',
       };
       if (isFunction(tipFormatter)) {
         visible = visibles[index] || dragging;

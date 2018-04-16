@@ -81,10 +81,12 @@ export default {
             value: innerValue[i],
             dragging: movePoint === i,
             index: i,
-            on: {
-              focus: onFocus,
-              blur: onBlur,
-            },
+            on: disabled
+              ? null
+              : {
+                focus: onFocus,
+                blur: onBlur,
+              },
           }
       ));
       const trackClass = `${prefixCls}-track`;

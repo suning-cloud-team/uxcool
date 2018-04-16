@@ -1,28 +1,30 @@
 <template>
-  <div>
-    <div class="demo">
-      <h4>Scale</h4>
-      <avatar size="large">
+  <ux-demo title="自动调整字符大小"
+           :height="200">
+    <div slot="demo">
+      <ux-avatar size="large">
         {{ name }}
-      </avatar>
+      </ux-avatar>
       <ux-button @click="change">change</ux-button>
     </div>
-  </div>
+    <div slot="desc">
+      字符型头像,当字符串较长时,字体大小可以根据头像宽度自动调整
+    </div>
+    <ux-code slot="code">
+      {{ code }}
+    </ux-code>
+  </ux-demo>
 </template>
 
-
 <script>
-  import { Avatar, Button } from '@suning/uxcool';
+  import code from '@/code/avatar/scale.vue';
 
   const names = ['A', 'Ab', 'Abc', 'Abcd', 'Abcde', 'Abcdef'];
 
   export default {
-    components: {
-      Avatar,
-      UxButton: Button,
-    },
     data() {
       return {
+        code,
         idx: 0,
         name: '',
       };
@@ -39,3 +41,9 @@
     },
   };
 </script>
+
+<style scoped>
+  .ux-avatar {
+    margin: 10px 10px 0 0;
+  }
+</style>

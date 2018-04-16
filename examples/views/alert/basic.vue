@@ -105,3 +105,9 @@
     },
   };
 </script>
+
+<style lang="scss" scoped>
+  /deep/ .ux-alert {
+    margin-bottom: 10px;
+  }
+</style>

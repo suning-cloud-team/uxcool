@@ -1,26 +1,16 @@
 <template>
   <div>
-    <div class="demo">
-      <h4>Scale</h4>
-      <avatar size="large">
-        {{ name }}
-      </avatar>
-      <ux-button @click="change">change</ux-button>
-    </div>
+    <ux-avatar size="large">
+      {{ name }}
+    </ux-avatar>
+    <ux-button @click="change">change</ux-button>
   </div>
 </template>
 
-
 <script>
-  import { Avatar, Button } from '@suning/uxcool';
-
   const names = ['A', 'Ab', 'Abc', 'Abcd', 'Abcde', 'Abcdef'];
 
   export default {
-    components: {
-      Avatar,
-      UxButton: Button,
-    },
     data() {
       return {
         idx: 0,
@@ -39,3 +29,9 @@
     },
   };
 </script>
+
+<style scoped>
+  .ux-avatar {
+    margin: 10px 10px 0 0;
+  }
+</style>

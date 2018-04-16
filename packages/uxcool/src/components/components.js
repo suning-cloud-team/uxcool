@@ -54,4 +54,6 @@ export { default as UxForm } from './form';
 
 export { default as UxBacktop } from './backtop';
 
-export { default as UxAvatar } from './backtop';
+export { default as UxAvatar } from './avatar';
+
+export { default as UxPopconfirm } from './popconfirm';

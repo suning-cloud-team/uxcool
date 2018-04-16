@@ -54,10 +54,12 @@ export default {
           value: innerValue,
           dragging,
           index: 0,
-          on: {
-            focus: onFocus,
-            blur: onBlur,
-          },
+          on: disabled
+            ? null
+            : {
+              focus: onFocus,
+              blur: onBlur,
+            },
         }
       );
       const tracks = renderTrack({ className: `${prefixCls}-track`, offset: 0, length: offset });

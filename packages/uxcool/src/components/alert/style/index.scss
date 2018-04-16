@@ -31,7 +31,8 @@ $alert-text-color: $text-color;
   &-success {
     border: $border-width-base $border-style-base colorPalette($success-color, 3);
     background-color: colorPalette($success-color, 1);
-    .#{$alert-prefix-cls}-icon {
+    .#{$alert-prefix-cls}-icon,
+    .#{$alert-prefix-cls}-message {
       color: $success-color;
     }
   }
@@ -39,7 +40,8 @@ $alert-text-color: $text-color;
   &-info {
     border: $border-width-base $border-style-base colorPalette($info-color, 3);
     background-color: colorPalette($info-color, 1);
-    .#{$alert-prefix-cls}-icon {
+    .#{$alert-prefix-cls}-icon,
+    .#{$alert-prefix-cls}-message {
       color: $info-color;
     }
   }
@@ -48,7 +50,8 @@ $alert-text-color: $text-color;
   &-warning {
     border: $border-width-base $border-style-base colorPalette($warning-color, 3);
     background-color: colorPalette($warning-color, 1);
-    .#{$alert-prefix-cls}-icon {
+    .#{$alert-prefix-cls}-icon,
+    .#{$alert-prefix-cls}-message {
       color: $warning-color;
     }
   }
@@ -56,7 +59,8 @@ $alert-text-color: $text-color;
   &-error {
     border: $border-width-base $border-style-base colorPalette($error-color, 3);
     background-color: colorPalette($error-color, 1);
-    .#{$alert-prefix-cls}-icon {
+    .#{$alert-prefix-cls}-icon,
+    .#{$alert-prefix-cls}-message {
       color: $error-color;
     }
   }
@@ -113,7 +117,7 @@ $alert-text-color: $text-color;
 
   &-with-description &-message {
     font-size: $font-size-lg;
-    color: $alert-message-color;
+    // color: $alert-message-color;
     display: block;
     margin-bottom: 4px;
   }

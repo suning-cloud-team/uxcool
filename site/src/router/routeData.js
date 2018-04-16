@@ -30,6 +30,10 @@ import Button from '@/views/components/button/index.vue';
 import Checkbox from '@/views/components/checkbox/index.vue';
 import Radio from '@/views/components/radio/index.vue';
 import Alert from '@/views/components/alert/index.vue';
+import Slider from '@/views/components/slider/index.vue';
+import Avatar from '@/views/components/avatar/index.vue';
+import Backtop from '@/views/components/backtop/index.vue';
+import Popconfirm from '@/views/components/popconfirm/index.vue';
 
 export const groups = {
   general: {
@@ -55,6 +59,10 @@ export const groups = {
   notice: {
     name: 'Notice',
     sort: 25,
+  },
+  other: {
+    name: 'Other',
+    sort: 30,
   },
   business: {
     name: 'Business',
@@ -372,7 +380,47 @@ export default [
           group: 'notice',
         },
         component: Alert,
-      }
+      },
+      {
+        name: 'slider',
+        path: 'slider',
+        meta: {
+          title: 'Slider',
+          subTitle: '滑动输入条',
+          group: 'form',
+        },
+        component: Slider,
+      },
+      {
+        name: 'avatar',
+        path: 'avatar',
+        meta: {
+          title: 'Avatar',
+          subTitle: '头像',
+          group: 'data',
+        },
+        component: Avatar,
+      },
+      {
+        name: 'backtop',
+        path: 'backtop',
+        meta: {
+          title: 'Backtop',
+          subTitle: '回到顶部',
+          group: 'other',
+        },
+        component: Backtop,
+      },
+      {
+        name: 'popconfirm',
+        path: 'popconfirm',
+        meta: {
+          title: 'Popconfirm',
+          subTitle: '气泡确认框',
+          group: 'notice',
+        },
+        component: Popconfirm,
+      },
     ],
   },
   {
