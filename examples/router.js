@@ -27,7 +27,12 @@ import Dropdown from './views/dropdown/index';
 import Divider from './views/divider/index';
 import Tag from './views/tag/index';
 import Switch from './views/switch/index';
+import Alert from './views/alert/index';
+import Slider from './views/slider/index';
 import Form from './views/form/index';
+import BackTop from './views/backtop/index';
+import Avatar from './views/avatar/index';
+import Popconfirm from './views/popconfirm/index';
 
 Vue.use(Router);
 const routes = [
@@ -167,9 +172,34 @@ const routes = [
     component: Switch,
   },
   {
+    name: 'Alert',
+    path: '/alert',
+    component: Alert,
+  },
+  {
+    name: 'Slider',
+    path: '/slider',
+    component: Slider,
+  },
+  {
     name: 'Form',
     path: '/form',
     component: Form,
+  },
+  {
+    name: 'BackTop',
+    path: '/backtop',
+    component: BackTop,
+  },
+  {
+    name: 'Avatar',
+    path: '/avatar',
+    component: Avatar,
+  },
+  {
+    name: 'Popconfirm',
+    path: '/popconfirm',
+    component: Popconfirm,
   },
 ];
 

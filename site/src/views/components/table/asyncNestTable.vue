@@ -3,6 +3,7 @@
            vertical>
     <div slot="demo">
       <ux-table class="components-table-demo-nested"
+                :theme="theme"
                 :columns="columns"
                 v-model="data"
                 :expanded-row-render="expandedRowRender"

@@ -25,6 +25,7 @@
     "@suning/v-input": "^1.0.4",
     "@suning/v-menu": "^1.0.24",
     "@suning/v-notification": "^1.0.4",
+    "@suning/v-slider": "^1.0.0",
     "@suning/v-pagination": "^1.0.12",
     "@suning/v-select": "^1.0.20",
     "@suning/v-steps": "^1.0.6",
@@ -44,11 +45,7 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": [
-    "es/*",
-    "dist/*",
-    "cjs/*"
-  ],
+  "files": ["es/*", "dist/*", "cjs/*"],
   "vueCompileOpts": {
     "preserveWhitespace": false
   }

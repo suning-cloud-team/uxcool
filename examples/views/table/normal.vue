@@ -1,12 +1,14 @@
 <template>
   <div class="demo">
     <h6>normal</h6>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable } from '@suning/uxcool';
 
   function getCols() {
@@ -32,13 +34,25 @@
       {
         title: 'Action',
         cellRender(_, record) {
-          return (
-            <span>
-              <a href="#">Action-{record.name}</a>
-              <Divider type="vertical" />
-              <a href="#">Delete</a>
-            </span>
-          );
+          const h = this.$createElement;
+          return h('span', [
+            h(
+              'a',
+              {
+                attrs: {
+                  href: '#',
+                },
+              },
+              [`Action-${record.name}`]
+            ),
+          ]);
+          // return (
+          //   <span>
+          //     <a href="#">Action-{record.name}</a>
+          //     <Divider type="vertical" />
+          //     <a href="#">Delete</a>
+          //   </span>
+          // );
         },
       },
     ];
@@ -78,6 +92,7 @@
         data: [],
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this);

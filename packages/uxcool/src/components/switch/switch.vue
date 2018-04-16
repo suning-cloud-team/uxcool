@@ -25,6 +25,9 @@
 
   export default {
     name: buildComponentName('Switch'),
+    model: {
+      prop: 'checked',
+    },
     props: {
       prefixCls: {
         type: String,
@@ -122,6 +125,8 @@
           this.innerChecked = !!checked;
         }
         if (flag) {
+          // support v-model
+          this.$emit('input', this.innerChecked);
           this.$emit('change', this.innerChecked);
         }
       },

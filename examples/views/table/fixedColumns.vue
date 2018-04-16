@@ -12,13 +12,15 @@
         2. scroll.x 设置一个大于实际表格宽度的百分比或固定值,并且`fixed`列的总宽度不要超过表格宽度
       </b>
     </p>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data"
               :scroll="{x: '150%'}" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable } from '@suning/uxcool';
 
   function getCols() {
@@ -81,6 +83,7 @@
         data: [],
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this);

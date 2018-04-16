@@ -11,7 +11,7 @@
 
     <h6>custom</h6>
     <tag v-for="(color, i) in customColors"
-         :key="i"
+         :key="`c-${i}`"
          :color="color"
          closable>
       {{ color }}

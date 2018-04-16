@@ -1,5 +1,6 @@
 <template>
-  <trigger :visible="isOpen"
+  <trigger ref="tooltipTriggerRef"
+           :visible="isOpen"
            :prefix-cls="prefixCls"
            :destroy-popup-on-hide="destroyTooltipOnHide"
            :builtin-placements="builtinPlacements"
@@ -13,13 +14,13 @@
            :popup-style="tooltipStyle"
            @on-popup-visible-change="onPopupVisible">
     <template slot="trigger">
-      <slot></slot>
+      <slot/>
     </template>
     <template slot="popup">
-      <div :class="`${prefixCls}-arrow`"></div>
+      <div :class="`${prefixCls}-arrow`" />
       <div :class="`${prefixCls}-inner`">
         <slot name="content">
-          {{content}}
+          {{ content }}
         </slot>
       </div>
     </template>
@@ -33,14 +34,26 @@
 
   export default {
     name: 'Tooltip',
+    components: {
+      Trigger,
+    },
     props: {
       prefixCls: {
         type: String,
         default: 'v-tooltip',
       },
-      visible: Boolean,
-      content: String,
-      disabled: Boolean,
+      visible: {
+        type: Boolean,
+        default: false,
+      },
+      content: {
+        type: String,
+        default: '',
+      },
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
       placement: {
         type: String,
         default: 'left',
@@ -58,10 +71,13 @@
           if (vals.length === 0) {
             return false;
           }
-          return vals.every(v => ['click', 'hover', 'focus'].indexOf(v) > -1);
+          return vals.every(v => ['none', 'click', 'hover', 'focus'].indexOf(v) > -1);
         },
       },
-      destroyTooltipOnHide: Boolean,
+      destroyTooltipOnHide: {
+        type: Boolean,
+        default: false,
+      },
       builtinPlacements: {
         type: Object,
         default() {
@@ -83,17 +99,23 @@
         type: Number,
         default: 0.1,
       },
-      transitionName: String,
-      tooltipClass: [String, Array, Object],
-      tooltipStyle: Object,
+      transitionName: {
+        type: String,
+        default: '',
+      },
+      tooltipClass: {
+        type: [String, Array, Object],
+        default: '',
+      },
+      tooltipStyle: {
+        type: Object,
+        default: null,
+      },
     },
     data() {
       return {
         open: false,
       };
-    },
-    created() {
-      this.setOpen(this.visible);
     },
     computed: {
       isOpen() {
@@ -112,6 +134,16 @@
         return actions;
       },
     },
+    watch: {
+      visible(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.setOpen(nVal);
+        }
+      },
+    },
+    created() {
+      this.setOpen(this.visible);
+    },
     methods: {
       setOpen(visible) {
         this.open = visible;
@@ -120,14 +152,11 @@
         this.setOpen(visible);
         this.$emit('visible-change', visible);
       },
-    },
-    components: {
-      Trigger,
-    },
-    watch: {
-      visible(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.setOpen(nVal);
+      updateTooltipAlign() {
+        const { $refs: { tooltipTriggerRef } } = this;
+
+        if (tooltipTriggerRef) {
+          tooltipTriggerRef.forcePopupAlign();
         }
       },
     },

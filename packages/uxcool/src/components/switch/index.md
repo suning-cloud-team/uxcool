@@ -6,7 +6,7 @@
 
 | 参数名            | 描述                               | 类型    | 默认    |
 | ----------------- | ---------------------------------- | ------- | ------- |
-| checked           | 是否选中                           | Boolean | false   |
+| checked           | 是否选中(可使用 v-model)           | Boolean | false   |
 | checkedChildren   | 选中时内容                         | String  |         |
 | uncheckedChildren | 非选中时内容                       | String  |         |
 | disabled          | 是否禁用                           | Boolean | false   |

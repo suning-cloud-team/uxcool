@@ -46,4 +46,14 @@ export * from './tag';
 
 export { default as UxSwitch } from './switch';
 
+export { default as UxAlert } from './alert';
+
+export { default as UxSlider } from './slider';
+
 export { default as UxForm } from './form';
+
+export { default as UxBacktop } from './backtop';
+
+export { default as UxAvatar } from './avatar';
+
+export { default as UxPopconfirm } from './popconfirm';

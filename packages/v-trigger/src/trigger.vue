@@ -356,15 +356,15 @@
         const {
           prefixCls, getPopupClassNameFromAlign, popupPlacement, builtinPlacements
         } = this;
-        const alignClss = [];
+        const alignClass = [];
 
         if (popupPlacement && builtinPlacements) {
-          alignClss.push(getClassNameFromAlign(builtinPlacements, prefixCls, align));
+          alignClass.push(getClassNameFromAlign(builtinPlacements, prefixCls, align));
         }
         if (getPopupClassNameFromAlign) {
-          alignClss.push(getPopupClassNameFromAlign(align));
+          alignClass.push(getPopupClassNameFromAlign(align));
         }
-        return alignClss.join(' ');
+        return alignClass.join(' ');
       },
       clearAllHandler() {
         const { closeHandler } = this;

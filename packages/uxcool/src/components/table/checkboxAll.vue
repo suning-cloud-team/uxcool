@@ -6,12 +6,14 @@
               :indeterminate="indeterminate"
               @change="onChange" />
     <dropdown v-if="normalizeSelections.length > 0"
+              :theme="theme"
               :get-popup-container="getPopupContainer">
       <div slot="trigger"
            :class="`${boxPrefixCls}-down`">
         <icon type="down" />
       </div>
-      <ux-menu slot="overlay"
+      <!-- <ux-menu :class="`${boxPrefixCls}-dropdown`"
+               slot="overlay"
                :selected-keys="[]">
         <menu-item v-for="(selection, i) in normalizeSelections"
                    :key="i"
@@ -20,8 +22,21 @@
             {{ selection.text }}
           </div>
         </menu-item>
-      </ux-menu>
-
+      </ux-menu> -->
+      <div slot="overlay"
+           :class="`${boxPrefixCls}-dropdown`">
+        <ux-menu :prefix-cls="`${dropdownPrefixCls}-menu`"
+                 mode="vertical"
+                 :selected-keys="[]">
+          <menu-item v-for="(selection, i) in normalizeSelections"
+                     :key="i"
+                     :name="selection.key||i">
+            <div @click="onMenuItemClick(selection)">
+              {{ selection.text }}
+            </div>
+          </menu-item>
+        </ux-menu>
+      </div>
     </dropdown>
   </div>
 </template>
@@ -60,6 +75,10 @@
     },
     mixins: [SubMixin],
     props: {
+      dropdownPrefixCls: {
+        type: String,
+        default: '',
+      },
       data: {
         type: Array,
         default() {

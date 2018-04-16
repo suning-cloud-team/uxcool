@@ -14,13 +14,15 @@
     </div>
     <div class="ux-btn"
          @click="clearSort"> clear sort</div>
-    <ux-table :columns="columns"
+    <ux-table :theme="theme"
+              :columns="columns"
               v-model="data"
               @change="onChange" />
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import { Divider, Table as UxTable } from '@suning/uxcool';
 
   function getCols() {
@@ -134,6 +136,7 @@
         },
       };
     },
+    computed: mapState(['theme']),
     created() {
       this.columns = this.getCols();
       this.data = getData.call(this);

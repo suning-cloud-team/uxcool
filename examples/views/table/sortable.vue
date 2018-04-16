@@ -1,7 +1,8 @@
 <template>
 
   <div class="demo">
-    <ux-table :columns="cols1"
+    <ux-table :theme="theme"
+              :columns="cols1"
               v-model="data1"
               :expand-icon-col-index="1"
               :pagination="pagination"
@@ -13,6 +14,7 @@
 
 
 <script>
+  import { mapState } from 'vuex';
   import '@suning/uxcool/src/components/table/style/index.scss';
   import UxTable from '@suning/uxcool/src/components/table';
   import { getData } from './data';
@@ -72,6 +74,7 @@
         },
       };
     },
+    computed: mapState(['theme']),
     created() {
       setTimeout(() => {
         this.data1 = getData(5);

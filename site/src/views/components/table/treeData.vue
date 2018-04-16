@@ -2,7 +2,8 @@
   <ux-demo title="树形数据"
            vertical>
     <div slot="demo">
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data"
                 :row-selection="rowSelection" />
     </div>

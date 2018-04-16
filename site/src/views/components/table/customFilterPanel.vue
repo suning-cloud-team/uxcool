@@ -2,7 +2,8 @@
   <ux-demo title="自定义筛选菜单"
            vertical>
     <div slot="demo">
-      <ux-table :columns="columns"
+      <ux-table :theme="theme"
+                :columns="columns"
                 v-model="data" />
     </div>
     <div slot="desc">
