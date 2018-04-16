@@ -1,4 +1,8 @@
-import UxRow from './row.vue';
-import UxCol from './col.vue';
+import Row from './row.vue';
+import Col from './col.vue';
 
-export { UxRow, UxCol };
+Row.Col = Col;
+
+export { Row as UxRow, Col as UxCol };
+
+export default Row;

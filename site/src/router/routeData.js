@@ -1,34 +1,38 @@
-const Layout = () => import('@/views/Layout.vue');
-
-const Install = () => import('@/views/guide/install/index.vue');
-const Start = () => import('@/views/guide/start/index.vue');
-const Theme = () => import('@/views/guide/theme/index.vue');
-const Grid = () => import('@/views/components/grid/index.vue');
-const Badge = () => import('@/views/components/badge/index.vue');
-const Chart = () => import('@/views/components/chart/index.vue');
-const Topo = () => import('@/views/components/topology/index.vue');
-const Input = () => import('@/views/components/input/index.vue');
-const Select = () => import('@/views/components/select/index.vue');
-const Menu = () => import('@/views/components/menu/index.vue');
-const Pagination = () => import('@/views/components/pagination/index.vue');
-const Popover = () => import('@/views/components/popover/index.vue');
-const Tooltip = () => import('@/views/components/tooltip/index.vue');
-const DatePicker = () => import('@/views/components/datepicker/index.vue');
-const Step = () => import('@/views/components/step/index.vue');
-const Spin = () => import('@/views/components/spin/index.vue');
-const Tabs = () => import('@/views/components/tabs/index.vue');
-const Card = () => import('@/views/components/card/index.vue');
-const Modal = () => import('@/views/components/modal/index.vue');
-const Message = () => import('@/views/components/message/index.vue');
-const Breadcrumb = () => import('@/views/components/breadcrumb/index.vue');
-const Icon = () => import('@/views/components/icon/index.vue');
-const Progress = () => import('@/views/components/progress/index.vue');
-const Table = () => import('@/views/components/table/index.vue');
-const Tag = () => import('@/views/components/tag/index.vue');
-const Switch = () => import('@/views/components/switch/index.vue');
-const Button = () => import('@/views/components/button/index.vue');
-const Checkbox = () => import('@/views/components/checkbox/index.vue');
-const Radio = () => import('@/views/components/radio/index.vue');
+import Layout from '@/views/Layout.vue';
+import Install from '@/views/guide/install/index.vue';
+import Start from '@/views/guide/start/index.vue';
+import Theme from '@/views/guide/theme/index.vue';
+import Grid from '@/views/components/grid/index.vue';
+import Badge from '@/views/components/badge/index.vue';
+import Chart from '@/views/components/chart/index.vue';
+import Topo from '@/views/components/topology/index.vue';
+import Input from '@/views/components/input/index.vue';
+import Select from '@/views/components/select/index.vue';
+import Menu from '@/views/components/menu/index.vue';
+import Pagination from '@/views/components/pagination/index.vue';
+import Popover from '@/views/components/popover/index.vue';
+import Tooltip from '@/views/components/tooltip/index.vue';
+import DatePicker from '@/views/components/datepicker/index.vue';
+import Step from '@/views/components/step/index.vue';
+import Spin from '@/views/components/spin/index.vue';
+import Tabs from '@/views/components/tabs/index.vue';
+import Card from '@/views/components/card/index.vue';
+import Modal from '@/views/components/modal/index.vue';
+import Message from '@/views/components/message/index.vue';
+import Breadcrumb from '@/views/components/breadcrumb/index.vue';
+import Icon from '@/views/components/icon/index.vue';
+import Progress from '@/views/components/progress/index.vue';
+import Table from '@/views/components/table/index.vue';
+import Tag from '@/views/components/tag/index.vue';
+import Switch from '@/views/components/switch/index.vue';
+import Button from '@/views/components/button/index.vue';
+import Checkbox from '@/views/components/checkbox/index.vue';
+import Radio from '@/views/components/radio/index.vue';
+import Alert from '@/views/components/alert/index.vue';
+import Slider from '@/views/components/slider/index.vue';
+import Avatar from '@/views/components/avatar/index.vue';
+import Backtop from '@/views/components/backtop/index.vue';
+import Popconfirm from '@/views/components/popconfirm/index.vue';
 
 export const groups = {
   general: {
@@ -54,6 +58,10 @@ export const groups = {
   notice: {
     name: 'Notice',
     sort: 25,
+  },
+  other: {
+    name: 'Other',
+    sort: 30,
   },
   business: {
     name: 'Business',
@@ -361,6 +369,56 @@ export default [
           group: 'form',
         },
         component: Radio,
+      },
+      {
+        name: 'alert',
+        path: 'alert',
+        meta: {
+          title: 'Alert',
+          subTitle: '警告提示',
+          group: 'notice',
+        },
+        component: Alert,
+      },
+      {
+        name: 'slider',
+        path: 'slider',
+        meta: {
+          title: 'Slider',
+          subTitle: '滑动输入条',
+          group: 'form',
+        },
+        component: Slider,
+      },
+      {
+        name: 'avatar',
+        path: 'avatar',
+        meta: {
+          title: 'Avatar',
+          subTitle: '头像',
+          group: 'data',
+        },
+        component: Avatar,
+      },
+      {
+        name: 'backtop',
+        path: 'backtop',
+        meta: {
+          title: 'Backtop',
+          subTitle: '回到顶部',
+          group: 'other',
+        },
+        component: Backtop,
+      },
+      {
+        name: 'popconfirm',
+        path: 'popconfirm',
+        meta: {
+          title: 'Popconfirm',
+          subTitle: '气泡确认框',
+          group: 'notice',
+        },
+        component: Popconfirm,
       },
     ],
   },

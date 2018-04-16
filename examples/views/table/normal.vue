@@ -34,13 +34,25 @@
       {
         title: 'Action',
         cellRender(_, record) {
-          return (
-            <span>
-              <a href="#">Action-{record.name}</a>
-              <Divider type="vertical" />
-              <a href="#">Delete</a>
-            </span>
-          );
+          const h = this.$createElement;
+          return h('span', [
+            h(
+              'a',
+              {
+                attrs: {
+                  href: '#',
+                },
+              },
+              [`Action-${record.name}`]
+            ),
+          ]);
+          // return (
+          //   <span>
+          //     <a href="#">Action-{record.name}</a>
+          //     <Divider type="vertical" />
+          //     <a href="#">Delete</a>
+          //   </span>
+          // );
         },
       },
     ];

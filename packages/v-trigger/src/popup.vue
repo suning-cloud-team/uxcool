@@ -2,13 +2,22 @@
   import Align from '@suning/v-align';
 
   export default {
+    components: {
+      Align,
+    },
     props: {
       prefixCls: {
         type: String,
         default: '',
       },
-      className: [String, Array, Object],
-      styles: Object,
+      className: {
+        type: [String, Array, Object],
+        default: '',
+      },
+      styles: {
+        type: Object,
+        default: null,
+      },
       visible: {
         type: Boolean,
         default: false,
@@ -19,7 +28,10 @@
           return '';
         },
       },
-      rootDomNode: HTMLElement,
+      rootDomNode: {
+        type: HTMLElement,
+        default: null,
+      },
       align: {
         type: Object,
         default() {
@@ -34,8 +46,67 @@
         type: String,
         default: '',
       },
-      animation: String,
+      animation: {
+        type: String,
+        default: '',
+      },
     },
+    data() {
+      return {
+        innerAlign: {},
+      };
+    },
+    computed: {
+      transitionName() {
+        const { prefixCls, transition, animation } = this;
+        let transitionName = transition;
+        if (!transition && animation) {
+          transitionName = `${prefixCls}-${animation}`;
+        }
+        return transitionName;
+        // return '';
+      },
+      target() {
+        return this.rootDomNode;
+      },
+      alignClass() {
+        const { innerAlign, getClassNameFromAlign } = this;
+        return getClassNameFromAlign(innerAlign);
+      },
+      classes() {
+        const {
+          prefixCls, alignClass, destroyPopupOnHide, visible
+        } = this;
+        return {
+          [prefixCls]: true,
+          [`${prefixCls}-hidden`]: !destroyPopupOnHide && !visible,
+          [alignClass]: !!alignClass,
+        };
+      },
+    },
+    watch: {
+      align(nVal) {
+        if (nVal) {
+          this.setInnerAlign(nVal);
+        }
+      },
+    },
+    created() {
+      this.setInnerAlign(this.align);
+    },
+    methods: {
+      setInnerAlign(align) {
+        this.innerAlign = align;
+      },
+      getTarget() {
+        return this.rootDomNode;
+      },
+      onAlign(element, align) {
+        this.setInnerAlign(align);
+        this.$emit('on-align', element, align);
+      },
+    },
+
     render(h) {
       const {
         prefixCls,
@@ -56,6 +127,7 @@
           ref: 'alignRef',
           props: {
             target: getTarget,
+            // 使用原始align
             align,
             disabled: !visible,
             monitorWinResize: true,
@@ -99,45 +171,6 @@
           subElements
         ),
       ]);
-    },
-    computed: {
-      transitionName() {
-        const { prefixCls, transition, animation } = this;
-        let transitionName = transition;
-        if (!transition && animation) {
-          transitionName = `${prefixCls}-${animation}`;
-        }
-        return transitionName;
-        // return '';
-      },
-      target() {
-        return this.rootDomNode;
-      },
-      alignClass() {
-        const { align, getClassNameFromAlign } = this;
-        return getClassNameFromAlign(align);
-      },
-      classes() {
-        const {
-          prefixCls, alignClass, destroyPopupOnHide, visible
-        } = this;
-        return {
-          [prefixCls]: true,
-          [`${prefixCls}-hidden`]: !destroyPopupOnHide && !visible,
-          [alignClass]: !!alignClass,
-        };
-      },
-    },
-    methods: {
-      getTarget() {
-        return this.rootDomNode;
-      },
-      onAlign(element, align) {
-        this.$emit('on-align', element, align);
-      },
-    },
-    components: {
-      Align,
     },
   };
 </script>

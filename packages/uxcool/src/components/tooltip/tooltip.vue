@@ -1,11 +1,12 @@
 <template>
-  <v-tooltip v-bind="bindProps"
-             :builtin-placements="buildinPlacements"
+  <v-tooltip ref="tooltipRef"
+             v-bind="bindProps"
+             :builtin-placements="builtinPlacements"
              v-on="$listeners">
-    <slot></slot>
+    <slot/>
     <template slot="content">
       <slot name="content">
-        {{content}}
+        {{ content }}
       </slot>
     </template>
   </v-tooltip>
@@ -20,20 +21,19 @@
 
   export default {
     name: buildComponentName('Tooltip'),
+    components: {
+      VTooltip,
+    },
     props: {
+      ...omit(VTooltip.props, 'builtinPlacements'),
       prefixCls: {
         type: String,
         default: 'ux-tooltip',
       },
-      visible: Boolean,
       placement: {
         type: String,
         default: 'top',
       },
-      trigger: [String, Array],
-      transitionName: String,
-      tooltipClass: [String, Array, Object],
-      tooltipStyle: Object,
       mouseEnterDelay: {
         type: Number,
         default: 100,
@@ -42,10 +42,14 @@
         type: Number,
         default: 100,
       },
-      content: String,
-      disabled: Boolean,
-      placements: Object,
-      arrowPointAtCenter: Boolean,
+      placements: {
+        type: Object,
+        default: null,
+      },
+      arrowPointAtCenter: {
+        type: Boolean,
+        default: false,
+      },
       autoAdjustOverflow: {
         type: Boolean,
         default: true,
@@ -63,7 +67,7 @@
           'autoAdjustOverflow',
         ]);
       },
-      buildinPlacements() {
+      builtinPlacements() {
         const { placements, arrowPointAtCenter, autoAdjustOverflow } = this;
         return (
           placements ||
@@ -75,8 +79,19 @@
         );
       },
     },
-    components: {
-      VTooltip,
+    methods: {
+      setOpen(visible) {
+        const { $refs: { tooltipRef } } = this;
+        if (tooltipRef) {
+          tooltipRef.setOpen(visible);
+        }
+      },
+      updateTooltipAlign() {
+        const { $refs: { tooltipRef } } = this;
+        if (tooltipRef) {
+          tooltipRef.updateTooltipAlign();
+        }
+      },
     },
   };
 </script>

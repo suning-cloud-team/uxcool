@@ -26,8 +26,14 @@
           return false;
         },
       },
-      disabled: Boolean,
-      value: String,
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
+      value: {
+        type: String,
+        default: '',
+      },
     },
     data() {
       return {
@@ -43,6 +49,18 @@
           [prefixCls]: true,
           [`${prefixCls}-disabled`]: disabled,
         };
+      },
+    },
+    watch: {
+      value(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerValue = nVal;
+        }
+      },
+      innerValue(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.resizeTextarea();
+        }
       },
     },
     created() {
@@ -69,10 +87,11 @@
       onChange(e) {
         const { value } = e.target;
         // 解决 因vue异步更新数据导致textarea scrollTop值不为0,出现抖动的问题
-        this.$refs.textarea.value = this.innerValue;
+        // this.$refs.textarea.value = this.innerValue;
         this.innerValue = value;
         this.$emit('input', value);
         this.$emit('on-change', e);
+        this.$emit('change', e);
       },
       onKeyDown(e) {
         if (e.keyCode === 13) {
@@ -80,18 +99,6 @@
           return;
         }
         this.$emit('on-key-down', e);
-      },
-    },
-    watch: {
-      value(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.innerValue = nVal;
-        }
-      },
-      innerValue(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.resizeTextarea();
-        }
       },
     },
   };

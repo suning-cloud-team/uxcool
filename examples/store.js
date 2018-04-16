@@ -11,7 +11,7 @@ const mutations = {
 };
 const store = new Vuex.Store({
   state: {
-    theme: 'dark',
+    theme: 'light',
   },
   mutations,
 });

@@ -277,7 +277,7 @@
         } = this;
         // 当前页对应的条目范围
         const range = [
-          (pageNo - 1) * pageSize + 1,
+          pageNo > 0 ? (pageNo - 1) * pageSize + 1 : 0,
           pageNo * pageSize > total ? total : pageNo * pageSize,
         ];
         return cb(total, pageSize, totalPage, pageNo, range);

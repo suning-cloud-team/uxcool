@@ -83,6 +83,15 @@
         <ux-option value="C">C</ux-option>
       </ux-select>
     </div>
+    <!-- <div class="demo">
+      <ux-select>
+        <ux-option v-for="(o,i) in options"
+                   :key="i"
+                   :value="o.value"
+                   :label="o.label" />
+      </ux-select>
+
+    </div> -->
   </div>
 </template>
 
@@ -91,20 +100,23 @@
   import { UxSelect, UxOption, UxOptionGroup } from '@suning/uxcool/src/components/select';
 
   export default {
+    components: {
+      UxSelect,
+      UxOption,
+      UxOptionGroup,
+    },
     data() {
       return {
         theme: 'light',
+        // options: Array(1000)
+        //   .fill(0)
+        //   .map((v, i) => ({ value: i, label: `label-${i}` })),
       };
     },
     methods: {
       changeTheme() {
         this.theme = this.theme === 'light' ? 'dark' : 'light';
       },
-    },
-    components: {
-      UxSelect,
-      UxOption,
-      UxOptionGroup,
     },
   };
 </script>

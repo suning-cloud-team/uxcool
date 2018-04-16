@@ -57,6 +57,10 @@
     <ux-switch ref="fSwitchRef" />
     <ux-button @click="focus">focus</ux-button>
     <ux-button @click="blur">blur</ux-button>
+
+    <h6>v-model</h6>
+    {{modelChecked}}
+    <ux-switch v-model="modelChecked" />
   </div>
 </template>
 
@@ -73,6 +77,7 @@
       return {
         checked: false,
         disabled: true,
+        modelChecked: false,
       };
     },
     methods: {
