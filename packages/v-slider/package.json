@@ -1,13 +1,17 @@
 {
   "name": "@suning/v-slider",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["assets/*css", "cjs", "es"],
+  "files": [
+    "assets/*css",
+    "cjs",
+    "es"
+  ],
   "scripts": {
     "start": "npm run server",
     "compile": "v-tools run compile",
@@ -18,7 +22,7 @@
   },
   "devDependencies": {
     "@suning/v-tools": "^1.0.26",
-    "@suning/v-utils": "^1.0.2"
+    "@suning/v-utils": "^1.0.3"
   },
   "dependencies": {
     "warning": "^3.0.0"

@@ -1,6 +1,6 @@
 {
   "name": "@suning/uxcool",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-0.2.0-alpha.1.0",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -19,20 +19,20 @@
   },
   "dependencies": {
     "@suning/v-checkbox": "^1.0.1",
-    "@suning/v-datepicker": "^1.0.28",
+    "@suning/v-datepicker": "^1.0.29",
     "@suning/v-dialog": "^1.0.6",
-    "@suning/v-dropdown": "^1.0.3",
-    "@suning/v-input": "^1.0.4",
+    "@suning/v-dropdown": "^1.0.4",
+    "@suning/v-input": "^1.0.5",
     "@suning/v-menu": "^1.0.24",
     "@suning/v-notification": "^1.0.4",
-    "@suning/v-slider": "^1.0.0",
-    "@suning/v-pagination": "^1.0.12",
-    "@suning/v-select": "^1.0.20",
+    "@suning/v-pagination": "^1.0.13",
+    "@suning/v-select": "^1.0.21",
+    "@suning/v-slider": "^1.0.1",
     "@suning/v-steps": "^1.0.6",
-    "@suning/v-table": "^1.0.5",
+    "@suning/v-table": "^1.0.6",
     "@suning/v-tabs": "^1.0.11",
-    "@suning/v-tooltip": "^1.0.13",
-    "@suning/v-utils": "^1.0.2",
+    "@suning/v-tooltip": "^1.0.14",
+    "@suning/v-utils": "^1.0.3",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "date-fns": "^1.29.0",
     "lodash": "^4.0.8",
@@ -45,7 +45,11 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["es/*", "dist/*", "cjs/*"],
+  "files": [
+    "es/*",
+    "dist/*",
+    "cjs/*"
+  ],
   "vueCompileOpts": {
     "preserveWhitespace": false
   }
