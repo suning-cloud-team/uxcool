@@ -47,6 +47,10 @@
                      :show-before-total="showBeforeTotal"
                      @change="paginationChange" />
     </div>
+
+    <div class="demo">
+      <ux-pagination :total="total" />
+    </div>
   </div>
 </template>
 
@@ -61,7 +65,13 @@
     data() {
       return {
         current: 6,
+        total: 0,
       };
+    },
+    created() {
+      setTimeout(() => {
+        this.total = 1;
+      }, 1500);
     },
     methods: {
       paginationChange(p) {

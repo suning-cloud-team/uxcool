@@ -108,12 +108,19 @@
 
   export default {
     name: 'Pagination',
+    components: {
+      Pager,
+      Options,
+    },
     props: {
       prefixCls: {
         type: String,
         default: 'ux-pagination',
       },
-      styles: Object,
+      styles: {
+        type: Object,
+        default: null,
+      },
       className: String,
       size: {
         type: String,
@@ -208,10 +215,6 @@
         },
       };
     },
-    created() {
-      this.resetPageNo();
-      this.render();
-    },
     computed: {
       simpleClasses() {
         const { prefixCls } = this;
@@ -269,6 +272,25 @@
       afterTotalLiteral() {
         return this.genTotalLiteral(this.showAfterTotal);
       },
+    },
+    watch: {
+      pageSize(newVal, val) {
+        if (newVal !== val) {
+          this.usedPageSize = newVal;
+        }
+      },
+      totalPage() {
+        this.reRender();
+      },
+      current(nVal, oVal) {
+        if (nVal && nVal !== oVal) {
+          this.pageNo = nVal;
+          this.reRender();
+        }
+      },
+    },
+    created() {
+      this.reRender();
     },
     methods: {
       genTotalLiteral(cb) {
@@ -470,25 +492,10 @@
         this.nextPageNo = current + 1 > totalPage ? totalPage : current + 1;
         this.pagers = list;
       },
-    },
-    components: {
-      Pager,
-      Options,
-    },
-    watch: {
-      pageSize(newVal, val) {
-        if (newVal !== val) {
-          this.usedPageSize = newVal;
-        }
-      },
-      totalPage() {
-        this.render();
-      },
-      current(nVal, oVal) {
-        if (nVal && nVal !== oVal) {
-          this.pageNo = nVal;
-          this.render();
-        }
+      reRender() {
+        const { resetPageNo, render } = this;
+        resetPageNo();
+        render();
       },
     },
   };
