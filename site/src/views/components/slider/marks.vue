@@ -6,12 +6,13 @@
       <div class="demo">
         <ux-slider :marks="marks" />
       </div>
-
       <div class="demo">
         <ux-slider range
                    :value="[20,40]"
                    :marks="marks" />
       </div>
+      <br>
+
       <h4>included = false</h4>
       <div class="demo">
         <ux-slider :marks="marks"
@@ -23,6 +24,7 @@
                    :marks="marks"
                    :included="false" />
       </div>
+      <br>
 
       <h4>marks and step</h4>
       <div class="demo">
@@ -34,6 +36,8 @@
                    :marks="marks"
                    :step="5" />
       </div>
+      <br>
+
       <h4>step = false</h4>
       <p>仅选中marks的值</p>
       <div class="demo">
@@ -60,6 +64,8 @@
                    :marks="marks2"
                    :step="false" />
       </div>
+      <br>
+
       <h4>dots</h4>
       <div class="demo">
         <ux-slider dots

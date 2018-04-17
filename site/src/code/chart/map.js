@@ -19,8 +19,7 @@ export default `
 <script>
 import UxChart from '@suning/uxcool/es/extra/chart';
 import UxMessage from '@suning/uxcool/es/message';
-
-import chinaGeo from './chinaGeo';
+import chinaGeo from '@suning/uxcool/es/extra/chart/chinaGeo';
 
 // 注册全国地图和各省份地图
 Object.keys(chinaGeo).forEach(key => {

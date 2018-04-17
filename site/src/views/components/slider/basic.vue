@@ -27,6 +27,7 @@
     data() {
       return {
         code,
+        v: 10,
       };
     },
   };

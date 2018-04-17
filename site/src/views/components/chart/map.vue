@@ -30,10 +30,11 @@
   import UxChart from '@suning/uxcool/es/extra/chart';
   import UxMessage from '@suning/uxcool/es/message';
 
-  import chinaGeo from './chinaGeo';
+  // import chinaGeo from './chinaGeo';
+  import chinaGeo from '@suning/uxcool/es/extra/chart/chinaGeo';
 
   // 注册全国地图和各省份地图
-  Object.keys(chinaGeo).forEach((key) => {
+  Object.keys(chinaGeo).forEach(key => {
     UxChart.registerMap(key, chinaGeo[key]);
   });
 
@@ -117,7 +118,7 @@
       },
     },
     mounted() {
-      this.$refs.province.chart.getZr().on('click', (e) => {
+      this.$refs.province.chart.getZr().on('click', e => {
         // 点击的空白区域
         if (!e.target) {
           this.provinceMode = false;
