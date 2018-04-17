@@ -17,14 +17,14 @@ $input-affix-width: 19px;
 // input status
 // == when focus or actived
 @mixin active($color: $outline-color) {
-  border-color: coloPalette($color, 5);
+  border-color: colorPalette($color, 5);
   outline: 0;
   box-shadow: 0 0 $outline-blur-size $outline-width fade($color, 20%);
 }
 
 // == when hoverd
 @mixin hover($color: $input-hover-border-color) {
-  border-color: coloPalette($color, 5);
+  border-color: colorPalette($color, 5);
 }
 
 @mixin disabled() {
@@ -41,7 +41,8 @@ $input-affix-width: 19px;
 @mixin input() {
   position: relative;
   display: inline-block;
-  padding: $input-padding-vertical-base $input-padding-horizontal-base;
+  padding: $input-padding-vertical-base - 1 $input-padding-horizontal-base
+    $input-padding-vertical-base;
   width: 100%;
   height: $input-height-base;
   font-size: $font-size-base;
@@ -270,7 +271,7 @@ $input-affix-width: 19px;
     }
 
     // reset border for Select, DatePicker, AutoComplete, Cascader, Mention, TimePicker
-    & > .#{$ux-prefix}-select > .#{$ux-prefix}-select-selection,
+    & > .#{$ux-prefix}-select .#{$ux-prefix}-select-selection,
     & > .#{$ux-prefix}-calendar-picker .#{$ux-prefix}-input,
     & > .#{$ux-prefix}-select-auto-complete .#{$ux-prefix}-input,
     & > .#{$ux-prefix}-cascader-picker .#{$ux-prefix}-input,
@@ -281,7 +282,7 @@ $input-affix-width: 19px;
     }
 
     & > *:first-child,
-    & > .#{$ux-prefix}-select:first-child > .#{$ux-prefix}-select-selection,
+    & > .#{$ux-prefix}-select:first-child .#{$ux-prefix}-select-selection,
     & > .#{$ux-prefix}-calendar-picker:first-child .#{$ux-prefix}-input,
     & > .#{$ux-prefix}-select-auto-complete:first-child .#{$ux-prefix}-input,
     & > .#{$ux-prefix}-cascader-picker:first-child .#{$ux-prefix}-input,
@@ -292,7 +293,7 @@ $input-affix-width: 19px;
     }
 
     & > *:last-child,
-    & > .#{$ux-prefix}-select:last-child > .#{$ux-prefix}-select-selection,
+    & > .#{$ux-prefix}-select:last-child .#{$ux-prefix}-select-selection,
     & > .#{$ux-prefix}-calendar-picker:last-child .#{$ux-prefix}-input,
     & > .#{$ux-prefix}-select-auto-complete:last-child .#{$ux-prefix}-input,
     & > .#{$ux-prefix}-cascader-picker:last-child .#{$ux-prefix}-input,
@@ -343,29 +344,4 @@ $input-affix-width: 19px;
   .#{$inputClass}:not(:last-child) {
     padding-right: $input-padding-horizontal-base + $input-affix-width;
   }
-}
-
-@mixin input-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
-  height: round(calc-css-outer-height($font-size, $padding-y, $line-height, $input-border-width));
-  padding: $padding-y $padding-x;
-  line-height: $line-height;
-  font-size: $font-size;
-  border-radius: $border-radius;
-}
-
-@mixin input-focus($color, $border-color) {
-  &:focus,
-  &.focus {
-    color: $color;
-    border-color: $border-color;
-    @include box-shadow($input-box-shadow);
-  }
-}
-
-@mixin input-group-addon-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
-  min-width: round(calc-css-inner-height($font-size, $padding-y, $line-height));
-  padding: $padding-y $padding-x;
-  font-size: $font-size;
-  line-height: $line-height;
-  border-radius: $border-radius;
 }

@@ -20,7 +20,10 @@
         type: String,
         default: 'ux-select',
       },
-      value: [String, Array],
+      value: {
+        type: [String, Array],
+        default: '',
+      },
       mode: {
         type: String,
         validator(val) {
@@ -32,10 +35,22 @@
         type: String,
         default: 'light',
       },
-      disabled: Boolean,
-      allowClear: Boolean,
-      showSearch: Boolean,
-      placeholder: String,
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
+      allowClear: {
+        type: Boolean,
+        default: false,
+      },
+      showSearch: {
+        type: Boolean,
+        default: false,
+      },
+      placeholder: {
+        type: String,
+        default: '',
+      },
       showArrow: {
         type: Boolean,
         default: true,
