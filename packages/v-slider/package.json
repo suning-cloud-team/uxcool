@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-slider",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "author": "'hw' <17061765@cnsuning.com>",
@@ -8,7 +8,11 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["assets/*css", "cjs", "es"],
+  "files": [
+    "assets/*css",
+    "cjs",
+    "es"
+  ],
   "scripts": {
     "start": "npm run server",
     "compile": "v-tools run compile",
