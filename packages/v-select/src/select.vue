@@ -81,7 +81,9 @@
                          @input="onSearchInput"
                          @keydown="onInputKeydown">
                   <span ref="inputMirror"
-                        :class="`${prefixCls}-search__field__mirror`">{{inputValue}}&nbsp;&nbsp;</span>
+                        :class="`${prefixCls}-search__field__mirror`">
+                    {{ inputValue }}&nbsp;&nbsp;
+                  </span>
                 </div>
               </li>
             </ul>
@@ -122,12 +124,19 @@
         selectRoot: this,
       };
     },
+    components: {
+      Trigger,
+      SelectTrigger,
+    },
     props: {
       prefixCls: {
         type: String,
         default: 'v-select',
       },
-      value: [String, Array],
+      value: {
+        type: [String, Array],
+        default: '',
+      },
       mode: {
         type: String,
         validator(val) {
@@ -139,18 +148,38 @@
         type: String,
         default: 'light',
       },
-      disabled: Boolean,
-      allowClear: Boolean,
-      showSearch: Boolean,
-      placeholder: String,
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
+      allowClear: {
+        type: Boolean,
+        default: false,
+      },
+      showSearch: {
+        type: Boolean,
+        default: false,
+      },
+      placeholder: {
+        type: String,
+        default: '',
+      },
       showArrow: {
         type: Boolean,
         default: true,
       },
       dropdownMatchSelectWidth: {
         type: Boolean,
+        default: true,
       },
-      dropdownMenuStyle: [Array, Object],
+      dropdownMenuStyle: {
+        type: [Array, Object],
+        default: undefined,
+      },
+      getContainer: {
+        type: Function,
+        default: null,
+      },
     },
     data() {
       return {
@@ -171,9 +200,6 @@
         open: false,
         multipleSearchInputStyle: {},
       };
-    },
-    created() {
-      this.completeValues();
     },
     computed: {
       UUID() {
@@ -275,12 +301,34 @@
         };
       },
     },
+    watch: {
+      value() {
+        this.completeValues();
+      },
+      descendants(nVal) {
+        if (nVal) {
+          this.completeValues();
+        }
+      },
+    },
+    created() {
+      this.completeValues();
+    },
     methods: {
       forcePopupAlign() {
-        const { isMultipleOrTags, $nextTick } = this;
+        const { isMultipleOrTags, $nextTick, updatePopupWidth } = this;
         if (isMultipleOrTags) {
           $nextTick(() => {
             this.$refs.selectTriggerRef.$refs.triggerRef.forcePopupAlign();
+          });
+        }
+        updatePopupWidth();
+      },
+      updatePopupWidth() {
+        const { $refs: { selectTriggerRef } } = this;
+        if (selectTriggerRef) {
+          this.$nextTick().then(() => {
+            selectTriggerRef.setPopupWidth();
           });
         }
       },
@@ -316,7 +364,9 @@
         this.setOpen(visible);
       },
       onMenuSelect(item) {
-        const { isMultipleOrTags, triggerChange, maybeFocus } = this;
+        const {
+          isMultipleOrTags, triggerChange, maybeFocus, setInputValue
+        } = this;
         let { innerValues: values } = this;
         if (isMultipleOrTags) {
           if (values.some(v => v.value === item.value)) {
@@ -330,7 +380,7 @@
         this.innerValues = values;
         this.$emit('select', item.value, item);
         triggerChange();
-        this.setInputValue('');
+        setInputValue('');
         maybeFocus();
       },
       onMenuDeselect(item) {
@@ -342,7 +392,7 @@
         }
       },
       onSearchInput(e) {
-        const { $refs, isMultipleOrTags, forcePopupAlign } = this;
+        const { isMultipleOrTags, forcePopupAlign } = this;
         const { value } = e.target;
         this.setInputValue(value);
         this.setOpen(true);
@@ -350,7 +400,8 @@
         if (isMultipleOrTags) {
           this.$nextTick(() => {
             forcePopupAlign();
-            this.multipleSearchInputStyle = calcMultipleSearchInputWidth(value, $refs.inputMirror);
+            // this.multipleSearchInputStyle =
+            // calcMultipleSearchInputWidth(value, $refs.inputMirror);
           });
         }
       },
@@ -446,7 +497,7 @@
         }
       },
       completeValues() {
-        const { value, descendants } = this;
+        const { value, descendants, updatePopupWidth } = this;
         const values = toArray(value).map(v => String(v));
 
         const m = new Map();
@@ -467,6 +518,7 @@
           }, m);
         }
         this.innerValues = Array.from(m.values());
+        updatePopupWidth();
       },
       itemClasses(item) {
         const { prefixCls } = this;
@@ -491,20 +543,12 @@
         maybeFocus();
       },
       setInputValue(value) {
+        const { isMultipleOrTags, $refs } = this;
         this.inputValue = value;
-      },
-    },
-    components: {
-      Trigger,
-      SelectTrigger,
-    },
-    watch: {
-      value() {
-        this.completeValues();
-      },
-      descendants(nVal) {
-        if (nVal) {
-          this.completeValues();
+        if (isMultipleOrTags) {
+          this.$nextTick(() => {
+            this.multipleSearchInputStyle = calcMultipleSearchInputWidth(value, $refs.inputMirror);
+          });
         }
       },
     },

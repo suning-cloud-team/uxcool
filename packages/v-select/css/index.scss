@@ -15,8 +15,7 @@ $selectPrefixCls: v-select;
   line-height: 28px;
 
   &-allow-clear {
-    .#{$selectPrefixCls}-selection--single
-      .#{$selectPrefixCls}-selection__rendered {
+    .#{$selectPrefixCls}-selection--single .#{$selectPrefixCls}-selection__rendered {
       padding-right: 40px;
     }
   }
@@ -105,11 +104,11 @@ $selectPrefixCls: v-select;
     cursor: pointer;
     position: relative;
 
-    .#{$selectPrefixCls}-selection-selected-value {
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
+    // .#{$selectPrefixCls}-selection-selected-value {
+    //   position: absolute;
+    //   left: 0;
+    //   top: 0;
+    // }
 
     .#{$selectPrefixCls}-selection__rendered {
       height: 28px;

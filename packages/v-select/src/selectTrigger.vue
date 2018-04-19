@@ -8,6 +8,7 @@
              :prefix-cls="dropDownPrefixCls"
              :popup-class="popupClasses"
              :popup-style="popupStyles"
+             :get-popup-container="getContainer"
              destroy-popup-on-hide
              @on-popup-visible-change="onPopupVisible">
       <template slot="trigger">
@@ -65,6 +66,9 @@
     computed: {
       rootUUID() {
         return this.selectRoot.UUID;
+      },
+      getContainer() {
+        return this.selectRoot.getContainer;
       },
       dropDownPrefixCls() {
         const { prefixCls } = this;
