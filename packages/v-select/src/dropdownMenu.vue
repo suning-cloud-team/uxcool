@@ -86,6 +86,7 @@
           selectedKeys: value.map(v => v.value),
           multiple,
           theme,
+          mode: 'vertical',
         },
       };
       if (multiple) {

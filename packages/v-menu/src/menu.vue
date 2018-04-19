@@ -21,7 +21,9 @@
     },
     computed: {
       classes() {
-        const { isRoot, prefixCls, theme, mode, visible } = this;
+        const {
+          isRoot, prefixCls, theme, mode, visible
+        } = this;
         return {
           [prefixCls]: true,
           [`${prefixCls}-root`]: isRoot,
@@ -72,7 +74,7 @@
         } = this;
         const openStrKeys = openKeys.map(v => String(v));
         const selectedStrKeys = selectedKeys.map(v => String(v));
-        descendants.forEach(v => {
+        descendants.forEach((v) => {
           const eventName = String(v.eventName);
           if (openStrKeys.indexOf(eventName) > -1 && openedSubMenus.indexOf(v) === -1) {
             openedSubMenus.push(v);
@@ -105,7 +107,7 @@
       reloadOpenKeys() {
         const { descendants, openKeys, openedSubMenus } = this;
         const openStrKeys = openKeys.map(v => String(v));
-        descendants.forEach(v => {
+        descendants.forEach((v) => {
           const eventName = String(v.eventName);
           if (openStrKeys.indexOf(eventName) > -1 && openedSubMenus.indexOf(v) === -1) {
             openedSubMenus.push(v);
@@ -117,7 +119,7 @@
         const selectedItems = [];
         this.selectedItems = selectedItems;
         const selectedStrKeys = selectedKeys.map(v => String(v));
-        descendants.forEach(v => {
+        descendants.forEach((v) => {
           const eventName = String(v.eventName);
           if (
             selectedStrKeys.indexOf(eventName) > -1 &&
@@ -157,9 +159,7 @@
               if (uniqueOpened) {
                 const { rootSubMenu } = item;
                 const { descendants: rootSubMenuDescendants } = rootSubMenu;
-                openedSubMenus = openedSubMenus.filter(
-                  v => v === rootSubMenu || rootSubMenuDescendants.indexOf(v) > -1
-                );
+                openedSubMenus = openedSubMenus.filter(v => v === rootSubMenu || rootSubMenuDescendants.indexOf(v) > -1);
               }
               openedSubMenus.push(item);
               changed = true;

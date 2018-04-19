@@ -90,7 +90,7 @@
           <td>{x:false, y:false}</td>
         </tr>
         <tr>
-          <td>rowKey</td>
+          <td>row-key</td>
           <td>表格数据行 key 的取值,可以是字符串或函数</td>
           <td>Function|String</td>
           <td>'key'</td>

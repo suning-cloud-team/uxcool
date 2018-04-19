@@ -13,7 +13,7 @@
 | value               | 表格数据                                            | Array                                          |                    |
 | empty-text          | 空数据文案                                          | String                                         | 暂无数据           |
 | scroll              | 设置横向或纵向滚动, 可指定具体值`{x:'110%', y:250}` | Object{x,y}                                    | {x:false, y:false} |
-| rowKey              | 表格数据行 key 的取值,可以是字符串或函数            | Function\|String                               | 'key'              |
+| row-key             | 表格数据行 key 的取值,可以是字符串或函数            | Function\|String                               | 'key'              |
 | indent-size         | 展示树形数据时,每层的缩进, 单位 `px`                | Number\|String                                 | 15                 |
 | row-class           | 设置数据行 class                                    | String\|Object\|Array\|Function(record,rowIdx) |                    |
 | expand-row-by-click | 通过点击行来展开数据                                | Boolean                                        | false              |
