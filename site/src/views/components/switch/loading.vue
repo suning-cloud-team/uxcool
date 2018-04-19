@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="加载中"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-switch loading
                  checked/>
       <ux-switch loading

@@ -35,6 +35,7 @@
                 id="api">API</ux-heading>
 
     <table class="api-table">
+      <caption>UxTable Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -180,11 +181,10 @@
         </tr>
       </tbody>
     </table>
-    <h3 class="mume-header"
-        id="column">column</h3>
 
-    <p>table columns 属性:</p>
     <table class="api-table">
+      <caption>
+        <code>UxTable/</code> columns 属性</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -318,12 +318,6 @@
           <td>true</td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
           <td>onFilterDropdownVisibleChange</td>
           <td>筛选菜单显示隐藏时回调</td>
           <td>Function(visible)</td>
@@ -349,11 +343,10 @@
         </tr>
       </tbody>
     </table>
-    <h3 class="mume-header"
-        id="row-selection">row-selection</h3>
 
-    <p>table row-selections 属性:</p>
     <table class="api-table">
+      <caption>
+        <code>UxTable/</code>row-selections 属性</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -433,11 +426,10 @@
         </tr>
       </tbody>
     </table>
-    <h3 class="mume-header"
-        id="selection">selection</h3>
 
-    <p>row-selection 中的 selections 属性:</p>
     <table class="api-table">
+      <caption>
+        <code>UxTable/row-selection/</code>selections 属性</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -467,11 +459,10 @@
         </tr>
       </tbody>
     </table>
-    <h3 class="mume-header"
-        id="pagination">pagination</h3>
 
-    <p>table pagination 属性:</p>
     <table class="api-table">
+      <caption>
+        <code>UxTable/</code>pagination 属性</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -498,27 +489,23 @@
       <a href="/vue/index.html#/components/pagintaion">
         <code>Pagination</code>
       </a>
-      组件
+      组件。
     </p>
     <h3 class="mume-header"
         id="onrow-onheaderrow-oncell-onheadercell-%E7%94%A8%E6%B3%95">onRow, onHeaderRow, onCell, onHeaderCell 用法</h3>
     <p>
       <code>onRow</code>,
       <code>onHeaderRow</code> 在
-      <code>table</code> 上设置,
+      <code>table</code> 上设置;
       <code>onCell</code>,
       <code>onHeaderCell</code> 在
-      <code>column</code> 中设置, 两者用法类似
+      <code>column</code> 中设置, 两者用法类似:
     </p>
-    <pre data-role="codeBlock"
-         data-info="javascript"
-         class="language-javascript">
-         <span class="token operator">&lt;</span>ux<span class="token operator">-</span>table v<span class="token operator">-</span>bind<span class="token punctuation">:</span>on<span class="token operator">-</span>row<span class="token operator">=</span><span class="token string">"{prop: '', on:{click(record){}, mouseenter(){}}}"</span> <span class="token operator">/</span><span class="token operator">></span>
-    </pre>
-    <h4 class="mume-header"
-        id="slots">Slots</h4>
+
+    <ux-code non-copyable>{{code}}</ux-code>
 
     <table class="api-table">
+      <caption>UxTable Slots</caption>
       <thead>
         <tr>
           <th>名称</th>
@@ -544,10 +531,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events">Events</h4>
 
     <table class="api-table">
+      <caption>UxTable Events</caption>
       <thead>
         <tr>
           <th>事件名</th>
@@ -628,6 +614,12 @@
       EditableRowsDemo,
       NestTableDemo,
       AsyncNestTableDemo,
+    },
+    data() {
+      return {
+        code:
+          '<ux-table v-bind:on-row="{ prop: \'\', on: { click(record) {}, mouseenter() {} } }" />',
+      };
     },
   };
 </script>

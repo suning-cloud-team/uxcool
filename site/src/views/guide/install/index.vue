@@ -1,7 +1,7 @@
 <template>
   <article class="doc">
 
-    <div class="mume markdown-preview   ">
+    <div class="mume markdown-preview">
       <h1 class="ux-heading"
           >UXCool</h1>
 
@@ -60,6 +60,11 @@ import &apos;@suning/uxcool/dist/uxcool.css&apos;;
 import &apos;@suning/uxcool/es/select/style/css&apos;;
 import { UxSelect,  UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/select&apos;;
       </ux-code>
+      <blockquote>
+        <p>PS：附送前后端分离开发利器，
+          <a href="http://dippre.cnsuning.com" target="_blank">数据接口平台 DIP</a>
+        </p>
+      </blockquote>
     </div>
   </article>
 </template>

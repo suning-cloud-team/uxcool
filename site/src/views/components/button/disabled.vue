@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="不可用"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-button type="primary">Primary</ux-button>
       <ux-button type="primary"
                  disabled>Primary(disabled)</ux-button>

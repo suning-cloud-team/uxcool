@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="位置">
     <div slot="demo">
-      <div style="width: 500px;">
+      <div style="width: 500px;"
+           class="gutter-group">
         <div class="top">
           <ux-tooltip placement="topLeft"
                       :content="buildContent('Top-Left')">

@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="按钮组合"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-button-group>
         <ux-button>Canel</ux-button>
         <ux-button>Ok</ux-button>

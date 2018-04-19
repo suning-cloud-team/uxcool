@@ -17,6 +17,7 @@
       API
     </ux-heading>
     <table class="api-table">
+      <caption>UxRadio Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -58,10 +59,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events">Events</h4>
 
     <table class="api-table">
+      <caption>UxRadio Events</caption>
       <thead>
         <tr>
           <th>事件名</th>
@@ -77,10 +77,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="methods">Methods</h4>
 
     <table class="api-table">
+      <caption>UxRadio Methods</caption>
       <thead>
         <tr>
           <th>名称</th>
@@ -98,13 +97,9 @@
         </tr>
       </tbody>
     </table>
-    <h3 class="mume-header"
-        id="uxradiobutton">UxRadioButton</h3>
-
-    <h4 class="mume-header"
-        id="props-1">Props</h4>
 
     <table class="api-table">
+      <caption>UxRadioButton Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -146,13 +141,9 @@
         </tr>
       </tbody>
     </table>
-    <h3 class="mume-header"
-        id="uxradiogroup">UxRadioGroup</h3>
-
-    <h4 class="mume-header"
-        id="props-2">Props</h4>
 
     <table class="api-table">
+      <caption>UxRadioGroup Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -200,10 +191,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events-1">Events</h4>
 
     <table class="api-table">
+      <caption>UxRadioGroup Events</caption>
       <thead>
         <tr>
           <th>事件名</th>

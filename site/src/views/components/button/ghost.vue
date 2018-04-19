@@ -2,7 +2,8 @@
   <ux-demo title="幽灵按钮"
            vertical>
     <div slot="demo"
-         style="background: #ccc;padding: 10px">
+         style="background: #ccc;padding: 10px;"
+         class="gutter-group">
       <ux-button type="primary"
                  ghost>Primary</ux-button>
       <ux-button ghost>Default</ux-button>

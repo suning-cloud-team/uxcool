@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="嵌套子表格"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-table :theme="theme"

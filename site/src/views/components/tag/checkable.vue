@@ -6,6 +6,7 @@
       <ux-checkable-tag v-for="(tag,i) in tags"
                         :key="i"
                         :checked="isChecked(tag)"
+                        :theme="theme"
                         @change="onChange($event,tag)">
         {{ tag }}
       </ux-checkable-tag>
@@ -27,6 +28,11 @@
         tags: ['Movies', 'Books', 'Music', 'Sports'],
         checkedTags: ['Books'],
       };
+    },
+    computed: {
+      theme() {
+        return this.$store.state.theme;
+      },
     },
     methods: {
       isChecked(tag) {

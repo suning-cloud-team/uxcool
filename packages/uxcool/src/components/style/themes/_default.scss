@@ -592,7 +592,7 @@ $table-padding-horizontal: 16px;
 // Tag
 // --
 $tag-default-bg: $background-color-light !default;
-$tag-default-bg-dark: $background-color-dark !default;
+$tag-default-bg-dark: transparent !default;
 $tag-default-color: $text-color !default;
 $tag-default-color-dark: $text-color-dark !default;
 $tag-font-size: $font-size-sm !default;

@@ -15,6 +15,7 @@
                 id="api">API</ux-heading>
 
     <table class="api-table">
+      <caption>UxAlert Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -83,10 +84,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="slots">Slots</h4>
 
     <table class="api-table">
+      <caption>UxAlert Slots</caption>
       <thead>
         <tr>
           <th>名称</th>
@@ -108,10 +108,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events">Events</h4>
 
     <table class="api-table">
+      <caption>UxAlert Events</caption>
       <thead>
         <tr>
           <th>事件名</th>

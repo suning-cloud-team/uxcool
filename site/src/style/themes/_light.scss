@@ -1,0 +1,25 @@
+/* site variables */
+// Make sure to import this file after uxcool so you can access variables defined in uxcool
+$site-border-color: #eee;
+$doc-bg: #fff;
+$doc-color: #666;
+$doc-blockquote-bg: #fcfcfc;
+$doc-blockquote-border-color: $site-border-color;
+$doc-code-border-color: $site-border-color;
+$doc-code-color: #666;
+$doc-code-bg: #fcfcfc;
+$doc-hr-color: #e5e5e5;
+$copy-btn-bg: $site-border-color;
+$copy-btn-color: #999;
+$copy-btn-hover-bg: #3b8beb;
+$copy-btn-hover-color: #fff;
+$demo-code-color: #333;
+$demo-code-border-color: $site-border-color;
+$demo-code-bg: $doc-code-bg;
+$demo-code-more-color: $primary-color;
+$demo-code-more-bg: #fff;
+$demo-code-more-border-color: $site-border-color;
+$api-table-border-color: $site-border-color;
+$api-table-caption-color: #000;
+$api-table-th-color: $doc-color;
+$api-table-accent-bg: #fcfcfc;

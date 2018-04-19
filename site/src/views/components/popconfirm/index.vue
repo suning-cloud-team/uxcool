@@ -12,6 +12,7 @@
                 id="api">API</ux-heading>
 
     <table class="api-table">
+      <caption>UxPopconfirm Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -54,10 +55,9 @@
         <a href="http://uxcool.cnsuning.com/vue/index.html#/components/tooltip">UxTooltip</a>
       </p>
     </blockquote>
-    <h4 class="mume-header"
-        id="slots">Slots</h4>
 
     <table class="api-table">
+      <caption>UxPopconfirm Slots</caption>
       <thead>
         <tr>
           <th>名称</th>
@@ -71,10 +71,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events">Events</h4>
 
     <table class="api-table">
+      <caption>UxPopconfirm Events</caption>
       <thead>
         <tr>
           <th>事件名</th>

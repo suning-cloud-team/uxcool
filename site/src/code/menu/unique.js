@@ -1,5 +1,5 @@
 export default `
-<ux-menu slot="demo" unique-opened style="width:200px;">
+<ux-menu unique-opened style="width:200px;">
   <ux-menu-item name="item-1">item-1</ux-menu-item>
   <ux-menu-item name="item-2">item-2</ux-menu-item>
   <ux-sub-menu name="sub-menu-1" title="sub-menu-1">

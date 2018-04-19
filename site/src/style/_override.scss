@@ -1,6 +1,5 @@
-/* override uxcool style */
+/* override uxcool variables  */
 $body-background: #f8f8f8;
-
 $heading-color: #000;
 $text-color: #333;
 $text-color-secondary: #999;
@@ -10,7 +9,3 @@ $layout-main-padding: 25px 0 25px 25px;
 
 // sass不提供url rewriting功能，所有的链接资源都是相对输出文件而言，所以需要手动覆盖字体图标路径
 $icon-url: '~@suning/uxcool/dist/assets/fonts/uxcool';
-
-@import '~@suning/uxcool/dist/uxcool';
-// extra模块比较偏业务，没有放入通用组件，依赖了通用公共样式，所以在已有公共样式的情况下，直接引es模块下的样式就行了
-@import '~@suning/uxcool/es/extra';

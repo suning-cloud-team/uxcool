@@ -3,7 +3,7 @@
     <slot name="header"></slot>
     <div class="ux-layout-main">
       <slot></slot>
-      <div class="ux-layout-footer-nav">
+      <div class="footer-nav">
         <router-link tabindex="-1"
                      :class="linkClasses(i)"
                      v-if="nav"
@@ -38,8 +38,8 @@
     methods: {
       linkClasses(i) {
         return {
-          left: i === 0,
-          right: i === 1,
+          previous: i === 0,
+          next: i === 1,
         };
       },
     },
@@ -47,29 +47,29 @@
 </script>
 
 <style lang="scss" scoped>
-  .ux-layout-footer-nav {
-    padding: 20px;
-    text-align: right;
-    overflow: hidden;
-    .left,
-    .right {
-      &:focus {
-        text-decoration: none;
-      }
-    }
-    .left {
-      // float: left;
-      .fu {
-        margin-right: 8px;
-      }
-    }
+  // .ux-layout-footer-nav {
+  //   padding: 20px;
+  //   text-align: right;
+  //   overflow: hidden;
+  //   .left,
+  //   .right {
+  //     &:focus {
+  //       text-decoration: none;
+  //     }
+  //   }
+  //   .left {
+  //     // float: left;
+  //     .fu {
+  //       margin-right: 8px;
+  //     }
+  //   }
 
-    .right {
-      // float: right;
-      margin-left: 30px;
-      .fu {
-        margin-left: 8px;
-      }
-    }
-  }
+  //   .right {
+  //     // float: right;
+  //     margin-left: 30px;
+  //     .fu {
+  //       margin-left: 8px;
+  //     }
+  //   }
+  // }
 </style>

@@ -5,6 +5,7 @@
       <h6>preset</h6>
       <ux-tag v-for="(color, i) in colors"
               :key="i"
+              :theme="theme"
               :color="color">
         {{ color }}
       </ux-tag>
@@ -13,6 +14,7 @@
       <div>
         <ux-tag v-for="(color, i) in customColors"
                 :key="i"
+                :theme="theme"
                 :color="color"
                 closable>
           {{ color }}
@@ -50,6 +52,11 @@
         ],
         customColors: ['#f50', '#2db7f5', '#87d068', '#108ee9'],
       };
+    },
+    computed: {
+      theme() {
+        return this.$store.state.theme;
+      },
     },
     methods: {
       isChecked(tag) {

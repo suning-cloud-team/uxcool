@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="异步加载内嵌表格"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-table class="components-table-demo-nested"

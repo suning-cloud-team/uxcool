@@ -9,6 +9,7 @@
     <ux-heading level="2"
                 id="api">API</ux-heading>
     <table class="api-table">
+      <caption>UxBacktop Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -36,10 +37,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events">Events</h4>
 
     <table class="api-table">
+      <caption>UxBacktop Events</caption>
       <thead>
         <tr>
           <th>事件名</th>

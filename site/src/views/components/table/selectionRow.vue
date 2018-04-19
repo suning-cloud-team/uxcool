@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="点击行选择"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-table :theme="theme"

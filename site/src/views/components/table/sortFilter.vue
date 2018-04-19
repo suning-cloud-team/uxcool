@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="筛选和排序"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-table :theme="theme"

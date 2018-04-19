@@ -11,7 +11,8 @@
     <ux-heading level="2"
                 id="api">API</ux-heading>
 
-    <table>
+    <table class="api-table">
+      <caption>UxAvatar Props</caption>
       <thead>
         <tr>
           <th>参数名</th>

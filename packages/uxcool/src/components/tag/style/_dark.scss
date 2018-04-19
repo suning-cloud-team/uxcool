@@ -1,0 +1,15 @@
+&-dark {
+  background: $tag-default-bg-dark;
+  border-color: $border-color-split-dark;
+
+  &,
+  a,
+  a:hover,
+  .#{$iconfont-css-prefix}-close {
+    color: $tag-default-color-dark;
+  }
+
+  .#{$iconfont-css-prefix}-close:hover {
+    color: #fff;
+  }
+}

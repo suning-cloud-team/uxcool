@@ -1,14 +1,14 @@
 <template>
   <ux-demo title="大小"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-radio-group v-model="size"
                       @change="onChangeSize">
         <ux-radio-button value="large">Large</ux-radio-button>
         <ux-radio-button value="default">Default</ux-radio-button>
         <ux-radio-button value="small">small</ux-radio-button>
       </ux-radio-group>
-      <br>
       <br>
       <ux-button type="primary"
                  :size="size">Primary</ux-button>
