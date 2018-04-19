@@ -33,6 +33,7 @@ import Form from './views/form/index';
 import BackTop from './views/backtop/index';
 import Avatar from './views/avatar/index';
 import Popconfirm from './views/popconfirm/index';
+import InputNumber from './views/input-number/index';
 
 Vue.use(Router);
 const routes = [
@@ -200,6 +201,11 @@ const routes = [
     name: 'Popconfirm',
     path: '/popconfirm',
     component: Popconfirm,
+  },
+  {
+    name: 'InputNumber',
+    path: '/inputnumber',
+    component: InputNumber,
   },
 ];
 
