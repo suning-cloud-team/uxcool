@@ -1,36 +1,33 @@
 <template>
-  <div>
-    <trigger :prefix-cls="pickerPrefixCls"
-             :visible="open"
-             destroy-popup-on-hide
-             :actions="actions"
-             :popup-align="align"
-             @on-popup-visible-change="onPopupVisible">
-      <template slot="trigger">
-        <slot name="trigger"></slot>
-      </template>
-      <range-calendar slot="popup"
-                      :prefix-cls="prefixCls"
-                      :class="clanderClasses"
-                      :value="value"
-                      :selected-value="innerValues"
-                      :format="dateFormat"
-                      :show-clear="showClear"
-                      :date-input-placeholder="dateInputPlaceholder"
-                      :has-time-picker="isShowTime"
-                      :locale="locale"
-                      :mode="mode"
-                      :show-ok="showOk"
-                      :show-today="showToday"
-                      :disabled-date="disabledDate"
-                      :disabled-time="disabledTime"
-                      :ranges="ranges"
-                      @on-select="onSelect"
-                      @on-quick-select="onQuickSelect"
-                      @on-ok="onOk">
-      </range-calendar>
-    </trigger>
-  </div>
+  <trigger :prefix-cls="pickerPrefixCls"
+           :visible="open"
+           destroy-popup-on-hide
+           :actions="actions"
+           :popup-align="align"
+           @on-popup-visible-change="onPopupVisible">
+    <template slot="trigger">
+      <slot name="trigger" />
+    </template>
+    <range-calendar slot="popup"
+                    :prefix-cls="prefixCls"
+                    :class="clanderClasses"
+                    :value="value"
+                    :selected-value="innerValues"
+                    :format="dateFormat"
+                    :show-clear="showClear"
+                    :date-input-placeholder="dateInputPlaceholder"
+                    :has-time-picker="isShowTime"
+                    :locale="locale"
+                    :mode="mode"
+                    :show-ok="showOk"
+                    :show-today="showToday"
+                    :disabled-date="disabledDate"
+                    :disabled-time="disabledTime"
+                    :ranges="ranges"
+                    @on-select="onSelect"
+                    @on-quick-select="onQuickSelect"
+                    @on-ok="onOk" />
+  </trigger>
 </template>
 
 <script>

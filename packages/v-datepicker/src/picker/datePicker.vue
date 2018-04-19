@@ -1,47 +1,44 @@
 <template>
-  <div>
-    <trigger :prefix-cls="pickerPrefixCls"
-             :visible="open"
-             destroy-popup-on-hide
-             :actions="actions"
-             :popup-align="align"
-             @on-popup-visible-change="onPopupVisible">
-      <template slot="trigger">
-        <slot name="trigger"></slot>
-      </template>
+  <trigger :prefix-cls="pickerPrefixCls"
+           :visible="open"
+           destroy-popup-on-hide
+           :actions="actions"
+           :popup-align="align"
+           @on-popup-visible-change="onPopupVisible">
+    <template slot="trigger">
+      <slot name="trigger" />
+    </template>
 
-      <calendar slot="popup"
-                :prefix-cls="prefixCls"
-                :class="`${prefixCls}-${theme}`"
-                :value="innerValue"
-                :mode="mode"
-                :locale="locale"
-                :format="dateFormat"
-                :show-ok="showOk"
-                :has-time-picker="isShowTime"
-                :show-today="showToday"
-                :disabled-date="disabledDate"
-                :disabled-time="disabledTime"
-                :date-input-placeholder="dateInputPlaceholder"
-                @on-select="onSelect"
-                @on-ok="onOk">
-        <template slot="timePicker"
-                  slot-scope="props">
-          <time-picker-panel v-if="isShowTime"
-                             :prefix-cls="`${prefixCls}-time-picker`"
-                             :value="innerValue"
-                             show-hour
-                             show-minute
-                             show-second
-                             :disabled-hours="disabledHours"
-                             :disabled-minutes="disabledMinutes"
-                             :disabled-seconds="disabledSeconds"
-                             @on-change="props.onChange">
-          </time-picker-panel>
-        </template>
-      </calendar>
-    </trigger>
-  </div>
+    <calendar slot="popup"
+              :prefix-cls="prefixCls"
+              :class="`${prefixCls}-${theme}`"
+              :value="innerValue"
+              :mode="mode"
+              :locale="locale"
+              :format="dateFormat"
+              :show-ok="showOk"
+              :has-time-picker="isShowTime"
+              :show-today="showToday"
+              :disabled-date="disabledDate"
+              :disabled-time="disabledTime"
+              :date-input-placeholder="dateInputPlaceholder"
+              @on-select="onSelect"
+              @on-ok="onOk">
+      <template slot="timePicker"
+                slot-scope="props">
+        <time-picker-panel v-if="isShowTime"
+                           :prefix-cls="`${prefixCls}-time-picker`"
+                           :value="innerValue"
+                           show-hour
+                           show-minute
+                           show-second
+                           :disabled-hours="disabledHours"
+                           :disabled-minutes="disabledMinutes"
+                           :disabled-seconds="disabledSeconds"
+                           @on-change="props.onChange" />
+      </template>
+    </calendar>
+  </trigger>
 </template>
 
 
