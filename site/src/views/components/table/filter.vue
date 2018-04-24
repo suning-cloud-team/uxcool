@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="筛选"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-button class="ux-btn"

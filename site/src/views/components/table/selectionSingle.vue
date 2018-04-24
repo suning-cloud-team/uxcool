@@ -1,5 +1,6 @@
 <template>
   <ux-demo title="单选"
+           :height="200"
            vertical>
     <div slot="demo">
       <ux-table :theme="theme"

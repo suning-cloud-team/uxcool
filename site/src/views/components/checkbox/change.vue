@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="受控Checkbox"
            :height="200">
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-checkbox v-model="cChecked"
                    :disabled="cDisabled">
         <span>

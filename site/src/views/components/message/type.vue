@@ -1,6 +1,7 @@
 <template>
   <ux-demo title="其他类型">
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-button theme="success"
                  @click="success">成功</ux-button>
       <ux-button theme="danger"

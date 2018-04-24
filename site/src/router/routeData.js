@@ -1,5 +1,4 @@
 import Layout from '@/views/Layout.vue';
-
 import Install from '@/views/guide/install/index.vue';
 import Start from '@/views/guide/start/index.vue';
 import Theme from '@/views/guide/theme/index.vue';

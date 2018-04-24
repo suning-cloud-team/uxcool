@@ -15,6 +15,7 @@
     <ux-heading level="2"
                 id="api">API</ux-heading>
     <table class="api-table">
+      <caption>UxSlider Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -108,10 +109,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="events">Events</h4>
 
     <table class="api-table">
+      <caption>UxSlider Events</caption>
       <thead>
         <tr>
           <th>事件名</th>
@@ -132,10 +132,9 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="methods">Methods</h4>
 
     <table class="api-table">
+      <caption>UxSlider Methods</caption>
       <thead>
         <tr>
           <th>名称</th>

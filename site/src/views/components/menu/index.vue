@@ -64,7 +64,7 @@
             <td>unique-opened</td>
             <td>是否同时只展开一个菜单</td>
             <td>Boolean</td>
-            <td>true</td>
+            <td>false</td>
           </tr>
         </tbody>
       </table>
@@ -152,6 +152,12 @@
             <td>是否禁用</td>
             <td>Boolean</td>
             <td>false</td>
+          </tr>
+          <tr>
+            <td>title</td>
+            <td>分组标题</td>
+            <td>String</td>
+            <td>''</td>
           </tr>
         </tbody>
       </table>

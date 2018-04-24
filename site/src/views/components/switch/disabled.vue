@@ -1,7 +1,8 @@
 <template>
   <ux-demo title="不可用"
            vertical>
-    <div slot="demo">
+    <div slot="demo"
+         class="gutter-group">
       <ux-switch disabled/>
       <ux-switch disabled
                  checked/>

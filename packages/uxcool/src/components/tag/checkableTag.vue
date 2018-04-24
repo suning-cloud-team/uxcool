@@ -20,12 +20,20 @@
         type: Boolean,
         default: false,
       },
+      theme: {
+        type: String,
+        default: 'light',
+        validate(val) {
+          return ['light', 'dark'].indexOf(val) > -1;
+        },
+      },
     },
     computed: {
       classes() {
-        const { prefixCls, checked } = this;
+        const { prefixCls, checked, theme } = this;
         return {
           [prefixCls]: true,
+          [`${prefixCls}-${theme}`]: true,
           [`${prefixCls}-checkable`]: true,
           [`${prefixCls}-checkable-checked`]: checked,
         };

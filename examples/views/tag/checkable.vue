@@ -6,6 +6,7 @@
     LIST:
     <checkable-tag v-for="(tag,i) in tags"
                    :key="i"
+                   :theme="theme"
                    :checked="isChecked(tag)"
                    @change="onChange($event,tag)">
       {{ tag }}
@@ -13,6 +14,7 @@
   </div>
 </template>
 <script>
+  import { mapState } from 'vuex';
   import { Tag } from '@suning/uxcool';
 
   export default {
@@ -25,6 +27,7 @@
         checkedTags: ['Books'],
       };
     },
+    computed: mapState(['theme']),
     methods: {
       isChecked(tag) {
         return this.checkedTags.indexOf(tag) > -1;

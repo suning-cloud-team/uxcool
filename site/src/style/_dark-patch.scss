@@ -1,0 +1,113 @@
+// TODO
+// 应该通过修改变量定制两套样式，而不是在一套样式里面写两套逻辑
+// 先临时打个深色补丁，用复写的方式把深色主题写一遍吧，后面有时间定制主题
+
+.ux-layout-dark {
+  .version,
+  .copyright {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .doc {
+    background: $layout-header-bg-dark;
+    color: $text-color-secondary-dark;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #fff;
+    }
+
+    code {
+      background: rgba(0, 0, 0, 0.2);
+      color: rgba(255, 255, 255, 0.8);
+      border-color: transparent;
+    }
+
+    blockquote {
+      background: rgba(#000, 0.1);
+      border-left-color: rgba(#fff, 0.2);
+    }
+
+    hr {
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .api-table,
+  .table-custom {
+    caption {
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    th,
+    td {
+      border-color: rgba(255, 255, 255, 0.1);
+
+      &:nth-child(even) {
+        background-color: rgba(252, 252, 252, 0.05);
+      }
+    }
+
+    th {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  // .ux-btn {
+  //   border-color: rgba($white, 0.4);
+  //   background: transparent;
+  //   color: $white;
+  //   &:hover,
+  //   &:focus {
+  //     background: rgba($white, 0.45);
+  //   }
+  // }
+
+  // .ux-btn-primary {
+  //   border-color: #00d8ff;
+  //   box-shadow: inset 0 0 5px 0 #00d8ff;
+  //   &:hover,
+  //   &:focus {
+  //     background: rgba(0, 216, 255, 0.44);
+  //   }
+  // }
+
+  .code-wrapper {
+    .copy {
+      background: rgba(0, 0, 0, 0.2);
+      color: #00d8ff;
+
+      &:hover {
+        background: #00d8ff;
+        color: #fff;
+      }
+    }
+
+    .hljs {
+      background: rgba(0, 0, 0, 0.2);
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .demo-code-more {
+    background: #18293f;
+    border-color: rgba(255, 255, 255, 0.1) transparent transparent;
+    color: #00d8ff;
+  }
+
+  // TODO 应该从组件层面给出深色样式，而不是在网站里打补丁, 当然最终应该是抽取颜色变量交给用户自己去定义颜色
+  .ux-checkbox-wrapper,
+  .ux-radio-wrapper {
+    color: $text-color-secondary-dark;
+  }
+
+  .ux-checkbox-disabled + span,
+  .ux-radio-disabled + span {
+    color: rgba(255, 255, 255, 0.3);
+  }
+}

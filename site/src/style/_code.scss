@@ -2,6 +2,10 @@
   position: relative;
   margin: 15px 0;
 
+  > pre {
+    margin: 0;
+  }
+
   .copy {
     position: absolute;
     top: 0;
@@ -9,7 +13,6 @@
     width: 80px;
     height: 30px;
     line-height: 30px;
-    background: #eee;
     font-size: 12px;
     text-align: center;
     border-radius: 2px;
@@ -73,40 +76,5 @@
   .javascript .hljs-literal,
   .actionscript .hljs-literal {
     color: #fc1e70;
-  }
-
-  &.light {
-    .copy {
-      background: #eee;
-      color: #999;
-
-      &:hover {
-        background: #3b8beb;
-        color: #fff;
-      }
-    }
-
-    .hljs {
-      background: #fcfcfc;
-      border-color: #eee;
-      color: #333;
-    }
-  }
-
-  &.dark {
-    .copy {
-      background: rgba(0, 0, 0, 0.2);
-      color: #00d8ff;
-
-      &:hover {
-        background: #00d8ff;
-        color: #fff;
-      }
-    }
-
-    .hljs {
-      background: rgba(0, 0, 0, 0.2);
-      color: rgba(255, 255, 255, 0.8);
-    }
   }
 }
