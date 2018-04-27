@@ -33,7 +33,6 @@ import Slider from '@/views/components/slider/index.vue';
 import Avatar from '@/views/components/avatar/index.vue';
 import Backtop from '@/views/components/backtop/index.vue';
 import Popconfirm from '@/views/components/popconfirm/index.vue';
-import Sw from '@/views/components/sw/index.vue';
 
 export const groups = {
   general: {
@@ -420,16 +419,6 @@ export default [
           group: 'notice',
         },
         component: Popconfirm,
-      },
-      {
-        name: 'sw',
-        path: 'sw',
-        meta: {
-          title: 'Sw',
-          subTitle: 'sw',
-          group: 'other',
-        },
-        component: Sw,
       },
     ],
   },
