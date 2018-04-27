@@ -27,14 +27,14 @@
                :style="[placeholderStyle,unSelectStyle]"
                unselectable="unselectable"
                @click="onPlaceholderClick">
-            {{placeholder}}
+            {{ placeholder }}
           </div>
           <!--single-->
           <template v-if="isSingleMode">
             <div :class="`${prefixCls}-selection-selected-value`"
                  :style="singleSelectedStyle"
                  :title="singleValue.title">
-              {{singleValue.label}}
+              {{ singleValue.label }}
             </div>
             <template v-if="showSearch">
               <div v-show="open"
@@ -48,7 +48,7 @@
                          @input="onSearchInput"
                          @keydown="onInputKeydown">
                   <span :class="`${prefixCls}-search__field__mirror`">
-                    {{inputValue}}
+                    {{ inputValue }}
                   </span>
                 </div>
               </div>
@@ -64,12 +64,11 @@
                   :style="unSelectStyle"
                   :tilte="item.title">
                 <div :class="`${prefixCls}-selection__choice__content`">
-                  {{ getItemContent(item)}}
+                  {{ getItemContent(item) }}
                 </div>
                 <span v-if="!item.disabled"
                       :class="`${prefixCls}-selection__choice__remove`"
-                      @click.stop.prevent="removeSelected(item)">
-                </span>
+                      @click.stop.prevent="removeSelected(item)" />
               </li>
               <li :class="`${prefixCls}-search ${prefixCls}-search--inline`">
                 <div :class="`${prefixCls}-search__field__wrap`">
@@ -80,7 +79,7 @@
                          :disabled="disabled"
                          :value="inputValue"
                          @input="onSearchInput"
-                         @keydown="onInputKeydown" />
+                         @keydown="onInputKeydown">
                   <span ref="inputMirror"
                         :class="`${prefixCls}-search__field__mirror`">{{inputValue}}&nbsp;&nbsp;</span>
                 </div>
@@ -94,19 +93,18 @@
               :class="`${prefixCls}-selection__clear`"
               :style="unSelectStyle"
               unselectable="unselectable"
-              @click.stop="onClear">
-        </span>
+              @click.stop="onClear" />
         <span role="arrow"
               v-if="!isMultipleOrTags&&showArrow"
               :class="`${prefixCls}-arrow`"
               :style="unSelectStyle"
               unselectable="unselectable">
-          <b></b>
+          <b/>
         </span>
       </div>
     </select-trigger>
     <!--渲染原始option,optionGroup元素 必须-->
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -121,7 +119,7 @@
     name: 'Select',
     provide() {
       return {
-        root: this,
+        selectRoot: this,
       };
     },
     props: {

@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -12,7 +12,7 @@
     name: 'Steps',
     provide() {
       return {
-        root: this,
+        stepRoot: this,
       };
     },
     props: {

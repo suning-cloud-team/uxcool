@@ -14,7 +14,7 @@ import Steps from '../steps';
 export default {
   provide() {
     return {
-      root: this,
+      sliderRoot: this,
     };
   },
   mixins: [CalcMixin],
