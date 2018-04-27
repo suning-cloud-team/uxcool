@@ -2,14 +2,16 @@
   <div :class="[classes, notificationClass]"
        :style="notificationStyle">
     <transition-group tag="div"
+                      appear
                       :name="groupTransition">
       <!-- 通过key,使vue不再复用,以处理内部使用setTimeout时,复用后可能无法找到实例的问题 -->
-      <notice v-for="(item,i) in value"
+      <notice v-for="item in value"
               :key="item.$$id"
+              :class="item.className"
+              :style="item.style"
               v-bind="item.props"
               :prefix-cls="prefixCls"
-              @close="onClose(item)">
-      </notice>
+              @close="onClose(item)" />
     </transition-group>
   </div>
 </template>
@@ -20,19 +22,36 @@
 
   export default {
     name: 'Notification',
+    components: {
+      Notice,
+    },
     props: {
       prefixCls: {
         type: String,
         default: 'v-notification',
       },
-      notificationClass: [String, Array, Object],
-      notificationStyle: Object,
-      transitionName: String,
+      notificationClass: {
+        type: [String, Array, Object],
+        default: '',
+      },
+      notificationStyle: {
+        type: Object,
+        default: null,
+      },
+      transitionName: {
+        type: String,
+        default: '',
+      },
       animation: {
         type: String,
         default: 'fade',
       },
-      value: Array,
+      value: {
+        type: Array,
+        default() {
+          return [];
+        },
+      },
     },
     computed: {
       classes() {
@@ -58,9 +77,6 @@
           item.onClose();
         }
       },
-    },
-    components: {
-      Notice,
     },
   };
 </script>

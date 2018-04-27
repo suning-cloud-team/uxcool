@@ -34,6 +34,7 @@ import BackTop from './views/backtop/index';
 import Avatar from './views/avatar/index';
 import Popconfirm from './views/popconfirm/index';
 import InputNumber from './views/input-number/index';
+import Notification from './views/notification/index';
 
 Vue.use(Router);
 const routes = [
@@ -206,6 +207,11 @@ const routes = [
     name: 'InputNumber',
     path: '/inputnumber',
     component: InputNumber,
+  },
+  {
+    name: 'Notification',
+    path: '/notification',
+    component: Notification,
   },
 ];
 
