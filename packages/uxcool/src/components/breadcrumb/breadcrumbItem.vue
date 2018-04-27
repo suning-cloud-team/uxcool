@@ -3,7 +3,7 @@
 
   export default {
     name: buildComponentName('BreadcrumbItem'),
-    inject: ['root'],
+    inject: ['breadcrumbRoot'],
     props: {
       href: {
         type: String,
@@ -12,10 +12,10 @@
     },
     computed: {
       rootPrefixCls() {
-        return this.root.prefixCls;
+        return this.breadcrumbRoot.prefixCls;
       },
       separator() {
-        return this.root.separator;
+        return this.breadcrumbRoot.separator;
       },
     },
     render() {

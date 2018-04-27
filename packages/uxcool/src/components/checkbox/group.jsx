@@ -5,7 +5,7 @@ export default {
   name: buildComponentName('CheckboxGroup'),
   provide() {
     return {
-      root: this,
+      checkboxGroupRoot: this,
     };
   },
   components: {

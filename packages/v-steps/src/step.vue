@@ -2,42 +2,49 @@
   <div ref="step"
        :class="classes"
        :style="itemStyle">
-    <div :class="`${prefixCls}-tail`"></div>
+    <div :class="`${prefixCls}-tail`" />
     <div :class="`${prefixCls}-icon`">
       <span :class="iconClasses($slots.icon)">
         <slot name="icon"
               :class="`${rootPrefixCls}-icon-dot`">
           <span v-if="progressDot"
-                :class="`${rootPrefixCls}-icon-dot`">
-          </span>
+                :class="`${rootPrefixCls}-icon-dot`" />
           <span v-else-if="(!icon && status!=='finish' && status!=='error')">
-            {{seq + 1}}
+            {{ seq + 1 }}
           </span>
         </slot>
       </span>
     </div>
     <div :class="`${prefixCls}-content`">
       <div :class="`${prefixCls}-title`">
-        <slot name="title">{{title}}</slot>
+        <slot name="title">{{ title }}</slot>
       </div>
       <div :class="`${prefixCls}-description`">
-        <slot name="desc">{{desc}}</slot>
+        <slot name="desc">{{ desc }}</slot>
       </div>
     </div>
   </div>
 </template>
-
 
 <script>
   import { getStyleComputedProperty } from './utils';
 
   export default {
     name: 'Step',
-    inject: ['root'],
+    inject: ['stepRoot'],
     props: {
-      icon: String,
-      title: String,
-      desc: String,
+      icon: {
+        type: String,
+        default: '',
+      },
+      title: {
+        type: String,
+        default: '',
+      },
+      desc: {
+        type: String,
+        default: '',
+      },
     },
     data() {
       return {
@@ -48,28 +55,28 @@
     },
     computed: {
       rootPrefixCls() {
-        return this.root.prefixCls;
+        return this.stepRoot.prefixCls;
       },
       prefixCls() {
         return `${this.rootPrefixCls}-item`;
       },
       iconPrefix() {
-        return this.root.iconPrefix;
+        return this.stepRoot.iconPrefix;
       },
       rootStatus() {
-        return this.root.status;
+        return this.stepRoot.status;
       },
       isSupportFlex() {
-        return this.root.isSupportFlex;
+        return this.stepRoot.isSupportFlex;
       },
       direction() {
-        return this.root.direction;
+        return this.stepRoot.direction;
       },
       progressDot() {
-        return this.root.progressDot;
+        return this.stepRoot.progressDot;
       },
       current() {
-        return this.root.normalizeCurrent;
+        return this.stepRoot.normalizeCurrent;
       },
       status() {
         const { seq, current, rootStatus } = this;
@@ -82,7 +89,7 @@
         return s;
       },
       lastDescendantOffsetW() {
-        return this.root.lastDescendantOffsetW;
+        return this.stepRoot.lastDescendantOffsetW;
       },
       hasNextError() {
         const { rootStatus, seq, current } = this;
@@ -137,23 +144,24 @@
         const {
           rootPrefixCls, iconPrefix, icon, status, progressDot
         } = this;
+        const isIconFinishError = icon || status === 'finish' || status === 'error';
+        const isIconPrefix = !progressDot && !slotIcon && isIconFinishError;
         return {
           [`${rootPrefixCls}-icon`]: true,
-          [`${iconPrefix}`]:
-            !progressDot && !slotIcon && (icon || status === 'finish' || status === 'error'),
+          [iconPrefix]: isIconPrefix,
           [`${iconPrefix}-${icon}`]: !progressDot && !slotIcon && icon,
           [`${iconPrefix}-ok`]: !progressDot && !slotIcon && !icon && status === 'finish',
           [`${iconPrefix}-close`]: !progressDot && !slotIcon && !icon && status === 'error',
         };
       },
       addToRoot() {
-        this.root.addDescendant(this);
+        this.stepRoot.addDescendant(this);
       },
       removeFromRoot() {
-        this.root.removeDescendant(this);
+        this.stepRoot.removeDescendant(this);
       },
       updateRootLastDescendantOffsetW(width) {
-        this.root.updateLastDescendantOffsetW(width);
+        this.stepRoot.updateLastDescendantOffsetW(width);
       },
     },
   };

@@ -1,6 +1,6 @@
 export default {
   inject: {
-    root: {
+    checkboxGroupRoot: {
       default() {
         return null;
       },
@@ -8,18 +8,18 @@ export default {
   },
   computed: {
     isChildren() {
-      return !!this.root;
+      return !!this.checkboxGroupRoot;
     },
     rootDisabled() {
-      return this.isChildren ? this.root.disabled : null;
+      return this.isChildren ? this.checkboxGroupRoot.disabled : null;
     },
     rootValue() {
-      return this.isChildren ? this.root.innerValue : null;
+      return this.isChildren ? this.checkboxGroupRoot.innerValue : null;
     },
   },
   methods: {
     toggleCheckbox(value) {
-      this.root.toggleCheckbox(value);
+      this.checkboxGroupRoot.toggleCheckbox(value);
     },
   },
 };

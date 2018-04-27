@@ -11,7 +11,7 @@
              destroy-popup-on-hide
              @on-popup-visible-change="onPopupVisible">
       <template slot="trigger">
-        <slot></slot>
+        <slot />
       </template>
       <dropdown-menu slot="popup"
                      @on-blur="onBlur"
@@ -25,8 +25,7 @@
                      :show-search="showSearch"
                      :theme="theme"
                      @menu-select="onMenuSelect"
-                     @menu-deselect="onMenuDeselect">
-      </dropdown-menu>
+                     @menu-deselect="onMenuDeselect" />
     </trigger>
   </div>
 </template>
@@ -39,7 +38,11 @@
 
   export default {
     name: 'SelectTrigger',
-    inject: ['root'],
+    inject: ['selectRoot'],
+    components: {
+      Trigger,
+      DropdownMenu,
+    },
     props: {
       prefixCls: String,
       descendants: Array,
@@ -59,12 +62,9 @@
         popupWidth: -1,
       };
     },
-    mounted() {
-      this.setPopupWidth();
-    },
     computed: {
       rootUUID() {
-        return this.root.UUID;
+        return this.selectRoot.UUID;
       },
       dropDownPrefixCls() {
         const { prefixCls } = this;
@@ -102,12 +102,17 @@
         return descs;
       },
     },
+    mounted() {
+      this.setPopupWidth();
+    },
     methods: {
       onBlur() {
-        console.log('blur');
+        this.$emit('blur');
+        // console.log('blur');
       },
       onFocus() {
-        console.log('focus');
+        this.$emit('focus');
+        // console.log('focus');
       },
       onMenuSelect(e) {
         this.$emit('menu-select', e);
@@ -136,7 +141,7 @@
         return [
           {
             type: CMP_TYPE_ENUM.OPTION,
-            parent: this.root,
+            parent: this.selectRoot,
             vm: {
               label,
               value: label,
@@ -146,10 +151,6 @@
           },
         ];
       },
-    },
-    components: {
-      Trigger,
-      DropdownMenu,
     },
   };
 </script>

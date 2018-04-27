@@ -11,7 +11,7 @@
     name: buildComponentName('Breadcrumb'),
     provide() {
       return {
-        root: this,
+        breadcrumbRoot: this,
       };
     },
     props: {
