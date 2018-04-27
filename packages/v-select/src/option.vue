@@ -1,4 +1,4 @@
- 
+
 <script>
   import { CMP_TYPE_ENUM } from './constants';
   import { logFactory, getCmpParent, genUUID } from './utils';
@@ -7,7 +7,7 @@
 
   export default {
     name: 'Option',
-    inject: ['root'],
+    inject: ['selectRoot'],
     props: {
       prefixCls: String,
       value: { type: [String, Number], required: true },
@@ -19,14 +19,6 @@
         isOption: true,
       };
     },
-    render() {},
-    created() {
-      log('root: %O', this.root);
-      this.addToRoot();
-    },
-    beforeDestroy() {
-      this.removeFromRoot();
-    },
     computed: {
       UUID() {
         return genUUID();
@@ -35,9 +27,16 @@
         return getCmpParent(this);
       },
     },
+    created() {
+      log('selectRoot: %O', this.selectRoot);
+      this.addToRoot();
+    },
+    beforeDestroy() {
+      this.removeFromRoot();
+    },
     methods: {
       addToRoot() {
-        this.root.addDescendant({
+        this.selectRoot.addDescendant({
           type: CMP_TYPE_ENUM.OPTION,
           UUID: this.UUID,
           parent: this.parent,
@@ -45,8 +44,9 @@
         });
       },
       removeFromRoot() {
-        this.root.removeDescendant(this);
+        this.selectRoot.removeDescendant(this);
       },
     },
+    render() {},
   };
 </script>

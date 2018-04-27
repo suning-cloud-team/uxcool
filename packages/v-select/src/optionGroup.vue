@@ -7,7 +7,7 @@
 
   export default {
     name: 'OptionGroup',
-    inject: ['root'],
+    inject: ['selectRoot'],
     props: {
       label: { type: String, required: true },
     },
@@ -15,16 +15,6 @@
       return {
         isOptionGroup: true,
       };
-    },
-    render(h) {
-      return h('template', this.$slots.default);
-    },
-    created() {
-      log('root %O', this.root);
-      this.addToRoot();
-    },
-    beforeDestroy() {
-      this.removeFromRoot();
     },
     computed: {
       UUID() {
@@ -34,9 +24,16 @@
         return getCmpParent(this);
       },
     },
+    created() {
+      log('selectRoot %O', this.selectRoot);
+      this.addToRoot();
+    },
+    beforeDestroy() {
+      this.removeFromRoot();
+    },
     methods: {
       addToRoot() {
-        this.root.addDescendant({
+        this.selectRoot.addDescendant({
           type: CMP_TYPE_ENUM.GROUP,
           UUID: this.UUID,
           parent: this.parent,
@@ -44,8 +41,11 @@
         });
       },
       removeFromRoot() {
-        this.root.removeDescendant(this);
+        this.selectRoot.removeDescendant(this);
       },
+    },
+    render(h) {
+      return h('template', this.$slots.default);
     },
   };
 </script>

@@ -6,7 +6,7 @@
     name: 'Tabs',
     provide() {
       return {
-        root: this,
+        tabRoot: this,
       };
     },
     props: {
@@ -111,7 +111,7 @@
           $vnode = $vnode.parent;
         }
         const filterDescendants = slotDefault.filter(node =>
-          /^([a-zA-Z]+)-tab-pane$/.test((node.componentOptions || {}).tag));
+        /^([a-zA-Z]+)-tab-pane$/.test((node.componentOptions || {}).tag));
         const idx = filterDescendants.indexOf($vnode);
         this.descendants.splice(idx, 0, item);
       },

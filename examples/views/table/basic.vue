@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <normal-demo />
     <selection-single-demo/>
     <selection-demo/>
@@ -24,6 +25,7 @@
     <editable-rows-demo/>
     <nest-table-demo/>
     <async-nest-table-demo/>
+    <tabs-demo />
   </div>
 </template>
 
@@ -55,6 +57,7 @@
   import EditableRowsDemo from './editableRows.vue';
   import NestTableDemo from './nestTable.vue';
   import AsyncNestTableDemo from './asyncNestTable.vue';
+  import TabsDemo from './tabs.vue';
 
   export default {
     components: {
@@ -83,6 +86,7 @@
       EditableRowsDemo,
       NestTableDemo,
       AsyncNestTableDemo,
+      TabsDemo,
     },
   };
 </script>

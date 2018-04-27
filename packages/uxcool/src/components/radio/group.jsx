@@ -6,7 +6,7 @@ export default {
   name: buildComponentName('RadioGroup'),
   provide() {
     return {
-      root: this,
+      radioGroupRoot: this,
     };
   },
   props: {

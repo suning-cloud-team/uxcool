@@ -1,5 +1,8 @@
-import UxTabs from './tabs.vue';
-import UxTabPane from './tabPane.vue';
+import Tabs from './tabs.vue';
+import TabPane from './tabPane.vue';
 
-export { UxTabs, UxTabPane };
-export default UxTabs;
+Tabs.TabPane = TabPane;
+
+export { Tabs as UxTabs, TabPane as UxTabPane };
+
+export default Tabs;

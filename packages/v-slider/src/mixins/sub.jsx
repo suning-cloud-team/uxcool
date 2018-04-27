@@ -1,40 +1,40 @@
 export default {
-  inject: ['root'],
+  inject: ['sliderRoot'],
   computed: {
     prefixCls() {
-      return this.root.prefixCls;
+      return this.sliderRoot.prefixCls;
     },
     marks() {
-      return this.root.marks;
+      return this.sliderRoot.marks;
     },
     dots() {
-      return this.root.dots;
+      return this.sliderRoot.dots;
     },
     included() {
-      return this.root.included;
+      return this.sliderRoot.included;
     },
     min() {
-      return this.root.min;
+      return this.sliderRoot.min;
     },
     max() {
-      return this.root.max;
+      return this.sliderRoot.max;
     },
     vertical() {
-      return this.root.vertical;
+      return this.sliderRoot.vertical;
     },
     step() {
-      return this.root.step;
+      return this.sliderRoot.step;
     },
     dotStyle() {
-      return this.root.dotStyle;
+      return this.sliderRoot.dotStyle;
     },
     activeDotStyle() {
-      return this.root.activeDotStyle;
+      return this.sliderRoot.activeDotStyle;
     },
   },
   methods: {
     calcOffset(val) {
-      return this.root.calcOffset(val);
+      return this.sliderRoot.calcOffset(val);
     },
   },
 };

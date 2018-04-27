@@ -12,8 +12,8 @@
   <div id="app">
     <v-select style="width:500px">
       <v-option v-for="(opt, i) in options" :key="i" :value="opt.value" :label="opt.label"></v-option>
-      <v-option-group v-for="(group, j) in optionGroups" :key="j" :label="group.label">
-        <v-option v-for="(item, z) in group.options" :key="z" :value="item.value" :label="item.label"></v-option>
+      <v-option-group v-for="(group, j) in optionGroups" :key="'g'+j" :label="group.label">
+        <v-option v-for="(item, z) in group.options" :key="'o-g' + z" :value="item.value" :label="item.label"></v-option>
       </v-option-group>
     </v-select>
   </div>

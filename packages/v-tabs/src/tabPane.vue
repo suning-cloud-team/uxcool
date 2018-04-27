@@ -8,7 +8,7 @@
 <script>
   export default {
     name: 'TabPane',
-    inject: ['root'],
+    inject: ['tabRoot'],
     props: {
       name: { type: String, required: true },
       tab: String,
@@ -20,13 +20,13 @@
     },
     computed: {
       rootPrefixCls() {
-        return this.root.prefixCls;
+        return this.tabRoot.prefixCls;
       },
       activeName() {
-        return this.root.activeName;
+        return this.tabRoot.activeName;
       },
       destroyInactiveTabPane() {
-        return this.root.destroyInactiveTabPane;
+        return this.tabRoot.destroyInactiveTabPane;
       },
       prefixCls() {
         return `${this.rootPrefixCls}-tabpane`;
@@ -56,10 +56,10 @@
     },
     methods: {
       addToRoot() {
-        this.root.addDescendant(this);
+        this.tabRoot.addDescendant(this);
       },
       removeFromRoot() {
-        this.root.removeDescendant(this);
+        this.tabRoot.removeDescendant(this);
       },
     },
   };
