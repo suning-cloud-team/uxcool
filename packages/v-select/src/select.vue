@@ -81,7 +81,9 @@
                          @input="onSearchInput"
                          @keydown="onInputKeydown">
                   <span ref="inputMirror"
-                        :class="`${prefixCls}-search__field__mirror`">{{inputValue}}&nbsp;&nbsp;</span>
+                        :class="`${prefixCls}-search__field__mirror`">
+                    {{ inputValue }}&nbsp;&nbsp;
+                  </span>
                 </div>
               </li>
             </ul>
@@ -131,7 +133,10 @@
         type: String,
         default: 'v-select',
       },
-      value: [String, Array],
+      value: {
+        type: [String, Array],
+        default: '',
+      },
       mode: {
         type: String,
         validator(val) {
@@ -143,18 +148,38 @@
         type: String,
         default: 'light',
       },
-      disabled: Boolean,
-      allowClear: Boolean,
-      showSearch: Boolean,
-      placeholder: String,
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
+      allowClear: {
+        type: Boolean,
+        default: false,
+      },
+      showSearch: {
+        type: Boolean,
+        default: false,
+      },
+      placeholder: {
+        type: String,
+        default: '',
+      },
       showArrow: {
         type: Boolean,
         default: true,
       },
       dropdownMatchSelectWidth: {
         type: Boolean,
+        default: true,
       },
-      dropdownMenuStyle: [Array, Object],
+      dropdownMenuStyle: {
+        type: [Array, Object],
+        default: undefined,
+      },
+      getContainer: {
+        type: Function,
+        default: null,
+      },
     },
     data() {
       return {
@@ -375,7 +400,6 @@
         if (isMultipleOrTags) {
           this.$nextTick(() => {
             forcePopupAlign();
-            // this.multipleSearchInputStyle = calcMultipleSearchInputWidth(value, $refs.inputMirror);
           });
         }
       },

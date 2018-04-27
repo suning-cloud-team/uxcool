@@ -92,6 +92,20 @@
       </ux-select>
 
     </div> -->
+
+    <h4>getContainer</h4>
+    <div class="demo"
+         ref="selectContainerRef">
+      <ux-select :theme="theme"
+                 :get-container="getContainer"
+                 mode="multiple"
+                 style="width:200px;margin-left:200px;">
+        <ux-option value="A">A</ux-option>
+        <ux-option value="B">B</ux-option>
+        <ux-option value="C">C</ux-option>
+      </ux-select>
+
+    </div>
   </div>
 </template>
 
@@ -116,6 +130,9 @@
     methods: {
       changeTheme() {
         this.theme = this.theme === 'light' ? 'dark' : 'light';
+      },
+      getContainer() {
+        return this.$refs.selectContainerRef;
       },
     },
   };

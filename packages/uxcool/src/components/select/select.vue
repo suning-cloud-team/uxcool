@@ -1,7 +1,7 @@
 <template>
   <v-select v-bind="$props"
             v-on="$listeners">
-    <slot></slot>
+    <slot />
   </v-select>
 </template>
 
@@ -12,6 +12,9 @@
 
   export default {
     name: buildComponentName('Select'),
+    components: {
+      VSelect,
+    },
     props: {
       prefixCls: {
         type: String,
@@ -39,11 +42,16 @@
       },
       dropdownMatchSelectWidth: {
         type: Boolean,
+        default: true,
       },
-      dropdownMenuStyle: [Array, Object],
-    },
-    components: {
-      VSelect,
+      dropdownMenuStyle: {
+        type: [Array, Object],
+        default: undefined,
+      },
+      getContainer: {
+        type: Function,
+        default: null,
+      },
     },
   };
 </script>
