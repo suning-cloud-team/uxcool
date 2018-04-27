@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <!-- <normal-demo />
+    <normal-demo />
     <selection-single-demo/>
     <selection-demo/>
     <selection-row-demo/>
@@ -24,7 +24,7 @@
     <editable-cells-demo/>
     <editable-rows-demo/>
     <nest-table-demo/>
-    <async-nest-table-demo/> -->
+    <async-nest-table-demo/>
     <tabs-demo />
   </div>
 </template>
