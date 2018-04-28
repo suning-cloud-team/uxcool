@@ -45,31 +45,31 @@
       <h6>loading</h6>
       <button class="ux-btn"
               @click="loading">
-        async loading</button>
-    </div>
-
-    <div class="demo">
-      <h6>config</h6>
-      <button class="ux-btn"
-              @click="config">
-        config</button>
+        async loading
+      </button>
     </div>
 
     <div class="demo">
       <h6>detroy all message</h6>
       <button class="ux-btn"
               @click="destroy">
-        detroy all message</button>
+        detroy all message
+      </button>
     </div>
+
+    <config-demo />
   </div>
 </template>
 
 
 <script>
-  import '@suning/uxcool/src/components/message/style/index.scss';
-  import UxMessage from '@suning/uxcool/src/components/message';
+  import { Message as UxMessage } from '@suning/uxcool';
+  import ConfigDemo from './config.vue';
 
   export default {
+    components: {
+      ConfigDemo,
+    },
     data() {
       return {
         theme: 'light',
