@@ -198,6 +198,43 @@
         </ux-button>
       </ux-button-group>
     </div>
+    <div class="demo">
+      <h6>size</h6>
+      <ux-radio-group v-model="size"
+                      @change="onChangeSize">
+        <ux-radio-button value="large">Large</ux-radio-button>
+        <ux-radio-button value="default">Default</ux-radio-button>
+        <ux-radio-button value="small">small</ux-radio-button>
+      </ux-radio-group>
+      <br>
+      <br>
+      <ux-button type="primary"
+                 :size="size">primary</ux-button>
+      <ux-button :size="size">default</ux-button>
+      <ux-button type="dashed"
+                 :size="size">dashed</ux-button>
+      <ux-button type="danger"
+                 :size="size">danger</ux-button>
+
+      <br>
+      <ux-button type="primary"
+                 shape="circle"
+                 icon="search"
+                 :size="size" />
+      <ux-button type="primary"
+                 icon="search"
+                 :size="size">search</ux-button>
+      <br>
+      <ux-button-group :size="size">
+        <ux-button type="primary">
+          <Icon type="left" />back
+        </ux-button>
+        <ux-button type="primary">
+          forward
+          <Icon type="right" />
+        </ux-button>
+      </ux-button-group>
+    </div>
   </div>
 </template>
 
