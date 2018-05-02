@@ -59,3 +59,5 @@ export { default as UxAvatar } from './avatar';
 export { default as UxPopconfirm } from './popconfirm';
 
 export { default as UxInputNumber } from './input-number';
+
+export * from './anchor';

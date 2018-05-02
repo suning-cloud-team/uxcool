@@ -35,6 +35,7 @@ import Avatar from './views/avatar/index';
 import Popconfirm from './views/popconfirm/index';
 import InputNumber from './views/input-number/index';
 import Notification from './views/notification/index';
+import Anchor from './views/anchor/index';
 
 Vue.use(Router);
 const routes = [
@@ -212,6 +213,11 @@ const routes = [
     name: 'Notification',
     path: '/notification',
     component: Notification,
+  },
+  {
+    name: 'Anchor',
+    path: '/anchor',
+    component: Anchor,
   },
 ];
 
