@@ -5,11 +5,16 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const rimraf = require('rimraf');
 
 const postCssUtils = require('../postCss');
-const { getRoot, getPackageJSON } = require('../utils');
+const {
+  getRoot,
+  getPackageJSON
+} = require('../utils');
 const alias = require('./alias');
 
 const root = getRoot();
-const { vueCompileOpts = {} } = getPackageJSON(path.resolve(root, 'package.json'));
+const {
+  vueCompileOpts = {}
+} = getPackageJSON(path.resolve(root, 'package.json'));
 const srcPath = path.resolve(root, 'examples');
 const distPath = path.resolve(root, 'examples/dist');
 
@@ -49,6 +54,7 @@ function getConfig(env) {
   if (!env.server) {
     rimraf.sync(distPath);
   }
+  process.env.NODE_ENV = 'development';
   return {
     entry: {
       vendor: ['vue', 'echarts'],
@@ -64,8 +70,7 @@ function getConfig(env) {
       extensions: ['.js', '.json', '.jsx'],
     },
     module: {
-      rules: [
-        {
+      rules: [{
           test: /\.js(x)?$/,
           loader: 'babel-loader?cacheDirectory',
           exclude: /node_modules/,
@@ -91,8 +96,7 @@ function getConfig(env) {
           test: /\.(s)?css$/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: [
-              {
+            use: [{
                 loader: 'css-loader',
                 options: {},
               },

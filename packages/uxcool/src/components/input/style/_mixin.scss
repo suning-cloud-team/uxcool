@@ -65,18 +65,14 @@ $input-affix-width: 19px;
 
   &-disabled {
     @include disabled();
-  }
-
-  // Reset height for `textarea`s
-  textarea#{&} {
+  } // Reset height for `textarea`s
+  @at-root textarea#{&} {
     max-width: 100%; // prevent textearea resize from coming out of its container
     height: auto;
     vertical-align: bottom;
     transition: all 0.3s, height 0s;
     min-height: $input-height-base;
-  }
-
-  // Size
+  } // Size
   &-lg {
     @include input-lg();
   }
@@ -92,9 +88,7 @@ $input-affix-width: 19px;
   display: table;
   border-collapse: separate;
   border-spacing: 0;
-  width: 100%;
-
-  // Undo padding and float of grid classes
+  width: 100%; // Undo padding and float of grid classes
   &[class*='col-'] {
     float: none;
     padding-left: 0;
@@ -149,12 +143,9 @@ $input-affix-width: 19px;
     border: $border-width-base $border-style-base $input-border-color;
     border-radius: $border-radius-base;
     position: relative;
-    transition: all 0.3s;
-
-    // Reset Select's style in addon
+    transition: all 0.3s; // Reset Select's style in addon
     .#{$ux-prefix}-select {
       margin: -($input-padding-vertical-base + 1px) (-$input-padding-horizontal-base); // lesshint spaceAroundOperator: false
-
       .#{$ux-prefix}-select-selection {
         background-color: inherit;
         margin: -1px;
@@ -168,9 +159,7 @@ $input-affix-width: 19px;
           color: $primary-color;
         }
       }
-    }
-
-    // Expand addon icon click area
+    } // Expand addon icon click area
     // https://github.com/ant-design/ant-design/issues/3714
     > i:only-child:after {
       position: absolute;
@@ -180,15 +169,11 @@ $input-affix-width: 19px;
       right: 0;
       bottom: 0;
     }
-  }
-
-  // Reset rounded corners
+  } // Reset rounded corners
   > .#{$inputClass}:first-child,
   &-addon:first-child {
     border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-
-    // Reset Select's style in addon
+    border-top-right-radius: 0; // Reset Select's style in addon
     .#{$ux-prefix}-select .#{$ux-prefix}-select-selection {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
@@ -217,16 +202,12 @@ $input-affix-width: 19px;
   > .#{$inputClass}:last-child,
   &-addon:last-child {
     border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-
-    // Reset Select's style in addon
+    border-top-left-radius: 0; // Reset Select's style in addon
     .#{$ux-prefix}-select .#{$ux-prefix}-select-selection {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
     }
-  }
-
-  // Sizing options
+  } // Sizing options
   &-lg .#{$inputClass},
   &-lg > &-addon {
     @include input-lg();
@@ -235,9 +216,7 @@ $input-affix-width: 19px;
   &-sm .#{$inputClass},
   &-sm > &-addon {
     @include input-sm();
-  }
-
-  // Fix https://github.com/ant-design/ant-design/issues/5754
+  } // Fix https://github.com/ant-design/ant-design/issues/5754
   &-lg .#{$ux-prefix}-select-selection--single {
     height: $input-height-lg;
   }
@@ -262,15 +241,11 @@ $input-affix-width: 19px;
       vertical-align: top; // https://github.com/ant-design/ant-design-pro/issues/139
       float: none;
       display: inline-block;
-    }
-
-    // Undo float for .ant-input-group .ant-input
+    } // Undo float for .ant-input-group .ant-input
     .#{$inputClass} {
       float: none;
       z-index: auto;
-    }
-
-    // reset border for Select, DatePicker, AutoComplete, Cascader, Mention, TimePicker
+    } // reset border for Select, DatePicker, AutoComplete, Cascader, Mention, TimePicker
     & > .#{$ux-prefix}-select .#{$ux-prefix}-select-selection,
     & > .#{$ux-prefix}-calendar-picker .#{$ux-prefix}-input,
     & > .#{$ux-prefix}-select-auto-complete .#{$ux-prefix}-input,
@@ -311,12 +286,12 @@ $input-affix-width: 19px;
   display: inline-block;
   width: 100%;
 
-  .#{$inputClass} {
-    z-index: 1;
-  }
-
   &:hover .#{$inputClass}:not(.#{$inputClass}-disabled) {
     @include hover();
+  }
+
+  .#{$inputClass} {
+    position: static;
   }
 
   .#{$inputClass}-prefix,
@@ -324,7 +299,6 @@ $input-affix-width: 19px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 2;
     line-height: 0;
     color: $input-color;
   }

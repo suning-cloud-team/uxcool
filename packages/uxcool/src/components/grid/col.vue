@@ -16,7 +16,7 @@
     props: {
       span: {
         type: Number,
-        default: 24,
+        default: 0,
       },
       order: {
         type: Number,
@@ -55,7 +55,7 @@
             Object.keys(props).forEach((prop) => {
               classList.push(prop === 'span'
                 ? `${prefixCls}-${size}-${props[prop]}`
-                : `${prefixCls}-${size}-${prop}-${props[prop]}`);
+              : `${prefixCls}-${size}-${prop}-${props[prop]}`);
             });
           }
         });

@@ -34,7 +34,8 @@
       <h3>flex</h3>
       <ux-row class="demo-row"
               flex>
-        <ux-col class="demo-col">span: 24</ux-col>
+        <ux-col class="demo-col"
+                :span="24">span: 24</ux-col>
       </ux-row>
       <ux-row class="demo-row"
               :flex="true">

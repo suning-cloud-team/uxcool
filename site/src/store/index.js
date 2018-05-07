@@ -43,6 +43,24 @@ const getters = {
 };
 
 const store = new Vuex.Store({
+  modules: {
+    form: {
+      state: {
+        userName: '',
+        password: '',
+      },
+      mutations: {
+        updateUserName(state, name) {
+          const nState = state;
+          nState.userName = name;
+        },
+        updatePassword(state, pwd) {
+          const nState = state;
+          nState.password = pwd;
+        },
+      },
+    },
+  },
   strict: isDebug,
   state: globalState,
   getters,

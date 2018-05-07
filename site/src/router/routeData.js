@@ -33,6 +33,7 @@ import Slider from '@/views/components/slider/index.vue';
 import Avatar from '@/views/components/avatar/index.vue';
 import Backtop from '@/views/components/backtop/index.vue';
 import Popconfirm from '@/views/components/popconfirm/index.vue';
+import Form from '@/views/components/form/index.vue';
 
 export const groups = {
   general: {
@@ -419,6 +420,16 @@ export default [
           group: 'notice',
         },
         component: Popconfirm,
+      },
+      {
+        name: 'form',
+        path: 'form',
+        meta: {
+          title: 'Form',
+          subTitle: '表单',
+          group: 'form',
+        },
+        component: Form,
       },
     ],
   },

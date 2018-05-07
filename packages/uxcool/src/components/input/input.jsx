@@ -1,6 +1,11 @@
 import { buildComponentName } from '../utils';
 
 export default {
+  $_veeValidate: {
+    value() {
+      return this.getValue();
+    },
+  },
   name: buildComponentName('Input'),
   inheritAttrs: false,
   props: {
@@ -36,6 +41,11 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      innerValue: '',
+    };
+  },
   computed: {
     classes() {
       const { prefixCls, size, disabled } = this;
@@ -45,7 +55,7 @@ export default {
         [`${prefixCls}-disabled`]: disabled,
       };
     },
-    bindProps() {
+    bindAttrs() {
       const { $attrs, disabled } = this;
       return {
         ...$attrs,
@@ -53,7 +63,48 @@ export default {
       };
     },
   },
+
+  watch: {
+    value(nVal) {
+      this.setValue(nVal);
+    },
+  },
+  created() {
+    this.setValue(this.value);
+  },
   methods: {
+    setValue(val) {
+      this.innerValue = val;
+    },
+    getValue() {
+      return this.innerValue;
+    },
+    onInput(e) {
+      const val = e.target.value;
+      this.setValue(val);
+      this.$emit('input', val);
+    },
+    onKeydown(e) {
+      if (e.keyCode === 13) {
+        this.$emit('pressenter', e);
+      }
+      this.$emit('keydown', e);
+    },
+    focus() {
+      const { $refs: { inputRef } } = this;
+      if (inputRef) {
+        inputRef.focus();
+      }
+    },
+    blur() {
+      const { $refs: { inputRef } } = this;
+      if (inputRef) {
+        inputRef.focus();
+      }
+    },
+    getInputElement() {
+      return this.$refs.inputRef;
+    },
     getSlotOrAttrVal(name) {
       const { $slots } = this;
 
@@ -74,7 +125,8 @@ export default {
         prefixCls,
         classes,
         $listeners,
-        bindProps,
+        bindAttrs,
+        innerValue,
         onInput,
         onKeydown,
         affixClass,
@@ -94,7 +146,10 @@ export default {
         <input
           {...{
             class: !prefix && !suffix ? [classes, affixClass] : classes,
-            attrs: bindProps,
+            attrs: bindAttrs,
+            domProps: {
+              value: innerValue,
+            },
             on,
             ref: 'inputRef',
           }}
@@ -154,30 +209,6 @@ export default {
           </span>
         </span>
       );
-    },
-    onInput(e) {
-      this.$emit('input', e.target.value);
-    },
-    onKeydown(e) {
-      if (e.keyCode === 13) {
-        this.$emit('pressenter', e);
-      }
-      this.$emit('keydown', e);
-    },
-    focus() {
-      const { $refs: { inputRef } } = this;
-      if (inputRef) {
-        inputRef.focus();
-      }
-    },
-    blur() {
-      const { $refs: { inputRef } } = this;
-      if (inputRef) {
-        inputRef.focus();
-      }
-    },
-    getInputElement() {
-      return this.$refs.inputRef;
     },
   },
   render() {

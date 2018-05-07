@@ -37,7 +37,7 @@
     "date-fns": "^1.29.0",
     "lodash": "^4.0.8",
     "object.omit": "^3.0.0",
-    "warning": "^3.0.0"
+    "vee-validate": "^2.0.9"
   },
   "engines": {
     "node": ">=6.11.0"
@@ -45,7 +45,11 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["es/*", "dist/*", "cjs/*"],
+  "files": [
+    "es/*",
+    "dist/*",
+    "cjs/*"
+  ],
   "vueCompileOpts": {
     "preserveWhitespace": false
   }

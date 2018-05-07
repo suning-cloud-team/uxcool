@@ -71,6 +71,9 @@
       this.innerChecked = this.checked;
     },
     methods: {
+      getValue() {
+        return this.innerChecked;
+      },
       onChange(e) {
         const { disabled, $props } = this;
         if (disabled) {

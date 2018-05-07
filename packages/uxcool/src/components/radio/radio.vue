@@ -18,6 +18,12 @@
 
   export default {
     name: buildComponentName('Radio'),
+    $_veeValidate: {
+      rejectsFalse: true,
+      value() {
+        return this.$refs.radioRef.getValue();
+      },
+    },
     components: {
       VCheckbox,
     },
@@ -67,8 +73,10 @@
         return p;
       },
       bindListeners() {
-        const { $listeners, isChildren, onGroupChange } = this;
-        const p = { ...$listeners };
+        const {
+          $listeners, isChildren, onInput, onChange, onGroupChange
+        } = this;
+        const p = { ...$listeners, input: onInput, change: onChange };
         if (isChildren) {
           p.change = (e) => {
             onGroupChange(e.target.value);
@@ -86,6 +94,12 @@
       },
     },
     methods: {
+      onInput(val) {
+        this.$emit('input', val);
+      },
+      onChange(e) {
+        this.$emit('change', e);
+      },
       focus() {
         const { $refs: { radioRef } } = this;
         if (radioRef) {
