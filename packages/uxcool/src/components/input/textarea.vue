@@ -1,5 +1,6 @@
 <template>
   <v-textarea v-bind="bindProps"
+              v-on="$listeners"
               :class="`${prefixCls}-${theme}`" />
 </template>
 
@@ -41,11 +42,6 @@
     computed: {
       bindProps() {
         return omit(this.$props, ['theme']);
-      },
-    },
-    methods: {
-      onChange(e) {
-        console.log(e.target.value);
       },
     },
   };

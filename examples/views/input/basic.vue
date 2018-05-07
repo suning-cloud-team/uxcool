@@ -9,10 +9,12 @@
                  class="custom-class"
                  style="resize:none"
                  :auto-size="{minRows:2, maxRows:6}" />
-
+    <br> eventVal:{{eventVal}}
     <ux-textarea spellcheck="false"
                  :theme="theme"
-                 :value="value"
+                 v-model="eventVal"
+                 @input="onInput"
+                 @on-change="onChange"
                  :auto-size="true" />
 
     <ux-textarea :value="value"
@@ -26,8 +28,12 @@
   import { UxTextarea } from '@suning/uxcool/src/components/input';
 
   export default {
+    components: {
+      UxTextarea,
+    },
     data() {
       return {
+        eventVal: 'acc',
         value: 'abc',
         theme: 'light',
       };
@@ -41,9 +47,12 @@
       changeTheme() {
         this.theme = this.theme === 'light' ? 'dark' : 'light';
       },
-    },
-    components: {
-      UxTextarea,
+      onInput(val) {
+        console.log('va', val);
+      },
+      onChange(e) {
+        console.log('onChange', e.target.value);
+      },
     },
   };
 </script>
