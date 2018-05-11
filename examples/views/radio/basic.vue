@@ -181,6 +181,14 @@
         opts6Checked: '',
       };
     },
+    created() {
+      setTimeout(() => {
+        this.checkedOpts1 = 'e';
+        setTimeout(() => {
+          this.checkedOpts1 = 'd';
+        }, 1500);
+      }, 2500);
+    },
     methods: {
       toggleDisabled() {
         this.tDisabled = !this.tDisabled;

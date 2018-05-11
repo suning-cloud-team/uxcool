@@ -74,6 +74,11 @@ export default {
       });
     },
   },
+  watch: {
+    value(nVal) {
+      this.innerValue = nVal;
+    },
+  },
   created() {
     this.innerValue = this.value;
   },
