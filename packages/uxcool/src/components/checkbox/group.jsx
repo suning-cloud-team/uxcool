@@ -61,9 +61,7 @@ export default {
   },
   watch: {
     value(nVal) {
-      if (nVal) {
-        this.innerValue = nVal;
-      }
+      this.innerValue = nVal;
     },
   },
   created() {

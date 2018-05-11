@@ -141,6 +141,11 @@
         indeterminateChecked: false,
       };
     },
+    created() {
+      setTimeout(() => {
+        this.checkedOpts = ['c', 'e'];
+      }, 2500);
+    },
     methods: {
       changeCChecked() {
         this.cChecked = !this.cChecked;
