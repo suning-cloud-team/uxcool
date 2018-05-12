@@ -2,20 +2,34 @@
   export default {
     name: 'Notice',
     props: {
-      prefixCls: String,
+      prefixCls: {
+        type: String,
+        default: '',
+      },
       duration: {
         type: [Number, String],
         // ms
         default: 1500,
       },
-      content: [String, Object],
-      dangerouslySetInnerHTML: Boolean,
-      closable: Boolean,
-      noticeClass: [String, Array, Object],
-      noticeStyle: Object,
-      onClose: {
-        type: Function,
-        default() {},
+      content: {
+        type: [String, Object],
+        default: '',
+      },
+      dangerouslySetInnerHTML: {
+        type: Boolean,
+        default: false,
+      },
+      closable: {
+        type: Boolean,
+        default: false,
+      },
+      noticeClass: {
+        type: [String, Array, Object],
+        default: '',
+      },
+      noticeStyle: {
+        type: Object,
+        default: null,
       },
     },
     data() {
@@ -34,6 +48,39 @@
           [noticePrefixCls]: true,
           [`${noticePrefixCls}-closable`]: closable,
         };
+      },
+    },
+    created() {
+      this.startTimer();
+    },
+    beforeDestroy() {
+      const { clearTimer } = this;
+      clearTimer();
+    },
+    methods: {
+      close() {
+        this.clearTimer();
+        this.$emit('close');
+      },
+      startTimer() {
+        const {
+          duration, close, clearTimer, timer
+        } = this;
+        if (timer) {
+          clearTimer();
+        }
+        if (duration) {
+          this.timer = setTimeout(() => {
+            close();
+          }, duration);
+        }
+      },
+      clearTimer() {
+        const { timer } = this;
+        if (timer) {
+          clearTimeout(timer);
+          this.timer = null;
+        }
       },
     },
     render() {
@@ -58,7 +105,7 @@
             },
           }}
         />
-      ) : (
+        ) : (
         <div class={`${noticePrefixCls}-content`}>{content}</div>
       );
 
@@ -77,39 +124,6 @@
           ) : null}
         </div>
       );
-    },
-    created() {
-      this.startTimer();
-    },
-    beforeDestroy() {
-      const { clearTimer } = this;
-      clearTimer();
-    },
-    methods: {
-      close(from) {
-        this.clearTimer();
-        this.$emit('close');
-      },
-      startTimer() {
-        const {
-          duration, close, clearTimer, timer
-        } = this;
-        if (timer) {
-          clearTimer();
-        }
-        if (duration) {
-          this.timer = setTimeout(() => {
-            close();
-          }, duration);
-        }
-      },
-      clearTimer() {
-        const { timer } = this;
-        if (timer) {
-          clearTimeout(timer);
-          this.timer = null;
-        }
-      },
     },
   };
 </script>

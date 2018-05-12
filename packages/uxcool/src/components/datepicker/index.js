@@ -1,5 +1,6 @@
-import UxDatePicker from './datePicker.vue';
-import UxRangeDatePicker from './rangeDatePicker.vue';
+import DatePicker from './datepicker.vue';
+import Range from './rangeDatePicker.vue';
 
-export { UxDatePicker, UxRangeDatePicker };
-export default UxDatePicker;
+DatePicker.Range = Range;
+export { DatePicker as UxDatePicker, Range as UxRangeDatePicker };
+export default DatePicker;

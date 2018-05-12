@@ -400,8 +400,6 @@
         if (isMultipleOrTags) {
           this.$nextTick(() => {
             forcePopupAlign();
-            // this.multipleSearchInputStyle =
-            // calcMultipleSearchInputWidth(value, $refs.inputMirror);
           });
         }
       },

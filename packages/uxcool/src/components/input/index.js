@@ -1,3 +1,12 @@
+import Input from './input';
+import Search from './search';
+import Group from './group';
 import Textarea from './textarea.vue';
 
-export { Textarea as UxTextarea };
+Input.Search = Search;
+Input.Group = Group;
+Input.Textarea = Textarea;
+
+export { Input as UxInput, Search as UxSearchInput, Textarea as UxTextarea };
+
+export default Input;

@@ -22,7 +22,6 @@
     "@suning/v-datepicker": "^1.0.29",
     "@suning/v-dialog": "^1.0.6",
     "@suning/v-dropdown": "^1.0.4",
-    "@suning/v-input": "^1.0.5",
     "@suning/v-menu": "^1.0.25",
     "@suning/v-notification": "^1.0.4",
     "@suning/v-pagination": "^1.0.14",
@@ -45,11 +44,7 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": [
-    "es/*",
-    "dist/*",
-    "cjs/*"
-  ],
+  "files": ["es/*", "dist/*", "cjs/*"],
   "vueCompileOpts": {
     "preserveWhitespace": false
   }

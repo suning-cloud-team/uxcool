@@ -1,58 +1,31 @@
 <template>
   <div>
-    <button class="ux-btn"
-            @click="changeTheme">{{ theme }}</button>
-
-    <ux-textarea novalidate
-                 :theme="theme"
-                 placeholder="测试用"
-                 class="custom-class"
-                 style="resize:none"
-                 :auto-size="{minRows:2, maxRows:6}" />
-    <br> eventVal:{{eventVal}}
-    <ux-textarea spellcheck="false"
-                 :theme="theme"
-                 v-model="eventVal"
-                 @input="onInput"
-                 @on-change="onChange"
-                 :auto-size="true" />
-
-    <ux-textarea :value="value"
-                 :theme="theme" />
+    <group-demo />
+    <!-- <search-demo/>
+     <input-demo />
+    <size-demo/>
+    <tooltip-demo />
+    <textarea-demo/> -->
   </div>
 </template>
 
 
 <script>
-  import '@suning/uxcool/src/components/input/style/index.scss';
-  import { UxTextarea } from '@suning/uxcool/src/components/input';
+  import InputDemo from './input.vue';
+  import TextareaDemo from './textarea.vue';
+  import TooltipDemo from './tooltip.vue';
+  import SizeDemo from './size.vue';
+  import SearchDemo from './search.vue';
+  import GroupDemo from './group.vue';
 
   export default {
     components: {
-      UxTextarea,
-    },
-    data() {
-      return {
-        eventVal: 'acc',
-        value: 'abc',
-        theme: 'light',
-      };
-    },
-    created() {
-      setTimeout(() => {
-        this.value = 'c\nggggggggg';
-      }, 1500);
-    },
-    methods: {
-      changeTheme() {
-        this.theme = this.theme === 'light' ? 'dark' : 'light';
-      },
-      onInput(val) {
-        console.log('va', val);
-      },
-      onChange(e) {
-        console.log('onChange', e.target.value);
-      },
+      InputDemo,
+      TextareaDemo,
+      TooltipDemo,
+      SizeDemo,
+      SearchDemo,
+      GroupDemo,
     },
   };
 </script>

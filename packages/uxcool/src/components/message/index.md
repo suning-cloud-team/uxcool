@@ -1,15 +1,15 @@
 ## API
 
-### UxMessage.method()
+### Methods
 
 包括:
 
-* `UxMessage.info`
-* `UxMessage.success`
-* `UxMessage.error`
-* `UxMessage.warning`
-* `UxMessage.warn`
-  <!-- * `UxMessage.loading` -->
+* `UxMessage.info(config|content)`
+* `UxMessage.success(config|content)`
+* `UxMessage.error(config|content)`
+* `UxMessage.warning(config|content)`
+* `UxMessage.warn(config|content)`
+* `UxMessage.loading(config|content)`
 
 以上方法, 接收一个 `Object` 作为参数, 具体属性如下:
 

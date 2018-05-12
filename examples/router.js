@@ -33,6 +33,9 @@ import Form from './views/form/index';
 import BackTop from './views/backtop/index';
 import Avatar from './views/avatar/index';
 import Popconfirm from './views/popconfirm/index';
+import InputNumber from './views/input-number/index';
+import Notification from './views/notification/index';
+import Anchor from './views/anchor/index';
 
 Vue.use(Router);
 const routes = [
@@ -200,6 +203,21 @@ const routes = [
     name: 'Popconfirm',
     path: '/popconfirm',
     component: Popconfirm,
+  },
+  {
+    name: 'InputNumber',
+    path: '/inputnumber',
+    component: InputNumber,
+  },
+  {
+    name: 'Notification',
+    path: '/notification',
+    component: Notification,
+  },
+  {
+    name: 'Anchor',
+    path: '/anchor',
+    component: Anchor,
   },
 ];
 

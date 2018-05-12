@@ -1,8 +1,9 @@
 import Vue from 'vue';
+import { isNaN, isNumber } from '@suning/v-utils';
 import Notification from '@suning/v-notification';
 import Icon from '../icon';
 
-let defaultProps = {
+const defaultProps = {
   // ms
   duration: 1500,
   top: undefined,
@@ -42,6 +43,8 @@ const MESSAGE_TYPES = [
   },
 ];
 
+let customProps = { ...defaultProps };
+
 const Ctor = Vue.extend({
   components: {
     Icon,
@@ -52,14 +55,14 @@ const render = new Ctor();
 function getMessageInstance() {
   const {
     prefixCls, top, transitionName, getContainer, theme
-  } = defaultProps;
+  } = customProps;
 
   if (!msgInst) {
     msgInst = Notification.newInstance({
       prefixCls,
       notificationClass: [`${prefixCls}-${theme}`],
       notificationStyle: {
-        top,
+        top: isNaN(Number(top)) || top === null || top === '' ? top : `${Number(top)}px`,
       },
       transitionName,
       getContainer,
@@ -72,12 +75,12 @@ function notice({
   iconType,
   type,
   content = '',
-  duration = defaultProps.duration,
+  duration = customProps.duration,
   onClose,
   dangerouslySetInnerHTML,
   ...other
 }) {
-  const { prefixCls } = defaultProps;
+  const { prefixCls } = customProps;
   const instance = getMessageInstance();
   const h = render.$createElement; // eslint-disable-line no-unused-vars
   const contentVNode = (
@@ -125,27 +128,33 @@ UxMessage.config = ({
     prefixCls ||
     typeof getContainer === 'function' ||
     typeof top !== 'undefined' ||
-    theme !== defaultProps.theme
+    theme !== customProps.theme
   ) {
     UxMessage.destroy();
   }
-  const customProps = {
-    top,
-    duration,
-  };
+  const props = {};
+
+  if (typeof top !== 'undefined') {
+    props.top = top;
+  }
+
+  if (isNumber(duration)) {
+    props.duration = duration;
+  }
 
   if (typeof getContainer === 'function') {
-    customProps.getContainer = getContainer;
+    props.getContainer = getContainer;
   }
+
   if (prefixCls) {
-    customProps.prefixCls = prefixCls;
+    props.prefixCls = prefixCls;
   }
 
   if (theme) {
-    customProps.theme = theme;
+    props.theme = theme;
   }
 
-  defaultProps = { ...defaultProps, ...customProps };
+  customProps = { ...defaultProps, ...props };
 };
 
 UxMessage.destroy = () => {
