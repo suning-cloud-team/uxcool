@@ -229,7 +229,7 @@ function dist(configPath) {
     log('webpackConfig %o', cfgs);
     webpack(cfgs, (err, stats) => {
       if (err || stats.hasErrors()) {
-        console.log(err || stats.hasErrors());
+        console.log('error =>', err || stats.hasErrors());
         return;
       }
       console.log('webpack done!');
