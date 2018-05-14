@@ -6,7 +6,9 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "uxcool": {
     "srcPath": "packages/uxcool"
   },
@@ -90,6 +92,8 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
-    "nprogress": "^0.2.0"
+    "lodash.debounce": "^4.0.8",
+    "nprogress": "^0.2.0",
+    "vue-color": "^2.4.6"
   }
 }
