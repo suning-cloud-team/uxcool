@@ -15,9 +15,9 @@
   },
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap",
-    "build": "lerna run build --scope @suning/uxcool",
-    "compile:all": "lerna run compile && yarn run build",
     "compile:uxcool": "lerna run compile --scope @suning/uxcool",
+    "build:uxcool": "lerna run build --scope @suning/uxcool",
+    "build": "lerna run compile && yarn run build:uxcool",
     "site": "webpack-dev-server --config build/site/webpack.server.js",
     "build:site": "webpack --config build/site/prd.js",
     "build:example": "webpack  --config build/example/dev.js",
