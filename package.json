@@ -24,7 +24,7 @@
     "example": "webpack-dev-server --config build/example/server.js",
     "analyzer": "webpack --config  build/webpack/analyzer.js",
     "analyzer:site": "webpack --config  build/site/analyzer.js",
-    "pub": "lerna run compile && yarn run build && lerna publish"
+    "pub": "yarn run build && lerna publish"
   },
   "devDependencies": {
     "@vue/component-compiler": "^3.3.1",
