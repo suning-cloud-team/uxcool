@@ -1,7 +1,9 @@
 <template>
-  <main class="ux-layout-main-wrapper">
+  <main class="ux-layout-main-wrapper"
+        style="margin-left: 230px;">
     <slot name="header"></slot>
-    <div class="ux-layout-main">
+    <div class="ux-layout-main"
+         style="padding: 25px 0 25px 25px;">
       <slot></slot>
       <div class="footer-nav">
         <router-link tabindex="-1"
@@ -11,10 +13,10 @@
                      :key="i"
                      :to="{name: nav.name}">
           <template v-if="i===0">
-            <ux-icon type="arrow_left"></ux-icon>{{nav.title}}
+            <ux-icon type="arrow_left"></ux-icon>{{ nav.title }}
           </template>
           <template v-else>
-            {{nav.title}}
+            {{ nav.title }}
             <ux-icon type="arrow_right"></ux-icon>
           </template>
 
