@@ -228,10 +228,27 @@ function dist(configPath) {
   Promise.all(webpackConfig.map(fn => fn())).then((cfgs) => {
     log('webpackConfig %o', cfgs);
     webpack(cfgs, (err, stats) => {
-      if (err || stats.hasErrors()) {
-        console.log('error =>', err || stats.hasErrors());
+      // if (err || stats.hasErrors()) {
+      //   console.log('error =>', err || stats.hasErrors());
+      //   return;
+      // }
+      // console.log('webpack done!');
+      if (err) {
+        console.error(err.stack || err);
+        if (err.details) {
+          console.error(err.details);
+        }
         return;
       }
+      const info = stats.toJson();
+      if (stats.hasErrors()) {
+        console.error(info.errors);
+      }
+
+      if (stats.hasWarnings()) {
+        console.warn(info.warnings);
+      }
+
       console.log('webpack done!');
     });
   });
