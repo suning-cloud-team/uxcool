@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-dropdown",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -21,10 +21,10 @@
     "vue": "^2.*.*"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.26"
+    "@suning/v-tools": "^1.0.27"
   },
   "dependencies": {
-    "@suning/v-trigger": "^1.0.28",
-    "@suning/v-utils": "^1.0.3"
+    "@suning/v-trigger": "^1.0.29",
+    "@suning/v-utils": "^1.0.4"
   }
 }

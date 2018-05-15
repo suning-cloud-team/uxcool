@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-select",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "author": "'hw' <17061765@cnsuning.com>",
@@ -22,12 +22,12 @@
     "vue": "^2.5.*"
   },
   "dependencies": {
-    "@suning/v-menu": "^1.0.25",
-    "@suning/v-trigger": "^1.0.28",
+    "@suning/v-menu": "^1.0.26",
+    "@suning/v-trigger": "^1.0.29",
     "scroll-into-view-if-needed": "^1.4.0"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.26",
+    "@suning/v-tools": "^1.0.27",
     "debug": "^3.1.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-utils",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "server": "v-tools run server"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.26"
+    "@suning/v-tools": "^1.0.27"
   },
   "dependencies": {
     "lodash": "^4.17.5",
