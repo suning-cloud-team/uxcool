@@ -10,7 +10,7 @@ const rimraf = require('rimraf');
 const sass = require('node-sass');
 const postcss = require('postcss');
 const babel = require('babel-core');
-const vueTransform = require('rollup-plugin-vue');
+const { createDefaultCompiler, assemble } = require('@vue/component-compiler');
 
 const { getConfig } = require('./webpack/getWebpackConfig');
 const getPostCssCfg = require('./getPostCssCfg');
@@ -134,13 +134,26 @@ function transformJS(file, esModule = false) {
   });
 }
 
+function vueTransform(options) {
+  const compiler = createDefaultCompiler(options);
+  return {
+    transform(source, fileName) {
+      const descriptor = compiler.compileToDescriptor(fileName, source);
+      return Promise.resolve(assemble(compiler, fileName, descriptor, { styleInjector: 'function(){}' }));
+    },
+  };
+}
+
 function transformVue(content, filePath, esModule) {
   const transformOpts = {
-    compileOptions: {
-      preserveWhitespace: vueCompileOpts.preserveWhitespace !== false,
-      warn(msg) {
-        console.warn(chalk.yellow(`Error compiling template:\n${msg}\n${filePath}\n`)); // eslint-disable-line
+    template: {
+      compilerOptions: {
+        preserveWhitespace: vueCompileOpts.preserveWhitespace !== false,
+        warn(msg) {
+          console.warn(chalk.yellow(`Error compiling template:\n${msg}\n${filePath}\n`)); // eslint-disable-line
+        },
       },
+      isProduction: true,
     },
   };
 

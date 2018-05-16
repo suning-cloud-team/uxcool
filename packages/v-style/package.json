@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-style",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "基础样式库,包括fonts, theme等",
   "main": "assets/index.scss",
   "scripts": {
@@ -15,7 +15,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@suning/v-tools": "^1.0.26"
+    "@suning/v-tools": "^1.0.27"
   },
   "files": [
     "assets"

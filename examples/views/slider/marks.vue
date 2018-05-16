@@ -143,7 +143,9 @@
       };
     },
     created() {
-      this.marks = this.getMarks();
+      setTimeout(() => {
+        this.marks = this.getMarks();
+      }, 1500);
       this.marks2 = this.getMarks2();
       this.marks3 = this.getMarks3();
     },

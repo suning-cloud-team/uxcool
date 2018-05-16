@@ -1,9 +1,10 @@
-import { isFunction } from '@suning/v-utils';
+import { isFunction, isDef } from '@suning/v-utils';
 import { VSlider, VSliderRange } from '@suning/v-slider';
 import { buildComponentName } from '../utils';
 import Tooltip from '../tooltip';
 
 const DELAY_TIME = 60 * 60 * 1000;
+
 export default {
   name: buildComponentName('Slider'),
   props: {
@@ -183,7 +184,7 @@ export default {
           ...tooltipProps,
           prefixCls: tooltipPrefixCls,
           placement: 'top',
-          content: tipFormatter(value, index),
+          content: tipFormatter(isDef(value) ? value : '', index),
           transitionName: 'zoom-down',
         };
         if (tooltipRef && tooltipRef[index]) {
