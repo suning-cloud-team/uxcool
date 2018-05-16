@@ -92,16 +92,16 @@ new Vue({
 
     <ux-code non-copyable>
 // custom.scss
-$layout-sidebar-width: 200px;
-$layout-main-padding: 25px 0 25px 25px;
+// 修改主色调为绿色
+$primary-color: #67c23a;
 
 // ** 必需 **
 // sass不提供url rewriting功能，所有的链接资源都是相对输出文件而言，所以需要手动覆盖字体图标路径
 $icon-url: '~@suning/uxcool/dist/assets/fonts/uxcool';
 
-@import '~uxcool/dist/uxcool';
+@import '~@suning/uxcool/dist/uxcool.scss';
 // extra模块比较偏业务，没有放入通用组件，依赖了通用公共样式，所以在已有公共样式的情况下，直接引es模块下的样式就行了
-@import '~/uxcool/es/extra';
+@import '~@suning/uxcool/es/extra.scss';
     </ux-code>
 
     <p>然后在项目入口文件引入以上样式文件：</p>
@@ -116,8 +116,26 @@ import './custom.scss';
 Vue.use(Uxcool);
 Vue.use(UxcoolExtra);
     </ux-code>
+
     <blockquote>
       由于SASS的限制，使用样式库SCSS文件，字体图标路径一定要覆盖。
+    </blockquote>
+
+    <p>上面的例子也是目前定制主题的最简单方式：只修改主色调。对于需要深度定制主题的需求，可以修改其他预定义变量的值，具体变量可参考<code>@suning/uxcool/es/style/themes/_default.scss</code>（目前变量定义有些混乱，会在后续版本中优化完善）。</p>
+    <p>对于非SCSS的项目组，如果想要定制主题，可用页面提供的在线编译主题功能，下载编译好的CSS文件; 如果想要深度定制，目前只能本地修改参数，编译好后放入项目工程：</p>
+    <ux-code non-copyable>
+// 克隆项目源码
+git clone `http://git.cnsuning.com/ux/uxcool-lerna.git
+// 安装项目依赖
+npm run bootstrap
+// TODO:修改@suning/uxcool/es/style/themes/_default.scss的变量
+// 运行编译命令
+npm run build
+// TODO: 把dist目录下的CSS文件拷贝到项目工程中
+    </ux-code>
+    <blockquote>
+      <p>目前主题定制支持度不是很高，建议项目组只修改主色调等皮肤色值。</p>
+      <p>TODO: 后续版本会移除绝大多数组件中的深色样式，通过变量生成深色主题，从而精简样式定义。也会提供更友好的主题定制方式。</p>
     </blockquote>
     <h2 class="ux-heading">兼容性</h2>
     <p> UXCool 兼容所有现代浏览器和IE10+.</p>

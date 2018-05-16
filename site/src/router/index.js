@@ -4,7 +4,10 @@ import UxModal from '@suning/uxcool/es/modal';
 import NProgress from 'nprogress';
 
 import store from '../store';
-import { UPDATE_NAV_PAGE_INDEX, CHANGE_PAGE_NAME } from '../store/mutation-types';
+import {
+  UPDATE_NAV_PAGE_INDEX,
+  CHANGE_PAGE_NAME
+} from '../store/mutation-types';
 
 Vue.use(Router);
 
@@ -26,8 +29,13 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
-router.afterEach(({ meta = {} }) => {
-  const { title, subTitle = '' } = meta;
+router.afterEach(({
+  meta = {}
+}) => {
+  const {
+    title,
+    subTitle = ''
+  } = meta;
 
   document.title = title ? `${title}${subTitle ? ' ' : ''}${subTitle}` : 'UXCool Vue组件';
   store.commit(CHANGE_PAGE_NAME, `pgtitle=vue组件-${subTitle || title}`);
@@ -37,9 +45,13 @@ router.afterEach(({ meta = {} }) => {
   /* eslint-disable no-underscore-dangle */
   // 这边埋点函数会读取dom 所以要延迟一下
   Vue.nextTick(() => {
-    const fromUrl = window._getFromUrl();
-    const toUrl = window._getToUrl();
-    window._ssaSendPvData(fromUrl, toUrl, document.title);
+    try {
+      const fromUrl = window._getFromUrl();
+      const toUrl = window._getToUrl();
+      window._ssaSendPvData(fromUrl, toUrl, document.title);
+    } catch (e) {
+      console.error('小场面 不要慌 埋点脚本服务器连不上而已\n', e);
+    }
   });
   /* eslint-enable no-underscore-dangle */
 });
