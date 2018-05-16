@@ -186,15 +186,25 @@
       </ux-modal>
       <store-cmp/>
     </div>
+
+    <h4>control</h4>
+    <div class="demo">
+      <ux-button @click="showControlModal">showControlModal</ux-button>
+      <ux-modal v-model="controlVisible"
+                control
+                :theme="theme"
+                @ok="onControlOk"
+                @cancel="onControlCancel">
+        <p>control Content</p>
+      </ux-modal>
+    </div>
   </div>
 </template>
 
 
 <script>
   import Vue from 'vue';
-  import '@suning/uxcool/src/components/button/style/index.scss';
-  import '@suning/uxcool/src/components/modal/style/index.scss';
-  import UxModal from '@suning/uxcool/src/components/modal';
+  import { Button, Modal } from '@suning/uxcool';
 
   Vue.component('StoreCmp', {
     created() {
@@ -206,7 +216,8 @@
   });
   export default {
     components: {
-      UxModal,
+      UxModal: Modal,
+      UxButton: Button,
     },
     data() {
       return {
@@ -220,12 +231,13 @@
         nestParentVisible: false,
         nestVisible: false,
         storeVisible: false,
+        controlVisible: false,
       };
     },
     methods: {
       changeTheme() {
         this.theme = this.theme === 'light' ? 'dark' : 'light';
-        UxModal.config({ theme: this.theme });
+        Modal.config({ theme: this.theme });
       },
       baiscOpen() {
         this.basicVisible = true;
@@ -261,6 +273,21 @@
       onCancel(e, from) {
         console.log(`${from} cancel`, e);
       },
+      showControlModal() {
+        this.controlVisible = !this.controlVisible;
+      },
+      onControlOk() {
+        setTimeout(() => {
+          console.log('control close');
+          this.controlVisible = false;
+        }, 2500);
+      },
+      onControlCancel() {
+        setTimeout(() => {
+          console.log('control close');
+          this.controlVisible = false;
+        }, 2500);
+      },
       onSuccess(e) {
         this.footerVisible = false;
         console.log('success', e);
@@ -272,7 +299,7 @@
         console.log('afterClose', e);
       },
       confirm() {
-        UxModal.confirm({
+        Modal.confirm({
           title: 'Do you Want to delete these items?',
           content: 'Some Descriptions',
         }).then(
@@ -285,7 +312,7 @@
         );
       },
       deleteConfirm() {
-        UxModal.confirm({
+        Modal.confirm({
           title: 'Are you sure delete this task?',
           content: 'Some descriptions',
           okText: 'Yes',
@@ -302,7 +329,7 @@
         );
       },
       showInfo() {
-        UxModal.info({
+        Modal.info({
           title: 'This is Notification Message',
           content: (
             <div style={{ color: 'yellow' }}>
@@ -314,7 +341,7 @@
         });
       },
       showError() {
-        UxModal.error({
+        Modal.error({
           title: 'This is an error message',
           content: '<span style="color:red">Error Content</span>',
           dangerouslySetInnerHTML: true,
@@ -328,7 +355,7 @@
         );
       },
       showWarning() {
-        UxModal.warning({
+        Modal.warning({
           title: <span style={{ color: '#999' }}>This is an warning message</span>,
           /* global h */
           content: h(
@@ -345,7 +372,7 @@
         });
       },
       showSuccess() {
-        UxModal.success({
+        Modal.success({
           title: 'This is an success message',
           content: <span style={{ color: 'green' }}>success message</span>,
         }).then(() => {
@@ -353,7 +380,7 @@
         });
       },
       onDestroy() {
-        UxModal.destroy();
+        Modal.destroy();
       },
     },
   };
