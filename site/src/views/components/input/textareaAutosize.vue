@@ -19,7 +19,7 @@
       </div>
       <div slot="desc">auto-size属性适用于ux-textarea组件, 使其自适应内部文本高度, 且auto-size属性可设置为对象, 制定最小行和最大行</div>
       <ux-code slot="code">
-        {{code}}
+        {{ code }}
       </ux-code>
     </ux-demo>
   </div>
@@ -27,16 +27,22 @@
 
 
 <script>
-import code from '@/code/input/textareaAutosize';
+  import code from '@/code/input/textareaAutosize.vue';
 
-export default {
-  data() {
-    return { code };
-  },
-  computed: {
-    theme() {
-      return this.$store.state.theme;
+  export default {
+    data() {
+      return { code };
     },
-  },
-};
+    computed: {
+      theme() {
+        return this.$store.state.theme;
+      },
+    },
+  };
 </script>
+
+<style scoped>
+  textarea + textarea {
+    margin-top: 10px;
+  }
+</style>
