@@ -34,6 +34,9 @@ import Avatar from '@/views/components/avatar/index.vue';
 import Backtop from '@/views/components/backtop/index.vue';
 import Popconfirm from '@/views/components/popconfirm/index.vue';
 import Form from '@/views/components/form/index.vue';
+import InputNumber from '@/views/components/input-number/index.vue';
+import Anchor from '@/views/components/anchor/index.vue';
+import Notification from '@/views/components/notification/index.vue';
 
 export const groups = {
   general: {
@@ -75,12 +78,10 @@ export const groups = {
 };
 
 // title不止充当文档标题作用，还充当埋点名称角色
-export default [
-  {
+export default [{
     path: '/guide',
     component: Layout,
-    children: [
-      {
+    children: [{
         name: 'install',
         path: 'install',
         meta: {
@@ -110,8 +111,7 @@ export default [
   {
     path: '/components',
     component: Layout,
-    children: [
-      {
+    children: [{
         name: 'grid',
         path: 'grid',
         meta: {
@@ -281,6 +281,7 @@ export default [
         },
         component: Message,
       },
+
       {
         name: 'breadcrumb',
         path: 'breadcrumb',
@@ -422,14 +423,34 @@ export default [
         component: Popconfirm,
       },
       {
-        name: 'form',
-        path: 'form',
+        name: 'input-number',
+        path: 'input-number',
         meta: {
-          title: 'Form',
-          subTitle: '表单',
+          title: 'InputNumber',
+          subTitle: '数字输入框',
           group: 'form',
         },
-        component: Form,
+        component: InputNumber,
+      },
+      {
+        name: 'notification',
+        path: 'notification',
+        meta: {
+          title: 'Notification',
+          subTitle: '通知提示框',
+          group: 'notice',
+        },
+        component: Notification,
+      },
+      {
+        name: 'anchor',
+        path: 'anchor',
+        meta: {
+          title: 'Anchor',
+          subTitle: '锚点',
+          group: 'other',
+        },
+        component: Anchor,
       },
     ],
   },
