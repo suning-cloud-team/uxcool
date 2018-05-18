@@ -5,7 +5,13 @@
       <h1 class="ux-heading"
           >UXCool</h1>
 
-      <blockquote>有问题请联系 荀啟龙（13075766）。</blockquote>
+      <blockquote>使用过程中遇到bug或者其他问题，欢迎到
+          <a href="http://git.cnsuning.com/ux/uxcool-lerna/issues"
+              target="_blank">http://git.cnsuning.com/ux/uxcool-lerna/issues</a> 提issue，也可以在豆芽群交流。
+          <img src="../../../static/qrcode.png"
+                class="group-qrcode"
+                alt="豆芽交流群">
+      </blockquote>
 
       <h2 class="ux-heading"
           id="%E6%94%AF%E6%8C%81%E7%8E%AF%E5%A2%83">支持环境</h2>
@@ -73,3 +79,11 @@ import { UxSelect,  UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/selec
   export default {};
 
 </script>
+
+<scss>
+  .group-qrcode {
+    width: 80px;
+    height: 80px;
+  }
+
+</scss>

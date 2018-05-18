@@ -2,7 +2,13 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import globalState from './state';
-import { UPDATE_NAV_PAGE_INDEX, CHANGE_TOGGLE_THEME, CHANGE_PAGE_NAME } from './mutation-types';
+import {
+  UPDATE_NAV_PAGE_INDEX,
+  CHANGE_TOGGLE_THEME,
+  CHANGE_PAGE_NAME,
+  UPDATE_SELECTED_THEME,
+  UPDATE_PRIMARY_COLOR
+} from './mutation-types';
 
 const isDebug = process.env.NODE_ENV === 'development';
 
@@ -16,7 +22,10 @@ const getters = {
     return state.routes;
   },
   footerNavs(state) {
-    const { footerNavData, navPageIndex } = state;
+    const {
+      footerNavData,
+      navPageIndex
+    } = state;
     let prev = null;
     let next = null;
     if (navPageIndex > 0) {
@@ -34,6 +43,24 @@ const getters = {
 };
 
 const store = new Vuex.Store({
+  modules: {
+    form: {
+      state: {
+        userName: '',
+        password: '',
+      },
+      mutations: {
+        updateUserName(state, name) {
+          const nState = state;
+          nState.userName = name;
+        },
+        updatePassword(state, pwd) {
+          const nState = state;
+          nState.password = pwd;
+        },
+      },
+    },
+  },
   strict: isDebug,
   state: globalState,
   getters,
@@ -53,6 +80,14 @@ const store = new Vuex.Store({
     [CHANGE_PAGE_NAME](state, name) {
       const nState = state;
       nState.pageName = name;
+    },
+    [UPDATE_SELECTED_THEME](state, theme) {
+      const nState = state;
+      nState.selectedTheme = theme;
+    },
+    [UPDATE_PRIMARY_COLOR](state, color) {
+      const nState = state;
+      nState.primaryColor = color;
     },
   },
 });

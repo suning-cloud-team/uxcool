@@ -1,5 +1,6 @@
 <template>
-  <footer class="ux-layout-footer">
+  <footer class="ux-layout-footer"
+          style="left: 230px;">
     <div class="footer-links">
       <a href="http://ahd.cnsuning.com/ahd-web/wpm/index.html#/index"
          target="_blank">工作计划管理平台</a>
@@ -9,7 +10,7 @@
          target="_blank">ITP日志</a>
 
     </div>
-    <div class="copyright ux-sm-hidden-down">Copyright &copy; 2017 - {{year}} UXCOOL</div>
+    <div class="copyright ux-sm-hidden-down">Copyright &copy; 2017 - {{ year }} UXCOOL</div>
   </footer>
 </template>
 

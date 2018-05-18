@@ -98,6 +98,10 @@
         type: String,
         default: 'light',
       },
+      control: {
+        type: Boolean,
+        default: false,
+      },
     },
     computed: {
       bindProps() {
@@ -109,11 +113,17 @@
         this.$emit('input', false);
       },
       onOk(e) {
-        this.close();
+        const { control, close } = this;
+        if (!control) {
+          close();
+        }
         this.$emit('ok', e);
       },
       onCancel(e) {
-        this.close();
+        const { control, close } = this;
+        if (!control) {
+          close();
+        }
         this.$emit('cancel', e);
       },
     },

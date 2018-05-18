@@ -50,7 +50,7 @@ export { default as UxAlert } from './alert';
 
 export { default as UxSlider } from './slider';
 
-export { default as UxForm } from './form';
+export * from './form';
 
 export { default as UxBacktop } from './backtop';
 

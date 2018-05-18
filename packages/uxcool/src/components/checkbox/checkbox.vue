@@ -21,6 +21,9 @@
     // vee-validate compatibility (http://vee-validate.logaretm.com/advanced.html#ctor)
     $_veeValidate: {
       rejectsFalse: true,
+      value() {
+        return this.$refs.checkboxRef.getValue();
+      },
     },
     components: {
       VCheckbox,
@@ -82,8 +85,14 @@
         return p;
       },
       bindListeners() {
-        const { $listeners, isChildren, toggleCheckbox } = this;
-        const p = { ...$listeners };
+        const {
+          $listeners, isChildren, onInput, onChange, toggleCheckbox
+        } = this;
+        const p = {
+          ...$listeners,
+          input: onInput,
+          change: onChange,
+        };
         if (isChildren) {
           p.change = (e) => {
             toggleCheckbox(e.target.value);
@@ -93,6 +102,12 @@
       },
     },
     methods: {
+      onInput(checked) {
+        this.$emit('input', checked);
+      },
+      onChange(e) {
+        this.$emit('change', e);
+      },
       focus() {
         const { $refs: { checkboxRef } } = this;
         if (checkboxRef) {

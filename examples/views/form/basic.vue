@@ -1,123 +1,47 @@
 <template>
-  <form class="ux-form ux-form-horizontal ux-advanced-search-form">
-    <ux-row :gutter="12">
-      <ux-col :span="8">
-        <ux-row class="ux-form-item">
-          <div class="ux-form-item-label">
-            <label for="field-0"
-                   title="Field 0">Field 0 </label>
-          </div>
-          <div class="ux-form-item-control-wrapper">
-            <div class="ux-form-item-control">
-              <span class="ux-form-item-children">
-                <input placeholder="placeholder"
-                       type="text"
-                       id="field-0"
-                       class="ux-input"
-                       value="">
-              </span>
-            </div>
-          </div>
-        </ux-row>
-      </ux-col>
-      <ux-col :span="8">
-        <ux-row class="ux-form-item">
-          <div class="ux-form-item-label">
-            <label for="field-0"
-                   title="Field 0">Field 1 </label>
-          </div>
-          <div class="ux-form-item-control-wrapper">
-            <div class="ux-form-item-control">
-              <span class="ux-form-item-children">
-                <input placeholder="placeholder"
-                       type="text"
-                       id="field-0"
-                       class="ux-input"
-                       value="">
-              </span>
-            </div>
-          </div>
-        </ux-row>
-      </ux-col>
-      <ux-col :span="8">
-        <ux-row class="ux-form-item">
-          <div class="ux-form-item-label">
-            <label for="field-0"
-                   title="Field 0">Field 2 </label>
-          </div>
-          <div class="ux-form-item-control-wrapper">
-            <div class="ux-form-item-control">
-              <span class="ux-form-item-children">
-                <input placeholder="placeholder"
-                       type="text"
-                       id="field-0"
-                       class="ux-input"
-                       value="">
-              </span>
-            </div>
-          </div>
-        </ux-row>
-      </ux-col>
-      <ux-col :span="8">
-        <ux-row class="ux-form-item">
-          <div class="ux-form-item-label">
-            <label for="field-0"
-                   title="Field 0">Field 3 </label>
-          </div>
-          <div class="ux-form-item-control-wrapper">
-            <div class="ux-form-item-control">
-              <span class="ux-form-item-children">
-                <input placeholder="placeholder"
-                       type="text"
-                       id="field-0"
-                       class="ux-input"
-                       value="">
-              </span>
-            </div>
-          </div>
-        </ux-row>
-      </ux-col>
-      <ux-col :span="8">
-        <ux-row class="ux-form-item">
-          <div class="ux-form-item-label">
-            <label for="field-0"
-                   title="Field 0">Field 4 </label>
-          </div>
-          <div class="ux-form-item-control-wrapper">
-            <div class="ux-form-item-control">
-              <span class="ux-form-item-children">
-                <input placeholder="placeholder"
-                       type="text"
-                       id="field-0"
-                       class="ux-input"
-                       value="">
-              </span>
-            </div>
-          </div>
-        </ux-row>
-      </ux-col>
-    </ux-row>
-  </form>
+  <div>
+    <normal-demo />
+    <login-demo />
+    <login-horizontal-demo />
+    <register-demo />
+    <search-demo />
+    <modal-demo />
+    <dynamic-demo />
+    <method-demo />
+    <vuex-demo />
+
+  </div>
 </template>
 
+
 <script>
-  import { Grid, Form } from '@suning/uxcool';
+  import NormalDemo from './normal.vue';
+  import LoginDemo from './login.vue';
+  import LoginHorizontalDemo from './login-horizontal.vue';
+  import RegisterDemo from './register.vue';
+  import SearchDemo from './search.vue';
+  import ModalDemo from './modal.vue';
+  import DynamicDemo from './dynamic.vue';
+  import MethodDemo from './method.vue';
+  import VuexDemo from './vuex.vue';
 
   export default {
     components: {
-      UxForm: Form,
-      UxRow: Grid,
-      UxCol: Grid.Col,
+      NormalDemo,
+      LoginDemo,
+      LoginHorizontalDemo,
+      RegisterDemo,
+      SearchDemo,
+      ModalDemo,
+      MethodDemo,
+      DynamicDemo,
+      VuexDemo,
     },
   };
 </script>
 
-<style>
-  .ux-advanced-search-form .ux-form-item {
-    display: flex;
-  }
-
-  .ux-advanced-search-form .ux-form-item-control-wrapper {
-    flex: 1;
+<style scoped>
+  /deep/ .demo {
+    width: 600px;
   }
 </style>

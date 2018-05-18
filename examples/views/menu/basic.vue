@@ -139,11 +139,11 @@
 </template>
 
 <script>
-  import '@suning/uxcool/src/components/menu/style/index.scss';
-  import { UxMenu, UxMenuItem, UxMenuItemGroup, UxSubMenu } from '@suning/uxcool/src/components/menu';
-  // import { UxMenu } from '@suning/uxcool';
+  // import '@suning/uxcool/src/components/menu/style/index.scss';
+  // import { UxMenu, UxMenuItem, UxMenuItemGroup, UxSubMenu } from '@suning/uxcool/src/components/menu';
+  import { UxMenu } from '@suning/uxcool';
 
-  // const { SubMenu: UxSubMenu, MenuItemGroup: UxMenuItemGroup, MenuItem: UxMenuItem } = UxMenu;
+  const { SubMenu: UxSubMenu, MenuItemGroup: UxMenuItemGroup, MenuItem: UxMenuItem } = UxMenu;
   export default {
     components: {
       UxMenu,

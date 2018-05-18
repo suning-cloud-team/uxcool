@@ -1,5 +1,6 @@
 <template>
-  <aside class="ux-layout-sidebar-wrapper">
+  <aside class="ux-layout-sidebar-wrapper"
+         style="width: 230px;">
     <nav class="ux-layout-sidebar">
       <ux-menu @click="onMenuClick"
                :inline-indent="40"

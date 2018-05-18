@@ -1,11 +1,11 @@
 <template>
   <div>
-    <group-demo />
-    <!-- <search-demo/>
-     <input-demo />
+    <input-demo />
+    <search-demo/>
     <size-demo/>
     <tooltip-demo />
-    <textarea-demo/> -->
+    <textarea-demo/>
+    <group-demo />
   </div>
 </template>
 

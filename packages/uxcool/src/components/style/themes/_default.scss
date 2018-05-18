@@ -8,17 +8,22 @@
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
   $prev-num: null;
-  @each $key, $num in $map {
+  @each $key,
+  $num in $map {
     @if $prev-num==null {
       // Do nothing
-    } @else if not comparable($prev-num, $num) {
+    }
+    @else if not comparable($prev-num, $num) {
       @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order,
-        but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num},
-        the value of the previous key '#{$prev-key}' !";
-    } @else if $prev-num>=$num {
+ but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num},
+      the value of the previous key '#{$prev-key}' !";
+
+    }
+    @else if $prev-num>=$num {
       @warn "Invalid value for #{$map-name}: This map must be in ascending order,
-        but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num},
-        the value of the previous key '#{$prev-key}' !";
+ but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num},
+ the value of the previous key '#{$prev-key}' !";
+
     }
     $prev-key: $key;
     $prev-num: $num;
@@ -41,7 +46,8 @@
 
   @if $len1 !=$len2 {
     @warn 'Invalid value for #{$map2-name}: #{$map1-name} and #{$map2-name} must have the same keys!';
-  } @else {
+  }
+  @else {
     @each $i in $len1 {
       $key1: nth($map1-keys, $i);
       $key2: nth($map2-keys, $i);
@@ -58,24 +64,20 @@
 $ux-prefix: ux !default;
 
 $colors: () !default;
-$colors: map-merge(
-  (
-    pink: #eb2f96,
-    magenta: #eb2f96,
-    red: #f5222d,
-    volcano: #fa541c,
-    orange: #fa8c16,
-    yellow: #fadb14,
-    gold: #faad14,
-    cyan: #13c2c2,
-    lime: #a0d911,
-    green: #52c41a,
-    blue: #108ee9,
-    geekblue: #2f54eb,
-    purple: #722ed1
-  ),
-  $colors
-);
+$colors: map-merge( ( pink: #eb2f96,
+magenta: #eb2f96,
+red: #f5222d,
+volcano: #fa541c,
+orange: #fa8c16,
+yellow: #fadb14,
+gold: #faad14,
+cyan: #13c2c2,
+lime: #a0d911,
+green: #52c41a,
+blue: #108ee9,
+geekblue: #2f54eb,
+purple: #722ed1),
+$colors);
 
 // colors
 $white: #fff !default;
@@ -91,20 +93,16 @@ $gray-9: #252627 !default;
 $black: #000 !default;
 
 $grays: () !default;
-$grays: map-merge(
-  (
-    '1': $gray-1,
-    '2': $gray-2,
-    '3': $gray-3,
-    '4': $gray-4,
-    '5': $gray-5,
-    '6': $gray-6,
-    '7': $gray-7,
-    '8': $gray-8,
-    '9': $gray-9
-  ),
-  $grays
-);
+$grays: map-merge( ( '1': $gray-1,
+'2': $gray-2,
+'3': $gray-3,
+'4': $gray-4,
+'5': $gray-5,
+'6': $gray-6,
+'7': $gray-7,
+'8': $gray-8,
+'9': $gray-9),
+$grays);
 
 // $blue: #00d8ff !default;
 $blue: #108ee9 !default;
@@ -148,17 +146,13 @@ $highlight-color: $red !default;
 $processing-color: $primary-color !default;
 
 $theme-colors: () !default;
-$theme-colors: map-merge(
-  (
-    'primary': $primary-color,
-    'default': $normal-color,
-    'success': $success-color,
-    'info': $info-color,
-    'warning': $warning-color,
-    'danger': $danger-color
-  ),
-  $theme-colors
-);
+$theme-colors: map-merge( ( 'primary': $primary-color,
+'default': $normal-color,
+'success': $success-color,
+'info': $info-color,
+'warning': $warning-color,
+'danger': $danger-color),
+$theme-colors);
 // stylelint-enable
 // Color used by default to control hover and active backgrounds and for
 // alert info backgrounds.
@@ -193,11 +187,24 @@ $body-background: $white !default;
 $body-background-dark: #061e3c !default;
 $component-background: $white !default;
 $component-background-dark: $black !default;
-$font-family-no-number: 'Chinese Quote', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
-  sans-serif !default;
-$font-family: 'Monospaced Number', $font-family-no-number !default;
-$code-family: Consolas, Menlo, Courier, monospace !default;
+$font-family-no-number: 'Chinese Quote',
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'PingFang SC',
+'Hiragino Sans GB',
+'Microsoft YaHei',
+'Helvetica Neue',
+Helvetica,
+Arial,
+sans-serif !default;
+$font-family: 'Monospaced Number',
+$font-family-no-number !default;
+$code-family: Consolas,
+Menlo,
+Courier,
+monospace !default;
 $heading-color: fade(#000, 85%) !default;
 $text-color: fade(#000, 65%) !default;
 $text-color-secondary: fade(#000, 45%) !default;
@@ -264,7 +271,6 @@ $layout-footer-box-shadow-dark: 0 -1px 0 #374b63 !default;
 // $layout-trigger-color: #fff;
 // $layout-zero-trigger-width: 36px;
 // $layout-zero-trigger-height: 42px;
-
 // // z-index list
 $zindex-affix: 10 !default;
 $zindex-back-top: 10 !default;
@@ -372,13 +378,11 @@ $shadow-2: 0 2px 8px $shadow-color !default;
 $box-shadow-base: $shadow-1-down !default;
 
 // Grid
-$grid-breakpoints: (
-  xs: 576px,
-  sm: 768px,
-  md: 992px,
-  lg: 1200px,
-  xl: 1600px
-) !default;
+$grid-breakpoints: ( xs: 576px,
+sm: 768px,
+md: 992px,
+lg: 1200px,
+xl: 1600px) !default;
 @include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
 
 $grid-columns: 24 !default;
@@ -387,14 +391,12 @@ $enable-flex: false !default;
 
 // spacing
 $spacer: 10px !default;
-$spacers: (
-  0: 0,
-  1: ($spacer * 0.5),
-  2: $spacer,
-  3: ($spacer * 1.5),
-  4: ($spacer * 2),
-  5: ($spacer * 3)
-) !default;
+$spacers: ( 0: 0,
+1: ($spacer * 0.5),
+2: $spacer,
+3: ($spacer * 1.5),
+4: ($spacer * 2),
+5: ($spacer * 3)) !default;
 
 // components
 // $line-height-base:            1.5 !default;
@@ -510,7 +512,7 @@ $popover-arrow-color-dark: $popover-bg-dark !default;
 $popover-arrow-outer-color: $popover-bg !default;
 $popover-arrow-outer-color-dark: $popover-bg-dark !default;
 //** Popover distance with trigger
-$popover-distance: $popover-arrow-width + 4px !default;
+$popover-distance: $popover-arrow-width+4px !default;
 
 // Modal
 // --
@@ -661,7 +663,6 @@ $progress-rail-bg-dark: fade(#000, 60%) !default;
 
 // Slider
 // ---
-
 // Slider
 // ---
 $slider-margin: 14px 6px 10px;
