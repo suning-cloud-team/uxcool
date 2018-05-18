@@ -111,7 +111,7 @@
         if (e.keyCode === 13) {
           this.$emit('on-press-enter', e);
           this.$emit('pressenter', e);
-          return;
+          // return;
         }
         this.$emit('on-key-down', e);
         this.$emit('keydown', e);
