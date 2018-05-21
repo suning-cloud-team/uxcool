@@ -11,6 +11,11 @@
     <hr>
     <ux-heading level="2"
                 id="api">API</ux-heading>
+
+    <blockquote>
+      <p>anchor 组件滚动时会触发路由切换，项目组对路由切换滚动行为有要求的需要注意在路由的 scrollBehavior 方法中加以区分。</p>
+    </blockquote>
+
     <table class="api-table">
       <caption>UxAnchor Props</caption>
       <thead>
