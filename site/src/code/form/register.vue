@@ -75,14 +75,6 @@
 </template>
 
 <script>
-  import { Validator } from 'vee-validate';
-
-  Validator.localize('zh_CN', {
-    attributes: {
-      password: '密码',
-      email: '邮箱',
-    },
-  });
   export default {
     data() {
       return {

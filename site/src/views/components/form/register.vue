@@ -14,7 +14,7 @@
         <ux-form-item label="Password">
           <ux-field-decorator name="password"
                               :rules="{required:true, regex: /^\d{6,}$/i}"
-                              :validator="{alias: 'Password' }">
+                              alias="密码">
             <ux-input type="password"
                       v-model="form.password" />
           </ux-field-decorator>
@@ -87,14 +87,7 @@
 
 <script>
   import code from '@/code/form/register.vue';
-  import { Validator } from 'vee-validate';
 
-  Validator.localize('zh_CN', {
-    attributes: {
-      password: '密码',
-      email: '邮箱',
-    },
-  });
   export default {
     data() {
       return {

@@ -116,12 +116,13 @@ export default {
       }
     },
     scrollTo(link) {
-      const { scroll, container } = this;
+      const { scroll, offsetTop, container } = this;
       const scrollTop = getScroll(container);
       const element = link.relateElement || getAnchorRelateElement(link.href);
       if (element) {
         const top = getElementOffsetTop(element, container);
-        const targetTop = scrollTop + top;
+        // eslint-disable-next-line
+        const targetTop = scrollTop + top - offsetTop;
         const startTime = Date.now();
         scroll(startTime, scrollTop, targetTop);
       }
