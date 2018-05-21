@@ -1,6 +1,7 @@
 <template>
   <div>
     <normal-demo />
+    <extra-demo />
     <login-demo />
     <login-horizontal-demo />
     <register-demo />
@@ -27,6 +28,7 @@
   import VuexDemo from './vuex.vue';
   import ValidatorDemo from './rules.vue';
   import CustomRulesDemo from './customRules.vue';
+  import ExtraDemo from './extra.vue';
 
   export default {
     components: {
@@ -41,6 +43,7 @@
       VuexDemo,
       ValidatorDemo,
       CustomRulesDemo,
+      ExtraDemo,
     },
   };
 </script>

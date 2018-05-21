@@ -37,10 +37,10 @@ export default {
       type: Boolean,
       default: false,
     },
-    help: {
-      type: String,
-      default: '',
-    },
+    // help: {
+    //   type: String,
+    //   default: '',
+    // },
     extra: {
       type: String,
       default: '',
@@ -228,14 +228,12 @@ export default {
       this.formItemNode.setHasError(false);
     },
     getErrorMsg() {
-      const { formValidator, name } = this;
-      const { errors } = formValidator;
-      const helpElement = getSlotOrValue('help', this);
-      if (!helpElement && errors.has(name)) {
+      const { formValidator: { errors }, name } = this;
+      if (errors.has(name)) {
         return errors.first(name);
       }
 
-      return helpElement;
+      return null;
     },
     renderHelp() {
       const {
@@ -259,7 +257,11 @@ export default {
         </transition>
       );
     },
-    renderExtra() {},
+    renderExtra() {
+      const { rootPrefixCls } = this;
+      const extra = getSlotOrValue('extra', this);
+      return extra ? <div class={`${rootPrefixCls}-extra`}>{extra}</div> : null;
+    },
   },
   render() {
     const {
