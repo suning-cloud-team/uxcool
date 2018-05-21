@@ -1,24 +1,22 @@
 <template>
-  <ux-demo title="步长"
+  <ux-demo title="精度"
            :height="200">
     <div slot="demo">
       <ux-input-number novalidate
                        :value="num"
-                       :step="0.1"
-                       :min="min"
-                       :max="max"
-                       name="abc"
+                       :min="0"
+                       :max="10"
+                       :precision="1"
                        class="mr-xs-2" />
       <ux-input-number novalidate
                        :value="num"
-                       :step="0.2"
-                       :min="min"
-                       :max="max"
-                       name="def" />
+                       :min="0"
+                       :max="10"
+                       :precision="2" />
     </div>
     <div slot="desc">
       可以通过
-      <code>step</code> 指定步长。
+      <code>precision</code> 指定精度。
     </div>
     <ux-code slot="code">
       {{ code }}
@@ -27,15 +25,13 @@
 </template>
 
 <script>
-  import code from '@/code/input-number/step.vue';
+  import code from '@/code/input-number/precision.vue';
 
   export default {
     data() {
       return {
         code,
         num: 1,
-        min: 1,
-        max: 10,
       };
     },
   };

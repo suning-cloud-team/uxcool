@@ -37,6 +37,7 @@ import Form from '@/views/components/form/index.vue';
 import InputNumber from '@/views/components/input-number/index.vue';
 import Anchor from '@/views/components/anchor/index.vue';
 import Notification from '@/views/components/notification/index.vue';
+import Divider from '@/views/components/divider/index.vue';
 
 export const groups = {
   general: {
@@ -451,6 +452,16 @@ export default [{
           group: 'other',
         },
         component: Anchor,
+      },
+      {
+        name: 'divider',
+        path: 'divider',
+        meta: {
+          title: 'Divider',
+          subTitle: '分割线',
+          group: 'other',
+        },
+        component: Divider,
       },
     ],
   },

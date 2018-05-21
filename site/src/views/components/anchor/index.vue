@@ -4,49 +4,74 @@
       <span class="subtitle">锚点</span>
     </h1>
 
-    <ux-heading level="2"
-                id="overview">概述</ux-heading>
-    <p>聚合信息的一种容器，通常包含标题、内容和操作区域。</p>
-    <!-- <demo-basic></demo-basic>
-    <demo-flat></demo-flat>
-    <demo-vertical></demo-vertical> -->
+    <demo-basic />
+    <demo-container />
+    <demo-offset />
 
     <hr>
     <ux-heading level="2"
                 id="api">API</ux-heading>
     <table class="api-table">
-      <caption>Props</caption>
+      <caption>UxAnchor Props</caption>
       <thead>
         <tr>
-          <th>属性</th>
+          <th>参数名</th>
           <th>描述</th>
           <th>类型</th>
-          <th>默认值</th>
+          <th>默认</th>
         </tr>
       </thead>
-      <!-- <tbody>
+      <tbody>
         <tr>
-          <td>flat</td>
-          <td>是否是纯色卡片</td>
-          <td>Boolean</td>
-          <td>false</td>
+          <td>offsetTop</td>
+          <td>距离顶部触发偏移量</td>
+          <td>Number</td>
+          <td>0</td>
         </tr>
         <tr>
-          <td>vertical</td>
-          <td>是否是竖直卡片</td>
-          <td>Boolean</td>
-          <td>false</td>
+          <td>bounds</td>
+          <td>锚点区域边界 ,单位
+            <code>px</code>
+          </td>
+          <td>Number</td>
+          <td>5</td>
         </tr>
         <tr>
-          <td>bodyStyle</td>
-          <td>卡片内容区样式</td>
-          <td>Object</td>
-          <td>-</td>
+          <td>getContainer</td>
+          <td>自定义容器</td>
+          <td>Function=&gt;HTMLElement</td>
+          <td>()=&gt;window</td>
         </tr>
-      </tbody> -->
+      </tbody>
     </table>
-    <!-- <table class="api-table">
-      <caption>Slots</caption>
+    <table class="api-table">
+      <caption>UxAnchorLink Props</caption>
+      <thead>
+        <tr>
+          <th>参数名</th>
+          <th>描述</th>
+          <th>类型</th>
+          <th>默认</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>title</td>
+          <td>链接标题</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>href</td>
+          <td>锚点链接</td>
+          <td>String</td>
+          <td>#</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="api-table">
+      <caption>UxAnchorLink Slots</caption>
       <thead>
         <tr>
           <th>名称</th>
@@ -56,32 +81,24 @@
       <tbody>
         <tr>
           <td>title</td>
-          <td>卡片标题</td>
-        </tr>
-        <tr>
-          <td>action</td>
-          <td>操作，通常放一个
-            <code>a</code>标签包裹的字体图标。</td>
-        </tr>
-        <tr>
-          <td>无</td>
-          <td>卡片内容</td>
+          <td>自定义标题</td>
         </tr>
       </tbody>
-    </table> -->
+    </table>
+
   </article>
 </template>
 
 <script>
-  // import demoBasic from './basic.vue';
-  // import demoFlat from './flat.vue';
-  // import demoVertical from './vertical.vue';
+  import demoBasic from './basic.vue';
+  import demoContainer from './container.vue';
+  import demoOffset from './offset.vue';
 
   export default {
     components: {
-      // demoBasic,
-      // demoFlat,
-      // demoVertical,
+      demoBasic,
+      demoContainer,
+      demoOffset,
     },
   };
 </script>
