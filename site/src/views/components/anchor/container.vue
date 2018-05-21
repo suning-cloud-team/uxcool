@@ -24,7 +24,9 @@
 
       </div>
     </div>
-    <div slot="desc"></div>
+    <div slot="desc">可以通过
+      <code>getContainer</code> 属性指定滚动的容器。
+    </div>
     <ux-code slot="code">
       {{ code }}
     </ux-code>

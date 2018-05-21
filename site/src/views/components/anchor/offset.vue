@@ -12,8 +12,14 @@
                           title="target demo" />
         </ux-anchor>
       </div>
+      <div id="targetDemo"
+           class="demo"
+           style="margin:200px 0">
+        target demo
+      </div>
     </div>
-    <div slot="desc"></div>
+    <div slot="desc">可以通过
+      <code>offsetTop</code>属性设置距离窗口顶部触发计算的偏移量。</div>
     <ux-code slot="code">
       {{ code }}
     </ux-code>
