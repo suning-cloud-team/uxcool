@@ -1,6 +1,6 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Input number
+    <h1 class="ux-heading">InputNumber
       <span class="subtitle">数字输入框</span>
     </h1>
 
