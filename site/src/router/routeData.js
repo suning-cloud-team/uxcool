@@ -424,6 +424,16 @@ export default [{
         component: Popconfirm,
       },
       {
+        name: 'form',
+        path: 'form',
+        meta: {
+          title: 'Form',
+          subTitle: '表单',
+          group: 'form',
+        },
+        component: Form,
+      },
+      {
         name: 'input-number',
         path: 'input-number',
         meta: {
