@@ -284,6 +284,33 @@
         </tr>
       </tbody>
     </table>
+
+    <h3 class="mume-header"
+        id="uxform-static-methods">UxForm Static Methods</h3>
+
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>方法名</th>
+          <th>描述</th>
+          <th>类型</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>extendValidator</td>
+          <td>自定验证规则, 由于底层
+            <code>vee-validator</code>的限制,
+            <strong>自定义的规则都是全局的</strong>
+          </td>
+          <td>Function(ruleName, Validator, options={hasTarget:false, locale: 'zh_CN'})</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>使用可参考,例子中的 自定义规则示例 以及
+      <a href="https://baianat.github.io/vee-validate/guide/custom-rules.html">更详细的内容</a>
+    </p>
+
     <h3 class="mume-header"
         id="uxform-methods">UxForm Methods</h3>
 
@@ -467,6 +494,38 @@
           <td>校验值是否与 confirmed 的 target 的值相同, 一般用于密码确认</td>
           <td>confirmed:target</td>
           <td>{confirmed:password}</td>
+        </tr>
+        <tr>
+          <td>alpha</td>
+          <td>只能包含
+            <a href="https://github.com/baianat/vee-validate/blob/master/src/rules/alpha_helper.js#L6">alphabetic characters</a>
+          </td>
+          <td>alpha:locale</td>
+          <td>'alpha'或'alpha:en'</td>
+        </tr>
+        <tr>
+          <td>alpha_num</td>
+          <td>可以包括
+            <a href="https://github.com/baianat/vee-validate/blob/master/src/rules/alpha_helper.js#L46">alphabetic characters, numbers</a>
+          </td>
+          <td>alpha_num:locale</td>
+          <td>'alpha_num'或'alpha_num:en'</td>
+        </tr>
+        <tr>
+          <td>alpha_spaces</td>
+          <td>可以包括
+            <a href="https://github.com/baianat/vee-validate/blob/master/src/rules/alpha_helper.js#L26">alphabetic characters or spaces</a>
+          </td>
+          <td>alpha_spaces:locale</td>
+          <td>'alpha_spaces'或'alpha_spaces:en'</td>
+        </tr>
+        <tr>
+          <td>alpha_dash</td>
+          <td>可以包括
+            <a href="https://github.com/baianat/vee-validate/blob/master/src/rules/alpha_helper.js#L66">alphabetic characters, numbers, dashes or underscores</a>
+          </td>
+          <td>alpha_dash:locale</td>
+          <td>'alpha_dash'或'alpha_dash:en'</td>
         </tr>
       </tbody>
     </table>

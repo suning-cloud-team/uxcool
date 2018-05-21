@@ -63,6 +63,14 @@
 | pending   | 是否验证过程中       |
 | changed   | 值是否已被改变       |
 
+### UxForm Static Methods
+
+| 方法名          | 描述                                                                   | 类型                                                                      |
+| --------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| extendValidator | 自定验证规则, 由于底层`vee-validator`的限制,**自定义的规则都是全局的** | Function(ruleName, Validator, options={hasTarget:false, locale: 'zh_CN'}) |
+
+使用可参考,例子中的 自定义规则示例 以及[更详细的内容](https://baianat.github.io/vee-validate/guide/custom-rules.html)
+
 ### UxForm Methods
 
 | 方法名         | 描述                                                                              | 类型                                                                |
