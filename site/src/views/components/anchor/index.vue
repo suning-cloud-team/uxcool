@@ -29,7 +29,7 @@
       <tbody>
         <tr>
           <td>offsetTop</td>
-          <td>距离顶部触发偏移量</td>
+          <td>距离顶部偏移量</td>
           <td>Number</td>
           <td>0</td>
         </tr>

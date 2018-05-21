@@ -19,7 +19,7 @@
       </div>
     </div>
     <div slot="desc">可以通过
-      <code>offsetTop</code>属性设置距离窗口顶部触发计算的偏移量。</div>
+      <code>offsetTop</code>属性设置滚动后距离窗口顶部的偏移量。</div>
     <ux-code slot="code">
       {{ code }}
     </ux-code>

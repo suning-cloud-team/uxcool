@@ -1,7 +1,7 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Alert
-      <span class="subtitle">警告提示</span>
+    <h1 class="ux-heading">Form
+      <span class="subtitle">表单</span>
     </h1>
     <login-demo/>
     <horizontal-demo/>
