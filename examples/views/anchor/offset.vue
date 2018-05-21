@@ -4,7 +4,7 @@
     <div id="offsetDemo"
          class="demo">
       offsetDemo
-      <ux-anchor :offset-top="100">
+      <ux-anchor :offset-top="50">
         <ux-anchor-link href="#offsetDemo"
                         title="basic demo" />
         <ux-anchor-link href="#secondDemo"
