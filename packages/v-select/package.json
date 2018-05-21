@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-select",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "author": "'hw' <17061765@cnsuning.com>",
@@ -8,7 +8,11 @@
   "publishConfig": {
     "registry": "http://snpm.cnsunig.com"
   },
-  "files": ["assets/*.css", "cjs", "es"],
+  "files": [
+    "assets/*.css",
+    "cjs",
+    "es"
+  ],
   "scripts": {
     "compile": "v-tools run compile",
     "server": "v-tools run server",
