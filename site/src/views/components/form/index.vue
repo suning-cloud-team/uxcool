@@ -11,6 +11,8 @@
     <method-demo/>
     <modal-demo/>
     <vuex-demo/>
+    <rules-demo/>
+    <custom-rules-demo/>
 
     <hr>
     <ux-heading level="2"
@@ -541,6 +543,8 @@
   import RegisterDemo from './register.vue';
   import SearchDemo from './search.vue';
   import VuexDemo from './vuex.vue';
+  import RulesDemo from './rules.vue';
+  import CustomRulesDemo from './customRules.vue';
 
   export default {
     components: {
@@ -552,6 +556,8 @@
       MethodDemo,
       ModalDemo,
       VuexDemo,
+      RulesDemo,
+      CustomRulesDemo,
     },
   };
 </script>

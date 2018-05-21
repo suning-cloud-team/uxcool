@@ -8,8 +8,9 @@
         <ux-form-item label="E-mail">
           <ux-field-decorator name="email"
                               rules="required|email">
-            <ux-input v-model="form.email" >
-              <ux-icon type="mail" slot="prefix"/>
+            <ux-input v-model="form.email">
+              <ux-icon type="mail"
+                       slot="prefix" />
             </ux-input>
           </ux-field-decorator>
         </ux-form-item>
@@ -86,12 +87,12 @@
 
   import { Form, Input, Grid, Button, Icon, Checkbox, Tooltip, Select } from '@suning/uxcool';
 
-  Validator.localize('zh_CN', {
-    attributes: {
-      password: '密码',
-      email: '邮箱',
-    },
-  });
+  // Validator.localize('zh_CN', {
+  //   attributes: {
+  //     password: '密码',
+  //     email: '邮箱',
+  //   },
+  // });
   export default {
     components: {
       UxForm: Form,

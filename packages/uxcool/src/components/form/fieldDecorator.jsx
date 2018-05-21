@@ -178,6 +178,11 @@ export default {
             expression: ruleNames,
             alias: normalizeAlias,
           };
+
+          // Validator.isTargetRule 规则, 使用 alias
+          if (el) {
+            el.setAttribute('data-vv-as', normalizeAlias);
+          }
         }
 
         options = {

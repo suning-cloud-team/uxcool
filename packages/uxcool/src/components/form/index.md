@@ -85,20 +85,24 @@
 
 ### 校验规则
 
-| 参数名    | 描述                                                            | 类型                | 默认                               |
-| --------- | --------------------------------------------------------------- | ------------------- | ---------------------------------- |
-| required  | 是否必选                                                        | required:Boolean    | required:true                      |
-| in        | 枚举                                                            | in:list             | 'in:1,2,3,4'或{in:[1,2,3,4]}       |
-| not_in    | 否定 枚举                                                       | not_in:list         | 'not_in:1,2,3,4'{not_in:[1,2,3,4]} |
-| digits    | 定长                                                            | digits:length       |                                    |
-| max       | 最大限长                                                        | max:length          |                                    |
-| min       | 最小限长                                                        | min:length          |                                    |
-| max_value | 最大值                                                          | max_value:value     |                                    |
-| min_value | 最小值                                                          | min_value:value     |                                    |
-| email     | 邮件                                                            | email               |                                    |
-| regex     | 正则,字符串格式,不能使用 `|` 和`,`,建议正则只使用 `Object` 格式 | regex:pattern,flags | {regex: /^\d+$/g}                  |
-| between   | 值域范围                                                        | between:min,max     |
-| confirmed | 校验值是否与 confirmed 的 target 的值相同, 一般用于密码确认     | confirmed:target    | {confirmed:password}               |
+| 参数名       | 描述                                                                                                                                               | 类型                | 默认                               |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ---------------------------------- |
+| required     | 是否必选                                                                                                                                           | required:Boolean    | required:true                      |
+| in           | 枚举                                                                                                                                               | in:list             | 'in:1,2,3,4'或{in:[1,2,3,4]}       |
+| not_in       | 否定 枚举                                                                                                                                          | not_in:list         | 'not_in:1,2,3,4'{not_in:[1,2,3,4]} |
+| digits       | 定长                                                                                                                                               | digits:length       |                                    |
+| max          | 最大限长                                                                                                                                           | max:length          |                                    |
+| min          | 最小限长                                                                                                                                           | min:length          |                                    |
+| max_value    | 最大值                                                                                                                                             | max_value:value     |                                    |
+| min_value    | 最小值                                                                                                                                             | min_value:value     |                                    |
+| email        | 邮件                                                                                                                                               | email               |                                    |
+| regex        | 正则,字符串格式,不能使用 `|` 和`,`,建议正则只使用 `Object` 格式                                                                                    | regex:pattern,flags | {regex: /^\d+$/g}                  |
+| between      | 值域范围                                                                                                                                           | between:min,max     |
+| confirmed    | 校验值是否与 confirmed 的 target 的值相同, 一般用于密码确认                                                                                        | confirmed:target    | {confirmed:password}               |
+| alpha        | 只能包含[alphabetic characters](https://github.com/baianat/vee-validate/blob/master/src/rules/alpha_helper.js#L6)                                  | alpha:locale        | 'alpha'或'alpha:en'                |
+| alpha_num    | 可以包括[alphabetic characters, numbers](https://github.com/baianat/vee-validate/blob/master/src/rules/alpha_helper.js#L46)                        | alpha_num:locale    | 'alpha_num'或'alpha_num:en'        |
+| alpha_spaces | 可以包括[alphabetic characters or spaces](https://github.com/baianat/vee-validate/blob/master/src/rules/alpha_helper.js#L26)                       | alpha_spaces:locale | 'alpha_spaces'或'alpha_spaces:en'  |
+| alpha_dash   | 可以包括[alphabetic characters, numbers, dashes or underscores](https://github.com/baianat/vee-validate/blob/master/src/rules/alpha_helper.js#L66) | alpha_dash:locale   | 'alpha_dash'或'alpha_dash:en'      |
 
 更多规则详见: [vee-validate](https://baianat.github.io/vee-validate/guide/rules.html)
 

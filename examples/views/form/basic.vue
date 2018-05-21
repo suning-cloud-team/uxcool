@@ -9,7 +9,8 @@
     <dynamic-demo />
     <method-demo />
     <vuex-demo />
-
+    <validator-demo />
+    <custom-rules-demo />
   </div>
 </template>
 
@@ -24,6 +25,8 @@
   import DynamicDemo from './dynamic.vue';
   import MethodDemo from './method.vue';
   import VuexDemo from './vuex.vue';
+  import ValidatorDemo from './rules.vue';
+  import CustomRulesDemo from './customRules.vue';
 
   export default {
     components: {
@@ -36,6 +39,8 @@
       MethodDemo,
       DynamicDemo,
       VuexDemo,
+      ValidatorDemo,
+      CustomRulesDemo,
     },
   };
 </script>
