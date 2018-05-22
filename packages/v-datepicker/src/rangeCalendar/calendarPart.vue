@@ -7,25 +7,23 @@
                 :placeholder="placeholder"
                 :disabled-date="disabledDate"
                 :disabled-time="disabledTime"
-                @on-change="onSelect">
-    </date-input>
+                @on-change="onSelect" />
     <div>
       <calendar-header :prefix-cls="prefixCls"
                        :format="format"
                        :mode="mode"
-                       :value="value"
+                       :value="headerVal"
                        :locale="locale"
                        :is-time-picker="isTimePicker"
                        :has-prev="enablePrev"
                        :has-next="enableNext"
                        :disabled-month="disabledMonth"
                        @on-change="onInnerValueChange"
-                       @on-panel-change="onPanelChange">
-      </calendar-header>
+                       @on-panel-change="onPanelChange" />
       <div v-if="hasTimePicker&&isTimePicker">
         <div :class="`${prefixCls}-time-picker`">
           <div :class="`${prefixCls}-time-picker-panel`">
-            <slot name="timePicker"></slot>
+            <slot name="timePicker" />
           </div>
         </div>
       </div>
@@ -38,11 +36,9 @@
                     :locale="locale"
                     :disabled-date="disabledDate"
                     @on-day-hover="onDayHover"
-                    @on-select="onSelect">
-        </date-table>
+                    @on-select="onSelect" />
       </div>
     </div>
-    </date-input>
   </div>
 </template>
 
@@ -53,6 +49,11 @@
 
   export default {
     name: 'CalendarPart',
+    components: {
+      DateInput,
+      DateTable,
+      CalendarHeader,
+    },
     props: {
       prefixCls: String,
       value: Date,
@@ -75,6 +76,15 @@
       return {};
     },
     computed: {
+      headerVal() {
+        const {
+          value, selectedValue, isTimePicker, direction
+        } = this;
+        if (isTimePicker) {
+          return selectedValue[direction === 'left' ? 0 : 1];
+        }
+        return value;
+      },
       rangeVal() {
         const { direction, selectedValue } = this;
         return selectedValue[direction === 'left' ? 0 : 1];
@@ -101,11 +111,6 @@
       onPanelChange(value, next) {
         this.$emit('on-panel-change', value, next);
       },
-    },
-    components: {
-      DateInput,
-      DateTable,
-      CalendarHeader,
     },
   };
 </script>

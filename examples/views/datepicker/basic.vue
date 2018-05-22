@@ -2,65 +2,59 @@
   <div>
     <button class="ux-btn"
             @click="changeTheme">
-      {{theme}}
+      {{ theme }}
     </button>
     <div class="demo">
-      <ux-date-picker :theme="theme"></ux-date-picker>
+      <ux-date-picker :theme="theme" />
       <br>
       <ux-range-date-picker :theme="theme"
-                            @change="onChange"></ux-range-date-picker>
+                            @change="onChange" />
     </div>
 
     <div class="demo">
       <h6>快捷选择</h6>
       <ux-range-date-picker :ranges="ranges"
-                            :theme="theme">
-      </ux-range-date-picker>
+                            :theme="theme" />
       <br>
       <ux-range-date-picker :ranges="ranges"
                             :theme="theme"
                             show-today
-                            show-time>
-      </ux-range-date-picker>
+                            show-time />
     </div>
 
     <div class="demo">
       <h6>格式</h6>
       <ux-date-picker :theme="theme"
-                      format="YYYY/MM/DD"></ux-date-picker>
+                      format="YYYY/MM/DD" />
       <br>
       <ux-range-date-picker :theme="theme"
-                            format="YYYY/MM/DD"></ux-range-date-picker>
+                            format="YYYY/MM/DD" />
     </div>
     <div class="demo">
       <h6>showTime</h6>
       <ux-date-picker :theme="theme"
                       show-time
-                      placeholder="Select Time"></ux-date-picker>
+                      placeholder="Select Time" />
       <br>
       <ux-range-date-picker :theme="theme"
                             show-time
-                            :placeholder="['Start Time', ' End Time']">
-      </ux-range-date-picker>
+                            :placeholder="['Start Time', ' End Time']" />
     </div>
     <div class="demo">
       <h6>不可选</h6>
       <ux-date-picker :theme="theme"
                       :disabled-date="disabledDate"
-                      :disabled-time="disabledTime">
-      </ux-date-picker>
+                      :disabled-time="disabledTime" />
       <br>
       <ux-range-date-picker :theme="theme"
                             :disabled-date="disabledDate"
-                            :disabled-time="disabledRangeTime">
-      </ux-range-date-picker>
+                            :disabled-time="disabledRangeTime" />
     </div>
 
     <div class="demo">
       <h6>禁用</h6>
       <ux-date-picker :theme="theme"
-                      disabled>
-      </ux-date-picker>
+                      disabled />
       <br>
       <ux-range-date-picker :theme="theme"
                             disabled />
