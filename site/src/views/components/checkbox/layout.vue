@@ -2,12 +2,12 @@
   <ux-demo title="布局"
            :height="200">
     <div slot="demo">
-      <ux-checkbox-group>
+      <ux-checkbox-group v-model="checked">
         <ux-row>
           <ux-col :span="6"
                   v-for="(v, i) in opts"
                   :key="i">
-            <ux-checkbox :vlaue="v">{{ v }}</ux-checkbox>
+            <ux-checkbox :value="v">{{ v }}</ux-checkbox>
           </ux-col>
         </ux-row>
       </ux-checkbox-group>
