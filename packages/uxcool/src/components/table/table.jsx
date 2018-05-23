@@ -53,8 +53,8 @@ export default {
     size: {
       type: String,
       default: 'default',
-      validate(val) {
-        return ['default', 'middle', 'small'].indeOf(val) > -1;
+      validator(val) {
+        return ['default', 'middle', 'small'].indexOf(val) > -1;
       },
     },
     bordered: {
@@ -76,7 +76,7 @@ export default {
     theme: {
       type: String,
       default: 'light',
-      validate(val) {
+      validator(val) {
         return ['light', 'dark'].indexOf(val) > -1;
       },
     },

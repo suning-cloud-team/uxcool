@@ -11,14 +11,14 @@ export default {
     size: {
       type: String,
       default: 'default',
-      validate(val) {
+      validator(val) {
         return ['default', 'large', 'small'].indexOf(val) > -1;
       },
     },
     shape: {
       type: String,
       default: 'circle',
-      validate(val) {
+      validator(val) {
         return ['square', 'circle'].indexOf(val) > -1;
       },
     },

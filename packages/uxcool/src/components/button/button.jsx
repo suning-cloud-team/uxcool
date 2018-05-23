@@ -17,21 +17,21 @@ export default {
     type: {
       type: String,
       default: '',
-      validate(val) {
-        return ['primary', 'ghost', 'dashed', 'danger'].indexOf(val) > -1;
+      validator(val) {
+        return ['', 'primary', 'ghost', 'dashed', 'danger'].indexOf(val) > -1;
       },
     },
     shape: {
       type: String,
       default: '',
-      validate(val) {
-        return ['circle', 'circle-outline'].indexOf(val) > -1;
+      validator(val) {
+        return ['', 'circle', 'circle-outline'].indexOf(val) > -1;
       },
     },
     size: {
       type: String,
       default: 'default',
-      validate(val) {
+      validator(val) {
         return ['small', 'default', 'large'].indexOf(val) > -1;
       },
     },
@@ -42,7 +42,7 @@ export default {
     htmlType: {
       type: String,
       default: 'button',
-      validate(val) {
+      validator(val) {
         return ['button', 'submit', 'reset'].indexOf(val) > -1;
       },
     },

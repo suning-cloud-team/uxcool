@@ -59,7 +59,7 @@ export default {
     theme: {
       type: String,
       default: 'light',
-      validate(val) {
+      validator(val) {
         return ['light', 'dark'].indexOf(val) > -1;
       },
     },

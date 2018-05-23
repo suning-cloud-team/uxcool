@@ -36,8 +36,8 @@
       size: {
         type: String,
         default: 'default',
-        validate(val) {
-          return ['small', 'default', 'large'].test(val) > -1;
+        validator(val) {
+          return ['small', 'default', 'large'].indexOf(val) > -1;
         },
       },
       checked: {

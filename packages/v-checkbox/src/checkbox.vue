@@ -28,7 +28,7 @@
       type: {
         type: String,
         default: 'checkbox',
-        validate(val) {
+        validator(val) {
           return ['radio', 'checkbox'].indexOf(val) > -1;
         },
       },

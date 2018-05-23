@@ -21,7 +21,7 @@ export default {
     type: {
       type: String,
       default: null,
-      validate(val) {
+      validator(val) {
         return ['warning', 'success', 'info', 'error'].indexOf(val) > -1;
       },
     },

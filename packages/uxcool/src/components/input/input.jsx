@@ -24,7 +24,7 @@ export default {
     size: {
       type: String,
       default: 'default',
-      validate(val) {
+      validator(val) {
         return ['small', 'default', 'large'].indexOf(val) > -1;
       },
     },

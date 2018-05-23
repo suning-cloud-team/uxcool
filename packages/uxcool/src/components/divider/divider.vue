@@ -21,7 +21,7 @@
       type: {
         type: String,
         default: 'horizontal',
-        validate(val) {
+        validator(val) {
           return ['horizontal', 'vertical'].indexOf(val) > -1;
         },
       },
@@ -32,8 +32,8 @@
       orientation: {
         type: String,
         default: '',
-        validate(val) {
-          return ['left', 'right'].indexOf(val) > -1;
+        validator(val) {
+          return ['', 'left', 'right'].indexOf(val) > -1;
         },
       },
     },

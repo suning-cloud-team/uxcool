@@ -14,7 +14,7 @@ export default {
     layout: {
       type: String,
       default: 'horizontal',
-      validate(val) {
+      validator(val) {
         return ['horizontal', 'vertical', 'inline'].indexOf(val) > -1;
       },
     },
