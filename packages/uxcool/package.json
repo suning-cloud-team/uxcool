@@ -1,6 +1,6 @@
 {
   "name": "@suning/uxcool",
-  "version": "0.2.0-alpha.11",
+  "version": "0.2.0-alpha.12",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -18,10 +18,10 @@
     "vue": "^2.5.*"
   },
   "dependencies": {
-    "@suning/v-checkbox": "^1.0.3",
+    "@suning/v-checkbox": "^1.0.4",
     "@suning/v-datepicker": "^1.0.32",
     "@suning/v-dialog": "^1.0.7",
-    "@suning/v-dropdown": "^1.0.6",
+    "@suning/v-dropdown": "^1.0.7",
     "@suning/v-input": "^1.0.6",
     "@suning/v-menu": "^1.0.26",
     "@suning/v-notification": "^1.0.6",
