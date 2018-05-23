@@ -59,7 +59,16 @@
       <ux-range-date-picker :theme="theme"
                             disabled />
     </div>
-
+    <div class="demo">
+      <h6>v-model</h6>
+      date: {{ date }} <br> rangeDate: {{ rangeDate }}
+      <br>
+      <ux-date-picker v-model="date"
+                      :theme="theme" />
+      <br>
+      <ux-range-date-picker v-model="rangeDate"
+                            :theme="theme" />
+    </div>
   </div>
 </template>
 
@@ -81,6 +90,8 @@
     data() {
       return {
         theme: 'light',
+        date: null,
+        rangeDate: [new Date(), addMonths(new Date(), 3)],
         ranges: {
           今天: [new Date(), new Date()],
           昨天: [subDays(new Date(), 1), subDays(new Date(), 1)],
