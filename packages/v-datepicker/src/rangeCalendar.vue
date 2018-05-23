@@ -5,8 +5,7 @@
          role="button"
          :title="locale.clear"
          :class="`${prefixCls}-clear-btn`"
-         @click="clear">
-      </a>
+         @click="clear" />
       <div :class="`${prefixCls}-date-panel`">
         <calendar-part :prefix-cls="prefixCls"
                        :value="startValue"
@@ -38,8 +37,7 @@
                              :disabled-hours="disabledStartTime.disabledHours"
                              :disabled-minutes="disabledStartTime.disabledMinutes"
                              :disabled-seconds="disabledStartTime.disabledSeconds"
-                             @on-change="onTimePickerChange('left',$event)">
-          </time-picker-panel>
+                             @on-change="onTimePickerChange('left',$event)" />
         </calendar-part>
         <span :class="`${prefixCls}-range-middle`">~</span>
         <calendar-part :prefix-cls="prefixCls"
@@ -72,8 +70,7 @@
                              :disabled-hours="disabledEndTime.disabledHours"
                              :disabled-minutes="disabledEndTime.disabledMinutes"
                              :disabled-seconds="disabledEndTime.disabledSeconds"
-                             @on-change="onTimePickerChange('right',$event)">
-          </time-picker-panel>
+                             @on-change="onTimePickerChange('right',$event)" />
         </calendar-part>
         <div :class="`${prefixCls}-range-quick-selector`"
              v-if="isRanges">
@@ -83,7 +80,7 @@
                @mouseenter="onRangeMouseEnter(v)"
                @mouseleave="onRangeMouseLeave"
                @click.stop="onRangeClick(v)">
-            <a role="button">{{k}}</a>
+            <a role="button">{{ k }}</a>
           </div>
         </div>
       </div>
@@ -99,20 +96,18 @@
                         :has-time-picker="hasTimePicker"
                         :is-show-ok="isShowOk"
                         :format="format"
-                        @on-click="onTodayClick">
-          </today-button>
+                        @on-click="onTodayClick" />
           <time-picker-button v-if="hasTimePicker"
                               :prefix-cls="prefixCls"
                               :locale="locale"
                               :disabled="isTimePickerDisabled"
                               :is-time-picker="isTimePicker"
-                              @on-click="onTimePickerClick"></time-picker-button>
+                              @on-click="onTimePickerClick" />
           <ok-button v-if="isShowOk"
                      :prefix-cls="prefixCls"
                      :locale="locale"
                      :disabled="isOkDisabled"
-                     @on-click="onOkClick">
-          </ok-button>
+                     @on-click="onOkClick" />
         </div>
       </div>
     </div>
@@ -182,8 +177,18 @@
 
   export default {
     name: 'RangeCalendar',
+    components: {
+      CalendarPart,
+      TimePickerPanel,
+      TodayButton,
+      TimePickerButton,
+      OkButton,
+    },
     props: {
-      prefixCls: String,
+      prefixCls: {
+        type: String,
+        default: '',
+      },
       value: {
         type: Array,
         required: true,
@@ -229,11 +234,6 @@
         isTimePicker: false,
         firstSelectedVal: null,
       };
-    },
-    created() {
-      const { mode, normalizeAnchor } = this;
-      this.innerMode = mode;
-      this.innerValues = normalizeAnchor();
     },
     computed: {
       isSelectedValue() {
@@ -338,6 +338,23 @@
         const { ranges } = this;
         return ranges && Object.keys(ranges).length > 0;
       },
+    },
+    watch: {
+      value(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerValues = this.normalizeAnchor();
+        }
+      },
+      mode(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerMode = nVal;
+        }
+      },
+    },
+    created() {
+      const { mode, normalizeAnchor } = this;
+      this.innerMode = mode;
+      this.innerValues = normalizeAnchor();
     },
     methods: {
       getValueFromSelectedValue(selectedValue) {
@@ -481,25 +498,6 @@
           if (range.every(v => v instanceof Date)) {
             this.$emit('on-quick-select', range);
           }
-        }
-      },
-    },
-    components: {
-      CalendarPart,
-      TimePickerPanel,
-      TodayButton,
-      TimePickerButton,
-      OkButton,
-    },
-    watch: {
-      value(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.innerValues = this.normalizeAnchor();
-        }
-      },
-      mode(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.innerMode = nVal;
         }
       },
     },

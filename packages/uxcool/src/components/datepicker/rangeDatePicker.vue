@@ -191,7 +191,7 @@
         };
       },
       isCanClear() {
-        const { disabled, allowClear, innerValue = [] } = this;
+        const { disabled, allowClear, innerValue } = this;
         const [start, end] = innerValue;
         return !disabled && allowClear && (start || end);
       },
@@ -203,12 +203,12 @@
         return format || (isShowTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD');
       },
       startValue() {
-        const { innerValue = [], dateFormat } = this;
+        const { innerValue, dateFormat } = this;
         const [start] = innerValue;
         return start ? formatDate(start, dateFormat) : '';
       },
       endValue() {
-        const { innerValue = [], dateFormat } = this;
+        const { innerValue, dateFormat } = this;
         const [, end] = innerValue;
         return end ? formatDate(end, dateFormat) : '';
       },
@@ -216,16 +216,16 @@
     watch: {
       selectedValue(nVal, oVal) {
         if (nVal !== oVal) {
-          this.innerValue = nVal;
+          this.innerValue = nVal || [];
         }
       },
     },
     created() {
-      this.innerValue = this.selectedValue;
+      this.innerValue = this.selectedValue || [];
     },
     methods: {
       setValue(values) {
-        this.innerValue = values;
+        this.innerValue = values || [];
         this.$emit('input', values);
         this.$emit('change', values);
       },

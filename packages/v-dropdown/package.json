@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-dropdown",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -25,6 +25,6 @@
   },
   "dependencies": {
     "@suning/v-trigger": "^1.0.29",
-    "@suning/v-utils": "^1.0.4"
+    "@suning/v-utils": "^1.0.5"
   }
 }
