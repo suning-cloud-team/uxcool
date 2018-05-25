@@ -8,15 +8,6 @@ export function vNodeIsComponent(vnode) {
 
 export function noop() {}
 
-export function addEventListener(element, eventName, fn) {
-  element.addEventListener(eventName, fn, false);
-  return {
-    remove() {
-      element.removeEventListener(eventName, fn);
-    },
-  };
-}
-
 function isPointsEq(a1, a2) {
   return a1[0] === a2[0] && a1[1] === a2[1];
 }

@@ -1,8 +1,8 @@
-export function addEventListener(element, eventName, fn) {
-  element.addEventListener(eventName, fn);
+export function addEventListener(element, eventName, fn, useCapture = false) {
+  element.addEventListener(eventName, fn, useCapture);
   return {
     remove() {
-      element.removeEventListener(eventName, fn);
+      element.removeEventListener(eventName, fn, useCapture);
     },
   };
 }

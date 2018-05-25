@@ -13,5 +13,18 @@
     ],
     "stage-3"
   ],
-  "plugins": ["transform-vue-jsx", "syntax-dynamic-import", "minify-dead-code-elimination"]
+  "plugins": ["transform-vue-jsx", "syntax-dynamic-import", "minify-dead-code-elimination"],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "modules": "commonjs",
+            "targets": { "node": "current" }
+          }
+        ]
+      ]
+    }
+  }
 }

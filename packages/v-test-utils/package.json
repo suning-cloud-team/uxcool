@@ -1,0 +1,20 @@
+{
+  "name": "@suning/v-test-utils",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "npm run server",
+    "compile": "v-tools run compile",
+    "server": "v-tools run server"
+  },
+  "devDependencies": {
+    "@suning/v-tools": "^1.0.27",
+    "@vue/test-utils": "^1.0.0-beta.16"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}

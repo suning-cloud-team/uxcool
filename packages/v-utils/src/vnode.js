@@ -102,3 +102,7 @@ export function updateVNodeProps(node, handler = {}) {
 
   return node;
 }
+
+export function isAsyncPlaceholder(node) {
+  return node.isComment && node.asyncFactory;
+}

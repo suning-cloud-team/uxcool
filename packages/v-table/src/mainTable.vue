@@ -15,8 +15,8 @@
 
       <div v-if="$scopedSlots.footer || $slots.footer"
            :class="`${prefixCls}-footer`">
-        <slot name="footer"
-              :records="records" />
+        <slot :records="records"
+              name="footer" />
       </div>
     </template>
 

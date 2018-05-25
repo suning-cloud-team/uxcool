@@ -1,3 +1,3 @@
-import Trigger from './trigger.vue';
+import Trigger from './trigger';
 
 export default Trigger;
