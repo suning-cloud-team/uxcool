@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-tools",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "v-components tools",
   "license": "MIT",
   "bin": {
