@@ -11,7 +11,7 @@
     "server": "v-tools run server"
   },
   "publishConfig": {
-    "registry": "http://snpm.cnsunig.com"
+    "registry": "http://snpm.cnsuning.com"
   },
   "files": [
     "assets/*css",

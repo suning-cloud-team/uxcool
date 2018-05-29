@@ -43,7 +43,7 @@
     "node": ">=6.11.0"
   },
   "publishConfig": {
-    "registry": "http://snpm.cnsunig.com"
+    "registry": "http://snpm.cnsuning.com"
   },
   "files": [
     "es/*",

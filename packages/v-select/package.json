@@ -6,7 +6,7 @@
   "author": "'hw' <17061765@cnsuning.com>",
   "license": "MIT",
   "publishConfig": {
-    "registry": "http://snpm.cnsunig.com"
+    "registry": "http://snpm.cnsuning.com"
   },
   "files": [
     "assets/*.css",

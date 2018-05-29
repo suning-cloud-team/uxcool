@@ -10,7 +10,7 @@
     "server": "webpack-dev-server --config ./lib/webpack/server.js"
   },
   "publishConfig": {
-    "registry": "http://snpm.cnsunig.com"
+    "registry": "http://snpm.cnsuning.com"
   },
   "peerDependencies": {
     "vue": "^2.*"

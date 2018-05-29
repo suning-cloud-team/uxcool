@@ -8,7 +8,7 @@
   "author": "'hw' <17061765@163.com>",
   "license": "MIT",
   "publishConfig": {
-    "registry": "http://snpm.cnsunig.com"
+    "registry": "http://snpm.cnsuning.com"
   },
   "files": [
     "assets/*css",
