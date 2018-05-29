@@ -32,6 +32,10 @@
 
   export default {
     name: buildComponentName('DatePicker'),
+    components: {
+      VDatePicker,
+      Icon,
+    },
     props: {
       prefixCls: {
         type: String,
@@ -75,9 +79,6 @@
       return {
         innerValue: null,
       };
-    },
-    created() {
-      this.innerValue = this.value;
     },
     computed: {
       pickerClasses() {
@@ -125,28 +126,27 @@
         return format || (isShowTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD');
       },
     },
-    methods: {
-      setValue(value) {
-        this.innerValue = value;
-        this.$emit('input', value);
-        this.$emit('change', value);
-      },
-      onChange(value) {
-        this.setValue(value);
-      },
-      onClearClick() {
-        this.setValue(null);
-      },
-    },
-    components: {
-      VDatePicker,
-      Icon,
-    },
     watch: {
       value(nVal, oVal) {
         if (nVal !== oVal) {
           this.innerValue = nVal;
         }
+      },
+    },
+    created() {
+      this.innerValue = this.value;
+    },
+    methods: {
+      setValue(value, formatDateString) {
+        this.innerValue = value;
+        this.$emit('input', value);
+        this.$emit('change', value, formatDateString);
+      },
+      onChange(value, formatDateString) {
+        this.setValue(value, formatDateString);
+      },
+      onClearClick() {
+        this.setValue(null);
       },
     },
   };
