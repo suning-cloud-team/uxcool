@@ -16,7 +16,7 @@ export const DEV_SERVER_URL = 'http://10.37.45.157:3000';
 export const SIT_SERVER_URL = 'http://10.37.45.157:3000';
 
 export const PRE_SERVER_URL = 'http://10.37.45.157:3000';
-
-export const PRD_SERVER_URL = 'http://10.100.144.189:3000';
+// 生产vip地址
+export const PRD_SERVER_URL = 'http://10.104.238.191:3000';
 
 export const INITIAL_PRIMARY_COLOR = '#108ee9';
