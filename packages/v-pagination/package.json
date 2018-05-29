@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-pagination",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository": "git@git.cnsuning.com:fedc/v-pagination.git",
@@ -25,8 +25,8 @@
     "vue": "^2.*.*"
   },
   "devDependencies": {
-    "@suning/v-style": "^1.0.11",
-    "@suning/v-tools": "^1.0.27"
+    "@suning/v-style": "^1.0.12",
+    "@suning/v-tools": "^1.0.28"
   },
   "vueCompileOpts": {
     "preserveWhitespace": false

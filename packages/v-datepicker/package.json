@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-datepicker",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "datepicker 基础组件",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -10,7 +10,11 @@
   "publishConfig": {
     "registry": "http://snpm.cnsuning.com"
   },
-  "files": ["assets/*.css", "cjs", "es"],
+  "files": [
+    "assets/*.css",
+    "cjs",
+    "es"
+  ],
   "scripts": {
     "start": "npm run server",
     "server": "v-tools run server",
@@ -20,12 +24,12 @@
     "vue": "^2.*.*"
   },
   "devDependencies": {
-    "@suning/v-style": "^1.0.11",
-    "@suning/v-tools": "^1.0.27"
+    "@suning/v-style": "^1.0.12",
+    "@suning/v-tools": "^1.0.28"
   },
   "dependencies": {
-    "@suning/v-timepicker": "^1.0.10",
-    "@suning/v-trigger": "^1.0.29",
+    "@suning/v-timepicker": "^1.0.11",
+    "@suning/v-trigger": "^1.0.30",
     "date-fns": "^1.29.0",
     "deepcopy": "^0.6.3"
   }
