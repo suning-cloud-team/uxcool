@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-date-picker theme="dark" style="width:250px" format="YYYY-MM-DD HH:mm" @open-change="onOpenChange"
+      @change="onChange" show-time show-today @ok="onOk">
+      <input slot="trigger" type="text" :class="pickerInputClass" readonly :disabled="disabled">
+    </v-date-picker>
+    <br>
+    <v-range-date-picker theme="dark" format="YYYY-MM-DD HH:mm" style="width:200px;" show-time picker-prefix-cls="v-calendar-picker-container"
+      @ok="onOk" @change="onChange" @open-change="onOpenChange" show-today :disabled-date="disabledDate"
+      :disabled-time="disabledTime" @calendar-change="onCalendarChange">
+      <div slot="trigger">
+        <input type="text" :class="[pickerInputClass]" readonly :disabled="disabled">
+        <span @click.stop.prevent="onClear">clear</span>
+      </div>
+    </v-range-date-picker>
+  </div>
+</body>
+
+</html>

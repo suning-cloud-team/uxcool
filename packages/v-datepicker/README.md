@@ -59,11 +59,11 @@ import DatePicker from '@suning/v-datepicker';
 
 #### Events
 
-| 事件名      | 描述                                    | 回调                    |
-| ----------- | --------------------------------------- | ----------------------- |
-| open-change | 弹窗关闭和打开时触发                    | Function(visible)       |
-| change      | 用户选择时间后触发                      | Function(values:Date[]) |
-| ok          | 当存在确定按钮时 , 用户点击确定按钮触发 | Function(values:Date[]) |
+| 事件名      | 描述                                    | 回调                                             |
+| ----------- | --------------------------------------- | ------------------------------------------------ |
+| open-change | 弹窗关闭和打开时触发                    | Function(visible)                                |
+| change      | 用户选择时间后触发                      | Function(values:Date[], formatDateString:String) |
+| ok          | 当存在确定按钮时 , 用户点击确定按钮触发 | Function(values:Date[])                          |
 
 ### RangeDatePicker
 
@@ -87,8 +87,9 @@ import DatePicker from '@suning/v-datepicker';
 
 ### Events
 
-| 事件名      | 描述                                    | 回调                    |
-| ----------- | --------------------------------------- | ----------------------- |
-| open-change | 弹窗关闭和打开时触发                    | Function(visible)       |
-| change      | 用户选择时间后触发                      | Function(values:Date[]) |
-| ok          | 当存在确定按钮时 , 用户点击确定按钮触发 | Function(values:Date[]) |
+| 事件名          | 描述                                    | 回调                                                |
+| --------------- | --------------------------------------- | --------------------------------------------------- |
+| open-change     | 弹窗关闭和打开时触发                    | Function(visible)                                   |
+| change          | 用户选择时间后触发                      | Function(values:Date[], formatDateStrings:String[]) |
+| calendar-change | 时间发生变化后触发                      | Function(values:Date[])                             |
+| ok              | 当存在确定按钮时 , 用户点击确定按钮触发 | Function(values:Date[])                             |

@@ -1,28 +1,29 @@
 <template>
-  <div :class="classes"
-       v-show="isShowOk||showToday">
-    <today-button v-if="showToday"
-                  :prefix-cls="prefixCls"
-                  :locale="locale"
-                  :disabled-date="disabledDate"
-                  :disabled="disabled"
-                  :has-time-picker="hasTimePicker"
-                  :is-show-ok="isShowOk"
-                  :format="format"
-                  :text="todayText"
-                  @on-click="onTodayClick">
-    </today-button>
-    <time-picker-button v-if="hasTimePicker"
-                        :prefix-cls="prefixCls"
-                        :locale="locale"
-                        :disabled="timePickerDisabled"
-                        :is-time-picker="isTimePicker"
-                        @on-click="onTimePickerClick"></time-picker-button>
-    <ok-button v-if="isShowOk"
-               :prefix-cls="prefixCls"
-               :locale="locale"
-               :disabled="okDisabled"
-               @on-click="onOkClick"></ok-button>
+  <div v-show="isShowOk||showToday"
+       :class="classes">
+    <span :class="`${prefixCls}-footer-btn`">
+      <today-button v-if="showToday"
+                    :prefix-cls="prefixCls"
+                    :locale="locale"
+                    :disabled-date="disabledDate"
+                    :disabled="disabled"
+                    :has-time-picker="hasTimePicker"
+                    :is-show-ok="isShowOk"
+                    :format="format"
+                    :text="todayText"
+                    @on-click="onTodayClick" />
+      <time-picker-button v-if="hasTimePicker"
+                          :prefix-cls="prefixCls"
+                          :locale="locale"
+                          :disabled="timePickerDisabled"
+                          :is-time-picker="isTimePicker"
+                          @on-click="onTimePickerClick" />
+      <ok-button v-if="isShowOk"
+                 :prefix-cls="prefixCls"
+                 :locale="locale"
+                 :disabled="okDisabled"
+                 @on-click="onOkClick" />
+    </span>
   </div>
 </template>
 
@@ -33,6 +34,11 @@
 
   export default {
     name: 'CalendarFooter',
+    components: {
+      OkButton,
+      TodayButton,
+      TimePickerButton,
+    },
     props: {
       prefixCls: String,
       locale: Object,
@@ -71,11 +77,6 @@
       onTimePickerClick() {
         this.$emit('on-time-picker');
       },
-    },
-    components: {
-      OkButton,
-      TodayButton,
-      TimePickerButton,
     },
   };
 </script>

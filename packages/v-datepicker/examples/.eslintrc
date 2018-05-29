@@ -1,0 +1,5 @@
+{
+  "settings": {
+    "import/core-modules": ["@suning/v-datepicker"]
+  }
+}

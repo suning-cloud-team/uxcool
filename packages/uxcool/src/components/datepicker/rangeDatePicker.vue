@@ -224,13 +224,13 @@
       this.innerValue = this.selectedValue || [];
     },
     methods: {
-      setValue(values) {
+      setValue(values, formatDateStrings) {
         this.innerValue = values || [];
         this.$emit('input', values);
-        this.$emit('change', values);
+        this.$emit('change', values, formatDateStrings);
       },
-      onChange(values) {
-        this.setValue(values);
+      onChange(values, formatDateStrings) {
+        this.setValue(values, formatDateStrings);
       },
       onClearClick() {
         this.setValue([]);

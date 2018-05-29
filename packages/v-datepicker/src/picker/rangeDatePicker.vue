@@ -1,9 +1,11 @@
 <template>
   <trigger :prefix-cls="pickerPrefixCls"
            :visible="open"
-           destroy-popup-on-hide
            :actions="actions"
            :popup-align="align"
+           :popup-placement="placement"
+           :builtin-placements="buildinPlacements"
+           destroy-popup-on-hide
            @on-popup-visible-change="onPopupVisible">
     <template slot="trigger">
       <slot name="trigger" />
@@ -25,6 +27,7 @@
                     :disabled-time="disabledTime"
                     :ranges="ranges"
                     @on-select="onSelect"
+                    @calendar-change="onCalendarChange"
                     @on-quick-select="onQuickSelect"
                     @on-ok="onOk" />
   </trigger>
@@ -36,15 +39,23 @@
   import { formatDate, isValidArray } from '../utils';
   import RangeCalendar from '../rangeCalendar.vue';
   import localeEN from '../locale/en_US';
+  import placements from './placements';
 
   export default {
     name: 'RangeDatePicker',
+    components: {
+      Trigger,
+      RangeCalendar,
+    },
     props: {
       prefixCls: {
         type: String,
         default: 'v-calendar',
       },
-      pickerPrefixCls: String,
+      pickerPrefixCls: {
+        type: String,
+        default: 'v-calendar-picker',
+      },
       locale: {
         type: Object,
         default() {
@@ -91,14 +102,16 @@
       showToday: Boolean,
       ranges: {
         type: Object,
-        validator(val) {
-          console.log('validator', val);
-          return true;
-        },
+        default: undefined,
+      },
+      placement: {
+        type: String,
+        default: 'bottomLeft',
       },
     },
     data() {
       return {
+        buildinPlacements: placements,
         open: false,
         align: {
           points: ['tl', 'tl'],
@@ -106,9 +119,6 @@
         innerValues: this.selectedValue,
         inputValues: this.selectedValue,
       };
-    },
-    created() {
-      this.open = this.disabled ? false : this.isOpen;
     },
     computed: {
       clanderClasses() {
@@ -137,14 +147,35 @@
           : '';
       },
     },
+    watch: {
+      selectedValue(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerValues = nVal;
+          this.inputValues = nVal;
+        }
+      },
+    },
+    created() {
+      this.open = this.disabled ? false : this.isOpen;
+    },
     methods: {
       setOpen(flag) {
         this.open = flag;
       },
-      onChange(values) {
+      // 每次选择时间后都触发
+      onCalendarChange(values) {
+        this.$emit('calendar-change', values);
+      },
+      onChange(values, hide = true) {
+        const { dateFormat, setOpen } = this;
         this.inputValues = values;
-        this.$emit('change', values);
-        this.setOpen(false);
+        this.$emit('change', values, [
+          formatDate(values[0], dateFormat),
+          formatDate(values[1], dateFormat),
+        ]);
+        if (hide) {
+          setOpen(false);
+        }
       },
       onQuickSelect(values) {
         this.innerValues = values;
@@ -152,9 +183,7 @@
       },
       onSelect(values) {
         this.innerValues = values;
-        if (!this.showOk && !this.showTime) {
-          this.onChange(values);
-        }
+        this.onChange(values, !this.showOk && !this.showTime);
       },
       onPopupVisible(visible) {
         if (visible) {
@@ -167,19 +196,6 @@
         this.setOpen(false);
         if (this.showOk || this.showTime) {
           this.$emit('ok', values);
-          this.onChange(values);
-        }
-      },
-    },
-    components: {
-      Trigger,
-      RangeCalendar,
-    },
-    watch: {
-      selectedValue(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.innerValues = nVal;
-          this.inputValues = nVal;
         }
       },
     },

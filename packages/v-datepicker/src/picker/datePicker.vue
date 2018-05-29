@@ -1,9 +1,11 @@
 <template>
   <trigger :prefix-cls="pickerPrefixCls"
            :visible="open"
-           destroy-popup-on-hide
            :actions="actions"
            :popup-align="align"
+           :popup-placement="placement"
+           :builtin-placements="buildinPlacements"
+           destroy-popup-on-hide
            @on-popup-visible-change="onPopupVisible">
     <template slot="trigger">
       <slot name="trigger" />
@@ -48,15 +50,24 @@
   import { formatDate } from '../utils';
   import Calendar from '../calendar.vue';
   import localeEN from '../locale/en_US';
+  import placements from './placements';
 
   export default {
     name: 'DatePicker',
+    components: {
+      Calendar,
+      Trigger,
+      TimePickerPanel,
+    },
     props: {
       prefixCls: {
         type: String,
         default: 'v-calendar',
       },
-      pickerPrefixCls: String,
+      pickerPrefixCls: {
+        type: String,
+        default: 'v-calendar-picker',
+      },
       pickerInputClass: Object,
       locale: {
         type: Object,
@@ -85,9 +96,14 @@
       dateInputPlaceholder: String,
       disabledDate: Function,
       disabledTime: Function,
+      placement: {
+        type: String,
+        default: 'bottomLeft',
+      },
     },
     data() {
       return {
+        buildinPlacements: placements,
         innerValue: null,
         inputValue: null,
         open: false,
@@ -98,20 +114,6 @@
         disabledMinutes: null,
         disabledSeconds: null,
       };
-    },
-    created() {
-      const {
-        value, isOpen, disabledTime, disabled
-      } = this;
-      this.innerValue = value;
-      this.inputValue = value;
-      this.open = disabled ? false : isOpen;
-      if (disabledTime) {
-        const opts = disabledTime(value);
-        this.disabledHours = opts.disabledHours;
-        this.disabledMinutes = opts.disabledMinutes;
-        this.disabledSeconds = opts.disabledSeconds;
-      }
     },
     computed: {
       inputClasses() {
@@ -146,18 +148,38 @@
         return format || (isShowTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD');
       },
     },
-    methods: {
-      onClick(e) {
-        console.log(e);
+    watch: {
+      value(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerValue = nVal;
+          this.inputValue = nVal;
+        }
       },
+    },
+    created() {
+      const {
+        value, isOpen, disabledTime, disabled
+      } = this;
+      this.innerValue = value;
+      this.inputValue = value;
+      this.open = disabled ? false : isOpen;
+      if (disabledTime) {
+        const opts = disabledTime(value);
+        this.disabledHours = opts.disabledHours;
+        this.disabledMinutes = opts.disabledMinutes;
+        this.disabledSeconds = opts.disabledSeconds;
+      }
+    },
+    methods: {
       setOpen(flag) {
         this.open = flag;
       },
-      onSelect(e) {
-        this.innerValue = e;
+      onSelect(val) {
+        const { dateFormat } = this;
+        this.innerValue = val;
+        this.$emit('change', val, formatDate(val, dateFormat));
         if (!this.showOk && !this.showTime) {
-          this.inputValue = e;
-          this.$emit('change', e);
+          this.inputValue = val;
           this.setOpen(false);
         }
       },
@@ -176,20 +198,6 @@
         if (this.showTime || this.showOk) {
           this.inputValue = value;
           this.$emit('ok', value);
-          this.$emit('change', value);
-        }
-      },
-    },
-    components: {
-      Calendar,
-      Trigger,
-      TimePickerPanel,
-    },
-    watch: {
-      value(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.innerValue = nVal;
-          this.inputValue = nVal;
         }
       },
     },

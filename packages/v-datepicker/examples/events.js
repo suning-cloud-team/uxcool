@@ -2,11 +2,15 @@ import Vue from 'vue';
 
 import '@suning/v-datepicker/css/index.scss';
 import '@suning/v-timepicker/assets/index.css';
-import { VRangeDatePicker } from '@suning/v-datepicker';
-import { subMonths, subMinutes, subDays, addMonths, subWeeks } from 'date-fns';
+import VDatePicker, { VRangeDatePicker } from '@suning/v-datepicker';
+import { isBefore } from 'date-fns';
 
 const vm = new Vue({
   el: '#app',
+  components: {
+    VRangeDatePicker,
+    VDatePicker,
+  },
   data: {
     formatValue: '',
     disabled: false,
@@ -15,23 +19,7 @@ const vm = new Vue({
       'v-calendar-picker-input': true,
     },
     selectedValues: [],
-    ranges: {
-      最近30分钟: () => [subMinutes(new Date(), 30), new Date()],
-      今天: [new Date(), new Date()],
-      昨天: [subDays(new Date(), 1), subDays(new Date(), 1)],
-      最近一个月: [subMonths(new Date(), 1), new Date()],
-      未来一个月: [new Date(), addMonths(new Date(), 1)],
-      过去一周: [subWeeks(new Date(), 1), new Date()],
-    },
-    range1: {
-      今天: [new Date()],
-    },
-    // range1: 'abc',
-  },
-  created() {
-    // setTimeout(() => {
-    //   this.disabled = false;
-    // }, 2500);
+    calendarValues: [],
   },
   methods: {
     onClear() {
@@ -40,13 +28,22 @@ const vm = new Vue({
     onOk(values) {
       console.log('on-ok', values);
     },
-    onChange(values) {
-      this.formatValue = values;
-      this.selectedValues = values;
-      console.log('on-change', values);
+    onChange(values, dateString) {
+      // this.formatValue = values;
+      // this.selectedValues = values;
+      console.log('on-change', values, dateString);
+    },
+    onCalendarChange(values) {
+      this.calendarValues = values;
+      console.log('onCalendarChange', values);
     },
     onOpenChange(visible) {
       console.log('open-change', visible);
+    },
+    disabledDate(current) {
+      const { calendarValues: [start] } = this;
+
+      return isBefore(current, start);
     },
     disabledTime(value, type) {
       if (type === 'start') {
@@ -75,8 +72,5 @@ const vm = new Vue({
         },
       };
     },
-  },
-  components: {
-    VRangeDatePicker,
   },
 });
