@@ -5,9 +5,11 @@
       {{ theme }}
     </button>
     <div class="demo">
-      <ux-date-picker :theme="theme" />
+      <ux-date-picker :theme="theme"
+                      @change="onChange" />
       <br>
       <ux-range-date-picker :theme="theme"
+                            @calendar-change="onCalendarChange"
                             @change="onChange" />
     </div>
 
@@ -34,10 +36,17 @@
       <h6>showTime</h6>
       <ux-date-picker :theme="theme"
                       show-time
+                      format="YYYY/MM/DD HH:mm"
+                      @change="onChange"
+                      @ok="onOk"
                       placeholder="Select Time" />
       <br>
       <ux-range-date-picker :theme="theme"
+                            format="YYYY/MM/DD HH:mm"
                             show-time
+                            @calendar-change="onCalendarChange"
+                            @change="onChange"
+                            @ok="onOk"
                             :placeholder="['Start Time', ' End Time']" />
     </div>
     <div class="demo">
@@ -79,6 +88,7 @@
     isBefore,
     subWeeks,
     subMonths,
+    subMinutes,
     startOfMonth,
     endOfMonth,
     addMonths,
@@ -93,6 +103,7 @@
         date: null,
         rangeDate: [new Date(), addMonths(new Date(), 3)],
         ranges: {
+          最近30分钟: () => [subMinutes(new Date(), 30), new Date()],
           今天: [new Date(), new Date()],
           昨天: [subDays(new Date(), 1), subDays(new Date(), 1)],
           最近一周: [subWeeks(new Date(), 1), new Date()],
@@ -106,8 +117,14 @@
       changeTheme() {
         this.theme = this.theme === 'light' ? 'dark' : 'light';
       },
-      onChange(e) {
-        console.log('onChange', e);
+      onCalendarChange(val) {
+        console.log('onCalendarChange', val);
+      },
+      onChange(e, dateString) {
+        console.log('onChange', e, dateString);
+      },
+      onOk(e) {
+        console.log('onOk', e);
       },
       disabledDate(current) {
         return current && isBefore(current, startOfDay(subDays(new Date(), 3)));

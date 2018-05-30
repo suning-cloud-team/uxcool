@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-input",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "vue input components",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -8,7 +8,7 @@
   "author": "'hw' <17061765@cnsuning.com>",
   "license": "MIT",
   "publishConfig": {
-    "registry": "http://snpm.cnsunig.com"
+    "registry": "http://snpm.cnsuning.com"
   },
   "files": [
     "assets/*css",
@@ -24,7 +24,7 @@
     "vue": "^2.*.*"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.27"
+    "@suning/v-tools": "^1.0.29"
   },
   "dependencies": {
     "raf": "^3.4.0"

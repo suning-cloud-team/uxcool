@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-tools",
-  "version": "1.0.27",
+  "version": "1.0.29",
   "description": "v-components tools",
   "license": "MIT",
   "bin": {
@@ -10,7 +10,7 @@
     "server": "webpack-dev-server --config ./lib/webpack/server.js"
   },
   "publishConfig": {
-    "registry": "http://snpm.cnsunig.com"
+    "registry": "http://snpm.cnsuning.com"
   },
   "peerDependencies": {
     "vue": "^2.*"

@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-table",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "table基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -11,14 +11,14 @@
     "vue": "^2.5.*"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.27"
+    "@suning/v-tools": "^1.0.29"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.5",
+    "@suning/v-utils": "^1.0.7",
     "lodash": "^4.17.4"
   },
   "publishConfig": {
-    "registry": "http://snpm.cnsunig.com"
+    "registry": "http://snpm.cnsuning.com"
   },
   "files": [
     "assets/*.css",

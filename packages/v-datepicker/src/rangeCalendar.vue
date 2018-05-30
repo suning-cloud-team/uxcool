@@ -60,22 +60,22 @@
                        @on-panel-change="onEndPanelChange"
                        @on-day-hover="onDayHover"
                        @on-select="onSelect">
-          <time-picker-panel slot="timePicker"
-                             v-if="hasTimePicker"
+          <time-picker-panel v-if="hasTimePicker"
+                             slot="timePicker"
                              :prefix-cls="`${prefixCls}-time-picker`"
                              :value="selectedValue[1]"
-                             show-hour
-                             show-minute
-                             show-second
                              :disabled-hours="disabledEndTime.disabledHours"
                              :disabled-minutes="disabledEndTime.disabledMinutes"
                              :disabled-seconds="disabledEndTime.disabledSeconds"
+                             show-hour
+                             show-minute
+                             show-second
                              @on-change="onTimePickerChange('right',$event)" />
         </calendar-part>
-        <div :class="`${prefixCls}-range-quick-selector`"
-             v-if="isRanges">
-          <div :class="`${prefixCls}-range-quick-selector-item`"
-               v-for="(v,k) in ranges"
+        <div v-if="isRanges"
+             :class="`${prefixCls}-range-quick-selector`">
+          <div v-for="(v,k) in ranges"
+               :class="`${prefixCls}-range-quick-selector-item`"
                :key="k"
                @mouseenter="onRangeMouseEnter(v)"
                @mouseleave="onRangeMouseLeave"
@@ -388,6 +388,8 @@
         if (start && !end) {
           updateHoverValues(values);
         }
+
+        this.$emit('calendar-change', values);
         if ((!start && !end) || (start && end)) {
           this.firstSelectedVal = null;
           updateHoverValues([]);
@@ -485,18 +487,29 @@
       onOkClick() {
         this.$emit('on-ok', this.selectedValue);
       },
+      getRangeVal(range) {
+        let val = range;
+        if (typeof val === 'function') {
+          val = val();
+        }
+        return val;
+      },
       onRangeMouseEnter(range) {
-        if (Array.isArray(range)) {
-          this.updateHoverValues(range);
+        const { getRangeVal } = this;
+        const val = getRangeVal(range);
+        if (Array.isArray(val)) {
+          this.updateHoverValues(val);
         }
       },
       onRangeMouseLeave() {
         this.updateHoverValues([]);
       },
       onRangeClick(range) {
-        if (Array.isArray(range)) {
-          if (range.every(v => v instanceof Date)) {
-            this.$emit('on-quick-select', range);
+        const { getRangeVal } = this;
+        const val = getRangeVal(range);
+        if (Array.isArray(val)) {
+          if (val.every(v => v instanceof Date)) {
+            this.$emit('on-quick-select', val);
           }
         }
       },

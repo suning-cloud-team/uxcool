@@ -123,8 +123,8 @@
         </tr>
         <tr>
           <td>change</td>
-          <td>用户选择时间后触发;当确定按钮存在时, 点击确定按钮后触发</td>
-          <td>Function(values:Date[])</td>
+          <td>用户选择时间后触发</td>
+          <td>Function(values:Date[], formatDateString:String)</td>
         </tr>
         <tr>
           <td>ok</td>
@@ -226,7 +226,7 @@
         <tr>
           <td>ranges</td>
           <td>预设时间范围</td>
-          <td>Object{String: Date:[]}</td>
+          <td>Object{String: (Date:[] \| ()=>Date:[])</td>
           <td></td>
         </tr>
       </tbody>
@@ -248,7 +248,12 @@
         </tr>
         <tr>
           <td>change</td>
-          <td>用户选择时间后触发;当确定按钮存在时, 点击确定按钮后触发</td>
+          <td>用户选择时间后触发</td>
+          <td>Function(values:Date[], formatDateStrings:String[])</td>
+        </tr>
+        <tr>
+          <td>calendar-change</td>
+          <td>时间发生变化后触发</td>
           <td>Function(values:Date[])</td>
         </tr>
         <tr>
