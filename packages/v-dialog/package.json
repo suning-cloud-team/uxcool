@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-dialog",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "modal 基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
