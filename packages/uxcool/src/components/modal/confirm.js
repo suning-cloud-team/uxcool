@@ -45,8 +45,16 @@ function modalConfrim(props) {
           parentNode.removeChild(container);
         }
       },
+      methods: {
+        onModalEnter() {
+          const { $refs: { okBtnRef } } = this;
+          if (okBtnRef) {
+            okBtnRef.focus();
+          }
+        },
+      },
       render() {
-        const { attrs, listeners } = this;
+        const { attrs, listeners, onModalEnter } = this;
         if (!attrs) {
           return null;
         }
@@ -80,7 +88,7 @@ function modalConfrim(props) {
           <button class="ux-btn" on-click={listeners.cancel}>
             {cancelText}
           </button>
-          ) : null;
+        ) : null;
 
         const modalContent = dangerouslySetInnerHTML ? (
           <div class={`${prefixCls}-content`} {...{ domProps: { innerHTML: content } }} />
@@ -88,7 +96,7 @@ function modalConfrim(props) {
           <div class={`${prefixCls}-content`}>{content}</div>
         );
         return (
-          <modal {...{ props: bindProps, on: listeners }}>
+          <modal {...{ props: bindProps, on: { ...listeners, enter: onModalEnter } }}>
             <div class={`${prefixCls}-body-wrapper`}>
               <div class={`${prefixCls}-body`}>
                 <icon type={iconType} />
@@ -97,7 +105,11 @@ function modalConfrim(props) {
               </div>
               <div class={`${prefixCls}-btns`}>
                 {cancelBtn}
-                <button class={['ux-btn', `ux-btn-${okType}`]} on-click={listeners.ok}>
+                <button
+                  ref="okBtnRef"
+                  class={['ux-btn', `ux-btn-${okType}`]}
+                  on-click={listeners.ok}
+                >
                   {okText}
                 </button>
               </div>
