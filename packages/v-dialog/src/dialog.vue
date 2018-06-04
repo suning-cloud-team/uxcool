@@ -3,18 +3,18 @@
     <template v-if="mask">
       <transition :name="maskTransition"
                   appear>
-        <div role="mask"
-             v-show="value"
+        <div v-show="value"
              :class="`${prefixCls}-mask`"
-             :style="[maskStyle,zIndexStyle]">
-        </div>
+             :style="[maskStyle,zIndexStyle]"
+             role="mask" />
       </transition>
     </template>
     <div v-show="showDialogWrap"
-         tabindex="-1"
-         role="dialog"
+         ref="dialogWrapRef"
          :class="[wrapClasses, wrapClass]"
          :style="[wrapStyle, zIndexStyle]"
+         role="dialog"
+         tabindex="-1"
          @click="onMaskClose">
       <transition :name="dialogTransition"
                   appear
@@ -25,27 +25,27 @@
              :style="[dialogStyle, styles]"
              @click.stop>
           <div :class="`${prefixCls}-content`">
-            <div :class="`${prefixCls}-close`"
-                 v-if="closable"
+            <div v-if="closable"
+                 :class="`${prefixCls}-close`"
                  @click.stop="onClose">
-              <span :class="`${prefixCls}-close-x`"></span>
+              <span :class="`${prefixCls}-close-x`" />
             </div>
 
-            <div :class="`${prefixCls}-header`"
-                 v-if="$slots.title">
+            <div v-if="$slots.title"
+                 :class="`${prefixCls}-header`">
               <div :class="`${prefixCls}-title`">
-                <slot name="title"></slot>
+                <slot name="title" />
               </div>
             </div>
 
             <div :class="`${prefixCls}-body`"
                  :style="bodyStyle">
-              <slot></slot>
+              <slot/>
             </div>
 
-            <div :class="`${prefixCls}-footer`"
-                 v-if="$slots.footer">
-              <slot name="footer"></slot>
+            <div v-if="$slots.footer"
+                 :class="`${prefixCls}-footer`">
+              <slot name="footer" />
             </div>
           </div>
         </div>
@@ -66,10 +66,8 @@
     data() {
       return {
         showDialogWrap: false,
+        lastFocusElement: null,
       };
-    },
-    created() {
-      this.setDocOverflow(this.value);
     },
     computed: {
       maskTransition() {
@@ -114,7 +112,49 @@
         return style;
       },
     },
+    watch: {
+      value(nVal, oVal) {
+        if (nVal && nVal !== oVal) {
+          this.setDocOverflow(nVal);
+        }
+      },
+    },
+    created() {
+      this.setDocOverflow(this.value);
+    },
     methods: {
+      focus() {
+        const { $refs: { dialogWrapRef } } = this;
+        if (dialogWrapRef) {
+          dialogWrapRef.focus();
+        }
+      },
+      blur() {
+        const { $refs: { dialogWrapRef } } = this;
+        if (dialogWrapRef) {
+          dialogWrapRef.blur();
+        }
+      },
+      setShowDialogWrap(flag) {
+        const {
+          mask, lastFocusElement, focus, blur
+        } = this;
+        this.showDialogWrap = flag;
+
+        this.$nextTick(() => {
+          if (flag) {
+            this.lastFocusElement = document.activeElement;
+            focus();
+            this.$emit('enter');
+          } else {
+            blur();
+            if (mask && lastFocusElement) {
+              lastFocusElement.focus();
+              this.lastFocusElement = null;
+            }
+          }
+        });
+      },
       setDocOverflow(flag) {
         if (flag) {
           openModalCnt += 1;
@@ -147,19 +187,13 @@
         }
       },
       onDialogEnter() {
-        this.showDialogWrap = true;
+        this.setShowDialogWrap(true);
       },
       onDialogLeave(e) {
-        this.showDialogWrap = false;
+        this.setShowDialogWrap(false);
         this.setDocOverflow(false);
         this.$emit('after-close', e);
-      },
-    },
-    watch: {
-      value(nVal, oVal) {
-        if (nVal && nVal !== oVal) {
-          this.setDocOverflow(nVal);
-        }
+        this.blur();
       },
     },
   };

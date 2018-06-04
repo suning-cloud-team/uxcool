@@ -6,6 +6,9 @@ import VDialog from '@suning/v-dialog';
 
 const vm = new Vue({
   el: '#app',
+  components: {
+    VDialog,
+  },
   data: {
     visible: false,
     title: 'title1',
@@ -17,13 +20,10 @@ const vm = new Vue({
   },
   methods: {
     onClick() {
-      this.visible = true;
+      this.visible = !this.visible;
     },
     onDestroy() {
       this.$destroy();
     },
-  },
-  components: {
-    VDialog,
   },
 });

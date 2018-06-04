@@ -5,22 +5,22 @@
             @close="onCancel">
     <template v-if="title||$slots.title"
               slot="title">
-      <slot name="title">{{title}}</slot>
+      <slot name="title">{{ title }}</slot>
     </template>
-    <slot></slot>
+    <slot/>
     <template v-if="!hideFooter"
               slot="footer">
       <slot name="footer">
         <button v-if="okCancel"
                 class="ux-btn"
                 @click="onCancel">
-          {{cancelText }}
+          {{ cancelText }}
         </button>
 
-        <button class="ux-btn"
-                :class="`ux-btn-${okType}`"
+        <button :class="`ux-btn-${okType}`"
+                class="ux-btn"
                 @click="onOk">
-          {{okText }}
+          {{ okText }}
         </button>
       </slot>
     </template>
@@ -34,6 +34,9 @@
 
   export default {
     name: buildComponentName('Modal'),
+    components: {
+      VDialog,
+    },
     props: {
       prefixCls: {
         type: String,
@@ -43,8 +46,14 @@
         type: Boolean,
         required: true,
       },
-      title: String,
-      confirmLoading: Boolean,
+      title: {
+        type: String,
+        default: '',
+      },
+      confirmLoading: {
+        type: Boolean,
+        default: false,
+      },
       closable: {
         type: Boolean,
         default: true,
@@ -82,14 +91,20 @@
         type: String,
         default: 'zoom',
       },
-      getContainer: Function,
+      getContainer: {
+        type: Function,
+        default: undefined,
+      },
       bodyStyle: Object,
       maskStyle: Object,
       mask: {
         type: Boolean,
         default: true,
       },
-      hideFooter: Boolean,
+      hideFooter: {
+        type: Boolean,
+        default: false,
+      },
       okCancel: {
         type: Boolean,
         default: true,
@@ -126,9 +141,6 @@
         }
         this.$emit('cancel', e);
       },
-    },
-    components: {
-      VDialog,
     },
   };
 </script>
