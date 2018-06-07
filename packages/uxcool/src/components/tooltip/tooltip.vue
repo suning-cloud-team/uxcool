@@ -34,6 +34,10 @@
         type: String,
         default: 'top',
       },
+      transitionName: {
+        type: String,
+        default: 'zoom-big-fast',
+      },
       mouseEnterDelay: {
         type: Number,
         default: 100,

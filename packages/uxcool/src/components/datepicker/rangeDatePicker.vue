@@ -8,24 +8,24 @@
     <template slot="trigger">
       <div :class="pickerClasses">
         <div :class="pickerInputClass">
-          <input type="text"
-                 readonly
-                 :class="`${prefixCls}-range-picker-input`"
+          <input :class="`${prefixCls}-range-picker-input`"
                  :value="startValue"
                  :placeholder="startPlaceholder"
                  :disabled="disabled"
+                 type="text"
+                 readonly
                  tabindex="-1">
           <span :class="`${prefixCls}-range-picker-separator`"> ~ </span>
-          <input type="text"
-                 readonly
-                 :class="`${prefixCls}-range-picker-input`"
+          <input :class="`${prefixCls}-range-picker-input`"
                  :value="endValue"
                  :placeholder="endPlaceholder"
                  :disabled="disabled"
+                 type="text"
+                 readonly
                  tabindex="-1">
           <icon v-if="isCanClear"
-                type="close_circle"
                 :class="`${prefixCls}-picker-clear`"
+                type="close_circle"
                 @click.prevent.stop="onClearClick" />
           <span :class="`${prefixCls}-picker-icon`" />
         </div>
@@ -128,6 +128,14 @@
       ranges: {
         type: Object,
         default: undefined,
+      },
+      transitionName: {
+        type: String,
+        default: 'slide-up',
+      },
+      animation: {
+        type: String,
+        default: '',
       },
     },
     data() {
