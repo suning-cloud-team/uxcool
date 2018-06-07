@@ -4,7 +4,6 @@
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "start": "npm run server",
     "compile": "v-tools run compile",
