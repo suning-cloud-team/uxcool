@@ -2,3 +2,7 @@
 @import 'base';
 @import 'iconfont';
 @import 'motion';
+
+[role='link'] {
+  cursor: pointer;
+}

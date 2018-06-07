@@ -36,6 +36,7 @@ import Popconfirm from './views/popconfirm/index';
 import InputNumber from './views/input-number/index';
 import Notification from './views/notification/index';
 import Anchor from './views/anchor/index';
+import Transfer from './views/transfer/index';
 
 Vue.use(Router);
 const routes = [
@@ -218,6 +219,11 @@ const routes = [
     name: 'Anchor',
     path: '/anchor',
     component: Anchor,
+  },
+  {
+    name: 'Transfer',
+    path: '/transfer',
+    component: Transfer,
   },
 ];
 

@@ -10,6 +10,8 @@ import set from 'lodash/set';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 
+export function noop() {}
+
 export function isDef(v) {
   return v !== null && v !== undefined;
 }

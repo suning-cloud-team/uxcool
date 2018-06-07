@@ -1,8 +1,12 @@
-import warn from 'warning';
+import { warning } from '@suning/v-utils';
 import { COMPONENT_NAME_PREFIX } from './constants';
 
 export function buildComponentName(name) {
   return `${COMPONENT_NAME_PREFIX}${name}`;
+}
+
+export function getComponentPrefix() {
+  return COMPONENT_NAME_PREFIX.toLowerCase();
 }
 
 export function noop() {}
@@ -15,10 +19,4 @@ export function isFlexSupported() {
   return false;
 }
 
-const warned = {};
-export function warning(valid = true, message = '') {
-  if (!valid && !warned[message]) {
-    warn(false, message);
-    warned[message] = true;
-  }
-}
+export { warning };

@@ -57,6 +57,10 @@
         type: String,
         default: '',
       },
+      control: {
+        type: Boolean,
+        default: false,
+      },
     },
     computed: {
       bindProps() {

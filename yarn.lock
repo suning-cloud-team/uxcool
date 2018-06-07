@@ -83,6 +83,12 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@suning/v-test-utils@^1.0.2":
+  version "1.0.2"
+  resolved "http://snpm.cnsuning.com/@suning%2fv-test-utils/-/v-test-utils-1.0.2.tgz#eca06727c2173a8362b50a755a6372c3eb3dc0f6"
+  dependencies:
+    jquery "^3.3.1"
+
 "@types/jest@^22.2.3":
   version "22.2.3"
   resolved "http://registry.npm.taobao.org/@types/jest/download/@types/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
@@ -9026,6 +9032,10 @@ vue-template-compiler@^2.*, vue-template-compiler@^2.5.13:
 vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
+
+vue-virtual-scroll-list@^1.2.5:
+  version "1.2.5"
+  resolved "http://registry.npm.taobao.org/vue-virtual-scroll-list/download/vue-virtual-scroll-list-1.2.5.tgz#bcbd010f7cdb035eba8958ebf807c6214d9a167a"
 
 vue@^2.*, vue@^2.5.13:
   version "2.5.13"
