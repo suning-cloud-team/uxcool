@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div style="margin:100px;">
+      <trigger @on-click="onTriggerClick" @on-mousedown="onTriggerClick" :popup-align="{points:['tl','bl']}"
+        :actions="['click']" popup-transition-name="ux-trigger-popup-zoom">
+        <span tabindex="0" slot="trigger">transition</span>
+        <!-- <div @click="onClick" tabindex="2" style="height: 100px; width: 100px; border: 1px solid red " slot="trigger">测试内容</div> -->
+        <div slot="popup" style="border: 1px solid green; padding: 10px; background: white">
+          i am a popup
+          <button>a</button>
+        </div>
+      </trigger>
+
+      <br>
+      <trigger @on-click="onTriggerClick" @on-mousedown="onTriggerClick" destroy-popup-on-hide :popup-align="{points:['tl','bl']}"
+        :actions="['click']" popup-transition-name="ux-trigger-popup-zoom">
+        <span tabindex="0" slot="trigger">destroy transtion</span>
+        <!-- <div @click="onClick" tabindex="2" style="height: 100px; width: 100px; border: 1px solid red " slot="trigger">测试内容</div> -->
+        <div slot="popup" style="border: 1px solid green; padding: 10px; background: white">
+          i am a popup
+          <button>a</button>
+        </div>
+      </trigger>
+
+      <br>
+      <trigger @on-click="onTriggerClick" @on-mousedown="onTriggerClick" :popup-align="{points:['tl','bl']}"
+        :actions="['click']">
+        <span tabindex="0" slot="trigger">no transition</span>
+        <!-- <div @click="onClick" tabindex="2" style="height: 100px; width: 100px; border: 1px solid red " slot="trigger">测试内容</div> -->
+        <div slot="popup" style="border: 1px solid green; padding: 10px; background: white">
+          i am a popup
+          <button>a</button>
+        </div>
+      </trigger>
+      <br>
+      <trigger @on-click="onTriggerClick" @on-mousedown="onTriggerClick" destroy-popup-on-hide :popup-align="{points:['tl','bl']}"
+        :actions="['click']">
+        <span tabindex="0" slot="trigger">no transition destroy</span>
+        <!-- <div @click="onClick" tabindex="2" style="height: 100px; width: 100px; border: 1px solid red " slot="trigger">测试内容</div> -->
+        <div slot="popup" style="border: 1px solid green; padding: 10px; background: white">
+          i am a popup
+          <button>a</button>
+        </div>
+      </trigger>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -18,13 +18,24 @@
           i am a popup
         </div>
       </trigger> -->
-      <trigger @on-click="onTriggerClick" @on-mousedown="onTriggerClick" :destroy-popup-on-hide="true" :actions="['click','hover']"
-        :popup-align="{points:['tl','bl']}" popup-transition-name="ux-trigger-popup-zoom">
-        <div style="height: 100px; width: 100px; border: 1px solid red " slot="trigger">trigger</div>
+      <trigger @on-click="onTriggerClick" @on-mousedown="onTriggerClick" :destroy-popup-on-hide="true" :popup-align="{points:['tl','bl']}"
+        :actions="['click']" popup-transition-name="ux-trigger-popup-zoom">
+        <span tabindex="0" slot="trigger">{{triggerText}}</span>
+        <!-- <div @click="onClick" tabindex="2" style="height: 100px; width: 100px; border: 1px solid red " slot="trigger">测试内容</div> -->
         <div slot="popup" style="border: 1px solid green; padding: 10px; background: white">
           i am a popup
+          <button>a</button>
         </div>
       </trigger>
+      <!-- <trigger @on-click="onTriggerClick" @on-mousedown="onTriggerClick" :destroy-popup-on-hide="true" :actions="['focus']"
+        :popup-align="{points:['tl','bl']}" popup-transition-name="ux-trigger-popup-zoom">
+        <ux-input addon-before="http://" addon-after=".com" slot="trigger" @click="onClick" @focus="onFocus"
+          @blur="onBlur"></ux-input>
+        <div slot="popup" style="border: 1px solid green; padding: 10px; background: white">
+          i am a uxInput popup
+        </div>
+      </trigger> -->
+
     </div>
 
   </div>

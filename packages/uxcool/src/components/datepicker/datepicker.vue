@@ -5,17 +5,17 @@
                  :date-input-placeholder="dateInputPlaceholder"
                  v-on="bindListeners"
                  @change="onChange">
-    <div :class="pickerClasses"
-         slot="trigger">
-      <input type="text"
-             :class="pickerInputClass"
-             readonly
+    <div slot="trigger"
+         :class="pickerClasses">
+      <input :class="pickerInputClass"
              :value="formatValue"
              :placeholder="dateInputPlaceholder"
-             :disabled="disabled">
+             :disabled="disabled"
+             type="text"
+             readonly>
       <icon v-if="isCanClear"
-            type="close_circle"
             :class="`${prefixCls}-picker-clear`"
+            type="close_circle"
             @click.prevent.stop="onClearClick" />
       <span :class="`${prefixCls}-picker-icon`" />
     </div>
@@ -51,12 +51,22 @@
         type: String,
         default: 'light',
       },
-      isOpen: Boolean,
-      mode: String,
+      isOpen: {
+        type: Boolean,
+        default: false,
+      },
+      mode: {
+        type: String,
+        default: undefined,
+      },
       value: {
         type: Date,
+        default: undefined,
       },
-      disabled: Boolean,
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
       format: String,
       showTime: [Boolean, Object],
       showOk: {
@@ -73,7 +83,18 @@
         type: Boolean,
         default: true,
       },
-      placeholder: String,
+      placeholder: {
+        type: String,
+        default: '',
+      },
+      transitionName: {
+        type: String,
+        default: 'slide-up',
+      },
+      animation: {
+        type: String,
+        default: '',
+      },
     },
     data() {
       return {

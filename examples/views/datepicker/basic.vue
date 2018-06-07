@@ -37,17 +37,17 @@
       <ux-date-picker :theme="theme"
                       show-time
                       format="YYYY/MM/DD HH:mm"
+                      placeholder="Select Time"
                       @change="onChange"
-                      @ok="onOk"
-                      placeholder="Select Time" />
+                      @ok="onOk" />
       <br>
       <ux-range-date-picker :theme="theme"
+                            :placeholder="['Start Time', ' End Time']"
                             format="YYYY/MM/DD HH:mm"
                             show-time
                             @calendar-change="onCalendarChange"
                             @change="onChange"
-                            @ok="onOk"
-                            :placeholder="['Start Time', ' End Time']" />
+                            @ok="onOk" />
     </div>
     <div class="demo">
       <h6>不可选</h6>
@@ -78,6 +78,8 @@
       <ux-range-date-picker v-model="rangeDate"
                             :theme="theme" />
     </div>
+
+    <month-demo />
   </div>
 </template>
 
@@ -93,10 +95,15 @@
     endOfMonth,
     addMonths,
   } from 'date-fns';
-  import '@suning/uxcool/src/components/datepicker/style/index.scss';
-  import { UxDatePicker, UxRangeDatePicker } from '@suning/uxcool/src/components/datepicker';
+  import { Datepicker } from '@suning/uxcool';
+  import MonthDemo from './month.vue';
 
   export default {
+    components: {
+      UxDatePicker: Datepicker,
+      UxRangeDatePicker: Datepicker.Range,
+      MonthDemo,
+    },
     data() {
       return {
         theme: 'light',
@@ -180,10 +187,6 @@
           },
         };
       },
-    },
-    components: {
-      UxDatePicker,
-      UxRangeDatePicker,
     },
   };
 </script>

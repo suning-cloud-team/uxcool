@@ -107,7 +107,7 @@ function transformSCSS(file) {
           })
           .catch((e) => {
             reject(e);
-          });
+        });
       }
     );
   });
@@ -179,7 +179,7 @@ function compileVue(target, esModule) {
         })
         .catch((e) => {
           next(chalk.yellow(`Vue transform error: ${e.message}`));
-        });
+      });
     }))
     .pipe(gulp.dest(target));
 }
@@ -187,7 +187,7 @@ function compileVue(target, esModule) {
 function compileJs(target, esModule) {
   // js
   gulp
-    .src(path.resolve(srcDir, '**/*.js?(x)'))
+    .src([path.resolve(srcDir, '**/*.js?(x)'), '!**/__test?(s)__/*.js?(x)'])
     .pipe(through2.obj(function p(chunk, enc, next) {
       const file = chunk;
       log(`${getCompileTaskName(esModule)} task: ${file.path} compile`);
@@ -202,7 +202,7 @@ function compileJs(target, esModule) {
         })
         .catch((e) => {
           next(chalk.yellow(`JS transform error: ${e.message}`));
-        });
+      });
     }))
     .pipe(gulp.dest(target));
 }

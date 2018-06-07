@@ -5,6 +5,8 @@
            :popup-align="align"
            :popup-placement="placement"
            :builtin-placements="buildinPlacements"
+           :popup-transition-name="transitionName"
+           :popup-animation="animation"
            destroy-popup-on-hide
            @on-popup-visible-change="onPopupVisible">
     <template slot="trigger">
@@ -107,6 +109,14 @@
       placement: {
         type: String,
         default: 'bottomLeft',
+      },
+      transitionName: {
+        type: String,
+        default: '',
+      },
+      animation: {
+        type: String,
+        default: '',
       },
     },
     data() {

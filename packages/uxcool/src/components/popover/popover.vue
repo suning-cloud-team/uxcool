@@ -3,14 +3,14 @@
              :tooltip-class="[popoverClass, `${prefixCls}-${theme}`]"
              :tooltip-style="popoverStyle"
              v-on="$listeners">
-    <slot></slot>
+    <slot />
     <template slot="content">
       <div v-if="title||$slots.title"
            :class="`${prefixCls}-title`">
-        <slot name="title">{{title}}</slot>
+        <slot name="title">{{ title }}</slot>
       </div>
       <div :class="`${prefixCls}-inner-content`">
-        <slot name="content">{{content}}</slot>
+        <slot name="content">{{ content }}</slot>
       </div>
     </template>
   </v-tooltip>
@@ -23,12 +23,18 @@
 
   export default {
     name: buildComponentName('Popover'),
+    components: {
+      VTooltip,
+    },
     props: {
       prefixCls: {
         type: String,
         default: 'ux-popover',
       },
-      visible: Boolean,
+      visible: {
+        type: Boolean,
+        default: false,
+      },
       placement: {
         type: String,
         default: 'top',
@@ -37,10 +43,26 @@
         type: [String, Array],
         default: 'hover',
       },
-      popoverClass: [String, Array, Object],
-      popoverStyle: Object,
-      disabled: Boolean,
-      transitionName: String,
+      popoverClass: {
+        type: [String, Array, Object],
+        default: undefined,
+      },
+      popoverStyle: {
+        type: Object,
+        default: undefined,
+      },
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
+      transitionName: {
+        type: String,
+        default: 'zoom-big',
+      },
+      animation: {
+        type: String,
+        default: 'zoom-big',
+      },
       mouseEnterDelay: {
         type: Number,
         default: 100,
@@ -49,13 +71,22 @@
         type: Number,
         default: 100,
       },
-      title: String,
-      content: String,
+      title: {
+        type: String,
+        default: '',
+      },
+      content: {
+        type: String,
+        default: '',
+      },
       theme: {
         type: String,
         default: 'light',
       },
-      arrowPointAtCenter: Boolean,
+      arrowPointAtCenter: {
+        type: Boolean,
+        default: false,
+      },
       autoAdjustOverflow: {
         type: Boolean,
         default: true,
@@ -70,9 +101,6 @@
       bindProps() {
         return omit(this.$props, ['theme', 'title', 'content', 'popoverClass', 'popoverStyle']);
       },
-    },
-    components: {
-      VTooltip,
     },
   };
 </script>

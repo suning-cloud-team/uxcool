@@ -12,59 +12,47 @@ $triggerPrefixCls: ux-trigger-popup;
 
   @mixin effect() {
     animation-duration: 0.3s;
-    // animation-fill-mode: both;
+    animation-fill-mode: both;
   }
 
-  &-zoom-enter-active {
-    animation: bounce-in 0.5s;
-  }
-  &-zoom-leave-active {
-    animation: bounce-in 0.5s reverse;
-  }
-  @keyframes bounce-in {
-    0% {
-      transform: scale(0);
-    }
-    50% {
-      transform: scale(1.5);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  // &-zoom-enter,
-  // &-zoom-appear,
-  // &-zoom-leave-to {
-  //   opacity: 0;
-  //   animation-play-state: paused;
+  // &-zoom-enter-active {
+  //   animation: bounce-in 0.5s;
   // }
-
-  // &-zoom-enter-to {
-  //   opacity: 1;
-  // }
-  // &-zoom-leave {
-  //   opacity: 1;
-  //   // animation-play-state: paused;
-  // }
-
-  // &-zoom-enter-active,
-  // &-zoom-appear-active {
-  //   // transition: all 0.5s ease;
-  //   // opacity: 0.5;
-  //   @include effect();
-  //   animation-name: uxTriggerZoomIn;
-  //   animation-play-state: running;
-  //   animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
-  // }
-
   // &-zoom-leave-active {
-  //   // transition: all 0.5s ease;
-  //   // opacity: 0.5;
-  //   @include effect();
-  //   animation-name: uxTriggerZoomOut;
-  //   animation-play-state: running;
-  //   animation-timing-function: cubic-bezier(0.6, -0.3, 0.74, 0.05);
+  //   animation: bounce-in 0.5s reverse;
   // }
+  // @keyframes bounce-in {
+  //   0% {
+  //     transform: scale(0);
+  //   }
+  //   50% {
+  //     transform: scale(1.5);
+  //   }
+  //   100% {
+  //     transform: scale(1);
+  //   }
+  // }
+  &-zoom-enter,
+  &-zoom-appear,
+  &-zoom-leave-to {
+    opacity: 0;
+    animation-play-state: paused;
+  }
+
+  &-zoom-enter-active,
+  &-zoom-appear-active {
+    @include effect();
+    animation-name: uxTriggerZoomIn;
+    animation-play-state: running;
+    animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+
+  &-zoom-leave-active {
+    @include effect();
+    animation-name: uxTriggerZoomOut;
+    animation-play-state: running;
+    animation-timing-function: cubic-bezier(0.6, -0.3, 0.74, 0.05);
+  }
 
   @keyframes uxTriggerZoomIn {
     0% {

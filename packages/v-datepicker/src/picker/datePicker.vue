@@ -5,6 +5,8 @@
            :popup-align="align"
            :popup-placement="placement"
            :builtin-placements="buildinPlacements"
+           :popup-transition-name="transitionName"
+           :popup-animation="animation"
            destroy-popup-on-hide
            @on-popup-visible-change="onPopupVisible">
     <template slot="trigger">
@@ -31,12 +33,12 @@
         <time-picker-panel v-if="isShowTime"
                            :prefix-cls="`${prefixCls}-time-picker`"
                            :value="innerValue"
-                           show-hour
-                           show-minute
-                           show-second
                            :disabled-hours="disabledHours"
                            :disabled-minutes="disabledMinutes"
                            :disabled-seconds="disabledSeconds"
+                           show-hour
+                           show-minute
+                           show-second
                            @on-change="props.onChange" />
       </template>
     </calendar>
@@ -68,19 +70,24 @@
         type: String,
         default: 'v-calendar-picker',
       },
-      pickerInputClass: Object,
       locale: {
         type: Object,
         default() {
           return localeEN;
         },
       },
-      mode: String,
+      mode: {
+        type: String,
+        default: undefined,
+      },
       theme: {
         type: String,
         default: 'light',
       },
-      isOpen: Boolean,
+      isOpen: {
+        type: Boolean,
+        default: false,
+      },
       value: Date,
       disabled: Boolean,
       format: String,
@@ -99,6 +106,14 @@
       placement: {
         type: String,
         default: 'bottomLeft',
+      },
+      transitionName: {
+        type: String,
+        default: '',
+      },
+      animation: {
+        type: String,
+        default: '',
       },
     },
     data() {

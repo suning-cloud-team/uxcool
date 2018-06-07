@@ -32,6 +32,7 @@
     [v-cloak] {
       display: none
     }
+
   </style>
 </head>
 
@@ -43,8 +44,7 @@
     </select>
     <select v-model="sVAlign">
       <option v-for="a in alignVArr" :value="a">{{a}}</option>
-    </select>
-    target align:{{tHAlign}}{{tVAlign}}
+    </select> target align:{{tHAlign}}{{tVAlign}}
     <select v-model="tHAlign">
       <option v-for="a in alignHArr" :value="a">{{a}}</option>
     </select>

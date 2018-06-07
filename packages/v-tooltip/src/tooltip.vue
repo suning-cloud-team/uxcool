@@ -10,6 +10,7 @@
            :mouse-enter-delay="mouseEnterDelay"
            :mouse-leave-delay="mouseLeaveDelay"
            :popup-transition-name="transitionName"
+           :popup-animation="animation"
            :popup-class="tooltipClass"
            :popup-style="tooltipStyle"
            @on-popup-visible-change="onPopupVisible">
@@ -100,6 +101,10 @@
         default: 0.1,
       },
       transitionName: {
+        type: String,
+        default: '',
+      },
+      animation: {
         type: String,
         default: '',
       },

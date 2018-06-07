@@ -30,13 +30,6 @@ const vm = new Vue({
       actions: ['hover'],
     };
   },
-  created() {
-    setTimeout(() => {
-      this.inputDisabled = true;
-      this.actions = ['click'];
-      this.triggerText = 'ccccc';
-    }, 2000);
-  },
   methods: {
     onShow() {
       this.isShow = !this.isShow;
