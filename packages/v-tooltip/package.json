@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-tooltip",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository": "git@git.cnsuning.com:fedc/v-tooltip.git",
@@ -23,10 +23,10 @@
     "vue": "^2.*.*"
   },
   "dependencies": {
-    "@suning/v-trigger": "^1.0.31"
+    "@suning/v-trigger": "^1.0.32"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.29",
+    "@suning/v-tools": "^1.0.30",
     "debug": "^3.1.0"
   }
 }
