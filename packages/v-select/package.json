@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-select",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "author": "'hw' <17061765@cnsuning.com>",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@suning/v-menu": "^1.0.29",
-    "@suning/v-trigger": "^1.0.32",
+    "@suning/v-trigger": "^1.0.33",
     "scroll-into-view-if-needed": "^1.4.0"
   },
   "devDependencies": {
