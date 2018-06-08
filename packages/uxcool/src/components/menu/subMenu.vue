@@ -1,7 +1,10 @@
 <template>
   <v-sub-menu v-bind="$props"
               v-on="$listeners">
-    <slot></slot>
+    <template slot="title">
+      <slot name="title" />
+    </template>
+    <slot />
   </v-sub-menu>
 </template>
 
@@ -11,6 +14,9 @@
 
   export default {
     name: buildComponentName('SubMenu'),
+    components: {
+      VSubMenu,
+    },
     props: {
       name: String,
       title: String,
@@ -20,9 +26,6 @@
       return {
         isWrap: true,
       };
-    },
-    components: {
-      VSubMenu,
     },
   };
 </script>
