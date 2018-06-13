@@ -25,7 +25,7 @@
   export default {
     data() {
       return {
-        dataSource: mockData(5000),
+        dataSource: mockData(),
         operations: ['to Left', 'to Right'],
       };
     },

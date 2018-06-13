@@ -113,7 +113,7 @@ export default {
         if (process.env.NODE_ENV !== 'production' && !isDef(key)) {
           warning(
             false,
-            'Each record in dataSource of table should have a unique `key` prop, or set `rowKey` to an unique primary key'
+            'Each record in dataSource of transfer should have a unique `key` prop, or set `rowKey` to an unique primary key'
           );
         }
         item.$$_key = key;

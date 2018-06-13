@@ -37,7 +37,7 @@
     data() {
       return {
         code,
-        dataSource: mockData(5000),
+        dataSource: mockData(),
         operations: ['to Left', 'to Right'],
       };
     },

@@ -42,6 +42,7 @@ import Transfer from '@/views/components/transfer/index.vue';
 import Affix from '@/views/components/affix/index.vue';
 import Rate from '@/views/components/rate/index.vue';
 import Dropdown from '@/views/components/dropdown/index.vue';
+import Tree from '@/views/components/tree/index.vue';
 
 export const groups = {
   general: {
@@ -494,7 +495,8 @@ export default [
           group: 'nav',
         },
         component: Affix,
-      }, {
+      },
+      {
         name: 'rate',
         path: 'rate',
         meta: {
@@ -503,7 +505,8 @@ export default [
           group: 'form',
         },
         component: Rate,
-      }, {
+      },
+      {
         name: 'dropdown',
         path: 'dropdown',
         meta: {
@@ -512,6 +515,16 @@ export default [
           group: 'nav',
         },
         component: Dropdown,
+      },
+      {
+        name: 'tree',
+        path: 'tree',
+        meta: {
+          title: 'Tree',
+          subTitle: '树',
+          group: 'data',
+        },
+        component: Tree,
       },
     ],
   },
