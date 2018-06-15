@@ -3,6 +3,37 @@
     <button class="ux-btn"
             @click="changeTheme">{{theme}}</button>
     <div class="demo">
+
+      <div class="demo">
+        <h4>single custom filterOption</h4>
+        <ux-select :filter-option="filterOption"
+                   style="width:200px;"
+                   show-search
+                   :theme="theme">
+          <ux-option value="A"
+                     label="A1" />
+          <ux-option value="B"
+                     label="B2" />
+          <ux-option value="C"
+                     label="C3" />
+        </ux-select>
+      </div>
+
+      <div class="demo">
+        <h4>mode="multiple" custom filterOption</h4>
+        <ux-select :theme="theme"
+                   :filter-option="filterOption"
+                   style="width:200px;"
+                   show-search
+                   mode="multiple">
+          <ux-option value="A"
+                     label="A1" />
+          <ux-option value="B"
+                     label="B2" />
+          <ux-option value="C"
+                     label="C3" />
+        </ux-select>
+      </div>
       <ux-select style="width:200px;"
                  :theme="theme">
         <ux-option value="A">A</ux-option>
@@ -128,6 +159,9 @@
       };
     },
     methods: {
+      filterOption(input, option) {
+        return option.label.indexOf(input) > -1;
+      },
       changeTheme() {
         this.theme = this.theme === 'light' ? 'dark' : 'light';
       },

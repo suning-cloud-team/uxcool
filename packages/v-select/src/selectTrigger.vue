@@ -32,6 +32,7 @@
 </template>
 
 <script>
+  import { isFunction } from '@suning/v-utils';
   import Trigger from '@suning/v-trigger';
   import DropdownMenu from './dropdownMenu.vue';
   import { CMP_TYPE_ENUM } from './constants';
@@ -57,6 +58,7 @@
       dropdownMenuStyle: [Array, Object],
       showSearch: Boolean,
       theme: String,
+      filterOption: Function,
     },
     data() {
       return {
@@ -134,12 +136,21 @@
         }
       },
       filterDescendants() {
-        const { descendants, inputValue } = this;
-        const filterFn = defaultFilterOptiontFn;
+        const { descendants, inputValue, filterOption } = this;
+        const filterFn = isFunction(filterOption) ? filterOption : defaultFilterOptiontFn;
         if (!inputValue) {
           return descendants;
         }
-        return descendants.filter(v => (v.type === CMP_TYPE_ENUM.OPTION ? filterFn(inputValue, v.vm, 'value') : true));
+
+        return descendants.filter((v) => {
+          const { vm } = v;
+          const option = {
+            disabled: vm.disabled,
+            value: vm.value,
+            label: vm.label,
+          };
+          return v.type === CMP_TYPE_ENUM.OPTION ? filterFn(inputValue, option, 'value') : true;
+        });
       },
       createNoDataArr(label) {
         return [

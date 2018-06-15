@@ -8,11 +8,7 @@
   "publishConfig": {
     "registry": "http://snpm.cnsuning.com"
   },
-  "files": [
-    "assets/*.css",
-    "cjs",
-    "es"
-  ],
+  "files": ["assets/*.css", "cjs", "es"],
   "scripts": {
     "compile": "v-tools run compile",
     "server": "v-tools run server",
@@ -22,6 +18,7 @@
     "vue": "^2.5.*"
   },
   "dependencies": {
+    "@suning/v-utils": "^1.0.8",
     "@suning/v-menu": "^1.0.29",
     "@suning/v-trigger": "^1.0.33",
     "scroll-into-view-if-needed": "^1.4.0"
