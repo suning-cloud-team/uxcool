@@ -14,6 +14,7 @@
                     :multiple="isMultipleOrTags"
                     :show-search="isShowSearch"
                     :theme="theme"
+                    :filter-option="filterOption"
                     @popup-visible-change="onPopupVisible"
                     @menu-select="onMenuSelect"
                     @menu-deselect="onMenuDeselect">
@@ -179,6 +180,10 @@
       getContainer: {
         type: Function,
         default: null,
+      },
+      filterOption: {
+        type: Function,
+        default: undefined,
       },
     },
     data() {

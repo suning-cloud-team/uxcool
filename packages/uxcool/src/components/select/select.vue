@@ -67,6 +67,10 @@
         type: Function,
         default: null,
       },
+      filterOption: {
+        type: Function,
+        default: null,
+      },
     },
   };
 </script>
