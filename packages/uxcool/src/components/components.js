@@ -65,3 +65,7 @@ export * from './anchor';
 export { default as UxNotification } from './notification';
 
 export { default as UxTransfer } from './transfer';
+
+export { default as UxRate } from './rate';
+
+export { default as UxAffix } from './affix';

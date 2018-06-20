@@ -38,6 +38,7 @@ import Notification from './views/notification/index';
 import Anchor from './views/anchor/index';
 import Transfer from './views/transfer/index';
 import Rate from './views/rate/index';
+import Affix from './views/affix/index';
 
 Vue.use(Router);
 const routes = [
@@ -230,6 +231,11 @@ const routes = [
     name: 'Rate',
     path: '/rate',
     component: Rate,
+  },
+  {
+    name: 'Affix',
+    path: '/affix',
+    component: Affix,
   },
 ];
 

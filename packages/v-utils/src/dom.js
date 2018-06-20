@@ -54,5 +54,7 @@ export function offset(elem) {
   return {
     left: x,
     top: y,
+    width: box.width,
+    height: box.height,
   };
 }
