@@ -3,8 +3,8 @@
           :class="classes"
           :tab-bar-position="tabPosition"
           :animated="isAnimated"
-          v-on="$listeners">
-    <slot></slot>
+          v-on="bindListeners">
+    <slot />
   </v-tabs>
 </template>
 
@@ -16,6 +16,9 @@
 
   export default {
     name: buildComponentName('Tabs'),
+    components: {
+      VTabs,
+    },
     props: {
       prefixCls: {
         type: String,
@@ -28,7 +31,10 @@
           return ['line', 'card'].indexOf(val) > -1;
         },
       },
-      editable: Boolean,
+      editable: {
+        type: Boolean,
+        default: false,
+      },
       size: {
         type: String,
         default: 'default',
@@ -43,8 +49,14 @@
           return ['top', 'left', 'right', 'bottom'].indexOf(val) > -1;
         },
       },
-      value: String,
-      animated: Boolean,
+      value: {
+        type: String,
+        default: undefined,
+      },
+      animated: {
+        type: Boolean,
+        default: false,
+      },
       theme: {
         type: String,
         default: 'light',
@@ -56,6 +68,14 @@
       },
       bindProps() {
         return omit(this.$props, ['theme', 'tabPosition', 'type', 'animated']);
+      },
+      bindListeners() {
+        const { $listeners, onTabClick } = this;
+
+        return {
+          ...$listeners,
+          'tab-click': onTabClick,
+        };
       },
       classes() {
         const {
@@ -74,8 +94,11 @@
         return animated || type === 'line';
       },
     },
-    components: {
-      VTabs,
+    methods: {
+      onTabClick(tab, name, e) {
+        this.$emit('input', name);
+        this.$emit('tab-click', name, tab, e);
+      },
     },
   };
 </script>
