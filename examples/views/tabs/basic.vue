@@ -122,30 +122,31 @@
       </ux-select>
       <ux-tabs :tab-position="selectedPosition"
                :theme="theme"
-               @tab-click="onTabClick"
-               :style="positionStyle">
+               :style="positionStyle"
+               @tab-click="onTabClick">
         <ux-tab-pane v-for="(pane,i) in panes"
                      :key="i"
                      :disabled="pane.disabled"
                      :tab="pane.tab"
                      :name="pane.name">
-          {{pane.content}}
+          {{ pane.content }}
         </ux-tab-pane>
       </ux-tabs>
     </div>
     <div class="demo">
       <h6>card</h6>
-      <ux-tabs type="card"
-               :theme="theme">
+      <ux-tabs :theme="theme"
+               type="card">
         <ux-tab-pane v-for="(pane,i) in panes"
                      :key="i"
                      :disabled="pane.disabled"
                      :tab="pane.tab"
                      :name="pane.name">
-          {{pane.content}}
+          {{ pane.content }}
         </ux-tab-pane>
       </ux-tabs>
     </div>
+    <event-demo />
   </div>
 </template>
 
@@ -154,8 +155,16 @@
   import '@suning/uxcool/src/components/tabs/style/index.scss';
   import { UxSelect, UxOption } from '@suning/uxcool/src/components/select';
   import { UxTabs, UxTabPane } from '@suning/uxcool/src/components/tabs';
+  import EventDemo from './event.vue';
 
   export default {
+    components: {
+      UxTabs,
+      UxTabPane,
+      UxSelect,
+      UxOption,
+      EventDemo,
+    },
     data() {
       return {
         theme: 'light',
@@ -165,17 +174,6 @@
         size: 'default',
         selectedPosition: 'top',
       };
-    },
-    created() {
-      this.panes = Array(20)
-        .fill(0)
-        .map((v, i) => ({
-          tab: `Tab ${i}`,
-          name: `name${i}`,
-          content: `Tab ${i} Content`,
-        }));
-
-      this.currentPane = this.panes[0].name;
     },
     computed: {
       positionStyle() {
@@ -188,6 +186,17 @@
         }
         return style;
       },
+    },
+    created() {
+      this.panes = Array(20)
+        .fill(0)
+        .map((v, i) => ({
+          tab: `Tab ${i}`,
+          name: `name${i}`,
+          content: `Tab ${i} Content`,
+        }));
+
+      this.currentPane = this.panes[0].name;
     },
     methods: {
       changeTheme() {
@@ -205,12 +214,6 @@
       selectChange(selectedVal) {
         this.selectedPosition = selectedVal.value;
       },
-    },
-    components: {
-      UxTabs,
-      UxTabPane,
-      UxSelect,
-      UxOption,
     },
   };
 </script>
