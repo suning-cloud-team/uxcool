@@ -12,7 +12,7 @@ const DATA_KEYS = [
   'on',
   'nativeOn',
   'directives',
-  'scopesSlots',
+  'scopedSlots',
   'slot',
   'ref',
   'key',
@@ -50,7 +50,9 @@ function extractData(vnode, isComp) {
   return data;
 }
 
-export function cloneVNode(vnode, newData = {}) {
+export { DATA_KEYS as VNODE_DATA_KEYS, extractData as extractVNodeData };
+
+export function cloneVNode(vnode, newData = {}, deep = true) {
   if (!isVNode(vnode)) {
     return vnode;
   }
@@ -62,11 +64,14 @@ export function cloneVNode(vnode, newData = {}) {
 
   if (isText) return vnode.text;
 
-  const data = extractData(vnode, isComp);
+  const data = assign(extractData(vnode, isComp), newData);
 
   const tag = isComp ? vnode.componentOptions.Ctor : vnode.tag;
 
-  const childNodes = children ? children.map(c => cloneVNode(c)) : undefined;
+  let childNodes = children;
+  if (deep) {
+    childNodes = children ? children.map(c => cloneVNode(c)) : undefined;
+  }
   return h(tag, data, childNodes);
 }
 
@@ -105,4 +110,8 @@ export function updateVNodeProps(node, handler = {}) {
 
 export function isAsyncPlaceholder(node) {
   return node.isComment && node.asyncFactory;
+}
+
+export function isVueComponent(vnode) {
+  return !!vnode.componentOptions;
 }

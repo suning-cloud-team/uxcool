@@ -21,7 +21,6 @@
     "@suning/v-checkbox": "^1.0.7",
     "@suning/v-datepicker": "^1.0.36",
     "@suning/v-dialog": "^1.0.11",
-    "@suning/v-dropdown": "^1.0.11",
     "@suning/v-input": "^1.0.9",
     "@suning/v-menu": "^1.0.29",
     "@suning/v-notification": "^1.0.9",
@@ -33,6 +32,7 @@
     "@suning/v-tabs": "^1.0.16",
     "@suning/v-tooltip": "^1.0.19",
     "@suning/v-utils": "^1.0.8",
+    "@suning/v-trigger": "^1.0.33",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "date-fns": "^1.29.0",
     "lodash": "^4.0.8",
@@ -49,11 +49,7 @@
   "publishConfig": {
     "registry": "http://snpm.cnsuning.com"
   },
-  "files": [
-    "es/*",
-    "dist/*",
-    "cjs/*"
-  ],
+  "files": ["es/*", "dist/*", "cjs/*"],
   "vueCompileOpts": {
     "preserveWhitespace": false
   }
