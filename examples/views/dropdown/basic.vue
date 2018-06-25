@@ -25,31 +25,5 @@
       DisableDemo,
       EventDemo,
     },
-    data() {
-      return {
-        c: { abc: true },
-        style: {
-          width: '150px',
-        },
-        visible: false,
-        isShow: true,
-      };
-    },
-    created() {
-      setTimeout(() => {
-        this.isShow = false;
-        this.style = {
-          width: '200px',
-        };
-      }, 3500);
-    },
-    methods: {
-      onMenuClick(e) {
-        console.log('onMenuClick', e);
-      },
-      changeVisible() {
-        this.visible = !this.visible;
-      },
-    },
   };
 </script>

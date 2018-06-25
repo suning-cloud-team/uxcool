@@ -10,6 +10,8 @@ export * from './datepicker';
 
 export * from './menu';
 
+export { default as UxMessage } from './message';
+
 export * from './select';
 
 export { default as UxPagination } from './pagination';

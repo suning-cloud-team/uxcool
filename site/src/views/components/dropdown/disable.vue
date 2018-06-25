@@ -1,7 +1,7 @@
 <template>
-  <div class="demo">
-    <h4>disable</h4>
-    <div class="demo">
+  <ux-demo :height="200"
+           title="禁用">
+    <div slot="demo">
       <ux-dropdown disabled>
         <a slot="trigger">hover me
           <ux-icon type="down" />
@@ -19,30 +19,23 @@
         </ux-menu>
       </ux-dropdown>
     </div>
-  </div>
+    <div slot="desc">
+      禁用
+    </div>
+    <ux-code slot="code">
+      {{ code }}
+    </ux-code>
+  </ux-demo>
 </template>
+
 <script>
-  import { Icon, Dropdown, Menu, Button } from '@suning/uxcool';
+  import code from '@/code/dropdown/disable.vue';
 
   export default {
-    components: {
-      UxIcon: Icon,
-      UxDropdown: Dropdown,
-      UxMenuItem: Menu.MenuItem,
-      UxMenu: Menu,
-      UxButton: Button,
-    },
     data() {
       return {
-        c: { abc: true },
-        d: 'ccc',
-        visible: false,
+        code,
       };
-    },
-    methods: {
-      getContainer() {
-        return this.$refs.containerRef;
-      },
     },
   };
 </script>
