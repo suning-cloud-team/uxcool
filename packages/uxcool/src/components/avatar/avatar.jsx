@@ -69,6 +69,7 @@ export default {
     },
   },
   mounted() {
+    this.prevAvatarTextRef = null;
     this.setScale();
   },
   updated() {
@@ -79,10 +80,14 @@ export default {
       this.isExistsImage = false;
     },
     setScale() {
-      const { $refs: { avatarTextRef, avatarWrapref } } = this;
-      if (avatarTextRef && avatarWrapref) {
+      const { $el, $refs: { avatarTextRef }, prevAvatarTextRef } = this;
+      if (avatarTextRef && $el) {
+        if (prevAvatarTextRef && avatarTextRef.innerHTML === prevAvatarTextRef.innerHTML) {
+          return;
+        }
+        this.prevAvatarTextRef = avatarTextRef.cloneNode(true);
         const txtW = avatarTextRef.offsetWidth;
-        const wrapW = avatarWrapref.getBoundingClientRect().width - 8;
+        const wrapW = $el.getBoundingClientRect().width - 8;
 
         const scale = txtW === 0 ? 1 : wrapW / txtW;
         if (scale < 1) {

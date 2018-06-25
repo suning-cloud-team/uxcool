@@ -5,6 +5,7 @@
       <scale-demo />
       <type-demo />
       <badge-demo />
+      <string-demo />
     </div>
   </div>
 </template>
@@ -15,6 +16,7 @@
   import ScaleDemo from './scale.vue';
   import TypeDemo from './type.vue';
   import BadgeDemo from './badge.vue';
+  import StringDemo from './string.vue';
 
   export default {
     components: {
@@ -22,6 +24,7 @@
       ScaleDemo,
       TypeDemo,
       BadgeDemo,
+      StringDemo,
     },
   };
 </script>

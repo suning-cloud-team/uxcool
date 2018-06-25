@@ -3,7 +3,7 @@
     <div class="demo">
       <h4>Scale</h4>
       <avatar size="large">
-        {{ name }}
+        {{ name }}</span>
       </avatar>
       <ux-button @click="change">change</ux-button>
     </div>
