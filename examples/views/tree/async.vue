@@ -37,13 +37,13 @@
         expandedKeys: ['0-0', '0-0-1'],
         selectable: true,
         expandAll: true,
-        checkStrict: true,
+        checkStrict: false,
       };
     },
     created() {
-      setTimeout(() => {
-        this.checkStrict = false;
-      }, 5500);
+      // setTimeout(() => {
+      //   // this.checkStrict = false;
+      // }, 5500);
     },
     methods: {
       loadData(node) {
