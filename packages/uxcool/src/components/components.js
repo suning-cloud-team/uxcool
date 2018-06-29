@@ -72,4 +72,4 @@ export { default as UxRate } from './rate';
 
 export { default as UxAffix } from './affix';
 
-export * from './tree';
+export { default as UxBox } from './box';

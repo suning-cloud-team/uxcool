@@ -1,0 +1,81 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/index';
+
+$box-prefix-cls: #{$ux-prefix}-box;
+
+@mixin make-color-solid-box($colors) {
+  @each $key,
+  $color in $colors {
+    &-#{$key} &-header {
+      background: $color;
+    }
+  }
+}
+
+.#{$box-prefix-cls} {
+  display: block;
+  margin-bottom: 12px;
+  background: #fff;
+  border-radius: 3px;
+
+  &-header {
+    position: relative;
+    min-height: 50px;
+    margin: 0 20px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    @include clearfix;
+  }
+
+  &-title {
+    float: left;
+    margin: 0;
+    padding: 13px 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  &-icon {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  &-actions {
+    float: right;
+    padding-top: 15px;
+  }
+
+  &-body,
+  &-footer {
+    padding: 10px 20px;
+  } // bordered
+  &-bordered &-header {
+    margin-bottom: -1px;
+    border-bottom: 1px solid #eee;
+  } // solid
+  &-solid &-header {
+    margin: 0;
+    padding: 0 20px;
+    border-bottom: 0;
+  }
+
+  &-solid &-title {
+    color: #fff;
+  }
+
+  &-solid &-actions a {
+    color: rgba(#fff, .65);
+
+    &:hover {
+      color: #fff;
+    }
+  }
+  @include make-color-solid-box($colors); // flex
+  &-flex &-header {
+    display: flex;
+  }
+  &-flex &-title {
+    flex: 1;
+  }
+}
