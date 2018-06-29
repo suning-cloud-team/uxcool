@@ -2,9 +2,9 @@
   <div>
     <normal-demo />
     <async-demo />
-    <!-- <render-demo />
+    <render-demo />
     <huge-demo />
-    <filter-demo /> -->
+    <filter-demo />
   </div>
 </template>
 

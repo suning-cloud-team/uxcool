@@ -7,10 +7,7 @@
              :data-source="dataSource"
              :selectable="selectable"
              :default-expand-parent="expandParent"
-             checkable
-             @select="onSelect"
-             @check="onCheck"
-             @expand="onExpand" />
+             checkable />
 
   </div>
 </template>

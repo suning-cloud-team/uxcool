@@ -13,3 +13,11 @@
     transform: rotate(360deg);
   }
 }
+
+.ux-motion-collapse {
+  &-enter-active,
+  &-leave-active {
+    overflow: hidden;
+    transition: height 0.3s $ease-in-out, opacity 0.3s $ease-in-out;
+  }
+}

@@ -351,7 +351,7 @@ export default {
       const childCheckState = getNodeChildCheckState(parent.children || []);
 
       parent.childCheckState = childCheckState;
-      if (!parent.isDisabled) {
+      if (!parent.isDisabled && !parent.disableCheckbox) {
         switch (childCheckState) {
           case 0:
             parent.isHalfChecked = false;

@@ -1,7 +1,7 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Alert
-      <span class="subtitle">警告提示</span>
+    <h1 class="ux-heading">Tree
+      <span class="subtitle">树</span>
     </h1>
     <basic-demo/>
     <async-demo/>
