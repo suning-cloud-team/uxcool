@@ -8,6 +8,13 @@
                 placeholder="input1" />
     </div>
     <div class="demo">
+      <h4>number</h4>
+      <ux-input v-model="inputValN"
+                autofocus
+                id="abc"
+                placeholder="input1" />
+    </div>
+    <div class="demo">
       <ux-input disabled
                 autofocus
                 id="abc"
@@ -29,6 +36,7 @@
     <div class="demo">
       <ux-input v-model="input3"
                 v-bind="attrs"
+                placeholder="input3"
                 @input="onInput"
                 @change="onChange"
                 @click="onClick"
@@ -36,8 +44,7 @@
                 @pressenter="onPressenter"
                 @keydown="onKeydown"
                 @focus="onFocus"
-                @blur="onBlur"
-                placeholder="input3" />
+                @blur="onBlur" />
     </div>
 
     <h4>addon</h4>
@@ -91,6 +98,7 @@
     },
     data() {
       return {
+        inputValN: 2,
         inputVal1: 'abc',
         inputVal2: null,
         input3: null,
