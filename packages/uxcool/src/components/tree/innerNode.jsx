@@ -1,4 +1,4 @@
-import { isFunction } from '@suning/v-utils';
+import { isFunction, CollapseTransition } from '@suning/v-utils';
 import { ICON_OPEN, ICON_CLOSE } from './utils';
 import SubMixin from './mixins/sub';
 
@@ -232,7 +232,7 @@ export default {
           </ul>
         );
       }
-      return nodes;
+      return <CollapseTransition>{nodes}</CollapseTransition>;
     },
   },
   render() {

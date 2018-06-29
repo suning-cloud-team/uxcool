@@ -7,6 +7,63 @@ export function addEventListener(element, eventName, fn, useCapture = false) {
   };
 }
 
+export function addClass(el, cls) {
+  let nCls = cls;
+  /* istanbul ignore if */
+  if (!nCls || !nCls.trim()) {
+    return;
+  }
+  nCls = nCls.trim();
+
+  /* istanbul ignore else */
+  if (el.classList) {
+    if (nCls.indexOf(' ') > -1) {
+      nCls.split(/\s+/).forEach(c => el.classList.add(c));
+    } else {
+      el.classList.add(nCls);
+    }
+  } else {
+    const cur = ` ${el.getAttribute('class') || ''} `;
+    if (cur.indexOf(` ${nCls} `) < 0) {
+      el.setAttribute('class', (cur + nCls).trim());
+    }
+  }
+}
+
+export function removeClass(el, cls) {
+  let nCls = cls;
+  /* istanbul ignore if */
+  if (!nCls || !nCls.trim()) {
+    return;
+  }
+
+  nCls = nCls.trim();
+
+  /* istanbul ignore else */
+  if (el.classList) {
+    if (nCls.indexOf(' ') > -1) {
+      nCls.split(/\s+/).forEach(c => el.classList.remove(c));
+    } else {
+      el.classList.remove(nCls);
+    }
+    if (!el.classList.length) {
+      el.removeAttribute('class');
+    }
+  } else {
+    let cur = ` ${el.getAttribute('class') || ''} `;
+    const tar = ` ${nCls} `;
+    while (cur.indexOf(tar) >= 0) {
+      cur = cur.replace(tar, ' ');
+    }
+    cur = cur.trim();
+    if (cur) {
+      el.setAttribute('class', cur);
+    } else {
+      el.removeAttribute('class');
+    }
+  }
+}
+
 export function isTransform3dSupported() {
   if (window && window.document && window.document.documentElement) {
     const { documentElement } = window.document;
