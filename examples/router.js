@@ -36,6 +36,10 @@ import Popconfirm from './views/popconfirm/index';
 import InputNumber from './views/input-number/index';
 import Notification from './views/notification/index';
 import Anchor from './views/anchor/index';
+import Transfer from './views/transfer/index';
+import Rate from './views/rate/index';
+import Affix from './views/affix/index';
+import Tree from './views/tree/index';
 
 Vue.use(Router);
 const routes = [
@@ -218,6 +222,26 @@ const routes = [
     name: 'Anchor',
     path: '/anchor',
     component: Anchor,
+  },
+  {
+    name: 'Transfer',
+    path: '/transfer',
+    component: Transfer,
+  },
+  {
+    name: 'Rate',
+    path: '/rate',
+    component: Rate,
+  },
+  {
+    name: 'Affix',
+    path: '/affix',
+    component: Affix,
+  },
+  {
+    name: 'Tree',
+    path: '/tree',
+    component: Tree,
   },
 ];
 

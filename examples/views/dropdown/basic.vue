@@ -1,51 +1,29 @@
 <template>
   <div>
-    <div class="demo">
-      <ux-dropdown disabled>
-        <input slot="trigger"
-               :class="c"
-               dd="a">
-        <div slot="overlay">abc</div>
-      </ux-dropdown>
-
-    </div>
-    <div class="demo">
-      <ux-dropdown>
-        <ux-icon type="filter"
-                 slot="trigger">trigger</ux-icon>
-        <ux-menu slot="overlay"
-                 multiple>
-          <ux-menu-item name="sub-menu-item-3-1">sub-menu-item-1</ux-menu-item>
-          <ux-menu-item name="sub-menu-item-3-2">sub-menu-item-2</ux-menu-item>
-          <ux-menu-item name="sub-menu-item-4">
-            测试3
-          </ux-menu-item>
-          <ux-menu-item name="sub-menu-item-4">
-            测试4
-          </ux-menu-item>
-        </ux-menu>
-      </ux-dropdown>
-    </div>
+    <normal-demo />
+    <container-demo />
+    <button-demo />
+    <position-demo />
+    <disable-demo />
+    <event-demo />
   </div>
 </template>
 <script>
-  import '@suning/uxcool/src/components/dropdown/style/index.scss';
-  import UxIcon from '@suning/uxcool/src/components/icon';
-  import UxDropdown from '@suning/uxcool/src/components/dropdown';
-  import { UxMenu, UxMenuItem } from '@suning/uxcool/src/components/menu';
+  import NormalDemo from './normal.vue';
+  import ContainerDemo from './container.vue';
+  import ButtonDemo from './button.vue';
+  import PositionDemo from './position.vue';
+  import DisableDemo from './disable.vue';
+  import EventDemo from './event.vue';
 
   export default {
     components: {
-      UxIcon,
-      UxDropdown,
-      UxMenuItem,
-      UxMenu,
-    },
-    data() {
-      return {
-        c: { abc: true },
-        d: 'ccc',
-      };
+      NormalDemo,
+      ContainerDemo,
+      ButtonDemo,
+      PositionDemo,
+      DisableDemo,
+      EventDemo,
     },
   };
 </script>

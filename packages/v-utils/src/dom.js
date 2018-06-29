@@ -36,3 +36,25 @@ export function getScroll(w, top = true) {
   }
   return ret;
 }
+
+export function offset(elem) {
+  let x;
+  let y;
+  const doc = elem.ownerDocument;
+  const { body } = doc;
+  const docElem = doc && doc.documentElement;
+  const box = elem.getBoundingClientRect();
+  x = box.left;
+  y = box.top;
+  x -= docElem.clientLeft || body.clientLeft || 0;
+  y -= docElem.clientTop || body.clientTop || 0;
+  const w = doc.defaultView || doc.parentWindow;
+  x += getScroll(w, false);
+  y += getScroll(w);
+  return {
+    left: x,
+    top: y,
+    width: box.width,
+    height: box.height,
+  };
+}

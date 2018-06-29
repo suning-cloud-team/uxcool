@@ -44,6 +44,10 @@
         type: Boolean,
         default: false,
       },
+      control: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -75,12 +79,14 @@
         return this.innerChecked;
       },
       onChange(e) {
-        const { disabled, $props } = this;
+        const { disabled, $props, control } = this;
         if (disabled) {
           return;
         }
         const { checked } = e.target;
-        this.innerChecked = checked;
+        if (!control) {
+          this.innerChecked = checked;
+        }
         this.$emit('input', checked);
         this.$emit('change', {
           target: {

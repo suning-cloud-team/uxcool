@@ -1,4 +1,8 @@
-import UxDropdown from './dropdown';
+import Dropdown from './dropdown';
+import Button from './button';
 
-export { UxDropdown };
-export default UxDropdown;
+Dropdown.Button = Button;
+
+export { Dropdown as UxDropdown, Button as UxDropdownButton };
+
+export default Dropdown;

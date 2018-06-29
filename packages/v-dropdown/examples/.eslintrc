@@ -1,5 +1,0 @@
-{
-  "settings": {
-    "import/core-modules": ["@suning/v-dropdown", "@suning/v-menu"]
-  }
-}

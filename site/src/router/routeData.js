@@ -38,6 +38,11 @@ import InputNumber from '@/views/components/input-number/index.vue';
 import Anchor from '@/views/components/anchor/index.vue';
 import Notification from '@/views/components/notification/index.vue';
 import Divider from '@/views/components/divider/index.vue';
+import Transfer from '@/views/components/transfer/index.vue';
+import Affix from '@/views/components/affix/index.vue';
+import Rate from '@/views/components/rate/index.vue';
+import Dropdown from '@/views/components/dropdown/index.vue';
+import Tree from '@/views/components/tree/index.vue';
 
 export const groups = {
   general: {
@@ -72,17 +77,15 @@ export const groups = {
     name: 'Business',
     sort: 1000,
   },
-  a: {
-    name: 'A',
-    sort: 1,
-  },
 };
 
 // title不止充当文档标题作用，还充当埋点名称角色
-export default [{
+export default [
+  {
     path: '/guide',
     component: Layout,
-    children: [{
+    children: [
+      {
         name: 'install',
         path: 'install',
         meta: {
@@ -108,11 +111,11 @@ export default [{
       },
     ],
   },
-
   {
     path: '/components',
     component: Layout,
-    children: [{
+    children: [
+      {
         name: 'grid',
         path: 'grid',
         meta: {
@@ -472,6 +475,56 @@ export default [{
           group: 'other',
         },
         component: Divider,
+      },
+      {
+        name: 'transfer',
+        path: 'transfer',
+        meta: {
+          title: 'Transfer',
+          subTitle: '穿梭框',
+          group: 'form',
+        },
+        component: Transfer,
+      },
+      {
+        name: 'affix',
+        path: 'affix',
+        meta: {
+          title: 'Affix',
+          subTitle: '固钉',
+          group: 'nav',
+        },
+        component: Affix,
+      },
+      {
+        name: 'rate',
+        path: 'rate',
+        meta: {
+          title: 'Rate',
+          subTitle: '评分',
+          group: 'form',
+        },
+        component: Rate,
+      },
+      {
+        name: 'dropdown',
+        path: 'dropdown',
+        meta: {
+          title: 'Dropdown',
+          subTitle: '下拉菜单',
+          group: 'nav',
+        },
+        component: Dropdown,
+      },
+      {
+        name: 'tree',
+        path: 'tree',
+        meta: {
+          title: 'Tree',
+          subTitle: '树',
+          group: 'data',
+        },
+        component: Tree,
       },
     ],
   },

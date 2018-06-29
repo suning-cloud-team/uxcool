@@ -39,7 +39,7 @@
 | ----- | ----------------- |
 | label | 自定义 label 内容 |
 
-### UxFormDecorator
+### UxFieldDecorator
 
 #### Props
 

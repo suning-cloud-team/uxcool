@@ -187,7 +187,7 @@
       </tbody>
     </table>
     <h3 class="mume-header"
-        id="uxformdecorator">UxFormDecorator</h3>
+        id="uxFieldDecorator">UxFieldDecorator</h3>
 
     <h4 class="mume-header"
         id="props-2">Props</h4>
