@@ -40,6 +40,7 @@ import Transfer from './views/transfer/index';
 import Rate from './views/rate/index';
 import Affix from './views/affix/index';
 import Tree from './views/tree/index';
+import Box from './views/box/index';
 
 Vue.use(Router);
 const routes = [
@@ -242,6 +243,11 @@ const routes = [
     name: 'Tree',
     path: '/tree',
     component: Tree,
+  },
+  {
+    name: 'Box',
+    path: '/box',
+    component: Box,
   },
 ];
 
