@@ -6,7 +6,7 @@
   "useWorkspaces": true,
   "commands": {
     "publish": {
-      "allowBranch": ["master"],
+      "allowBranch": ["release-*"],
       "ignore": ["ignored-file", "*.md"]
     }
   }
