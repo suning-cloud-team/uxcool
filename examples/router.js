@@ -39,6 +39,7 @@ import Rate from './views/rate/index';
 import Affix from './views/affix/index';
 import Tree from './views/tree/index';
 import Box from './views/box/index';
+import Collapse from './views/collapse/index';
 
 Vue.use(Router);
 const routes = [
@@ -246,6 +247,11 @@ const routes = [
     name: 'Box',
     path: '/box',
     component: Box,
+  },
+  {
+    name: 'Collapse',
+    path: '/collapse',
+    component: Collapse,
   },
 ];
 

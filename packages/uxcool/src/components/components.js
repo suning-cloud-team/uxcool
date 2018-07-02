@@ -75,3 +75,5 @@ export { default as UxAffix } from './affix';
 export { default as UxBox } from './box';
 
 export * from './tree';
+
+export * from './collapse';
