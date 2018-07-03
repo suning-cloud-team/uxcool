@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <normal-demo />
     <selection-single-demo/>
     <selection-demo/>

@@ -61,7 +61,7 @@
         filters: [
           {
             text: 'Joe',
-            value: 'Joe',
+            value: 0,
           },
           {
             text: 'Jim',

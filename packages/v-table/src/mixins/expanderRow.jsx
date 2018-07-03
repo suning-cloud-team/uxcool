@@ -43,10 +43,11 @@ export default {
   },
   methods: {
     hasExpandIcon(colIdx) {
-      const { fixed, expandIconAsCell, expandIconColIndex } = this;
-      return (
-        fixed !== 'right' && !expandIconAsCell && String(colIdx) === String(expandIconColIndex)
-      );
+      const {
+        fixed, expandIconAsCell, expandIconColIndex, hideExpandTreeIcon
+      } = this;
+      const isExpandIcon = fixed !== 'right' && !expandIconAsCell && !hideExpandTreeIcon;
+      return isExpandIcon && String(colIdx) === String(expandIconColIndex);
     },
     handleExpandChange(e, expanded) {
       const {

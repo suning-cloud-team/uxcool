@@ -86,6 +86,9 @@ export default {
     expandedRowClassName() {
       return this.rootVM.expandedRowClassName;
     },
+    hideExpandTreeIcon() {
+      return this.rootVM.hideExpandTreeIcon;
+    },
   },
   methods: {
     saveRef(refName, refElement) {

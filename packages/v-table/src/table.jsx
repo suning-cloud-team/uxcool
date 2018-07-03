@@ -124,6 +124,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    hideExpandTreeIcon: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -359,12 +363,12 @@ export default {
       <div class={`${prefixCls}-fixed-left`}>
         <main-table fixed="left" />
       </div>
-      ) : null;
+    ) : null;
     const rightElement = isAnyColumnsRightFixed ? (
       <div class={`${prefixCls}-fixed-right`}>
         <main-table fixed="right" />
       </div>
-      ) : null;
+    ) : null;
 
     let scopedSlots = null;
 

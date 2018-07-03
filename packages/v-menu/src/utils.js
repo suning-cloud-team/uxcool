@@ -31,7 +31,9 @@ export function getAllDescendants(inst) {
 
 export function getEventName(inst) {
   const { eventName = '' } = inst.$parent;
-  return inst.name || `${eventName ? `${eventName}_` : ''}${inst.$options.name}_${inst.uuid}`;
+  return inst.name || inst.name === 0
+    ? inst.name
+    : `${eventName ? `${eventName}_` : ''}${inst.$options.name}_${inst.uuid}`;
 }
 
 export function genUUID() {
