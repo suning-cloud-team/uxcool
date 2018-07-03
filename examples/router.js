@@ -253,6 +253,11 @@ const routes = [
     path: '/collapse',
     component: Collapse,
   },
+  {
+    name: 'List',
+    path: '/list',
+    component: () => import('./views/list/index'),
+  },
 ];
 
 const router = new Router({

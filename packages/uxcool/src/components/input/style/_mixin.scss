@@ -20,11 +20,13 @@ $input-affix-width: 19px;
   border-color: colorPalette($color, 5);
   outline: 0;
   box-shadow: 0 0 $outline-blur-size $outline-width fade($color, 20%);
+  border-right-width: 1px !important;
 }
 
 // == when hoverd
 @mixin hover($color: $input-hover-border-color) {
   border-color: colorPalette($color, 5);
+  border-right-width: 1px !important;
 }
 
 @mixin disabled() {
@@ -129,6 +131,11 @@ $input-affix-width: 19px;
     margin-bottom: 0;
     &:focus {
       z-index: 1; // Fix https://gw.alipayobjects.com/zos/rmsportal/DHNpoqfMXSfrSnlZvhsJ.png
+      border-right-width: 1px;
+    }
+    &:hover {
+      z-index: 1;
+      border-right-width: 1px;
     }
   }
 
@@ -244,7 +251,6 @@ $input-affix-width: 19px;
     } // Undo float for .ant-input-group .ant-input
     .#{$inputClass} {
       float: none;
-      z-index: auto;
     } // reset border for Select, DatePicker, AutoComplete, Cascader, Mention, TimePicker
     & > .#{$ux-prefix}-select .#{$ux-prefix}-select-selection,
     & > .#{$ux-prefix}-calendar-picker .#{$ux-prefix}-input,

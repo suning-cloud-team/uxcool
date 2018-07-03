@@ -3,7 +3,7 @@
     <template slot="demo">
       <ux-date-picker show-time
                       :theme="theme"
-                      placehoder="Select Time">
+                      placeholder="Select Time">
       </ux-date-picker>
       <br>
       <ux-range-date-picker show-time

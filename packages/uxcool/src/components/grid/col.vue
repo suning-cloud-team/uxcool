@@ -12,6 +12,11 @@
   const prefixCls = 'ux-col';
 
   export default {
+    inject: {
+      rowRoot: {
+        default: false,
+      },
+    },
     name,
     props: {
       span: {
@@ -34,9 +39,12 @@
       xxl: [Number, Object],
     },
     computed: {
+      isChildren() {
+        return !!this.rowRoot;
+      },
       gutter() {
-        const parent = this.$parent;
-        return parent && parent.$options.componentName === 'UxRow' ? parent.gutter : 0;
+        const { isChildren, rowRoot } = this;
+        return isChildren ? rowRoot.gutter : 0;
       },
       clazz() {
         const classList = [

@@ -15,6 +15,11 @@
   export default {
     name,
     componentName: 'UxRow',
+    provide() {
+      return {
+        rowRoot: this,
+      };
+    },
     props: {
       gutter: {
         type: Number,
