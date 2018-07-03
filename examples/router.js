@@ -262,6 +262,11 @@ const routes = [
     path: '/cascader',
     component: () => import('./views/cascader/index'),
   },
+  {
+    name: 'List',
+    path: '/list',
+    component: () => import('./views/list/index'),
+  },
 ];
 
 const router = new Router({
