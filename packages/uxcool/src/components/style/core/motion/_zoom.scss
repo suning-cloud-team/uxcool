@@ -7,7 +7,6 @@
     transform: scale(1);
   }
   .#{$className}-enter-to {
-    transform: scale(0);
     animation-timing-function: $ease-out-circ;
   }
   .#{$className}-leave-to {

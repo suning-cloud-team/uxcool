@@ -19,12 +19,12 @@
     @include motion-common-leave($duration);
     animation-play-state: paused;
   }
-  .#{$className}-enter-to.#{$className}-enter-active {
+  .#{$className}-enter-to {
     animation-name: #{$keyframeName}In;
     animation-play-state: running;
     pointer-events: none;
   }
-  .#{$className}-leave-to.#{$className}-leave-active {
+  .#{$className}-leave-to {
     animation-name: #{$keyframeName}Out;
     animation-play-state: running;
     pointer-events: none;
