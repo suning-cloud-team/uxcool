@@ -2,9 +2,36 @@
   <div>
     <button class="ux-btn"
             @click="changeTheme">{{theme}}</button>
+
+    <div class="demo">
+      <ux-tabs v-if="isFeatureDialogShown"
+               :value="selectedTabInFeature">
+        <ux-tab-pane :disabled="channel!='ALL' && channel !='HTML'"
+                     tab="PC/HTML"
+                     name="HTML">
+          HTML
+        </ux-tab-pane>
+        <ux-tab-pane :disabled="channel!='ALL' && channel !='IOS'"
+                     tab="IOS"
+                     name="IOS">
+          IOS
+        </ux-tab-pane>
+        <ux-tab-pane :disabled="channel!='ALL' && channel !='ANDROID'"
+                     tab="Android"
+                     name="ANDROID">
+          ANDROID
+        </ux-tab-pane>
+        <ux-tab-pane :disabled="channel!='ALL' && channel !='WXAPP'"
+                     tab="微信"
+                     name="WXAPP">
+          WXAPP
+        </ux-tab-pane>
+      </ux-tabs>
+    </div>
     <div class="demo">
       <h6>basic</h6>
-      <ux-tabs :theme="theme">
+      <ux-tabs :theme="theme"
+               value="2">
         <ux-tab-pane tab="Tab 1"
                      name="1">
           Tab 1 Content
@@ -173,6 +200,8 @@
         mode: 'top',
         size: 'default',
         selectedPosition: 'top',
+        isFeatureDialogShown: false,
+        selectedTabInFeature: 'ANDROID',
       };
     },
     computed: {
@@ -197,6 +226,10 @@
         }));
 
       this.currentPane = this.panes[0].name;
+
+      setTimeout(() => {
+        this.isFeatureDialogShown = true;
+      }, 1500);
     },
     methods: {
       changeTheme() {
