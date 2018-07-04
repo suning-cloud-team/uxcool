@@ -103,7 +103,7 @@ $dialog-prefix-cls: #{$ux-prefix}-modal;
     }
   }
 
-  &.zoom-enter-to {
+  &.zoom-enter {
     animation-duration: $animation-duration-slow;
     transform: none; // reset scale avoid mousePosition bug
     opacity: 0;

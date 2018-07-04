@@ -1,6 +1,6 @@
 {
   "name": "@suning/uxcool",
-  "version": "0.3.0-alpha.4",
+  "version": "0.3.0-alpha.5",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",

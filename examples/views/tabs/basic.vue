@@ -4,7 +4,8 @@
             @click="changeTheme">{{theme}}</button>
     <div class="demo">
       <h6>basic</h6>
-      <ux-tabs :theme="theme">
+      <ux-tabs :theme="theme"
+               value="2">
         <ux-tab-pane tab="Tab 1"
                      name="1">
           Tab 1 Content
@@ -147,6 +148,7 @@
       </ux-tabs>
     </div>
     <event-demo />
+    <modal-demo/>
   </div>
 </template>
 
@@ -156,6 +158,7 @@
   import { UxSelect, UxOption } from '@suning/uxcool/src/components/select';
   import { UxTabs, UxTabPane } from '@suning/uxcool/src/components/tabs';
   import EventDemo from './event.vue';
+  import ModalDemo from './modal.vue';
 
   export default {
     components: {
@@ -164,6 +167,7 @@
       UxSelect,
       UxOption,
       EventDemo,
+      ModalDemo,
     },
     data() {
       return {
@@ -173,6 +177,8 @@
         mode: 'top',
         size: 'default',
         selectedPosition: 'top',
+        isFeatureDialogShown: false,
+        selectedTabInFeature: 'ANDROID',
       };
     },
     computed: {
@@ -197,6 +203,10 @@
         }));
 
       this.currentPane = this.panes[0].name;
+
+      setTimeout(() => {
+        this.isFeatureDialogShown = true;
+      }, 1500);
     },
     methods: {
       changeTheme() {
