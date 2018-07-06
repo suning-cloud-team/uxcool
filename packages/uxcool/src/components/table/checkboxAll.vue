@@ -26,8 +26,8 @@
       <div slot="overlay"
            :class="`${boxPrefixCls}-dropdown`">
         <ux-menu :prefix-cls="`${dropdownPrefixCls}-menu`"
-                 mode="vertical"
-                 :selected-keys="[]">
+                 :selected-keys="[]"
+                 mode="vertical">
           <menu-item v-for="(selection, i) in normalizeSelections"
                      :key="i"
                      :name="selection.key||i">
