@@ -7,6 +7,22 @@ const sizeMapping = {
   small: 'sm',
   large: 'lg',
 };
+
+function insertSpace(vnodes = []) {
+  const ret = vnodes;
+  if (vnodes.length === 1) {
+    const node = vnodes[0];
+    if (isTextNode(node)) {
+      if (regTwoCNChar.test(node.text)) {
+        node.text = node.text.split('').join(' ');
+      }
+    } else {
+      node.children = insertSpace(node.children);
+    }
+  }
+  return ret;
+}
+
 export default {
   name: buildComponentName('Button'),
   props: {
@@ -142,22 +158,6 @@ export default {
       }, 500);
       this.$emit('click', e);
     },
-    hasTwoCNChars(slotDefault) {
-      const { $el, isMounted, iconType } = this;
-      if (!isMounted) {
-        return false;
-      }
-
-      if (!slotDefault || slotDefault.length !== 1) {
-        return false;
-      }
-
-      if (iconType && iconType !== 'loading') {
-        return false;
-      }
-
-      return regTwoCNChar.test($el.innerText);
-    },
     getSlotNode(slotNode) {
       if (!slotNode) {
         return null;
@@ -178,9 +178,9 @@ export default {
       bindProps,
       href,
       icon,
+      iconType,
       htmlType,
       iconNode,
-      hasTwoCNChars,
       getSlotNode,
       onClick,
     } = this;
@@ -196,11 +196,14 @@ export default {
     const on = {
       click: onClick,
     };
-    const slotDefault = $slots.default;
+    let slotDefault = $slots.default;
+    slotDefault =
+      slotDefault && (!iconType || iconType === 'loading') ? insertSpace(slotDefault) : slotDefault;
+
     const slotClasses = {
       [`${prefixCls}-icon-only`]: !slotDefault && icon,
-      [`${prefixCls}-two-chinese-chars`]: hasTwoCNChars(slotDefault),
     };
+
     const slotNode = getSlotNode(slotDefault);
     return (
       <Cmp class={[classes, slotClasses]} {...{ attrs, props: bindProps, on }}>
