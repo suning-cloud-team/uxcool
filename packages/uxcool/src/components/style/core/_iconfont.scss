@@ -10,13 +10,14 @@
 }
 
 .#{$iconfont-css-prefix} {
-  display: inline-block;
-  font: normal normal normal 16px/1 uxfont;
-  font-size: inherit;
-  text-rendering: auto;
-  vertical-align: -1px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  // display: inline-block;
+  // font: normal normal normal 16px/1 uxfont;
+  // font-size: inherit;
+  // text-rendering: auto;
+  // vertical-align: -1px;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  @include iconfont-mixin;
 }
 
 .#{$iconfont-css-prefix}-spin {

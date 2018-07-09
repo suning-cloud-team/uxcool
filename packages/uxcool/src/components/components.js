@@ -81,3 +81,5 @@ export * from './collapse';
 export * from './list';
 
 export * from './timeline';
+
+export { default as UxCascader } from './cascader';

@@ -245,7 +245,7 @@ const routes = [
   {
     name: 'Collapse',
     path: '/collapse',
-    component: Collapse,
+    component: () => import('./views/collapse/index'),
   },
   {
     name: 'List',
@@ -256,6 +256,11 @@ const routes = [
     name: 'Timeline',
     path: '/timeline',
     component: () => import('./views/timeline/index'),
+  },
+  {
+    name: 'Cascader',
+    path: '/cascader',
+    component: () => import('./views/cascader/index'),
   },
 ];
 
