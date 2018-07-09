@@ -4,6 +4,7 @@
     <div class="demo">
       <ux-button @click="()=>showModal(modalVal)">showModal</ux-button>
       <ux-button @click="()=>showModal(modalVal1)">showModal1</ux-button>
+      <ux-button @click="()=>showModal(modalVal2)">showModal2</ux-button>
       <ux-modal v-model="visible"
                 control
                 title="New Collection"
@@ -12,8 +13,9 @@
         <ux-form ref="formRef"
                  layout="vertical">
           <ux-form-item label="Title">
-            <ux-field-decorator name="title"
-                                rules="required">
+            <ux-field-decorator :validator="{initial:false}"
+                                name="title"
+                                rules="required|regex:^\d{3}$">
               <ux-input v-model="form.title" />
             </ux-field-decorator>
           </ux-form-item>
@@ -56,7 +58,7 @@
   } from '@suning/uxcool';
 
   const defaultForm = {
-    title: '',
+    title: 'a',
     desc: '',
     role: 'public',
   };
@@ -93,6 +95,7 @@
           desc: 'test in modalVal',
           role: 'private',
         },
+        modalVal2: {},
       };
     },
     methods: {
@@ -106,8 +109,7 @@
         }
       },
       showModal(val) {
-        const { visible, clearErrors } = this;
-        clearErrors();
+        const { visible } = this;
         this.form = { ...defaultForm, ...val };
         this.visible = !visible;
       },
@@ -125,6 +127,10 @@
       },
       onCancel() {
         this.setVisible(false);
+        const { $refs: { formRef } } = this;
+        if (formRef) {
+          formRef.resetFields();
+        }
       },
     },
   };

@@ -1,5 +1,5 @@
 import { warning, isDef, castArray } from '@suning/v-utils';
-import { isValidateField } from '../utils';
+import { validateField } from '../utils';
 
 export default {
   methods: {
@@ -73,30 +73,53 @@ export default {
     },
     clearErrors(scope) {
       const { fields: { items }, errors } = this.$validator;
-      errors.clear(scope);
+      const errorsArr = [...errors];
+      if (errorsArr.length === 0) {
+        return;
+      }
+      const allErrors = errorsArr.reduce((r, err) => {
+        const nr = r;
+        nr[err.id] = 1;
+        return nr;
+      }, {});
+      // 只重置错误 属性
       (items || []).forEach((v) => {
-        v.setFlags({
-          invalid: false,
-          valid: true,
-          pending: false,
-        });
-      });
-    },
-    resetFields() {
-      const { fields, $validator, clearErrors } = this;
-      $validator.pause();
-      fields.forEach(({ field }) => {
-        if (field) {
-          field.$$setter(field.initialValue);
-          if (isValidateField(field)) {
-            field.setFlags({
-              pending: false,
-            });
-          }
+        if (v.id in allErrors) {
+          v.setFlags({
+            validated: false,
+          });
         }
       });
-      clearErrors();
-      $validator.resume();
+      errors.clear(scope);
+    },
+
+    validateReset(matcher) {
+      const { $validator } = this;
+      const { fields, errors } = $validator;
+      // 不用$validator.reset, 是由于其需要_vm属性, 但这里并没有
+      return this.$nextTick().then(() =>
+        this.$nextTick().then(() => {
+          fields.filter(matcher).forEach((field) => {
+            field.reset(); // reset field flags.
+            errors.remove(field.name, field.scope, field.id);
+            // 重新初始化验证
+            validateField(field, $validator);
+          });
+      }));
+    },
+    resetFields() {
+      const { validateReset, $validator } = this;
+      $validator.pause();
+      validateReset();
+      // 重置为初始值
+      this.fields.forEach(({ field }) => {
+        if (field) {
+          field.$$setter(field.initialValue);
+        }
+      });
+      this.$nextTick(() => {
+        $validator.resume();
+      });
     },
     getFieldError(name, scope = null) {
       const { errors } = this.$validator;

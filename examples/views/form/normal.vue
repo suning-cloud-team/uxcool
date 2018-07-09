@@ -139,14 +139,14 @@
           { max: 5, message: '最大5个字符' },
         ],
         nameIf: true,
-        nameLabel: '名称'
+        nameLabel: '名称',
       };
     },
     created() {},
     mounted() {
       setTimeout(() => {
         // this.nameIf = false;
-        this.nameLabel= '名称11';
+        this.nameLabel = '名称11';
       }, 4500);
       console.log(this.$refs.input);
     },

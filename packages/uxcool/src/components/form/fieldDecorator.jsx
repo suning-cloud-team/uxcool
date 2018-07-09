@@ -242,7 +242,7 @@ export default {
       const errorMsg = getErrorMsg();
       const errorElement = errorMsg ? (
         <div class={`${rootPrefixCls}-explain`}>{errorMsg}</div>
-        ) : null;
+      ) : null;
       return (
         <transition
           name="show-help"

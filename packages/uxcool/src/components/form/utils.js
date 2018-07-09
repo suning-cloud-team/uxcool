@@ -290,3 +290,17 @@ export function parseFieldRules(rules) {
 
   return r;
 }
+
+export function validateField(field, validator) {
+  if (field.initial) {
+    validator.validate(`#${field.id}`, field.value);
+  } else {
+    // eslint-disable-next-line
+    validator._validate(field, field.value, true).then(result => {
+      field.setFlags({
+        valid: result.valid,
+        invalid: !result.valid,
+      });
+    });
+  }
+}
