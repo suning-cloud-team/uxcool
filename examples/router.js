@@ -1,13 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import UxModal from '@suning/uxcool/src/components/modal';
-import Badge from './views/badge/index';
-import Input from './views/input/index';
 import Tooltip from './views/tooltip/index';
 import Popover from './views/popover/index';
 import Pagination from './views/pagination/index';
-import Menu from './views/menu/index';
-import DatePicker from './views/datepicker/index';
 import Spin from './views/spin/index';
 import Steps from './views/steps/index';
 import Tabs from './views/tabs/index';
@@ -21,7 +17,6 @@ import Progress from './views/progress/index';
 import Card from './views/card/index';
 import Checkbox from './views/checkbox/index';
 import Radio from './views/radio/index';
-import Table from './views/table/index';
 import Dropdown from './views/dropdown/index';
 import Divider from './views/divider/index';
 import Tag from './views/tag/index';
@@ -37,7 +32,6 @@ import Anchor from './views/anchor/index';
 import Transfer from './views/transfer/index';
 import Rate from './views/rate/index';
 import Affix from './views/affix/index';
-import Tree from './views/tree/index';
 import Box from './views/box/index';
 import Collapse from './views/collapse/index';
 
@@ -46,12 +40,12 @@ const routes = [
   {
     name: 'Badge',
     path: '/badge',
-    component: Badge,
+    component: () => import('./views/badge/index'),
   },
   {
     name: 'Input',
     path: '/input',
-    component: Input,
+    component: () => import('./views/input/index'),
   },
   {
     name: 'Tooltip',
@@ -71,7 +65,7 @@ const routes = [
   {
     name: 'Menu',
     path: '/menu',
-    component: Menu,
+    component: () => import('./views/menu/index'),
   },
   {
     name: 'Select',
@@ -81,7 +75,7 @@ const routes = [
   {
     name: 'DatePicker',
     path: '/datePicker',
-    component: DatePicker,
+    component: () => import('./views/datepicker/index'),
   },
   {
     name: 'Spin',
@@ -156,7 +150,7 @@ const routes = [
   {
     name: 'Table',
     path: '/table',
-    component: Table,
+    component: () => import('./views/table/index'),
   },
   {
     name: 'Dropdown',
@@ -241,7 +235,7 @@ const routes = [
   {
     name: 'Tree',
     path: '/tree',
-    component: Tree,
+    component: () => import('./views/tree/index'),
   },
   {
     name: 'Box',
@@ -257,6 +251,11 @@ const routes = [
     name: 'List',
     path: '/list',
     component: () => import('./views/list/index'),
+  },
+  {
+    name: 'Timeline',
+    path: '/timeline',
+    component: () => import('./views/timeline/index'),
   },
 ];
 

@@ -79,3 +79,5 @@ export * from './tree';
 export * from './collapse';
 
 export * from './list';
+
+export * from './timeline';
