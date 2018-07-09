@@ -88,8 +88,10 @@
           ...defaultForm,
         },
         modalVal: {
-          title: 'modalVal',
-          desc: 'test in modalVal',
+          title: '',
+          desc: '',
+          // title: 'modalVal',
+          // desc: 'test in modalVal',
         },
         modalVal1: {
           desc: 'test in modalVal',
