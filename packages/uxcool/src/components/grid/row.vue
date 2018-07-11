@@ -1,7 +1,7 @@
 <template>
   <div :class="clazz"
        :style="style">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -20,7 +20,10 @@
         type: Number,
         default: 0,
       },
-      flex: Boolean,
+      flex: {
+        type: Boolean,
+        default: false,
+      },
       align: {
         validator(value) {
           return ['top', 'middle', 'bottom'].indexOf(value) > -1;

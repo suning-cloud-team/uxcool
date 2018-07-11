@@ -1,7 +1,7 @@
 <template>
   <div :class="clazz"
        :style="style">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -31,6 +31,7 @@
       md: [Number, Object],
       lg: [Number, Object],
       xl: [Number, Object],
+      xxl: [Number, Object],
     },
     computed: {
       gutter() {
@@ -46,7 +47,7 @@
           },
         ];
 
-        ['xs', 'sm', 'md', 'lg', 'xl'].forEach((size) => {
+        ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].forEach((size) => {
           if (typeof this[size] === 'number') {
             classList.push(`${prefixCls}-${size}-${this[size]}`);
           } else if (typeof this[size] === 'object') {
@@ -55,7 +56,7 @@
             Object.keys(props).forEach((prop) => {
               classList.push(prop === 'span'
                 ? `${prefixCls}-${size}-${props[prop]}`
-              : `${prefixCls}-${size}-${prop}-${props[prop]}`);
+                : `${prefixCls}-${size}-${prop}-${props[prop]}`);
             });
           }
         });
