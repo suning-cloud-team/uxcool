@@ -2,38 +2,38 @@
   <div>
     <button class="ux-btn"
             @click="changeTheme">{{theme}}</button>
+
     <div class="demo">
+      <h4>single custom filterOption</h4>
+      <ux-select :filter-option="filterOption"
+                 style="width:200px;"
+                 show-search
+                 :theme="theme">
+        <ux-option value="A"
+                   label="A1" />
+        <ux-option value="B"
+                   label="B2" />
+        <ux-option value="C"
+                   label="C3" />
+      </ux-select>
+    </div>
 
-      <div class="demo">
-        <h4>single custom filterOption</h4>
-        <ux-select :filter-option="filterOption"
-                   style="width:200px;"
-                   show-search
-                   :theme="theme">
-          <ux-option value="A"
-                     label="A1" />
-          <ux-option value="B"
-                     label="B2" />
-          <ux-option value="C"
-                     label="C3" />
-        </ux-select>
-      </div>
-
-      <div class="demo">
-        <h4>mode="multiple" custom filterOption</h4>
-        <ux-select :theme="theme"
-                   :filter-option="filterOption"
-                   style="width:200px;"
-                   show-search
-                   mode="multiple">
-          <ux-option value="A"
-                     label="A1" />
-          <ux-option value="B"
-                     label="B2" />
-          <ux-option value="C"
-                     label="C3" />
-        </ux-select>
-      </div>
+    <div class="demo">
+      <h4>mode="multiple" custom filterOption</h4>
+      <ux-select :theme="theme"
+                 :filter-option="filterOption"
+                 style="width:200px;"
+                 show-search
+                 mode="multiple">
+        <ux-option value="A"
+                   label="A1" />
+        <ux-option value="B"
+                   label="B2" />
+        <ux-option value="C"
+                   label="C3" />
+      </ux-select>
+    </div>
+    <div class="demo">
       <ux-select style="width:200px;"
                  :theme="theme">
         <ux-option value="A">A</ux-option>
@@ -114,15 +114,6 @@
         <ux-option value="C">C</ux-option>
       </ux-select>
     </div>
-    <!-- <div class="demo">
-      <ux-select>
-        <ux-option v-for="(o,i) in options"
-                   :key="i"
-                   :value="o.value"
-                   :label="o.label" />
-      </ux-select>
-
-    </div> -->
 
     <h4>getContainer</h4>
     <div class="demo"
@@ -135,20 +126,25 @@
         <ux-option value="B">B</ux-option>
         <ux-option value="C">C</ux-option>
       </ux-select>
-
     </div>
+
+    <async-demo />
+    <number-demo />
   </div>
 </template>
 
 <script>
-  import '@suning/uxcool/src/components/select/style/index.scss';
-  import { UxSelect, UxOption, UxOptionGroup } from '@suning/uxcool/src/components/select';
+  import { Select } from '@suning/uxcool';
+  import AsyncDemo from './async.vue';
+  import NumberDemo from './number.vue';
 
   export default {
     components: {
-      UxSelect,
-      UxOption,
-      UxOptionGroup,
+      UxSelect: Select,
+      UxOption: Select.Option,
+      UxOptionGroup: Select.Group,
+      AsyncDemo,
+      NumberDemo,
     },
     data() {
       return {

@@ -21,7 +21,7 @@
         default: 'ux-select',
       },
       value: {
-        type: [String, Array],
+        type: [String, Number, Array],
         default: '',
       },
       mode: {
