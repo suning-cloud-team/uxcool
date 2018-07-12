@@ -64,7 +64,7 @@ input[type='checkbox'] {
   label {
     position: relative;
 
-    > .#{$iconfont-css-prefix} {
+    >.#{$iconfont-css-prefix} {
       vertical-align: top;
       font-size: $font-size-base;
     }
@@ -73,8 +73,8 @@ input[type='checkbox'] {
   @include reset-component;
   margin-bottom: $form-item-margin-bottom;
   vertical-align: top; // nested FormItem
-  &-control > &:last-child,
-  & [class^='#{$ux-prefix}-col-'] > &:only-child {
+  &-control>&:last-child,
+  & [class^='#{$ux-prefix}-col-']>&:only-child {
     margin-bottom: -$form-item-margin-bottom;
   }
 
@@ -89,8 +89,7 @@ input[type='checkbox'] {
   }
 
   &-with-help {
-    margin-bottom: $form-item-margin-bottom - $font-size-base * $line-height-base -
-      $form-help-margin-top;
+    margin-bottom: $form-item-margin-bottom - $font-size-base * $line-height-base - $form-help-margin-top;
   }
 
   &-label {
@@ -152,18 +151,14 @@ form {
       padding-right: 24px;
     } // Fix overlapping between feedback icon and <Select>'s arrow.
     // https://github.com/ant-design/ant-design/issues/4431
-    > .#{$ux-prefix}-select .#{$ux-prefix}-select-arrow,
-    > .#{$ux-prefix}-select .#{$ux-prefix}-select-selection__clear,
-    :not(.#{$ux-prefix}-input-group-addon) > .#{$ux-prefix}-select .#{$ux-prefix}-select-arrow,
-    :not(.#{$ux-prefix}-input-group-addon)
-      > .#{$ux-prefix}-select
-      .#{$ux-prefix}-select-selection__clear {
+    >.#{$ux-prefix}-select .#{$ux-prefix}-select-arrow,
+    >.#{$ux-prefix}-select .#{$ux-prefix}-select-selection__clear,
+    :not(.#{$ux-prefix}-input-group-addon)>.#{$ux-prefix}-select .#{$ux-prefix}-select-arrow,
+    :not(.#{$ux-prefix}-input-group-addon)>.#{$ux-prefix}-select .#{$ux-prefix}-select-selection__clear {
       right: 28px;
     }
-    > .#{$ux-prefix}-select .#{$ux-prefix}-select-selection-selected-value,
-    :not(.#{$ux-prefix}-input-group-addon)
-      > .#{$ux-prefix}-select
-      .#{$ux-prefix}-select-selection-selected-value {
+    >.#{$ux-prefix}-select .#{$ux-prefix}-select-selection-selected-value,
+    :not(.#{$ux-prefix}-input-group-addon)>.#{$ux-prefix}-select .#{$ux-prefix}-select-selection-selected-value {
       padding-right: 42px;
     }
 
@@ -219,12 +214,12 @@ form {
     display: block;
   }
 
-  .#{$ux-prefix}-checkbox-vertical + .#{$ux-prefix}-checkbox-vertical,
-  .#{$ux-prefix}-radio-vertical + .#{$ux-prefix}-radio-vertical {
+  .#{$ux-prefix}-checkbox-vertical+.#{$ux-prefix}-checkbox-vertical,
+  .#{$ux-prefix}-radio-vertical+.#{$ux-prefix}-radio-vertical {
     margin-left: 0;
   }
 
-  .#{$ux-prefix}-input-number + .#{$form-prefix-cls}-text {
+  .#{$ux-prefix}-input-number+.#{$form-prefix-cls}-text {
     margin-left: 8px;
   }
 
@@ -235,9 +230,8 @@ form {
   .#{$ux-prefix}-input-group .#{$ux-prefix}-select,
   .#{$ux-prefix}-input-group .#{$ux-prefix}-cascader-picker {
     width: auto;
-  }
-  // fix input with addon position. https://github.com/ant-design/ant-design/issues/8243
-  :not(.#{$ux-prefix}-input-group-wrapper) > .#{$ux-prefix}-input-group,
+  } // fix input with addon position. https://github.com/ant-design/ant-design/issues/8243
+  :not(.#{$ux-prefix}-input-group-wrapper)>.#{$ux-prefix}-input-group,
   .#{$ux-prefix}-input-group-wrapper {
     display: inline-block;
     vertical-align: middle;
@@ -298,9 +292,11 @@ form {
   }
 }
 
-.#{$form-prefix-cls}-vertical .#{$form-prefix-cls}-item-label, /* when labelCol is 24, it is a vertical form*/
-.#{$ux-prefix}-col-24.#{$form-prefix-cls}-item-label,
-.#{$ux-prefix}-col-xl-24.#{$form-prefix-cls}-item-label {
+.#{$form-prefix-cls}-vertical .#{$form-prefix-cls}-item-label,
+
+/* when labelCol is $grid-columns, it is a vertical form*/
+
+.#{$ux-prefix}-col-#{$grid-columns}.#{$form-prefix-cls}-item-label {
   @include make-vertical-layout-label();
 }
 
@@ -318,34 +314,13 @@ form {
   }
 }
 
-@media (max-width: $screen-xs-max) {
-  @include make-vertical-layout();
-  .#{$ux-prefix}-col-xs-24.#{$form-prefix-cls}-item-label {
-    @include make-vertical-layout-label();
-  }
-}
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-@media (max-width: $screen-sm-max) {
-  .#{$ux-prefix}-col-sm-24.#{$form-prefix-cls}-item-label {
-    @include make-vertical-layout-label();
-  }
-}
-
-@media (max-width: $screen-md-max) {
-  .#{$ux-prefix}-col-md-24.#{$form-prefix-cls}-item-label {
-    @include make-vertical-layout-label();
-  }
-}
-
-@media (max-width: $screen-lg-max) {
-  .#{$ux-prefix}-col-lg-24.#{$form-prefix-cls}-item-label {
-    @include make-vertical-layout-label();
-  }
-}
-
-@media (max-width: $screen-xl-max) {
-  .#{$ux-prefix}-col-xl-24.#{$form-prefix-cls}-item-label {
-    @include make-vertical-layout-label();
+  @include media-breakpoint-only($breakpoint, $grid-breakpoints) {
+    .#{$ux-prefix}-col#{$infix}-#{$grid-columns}.#{$form-prefix-cls}-item-label {
+      @include make-vertical-layout-label();
+    }
   }
 }
 
@@ -360,8 +335,8 @@ form {
       margin-bottom: 24px;
     }
 
-    > .#{$form-prefix-cls}-item-control-wrapper,
-    > .#{$form-prefix-cls}-item-label {
+    >.#{$form-prefix-cls}-item-control-wrapper,
+    >.#{$form-prefix-cls}-item-label {
       display: inline-block;
       vertical-align: middle;
     }

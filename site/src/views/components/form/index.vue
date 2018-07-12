@@ -165,7 +165,7 @@
             <code>label</code>属性使用
           </td>
           <td>Boolean</td>
-          <td>false</td>
+          <td>true</td>
         </tr>
       </tbody>
     </table>
