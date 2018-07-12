@@ -7,7 +7,6 @@ import Tooltip from './views/tooltip/index';
 import Popover from './views/popover/index';
 import Pagination from './views/pagination/index';
 import Menu from './views/menu/index';
-import Select from './views/select/index';
 import DatePicker from './views/datepicker/index';
 import Spin from './views/spin/index';
 import Steps from './views/steps/index';
@@ -77,7 +76,7 @@ const routes = [
   {
     name: 'Select',
     path: '/select',
-    component: Select,
+    component: () => import('./views/select/index'),
   },
   {
     name: 'DatePicker',

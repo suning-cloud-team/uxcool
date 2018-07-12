@@ -26,7 +26,7 @@
         <tr>
           <td>value</td>
           <td>选中值</td>
-          <td>String,Array</td>
+          <td>String,Number,Array</td>
           <td></td>
         </tr>
         <tr>
