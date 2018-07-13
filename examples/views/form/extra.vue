@@ -2,7 +2,8 @@
   <div>
     <h4>extra</h4>
     <div class="demo">
-      <ux-form @form-flags="onFormFlags">
+      <ux-form ref="formRef"
+               @form-flags="onFormFlags">
         <ux-form-item>
           <ux-field-decorator name="name"
                               :alias="nameAlias"
@@ -32,6 +33,8 @@
           <ux-button type="primary"
                      :disabled="invalid"
                      html-type="submit">Log in</ux-button>
+          <ux-button style="margin-left:10px;"
+                     @click="reset">Clear</ux-button>
         </ux-form-item>
       </ux-form>
     </div>
@@ -68,6 +71,12 @@
     methods: {
       onFormFlags(flags) {
         this.invalid = flags.invalid;
+      },
+      reset() {
+        const { $refs: { formRef } } = this;
+        if (formRef) {
+          formRef.resetFields();
+        }
       },
     },
   };

@@ -10,6 +10,7 @@
       </ux-form-item>
       <ux-form-item label="名称">
         <ux-field-decorator name="name"
+                            :validator="{initial:false}"
                             rules="required|numeric"
                             value-path="form.name">
           <ux-input :value="form.name"
@@ -41,9 +42,10 @@
       </ux-form-item>
       <ux-form-item :colon="false">
         <ux-field-decorator name="protocol"
-                            value-path="form.protocol">
-          <ux-checkbox label
-                       :checked="form.protocol"
+                            value-path="form.protocol"
+                            rules="required">
+          <ux-checkbox :checked="form.protocol"
+                       label
                        @input="(val)=>form.protocol = val">
             I have read
             <a href="###">the agreement</a>
@@ -61,6 +63,7 @@
     <ux-button @click="resetFields">resetFields</ux-button>
     <ux-button @click="getFieldError">getFieldError</ux-button>
     <ux-button @click="getFieldsError">getFieldsError</ux-button>
+    <ux-button @click="clearErrors">clearErrors</ux-button>
   </div>
 </template>
 
@@ -86,7 +89,7 @@
     data() {
       return {
         form: {
-          name: '123a',
+          name: '123',
           name1: '333',
           protocol: true,
           date1: null,
@@ -130,6 +133,10 @@
         const { getForm } = this;
         console.log('field error', getForm().getFieldsError('name'));
         console.log('field error name required', getForm().getFieldsError());
+      },
+      clearErrors() {
+        const { getForm } = this;
+        getForm().clearErrors();
       },
       submit() {
         this.getForm()

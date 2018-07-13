@@ -62,6 +62,7 @@
       <ux-button @click="resetFields">resetFields</ux-button>
       <ux-button @click="getFieldError">getFieldError</ux-button>
       <ux-button @click="getFieldsError">getFieldsError</ux-button>
+      <ux-button @click="clearErrors">clearErrors</ux-button>
     </div>
     <div slot="desc">
       Form的常用方法
@@ -80,7 +81,7 @@
       return {
         code,
         form: {
-          name: '123a',
+          name: '123',
           name1: '333',
           protocol: true,
           date1: null,
@@ -92,7 +93,7 @@
     computed: {
       isDisabled() {
         const { formFlags } = this;
-        return formFlags.validated && formFlags.invalid;
+        return formFlags.invalid;
       },
     },
     methods: {
@@ -124,6 +125,10 @@
         const { getForm } = this;
         console.log('field error', getForm().getFieldsError('name'));
         console.log('field error name required', getForm().getFieldsError());
+      },
+      clearErrors() {
+        const { getForm } = this;
+        getForm().clearErrors();
       },
       submit() {
         this.getForm()

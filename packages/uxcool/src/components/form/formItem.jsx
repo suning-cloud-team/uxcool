@@ -137,7 +137,7 @@ export default {
             {labelElement}
           </label>
         </Row.Col>
-        ) : null;
+      ) : null;
     },
     renderWrapper() {
       const { prefixCls, normalizeWrapperCol, $slots } = this;

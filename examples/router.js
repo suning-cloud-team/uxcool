@@ -28,7 +28,6 @@ import Tag from './views/tag/index';
 import Switch from './views/switch/index';
 import Alert from './views/alert/index';
 import Slider from './views/slider/index';
-import Form from './views/form/index';
 import BackTop from './views/backtop/index';
 import Avatar from './views/avatar/index';
 import Popconfirm from './views/popconfirm/index';
@@ -191,7 +190,7 @@ const routes = [
   {
     name: 'Form',
     path: '/form',
-    component: Form,
+    component: () => import('./views/form/index'),
   },
   {
     name: 'BackTop',

@@ -2,14 +2,14 @@
   <div>
     <h4>login</h4>
     <div class="demo">
-      <ux-form @form-flags="onFormFlags"
-               layout="inline">
+      <ux-form layout="inline"
+               @form-flags="onFormFlags">
         <ux-form-item>
           <ux-field-decorator name="name"
                               :alias="nameAlias"
                               rules="required">
-            <ux-input placeholder="UserName"
-                      v-model="form.userName">
+            <ux-input v-model="form.userName"
+                      placeholder="UserName">
               <ux-icon type="account"
                        slot="prefix"
                        style="color:rgba(0,0,0,.25)" />
@@ -57,13 +57,13 @@
           password: '',
         },
         invalid: false,
-        nameAlias:'userName',
+        nameAlias: 'userName',
       };
     },
-    created(){
+    created() {
       setTimeout(() => {
-        this.nameAlias='AliasUserName';
-      },3500);
+        this.nameAlias = 'AliasUserName';
+      }, 3500);
     },
     methods: {
       onFormFlags(flags) {
