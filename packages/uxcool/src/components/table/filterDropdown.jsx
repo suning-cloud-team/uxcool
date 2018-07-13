@@ -229,7 +229,7 @@ export default {
     );
     const props = {
       trigger: ['click'],
-      value: dropdownVisible,
+      visible: dropdownVisible,
       getPopupContainer,
       closeOnSelect: false,
       theme,

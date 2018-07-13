@@ -235,12 +235,17 @@
         </ux-button>
       </ux-button-group>
     </div>
+
+    <chinese-demo />
+    <time-demo />
   </div>
 </template>
 
 
 <script>
   import { Button, Icon, Radio } from '@suning/uxcool';
+  import ChineseDemo from './chinese.vue';
+  import TimeDemo from './time.vue';
 
   export default {
     components: {
@@ -249,6 +254,8 @@
       Icon,
       UxRadioGroup: Radio.Group,
       UxRadioButton: Radio.Button,
+      TimeDemo,
+      ChineseDemo,
     },
     data() {
       return {

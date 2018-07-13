@@ -101,7 +101,7 @@ table pagination 属性:
 `onRow`, `onHeaderRow` 在 `table` 上设置, `onCell`, `onHeaderCell` 在 `column` 中设置, 两者用法类似
 
 ```javascript
-<ux-table v-bind:on-row="{prop: '', on:{click(record){}, mouseenter(){}}}" />
+<ux-table v-bind:on-row="(record)=>{prop: '', on:{click(record){}, mouseenter(){}}}" />
 ```
 
 #### Slots
