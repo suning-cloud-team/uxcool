@@ -1,13 +1,13 @@
 <template>
   <div>
     <normal-demo />
-    <!-- <size-demo />
+    <size-demo />
     <grid-demo />
     <grid-responsive-demo />
     <load-more-demo />
     <pagination-demo />
     <async-demo />
-    <empty-demo />-->
+    <empty-demo />
     <vertical-demo />
     <render-demo />
   </div>

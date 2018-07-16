@@ -83,3 +83,5 @@ export * from './list';
 export * from './timeline';
 
 export { default as UxCascader } from './cascader';
+
+export { default as UxTimepicker } from './timepicker';

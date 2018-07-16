@@ -33,7 +33,6 @@ import Transfer from './views/transfer/index';
 import Rate from './views/rate/index';
 import Affix from './views/affix/index';
 import Box from './views/box/index';
-import Collapse from './views/collapse/index';
 
 Vue.use(Router);
 const routes = [
@@ -263,9 +262,9 @@ const routes = [
     component: () => import('./views/cascader/index'),
   },
   {
-    name: 'List',
-    path: '/list',
-    component: () => import('./views/list/index'),
+    name: 'Timepicker',
+    path: '/timepicker',
+    component: () => import('./views/timepicker/index'),
   },
 ];
 
