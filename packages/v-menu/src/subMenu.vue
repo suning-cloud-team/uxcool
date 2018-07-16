@@ -38,6 +38,9 @@
       },
       isSelected() {
         const { selectedItems, descendants } = this;
+        if (!descendants) {
+          return false;
+        }
         return selectedItems.some(v => descendants.indexOf(v) > -1);
       },
       isOpen() {
@@ -60,7 +63,9 @@
         return rootMode === 'horizontal' ? 'vertical' : rootMode;
       },
       classes() {
-        const { prefixCls, disabled, mode, isActive, isSelected, isOpen } = this;
+        const {
+          prefixCls, disabled, mode, isActive, isSelected, isOpen
+        } = this;
         return {
           [prefixCls]: true,
           [`${prefixCls}-${mode}`]: true,
@@ -109,7 +114,9 @@
         });
       },
       onClick($event) {
-        const { isInlineMode, eventName, tirggerOpenChange, isOpen } = this;
+        const {
+          isInlineMode, eventName, tirggerOpenChange, isOpen
+        } = this;
         this.$emit('click', {
           name: eventName,
           domEvent: $event,
@@ -119,7 +126,9 @@
         }
       },
       mouseEvent(open, triggerName) {
-        const { timerFn, isInlineMode, tirggerOpenChange, disabled } = this;
+        const {
+          timerFn, isInlineMode, tirggerOpenChange, disabled
+        } = this;
         if (isInlineMode || disabled) {
           return;
         }
