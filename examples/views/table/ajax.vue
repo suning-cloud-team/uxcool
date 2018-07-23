@@ -95,7 +95,8 @@
     },
     computed: mapState(['theme']),
     created() {
-      this.queryData();
+      const { current, pageSize } = this;
+      this.queryData(current, pageSize);
       this.columns = this.getCols();
     },
     mounted() {},
@@ -104,9 +105,8 @@
       rowKey(record) {
         return `${record.name}-${record.age}`;
       },
-      queryData() {
-        const { filterInfo, sortInfo: { field: sortField, order: sortOrder }, pagination } = this;
-        const { current, pageSize } = pagination;
+      queryData(current, pageSize) {
+        const { filterInfo, sortInfo: { field: sortField, order: sortOrder } } = this;
         const params = {
           current,
           pageSize,
@@ -116,7 +116,7 @@
         };
         this.loading = true;
         return Axios.get('http://dippre.cnsuning.com:80/service/2698/1.0.0/table', { params }).then(({ data }) => {
-          this.pagination = { ...pagination, total: data.total };
+          this.pagination.total = data.total;
           this.data = data.data;
           // effect
           setTimeout(() => {
@@ -127,9 +127,9 @@
       onChange(pager, filterInfo, sort) {
         console.log('change', pager, filterInfo, sort);
         this.filterInfo = filterInfo;
-        this.pagination = pager;
+        const { current, pageSize } = pager;
         this.sortInfo = sort;
-        this.queryData();
+        this.queryData(current, pageSize);
       },
     },
   };

@@ -275,7 +275,10 @@
         </tr>
         <tr>
           <td>onFilter</td>
-          <td>非服务端排序时,使用此函数筛选(非服务端排序模式时必须)</td>
+          <td>非服务端筛选时,使用此函数筛选(
+            <strong>非服务端筛选模式时必须</strong>); 远程加载数据时,
+            <strong>不支持</strong>本地筛选
+          </td>
           <td>Function(filterVal, record, column)</td>
           <td></td>
         </tr>

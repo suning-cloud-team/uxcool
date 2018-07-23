@@ -304,9 +304,19 @@ export default {
     },
     filterAndSortData(nVal) {
       if (nVal) {
-        const { hasPagination, setInnerPager, innerPager } = this;
+        const {
+          hasPagination, pagination, normalizeData, setInnerPager, innerPager
+        } = this;
         if (hasPagination) {
-          setInnerPager({ ...innerPager, total: nVal.length });
+          // 当用户筛选数据时
+          if (normalizeData.length !== nVal.length) {
+            setInnerPager({ ...innerPager, total: nVal.length });
+          } else if (typeof pagination !== 'boolean' && typeof pagination.total === 'number') {
+            // 当用户设置了total属性, 重置时以用户设置的为准
+            setInnerPager({ ...innerPager, total: pagination.total });
+          } else {
+            setInnerPager({ ...innerPager, total: nVal.length });
+          }
         }
       }
     },
@@ -315,10 +325,13 @@ export default {
         this.initSelectedRowkeys();
       }
     },
-    pagination(nVal) {
-      if (nVal) {
-        this.initPager();
-      }
+    pagination: {
+      handler(nVal) {
+        if (nVal) {
+          this.initPager();
+        }
+      },
+      deep: true,
     },
   },
   created() {
