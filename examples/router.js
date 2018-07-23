@@ -266,6 +266,11 @@ const routes = [
     path: '/timepicker',
     component: () => import('./views/timepicker/index'),
   },
+  {
+    name: 'TreeSelect',
+    path: '/treeselect',
+    component: () => import('./views/tree-select/index'),
+  },
 ];
 
 const router = new Router({

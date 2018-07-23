@@ -1,33 +1,28 @@
 <template>
-
   <div class="demo">
-    <ux-tree ref="tree1"
-             :selected-keys="['0-0-0', '0-0-2']"
-             :checked-keys="checkedKeys"
-             :data-source="dataSource"
-             :selectable="selectable"
-             :default-expand-parent="expandParent"
-             checkable
-             @check="onCheck" />
-
+    <ux-tree-select :value="value"
+                    :tree-data="data"
+                    :dropdown-match-select-width="dropdownMatch"
+                    show-search
+                    size="small"
+                    style="width:300px"
+                    @change="onChange" />
   </div>
 </template>
 
 
 <script>
-  import { Tree } from '@suning/uxcool';
+  import { TreeSelect } from '@suning/uxcool';
 
   export default {
     components: {
-      UxTree: Tree,
-      UxTreeNode: Tree.Node,
+      UxTreeSelect: TreeSelect,
     },
     data() {
       return {
-        checkedKeys: ['0-0-1', '0-0-1-1', '0-0-1-2'],
-        expandedKeys: ['0-0', '0-0-1'],
-        selectable: false,
-        dataSource: [
+        dropdownMatch: true,
+        value: null,
+        data: [
           {
             title: '0-0',
             key: '0-0',
@@ -36,7 +31,7 @@
                 title: '0-0-0',
                 key: '0-0-0',
                 children: [
-                  { title: '0-0-0-0', key: '0-0-0-0', disableCheckbox: true },
+                  { title: 'C0-0-0-0', key: '0-0-0-0', disableCheckbox: true },
                   { title: '0-0-0-1', key: '0-0-0-1' },
                   { title: '0-0-0-2', key: '0-0-0-2' },
                 ],
@@ -81,32 +76,16 @@
           },
           { title: '0-2', key: '0-2' },
         ],
-        expandParent: true,
       };
     },
     created() {
       setTimeout(() => {
-        // console.log('update multiple');
-        // this.multiple = false;
-        // this.checkedKeys = ['0-0-1-2', '0-1-0'];
-        // // this.selectable = false;
-        // this.checkStrict = true;
-        this.expandParent = false;
-        // setTimeout(() => {
-        //   this.checkStrict = false;
-        // }, 3000);
-      }, 5000);
+        this.dropdownMatch = false;
+      }, 1500);
     },
     methods: {
-      onExpand(...args) {
-        console.log('onExpand', ...args);
-      },
-      onCheck(checkedKeys, ...args) {
-        console.log('onCheck', checkedKeys, ...args);
-        this.checkedKeys = checkedKeys;
-      },
-      onSelect(...args) {
-        console.log('onSelect', ...args);
+      onChange(...args) {
+        console.log('onChange', ...args);
       },
     },
   };

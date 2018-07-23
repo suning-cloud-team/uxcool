@@ -55,7 +55,7 @@ export default {
     },
     notFoundContent: {
       type: String,
-      default: '',
+      default: 'Not Found',
     },
     itemUnit: {
       type: String,

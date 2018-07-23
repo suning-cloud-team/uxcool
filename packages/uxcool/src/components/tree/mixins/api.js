@@ -1,4 +1,4 @@
-import { setNodeOriginExpand, removeNodeOriginExpand } from '../utils';
+import { setNodeOriginExpand, removeNodeOriginExpand, getNodeOriginParent } from '../utils';
 
 export default {
   methods: {
@@ -33,6 +33,11 @@ export default {
           np = np.parent;
         }
       }
+      return filterNodes.map(node => ({
+        ...node.originNode,
+        pos: node.pos,
+        parentNode: getNodeOriginParent(node),
+      }));
     },
   },
 };

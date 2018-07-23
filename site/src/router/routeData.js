@@ -526,6 +526,16 @@ export default [
         },
         component: Tree,
       },
+      {
+        name: 'treeselect',
+        path: 'treeselect',
+        meta: {
+          title: 'TreeSelect',
+          subTitle: '树选择',
+          group: 'form',
+        },
+        component: () => import('@/views/components/tree-select/index.vue'),
+      },
     ],
   },
   {

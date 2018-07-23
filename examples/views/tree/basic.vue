@@ -1,10 +1,10 @@
 <template>
   <div>
     <normal-demo />
-    <async-demo />
+    <!-- <async-demo />
     <render-demo />
     <huge-demo />
-    <filter-demo />
+    <filter-demo /> -->
   </div>
 </template>
 

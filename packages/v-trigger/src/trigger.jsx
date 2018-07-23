@@ -99,6 +99,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    initPopupFirst: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -399,7 +403,7 @@ export default {
     getPortalPopupElement() {
       const { portal = {} } = this;
 
-      if (!portal.$el) {
+      if (!portal.$el || portal.$el.nodeType !== 1) {
         return null;
       }
       return portal.$el.querySelector('[role=align-popup]');
@@ -418,6 +422,7 @@ export default {
         popupVisible,
         getPopupAlignClassName,
         onPopupAfterEnter,
+        initPopupFirst,
       } = this;
       let portalInit = false;
       const portal = new Vue({
@@ -459,7 +464,7 @@ export default {
             },
             rootDomNode,
           } = this;
-          if (!visible && !portalInit) {
+          if (!visible && !portalInit && !initPopupFirst) {
             return '';
           }
           portalInit = true;
