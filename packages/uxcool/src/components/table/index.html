@@ -5,7 +5,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///C:\Users\17061765\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.3\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      <link rel="stylesheet" href="file:///C:\Users\17061765\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.5\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
       
       
       
@@ -270,7 +271,7 @@ code.language-yaml {
 <td>{x:false, y:false}</td>
 </tr>
 <tr>
-<td>rowKey</td>
+<td>row-key</td>
 <td>表格数据行 key 的取值,可以是字符串或函数</td>
 <td>Function|String</td>
 <td>'key'</td>
@@ -442,7 +443,7 @@ code.language-yaml {
 </tr>
 <tr>
 <td>onFilter</td>
-<td>非服务端排序时,使用此函数筛选(非服务端排序模式时必须)</td>
+<td>非服务端筛选时,使用此函数筛选(<strong>非服务端筛选模式时必须</strong>); 远程加载数据时,<strong>不支持</strong>本地筛选</td>
 <td>Function(filterVal, record, column)</td>
 <td></td>
 </tr>
@@ -647,7 +648,7 @@ code.language-yaml {
 <h3 class="mume-header" id="onrow-onheaderrow-oncell-onheadercell-%E7%94%A8%E6%B3%95">onRow, onHeaderRow, onCell, onHeaderCell 用法</h3>
 
 <p><code>onRow</code>, <code>onHeaderRow</code> 在 <code>table</code> 上设置, <code>onCell</code>, <code>onHeaderCell</code> 在 <code>column</code> 中设置, 两者用法类似</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript"><span class="token operator">&lt;</span>ux<span class="token operator">-</span>table v<span class="token operator">-</span>bind<span class="token punctuation">:</span>on<span class="token operator">-</span>row<span class="token operator">=</span><span class="token string">"{prop: '', on:{click(record){}, mouseenter(){}}}"</span> <span class="token operator">/</span><span class="token operator">></span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript"><span class="token operator">&lt;</span>ux<span class="token operator">-</span>table v<span class="token operator">-</span>bind<span class="token punctuation">:</span>on<span class="token operator">-</span>row<span class="token operator">=</span><span class="token string">"(record)=>{prop: '', on:{click(record){}, mouseenter(){}}}"</span> <span class="token operator">/</span><span class="token operator">></span>
 </pre><h4 class="mume-header" id="slots">Slots</h4>
 
 <table>
@@ -706,60 +707,14 @@ code.language-yaml {
 </table>
 
       </div>
-      <div class="md-sidebar-toc"><ul>
-<li><a href="#api">API</a>
-<ul>
-<li><a href="#uxtable">UxTable</a>
-<ul>
-<li><a href="#props">Props</a></li>
-</ul>
-</li>
-<li><a href="#column">column</a></li>
-<li><a href="#row-selection">row-selection</a></li>
-<li><a href="#selection">selection</a></li>
-<li><a href="#pagination">pagination</a></li>
-<li><a href="#onrow-onheaderrow-oncell-onheadercell-%E7%94%A8%E6%B3%95">onRow, onHeaderRow, onCell, onHeaderCell 用法</a>
-<ul>
-<li><a href="#slots">Slots</a></li>
-<li><a href="#events">Events</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-      <a id="sidebar-toc-btn">≡</a>
+      
+      
     </body>
     
     
     
     
     
-    <script>
-(function bindTaskListEvent() {
-  var taskListItemCheckboxes = document.body.getElementsByClassName('task-list-item-checkbox')
-  for (var i = 0; i < taskListItemCheckboxes.length; i++) {
-    var checkbox = taskListItemCheckboxes[i]
-    var li = checkbox.parentElement
-    if (li.tagName !== 'LI') li = li.parentElement
-    if (li.tagName === 'LI') {
-      li.classList.add('task-list-item')
-    }
-  }
-}())    
-</script>
     
-<script>
-
-var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
-sidebarTOCBtn.addEventListener('click', function(event) {
-  event.stopPropagation()
-  if (document.body.hasAttribute('html-show-sidebar-toc')) {
-    document.body.removeAttribute('html-show-sidebar-toc')
-  } else {
-    document.body.setAttribute('html-show-sidebar-toc', true)
-  }
-})
-</script>
-      
+    
   </html>
