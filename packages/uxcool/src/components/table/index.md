@@ -46,7 +46,7 @@ table columns 属性:
 | onCell                        | 自定义渲染 cell 属性 ,支持自定义属性和事件                                                                | Function(record, rowIdx, column, colIdx)=>Object      |       |
 | cellRender                    | 数据 cell 内容渲染,支持自定义属性和事件 ,class 字段名请用 `className` 代替                                | Function(text, record, rowIdx,column, colIdx)=>Object |       |
 | filters                       | 表头的筛选菜单项                                                                                          | Object[]                                              |       |
-| onFilter                      | 非服务端排序时,使用此函数筛选(非服务端排序模式时必须)                                                     | Function(filterVal, record, column)                   |
+| onFilter                      | 非服务端筛选时,使用此函数筛选(**非服务端筛选模式时必须**); 远程加载数据时,**不支持**本地筛选              | Function(filterVal, record, column)                   |
 | filterDropdown                | 自定义筛选下拉框                                                                                          | Function                                              |       |
 | filterDropdownVisible         | 控制筛选下拉框是否可见                                                                                    | Boolean                                               | false |
 | filtered                      | 当过滤时筛选图标是否高亮                                                                                  | Boolan                                                | true  |

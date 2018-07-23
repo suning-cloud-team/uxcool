@@ -25,6 +25,7 @@
     <nest-table-demo/>
     <async-nest-table-demo/>
     <tabs-demo />
+    <node-pagination-demo />
   </div>
 </template>
 
@@ -57,6 +58,7 @@
   import NestTableDemo from './nestTable.vue';
   import AsyncNestTableDemo from './asyncNestTable.vue';
   import TabsDemo from './tabs.vue';
+  import NodePaginationDemo from './node-pagination.vue';
 
   export default {
     components: {
@@ -86,6 +88,7 @@
       NestTableDemo,
       AsyncNestTableDemo,
       TabsDemo,
+      NodePaginationDemo,
     },
   };
 </script>
