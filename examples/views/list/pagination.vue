@@ -22,8 +22,6 @@
 
 
 <script>
-  import { List, Avatar } from '@suning/uxcool';
-
   function mockData(cnt = 10) {
     return Array(cnt)
       .fill(0)
@@ -33,12 +31,6 @@
     }));
   }
   export default {
-    components: {
-      UxList: List,
-      UxListItem: List.Item,
-      UxListItemMeta: List.Item.Meta,
-      UxAvatar: Avatar,
-    },
     data() {
       return {
         pagination: { position: 'top' },

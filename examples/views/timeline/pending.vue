@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h4>reverse</h4>
+    <h4>pending</h4>
     <ux-timeline>
       <span slot="pending"
             style="green">this is slot pending</span>
