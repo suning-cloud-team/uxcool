@@ -114,10 +114,13 @@ const vm = new Vue({
   },
   data: {
     columns: [],
-    data,
+    data: [],
   },
   created() {
     this.columns = getColumns.call(this);
+    setTimeout(() => {
+      this.data = data;
+    }, 1500);
   },
   methods: {
     onRow() {

@@ -26,6 +26,7 @@
     <async-nest-table-demo/>
     <tabs-demo />
     <node-pagination-demo />
+    <fixed-columns-header-async-demo />
   </div>
 </template>
 
@@ -52,6 +53,7 @@
   import FixedHeaderDemo from './fixedHeader.vue';
   import FixedColumnsDemo from './fixedColumns.vue';
   import FixedColumnsHeaderDemo from './fixedColumnsHeader.vue';
+  import FixedColumnsHeaderAsyncDemo from './fixedColumnsHeaderAsync.vue';
   import GroupHeaderDemo from './groupHeader.vue';
   import EditableCellsDemo from './editableCells.vue';
   import EditableRowsDemo from './editableRows.vue';
@@ -82,6 +84,7 @@
       FixedHeaderDemo,
       FixedColumnsDemo,
       FixedColumnsHeaderDemo,
+      FixedColumnsHeaderAsyncDemo,
       GroupHeaderDemo,
       EditableCellsDemo,
       EditableRowsDemo,

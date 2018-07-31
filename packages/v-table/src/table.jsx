@@ -305,10 +305,10 @@ export default {
       }
     },
     handleWinResize() {
-      const { isAnyColumnsFixed, syncFixedTableRowHeight } = this;
+      const { isAnyColumnsFixed, syncFixedTableRowHeight, handleScrollPostion } = this;
       if (isAnyColumnsFixed) {
         syncFixedTableRowHeight();
-        this.handleScrollPostion();
+        handleScrollPostion();
       }
     },
     bindResizeEvent() {
