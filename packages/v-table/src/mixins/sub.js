@@ -94,5 +94,8 @@ export default {
     saveRef(refName, refElement) {
       this.rootVM.saveRef(refName, refElement);
     },
+    updateRowHeightAndScrollPosition() {
+      this.rootVM.handleWinResize();
+    },
   },
 };

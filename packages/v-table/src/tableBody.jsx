@@ -21,15 +21,44 @@ export default {
     },
   },
   mounted() {
-    const {
-      fixed, $refs, rowRefName, expandRowRefName
-    } = this;
-    this.saveRef(rowRefName, $refs[rowRefName]);
-    if (!fixed) {
-      this.saveRef(expandRowRefName, $refs[expandRowRefName]);
-    }
+    this.saveRowRef();
+  },
+  updated() {
+    this.saveRowRef();
   },
   methods: {
+    saveRowRef() {
+      const {
+        fixed,
+        $refs,
+        elementRefs,
+        rowRefName,
+        expandRowRefName,
+        expandedRowRender,
+        rootScopedSlots,
+        updateRowHeightAndScrollPosition,
+      } = this;
+
+      let changeCnt = 0;
+      if (!(rowRefName in elementRefs) || !elementRefs[rowRefName]) {
+        this.saveRef(rowRefName, $refs[rowRefName]);
+        changeCnt += 1;
+      }
+
+      if (!fixed) {
+        if (
+          (!!expandedRowRender || rootScopedSlots.expand) &&
+          (!(expandRowRefName in elementRefs) || !elementRefs[expandRowRefName])
+        ) {
+          this.saveRef(expandRowRefName, $refs[expandRowRefName]);
+          changeCnt += 1;
+        }
+      }
+
+      if (changeCnt > 0) {
+        updateRowHeightAndScrollPosition();
+      }
+    },
     /**
      * 渲染数据行
      * @param {Array} rowDatas 数据

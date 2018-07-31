@@ -5,7 +5,7 @@ export default {
   methods: {
     getCurrent(current = 1, total = 0, pageSize = 10) {
       // total > current*pageSize-pageSize, current才是有效的
-      if ((current - 1) * pageSize >= total) {
+      if ((current - 1) * pageSize > total) {
         return Math.floor((total - 1) / pageSize) + 1;
       }
       return current;
@@ -67,7 +67,7 @@ export default {
           theme={theme}
           {...{ props, on }}
         />
-        ) : null;
+      ) : null;
     },
   },
 };

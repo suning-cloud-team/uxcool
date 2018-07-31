@@ -115,7 +115,7 @@
           ...filterInfo,
         };
         this.loading = true;
-        return Axios.get('http://dippre.cnsuning.com:80/service/2698/1.0.0/table', { params }).then(({ data }) => {
+        return Axios.get('http://dip.cnsuning.com:80/service/2698/1.0.0/table', { params }).then(({ data }) => {
           this.pagination.total = data.total;
           this.data = data.data;
           // effect
