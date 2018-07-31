@@ -1,6 +1,6 @@
 <template>
   <ux-demo :height="200"
-           title="">
+           title="渲染方式">
     <div slot="demo">
       <h4>slot方式渲染</h4>
       <ux-cascader v-model="value"

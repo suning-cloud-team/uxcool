@@ -10,17 +10,17 @@
   h5,
   h6 {
     font-weight: 400;
+  }
 
-    > a {
+  .ux-heading {
+    >a {
       margin-left: 5px;
-      // opacity: 0;
-      transition: opacity 0.2s;
+      opacity: 0;
+      transition: opacity .2s;
     }
 
-    &:hover {
-      > a {
-        opacity: 1;
-      }
+    &:hover>a {
+      opacity: 1;
     }
   }
 
@@ -78,7 +78,7 @@
     .ux-btn-group {
       margin-right: 10px;
 
-      > .ux-btn {
+      >.ux-btn {
         margin-right: 0;
       }
     }
