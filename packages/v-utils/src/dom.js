@@ -1,3 +1,5 @@
+import { isFunction } from './utils';
+
 export function addEventListener(element, eventName, fn, useCapture = false) {
   element.addEventListener(eventName, fn, useCapture);
   return {
@@ -114,4 +116,17 @@ export function offset(elem) {
     width: box.width,
     height: box.height,
   };
+}
+
+export function updatePortalElement(portalElement, cb) {
+  if (!portalElement) {
+    return;
+  }
+  const nElement = portalElement;
+  const originDp = nElement.style.display;
+  nElement.style.display = '';
+  if (isFunction(cb)) {
+    cb();
+  }
+  nElement.style.display = originDp;
 }

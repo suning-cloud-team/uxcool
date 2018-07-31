@@ -96,7 +96,7 @@ $btn-ghost-border: $border-color-base;
 
   &#{&}-loading:not(&-circle):not(&-circle-outline):not(&-icon-only) {
     padding-left: 29px;
-    pointer-events: none;
+    // pointer-events: none;
     position: relative;
     .#{$iconfont-css-prefix} {
       margin-left: -14px;

@@ -1,7 +1,19 @@
 import Tree from './tree';
-// import TreeNode from './treeNode';
+import {
+  getNodeStatus,
+  getNodeChildCheckState,
+  getParentChecked,
+  getOriginNodes,
+  getNodeOriginParent,
+} from './utils';
 
-// Tree.Node = TreeNode;
+Tree.staticMethod = {
+  getNodeStatus,
+  getNodeChildCheckState,
+  getParentChecked,
+  getOriginNodes,
+  getNodeOriginParent,
+};
 
 export { Tree as UxTree };
 

@@ -526,6 +526,64 @@ export default [
         },
         component: Tree,
       },
+      {
+        name: 'treeselect',
+        path: 'treeselect',
+        meta: {
+          title: 'TreeSelect',
+          subTitle: '树选择',
+          group: 'form',
+        },
+        component: () => import('@/views/components/tree-select/index.vue'),
+      },
+      {
+        name: 'cascader',
+        path: 'cascader',
+        meta: {
+          title: 'Cascader',
+          subTitle: '级联选择',
+          group: 'form',
+        },
+        component: () => import('@/views/components/cascader/index.vue'),
+      },
+      {
+        name: 'collapse',
+        path: 'collapse',
+        meta: {
+          title: 'Collapse',
+          subTitle: '折叠面板',
+          group: 'data',
+        },
+        component: () => import('@/views/components/collapse/index.vue'),
+      }, {
+        name: 'timeline',
+        path: 'timeline',
+        meta: {
+          title: 'Timeline',
+          subTitle: '时间轴',
+          group: 'data',
+        },
+        component: () => import('@/views/components/timeline/index.vue'),
+      },
+      {
+        name: 'list',
+        path: 'list',
+        meta: {
+          title: 'List',
+          subTitle: '列表',
+          group: 'data',
+        },
+        component: () => import('@/views/components/list/index.vue'),
+      }, {
+        name: 'timepicker',
+        path: 'timepicker',
+        meta: {
+          title: 'Timepicker',
+          subTitle: '时间选择器',
+          group: 'form',
+        },
+        component: () => import('@/views/components/timepicker/index.vue'),
+      }
     ],
   },
   {

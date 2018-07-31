@@ -218,15 +218,21 @@ export default {
         domEvent: e,
       });
     },
-    onNodeExpand(e, node, vm) {
-      const {
-        updateStoreExpandedKeys,
-        getStoreExpandedKeys,
-        canAsync,
-        asyncNode,
-        getStoreExpandedNodes,
-      } = this;
+    triggerExpand(e, node, vm) {
+      const { updateStoreExpandedKeys, getStoreExpandedKeys, getStoreExpandedNodes } = this;
       const { key, isExpanded } = node;
+
+      updateStoreExpandedKeys(key, isExpanded ? 'add' : 'del');
+      this.$emit('expand', getStoreExpandedKeys(), {
+        expanded: isExpanded,
+        expandedNodes: getStoreExpandedNodes(),
+        node: { ...node.originNode },
+        vm,
+        domEvent: e,
+      });
+    },
+    onNodeExpand(e, node, vm) {
+      const { canAsync, asyncNode, triggerExpand } = this;
 
       if (canAsync(node)) {
         asyncNode(node).then((data) => {
@@ -235,17 +241,13 @@ export default {
             nNode.isParent = true;
           }
           nNode.children = data || [];
+          if (node.isParent) {
+            triggerExpand(e, node, vm);
+          }
         });
       } else {
-        updateStoreExpandedKeys(key, isExpanded ? 'add' : 'del');
+        triggerExpand(e, node, vm);
       }
-      this.$emit('expand', getStoreExpandedKeys(), {
-        expanded: isExpanded,
-        expandedNodes: getStoreExpandedNodes(),
-        node: { ...node.originNode },
-        vm,
-        domEvent: e,
-      });
     },
   },
   render() {

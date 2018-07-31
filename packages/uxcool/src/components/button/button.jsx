@@ -169,6 +169,21 @@ export default {
         return v;
       });
     },
+    getListeners() {
+      const { innerLoading, $listeners, onClick } = this;
+      const listeners = { ...$listeners, click: onClick };
+      return Object.keys(listeners).reduce((r, k) => {
+        const nr = r;
+        const fn = listeners[k];
+        nr[k] = () => {
+          if (innerLoading) {
+            return;
+          }
+          fn();
+        };
+        return nr;
+      }, {});
+    },
   },
   render() {
     const {
@@ -182,7 +197,7 @@ export default {
       htmlType,
       iconNode,
       getSlotNode,
-      onClick,
+      getListeners,
     } = this;
     const attrs = {
       type: htmlType,
@@ -193,9 +208,8 @@ export default {
       attrs.href = href;
       delete attrs.type;
     }
-    const on = {
-      click: onClick,
-    };
+
+    const on = getListeners();
     let slotDefault = $slots.default;
     slotDefault =
       slotDefault && (!iconType || iconType === 'loading') ? insertSpace(slotDefault) : slotDefault;
@@ -206,7 +220,14 @@ export default {
 
     const slotNode = getSlotNode(slotDefault);
     return (
-      <Cmp class={[classes, slotClasses]} {...{ attrs, props: bindProps, on }}>
+      <Cmp
+        class={[classes, slotClasses]}
+        {...{
+          attrs,
+          props: bindProps,
+          on,
+        }}
+      >
         {iconNode}
         {slotNode}
       </Cmp>

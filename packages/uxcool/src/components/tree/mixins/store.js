@@ -14,6 +14,7 @@ export default {
     this.treeStore = {
       isInit: false,
       seed: 0,
+      pos: 0,
       rootNodes: [],
       nodesMap: {},
       selectedKeys: [],
@@ -52,13 +53,14 @@ export default {
       for (let i = 0; i < l; i += 1) {
         const item = nodes[i];
         const { children, disabled, disableCheckbox } = item;
-
+        treeStore.pos += 1;
         const key = getNodeKey(item, rowKey, treeStore);
         const nNode = normalizeNode(item, {
           originNode: item,
           childCheckState: -1,
           parent,
           level,
+          pos: treeStore.pos,
           isVisible: true,
           isDisabled: typeof disabled === 'boolean' ? disabled : undefined,
           // 初始创建时不直接设置false, 防止后面与全局状态冲突
@@ -165,6 +167,7 @@ export default {
     clearNodesMap() {
       const { treeStore } = this;
       treeStore.seed = 0;
+      treeStore.pos = 0;
       treeStore.rootNodes = [];
       treeStore.nodesMap = {};
     },
@@ -196,8 +199,15 @@ export default {
     getStoreNode(key) {
       return this.treeStore.nodesMap[key] || null;
     },
-    resetStoreKeys(keyName, cb) {
+    getSortNodes(keys = []) {
       const { getStoreNode } = this;
+      return keys
+        .map(k => getStoreNode(k))
+        .filter(node => !!node)
+        .sort((a, b) => a.pos - b.pos);
+    },
+    resetStoreKeys(keyName, cb) {
+      const { getSortNodes } = this;
 
       if (!keyName) {
         return null;
@@ -205,10 +215,10 @@ export default {
 
       return (nVal = [], oVal = []) => {
         // 将已不存在的置为false
-        oVal.forEach((k) => {
-          const node = getStoreNode(k);
+        getSortNodes(oVal).forEach((node) => {
           if (node) {
-            node[keyName] = false;
+            const nNode = node;
+            nNode[keyName] = false;
             if (isFunction(cb)) {
               cb('old', node);
             }
@@ -216,10 +226,10 @@ export default {
         });
 
         // 将新增的key对应的属性置为true
-        nVal.forEach((k) => {
-          const node = getStoreNode(k);
+        getSortNodes(nVal).forEach((node) => {
           if (node) {
-            node[keyName] = true;
+            const nNode = node;
+            nNode[keyName] = true;
             if (isFunction(cb)) {
               cb('new', node);
             }
@@ -256,9 +266,18 @@ export default {
         checkStrict,
         checkNodeRelation,
         updateStoreHalfCheckedKeys,
+        setStoreCheckedKeys,
+        setStoreHalfCheckedKeys,
       } = this;
       const resetFn = resetStoreKeys('isChecked', (flag, node) => {
-        checkNodeRelation(node);
+        if (!node.isDisabled && !node.disableCheckbox) {
+          if (flag === 'new') {
+            const { key, isChecked, isHalfChecked } = node;
+            setStoreCheckedKeys(key, isChecked);
+            setStoreHalfCheckedKeys(key, isHalfChecked);
+          }
+          checkNodeRelation(node);
+        }
       });
       setStoreKeysByName(treeStore, 'checkedKeys', keys, op, replace, (...args) => {
         resetFn(...args);

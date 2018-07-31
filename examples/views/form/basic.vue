@@ -12,6 +12,7 @@
     <vuex-demo />
     <validator-demo />
     <custom-rules-demo />
+    <file-demo />
   </div>
 </template>
 
@@ -29,6 +30,7 @@
   import ValidatorDemo from './rules.vue';
   import CustomRulesDemo from './customRules.vue';
   import ExtraDemo from './extra.vue';
+  import FileDemo from './file.vue';
 
   export default {
     components: {
@@ -44,6 +46,7 @@
       ValidatorDemo,
       CustomRulesDemo,
       ExtraDemo,
+      FileDemo,
     },
   };
 </script>

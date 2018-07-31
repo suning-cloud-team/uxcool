@@ -147,11 +147,23 @@ export function getParentChecked(parent) {
   return parentChecked;
 }
 
+export function getNodeOriginParent(node) {
+  const { parent } = node;
+  if (!parent) {
+    return null;
+  }
+  return {
+    ...parent.originNode,
+    parentNode: getNodeOriginParent(parent),
+  };
+}
 export function getOriginNodes(nodesMap = {}, keys = []) {
   return keys
     .map((k) => {
       const node = nodesMap[k];
-      return node ? { ...node.originNode } : null;
+      return node
+        ? { ...node.originNode, pos: node.pos, parentNode: getNodeOriginParent(node) }
+        : null;
     })
     .filter(node => !!node);
 }

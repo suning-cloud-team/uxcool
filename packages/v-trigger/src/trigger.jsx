@@ -99,6 +99,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    initPopupFirst: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -328,6 +332,9 @@ export default {
         this.$emit('popup-visible-change', this.popupVisible);
       }
     },
+    onPopupAfterEnter() {
+      this.$emit('popup-after-enter');
+    },
     clearDelayTimer() {
       if (this.delayTimer) {
         clearTimeout(this.delayTimer);
@@ -393,6 +400,14 @@ export default {
 
       alignRef.forceAlign();
     },
+    getPortalPopupElement() {
+      const { portal = {} } = this;
+
+      if (!portal.$el || portal.$el.nodeType !== 1) {
+        return null;
+      }
+      return portal.$el.querySelector('[role=align-popup]');
+    },
     createPortal() {
       const {
         prefixCls: rootPrefixCls,
@@ -406,6 +421,8 @@ export default {
         $slots: originSlots,
         popupVisible,
         getPopupAlignClassName,
+        onPopupAfterEnter,
+        initPopupFirst,
       } = this;
       let portalInit = false;
       const portal = new Vue({
@@ -447,7 +464,7 @@ export default {
             },
             rootDomNode,
           } = this;
-          if (!visible && !portalInit) {
+          if (!visible && !portalInit && !initPopupFirst) {
             return '';
           }
           portalInit = true;
@@ -464,6 +481,9 @@ export default {
               className: popupClass,
               styles: popupStyle,
               getClassNameFromAlign: getPopupAlignClassName,
+            },
+            on: {
+              afterenter: onPopupAfterEnter,
             },
           };
           if (actions.indexOf('hover') !== -1) {

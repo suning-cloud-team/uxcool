@@ -14,6 +14,7 @@
 | row-key               | 自定义唯一性标示                                     | String\|Function(originNode)               | key   |
 | show-line             | 是否显示连接线                                       | Boolean                                    | false |
 | selectable            | 设置节点是否可被选中                                 | Boolean                                    | true  |
+| checkable             | 是否显示`Checkbox`                                   | BOolean                                    | false |
 | check-strict          | 父子节点之间是否不再关联选中                         | Boolean                                    | false |
 | multiple              | 是否可多选节点                                       | Boolean                                    | false |
 | default-expand-all    | 是否默认展开所有节点,(**大数据量时慎用**),非响应属性 | Boolean                                    | false |

@@ -1,5 +1,5 @@
 export default `
-<ux-date-picker show-time placehoder="Select Time">
+<ux-date-picker show-time placeholder="Select Time">
 </ux-date-picker>
 <br>
 <ux-range-date-picker show-time

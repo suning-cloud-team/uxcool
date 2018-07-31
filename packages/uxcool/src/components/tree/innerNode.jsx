@@ -51,7 +51,12 @@ export default {
       const {
         prefixCls,
         node: {
-          isParent, isChecked, isSelected, isHalfChecked, isLoading
+          isParent,
+          isChecked,
+          isDisabled: isNodeDisabled,
+          isSelected,
+          isHalfChecked,
+          isLoading,
         },
         isDisabled,
         isExpanded,
@@ -61,17 +66,23 @@ export default {
         [`${prefixCls}-treenode-disabled`]: isDisabled,
         [`${prefixCls}-treenode-switcher-${isExpanded ? 'open' : 'close'}`]: isParent,
         [`${prefixCls}-treenode-checkbox-checked`]: !!isChecked,
-        [`${prefixCls}-treenode-checkbox-indeterminate`]: isHalfChecked,
+        [`${prefixCls}-treenode-checkbox-indeterminate`]: !isNodeDisabled && isHalfChecked,
         [`${prefixCls}-treenode-selected`]: isSelected,
         [`${prefixCls}-treenode-loading`]: isLoading,
       };
     },
     checkboxClasses() {
-      const { prefixCls, isDisabled, node: { disableCheckbox, isChecked, isHalfChecked } } = this;
+      const {
+        prefixCls,
+        isDisabled,
+        node: {
+          disableCheckbox, isDisabled: isNodeDisabled, isChecked, isHalfChecked
+        },
+      } = this;
       return {
         [`${prefixCls}-checkbox`]: true,
         [`${prefixCls}-checkbox-checked`]: isChecked,
-        [`${prefixCls}-checkbox-indeterminate`]: !isChecked && isHalfChecked,
+        [`${prefixCls}-checkbox-indeterminate`]: !isNodeDisabled && !isChecked && isHalfChecked,
         [`${prefixCls}-checkbox-disabled`]: isDisabled || disableCheckbox,
       };
     },

@@ -65,7 +65,7 @@ export default {
     },
     notFoundContent: {
       type: String,
-      default: '无匹配结果',
+      default: 'Not Found',
     },
     rowKey: {
       type: [Function, String],

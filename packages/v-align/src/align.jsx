@@ -19,7 +19,8 @@ function timerFn(fn, ms) {
   return inner;
 }
 export default {
-  abstract: true,
+  // 无影响 ? hw 07-25
+  // abstract: true,
   props: {
     align: {
       type: Object,

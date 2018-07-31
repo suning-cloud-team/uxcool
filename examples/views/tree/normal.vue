@@ -7,7 +7,8 @@
              :data-source="dataSource"
              :selectable="selectable"
              :default-expand-parent="expandParent"
-             checkable />
+             checkable
+             @check="onCheck" />
 
   </div>
 </template>
@@ -23,7 +24,7 @@
     },
     data() {
       return {
-        checkedKeys: ['0-0'],
+        checkedKeys: ['0-0-1', '0-0-1-1', '0-0-1-2'],
         expandedKeys: ['0-0', '0-0-1'],
         selectable: false,
         dataSource: [
@@ -100,8 +101,9 @@
       onExpand(...args) {
         console.log('onExpand', ...args);
       },
-      onCheck(...args) {
-        console.log('onCheck', ...args);
+      onCheck(checkedKeys, ...args) {
+        console.log('onCheck', checkedKeys, ...args);
+        this.checkedKeys = checkedKeys;
       },
       onSelect(...args) {
         console.log('onSelect', ...args);

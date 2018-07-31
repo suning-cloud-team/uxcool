@@ -107,6 +107,9 @@ export default {
       this.xVisible = this.visible;
       this.$emit('on-align', element, align);
     },
+    onAfterEnter() {
+      this.$emit('afterenter');
+    },
     onAfterLeave() {
       this.dVisible = true;
     },
@@ -120,6 +123,7 @@ export default {
         },
         on: { ...options.on },
       };
+
       return transitionName ? <transition {...transitionAttrs}>{element}</transition> : element;
     },
     renderPopup() {
@@ -137,6 +141,7 @@ export default {
         align,
         onAlign,
         onAfterLeave,
+        onAfterEnter,
         transitionName,
         renderTransitionAlign,
       } = this;
@@ -144,6 +149,9 @@ export default {
       const popupInnerAttrs = {
         class: [classes, className],
         style: styles,
+        attrs: {
+          role: 'align-popup',
+        },
         on: {
           mousedown(e) {
             e.stopPropagation();
@@ -163,18 +171,27 @@ export default {
           disabled: !visible,
           monitorWinResize: true,
         },
+
         on: {
           'on-align': onAlign,
         },
         ref: 'alignRef',
       };
 
+      if (xVisible && !transitionName) {
+        this.$nextTick(() => {
+          this.$nextTick(() => {
+            onAfterEnter();
+          });
+        });
+      }
       if (destroyPopupOnHide) {
         // animate || no anomiate
         return (transitionName && !dVisible) || (!transitionName && visible) ? (
           <Align {...alignAttrs}>
             {renderTransitionAlign(popupInner, {
               on: {
+                afterEnter: onAfterEnter,
                 afterLeave: onAfterLeave,
               },
             })}
@@ -182,7 +199,15 @@ export default {
         ) : null;
       }
 
-      return <Align {...alignAttrs}>{renderTransitionAlign(popupInner)}</Align>;
+      return (
+        <Align {...alignAttrs}>
+          {renderTransitionAlign(popupInner, {
+            on: {
+              afterEnter: onAfterEnter,
+            },
+          })}
+        </Align>
+      );
     },
   },
   render() {

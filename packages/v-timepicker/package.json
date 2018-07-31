@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-timepicker",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "时分秒选择基础组件",
   "main": "index.js",
   "repository": "git@git.cnsuning.com:fedc/v-timepicker.git",
