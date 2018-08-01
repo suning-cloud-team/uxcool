@@ -8,7 +8,8 @@
          target="_blank">会议室预定</a>
       <a href="http://eitp.cnsuning.com/itp-web-in/processStartDraft.do?businessTemplateId=NSOA0339"
          target="_blank">ITP日志</a>
-
+      <a href="/web/index.html#/dashboard"
+         target="_blank">模板预览 </a>
     </div>
     <div class="copyright ux-sm-hidden-down">Copyright &copy; 2017 - {{ year }} UXCOOL</div>
   </footer>
