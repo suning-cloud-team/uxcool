@@ -5,7 +5,7 @@
     <li v-if="showBeforeTotal !== noop"
         :class="beforeTotalClasses"
         v-html="beforeTotalLiteral" />
-    <li :title="genTitle(locale.next_page)"
+    <li :title="genTitle(locale.prev_page)"
         tabindex="0"
         :class="prevClasses"
         @click="prev"
@@ -28,7 +28,7 @@
         :class="beforeTotalClasses"
         v-html="beforeTotalLiteral" />
 
-    <li :title="genTitle(locale.next_page)"
+    <li :title="genTitle(locale.prev_page)"
         tabindex="0"
         :class="prevClasses"
         @click="prev"
