@@ -1,6 +1,6 @@
 {
   "name": "@suning/uxcool",
-  "version": "0.3.1-alpha.2",
+  "version": "0.3.1-alpha.3",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "@suning/v-dialog": "^1.0.11",
     "@suning/v-menu": "^1.0.31",
     "@suning/v-notification": "^1.0.9",
-    "@suning/v-pagination": "^1.0.18",
+    "@suning/v-pagination": "^1.0.19",
     "@suning/v-select": "^1.0.38",
     "@suning/v-slider": "^1.0.12",
     "@suning/v-steps": "^1.0.11",
