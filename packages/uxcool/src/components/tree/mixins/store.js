@@ -56,6 +56,7 @@ export default {
         treeStore.pos += 1;
         const key = getNodeKey(item, rowKey, treeStore);
         const nNode = normalizeNode(item, {
+          key,
           originNode: item,
           childCheckState: -1,
           parent,

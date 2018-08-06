@@ -1,10 +1,11 @@
 <template>
   <div>
     <normal-demo />
-    <!-- <async-demo />
+    <rowkey-demo />
+    <async-demo />
     <render-demo />
     <huge-demo />
-    <filter-demo /> -->
+    <filter-demo />
   </div>
 </template>
 
@@ -15,6 +16,7 @@
   import RenderDemo from './render.vue';
   import HugeDemo from './huge.vue';
   import FilterDemo from './filter.vue';
+  import RowkeyDemo from './rowkey.vue';
 
   export default {
     components: {
@@ -23,6 +25,7 @@
       RenderDemo,
       HugeDemo,
       FilterDemo,
+      RowkeyDemo,
     },
   };
 </script>

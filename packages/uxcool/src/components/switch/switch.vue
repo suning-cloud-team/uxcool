@@ -25,6 +25,12 @@
 
   export default {
     name: buildComponentName('Switch'),
+    $_veeValidate: {
+      rejectsFalse: true,
+      value() {
+        return this.innerChecked;
+      },
+    },
     model: {
       prop: 'checked',
     },

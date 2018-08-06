@@ -72,7 +72,14 @@
             </ux-col>
           </ux-row>
         </ux-form-item>
-
+        <ux-form-item label="Switch">
+          <ux-field-decorator :rules="{ required: true, message:'请选择Switch的值'}"
+                              name="switch">
+            <!-- <ux-switch :checked="form.switch"
+                       @input="(checked)=>form.switch=checked" /> -->
+            <ux-switch v-model="form.switch" />
+          </ux-field-decorator>
+        </ux-form-item>
         <ux-form-item :wrapper-col="{offset:8}">
           <ux-button type="primary"
                      html-type="submit">Register</ux-button>
@@ -83,9 +90,7 @@
 </template>
 
 <script>
-  import { Validator } from 'vee-validate';
-
-  import { Form, Input, Grid, Button, Icon, Checkbox, Tooltip, Select } from '@suning/uxcool';
+  import { Form, Switch, Input, Grid, Button, Icon, Checkbox, Tooltip, Select } from '@suning/uxcool';
 
   // Validator.localize('zh_CN', {
   //   attributes: {
@@ -95,6 +100,7 @@
   // });
   export default {
     components: {
+      UxSwitch: Switch,
       UxForm: Form,
       UxFormItem: Form.Item,
       UxFieldDecorator: Form.FieldDecorator,
@@ -121,6 +127,7 @@
           phone: '',
           phoneSelect: '87',
           captcha: '',
+          switch: false,
         },
       };
     },
