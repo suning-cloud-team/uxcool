@@ -9,6 +9,7 @@
     <demo-disabled-date></demo-disabled-date>
     <demo-disabled></demo-disabled>
     <demo-quick-selector></demo-quick-selector>
+    <demo-custom />
 
     <hr>
 
@@ -272,6 +273,7 @@
   import DemoDisabledDate from './disabledDate.vue';
   import DemoDisabled from './disabled.vue';
   import DemoQuickSelector from './quickSelector.vue';
+  import DemoCustom from './custom.vue';
 
   export default {
     components: {
@@ -281,6 +283,7 @@
       DemoDisabledDate,
       DemoDisabled,
       DemoQuickSelector,
+      DemoCustom,
     },
   };
 </script>
