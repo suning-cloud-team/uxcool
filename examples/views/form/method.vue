@@ -28,6 +28,13 @@
           <ux-date-picker v-model="form.date1" />
         </ux-field-decorator>
       </ux-form-item>
+      <ux-form-item label="日期范围">
+        <ux-field-decorator name="date2">
+          <ux-range-date-picker v-model="form.date2"
+                                :placeholder="['start time', 'end time']"
+                                show-time />
+        </ux-field-decorator>
+      </ux-form-item>
       <ux-form-item label="select">
         <ux-field-decorator name="select">
           <ux-select v-model="form.select">
@@ -85,6 +92,7 @@
       UxRadio: Radio,
       UxSelect: Select,
       UxOption: Select.Option,
+      UxRangeDatePicker: Datepicker.Range,
     },
     data() {
       return {
@@ -93,6 +101,7 @@
           name1: '333',
           protocol: true,
           date1: null,
+          date2: null,
           select: '',
         },
         formFlags: {},

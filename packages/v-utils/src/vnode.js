@@ -53,7 +53,7 @@ function extractData(vnode, isComp) {
 export { DATA_KEYS as VNODE_DATA_KEYS, extractData as extractVNodeData };
 
 export function cloneVNode(vnode, newData = {}, deep = true) {
-  if (!isVNode(vnode)) {
+  if (!isVNode(vnode) && !isTextNode(vnode)) {
     return vnode;
   }
   // use the context that the original vnode was created in.
@@ -114,4 +114,13 @@ export function isAsyncPlaceholder(node) {
 
 export function isVueComponent(vnode) {
   return !!vnode.componentOptions;
+}
+
+// 是否是指定类型的VNode
+export function isSameTypeVNode(vnode, optionName = '') {
+  if (!isVNode(vnode)) {
+    return false;
+  }
+  const { componentOptions: cp } = vnode;
+  return !!(cp && cp.Ctor && cp.Ctor.options && cp.Ctor.options[optionName]);
 }

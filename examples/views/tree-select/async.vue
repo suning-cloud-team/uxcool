@@ -54,15 +54,16 @@
           } else {
             setTimeout(() => {
               const { key } = node;
-              resolve(Array(3)
+              const data = Array(3)
                 .fill(0)
                 .map((_, i) => ({
                   title: `child-${key}-${i}`,
                   key: `${key}-${i}`,
                   disabled: i === 2,
                   isLeaf: node.key === '0-0-0-0' && node.level === 2,
-              })));
-            }, 100);
+              }));
+              resolve(data);
+            }, 113500);
           }
         });
       },

@@ -3,6 +3,7 @@
     <h4>multiple</h4>
     <ux-tree-select :value="value"
                     :tree-data="data"
+                    :clear-disabled="false"
                     multiple
                     size="small"
                     style="width:300px"
@@ -21,7 +22,7 @@
     data() {
       return {
         dropdownMatch: true,
-        value: null,
+        value: ['0-0-1-0', '0-0-0-0'],
         data: [
           {
             title: '0-0',

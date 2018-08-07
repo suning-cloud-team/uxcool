@@ -1,14 +1,19 @@
 import { buildComponentName } from '../utils';
-import { isDisabledNode } from './utils';
 import SubMixin from './mixins/sub';
 
 export default {
-  name: buildComponentName('TreeSelector'),
+  name: buildComponentName('SelectSelector'),
   mixins: [SubMixin],
   props: {
     showArrow: {
       type: Boolean,
       default: false,
+    },
+    selections: {
+      type: Array,
+      default() {
+        return [];
+      },
     },
   },
   computed: {
@@ -17,12 +22,18 @@ export default {
     },
     classes() {
       const {
-        prefixCls, rootSize, rootInnerVisible, rootDisabled, rootAllowClear
+        prefixCls,
+        rootSize,
+        rootInnerVisible,
+        rootIsCombobox,
+        rootDisabled,
+        rootAllowClear,
       } = this;
       return {
         [prefixCls]: true,
         [`${prefixCls}-${rootSize === 'small' ? 'sm' : 'lg'}`]:
           rootSize === 'large' || rootSize === 'small',
+        [`${prefixCls}-combobox`]: rootIsCombobox,
         [`${prefixCls}-open`]: rootInnerVisible,
         [`${prefixCls}-disabled`]: rootDisabled,
         [`${prefixCls}-enable`]: !rootDisabled,
@@ -43,7 +54,6 @@ export default {
   methods: {
     renderArrow() {
       const { prefixCls, showArrow } = this;
-
       return showArrow ? (
         <span key="arrow" class={`${prefixCls}-arrow`} style={{ outline: 'none' }}>
           <b />
@@ -54,10 +64,9 @@ export default {
       const {
         prefixCls,
         rootAllowClear,
-        rootSelectionValue,
-        rootClearDisabled,
-        rootTreeCheckable,
         rootIsMultiple,
+        rootClearDisabled,
+        selections,
         onSelectorClear,
       } = this;
 
@@ -66,23 +75,17 @@ export default {
       }
 
       if (!rootClearDisabled) {
-        // only multiple
-        if (
-          rootIsMultiple &&
-          rootSelectionValue.every(node => isDisabledNode(node, rootTreeCheckable))
-        ) {
+        if (rootIsMultiple && selections.every(v => !!v.disabled)) {
           return null;
         }
-      } else if (rootSelectionValue.length === 0) {
+      } else if (selections.length === 0) {
         return null;
       }
-
       return (
         <span key="clear" class={`${prefixCls}-selection__clear`} on-click={onSelectorClear} />
       );
     },
   },
-
   render() {
     const {
       $slots, prefixCls, classes, mode, arrowNode, clearNode

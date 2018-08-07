@@ -1,9 +1,11 @@
 <template>
   <li :class="classes">
     <div :class="titleClasses"
-         :style="paddingStyle">{{title}}</div>
+         :style="paddingStyle">
+      <slot name="title">{{ title }}</slot>
+    </div>
     <ul :class="listClasses">
-      <slot></slot>
+      <slot />
     </ul>
   </li>
 
@@ -19,7 +21,6 @@
       title: {
         type: String,
         default: '',
-        required: true,
       },
     },
     created() {

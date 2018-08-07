@@ -181,10 +181,10 @@ export default {
     size: {
       type: String,
       default: '',
-      validator(val){
-        return ['', 'large','default', 'small'].indexOf(val)>-1;
-      }
-    }
+      validator(val) {
+        return ['', 'large', 'default', 'small'].indexOf(val) > -1;
+      },
+    },
   },
   data() {
     return {
