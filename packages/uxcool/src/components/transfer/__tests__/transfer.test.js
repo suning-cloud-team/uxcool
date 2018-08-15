@@ -87,7 +87,7 @@ describe('Transfer render', () => {
       },
     });
 
-    expect(spy).toHaveBeenCalledWith(expect.stringContaining('Each record in dataSource of table should have a unique `key` prop'));
+    expect(spy).toHaveBeenCalledWith(expect.stringContaining('Each record in dataSource of transfer should have a unique `key` prop'));
   });
 
   it.only('rowKey', () => {
@@ -109,7 +109,7 @@ describe('Transfer render', () => {
       },
     });
 
-    expect(spy).toHaveBeenCalledWith(expect.stringContaining('Each record in dataSource of table should have a unique `key` prop'));
+    expect(spy).toHaveBeenCalledWith(expect.stringContaining('Each record in dataSource of transfer should have a unique `key` prop'));
 
     wrapper.setProps({
       rowKey(record) {

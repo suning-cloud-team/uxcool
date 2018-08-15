@@ -95,6 +95,9 @@
 
   function noop() {}
 
+  function isInteger(val) {
+    return typeof val === 'number' && Number.isFinite(val) && Math.floor(val) === val;
+  }
   const pagerTpl = {
     type: 'pager',
     prefixCls: '',
@@ -350,7 +353,9 @@
       handleChange(page) {
         const { totalPage, pageNo, usedPageSize } = this;
         let nPage = page;
-
+        if (!isInteger(page)) {
+          return;
+        }
         if (nPage === pageNo) return;
 
         if (nPage < 1) {

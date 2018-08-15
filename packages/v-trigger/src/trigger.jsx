@@ -220,7 +220,7 @@ export default {
       const node = $vnode || { elm: $el };
       const { elm: element } = node;
 
-      if (!element || actions.length === 0) {
+      if (!element) {
         return;
       }
       const nActions = normalizeActions([...actions]);
@@ -248,6 +248,12 @@ export default {
         });
       }
       bindEvents.length = 0;
+
+      if (actions.length === 0) {
+        delete element.$$actions[uuid];
+        delete element.$$bindEvents[uuid];
+        return;
+      }
 
       const keys = Object.keys(triggerEvents);
       for (let i = 0, l = keys.length; i < l; i += 1) {
