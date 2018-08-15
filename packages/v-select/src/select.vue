@@ -310,6 +310,11 @@
       value() {
         this.completeValues();
       },
+      disabled() {
+        if (this.open) {
+          this.setOpen(false);
+        }
+      },
       descendants(nVal) {
         if (nVal) {
           this.completeValues();

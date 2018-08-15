@@ -130,6 +130,7 @@
 
     <async-demo />
     <number-demo />
+    <disabled-demo />
   </div>
 </template>
 
@@ -137,6 +138,7 @@
   import { Select } from '@suning/uxcool';
   import AsyncDemo from './async.vue';
   import NumberDemo from './number.vue';
+  import DisabledDemo from './disabled.vue';
 
   export default {
     components: {
@@ -145,6 +147,7 @@
       UxOptionGroup: Select.Group,
       AsyncDemo,
       NumberDemo,
+      DisabledDemo,
     },
     data() {
       return {
