@@ -5,7 +5,8 @@
     <ux-table :theme="theme"
               :columns="columns"
               v-model="data"
-              :row-selection="rowSelection" />
+              :row-selection="rowSelection"
+              :expand-all-rows="isExpandAll" />
   </div>
 </template>
 
@@ -107,6 +108,7 @@
     },
     data() {
       return {
+        isExpandAll: true,
         columns: [],
         data: [],
         rowSelection: {
@@ -129,7 +131,15 @@
     computed: mapState(['theme']),
     created() {
       this.columns = getCols.call(this);
-      this.data = getData.call(this);
+      setTimeout(() => {
+        this.data = getData.call(this);
+        // setTimeout(() => {
+        //   this.isExpandAll = false;
+        //   setTimeout(() => {
+        //     this.isExpandAll = true;
+        //   }, 1500);
+        // }, 1500);
+      }, 2500);
     },
   };
 </script>

@@ -1,4 +1,5 @@
 import debounce from 'lodash/debounce';
+import { isEqual } from '@suning/v-utils';
 import { noop, getRowKey, getScrollBarWidth, addEventListener, flatRows } from './utils';
 import ColumnMixin from './mixins/column';
 
@@ -175,12 +176,17 @@ export default {
   },
   watch: {
     expandedRowKeys(nVal, oVal) {
-      if (nVal && nVal !== oVal) {
+      if (nVal && !isEqual(nVal, oVal)) {
         this.innerExpanderRowKeys = nVal;
       }
     },
     expandAllRows(nVal, oVal) {
-      if (nVal !== oVal) {
+      if (!isEqual(nVal, oVal)) {
+        this.initExpanderRowKeys();
+      }
+    },
+    flatRecords(nVal, oVal) {
+      if (!isEqual(nVal, oVal)) {
         this.initExpanderRowKeys();
       }
     },
