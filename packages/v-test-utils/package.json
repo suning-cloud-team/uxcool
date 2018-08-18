@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-test-utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "server": "v-tools run server"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.30",
+    "@suning/v-tools": "^1.0.31",
     "@vue/test-utils": "^1.0.0-beta.16"
   },
   "dependencies": {
