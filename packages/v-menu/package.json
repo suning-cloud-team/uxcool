@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-menu",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "uxcool menu 基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -24,7 +24,7 @@
     "vue": "^2.*.*"
   },
   "devDependencies": {
-    "@suning/v-style": "^1.0.14",
-    "@suning/v-tools": "^1.0.30"
+    "@suning/v-style": "^1.0.15",
+    "@suning/v-tools": "^1.0.31"
   }
 }

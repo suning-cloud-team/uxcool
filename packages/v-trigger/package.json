@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-trigger",
-  "version": "1.0.38",
+  "version": "1.0.39",
   "description": "trigger ",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -24,12 +24,12 @@
     "vue": "^2.*.*"
   },
   "dependencies": {
-    "@suning/v-align": "^1.0.13",
-    "@suning/v-utils": "^1.0.12"
+    "@suning/v-align": "^1.0.14",
+    "@suning/v-utils": "^1.0.13"
   },
   "devDependencies": {
-    "@suning/v-style": "^1.0.14",
-    "@suning/v-test-utils": "^1.0.2",
-    "@suning/v-tools": "^1.0.30"
+    "@suning/v-style": "^1.0.15",
+    "@suning/v-test-utils": "^1.0.3",
+    "@suning/v-tools": "^1.0.31"
   }
 }
