@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-table",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "table基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -11,10 +11,10 @@
     "vue": "^2.5.*"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.30"
+    "@suning/v-tools": "^1.0.31"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.12",
+    "@suning/v-utils": "^1.0.13",
     "lodash": "^4.17.4"
   },
   "publishConfig": {
