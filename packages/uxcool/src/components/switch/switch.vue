@@ -43,7 +43,7 @@
         type: String,
         default: 'default',
         validator(val) {
-          return ['small', 'default', 'large'].indexOf(val) > -1;
+          return ['small', 'default', 'large', ''].indexOf(val) > -1;
         },
       },
       checked: {

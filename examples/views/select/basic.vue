@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <button class="ux-btn"
+    <button class="ux-btn"
             @click="changeTheme">{{theme}}</button>
 
     <div class="demo">
@@ -59,7 +59,8 @@
 
     <div class="demo">
       <h4>multiple </h4>
-      <ux-select style="width:200px;"
+      <ux-select :value="''"
+                 style="width:200px;"
                  mode="multiple"
                  allow-clear>
         <ux-option value="A"
@@ -121,7 +122,7 @@
         <ux-option value="B">B</ux-option>
         <ux-option value="C">C</ux-option>
       </ux-select>
-    </div> -->
+    </div>
     <single-demo />
     <async-demo />
     <number-demo />
@@ -135,6 +136,7 @@
     <huge-demo />
     <max-tags-demo />
     <remote-filter-demo />
+    <custom-input-demo />
   </div>
 </template>
 
@@ -150,8 +152,9 @@
   import ComboboxDemo from './combobox.vue';
   import HugeDemo from './huge.vue';
   import MaxTagsDemo from './maxTags.vue';
-  import remoteFilterDemo from './remoteFilter.vue';
   import SingleDemo from './single.vue';
+  import RemoteFilterDemo from './remoteFilter.vue';
+  import CustomInputDemo from './custom-input.vue';
 
   export default {
     components: {
@@ -168,8 +171,9 @@
       ComboboxDemo,
       HugeDemo,
       MaxTagsDemo,
-      remoteFilterDemo,
       SingleDemo,
+      RemoteFilterDemo,
+      CustomInputDemo,
     },
     data() {
       return {

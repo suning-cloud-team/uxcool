@@ -71,7 +71,7 @@ export default {
       if (inputRef && !val) {
         val = inputRef.getInputElement().value;
       }
-      this.$emit('search', val);
+      this.$emit('search', val, e);
       this.focus();
     },
     onPressenter(e) {

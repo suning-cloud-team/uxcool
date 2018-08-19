@@ -122,6 +122,7 @@ $select-prefix-cls: #{$ux-prefix}-select;
 
   &-disabled {
     color: $disabled-color;
+    background: $input-disabled-bg;
   }
 
   &-disabled &-selection {

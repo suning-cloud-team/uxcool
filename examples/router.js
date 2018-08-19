@@ -271,6 +271,11 @@ const routes = [
     path: '/treeselect',
     component: () => import('./views/tree-select/index'),
   },
+  {
+    name: 'AutoComplete',
+    path: '/autocomplete',
+    component: () => import('./views/auto-complete/index'),
+  },
 ];
 
 const router = new Router({
