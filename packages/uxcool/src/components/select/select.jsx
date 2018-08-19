@@ -3,7 +3,6 @@ import VMenu, { VMenuItem, VMenuItemGroup } from '@suning/v-menu';
 import Trigger from '@suning/v-trigger';
 import {
   isArray,
-  isDef,
   isFunction,
   isEqual,
   isPlainObject,
@@ -12,6 +11,7 @@ import {
 import VirtualList from '../virtual-list';
 import { buildComponentName } from '../utils';
 import {
+  isValidValue,
   buildOptionsFromSlot,
   cloneLabelNodes,
   isOptionGroup,
@@ -335,10 +335,10 @@ export default {
     },
     setInnerValue(value, trigger = true) {
       const { isMultipleOrTags, optionMap } = this;
-      let val = isDef(value) ? value : [];
+      let val =isValidValue(value) ? value : [];
       val = isArray(val) ? val : [val];
       if (!isMultipleOrTags) {
-        val = isDef(val[0]) ? [val[0]] : [];
+        val = isValidValue(val[0]) ? [val[0]] : [];
       }
       this.innerValue = val;
       if (trigger) {
@@ -350,7 +350,8 @@ export default {
           : buildOptionOriginNode(nVal, optionMap);
 
         this.$emit('input', nVal, valObj);
-        this.$emit('change', nVal, valObj);
+        // 兼容原有Select行为Function(Object, value)
+        this.$emit('change', valObj, nVal);
       }
     },
     setInnerVisible(visible, trigger = true) {

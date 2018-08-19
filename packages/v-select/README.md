@@ -1,4 +1,4 @@
-# v-select
+# v-select (DEPRECATED)
 
 ---
 
@@ -20,7 +20,7 @@ http://localhost:8000/example/default.html
 
 ## Feature
 
-* Support IE9+, Chrome, Firefox
+- Support IE9+, Chrome, Firefox
 
 ## Install
 

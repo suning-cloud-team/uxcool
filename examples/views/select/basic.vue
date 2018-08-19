@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="ux-btn"
+    <!-- <button class="ux-btn"
             @click="changeTheme">{{theme}}</button>
 
     <div class="demo">
@@ -121,8 +121,8 @@
         <ux-option value="B">B</ux-option>
         <ux-option value="C">C</ux-option>
       </ux-select>
-    </div>
-
+    </div> -->
+    <single-demo />
     <async-demo />
     <number-demo />
     <disabled-demo />
@@ -151,6 +151,7 @@
   import HugeDemo from './huge.vue';
   import MaxTagsDemo from './maxTags.vue';
   import remoteFilterDemo from './remoteFilter.vue';
+  import SingleDemo from './single.vue';
 
   export default {
     components: {
@@ -168,6 +169,7 @@
       HugeDemo,
       MaxTagsDemo,
       remoteFilterDemo,
+      SingleDemo,
     },
     data() {
       return {
