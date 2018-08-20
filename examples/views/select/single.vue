@@ -1,12 +1,12 @@
 <template>
   <div class="demo">
-    <h4>group</h4>
-    <ux-select :render-group-label="renderGroupLabel"
+    <h4>single</h4>
+    <ux-select v-model="value"
+               :render-group-label="renderGroupLabel"
                option-label-prop="children"
                style="width:200px;"
                allow-clear
                show-search
-               value=""
                @change="onChange"
                @select="onSelect"
                @deselect="onDeselect">
@@ -34,15 +34,6 @@
 <script>
   import { Select, Icon } from '@suning/uxcool';
 
-  function mockData(cnt) {
-    return Array(cnt)
-      .fill(0)
-      .map((_, i) => ({
-        value: i,
-        label: `a-${i}`,
-        children: [{ value: `a${i}${i}` }, { value: `b${i}${i}` }],
-    }));
-  }
   export default {
     components: {
       UxSelect: Select,
@@ -52,7 +43,7 @@
     },
     data() {
       return {
-        dataSource: mockData(5000),
+        value: '',
         option2: 'c31',
       };
     },

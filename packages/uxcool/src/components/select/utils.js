@@ -1,5 +1,8 @@
 import { isSameTypeVNode, isArray, cloneVNode, isDef } from '@suning/v-utils';
 
+export function isValidValue(value) {
+  return isDef(value) && value !== '';
+}
 export function buildOptionsFromSlot(nodes = []) {
   const ret = [];
 

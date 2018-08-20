@@ -53,7 +53,8 @@
     data() {
       return {
         isShow: false,
-        values: ['A', 'B'],
+        values: '',
+        // values: ['A', 'B'],
         values2: ['C', '2', '1'],
         list: mockData(100),
       };
