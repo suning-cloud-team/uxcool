@@ -170,6 +170,7 @@
 
   .#{$checkbox-prefix-cls}-group {
     @include reset-component;
+    display: inline-block;
     &-item {
       display: inline-block;
       margin-right: 8px;

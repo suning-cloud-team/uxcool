@@ -1,27 +1,37 @@
 <template>
   <div class="demo">
-    <h4>async</h4>
     value: {{ value }}
     <ux-select v-model="value"
-               style="width:200px;margin-left:200px;">
-      <!-- <ux-option value="A">A</ux-option>
-      <ux-option value="B">B</ux-option>
-      <ux-option value="C">C</ux-option> -->
+               option-label-prop="children"
+               option-filter-prop="label"
+               mode="SECRET_COMBOBOX_MODE_DO_NOT_USE"
+               style="width:200px;">
       <ux-option v-for="(item,i) in list"
                  :key="i"
                  :value="item.value"
-                 :label="item.label" />
+                 :label="item.label">
+        <div>
+          <span> {{ item.value }}</span>
+          <ux-icon type="circle_selected" /> {{ item.label }}
+        </div>
+
+      </ux-option>
+      <!-- <ux-option v-for="(item,i) in list"
+                 :key="i"
+                 :value="item.value"
+                 :label="item.label" /> -->
     </ux-select>
   </div>
 </template>
 
 <script>
-  import { Select } from '@suning/uxcool';
+  import { Select, Icon } from '@suning/uxcool';
 
   export default {
     components: {
       UxSelect: Select,
       UxOption: Select.Option,
+      UxIcon: Icon,
     },
     data() {
       return {

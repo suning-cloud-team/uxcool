@@ -12,10 +12,10 @@ export default {
         this.isFilterNotFound = searchInputValue && filterNodes.length === 0;
       }
     },
-    setSearchInputValue(value, trigger = true) {
+    setSearchInputValue(value, trigger = true, changeVisible = true) {
       const { onSearch, innerVisible, setInnerVisible } = this;
       this.searchInputValue = value;
-      if (!innerVisible) {
+      if (!innerVisible && changeVisible) {
         setInnerVisible(true);
       }
       onSearch(value);
@@ -29,7 +29,7 @@ export default {
       if (checkAutoClear && !autoClearSearchValue) {
         return;
       }
-      setSearchInputValue('');
+      setSearchInputValue('', true, false);
     },
     renderNotFound() {
       const { prefixCls, isFilterNotFound, notFoundContent } = this;

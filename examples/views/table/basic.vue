@@ -61,6 +61,7 @@
   import AsyncNestTableDemo from './asyncNestTable.vue';
   import TabsDemo from './tabs.vue';
   import NodePaginationDemo from './node-pagination.vue';
+  import PaginationDemo from './pagination.vue';
 
   export default {
     components: {
@@ -92,6 +93,7 @@
       AsyncNestTableDemo,
       TabsDemo,
       NodePaginationDemo,
+      PaginationDemo,
     },
   };
 </script>

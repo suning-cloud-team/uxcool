@@ -84,7 +84,7 @@
                   disabled: i === 2,
                   isLeaf: node.key === '0-0-0-0' && node.level === 2,
               })));
-            }, 100);
+            }, 10000);
           }
         });
       },

@@ -8,6 +8,7 @@
               :row-key="rowKey"
               :pagination="pagination"
               :loading="loading"
+              :row-selection="rowSelection"
               @change="onChange" />
   </div>
 </template>
@@ -91,6 +92,11 @@
         },
         columns: [],
         data: [],
+        rowSelection: {
+          onChange(...args) {
+            console.log('onChange', ...args);
+          },
+        },
       };
     },
     computed: mapState(['theme']),

@@ -1,6 +1,7 @@
 <template>
 
   <div class="demo">
+    <h4>pagination</h4>
     <ux-table :theme="theme"
               :columns="cols1"
               v-model="data1"
@@ -44,7 +45,7 @@
             dataIndex: 'addr',
           },
         ],
-        data1: getData(12),
+        data1: [],
         pagination: {},
         rowSelection: {
           selectedRowKeys: [],
@@ -56,20 +57,23 @@
     },
     computed: mapState(['theme']),
     created() {
-      setTimeout(() => {
-        this.data1 = getData(5);
-        this.pagination = false;
-        setTimeout(() => {
-          this.data1 = getData(13, 'ee');
-          this.pagination = {
-            onChange(...args) {
-              console.log('pagination change', args);
-            },
-          };
-          this.rowSelection.selectedRowKeys = [];
-        }, 1500);
-      }, 3500);
+      this.data1 = getData.call(this, 5000);
     },
+    // created() {
+    //   setTimeout(() => {
+    //     this.data1 = getData(5);
+    //     this.pagination = false;
+    //     setTimeout(() => {
+    //       this.data1 = getData(13, 'ee');
+    //       this.pagination = {
+    //         onChange(...args) {
+    //           console.log('pagination change', args);
+    //         },
+    //       };
+    //       this.rowSelection.selectedRowKeys = [];
+    //     }, 1500);
+    //   }, 3500);
+    // },
     methods: {
       onChange(...args) {
         console.log('table change', args);

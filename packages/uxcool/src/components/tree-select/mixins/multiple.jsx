@@ -79,7 +79,7 @@ export default {
         const isCanRemove = !isDisabledNode(v, treeCheckable) || clearDisabled;
         const choiceCls = {
           [`${prefixCls}-selection__choice`]: true,
-          [`${prefixCls}-selection__choice-no-clear`]: !isCanRemove,
+          [`${prefixCls}-selection__choice__disabled`]: !isCanRemove,
         };
         return (
           <li class={choiceCls}>

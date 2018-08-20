@@ -7,8 +7,7 @@
       <h4>single custom filterOption</h4>
       <ux-select :filter-option="filterOption"
                  style="width:200px;"
-                 show-search
-                 :theme="theme">
+                 show-search>
         <ux-option value="A"
                    label="A1" />
         <ux-option value="B"
@@ -17,11 +16,9 @@
                    label="C3" />
       </ux-select>
     </div>
-
     <div class="demo">
       <h4>mode="multiple" custom filterOption</h4>
-      <ux-select :theme="theme"
-                 :filter-option="filterOption"
+      <ux-select :filter-option="filterOption"
                  style="width:200px;"
                  show-search
                  mode="multiple">
@@ -34,26 +31,16 @@
       </ux-select>
     </div>
     <div class="demo">
+      <h4>children label</h4>
       <ux-select style="width:200px;"
-                 :theme="theme">
+                 option-label-prop="children">
         <ux-option value="A">A</ux-option>
         <ux-option value="B">B</ux-option>
         <ux-option value="C">C</ux-option>
       </ux-select>
 
       <ux-select style="width:200px;"
-                 disabled
-                 :theme="theme">
-        <ux-option value="A">A</ux-option>
-        <ux-option value="B">B</ux-option>
-        <ux-option value="C">C</ux-option>
-      </ux-select>
-    </div>
-
-    <div class="demo">
-      <ux-select style="width:200px;"
-                 show-search
-                 :theme="theme">
+                 disabled>
         <ux-option value="A">A</ux-option>
         <ux-option value="B">B</ux-option>
         <ux-option value="C">C</ux-option>
@@ -61,10 +48,20 @@
     </div>
 
     <div class="demo">
+      <ux-select style="width:200px;"
+                 option-label-prop="children"
+                 show-search>
+        <ux-option value="A">A1</ux-option>
+        <ux-option value="B">B2</ux-option>
+        <ux-option value="C">C3</ux-option>
+      </ux-select>
+    </div>
+
+    <div class="demo">
+      <h4>multiple </h4>
       <ux-select style="width:200px;"
                  mode="multiple"
-                 allow-clear
-                 :theme="theme">
+                 allow-clear>
         <ux-option value="A"
                    label="A10">A10</ux-option>
         <ux-option value="B">B</ux-option>
@@ -73,7 +70,6 @@
       <ux-select allow-clear
                  disabled
                  mode="multiple"
-                 :theme="theme"
                  style="width:200px;margin-left:200px;">
         <ux-option value="A">A</ux-option>
         <ux-option value="B">B</ux-option>
@@ -83,7 +79,6 @@
 
     <div class="demo">
       <ux-select allow-clear
-                 :theme="theme"
                  style="width:200px;margin-left:200px;">
         <ux-option value="A">A</ux-option>
         <ux-option value="B"
@@ -116,8 +111,8 @@
     </div>
 
     <h4>getContainer</h4>
-    <div class="demo"
-         ref="selectContainerRef">
+    <div ref="selectContainerRef"
+         class="demo">
       <ux-select :theme="theme"
                  :get-container="getContainer"
                  mode="multiple"
@@ -131,6 +126,15 @@
     <async-demo />
     <number-demo />
     <disabled-demo />
+    <number-demo />
+    <group-demo />
+    <show-demo />
+    <multiple-demo />
+    <tags-demo />
+    <combobox-demo />
+    <huge-demo />
+    <max-tags-demo />
+    <remote-filter-demo />
   </div>
 </template>
 
@@ -139,6 +143,14 @@
   import AsyncDemo from './async.vue';
   import NumberDemo from './number.vue';
   import DisabledDemo from './disabled.vue';
+  import GroupDemo from './group.vue';
+  import ShowDemo from './show.vue';
+  import MultipleDemo from './multiple.vue';
+  import TagsDemo from './tags.vue';
+  import ComboboxDemo from './combobox.vue';
+  import HugeDemo from './huge.vue';
+  import MaxTagsDemo from './maxTags.vue';
+  import remoteFilterDemo from './remoteFilter.vue';
 
   export default {
     components: {
@@ -148,6 +160,14 @@
       AsyncDemo,
       NumberDemo,
       DisabledDemo,
+      GroupDemo,
+      ShowDemo,
+      MultipleDemo,
+      TagsDemo,
+      ComboboxDemo,
+      HugeDemo,
+      MaxTagsDemo,
+      remoteFilterDemo,
     },
     data() {
       return {

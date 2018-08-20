@@ -9,6 +9,7 @@ import castArray from 'lodash/castArray';
 import set from 'lodash/set';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
+import isEqualWith from 'lodash/isEqualWith';
 
 export function noop() {}
 
@@ -35,4 +36,5 @@ export {
   set as setValueByPath,
   get as getValueByPath,
   isEqual,
+  isEqualWith,
 };

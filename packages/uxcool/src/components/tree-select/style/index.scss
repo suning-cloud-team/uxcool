@@ -39,11 +39,26 @@ $select-tree-prefix-cls: #{$ux-prefix}-select-tree;
       color: $text-color;
       transition: all 0.3s;
       width: calc(100% - 24px);
+      vertical-align: middle;
       &:hover {
         background-color: $item-hover-bg;
       }
       &.#{$select-tree-prefix-cls}-node-selected {
         background-color: $primary-2;
+      }
+    }
+    .#{$select-tree-prefix-cls}-icon_loading {
+      display: inline-block;
+      font-style: normal;
+      height: 24px;
+      line-height: 24px;
+      vertical-align: middle;
+      padding-right: 3px;
+      &:after {
+        display: inline-block;
+        @include iconfont-font('\e980');
+        animation: loadingCircle 1s infinite linear;
+        color: $primary-color;
       }
     }
     span {
@@ -65,14 +80,6 @@ $select-tree-prefix-cls: #{$ux-prefix}-select-tree;
         cursor: pointer;
         outline: none;
         text-align: center;
-      }
-      &.#{$select-tree-prefix-cls}-icon_loading {
-        &:after {
-          display: inline-block;
-          @include iconfont-font('\e6ae');
-          animation: loadingCircle 1s infinite linear;
-          color: $primary-color;
-        }
       }
       &.#{$select-tree-prefix-cls}-switcher {
         &.#{$select-tree-prefix-cls}-switcher-noop {
@@ -122,9 +129,6 @@ $select-tree-prefix-cls: #{$ux-prefix}-select-tree;
   &-selection {
     &--multiple &__choice {
       transition: none !important;
-    }
-    &--multiple &__choice#{&}__choice-no-clear {
-      padding: 0 10px;
     }
   }
 }

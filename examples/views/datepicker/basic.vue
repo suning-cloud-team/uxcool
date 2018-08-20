@@ -7,8 +7,9 @@
     <div class="demo">
       <ux-date-picker :theme="theme"
                       @change="onChange" />
-      <br>
-      <ux-range-date-picker :theme="theme"
+      <br> {{ date1 }}
+      <ux-range-date-picker v-model="date1"
+                            :theme="theme"
                             @calendar-change="onCalendarChange"
                             @change="onChange" />
     </div>
@@ -108,6 +109,7 @@
       return {
         theme: 'light',
         date: null,
+        date1: [],
         rangeDate: [new Date(), addMonths(new Date(), 3)],
         ranges: {
           最近30分钟: () => [subMinutes(new Date(), 30), new Date()],
