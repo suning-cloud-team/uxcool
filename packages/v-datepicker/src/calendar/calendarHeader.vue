@@ -135,7 +135,12 @@
             prefixCls, locale, value, isTimePicker
           } = that;
           const {
-            monthSelect, yearSelect, monthBeforeYear = false, yearFormat, dayFormat
+            monthSelect,
+            yearSelect,
+            monthBeforeYear = false,
+            yearFormat,
+            dayFormat,
+            DateFnsLocale,
           } = locale;
           const subElements = [];
           let selectClassName = `${prefixCls}-ym-select`;
@@ -157,7 +162,7 @@
                 },
               },
             },
-            formatDate(value, yearFormat)
+            formatDate(value, yearFormat, { locale: DateFnsLocale })
           );
 
           const month = h(
@@ -178,7 +183,7 @@
                 },
               },
             },
-            formatDate(value, 'MMM')
+            formatDate(value, 'MMM', { locale: DateFnsLocale })
           );
 
           if (monthBeforeYear) {
@@ -199,7 +204,7 @@
                   role: 'button',
                 },
               },
-              formatDate(value, dayFormat)
+              formatDate(value, dayFormat, { locale: DateFnsLocale })
             );
 
             if (monthBeforeYear) {

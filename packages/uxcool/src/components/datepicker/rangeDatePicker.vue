@@ -42,7 +42,7 @@
   import { VRangeDatePicker } from '@suning/v-datepicker';
   import { buildComponentName } from '../utils';
   import Icon from '../icon';
-  import locale from './locale/en_US';
+  import locale from './locale/zh_CN';
 
   export default {
     name: buildComponentName('DatePicker'),

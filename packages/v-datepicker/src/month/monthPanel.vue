@@ -58,8 +58,8 @@
         };
       },
       year() {
-        const { innerValue } = this;
-        return formatDate(innerValue, 'YYYY');
+        const { innerValue, locale } = this;
+        return formatDate(innerValue, 'YYYY', { locale: locale.DateFnsLocale });
       },
     },
     methods: {
