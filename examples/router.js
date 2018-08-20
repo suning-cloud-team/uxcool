@@ -276,6 +276,11 @@ const routes = [
     path: '/autocomplete',
     component: () => import('./views/auto-complete/index'),
   },
+  {
+    name: 'Calendar',
+    path: '/calendar',
+    component: () => import('./views/calendar/index'),
+  },
 ];
 
 const router = new Router({

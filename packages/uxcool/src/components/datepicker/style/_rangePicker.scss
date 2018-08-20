@@ -132,7 +132,7 @@ $input-box-height: 34px;
   .#{$calendar-prefix-cls}-in-range-cell {
     border-radius: 0;
     position: relative;
-    > a {
+    > div {
       position: relative;
       z-index: 1;
     }

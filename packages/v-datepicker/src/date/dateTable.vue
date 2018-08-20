@@ -15,6 +15,8 @@
                 :range-values="rangeValues"
                 :hover-values="hoverValues"
                 :disabled-date="disabledDate"
+                :date-render="dateRender"
+                :content-render="contentRender"
                 @on-day-hover="onDayHover"
                 @on-select="onSelect">
     </date-tbody>
@@ -23,7 +25,7 @@
 
 <script>
   import DateThead from './dateTHead.vue';
-  import DateTbody from './dateTBody.vue';
+  import DateTbody from './dateTBody';
 
   export default {
     name: 'DateTable',
@@ -51,13 +53,23 @@
           return false;
         },
       },
+      dateRender: {
+        type: Function,
+        default: null,
+      },
+      contentRender: {
+        type: Function,
+        default: null,
+      },
     },
     methods: {
       onSelect(value) {
         this.$emit('on-select', value);
+        this.$emit('select', value);
       },
       onDayHover(value) {
         this.$emit('on-day-hover', value);
+        this.$emit('day-hover', value);
       },
     },
     components: {

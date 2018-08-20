@@ -691,7 +691,7 @@ export default {
           ret.push(groupNode);
         } else {
           const props = {
-            name: option.value || 'NO_VALUE',
+            name: option.value || option.value === 0 ? option.value : 'NO_VALUE',
             label: option.label,
             disabled: option.disabled || disabled,
           };

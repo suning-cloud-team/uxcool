@@ -23,12 +23,10 @@
     height: 0;
   }
 
-  .#{$radio-group-prefix-cls} & {
-    float: left;
-  }
   .#{$radio-group-prefix-cls}-large & {
     height: $input-height-lg;
     line-height: $input-height-lg - 2px;
+    font-size: $font-size-lg;
   }
 
   .#{$radio-group-prefix-cls}-small & {

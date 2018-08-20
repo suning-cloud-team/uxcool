@@ -32,7 +32,7 @@
 <script>
   import { addYears } from 'date-fns';
   import { formatDate } from '../utils';
-  import MonthTable from './monthTable.vue';
+  import MonthTable from './monthTable';
 
   export default {
     name: 'MonthPanel',

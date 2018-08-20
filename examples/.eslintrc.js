@@ -18,6 +18,6 @@ module.exports = {
         packageDir: '../packages/uxcool/',
       },
     ],
-    'import/core-modules': ['@suning/uxcool'],
+    'import/core-modules': ['@suning/uxcool', 'date-fns'],
   },
 };
