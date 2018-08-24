@@ -1,11 +1,12 @@
 <template>
   <div class="demo">
     <h6>expander row</h6>
-    <ux-table class="components-table-demo-nested"
-              :theme="theme"
+    <ux-table :theme="theme"
               :columns="columns"
               v-model="data"
+              :expanded-row-keys="expandedRowKeys"
               :expanded-row-render="expandedRowRender"
+              class="components-table-demo-nested"
               @expand="onExpand" />
   </div>
 </template>
@@ -94,7 +95,7 @@
         date: '2014-12-24 23:12:00',
         name: 'This is production name',
         upgradeNum: `Upgraded: 56 ,, ${i}`,
-      }));
+    }));
   }
 
   function getData(cnt = 10) {
@@ -110,7 +111,7 @@
           columns: getNestCols(),
           datas: [],
         },
-      }));
+    }));
   }
 
   export default {
@@ -120,6 +121,7 @@
     },
     data() {
       return {
+        expandedRowKeys: [],
         columns: [],
         data: [],
       };
@@ -128,6 +130,9 @@
     created() {
       this.columns = getCols.call(this);
       this.data = getData.call(this, 5);
+      setTimeout(() => {
+        this.expandedRowKeys = [1];
+      }, 1500);
     },
     methods: {
       expandedRowRender(record) {
@@ -142,11 +147,10 @@
             item.loading = true;
             setTimeout(() => {
               item.nest.datas = getNestData(4);
-              // item.loading = false;
+              item.loading = false;
             }, 1500);
           }
         }
-        console.log('onExpand', arguments);
       },
     },
   };
