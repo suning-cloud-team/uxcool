@@ -1,5 +1,5 @@
 import debounce from 'lodash/debounce';
-import { isEqual } from '@suning/v-utils';
+import { isEqual, isArray } from '@suning/v-utils';
 import { noop, getRowKey, getScrollBarWidth, addEventListener, flatRows } from './utils';
 import ColumnMixin from './mixins/column';
 
@@ -176,8 +176,8 @@ export default {
   },
   watch: {
     expandedRowKeys(nVal, oVal) {
-      if (nVal && !isEqual(nVal, oVal)) {
-        this.innerExpanderRowKeys = nVal;
+      if (isArray(nVal) && !isEqual(nVal, oVal)) {
+        this.innerExpanderRowKeys = nVal.map(v => String(v));
       }
     },
     expandAllRows(nVal, oVal) {
@@ -187,7 +187,7 @@ export default {
     },
     flatRecords(nVal, oVal) {
       if (!isEqual(nVal, oVal)) {
-        this.initExpanderRowKeys();
+        this.initExpanderRowKeys('flatRecords');
       }
     },
   },
@@ -222,16 +222,20 @@ export default {
     }
   },
   methods: {
-    initExpanderRowKeys() {
-      const { expandAllRows, expandedRowKeys, flatRecords } = this;
+    initExpanderRowKeys(from) {
+      const {
+        expandAllRows, expandedRowKeys, flatRecords, innerExpanderRowKeys
+      } = this;
       let rowKeys = [];
       if (expandAllRows) {
         for (let i = 0, l = flatRecords.length; i < l; i += 1) {
           const item = flatRecords[i];
           rowKeys.push(item.$$_key);
         }
-      } else {
-        rowKeys = expandedRowKeys;
+      } else if (from === 'flatRecords') {
+        rowKeys = innerExpanderRowKeys;
+      } else if (isArray(expandedRowKeys)) {
+        rowKeys = expandedRowKeys.map(v => String(v));
       }
       this.innerExpanderRowKeys = rowKeys;
     },
