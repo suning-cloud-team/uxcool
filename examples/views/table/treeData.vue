@@ -6,6 +6,7 @@
               :columns="columns"
               v-model="data"
               :row-selection="rowSelection"
+              :expanded-row-keys="expandRowKeys"
               :expand-all-rows="isExpandAll" />
   </div>
 </template>
@@ -108,6 +109,7 @@
     },
     data() {
       return {
+        expandRowKeys: [],
         isExpandAll: true,
         columns: [],
         data: [],
@@ -133,12 +135,12 @@
       this.columns = getCols.call(this);
       setTimeout(() => {
         this.data = getData.call(this);
-        // setTimeout(() => {
-        //   this.isExpandAll = false;
-        //   setTimeout(() => {
-        //     this.isExpandAll = true;
-        //   }, 1500);
-        // }, 1500);
+        setTimeout(() => {
+          this.isExpandAll = false;
+          setTimeout(() => {
+            this.expandRowKeys = [1];
+          }, 1500);
+        }, 1500);
       }, 2500);
     },
   };
