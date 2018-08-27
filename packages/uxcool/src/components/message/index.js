@@ -114,7 +114,7 @@ const UxMessage = MESSAGE_TYPES.reduce((r, v) => {
         content: nParams,
       };
     }
-    nParams.type = v.type;
+    nParams.type = v.type === 'warn' ? 'warning' : v.type;
     nParams.iconType = v.icon;
     return notice(nParams);
   };

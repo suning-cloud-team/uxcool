@@ -29,7 +29,8 @@
     "pub": "yarn run build && lerna publish",
     "jest": "node --inspect-brk ./node_modules/jest/bin/jest.js",
     "test-debug": "cross-env BABEL_ENV=test NODE_ENV=test yarn jest",
-    "test": "cross-env BABEL_ENV=test NODE_ENV=test jest"
+    "test": "cross-env BABEL_ENV=test NODE_ENV=test jest",
+    "server:upload": "node ./examples/server/server.js"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",

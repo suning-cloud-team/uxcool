@@ -281,6 +281,11 @@ const routes = [
     path: '/calendar',
     component: () => import('./views/calendar/index'),
   },
+  {
+    name: 'Upload',
+    path: '/upload',
+    component: () => import('./views/upload/index'),
+  },
 ];
 
 const router = new Router({

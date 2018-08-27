@@ -7,7 +7,7 @@ import {
   CHANGE_TOGGLE_THEME,
   CHANGE_PAGE_NAME,
   UPDATE_SELECTED_THEME,
-  UPDATE_PRIMARY_COLOR
+  UPDATE_PRIMARY_COLOR,
 } from './mutation-types';
 
 const isDebug = process.env.NODE_ENV === 'development';
@@ -22,10 +22,7 @@ const getters = {
     return state.routes;
   },
   footerNavs(state) {
-    const {
-      footerNavData,
-      navPageIndex
-    } = state;
+    const { footerNavData, navPageIndex } = state;
     let prev = null;
     let next = null;
     if (navPageIndex > 0) {

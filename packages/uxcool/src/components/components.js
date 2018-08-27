@@ -91,3 +91,5 @@ export { default as UxTreeSelect } from './tree-select';
 export { default as UxAutoComplete } from './auto-complete';
 
 export { default as UxCalendar } from './calendar';
+
+export { default as UxUpload } from './upload';

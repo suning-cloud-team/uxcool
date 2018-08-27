@@ -583,6 +583,15 @@ export default [
           group: 'form',
         },
         component: () => import('@/views/components/timepicker/index.vue'),
+      }, {
+        name: 'upload',
+        path: 'upload',
+        meta: {
+          title: 'Upload',
+          subTitle: '上传',
+          group: 'form',
+        },
+        component: () => import('@/views/components/upload/index.vue'),
       }
     ],
   },
