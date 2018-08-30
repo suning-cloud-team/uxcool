@@ -1,7 +1,7 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Affix
-      <span class="subtitle">固钉</span>
+    <h1 class="ux-heading">AutoComplete
+      <span class="subtitle">自动完成</span>
     </h1>
     <basic-demo/>
     <option-demo />

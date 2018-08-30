@@ -1,26 +1,18 @@
 <template>
   <ux-demo :height="200"
-           title="多选">
+           title="大数据量">
     <div slot="demo">
-      <ux-select v-model="values"
-                 :clear-disabled="false"
-                 :token-separators="[',','.']"
-                 token-separator-prop="value"
-                 option-label-prop="label"
+      <ux-select v-model="values2"
+                 :data-source="list"
                  mode="multiple"
                  style="width:200px"
                  allow-clear
                  @change="onChange"
                  @select="onSelect"
-                 @deselect="onDeselect">
-        <ux-option value="A"
-                   label="A1"
-                   disabled/>
-        <ux-option value="B"
-                   label="B2" />
-        <ux-option value="C"
-                   label="C3" />
-      </ux-select>
+                 @deselect="onDeselect" />
+    </div>
+    <div slot="desc">
+      大数据量1000+
     </div>
     <ux-code slot="code">
       {{ code }}
@@ -29,7 +21,7 @@
 </template>
 
 <script>
-  import code from '@/code/select/multiple.vue';
+  import code from '@/code/select/huge.vue';
 
   function mockData(cnt) {
     return Array(cnt)
@@ -43,8 +35,8 @@
     data() {
       return {
         code,
-        values: ['A', 'B'],
-        list: mockData(100),
+        values2: ['C', '2', '1'],
+        list: mockData(5000),
       };
     },
     methods: {

@@ -1,7 +1,7 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Affix
-      <span class="subtitle">固钉</span>
+    <h1 class="ux-heading">Calendar
+      <span class="subtitle">日历</span>
     </h1>
     <basic-demo/>
     <disabled-date-demo />

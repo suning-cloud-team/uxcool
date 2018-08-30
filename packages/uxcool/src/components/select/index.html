@@ -295,18 +295,6 @@ code.language-yaml {
 <td>true</td>
 </tr>
 <tr>
-<td>popup-class</td>
-<td>自定义下拉面板类名</td>
-<td>String|Object|Array</td>
-<td></td>
-</tr>
-<tr>
-<td>popup-style</td>
-<td>自定义下拉面板样式</td>
-<td>Object</td>
-<td></td>
-</tr>
-<tr>
 <td>dropdown-menu-style</td>
 <td>自定义下拉面板中的列表样式</td>
 <td>Object</td>
@@ -369,7 +357,7 @@ code.language-yaml {
 <tr>
 <td>not-found-content</td>
 <td>列表为空时显示内容</td>
-<td>String</td>
+<td>String|Object</td>
 <td>Not Found</td>
 </tr>
 <tr>
@@ -388,6 +376,12 @@ code.language-yaml {
 <td>token-separators</td>
 <td>定义<code>tags</code>和<code>multiple</code>模式下,自定分词的分隔符</td>
 <td>Array</td>
+<td></td>
+</tr>
+<tr>
+<td>lazy</td>
+<td><code>lazy</code>模式,可设置<code>Object{height: 32, remain: 8}</code>, <code>height</code>:每行数据高度, <code>remain</code>:保留多少行(设置后可自动撑开高度),或<code>false</code>关闭<code>lazy</code>模式</td>
+<td>{height: 32, remain: 8}</td>
 <td></td>
 </tr>
 </tbody>

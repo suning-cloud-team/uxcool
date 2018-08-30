@@ -1,12 +1,11 @@
 <template>
   <ux-demo :height="200"
-           title="多选">
+           title="自定义Tags显示">
     <div slot="demo">
       <ux-select v-model="values"
                  :clear-disabled="false"
-                 :token-separators="[',','.']"
-                 token-separator-prop="value"
-                 option-label-prop="label"
+                 :max-tag-placeholder="maxTagPlaceholder"
+                 max-tag-count="0"
                  mode="multiple"
                  style="width:200px"
                  allow-clear
@@ -14,13 +13,14 @@
                  @select="onSelect"
                  @deselect="onDeselect">
         <ux-option value="A"
-                   label="A1"
-                   disabled/>
+                   label="A1" />
         <ux-option value="B"
                    label="B2" />
         <ux-option value="C"
                    label="C3" />
       </ux-select>
+    </div>
+    <div slot="desc">
     </div>
     <ux-code slot="code">
       {{ code }}
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import code from '@/code/select/multiple.vue';
+  import code from '@/code/select/maxTags.vue';
 
   function mockData(cnt) {
     return Array(cnt)
@@ -48,6 +48,9 @@
       };
     },
     methods: {
+      maxTagPlaceholder(nodes) {
+        return <span style="color:green">选择了{nodes.length}节点</span>;
+      },
       onDeselect(...args) {
         console.log('onDeselect', ...args);
       },

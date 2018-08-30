@@ -7,7 +7,6 @@ import Badge from '@/views/components/badge/index.vue';
 import Chart from '@/views/components/chart/index.vue';
 import Topo from '@/views/components/topology/index.vue';
 import Input from '@/views/components/input/index.vue';
-import Select from '@/views/components/select/index.vue';
 import Menu from '@/views/components/menu/index.vue';
 import Pagination from '@/views/components/pagination/index.vue';
 import Popover from '@/views/components/popover/index.vue';
@@ -173,7 +172,7 @@ export default [
           subTitle: '下拉框',
           group: 'form',
         },
-        component: Select,
+        component: () => import('@/views/components/select/index.vue'),
       },
       {
         name: 'menu',
@@ -555,7 +554,8 @@ export default [
           group: 'data',
         },
         component: () => import('@/views/components/collapse/index.vue'),
-      }, {
+      },
+      {
         name: 'timeline',
         path: 'timeline',
         meta: {
@@ -574,7 +574,8 @@ export default [
           group: 'data',
         },
         component: () => import('@/views/components/list/index.vue'),
-      }, {
+      },
+      {
         name: 'timepicker',
         path: 'timepicker',
         meta: {
@@ -583,7 +584,8 @@ export default [
           group: 'form',
         },
         component: () => import('@/views/components/timepicker/index.vue'),
-      }, {
+      },
+      {
         name: 'upload',
         path: 'upload',
         meta: {
@@ -592,7 +594,8 @@ export default [
           group: 'form',
         },
         component: () => import('@/views/components/upload/index.vue'),
-      }, {
+      },
+      {
         name: 'autoComplete',
         path: 'autoComplete',
         meta: {
@@ -601,7 +604,8 @@ export default [
           group: 'form',
         },
         component: () => import('@/views/components/auto-complete/index.vue'),
-      }, {
+      },
+      {
         name: 'calendar',
         path: 'calendar',
         meta: {
@@ -610,7 +614,7 @@ export default [
           group: 'data',
         },
         component: () => import('@/views/components/calendar/index.vue'),
-      }
+      },
     ],
   },
   {

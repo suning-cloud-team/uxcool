@@ -1,13 +1,13 @@
 <template>
   <ux-demo :height="200"
-           title="基本用法">
+           title="分组">
     <div slot="demo">
-      <ux-select v-model="value"
-                 :render-group-label="renderGroupLabel"
+      <ux-select :render-group-label="renderGroupLabel"
                  option-label-prop="children"
                  style="width:200px;"
                  allow-clear
                  show-search
+                 value=""
                  @change="onChange"
                  @select="onSelect"
                  @deselect="onDeselect">
@@ -31,7 +31,7 @@
       </ux-select>
     </div>
     <div slot="desc">
-      基本用法
+      分组
     </div>
     <ux-code slot="code">
       {{ code }}
@@ -40,13 +40,22 @@
 </template>
 
 <script>
-  import code from '@/code/select/basic.vue';
+  import code from '@/code/select/group.vue';
 
+  function mockData(cnt) {
+    return Array(cnt)
+      .fill(0)
+      .map((_, i) => ({
+        value: i,
+        label: `a-${i}`,
+        children: [{ value: `a${i}${i}` }, { value: `b${i}${i}` }],
+    }));
+  }
   export default {
     data() {
       return {
         code,
-        value: '',
+        dataSource: mockData(500),
         option2: 'c31',
       };
     },

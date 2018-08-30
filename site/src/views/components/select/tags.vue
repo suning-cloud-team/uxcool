@@ -1,13 +1,12 @@
 <template>
   <ux-demo :height="200"
-           title="多选">
+           title="标签">
     <div slot="demo">
       <ux-select v-model="values"
                  :clear-disabled="false"
                  :token-separators="[',','.']"
-                 token-separator-prop="value"
-                 option-label-prop="label"
-                 mode="multiple"
+                 option-label-prop="value"
+                 mode="tags"
                  style="width:200px"
                  allow-clear
                  @change="onChange"
@@ -15,12 +14,15 @@
                  @deselect="onDeselect">
         <ux-option value="A"
                    label="A1"
-                   disabled/>
+                   disabled />
         <ux-option value="B"
                    label="B2" />
         <ux-option value="C"
                    label="C3" />
       </ux-select>
+    </div>
+    <div slot="desc">
+      任意输入内容, 自定变成 标签
     </div>
     <ux-code slot="code">
       {{ code }}
@@ -29,7 +31,7 @@
 </template>
 
 <script>
-  import code from '@/code/select/multiple.vue';
+  import code from '@/code/select/tags.vue';
 
   function mockData(cnt) {
     return Array(cnt)
@@ -37,14 +39,18 @@
       .map((_, i) => ({
         value: i,
         label: `a-${i}`,
+        children:
+          i % 3 === 0
+            ? [{ value: `a${i}${i}` }, { value: `b${i}${i}` }]
+            : [{ value: `a${i}${i}` }, { value: `b${i}${i}` }, { value: `c${i}${i}` }],
     }));
   }
   export default {
     data() {
       return {
         code,
-        values: ['A', 'B'],
-        list: mockData(100),
+        values: ['A', 'B', 'C'],
+        list: mockData(110),
       };
     },
     methods: {
