@@ -12,7 +12,7 @@ import { isFunction, isArray } from '@suning/v-utils';
 import { VFullCaleadar as FullCalendar } from '@suning/v-datepicker';
 import { buildComponentName } from '../utils';
 import Header from './header';
-import enUS from '../datepicker/locale/en_US';
+import CN from '../datepicker/locale/zh_CN';
 
 export default {
   name: buildComponentName('FullCalendar'),
@@ -55,7 +55,7 @@ export default {
     locale: {
       type: Object,
       default() {
-        return enUS.lang;
+        return CN.lang;
       },
     },
     validRange: {

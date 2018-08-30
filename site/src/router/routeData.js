@@ -601,6 +601,15 @@ export default [
           group: 'form',
         },
         component: () => import('@/views/components/auto-complete/index.vue'),
+      }, {
+        name: 'calendar',
+        path: 'calendar',
+        meta: {
+          title: 'Calendar',
+          subTitle: '日历',
+          group: 'data',
+        },
+        component: () => import('@/views/components/calendar/index.vue'),
       }
     ],
   },
