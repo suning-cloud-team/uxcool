@@ -592,6 +592,15 @@ export default [
           group: 'form',
         },
         component: () => import('@/views/components/upload/index.vue'),
+      }, {
+        name: 'autoComplete',
+        path: 'autoComplete',
+        meta: {
+          title: 'AutoComplete',
+          subTitle: '自动完成',
+          group: 'form',
+        },
+        component: () => import('@/views/components/auto-complete/index.vue'),
       }
     ],
   },
