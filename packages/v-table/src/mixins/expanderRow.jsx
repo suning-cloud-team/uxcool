@@ -38,7 +38,7 @@ export default {
       return ancestorKeys.length === 0 || ancestorKeys.every(v => expanderRowKeys.indexOf(v) > -1);
     },
   },
-  beforeDestory() {
+  beforeDestroy() {
     this.handleExpandChange(null, false);
   },
   methods: {

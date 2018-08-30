@@ -46,7 +46,11 @@ export default {
     },
     rootTokenSeparators() {
       const { selectNRoot, isChildren } = this;
-      return isChildren ? selectNRoot.tokenSeparators : true;
+      return isChildren ? selectNRoot.tokenSeparators : [];
+    },
+    rootGetInputElement() {
+      const { selectNRoot, isChildren } = this;
+      return isChildren ? selectNRoot.getInputElement : null;
     },
   },
   methods: {

@@ -1,0 +1,14 @@
+{
+  "name": "example-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "formidable": "^1.2.1",
+    "imagemagick": "^0.1.3",
+    "node-static": "^0.7.10"
+  },
+  "scripts": {
+    "server": "node ./server.js"
+  }
+}

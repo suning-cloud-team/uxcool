@@ -101,7 +101,7 @@
         // 解决 因vue异步更新数据导致textarea scrollTop值不为0,出现抖动的问题
         // this.$refs.textarea.value = this.innerValue;
         this.innerValue = value;
-        this.$emit('input', value);
+        this.$emit('input', value, e);
         this.$emit('on-change', e);
       },
       onChange(e) {

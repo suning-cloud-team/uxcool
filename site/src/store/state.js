@@ -1,22 +1,13 @@
-import routeData, {
-  groups
-} from '../router/routeData';
-import {
-  INITIAL_PRIMARY_COLOR
-} from '../common/constants';
-
+import routeData, { groups } from '../router/routeData';
+import { INITIAL_PRIMARY_COLOR } from '../common/constants';
 
 function handleRoutes(data, groupMapping) {
   const routeMap = new Map();
   data.forEach((v) => {
     if (v.children) {
       v.children.forEach((v1) => {
-        const {
-          meta = {}
-        } = v1;
-        const {
-          group
-        } = meta;
+        const { meta = {} } = v1;
+        const { group } = meta;
         let groupName = group;
         // 没有group 则放入最上层
         if (!groupName || !(groupName in groupMapping)) {
@@ -38,13 +29,8 @@ function handleRoutes(data, groupMapping) {
 
 function buildMenuItem(list = [], pos = 0) {
   return list.map((v, i) => {
-    const {
-      name,
-      meta
-    } = v;
-    const {
-      title = '', subTitle = ''
-    } = meta;
+    const { name, meta } = v;
+    const { title = '', subTitle = '' } = meta;
     // 给路由添加位置,方便底部菜单索引
     meta.pos = pos + i;
     return {
@@ -58,19 +44,16 @@ function buildMenuData(routeMap, groupMapping) {
   let pos = 0;
   const groupNames = Object.keys(groupMapping).map(k => ({
     $$key: k,
-    ...groupMapping[k]
+    ...groupMapping[k],
   }));
 
   groupNames.sort((a, b) => a.sort - b.sort);
   groupNames.unshift({
-    $$key: 'root'
+    $$key: 'root',
   });
   return groupNames.reduce((r, v) => {
     const nr = r;
-    const {
-      $$key,
-      name: gName
-    } = v;
+    const { $$key, name: gName } = v;
     const l = buildMenuItem(routeMap.get($$key), pos);
     if (l.length) {
       if ($$key === 'root') {
@@ -90,9 +73,7 @@ function buildMenuData(routeMap, groupMapping) {
 function buildFooterNavData(menuData = []) {
   return menuData.reduce((r, v) => {
     const nr = r;
-    const {
-      children
-    } = v;
+    const { children } = v;
     if (children) {
       nr.push(...children);
     } else {

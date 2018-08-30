@@ -14,8 +14,8 @@ const defaultDisabledTime = {
 
 export function noop() {}
 
-export function formatDate(value, format = 'YYYY-MM-DD') {
-  return formatFn(value, format);
+export function formatDate(value, format = 'YYYY-MM-DD', option = {}) {
+  return formatFn(value, format, option);
 }
 
 export function getTimeConfig(value, disabledTime) {

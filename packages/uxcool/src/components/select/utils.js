@@ -1,4 +1,13 @@
-import { isSameTypeVNode, isArray, cloneVNode, isDef } from '@suning/v-utils';
+import {
+  isSameTypeVNode,
+  isArray,
+  cloneVNode,
+  isDef,
+  isFunction,
+  warning,
+  extractVNodeData,
+  isVueComponent,
+} from '@suning/v-utils';
 
 export function isValidValue(value) {
   return isDef(value) && value !== '';
@@ -11,6 +20,12 @@ export function buildOptionsFromSlot(nodes = []) {
     if (isSameTypeVNode(node, 'isOptionGroupType')) {
       const { componentOptions: cp, data: { attrs } } = node;
       const props = cp.propsData;
+      if (process.env.NODE_ENV !== 'production' && !isDef(props.label)) {
+        warning(
+          false,
+          'OptionGroup invalid prop: type check failed for prop "label". Expected String,got undefined .'
+        );
+      }
       ret.push({
         ...attrs,
         ...props,
@@ -20,6 +35,12 @@ export function buildOptionsFromSlot(nodes = []) {
     } else if (isSameTypeVNode(node, 'isOptionType')) {
       const { componentOptions: cp, data: { attrs } } = node;
       const props = cp.propsData;
+      if (process.env.NODE_ENV !== 'production' && !isDef(props.value)) {
+        warning(
+          false,
+          'Option invalid prop: type check failed for prop "value". Expected String, Number ,got undefined .'
+        );
+      }
       ret.push({
         ...attrs,
         ...props,
@@ -158,4 +179,29 @@ export function getOptionOriginNode(optionMap = {}) {
     const option = optionMap[k];
     return option.originNode;
   });
+}
+
+export function genInputElement(inputNode, data = {}) {
+  const overlayData = extractVNodeData(inputNode, isVueComponent(inputNode));
+
+  const { input: originInput } = overlayData.on || {};
+  const { input: onInput } = data.on || {};
+  const inputFn = isFunction(onInput) ? (_, e) => onInput(e) : () => {};
+  const inputInput = originInput ? [originInput, inputFn] : inputFn;
+
+  return cloneVNode(
+    inputNode,
+    {
+      class: [overlayData.class, data.class],
+      props: {
+        ...overlayData.props,
+        ...data.props,
+      },
+      on: {
+        ...overlayData.on,
+        input: inputInput,
+      },
+    },
+    false
+  );
 }

@@ -271,6 +271,21 @@ const routes = [
     path: '/treeselect',
     component: () => import('./views/tree-select/index'),
   },
+  {
+    name: 'AutoComplete',
+    path: '/autocomplete',
+    component: () => import('./views/auto-complete/index'),
+  },
+  {
+    name: 'Calendar',
+    path: '/calendar',
+    component: () => import('./views/calendar/index'),
+  },
+  {
+    name: 'Upload',
+    path: '/upload',
+    component: () => import('./views/upload/index'),
+  },
 ];
 
 const router = new Router({

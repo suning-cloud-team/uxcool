@@ -22,7 +22,7 @@ export default {
       type: String,
       default: 'default',
       validator(val) {
-        return ['large', 'default', 'small'].indexOf(val) > -1;
+        return ['large', 'default', 'small', ''].indexOf(val) > -1;
       },
     },
     focusOnUpDown: {
@@ -406,7 +406,7 @@ export default {
         : {
           mousedown: up,
           ...baseOn,
-        };
+      };
       upOn = isCanEditable && !upDisabledClass ? upOn : null;
 
       let downOn = useTouch
@@ -417,7 +417,7 @@ export default {
         : {
           mousedown: down,
           ...baseOn,
-        };
+      };
       downOn = isCanEditable && !downDisabledClass ? downOn : null;
 
       return (

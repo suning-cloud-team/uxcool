@@ -13,7 +13,8 @@
                @select="onSelect"
                @deselect="onDeselect">
       <ux-option value="A"
-                 label="A1" />
+                 label="A1"
+                 disabled/>
       <ux-option value="B"
                  label="B2" />
       <ux-option value="C"
@@ -53,8 +54,8 @@
     data() {
       return {
         isShow: false,
-        values: '',
-        // values: ['A', 'B'],
+        // values: '',
+        values: ['A', 'B'],
         values2: ['C', '2', '1'],
         list: mockData(100),
       };
@@ -62,6 +63,7 @@
     created() {
       setTimeout(() => {
         this.isShow = true;
+        this.values = ['B', 'A'];
       }, 1500);
     },
     methods: {

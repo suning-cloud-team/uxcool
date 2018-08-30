@@ -12,7 +12,7 @@ export default {
       type: String,
       default: 'default',
       validator(val) {
-        return ['default', 'large', 'small'].indexOf(val) > -1;
+        return ['default', 'large', 'small', ''].indexOf(val) > -1;
       },
     },
     shape: {

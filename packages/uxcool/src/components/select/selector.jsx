@@ -69,7 +69,6 @@ export default {
         selections,
         onSelectorClear,
       } = this;
-
       if (!rootAllowClear) {
         return null;
       }

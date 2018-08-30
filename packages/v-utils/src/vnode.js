@@ -5,6 +5,7 @@ import { isFunction, isDef } from './utils';
 const DATA_KEYS = [
   'class',
   'staticClass',
+  'staticStyle',
   'style',
   'attrs',
   'props',

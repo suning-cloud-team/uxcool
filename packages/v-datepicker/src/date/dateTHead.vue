@@ -28,14 +28,14 @@
     },
     computed: {
       weekDays() {
-        const { value } = this;
+        const { value, locale } = this;
         const weekDays = [];
         for (let i = 0; i < DATE_STYLE.col; i += 1) {
           const weekDay = setDay(value, i);
           weekDays.push({
             id: i,
-            title: formatDate(weekDay, 'dddd'),
-            name: formatDate(weekDay, 'dd'),
+            title: formatDate(weekDay, 'dddd', { locale: locale.DateFnsLocale }),
+            name: formatDate(weekDay, 'dd', { locale: locale.DateFnsLocale }),
           });
         }
         return weekDays;

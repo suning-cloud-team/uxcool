@@ -67,7 +67,7 @@ export default {
       type: String,
       default: '',
       validator(val) {
-        return ['large', '', 'small'].indexOf(val) > -1;
+        return ['large', 'default', 'small', ''].indexOf(val) > -1;
       },
     },
     disabled: {

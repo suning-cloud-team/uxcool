@@ -1,13 +1,7 @@
 import omit from 'object.omit';
 import VMenu, { VMenuItem, VMenuItemGroup } from '@suning/v-menu';
 import Trigger from '@suning/v-trigger';
-import {
-  isArray,
-  isFunction,
-  isEqual,
-  isPlainObject,
-  updatePortalElement,
-} from '@suning/v-utils';
+import { isArray, isFunction, isEqual, isPlainObject, updatePortalElement } from '@suning/v-utils';
 import VirtualList from '../virtual-list';
 import { buildComponentName } from '../utils';
 import {
@@ -139,7 +133,7 @@ export default {
       type: String,
       default: '',
       validator(val) {
-        return ['', 'large', 'default', 'small'].indexOf(val) > -1;
+        return ['large', 'default', 'small', ''].indexOf(val) > -1;
       },
     },
     maxTagCount: {
@@ -169,7 +163,7 @@ export default {
       },
     },
     notFoundContent: {
-      type: String,
+      type: [String, Object],
       default: undefined,
     },
     clearDisabled: {
@@ -192,6 +186,10 @@ export default {
       default() {
         return [];
       },
+    },
+    getInputElement: {
+      type: Function,
+      default: null,
     },
   },
   data() {
@@ -252,10 +250,6 @@ export default {
     normalizeOptionLabelProp() {
       const { optionLabelProp, isCombobox } = this;
       let labelProp = optionLabelProp;
-      // legacy 兼容原有select功能
-      // if (!labelProp) {
-      //   labelProp = 'value';
-      // }
       if (isCombobox && (!labelProp || labelProp === 'children')) {
         labelProp = 'value';
       }
@@ -334,24 +328,26 @@ export default {
       }
     },
     setInnerValue(value, trigger = true) {
-      const { isMultipleOrTags, optionMap } = this;
-      let val =isValidValue(value) ? value : [];
+      const { innerValue, isMultipleOrTags, optionMap } = this;
+      let val = isValidValue(value) ? value : [];
       val = isArray(val) ? val : [val];
       if (!isMultipleOrTags) {
         val = isValidValue(val[0]) ? [val[0]] : [];
       }
-      this.innerValue = val;
-      if (trigger) {
-        let nVal = [...val];
-        nVal = isMultipleOrTags ? nVal : nVal[0];
+      if (!isEqual(val, innerValue)) {
+        this.innerValue = val;
+        if (trigger) {
+          let nVal = [...val];
+          nVal = isMultipleOrTags ? nVal : nVal[0];
 
-        const valObj = isMultipleOrTags
-          ? nVal.map(v => buildOptionOriginNode(v, optionMap))
-          : buildOptionOriginNode(nVal, optionMap);
+          const valObj = isMultipleOrTags
+            ? nVal.map(v => buildOptionOriginNode(v, optionMap))
+            : buildOptionOriginNode(nVal, optionMap);
 
-        this.$emit('input', nVal, valObj);
-        // 兼容原有Select行为Function(Object, value)
-        this.$emit('change', valObj, nVal);
+          this.$emit('input', nVal, valObj);
+          // 兼容原有Select行为Function(Object, value)
+          this.$emit('change', valObj, nVal);
+        }
       }
     },
     setInnerVisible(visible, trigger = true) {
@@ -416,8 +412,14 @@ export default {
         setSearchInputValue,
         autoClearSearchValue,
         clearSearchInputValue,
+        disabled,
       } = this;
-      let values = innerValue;
+
+      if (disabled) {
+        return;
+      }
+
+      let values = [...innerValue];
       if (isMultipleOrTags) {
         if (values.indexOf(name) === -1) {
           values.push(name);
@@ -432,15 +434,27 @@ export default {
         const inputValue = getComboboxValue(name, optionMap, normalizeOptionLabelProp);
         setSearchInputValue(inputValue, false, false);
       } else if (autoClearSearchValue) {
-        clearSearchInputValue();
+        setTimeout(() => {
+          clearSearchInputValue();
+        }, 100);
       }
 
       maybeFocus();
     },
     removeSelected(name) {
       const {
-        innerValue, isMultipleOrTags, optionMap, setInnerValue, maybeFocus
+        innerValue,
+        disabled,
+        clearDisabled,
+        isMultipleOrTags,
+        optionMap,
+        setInnerValue,
+        maybeFocus,
       } = this;
+      const item = optionMap[name] || {};
+      if (disabled || (!!item.disabled && !clearDisabled)) {
+        return;
+      }
       const values = innerValue.filter(v => String(v) !== String(name));
 
       if (isMultipleOrTags) {
@@ -466,7 +480,12 @@ export default {
         clearSearchInputValue,
         setInnerVisible,
         maybeFocus,
+        disabled,
       } = this;
+
+      if (disabled) {
+        return;
+      }
 
       let values = [];
       if (isMultipleOrTags && !clearDisabled) {
@@ -483,8 +502,16 @@ export default {
     },
     onSelectorBlur() {
       const {
-        isTags, searchInputValue, innerValue, setSearchInputValue, setInnerValue
+        disabled,
+        isTags,
+        searchInputValue,
+        innerValue,
+        setSearchInputValue,
+        setInnerValue,
       } = this;
+      if (disabled) {
+        return;
+      }
       if (searchInputValue) {
         if (isTags) {
           if (innerValue.indexOf(searchInputValue) === -1) {
@@ -636,7 +663,9 @@ export default {
         },
       }
     ) {
-      const { renderChildren, normalizeNotFountContent, innerValue } = this;
+      const {
+        renderChildren, normalizeNotFountContent, innerValue, disabled
+      } = this;
       const nExtraParam = extraParam;
       const ret = [];
       for (let i = 0, l = options.length; i < l; i += 1) {
@@ -662,9 +691,9 @@ export default {
           ret.push(groupNode);
         } else {
           const props = {
-            name: option.value,
+            name: option.value || option.value === 0 ? option.value : 'NO_VALUE',
             label: option.label,
-            disabled: option.disabled,
+            disabled: option.disabled || disabled,
           };
           if (nExtraParam.selected.line === -1 && innerValue.indexOf(option.value) > -1) {
             nExtraParam.selected.groupLine = nExtraParam.rootGroupLine;
@@ -691,7 +720,8 @@ export default {
         innerValue,
         nLazy,
         isTags,
-        isMultipleOrTags,dropdownMenuStyle,
+        isMultipleOrTags,
+        dropdownMenuStyle,
         onMenuSelect,
         onMenuDeselect,
         onScroll,

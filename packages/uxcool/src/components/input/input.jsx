@@ -25,7 +25,7 @@ export default {
       type: String,
       default: 'default',
       validator(val) {
-        return ['small', 'default', 'large'].indexOf(val) > -1;
+        return ['small', 'default', 'large', ''].indexOf(val) > -1;
       },
     },
     disabled: {
@@ -82,7 +82,7 @@ export default {
     onInput(e) {
       const val = e.target.value;
       this.setValue(val);
-      this.$emit('input', val);
+      this.$emit('input', val, e);
     },
     onKeydown(e) {
       if (e.keyCode === 13) {

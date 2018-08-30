@@ -60,7 +60,7 @@ $select-prefix-cls: #{$ux-prefix}-select;
     line-height: 1;
     margin-top: -$font-size-sm / 2;
     transform-origin: 50% 50%;
-    color: $disabled-color;
+    color: rgba(#000, 0.4);
     font-size: $font-size-sm;
 
     * {
@@ -122,6 +122,7 @@ $select-prefix-cls: #{$ux-prefix}-select;
 
   &-disabled {
     color: $disabled-color;
+    background: $input-disabled-bg;
   }
 
   &-disabled &-selection {

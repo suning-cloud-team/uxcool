@@ -2,6 +2,7 @@
   <!--vertical -->
   <div class="demo">
     <ux-menu :selected-keys="selectedKeys"
+             :open-keys="openKeys"
              theme="dark"
              style="width:200px;">
       <template v-for="item in menus">
@@ -40,6 +41,7 @@
     data() {
       return {
         selectedKeys: ['a-1-1'],
+        openKeys: ['a-1'],
         menus: [
           {
             name: 'a-1',
@@ -81,7 +83,7 @@
           { name: 'n-b-1', label: 'l-n-b-1' },
           { name: 'n-c-1', label: 'l-n-c-1' },
         ];
-      }, 1500);
+      }, 2500);
     },
   };
 </script>

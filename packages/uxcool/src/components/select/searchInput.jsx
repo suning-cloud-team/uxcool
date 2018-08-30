@@ -1,5 +1,6 @@
+import { isFunction } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
-import { calcMultipleSearchInputWidth, includeSeparators } from './utils';
+import { calcMultipleSearchInputWidth, includeSeparators, genInputElement } from './utils';
 import SubMixin from './mixins/sub';
 
 export default {
@@ -68,12 +69,20 @@ export default {
   },
   render() {
     const {
-      prefixCls, inputStyle, rootIsCombobox, rootSearchInputValue, onInput
+      prefixCls,
+      inputStyle,
+      rootSize,
+      rootDisabled,
+      rootIsCombobox,
+      rootSearchInputValue,
+      rootGetInputElement,
+      onInput,
     } = this;
 
     const attrs = {
       type: 'text',
       autocomplete: 'off',
+      disabled: rootDisabled,
     };
     const domProps = {
       value: rootSearchInputValue,
@@ -81,22 +90,34 @@ export default {
     const on = {
       input: onInput,
     };
-
+    let inputNode = (
+      <input
+        {...{
+          class: {
+            'ux-input': rootIsCombobox,
+            [`${prefixCls}-search__field`]: true,
+          },
+          style: inputStyle,
+          attrs,
+          domProps,
+          on,
+          ref: 'inputRef',
+        }}
+      />
+    );
+    if (rootIsCombobox && isFunction(rootGetInputElement)) {
+      const input = rootGetInputElement();
+      if (input) {
+        inputNode = genInputElement(input, {
+          class: `${prefixCls}-search__field`,
+          props: { value: rootSearchInputValue, disabled: rootDisabled, size: rootSize },
+          on: { input: onInput },
+        });
+      }
+    }
     return (
       <span class={`${prefixCls}-search__field__wrap`}>
-        <input
-          {...{
-            class: {
-              'ux-input': rootIsCombobox,
-              [`${prefixCls}-search__field`]: true,
-            },
-            style: inputStyle,
-            attrs,
-            domProps,
-            on,
-            ref: 'inputRef',
-          }}
-        />
+        {inputNode}
         <span class={`${prefixCls}-search__field__mirror`} ref="inputMirror">
           {rootSearchInputValue}&nbsp;&nbsp;
         </span>

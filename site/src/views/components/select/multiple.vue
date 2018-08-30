@@ -1,38 +1,62 @@
 <template>
-  <div>
-    <ux-demo title="多选">
-      <div slot="demo">
-        <ux-select style="width:250px;" :theme="theme"
-                   mode="multiple">
-          <ux-option value="A"
-                     label="A10">A10</ux-option>
-          <ux-option value="B"
-                     label="B10">B10</ux-option>
-          <ux-option value="C"
-                     label="C10">C10</ux-option>
-        </ux-select>
-      </div>
-      <div slot="desc">从已有条目中选择多条</div>
-      <ux-code slot="code">
-        {{code}}
-      </ux-code>
-    </ux-demo>
-  </div>
+  <ux-demo :height="200"
+           title="多选">
+    <div slot="demo">
+      <ux-select v-model="values"
+                 :clear-disabled="false"
+                 :token-separators="[',','.']"
+                 token-separator-prop="value"
+                 option-label-prop="label"
+                 mode="multiple"
+                 style="width:200px"
+                 allow-clear
+                 @change="onChange"
+                 @select="onSelect"
+                 @deselect="onDeselect">
+        <ux-option value="A"
+                   label="A1"
+                   disabled/>
+        <ux-option value="B"
+                   label="B2" />
+        <ux-option value="C"
+                   label="C3" />
+      </ux-select>
+    </div>
+    <ux-code slot="code">
+      {{ code }}
+    </ux-code>
+  </ux-demo>
 </template>
 
 <script>
-import code from '@/code/select/multiple';
+  import code from '@/code/select/multiple.vue';
 
-export default {
-  data() {
-    return {
-      code,
-    };
-  },
-  computed: {
-    theme() {
-      return this.$store.state.theme;
+  function mockData(cnt) {
+    return Array(cnt)
+      .fill(0)
+      .map((_, i) => ({
+        value: i,
+        label: `a-${i}`,
+    }));
+  }
+  export default {
+    data() {
+      return {
+        code,
+        values: ['A', 'B'],
+        list: mockData(100),
+      };
     },
-  },
-};
+    methods: {
+      onDeselect(...args) {
+        console.log('onDeselect', ...args);
+      },
+      onSelect(...args) {
+        console.log('onSelect', ...args);
+      },
+      onChange(...args) {
+        console.log('onChange', ...args);
+      },
+    },
+  };
 </script>
