@@ -105,7 +105,8 @@
         }
       },
       reloadOpenKeys() {
-        const { descendants, openKeys, openedSubMenus } = this;
+        const { descendants, openKeys } = this;
+        const openedSubMenus = [];
         const openStrKeys = openKeys.map(v => String(v));
         descendants.forEach((v) => {
           const eventName = String(v.eventName);
@@ -113,6 +114,7 @@
             openedSubMenus.push(v);
           }
         });
+        this.openedSubMenus = openedSubMenus;
       },
       reloadSelectedKeys() {
         const { descendants, selectedKeys, multiple } = this;

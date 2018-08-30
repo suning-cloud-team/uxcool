@@ -94,6 +94,7 @@
 
     <div class="demo">
       <ux-menu theme="dark"
+               :open-keys="openKeys"
                style="width:200px;">
         <ux-menu-item name="item-1">
           item-1
@@ -153,6 +154,16 @@
       UxMenuItemGroup,
       UxMenuItem,
       SelectedDemo,
+    },
+    data() {
+      return {
+        openKeys: ['sub-menu-2'],
+      };
+    },
+    created() {
+      setTimeout(() => {
+        this.openKeys = ['sub-menu-3'];
+      }, 1500);
     },
   };
 </script>
