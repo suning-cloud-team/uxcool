@@ -1,4 +1,4 @@
-import { isArray, isEqual, isFunction } from '@suning/v-utils';
+import { isArray, isEqual, isFunction, debounce } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
 import InnerNode from './innerNode';
 import StoreMixin from './mixins/store';
@@ -122,9 +122,10 @@ export default {
   watch: {
     dataSource(nVal) {
       if (!isArray(nVal)) return;
-      const { clearNodesMap, createNodes } = this;
+      const { clearNodesMap, createNodes, triggerAsyncEvent } = this;
       clearNodesMap();
       this.nodes = createNodes(nVal, null, 0);
+      triggerAsyncEvent();
     },
     selectedKeys(nVal, oVal) {
       if (!isArray(nVal) || isEqual(nVal, oVal)) return;
@@ -148,11 +149,16 @@ export default {
       updateStoreExpandedKeys,
       updateStoreCheckedKeys,
       loadRootNodes,
+      triggerCheckedKeysChangeEvent,
+      triggerSelectedKeysChangeEvent,
+      triggerAsyncEvent,
     } = this;
-    updateStoreSelectedKeys(selectedKeys);
-    updateStoreCheckedKeys(checkedKeys);
-    updateStoreExpandedKeys(expandedKeys);
-    loadRootNodes();
+    this.debounceTriggerCheckedKeysChangeEvent = debounce(triggerCheckedKeysChangeEvent, 20);
+    this.debounceTriggerSelectedKeysChangeEvent = debounce(triggerSelectedKeysChangeEvent, 20);
+    updateStoreSelectedKeys(selectedKeys, null, true);
+    updateStoreCheckedKeys(checkedKeys, null, true);
+    updateStoreExpandedKeys(expandedKeys, null, true);
+    loadRootNodes().then(triggerAsyncEvent);
   },
   methods: {
     loadRootNodes() {
@@ -160,13 +166,18 @@ export default {
         dataSource, createNodes, asyncNode, canAsync
       } = this;
 
-      if (dataSource && dataSource.length > 0) {
-        this.nodes = createNodes(dataSource, null, 0);
-      } else if (canAsync()) {
-        asyncNode().then((nodes) => {
-          this.nodes = nodes || [];
-        });
-      }
+      return new Promise((resolve) => {
+        if (dataSource && dataSource.length > 0) {
+          this.nodes = createNodes(dataSource, null, 0);
+        } else if (canAsync()) {
+          asyncNode().then((nodes) => {
+            this.nodes = nodes || [];
+            resolve();
+          });
+        } else {
+          resolve();
+        }
+      });
     },
     searchFilter(value, node) {
       const { filterOption } = this;
@@ -174,7 +185,7 @@ export default {
         return filterOption(value, node);
       }
 
-      return (node.key || '').indexOf(value) > -1;
+      return (String(node.key) || '').indexOf(value) > -1;
     },
     onNodeClick(e, node, vm) {
       this.$emit('node-click', e, { ...node.originNode }, vm);
@@ -234,7 +245,9 @@ export default {
       });
     },
     onNodeExpand(e, node, vm) {
-      const { canAsync, asyncNode, triggerExpand } = this;
+      const {
+        canAsync, asyncNode, triggerExpand, triggerAsyncEvent
+      } = this;
 
       if (canAsync(node)) {
         asyncNode(node).then((data) => {
@@ -246,10 +259,33 @@ export default {
           if (node.isParent) {
             triggerExpand(e, node, vm);
           }
+          triggerAsyncEvent();
         });
       } else {
         triggerExpand(e, node, vm);
       }
+    },
+    triggerAsyncEvent() {
+      const {
+        debounceTriggerCheckedKeysChangeEvent,
+        debounceTriggerSelectedKeysChangeEvent,
+      } = this;
+      debounceTriggerCheckedKeysChangeEvent({ keyName: 'checkedKeys', op: null, replace: true });
+      debounceTriggerSelectedKeysChangeEvent({ keyName: 'selectedKeys', op: null, replace: true });
+    },
+    triggerSelectedKeysChangeEvent(e) {
+      const { getStoreSelectedKeys, getStoreSelectedNodes } = this;
+      this.$emit('selected-keys-change', getStoreSelectedKeys(), {
+        ...e,
+        nodes: getStoreSelectedNodes(),
+      });
+    },
+    triggerCheckedKeysChangeEvent(e) {
+      const { getStoreCheckedKeys, getStoreCheckedNodes } = this;
+      this.$emit('checked-keys-change', getStoreCheckedKeys(), {
+        ...e,
+        nodes: getStoreCheckedNodes(),
+      });
     },
   },
   render() {

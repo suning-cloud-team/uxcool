@@ -1,10 +1,9 @@
 <template>
   <div class="demo">
-    <ux-tree-select :value="value"
+    <ux-tree-select v-model="value"
                     :tree-data="data"
                     :dropdown-match-select-width="dropdownMatch"
                     show-search
-                    size="small"
                     style="width:300px"
                     @change="onChange" />
   </div>
@@ -21,7 +20,7 @@
     data() {
       return {
         dropdownMatch: true,
-        value: null,
+        value: ['abc', '0-0'],
         data: [
           {
             title: '0-0',

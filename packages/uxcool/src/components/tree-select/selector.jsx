@@ -10,6 +10,12 @@ export default {
       type: Boolean,
       default: false,
     },
+    selections: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
   },
   computed: {
     prefixCls() {
@@ -54,7 +60,7 @@ export default {
       const {
         prefixCls,
         rootAllowClear,
-        rootSelectionValue,
+        selections,
         rootClearDisabled,
         rootTreeCheckable,
         rootIsMultiple,
@@ -67,13 +73,10 @@ export default {
 
       if (!rootClearDisabled) {
         // only multiple
-        if (
-          rootIsMultiple &&
-          rootSelectionValue.every(node => isDisabledNode(node, rootTreeCheckable))
-        ) {
+        if (rootIsMultiple && selections.every(node => isDisabledNode(node, rootTreeCheckable))) {
           return null;
         }
-      } else if (rootSelectionValue.length === 0) {
+      } else if (selections.length === 0) {
         return null;
       }
 

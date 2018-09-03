@@ -24,7 +24,7 @@
     },
     data() {
       return {
-        checkedKeys: ['0-0-1', '0-0-1-1', '0-0-1-2'],
+        checkedKeys: ['0-0-0', '0-0-1', '0-0-2'],
         expandedKeys: ['0-0', '0-0-1'],
         selectable: false,
         dataSource: [
@@ -44,7 +44,7 @@
               {
                 title: '0-0-1',
                 key: '0-0-1',
-                disabled: true,
+                // disabled: true,
                 children: [
                   { title: '0-0-1-0', key: '0-0-1-0', disabled: true },
                   { title: '0-0-1-1', key: '0-0-1-1' },
@@ -88,7 +88,7 @@
       setTimeout(() => {
         // console.log('update multiple');
         // this.multiple = false;
-        // this.checkedKeys = ['0-0-1-2', '0-1-0'];
+        this.checkedKeys = ['0-0-1-2', '0-1-0'];
         // // this.selectable = false;
         // this.checkStrict = true;
         this.expandParent = false;

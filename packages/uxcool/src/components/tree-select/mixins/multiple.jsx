@@ -1,4 +1,4 @@
-import { isFunction } from '@suning/v-utils';
+import { isFunction, isEqual } from '@suning/v-utils';
 import { normalizeContent, getChildNodeKeys, isDisabledNode, getNodeParentKeys } from '../utils';
 import Selector from '../selector';
 import SearchInput from '../searchInput';
@@ -12,8 +12,6 @@ export default {
         setInnerValue,
         treeCheckable,
         treeCheckStrict,
-        resetNodesChecked,
-        updateSelectionValue,
         normalizeFieldNames: { value: fieldValue },
         clearDisabled,
       } = this;
@@ -54,13 +52,12 @@ export default {
 
       const values = innerValue.filter(v => !(v in removeValObj));
       setInnerValue(values);
-      resetNodesChecked(values);
-      updateSelectionValue();
     },
     renderSelections() {
       const {
         prefixCls,
-        selectionValue,
+        prevSelectionValue,
+        getSelectionValue,
         maxTagCount,
         maxTagPlaceholder,
         maxTagTextLength,
@@ -68,10 +65,14 @@ export default {
         clearDisabled,
         treeCheckable,
         onRemove,
+        forceUpdateTriggerAlign,
       } = this;
+
+      const selectionValue = getSelectionValue();
+      this.prevSelectionValue = selectionValue;
       let selections = selectionValue;
       const maxCnt = Number(maxTagCount);
-      if (maxCnt > 0) {
+      if (maxCnt >= 0 && maxCnt < selectionValue.length) {
         selections = selections.slice(0, maxCnt);
       }
 
@@ -96,7 +97,7 @@ export default {
         );
       });
 
-      if (maxCnt > 0 && maxCnt < selectionValue.length) {
+      if (maxCnt >= 0 && maxCnt < selectionValue.length) {
         let tagTxt = `+ ${selectionValue.length - maxCnt} ...`;
         if (isFunction(maxTagPlaceholder)) {
           const extraSelections = selectionValue.slice(maxCnt);
@@ -115,11 +116,18 @@ export default {
       selectionNodes.push(<li class={`${prefixCls}-search ${prefixCls}-search--inline`}>
           <SearchInput align />
         </li>);
-      return <ul class={`${prefixCls}-selection__rendered`}>{selectionNodes}</ul>;
+      if (!isEqual(prevSelectionValue, selectionValue)) {
+        forceUpdateTriggerAlign();
+      }
+      return (
+        <Selector slot="trigger" selections={selectionValue}>
+          <ul class={`${prefixCls}-selection__rendered`}>{selectionNodes}</ul>
+        </Selector>
+      );
     },
     renderMultipleTrigger() {
       const { renderSelections } = this;
-      return <Selector slot="trigger">{renderSelections()}</Selector>;
+      return renderSelections();
     },
   },
 };

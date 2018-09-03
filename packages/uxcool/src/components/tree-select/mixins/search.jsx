@@ -13,7 +13,13 @@ export default {
       }
     },
     setSearchInputValue(value, trigger = true, changeVisible = true) {
-      const { onSearch, innerVisible, setInnerVisible } = this;
+      const {
+        onSearch,
+        innerVisible,
+        setInnerVisible,
+        searchInputValue,
+        forceUpdateTriggerAlign,
+      } = this;
       this.searchInputValue = value;
       if (!innerVisible && changeVisible) {
         setInnerVisible(true);
@@ -21,6 +27,9 @@ export default {
       onSearch(value);
       if (trigger) {
         this.$emit('search', value);
+      }
+      if (searchInputValue !== value) {
+        forceUpdateTriggerAlign();
       }
     },
     clearSearchInputValue(checkAutoClear = true) {
