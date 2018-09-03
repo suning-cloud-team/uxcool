@@ -1,3 +1,3 @@
-import UxProgress from './progress.vue';
+import Progress from './progress';
 
-export default UxProgress;
+export default Progress;

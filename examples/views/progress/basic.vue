@@ -1,36 +1,31 @@
 <template>
-  <article class="doc">
-    <h1 class="ux-heading">Progress
-      <span class="subtitle">进度条</span>
-    </h1>
-    <basic-demo/>
+  <div>
+    <line-demo />
     <circle-demo />
     <size-demo />
     <format-demo />
-    <operator-demo />
+    <operater-demo />
     <dashboard-demo />
-    <hr>
-    <doc/>
-  </article>
+
+  </div>
 </template>
 
+
 <script>
-  import Doc from './_doc.vue';
-  import BasicDemo from './basic.vue';
+  import LineDemo from './line.vue';
   import CircleDemo from './circle.vue';
   import SizeDemo from './size.vue';
   import FormatDemo from './format.vue';
-  import OperatorDemo from './operator.vue';
+  import OperaterDemo from './operater.vue';
   import DashboardDemo from './dashboard.vue';
 
   export default {
     components: {
-      Doc,
-      BasicDemo,
+      LineDemo,
       CircleDemo,
       SizeDemo,
       FormatDemo,
-      OperatorDemo,
+      OperaterDemo,
       DashboardDemo,
     },
   };

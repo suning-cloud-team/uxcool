@@ -13,7 +13,6 @@ import Message from './views/message/index';
 import Grid from './views/grid/index';
 import Breadcrumb from './views/breadcrumb/index';
 import Icon from './views/icon/index';
-import Progress from './views/progress/index';
 import Card from './views/card/index';
 import Checkbox from './views/checkbox/index';
 import Radio from './views/radio/index';
@@ -129,7 +128,7 @@ const routes = [
   {
     name: 'Progress',
     path: '/progress',
-    component: Progress,
+    component: () => import('./views/progress/index'),
   },
   {
     name: 'Card',

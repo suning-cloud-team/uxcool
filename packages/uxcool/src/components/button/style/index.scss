@@ -70,6 +70,10 @@ $btn-ghost-border: $border-color-base;
     @include btn-circle($btn-prefix-cls);
   }
 
+  &-icon-only {
+    line-height: $btn-circle-size;
+  }
+
   &:before {
     position: absolute;
     top: -1px;
