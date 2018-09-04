@@ -3,8 +3,10 @@ import { isFunction } from '@suning/v-utils';
 export default {
   methods: {
     canAsync(parent) {
-      if (!parent) return false;
-      const { lazy } = this;
+      const { lazy, loadData } = this;
+      if (!parent) {
+        return lazy && isFunction(loadData);
+      }
       const { isLoaded, isLoading, children } = parent;
 
       return lazy && !isLoaded && !isLoading && (!children || children.length === 0);
