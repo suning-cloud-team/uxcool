@@ -40,11 +40,6 @@
         checkStrict: false,
       };
     },
-    created() {
-      // setTimeout(() => {
-      //   // this.checkStrict = false;
-      // }, 5500);
-    },
     methods: {
       loadData(node) {
         return new Promise((resolve) => {

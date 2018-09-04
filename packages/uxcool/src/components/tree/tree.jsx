@@ -156,11 +156,13 @@ export default {
   },
   methods: {
     loadRootNodes() {
-      const { dataSource, createNodes, asyncNode } = this;
+      const {
+        dataSource, createNodes, asyncNode, canAsync
+      } = this;
 
       if (dataSource && dataSource.length > 0) {
         this.nodes = createNodes(dataSource, null, 0);
-      } else {
+      } else if (canAsync()) {
         asyncNode().then((nodes) => {
           this.nodes = nodes || [];
         });

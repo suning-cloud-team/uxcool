@@ -6,6 +6,7 @@
     <render-demo />
     <huge-demo />
     <filter-demo />
+    <empty-demo />
   </div>
 </template>
 
@@ -17,6 +18,7 @@
   import HugeDemo from './huge.vue';
   import FilterDemo from './filter.vue';
   import RowkeyDemo from './rowkey.vue';
+  import EmptyDemo from './empty.vue';
 
   export default {
     components: {
@@ -26,6 +28,7 @@
       HugeDemo,
       FilterDemo,
       RowkeyDemo,
+      EmptyDemo,
     },
   };
 </script>
