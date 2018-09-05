@@ -615,6 +615,16 @@ export default [
         },
         component: () => import('@/views/components/calendar/index.vue'),
       },
+      {
+        name: 'card-advance',
+        path: 'card-advance',
+        meta: {
+          title: 'CardAdvance',
+          subTitle: '高级卡片',
+          group: 'data',
+        },
+        component: () => import('@/views/components/card-advance/index.vue'),
+      }
     ],
   },
   {

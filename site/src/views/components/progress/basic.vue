@@ -1,36 +1,38 @@
 <template>
-  <ux-demo title="基本用法">
+  <ux-demo :height="200"
+           title="基本用法">
     <div slot="demo">
-      <div style="width: 400px">
-          <ux-progress :theme="theme"></ux-progress>
-          <ux-progress percentage="30" :theme="theme"></ux-progress>
-          <ux-progress percentage="30" status="error" :theme="theme"></ux-progress>
-          <ux-progress percentage="100" status="success" :theme="theme"></ux-progress>
-          <ux-progress percentage="100" hide-info :theme="theme"></ux-progress>
-      </div>
+      <ux-progress percentage="40" />
+      <ux-progress percentage="50"
+                   status="active" />
+      <ux-progress percentage="60"
+                   status="error" />
+      <ux-progress percentage="100" />
+      <ux-progress percentage="75"
+                   hide-info/>
+      <ux-progress percentage="30"
+                   stroke-width="1" />
+      <ux-progress percentage="30"
+                   stroke-color="skyblue" />
+      <ux-progress stroke-width="4" />
     </div>
     <div slot="desc">
-      通过<code>percentage</code>指定百分比,  通过<code>status</code>指定状态。
+      基本的进度条
     </div>
     <ux-code slot="code">
-      {{code}}
+      {{ code }}
     </ux-code>
   </ux-demo>
 </template>
 
 <script>
-import code from '@/code/progress/basic';
+  import code from '@/code/progress/basic.vue';
 
-export default {
-  data() {
-    return {
-      code,
-    };
-  },
-  computed: {
-    theme() {
-      return this.$store.state.theme;
+  export default {
+    data() {
+      return {
+        code,
+      };
     },
-  },
-};
+  };
 </script>
