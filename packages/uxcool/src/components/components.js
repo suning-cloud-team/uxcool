@@ -93,3 +93,5 @@ export { default as UxAutoComplete } from './auto-complete';
 export { default as UxCalendar } from './calendar';
 
 export { default as UxUpload } from './upload';
+
+export * from './card';

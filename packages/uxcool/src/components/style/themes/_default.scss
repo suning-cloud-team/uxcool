@@ -382,7 +382,7 @@ $grid-breakpoints: (
     // sm: 768px,
     // md: 992px,
     // lg: 1200px,
-    // xl: 1600px,,,
+    // xl: 1600px,,,,,,,
 ) !default;
 @include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
 
@@ -728,3 +728,14 @@ $collapse-header-padding: 12px 0 12px 40px;
 $collapse-header-bg: $background-color-light;
 $collapse-content-padding: $padding-md;
 $collapse-content-bg: $component-background;
+
+// Card
+// ---
+$card-head-color: $heading-color;
+$card-head-background: transparent;
+$card-head-padding: 16px;
+$card-inner-head-padding: 12px;
+$card-padding-base: 24px;
+$card-padding-wider: 32px;
+$card-actions-background: $background-color-light;
+$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);

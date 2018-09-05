@@ -285,6 +285,11 @@ const routes = [
     path: '/upload',
     component: () => import('./views/upload/index'),
   },
+  {
+    name: 'CardAdvance',
+    path: '/cardadvance',
+    component: () => import('./views/card-advance/index'),
+  },
 ];
 
 const router = new Router({
