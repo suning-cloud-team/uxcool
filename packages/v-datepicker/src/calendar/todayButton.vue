@@ -52,7 +52,7 @@
         };
       },
       todayStr() {
-        return formatDate(this.today, this.format);
+        return formatDate(this.today, this.format, { locale: this.locale.DateFnsLocale });
       },
     },
     methods: {

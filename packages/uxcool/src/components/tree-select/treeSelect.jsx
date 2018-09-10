@@ -1,14 +1,8 @@
 import Trigger from '@suning/v-trigger';
-import { isArray, isFunction, isEqual, isDef } from '@suning/v-utils';
+import { isArray, isFunction, isEqual } from '@suning/v-utils';
 import Tree from '../tree';
 import { buildComponentName } from '../utils';
-import {
-  DEFAULT_FIELD_NAMES,
-  checkNodeForShowParent,
-  getNodeOriginParent,
-  isDisabledNode,
-} from './utils';
-import StoreMixin from './mixins/store';
+import { DEFAULT_FIELD_NAMES, checkNodeForShowParent, isDisabledNode, isValidValue } from './utils';
 import SingleMixin from './mixins/single';
 import MultipleMixin from './mixins/multiple';
 import SearchMixin from './mixins/search';
@@ -21,7 +15,7 @@ export default {
       treeSelectRoot: this,
     };
   },
-  mixins: [SingleMixin, MultipleMixin, StoreMixin, SearchMixin],
+  mixins: [SingleMixin, MultipleMixin, SearchMixin],
   props: {
     prefixCls: {
       type: String,
@@ -69,7 +63,7 @@ export default {
     },
     maxTagCount: {
       type: [Number, String],
-      default: null,
+      default: -1,
     },
     maxTagPlaceholder: {
       type: [String, Function],
@@ -189,10 +183,13 @@ export default {
   data() {
     return {
       innerVisible: false,
-      innerValue: null,
+      innerValue: [],
       searchInputValue: '',
-      selectionValue: [],
       triggerRef: null,
+      isMounted: false,
+      selectedNodes: [],
+      // 多增加一个treeValue变量,防止innerValue将最初的值直接渲染到页面上, 等值确定后再更新innerValue
+      treeValue: [],
     };
   },
   computed: {
@@ -218,7 +215,7 @@ export default {
   },
   watch: {
     value(nVal) {
-      this.setInnerValue(nVal, false);
+      this.setTreeValue(nVal);
     },
     visible(nVal) {
       this.setInnerVisible(nVal, false);
@@ -226,39 +223,45 @@ export default {
   },
   created() {
     const {
-      value,
-      visible,
-      setInnerValue,
-      setInnerVisible,
-      treeData,
-      createNodes,
-      updateSelectionValue,
+      value, visible, setInnerVisible, setTreeValue
     } = this;
-    setInnerValue(value, false);
+    setTreeValue(value);
     setInnerVisible(visible, false);
-    createNodes(treeData, null, 0);
-    updateSelectionValue();
     this.prevSelectionValue = null;
   },
   mounted() {
-    const { $refs: { triggerRef } } = this;
+    const { $refs: { triggerRef, treeRef } } = this;
     if (triggerRef) {
       this.triggerRef = triggerRef;
     }
+    this.isMounted = true;
+    console.log('mounted treeRef', treeRef);
   },
   methods: {
-    setInnerValue(value, trigger = true) {
+    getValidValue(value) {
       const { isMultiple } = this;
-      let val = isDef(value) ? value : [];
+      let val = isValidValue(value) ? value : [];
       val = isArray(val) ? val : [val];
       if (!isMultiple) {
-        val = isDef(val[0]) ? [val[0]] : [];
+        val = isValidValue(val[0]) ? [val[0]] : [];
       }
-      this.innerValue = val;
-      if (trigger) {
-        const nVal = [...val];
-        this.$emit('input', nVal);
-        this.$emit('change', nVal);
+      return val;
+    },
+    setTreeValue(value) {
+      this.treeValue = this.getValidValue(value);
+    },
+    setInnerValue(value, trigger = true) {
+      const { getValidValue, innerValue, selectedNodes } = this;
+      const val = getValidValue(value);
+      if (!isEqual(val, innerValue)) {
+        this.innerValue = val;
+        this.treeValue = val;
+        if (trigger) {
+          const nVal = [...val];
+          const nodes = selectedNodes.map(node => ({ ...node.originNode }));
+          this.$emit('input', nVal, nodes);
+          this.$emit('change', nVal, nodes);
+        }
       }
     },
     setInnerVisible(visible, trigger = true) {
@@ -267,12 +270,20 @@ export default {
         this.$emit('popup-visible-change', visible);
       }
     },
-
+    setSelectionNodes(nodes) {
+      this.selectedNodes = nodes;
+    },
     forceUpdateTriggerAlign() {
-      const { $refs: { triggerRef } } = this;
-      if (triggerRef) {
-        triggerRef.forcePopupAlign();
+      const { $refs: { triggerRef }, innerVisible } = this;
+      if (triggerRef && innerVisible) {
+        this.$nextTick(() => {
+          triggerRef.forcePopupAlign();
+        });
       }
+    },
+    getSelectionValue() {
+      const { formatSelectionValue, selectedNodes } = this;
+      return formatSelectionValue(selectedNodes);
     },
     setSelectionValue(value) {
       const { selectionValue } = this;
@@ -321,39 +332,6 @@ export default {
         })),
       ].sort((a, b) => a.pos - b.pos);
     },
-    updateSelectionValue() {
-      const {
-        treeCheckable,
-        getAllCheckedNodes,
-        getOriginNodes,
-        innerValue,
-        formatSelectionValue,
-        setSelectionValue,
-        normalizeFieldNames: { value: fieldValue },
-        setInnerValue,
-      } = this;
-      let checkedNodes = [];
-      if (treeCheckable) {
-        checkedNodes = getAllCheckedNodes().map(node => ({
-          ...node.originNode,
-          pos: node.pos,
-          parentNode: getNodeOriginParent(node),
-        }));
-        // 因为有上下级级联选择, 所以 checkedNodes中可能含有innerValue中不存在的值,此处需要更新
-        const values = [...innerValue];
-        checkedNodes.forEach((node) => {
-          const value = node[fieldValue];
-          if (values.indexOf(value) === -1) {
-            values.push(value);
-          }
-        });
-        setInnerValue(values);
-      } else {
-        checkedNodes = getOriginNodes(innerValue);
-      }
-
-      setSelectionValue(formatSelectionValue(checkedNodes));
-    },
     getPopupWidth() {
       const {
         $el, getPopupWidth, dropdownMatchSelectWidth, innerVisible
@@ -368,31 +346,23 @@ export default {
       return style;
     },
     wrapLoadData(parent) {
-      const { loadData, addNodes, updateSelectionValue } = this;
+      const { loadData, addNodes } = this;
       return isFunction(loadData)
-        ? Promise.resolve(loadData(parent)).then((data) => {
-          addNodes(data, parent);
-          updateSelectionValue();
-          return data;
-        })
+        ? Promise.resolve(loadData(parent)).then(data =>
+          // addNodes(data, parent);
+          // updateSelectionValue();
+          data)
         : null;
     },
     onPopupVisibleChange(visible) {
       this.setInnerVisible(visible);
     },
-    onTreeValueChange(keys, nodes, checkAutoClear) {
-      const {
-        setInnerValue,
-        setSelectionValue,
-        resetNodesChecked,
-        formatSelectionValue,
-        clearSearchInputValue,
-      } = this;
+    onTreeValueChange(keys, nodes, checkAutoClear, isTriggerInputEvent = true) {
+      const { setInnerValue, setSelectionNodes, clearSearchInputValue } = this;
 
-      setInnerValue(keys);
+      setSelectionNodes(nodes);
+      setInnerValue(keys, isTriggerInputEvent);
       clearSearchInputValue(checkAutoClear);
-      resetNodesChecked(keys);
-      setSelectionValue(formatSelectionValue(nodes));
     },
     onClear(e) {
       e.stopPropagation();
@@ -400,7 +370,7 @@ export default {
         treeCheckable,
         isMultiple,
         clearDisabled,
-        getAllCheckedNodes,
+        selectedNodes,
         normalizeFieldNames: { value: filedValue },
         onTreeValueChange,
       } = this;
@@ -408,13 +378,7 @@ export default {
       let keys = [];
       let disabledNodes = [];
       if (isMultiple && !clearDisabled) {
-        disabledNodes = getAllCheckedNodes()
-          .map(node => ({
-            ...node.originNode,
-            pos: node.pos,
-            parentNode: getNodeOriginParent(node),
-          }))
-          .filter(node => isDisabledNode(node, treeCheckable));
+        disabledNodes = selectedNodes.filter(node => isDisabledNode(node, treeCheckable));
         keys = disabledNodes.map(node => node[filedValue]);
       }
 
@@ -426,17 +390,29 @@ export default {
       onTreeValueChange(checkedKeys, checkedNodes);
     },
     onTreeSelect(selectedKeys, { selectedNodes }) {
-      const { treeCheckable, isMultiple, onTreeValueChange } = this;
+      const {
+        treeCheckable, isMultiple, setTreeValue, setInnerVisible, onTreeValueChange
+      } = this;
 
       if (treeCheckable) {
         return;
       }
 
       if (!isMultiple) {
-        this.setInnerVisible(false);
+        setInnerVisible(false);
       }
-
+      setTreeValue(selectedKeys);
       onTreeValueChange(selectedKeys, selectedNodes);
+    },
+    onTreeKeysChange(keys, { nodes, replace }) {
+      const { treeValue, onTreeValueChange } = this;
+      // 单个选择时不触发,只触发onTreeCheck
+      if (replace) {
+        onTreeValueChange(keys, nodes, false, !isEqual(treeValue, keys));
+      }
+    },
+    getTreeRef() {
+      return this.$refs.treeRef;
     },
     renderTrigger() {
       const { isMultiple, renderSingleTrigger, renderMultipleTrigger } = this;
@@ -445,7 +421,7 @@ export default {
     renderTree() {
       const {
         prefixCls,
-        innerValue,
+        treeValue,
         treeData,
         treeFieldNames,
         treeCheckable,
@@ -454,12 +430,13 @@ export default {
         treeDefaultExpandAll,
         treeExpandedKeys,
         lazy,
-        wrapLoadData,
+        loadData,
         multiple,
         renderContent,
         filterOption,
         onTreeCheck,
         onTreeSelect,
+        onTreeKeysChange,
       } = this;
       const props = {
         prefixCls: `${prefixCls}-tree`,
@@ -471,17 +448,18 @@ export default {
         defaultExpandAll: treeDefaultExpandAll,
         expandedKeys: treeExpandedKeys,
         lazy,
-        loadData: wrapLoadData,
+        loadData,
         renderContent,
         filterOption,
         selectable: !treeCheckable,
         multiple,
-        [treeCheckable ? 'checkedKeys' : 'selectedKeys']: innerValue,
+        [treeCheckable ? 'checkedKeys' : 'selectedKeys']: [...treeValue],
       };
 
       const on = {
         check: onTreeCheck,
         select: onTreeSelect,
+        [treeCheckable ? 'checked-keys-change' : 'selected-keys-change']: onTreeKeysChange,
       };
       return (
         <Tree
@@ -525,6 +503,10 @@ export default {
       renderTrigger,
       renderPopup,
     } = this;
+
+    if (!this.isMounted) {
+      return null;
+    }
     const popupWidth = getPopupWidth();
     const triggerProps = {
       prefixCls: `${prefixCls}-dropdown`,
@@ -541,7 +523,8 @@ export default {
       popupPlacement: 'bottomLeft',
       popupTransitionName: transition,
       getPopupContainer,
-      initPopupFirst: lazy && isFunction(loadData),
+      // initPopupFirst: lazy && isFunction(loadData),
+      initPopupFirst: true,
     };
     const on = {
       'popup-visible-change': onPopupVisibleChange,

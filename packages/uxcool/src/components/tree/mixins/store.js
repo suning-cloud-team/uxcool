@@ -239,14 +239,15 @@ export default {
       };
     },
     updateStoreSelectedKeys(keys = [], op = 'add', replace = false) {
-      const { treeStore, resetStoreKeys } = this;
+      const { treeStore, resetStoreKeys, debounceTriggerSelectedKeysChangeEvent } = this;
       setStoreKeysByName(
         treeStore,
         'selectedKeys',
         keys,
         op,
         replace,
-        resetStoreKeys('isSelected')
+        resetStoreKeys('isSelected'),
+        debounceTriggerSelectedKeysChangeEvent
       );
     },
     updateStoreExpandedKeys(keys, op = 'add', replace = false) {
@@ -269,6 +270,7 @@ export default {
         updateStoreHalfCheckedKeys,
         setStoreCheckedKeys,
         setStoreHalfCheckedKeys,
+        debounceTriggerCheckedKeysChangeEvent,
       } = this;
       const resetFn = resetStoreKeys('isChecked', (flag, node) => {
         if (!node.isDisabled && !node.disableCheckbox) {
@@ -280,12 +282,20 @@ export default {
           checkNodeRelation(node);
         }
       });
-      setStoreKeysByName(treeStore, 'checkedKeys', keys, op, replace, (...args) => {
-        resetFn(...args);
-        if (checkStrict) {
-          updateStoreHalfCheckedKeys([], false, true);
-        }
-      });
+      setStoreKeysByName(
+        treeStore,
+        'checkedKeys',
+        keys,
+        op,
+        replace,
+        (...args) => {
+          resetFn(...args);
+          if (checkStrict) {
+            updateStoreHalfCheckedKeys([], false, true);
+          }
+        },
+        debounceTriggerCheckedKeysChangeEvent
+      );
     },
     updateStoreHalfCheckedKeys(keys, op = 'add', replace = false) {
       const { treeStore, resetStoreKeys } = this;

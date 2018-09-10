@@ -39,5 +39,16 @@ export default {
         parentNode: getNodeOriginParent(node),
       }));
     },
+    isExistsKey(key) {
+      const { treeStore: { nodesMap } } = this;
+      return key in nodesMap;
+    },
+    getTreeNodesByKeys(keys = []) {
+      const { getStoreNode } = this;
+      return keys.map(key => getStoreNode(key)).filter(node => !!node);
+    },
+    getCheckedKeys() {
+      return this.getStoreCheckedKeys();
+    },
   },
 };

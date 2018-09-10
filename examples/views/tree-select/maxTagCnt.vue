@@ -1,17 +1,14 @@
 <template>
   <div class="demo">
-    <h4>multiple</h4>
-    value: {{ value }}
-    <br>
+    <h4>max tag count</h4>
     <ux-tree-select v-model="value"
                     :tree-data="data"
                     :clear-disabled="false"
+                    :max-tag-placeholder="maxTagPlaceholder"
+                    max-tag-count="0"
                     multiple
                     tree-checkable
-                    style="width:300px"
-                    show-checked-strategy="SHOW_ALL"
-                    @input="onInput"
-                    @change="onChange" />
+                    style="width:300px" />
   </div>
 </template>
 
@@ -25,9 +22,13 @@
     },
     data() {
       return {
-        dropdownMatch: true,
-        value: ['123', '0-0-1-0', '0-0-0-0', '0-111'],
-        data: [
+        value: ['0-0-0', '0-0-1-1'],
+        data: [],
+      };
+    },
+    created() {
+      setTimeout(() => {
+        this.data = [
           {
             title: '0-0',
             key: '0-0',
@@ -36,12 +37,8 @@
                 title: '0-0-0',
                 key: '0-0-0',
                 children: [
-                  {
-                    title: 'C0-0-0-0',
-                    key: '0-0-0-0',
-                    disableCheckbox: true,
-                  },
-                  { title: '0-0-0-1', key: '0-0-0-1', cc: 1 },
+                  { title: 'C0-0-0-0', key: '0-0-0-0', disableCheckbox: true },
+                  { title: '0-0-0-1', key: '0-0-0-1' },
                   { title: '0-0-0-2', key: '0-0-0-2' },
                 ],
               },
@@ -84,21 +81,12 @@
             ],
           },
           { title: '0-2', key: '0-2' },
-        ],
-      };
-    },
-    created() {
-      setTimeout(() => {
-        this.dropdownMatch = false;
-        this.value = ['0-1', '0-0-0-2'];
+        ];
       }, 1500);
     },
     methods: {
-      onChange(...args) {
-        console.log('onChange', ...args);
-      },
-      onInput(...args) {
-        console.log('onInput', ...args);
+      maxTagPlaceholder(nodes) {
+        return <span style="color:green">选择了{nodes.length}节点</span>;
       },
     },
   };

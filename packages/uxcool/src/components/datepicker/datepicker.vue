@@ -26,7 +26,7 @@
   import omit from 'object.omit';
   import { format as formatDate } from 'date-fns';
   import VDatePicker from '@suning/v-datepicker';
-  import locale from './locale/en_US';
+  import locale from './locale/zh_CN';
   import Icon from '../icon';
   import { buildComponentName } from '../utils';
 

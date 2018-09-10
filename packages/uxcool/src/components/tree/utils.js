@@ -37,7 +37,7 @@ export function getKeysObj(keys) {
   }, {});
 }
 
-export function setStoreKeysByName(store, keyName, value, op, replace, replaceCb) {
+export function setStoreKeysByName(store, keyName, value, op, replace, replaceCb, storeKeysCb) {
   const nKeys = isArray(value) ? value : [value];
   const nStore = store;
   if (replace) {
@@ -58,6 +58,9 @@ export function setStoreKeysByName(store, keyName, value, op, replace, replaceCb
     } else if (op === 'del') {
       nStore[keyName] = list.filter(k => !(k in nKeyObj));
     }
+  }
+  if (isFunction(storeKeysCb)) {
+    storeKeysCb({ keyName, op, replace });
   }
 }
 
@@ -162,7 +165,12 @@ export function getOriginNodes(nodesMap = {}, keys = []) {
     .map((k) => {
       const node = nodesMap[k];
       return node
-        ? { ...node.originNode, pos: node.pos, parentNode: getNodeOriginParent(node) }
+        ? {
+          ...node.originNode,
+          originNode: node.originNode,
+          pos: node.pos,
+          parentNode: getNodeOriginParent(node),
+        }
         : null;
     })
     .filter(node => !!node);

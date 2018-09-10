@@ -28,7 +28,8 @@
     <div class="demo">
       <h6>格式</h6>
       <ux-date-picker :theme="theme"
-                      format="YYYY/MM/DD" />
+                      format="YYYY/MM/DD"
+                      show-today/>
       <br>
       <ux-range-date-picker :theme="theme"
                             format="YYYY/MM/DD" />

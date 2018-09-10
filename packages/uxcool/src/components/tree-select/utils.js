@@ -17,6 +17,10 @@ export {
   getNodeOriginParent,
 };
 
+export function isValidValue(val) {
+  return val || val === 0;
+}
+
 export const DEFAULT_FIELD_NAMES = {
   label: 'title',
   value: 'key',

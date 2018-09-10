@@ -5,8 +5,9 @@ import SearchInput from '../searchInput';
 export default {
   methods: {
     renderSingleTrigger() {
-      const { prefixCls, selectionValue, placeholder } = this;
+      const { prefixCls, getSelectionValue, placeholder } = this;
       let triggerNode = null;
+      const selectionValue = getSelectionValue();
       if (isArray(selectionValue) && selectionValue.length > 0) {
         const { label, value } = selectionValue[0];
         triggerNode = <span class={`${prefixCls}-selection-selected-value`}>{label || value}</span>;

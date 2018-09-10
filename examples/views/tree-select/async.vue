@@ -6,7 +6,10 @@
                     :load-data="loadData"
                     lazy
                     multiple
-                    style="width:300px" />
+                    tree-checkable
+                    tree-check-strict
+                    style="width:300px"
+                    show-checked-strategy="SHOW_ALL" />
   </div>
 </template>
 
@@ -20,7 +23,8 @@
     },
     data() {
       return {
-        value: ['0-0-0-2', '0-1-1-1', '0-1-1-0', '0-0-2', '0-1-2', '0-1-1-0'],
+        value: ['0-0-0-2', '0-1-1-1', '0-1-1-0', '0-0-2', '0-1-2', '0-1-2-0-1', '0-1-1-0'],
+        // value: '',
       };
     },
     methods: {
@@ -63,7 +67,7 @@
                   isLeaf: node.key === '0-0-0-0' && node.level === 2,
               }));
               resolve(data);
-            }, 113500);
+            }, 1500);
           }
         });
       },
