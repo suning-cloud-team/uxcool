@@ -1,7 +1,8 @@
-import { isFunction, warning } from '@suning/v-utils';
-import { getUID, slice, toString, attrAccept, traverseFileTree } from '../utils';
+import { isFunction } from '@suning/v-utils';
+import { getUID, slice, toString, attrAccept, traverseFileTree, isCanChunkUpload } from '../utils';
 import Props from './props';
 import defaultRequest from './request';
+import chunkRequest from './chunkRequest';
 
 export default {
   name: 'AjaxUploader',
@@ -42,19 +43,20 @@ export default {
       }
     },
     onDrop(e) {
+      const { directory, accept } = this;
       e.preventDefault();
 
       if (e.type === 'dragover') {
         return;
       }
 
-      if (this.props.directory) {
+      if (directory) {
         traverseFileTree(e.dataTransfer.items, this.uploadFiles, _file =>
-          attrAccept(_file, this.props.accept));
+          attrAccept(_file, accept));
       } else {
         const files = Array.prototype.slice
           .call(e.dataTransfer.files)
-          .filter(file => attrAccept(file, this.props.accept));
+          .filter(file => attrAccept(file, accept));
         this.uploadFiles(files);
       }
     },
@@ -73,26 +75,41 @@ export default {
     onError(err, ret, file) {
       this.$emit('error', err, ret, file);
     },
+    onChunkSend(chunk) {
+      this.$emit('chunk-send', chunk);
+    },
+    onChunkSuccess(ret, chunk) {
+      this.$emit('chunk-success', ret, chunk);
+    },
+    onChunkError(err, ret, chunk) {
+      this.$emit('chunk-error', err, ret, chunk);
+    },
     post(file) {
       const {
         reqs,
         name,
-        action,
-        data,
         customRequest,
+        chunk,
         headers,
         withCredentials,
+        action,
+        data,
+        maxChunkSize,
+        uploadedBytes,
         onStart,
         onProgress,
         onSuccess,
         onError,
+        onChunkSend,
+        onChunkSuccess,
+        onChunkError,
       } = this;
       const promises = [action, data].map(fn => Promise.resolve(isFunction(fn) ? fn(file) : fn));
       Promise.all(promises)
         .then(([formAction, formData]) => {
           const { uid } = file;
           const request = customRequest || defaultRequest;
-          reqs[uid] = request({
+          const options = {
             action: formAction,
             fileName: name,
             data: formData,
@@ -110,7 +127,19 @@ export default {
               delete reqs[uid];
               onError(err, ret, file);
             },
-          });
+          };
+          if (isCanChunkUpload(chunk)) {
+            chunkRequest(request, reqs)({
+              ...options,
+              maxChunkSize,
+              uploadedBytes,
+              onChunkSend,
+              onChunkSuccess,
+              onChunkError,
+            });
+          } else {
+            reqs[uid] = request(options);
+          }
           onStart(file);
         })
         .catch((err) => {

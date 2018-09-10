@@ -26,7 +26,7 @@ export default {
       type: String,
       default: 'select',
       validator(val) {
-        return ['select'].indexOf(val) > -1;
+        return ['select', 'drag'].indexOf(val) > -1;
       },
     },
     fileList: {
@@ -64,10 +64,16 @@ export default {
       type: Function,
       default: null,
     },
+    preventGlobalDrag: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
       innerFileList: [],
+      dragState: 'drop',
+      globalDragEvents: null,
     };
   },
   computed: {
@@ -78,6 +84,19 @@ export default {
         [`${prefixCls}-select`]: true,
         [`${prefixCls}-select-${listType}`]: true,
         [`${prefixCls}-disabled`]: disabled,
+      };
+    },
+    dragClasses() {
+      const {
+        prefixCls, dragState, innerFileList, disabled
+      } = this;
+      const dragCls = `${prefixCls}-drag`;
+      return {
+        [prefixCls]: true,
+        [`${prefixCls}-disabled`]: disabled,
+        [dragCls]: true,
+        [`${dragCls}-hover`]: dragState === 'dragover',
+        [`${dragCls}-uploading`]: innerFileList.some(file => file.status === 'uploading'),
       };
     },
   },
@@ -91,26 +110,34 @@ export default {
     setInnerFileList(handleFileList(fileList), true);
   },
   methods: {
-    uploadFile(file, files) {
-      const { $refs: { uploaderRef } } = this;
+    getWaitUploadOriginFiles() {
+      const { innerFileList } = this;
+      return innerFileList.filter(file => file.status === 'ready').map(file => file.originFile);
+    },
+    uploadFile(file) {
+      const { $refs: { uploaderRef }, innerFileList, getWaitUploadOriginFiles } = this;
       if (uploaderRef) {
-        const fileType = toString.call(file);
+        const waitUploadOriginFiles = getWaitUploadOriginFiles();
+        let originFile = file;
+
+        if (typeof originFile === 'string') {
+          const filterFiles = innerFileList.filter(v => v.uid === originFile);
+          originFile = filterFiles.length > 0 ? filterFiles[0].originFile : null;
+        }
+
+        const fileType = toString.call(originFile);
         // ajax 上传必须是 File,
         // iframe上传
         if (fileType === '[object File]') {
-          uploaderRef.upload(file, files);
+          uploaderRef.upload(file, waitUploadOriginFiles);
         }
       }
     },
     submit() {
-      const { innerFileList, uploadFile } = this;
-
-      const waritUploadOriginFiles = innerFileList
-        .filter(file => file.status === 'ready')
-        .map(file => file.originFile);
-
-      waritUploadOriginFiles.forEach((file) => {
-        uploadFile(file, waritUploadOriginFiles);
+      const { uploadFile, getWaitUploadOriginFiles } = this;
+      const waitUploadOriginFiles = getWaitUploadOriginFiles();
+      waitUploadOriginFiles.forEach((file) => {
+        uploadFile(file);
       });
     },
     setInnerFileList(fileList = [], pass = false) {
@@ -215,6 +242,21 @@ export default {
         });
       }
     },
+    onDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.dragState = e.type;
+      e.dataTransfer.dropEffect = 'move';
+    },
+    onChunkSend(chunk) {
+      this.$emit('chunk-send', chunk);
+    },
+    onChunkSuccess(response, chunk) {
+      this.$emit('chunk-success', response, chunk);
+    },
+    onChunkError(err, response, chunk) {
+      this.$emit('chunk-error', err, response, chunk);
+    },
     renderUploadList() {
       const {
         prefixCls,
@@ -284,8 +326,11 @@ export default {
     renderUploadButton() {
       const {
         $props,
-        $slots: { default: slotDefault, extra: slotExtra },
+        $slots: { default: slotDefault },
+        prefixCls,
+        type,
         uploadBtnClasses,
+        dragClasses,
         onBeforeUpload,
         onBeforeReady,
         onReady,
@@ -293,11 +338,20 @@ export default {
         onError,
         onProgress,
         onStart,
+        onDrop,
+        onChunkSuccess,
+        onChunkSend,
+        onChunkError,
       } = this;
       const props = {
         ...$props,
         beforeUpload: onBeforeUpload,
         beforeReady: onBeforeReady,
+      };
+      const dragEvent = {
+        drop: onDrop,
+        dragover: onDrop,
+        dragleave: onDrop,
       };
       const on = {
         ready: onReady,
@@ -305,22 +359,46 @@ export default {
         success: onSuccess,
         error: onError,
         progress: onProgress,
+        'chunk-send': onChunkSend,
+        'chunk-success': onChunkSuccess,
+        'chunk-error': onChunkError,
       };
-      return (
-        <span class={uploadBtnClasses} v-show={!!slotDefault}>
+      return type === 'drag' ? (
+        <div {...{ class: dragClasses, on: dragEvent }}>
+          <Uploader
+            {...{
+              class: `${prefixCls}-btn`,
+              props,
+              on,
+              ref: 'uploaderRef',
+            }}
+          >
+            <div class={`${prefixCls}-drag-container`}>{slotDefault}</div>
+          </Uploader>
+        </div>
+        ) : (
+        <span v-show={!!slotDefault} {...{ class: uploadBtnClasses }}>
           <Uploader {...{ props, on, ref: 'uploaderRef' }}>{slotDefault}</Uploader>
-          {slotExtra}
         </span>
       );
     },
     renderUpload() {
-      const { listType, renderUploadButton, renderUploadList } = this;
+      const {
+        $slots: { tip: slotTip },
+        prefixCls,
+        listType,
+        renderUploadButton,
+        renderUploadList,
+      } = this;
       const uploadButton = renderUploadButton();
       const uploadList = renderUploadList();
 
+      const tipNode = <div class={`${prefixCls}-tip`}>{slotTip}</div>;
       return (
         <span>
-          {listType === 'picture-card' ? [uploadList, uploadButton] : [uploadButton, uploadList]}
+          {listType === 'picture-card'
+            ? [uploadList, uploadButton, tipNode]
+            : [uploadButton, tipNode, uploadList]}
         </span>
       );
     },

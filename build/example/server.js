@@ -21,9 +21,11 @@ function buildConfig(config) {
       openPage: 'index.html',
       proxy: {
         '/upload': {
-          // target: 'http://localhost:8888',
-          // pathRewrite: { '^/upload': '' },
-          target: 'http://dip.cnsuning.com:80/service/2698/1.0.0',
+          target: 'http://localhost/jQuery-File-Upload/server/php/',
+          changeOrigin: true,
+          secure: false,
+          pathRewrite: { '^/upload': '' },
+          // target: 'http://dip.cnsuning.com:80/service/2698/1.0.0',
         },
       },
     },

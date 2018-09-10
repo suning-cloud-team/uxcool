@@ -4,6 +4,7 @@
     <ux-upload action="/upload"
                list-type="picture">
       <ux-button icon="upload">Click to Upload</ux-button>
+      <span slot="extra">slot extra</span>
     </ux-upload>
   </div>
 </template>
