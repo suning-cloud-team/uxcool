@@ -30,11 +30,12 @@ function handleRoutes(data, groupMapping) {
 function buildMenuItem(list = [], pos = 0) {
   return list.map((v, i) => {
     const { name, meta } = v;
-    const { title = '', subTitle = '' } = meta;
+    const { title = '', subTitle = '', deprecated = false } = meta;
     // 给路由添加位置,方便底部菜单索引
     meta.pos = pos + i;
     return {
       name,
+      deprecated,
       title: `${title}${subTitle ? ' ' : ''}${subTitle}`,
     };
   });
@@ -102,6 +103,8 @@ const footerNavData = buildFooterNavData(menuData);
 //     });
 //   }
 // });
+
+console.log('menuddata', menuData);
 export default {
   // 组件主题 light | dark
   theme: 'light',

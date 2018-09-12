@@ -1,7 +1,7 @@
 <template>
   <article class="doc">
-    <h1 class="ux-heading">Affix
-      <span class="subtitle">固钉</span>
+    <h1 class="ux-heading">CardAdvance
+      <span class="subtitle">高级卡片</span>
     </h1>
     <basic-demo/>
     <cover-demo />
