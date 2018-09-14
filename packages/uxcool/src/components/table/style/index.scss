@@ -161,7 +161,10 @@ $table-header-icon-color: $text-color-secondary;
     background: $table-header-sort-bg;
   }
 
-  &-thead > tr > th,
+  &-thead > tr > th {
+    padding: $table-th-padding-vertical $table-th-padding-horizontal;
+    word-break: break-all;
+  }
   &-tbody > tr > td {
     padding: $table-padding-vertical $table-padding-horizontal;
     word-break: break-all;
@@ -470,7 +473,7 @@ $table-header-icon-color: $text-color-secondary;
       width: 17px;
       height: 17px;
       text-align: center;
-      line-height: 14px;
+      line-height: $font-size-base;
       border: $border-width-base $border-style-base $border-color-split;
       user-select: none;
       background: $component-background;

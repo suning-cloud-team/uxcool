@@ -190,7 +190,7 @@ $timepicker-item-height: 32px;
     &:after {
       content: '\e957';
       font-family: 'uxfont';
-      color: $disabled-color;
+      color: $picker-icon-color;
       display: block;
       line-height: 1;
     }

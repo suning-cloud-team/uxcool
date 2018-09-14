@@ -6,10 +6,11 @@ $progress-prefix-cls: #{$ux-prefix}-progress;
 .#{$progress-prefix-cls} {
   @include reset-component;
   display: inline-block;
+  font-size: $progress-font-size;
 
   &-line {
     width: 100%;
-    font-size: $font-size-base;
+    font-size: $progress-font-size;
     position: relative;
   }
 
@@ -72,7 +73,7 @@ $progress-prefix-cls: #{$ux-prefix}-progress;
     color: $text-color-secondary;
     line-height: 1;
     .#{$iconfont-css-prefix} {
-      font-size: $font-size-base;
+      font-size: $progress-font-size;
     }
   }
 

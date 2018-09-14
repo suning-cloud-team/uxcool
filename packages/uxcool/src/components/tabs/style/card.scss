@@ -41,7 +41,7 @@ $tab-prefix-cls: #{$ux-prefix}-tabs;
     vertical-align: middle;
     width: 16px;
     height: 16px;
-    height: $font-size-base;
+    height: $tabs-font-size;
     &:hover {
       color: $heading-color;
     }

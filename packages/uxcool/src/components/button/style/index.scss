@@ -71,7 +71,7 @@ $btn-ghost-border: $border-color-base;
   }
 
   &-icon-only {
-    line-height: $btn-circle-size;
+    line-height: $font-size-base * 2;
   }
 
   &:before {

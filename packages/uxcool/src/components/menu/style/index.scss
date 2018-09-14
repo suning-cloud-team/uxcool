@@ -5,6 +5,7 @@ $menu-prefix-cls: #{$ux-prefix}-menu;
 
 // default theme
 .#{$menu-prefix-cls} {
+  font-size: $menu-font-size;
   outline: none;
   margin-bottom: 0;
   padding-left: 0; // Override default ul/ol
@@ -27,7 +28,7 @@ $menu-prefix-cls: #{$ux-prefix}-menu;
 
   &-item-group-title {
     color: $text-color-secondary;
-    font-size: $font-size-base;
+    font-size: $menu-font-size;
     line-height: $line-height-base;
     padding: 8px 16px;
     transition: all 0.3s;
@@ -332,7 +333,7 @@ $menu-prefix-cls: #{$ux-prefix}-menu;
     .#{$menu-prefix-cls}-item,
     .#{$menu-prefix-cls}-submenu-title {
       padding: 0 16px;
-      font-size: $font-size-base;
+      font-size: $menu-font-size;
       line-height: 42px;
       height: 42px;
       overflow: hidden;

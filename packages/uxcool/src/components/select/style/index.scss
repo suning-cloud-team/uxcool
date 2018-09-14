@@ -60,7 +60,7 @@ $select-prefix-cls: #{$ux-prefix}-select;
     line-height: 1;
     margin-top: -$font-size-sm / 2;
     transform-origin: 50% 50%;
-    color: rgba(#000, 0.4);
+    color: $picker-icon-color;
     font-size: $font-size-sm;
 
     * {

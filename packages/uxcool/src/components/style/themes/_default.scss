@@ -204,15 +204,16 @@ $text-color-secondary: fade(#000, 45%) !default;
 $heading-color-dark: fade(#fff, 100%) !default;
 $text-color-dark: fade(#fff, 85%) !default;
 $text-color-secondary-dark: fade(#fff, 65%) !default;
-$font-size-base: 14px !default;
+$font-size-base: 12px !default;
 $font-size-sm: 12px !default;
-$font-size-lg: 16px !default;
+$font-size-lg: 14px !default;
 $font-weight-light: 300 !default;
 $font-weight-normal: 400 !default;
 $font-weight-bold: 700 !default;
 $line-height-base: 1.5 !default;
 $border-radius-base: 4px !default;
 $border-radius-sm: 2px !default;
+$picker-icon-color: $gray-7 !default;
 
 // vertical paddings
 $padding-lg: 24px !default; // containers
@@ -382,7 +383,7 @@ $grid-breakpoints: (
     // sm: 768px,
     // md: 992px,
     // lg: 1200px,
-    // xl: 1600px,,,,,,,
+    // xl: 1600px,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ) !default;
 @include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
 
@@ -536,6 +537,7 @@ $progress-remaining-color: $background-color-base !default;
 
 // Menu
 // ---
+$menu-font-size: $font-size-lg;
 $menu-dark-bg: $layout-header-bg-dark !default;
 $menu-dark-submenu-bg: $layout-header-bg-dark !default;
 $menu-collapsed-width: 64px !default;
@@ -599,9 +601,10 @@ $table-row-hover-bg: $primary-1;
 $table-row-hover-bg-dark: getLevelColor($black, 2);
 $table-selected-row-bg: #fafafa;
 $table-selected-row-bg-dark: getLevelColor($black, 2);
-$table-padding-vertical: 16px;
-$table-padding-horizontal: 16px;
-
+$table-th-padding-vertical: 16px !default;
+$table-th-padding-horizontal: 16px !default;
+$table-padding-vertical: 11px !default;
+$table-padding-horizontal: 11px !default;
 // Tag
 // --
 $tag-default-bg: $background-color-light !default;
@@ -656,10 +659,11 @@ $spin-circle-size-lg: 42px !default;
 
 //Tabs
 // ---
+$tabs-font-size: $font-size-lg !default;
 $tabs-card-head-background: $background-color-light !default;
 $tabs-card-head-background-dark: rgba($black, 0.2) !default;
 $tabs-card-height: 40px !default;
-$tabs-title-font-size: $font-size-base !default;
+$tabs-title-font-size: $font-size-lg !default;
 
 $tabs-primary-color-dark: #00d8ff !default;
 
@@ -669,6 +673,7 @@ $steps-bg: $component-background !default;
 $steps-bg-dark: rgba(#00d8ff, 0.7) !default;
 
 // Progress
+$progress-font-size: $font-size-lg !default;
 $progress-rail-bg: #ddd !default;
 $progress-rail-bg-dark: fade(#000, 60%) !default;
 
