@@ -11,7 +11,7 @@
     <div class="demo">
       <ux-spin tip="loading"></ux-spin>
       <ux-spin tip="loading"
-               spin-style="width:100%">
+               :spin-style="{width:'100%'}">
         <span slot="tip"
               style="color: red">
           loading...
@@ -47,7 +47,7 @@
       </button>
       <br>
       <ux-spin :spinning="spinning"
-               wrap-style="width:100%">
+               :wrap-style="{width:'100%'}">
         <div style="width:100%; max-height: 150px;overflow:auto">
           <table class="ux-table">
             <thead>

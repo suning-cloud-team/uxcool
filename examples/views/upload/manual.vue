@@ -1,19 +1,17 @@
 <template>
   <div class="demo">
-    <h4>control</h4>
+    <h4>manual</h4>
     <ux-upload ref="uploadRef"
                v-model="fileList"
                :auto-upload="false"
                :before-upload="onBeforeUpload"
+               name="files"
                action="/upload"
                @change="onChange">
       <ux-button>Click to Upload</ux-button>
-      <template slot="extra">
-        <ux-button style="margin-left:5px"
-                   @click="submit">start upload</ux-button>
-        <div>this is tip!</div>
-      </template>
-
+      <ux-button style="margin-left:5px"
+                 @click.stop="submit">start upload</ux-button>
+      <div>this is tip!</div>
     </ux-upload>
 
   </div>

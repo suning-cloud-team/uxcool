@@ -43,13 +43,14 @@
     },
     data() {
       return {
-        value: '',
+        value: 'A',
         option2: 'c31',
       };
     },
     created() {
       setTimeout(() => {
         this.option2 = 'd41';
+        this.value = [];
       }, 3500);
     },
     methods: {

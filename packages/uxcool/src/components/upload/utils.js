@@ -1,4 +1,4 @@
-import { isArray, isDef } from '@suning/v-utils';
+import { isArray } from '@suning/v-utils';
 
 export function isXHRFileUpload() {
   return !!window.FileReader;
@@ -111,7 +111,7 @@ const extname = (url) => {
 };
 const imageTypes = ['image', 'webp', 'png', 'svg', 'gif', 'jpg', 'jpeg', 'bmp'];
 export function isImageUrl(file) {
-  if (imageTypes.includes(file.type)) {
+  if (imageTypes.indexOf(file.type) > -1) {
     return true;
   }
   const url = file.thumbUrl || file.url;
@@ -126,4 +126,21 @@ export function isImageUrl(file) {
     return false;
   }
   return true;
+}
+
+export const BlobSlice = window.Blob
+  ? Blob.prototype.slice || Blob.prototype.webkitSlice || Blob.prototype.mozSlice
+  : null;
+
+const isSupportBlobSlice = !!BlobSlice;
+
+export function isCanChunkUpload(isChunk) {
+  return isSupportBlobSlice && isChunk;
+}
+
+export function getChunkUploadBytes(xhr) {
+  const range = xhr.getResponseHeader('Range');
+  const parts = range && range.split('-');
+  const upperBytesPos = parts && parts.length > 1 && parseInt(parts[1], 10);
+  return upperBytesPos && upperBytesPos + 1;
 }

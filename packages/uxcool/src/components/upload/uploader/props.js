@@ -59,4 +59,18 @@ export default {
     type: Function,
     default: null,
   },
+  chunk: {
+    type: Boolean,
+    default: false,
+  },
+  // Bytes
+  maxChunkSize: {
+    type: [String, Number],
+    default: 0,
+  },
+  // Bytes
+  uploadedBytes: {
+    type: [String, Number, Function],
+    default: 0,
+  },
 };

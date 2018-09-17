@@ -63,7 +63,8 @@
     created() {
       setTimeout(() => {
         this.isShow = true;
-        this.values = ['B', 'A'];
+        // this.values = ['B', 'A'];
+        this.values = [];
       }, 1500);
     },
     methods: {

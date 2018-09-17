@@ -7,6 +7,7 @@
       <span v-if="fileList.length<3">
         <ux-icon type="add" />Upload
       </span>
+      <span slot="extra">upload</span>
     </ux-upload>
   </div>
 </template>
