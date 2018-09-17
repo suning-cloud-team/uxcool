@@ -100,10 +100,15 @@
       text: '风格',
       href: '/main.html#/webstyle/guideLine',
     },
+    // {
+    //   name: 'css',
+    //   text: '样式',
+    //   href: '/style/index.html#/home',
+    // },
     {
-      name: 'css',
-      text: '样式',
-      href: '/style/index.html#/home',
+      name: 'template',
+      text: 'Vue模板',
+      href: '/template/index.html',
     },
     {
       name: 'vue',

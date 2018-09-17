@@ -192,7 +192,7 @@
     [ENV_PRE]: PRE_SERVER_URL,
     [ENV_PRD]: PRD_SERVER_URL,
   };
-  const BASE_URL = `${ENV_URL_MAPPING[ENV]}`;
+  const BASE_URL = `${ENV_URL_MAPPING[ENV]}/css`;
   const instance = axios.create();
 
   export default {

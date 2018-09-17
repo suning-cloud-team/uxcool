@@ -67,6 +67,7 @@
   }
 
   .gutter-group {
+
     .ux-btn,
     .ux-select,
     .ux-switch {
@@ -82,6 +83,11 @@
         margin-right: 0;
       }
     }
+  }
+
+  .deprecated {
+    color: #999;
+    margin-left: 10px;
   }
 }
 
