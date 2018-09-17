@@ -7,6 +7,7 @@
            :builtin-placements="buildinPlacements"
            :popup-transition-name="transitionName"
            :popup-animation="animation"
+           :get-popup-container="getPopupContainer"
            destroy-popup-on-hide
            @on-popup-visible-change="onPopupVisible">
     <template slot="trigger">
@@ -117,6 +118,10 @@
       animation: {
         type: String,
         default: '',
+      },
+      getPopupContainer: {
+        type: Function,
+        default: null,
       },
     },
     data() {

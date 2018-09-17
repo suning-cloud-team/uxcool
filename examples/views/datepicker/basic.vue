@@ -82,6 +82,7 @@
     </div>
 
     <month-demo />
+    <popup-container-demo />
   </div>
 </template>
 
@@ -99,12 +100,14 @@
   } from 'date-fns';
   import { Datepicker } from '@suning/uxcool';
   import MonthDemo from './month.vue';
+  import PopupContainerDemo from './popupContainer.vue';
 
   export default {
     components: {
       UxDatePicker: Datepicker,
       UxRangeDatePicker: Datepicker.Range,
       MonthDemo,
+      PopupContainerDemo,
     },
     data() {
       return {
