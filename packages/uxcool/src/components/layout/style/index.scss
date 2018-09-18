@@ -1,163 +1,141 @@
 @import '../../style/themes/index';
-@import '../../style/mixins/index';
 
 $layout-prefix-cls: #{$ux-prefix}-layout;
 
 .#{$layout-prefix-cls} {
   position: relative;
-  min-height: 100%;
+  min-height: 100vh;
+  background-color: $layout-bg-color;
 
   // header
-  // ----------------------------------------------
   &-header {
-    display: block;
     position: relative;
-    min-height: $layout-header-height;
-    background: $layout-header-bg;
+    height: $layout-header-height;
+    background-color: $layout-header-bg-color;
     z-index: $zindex-layout-header;
-    box-shadow: $layout-header-box-shadow;
-    @include transition(left 0.2s, background-color 0.3s);
   }
 
   // sidebar
-  // ----------------------------------------------
-  &-sidebar-wrapper {
+  &-sidebar {
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     width: $layout-sidebar-width;
-    padding-top: $layout-header-height;
-    background: $layout-sidebar-bg;
-    @include transition(width 0.2s, background-color 0.3s);
-    z-index: $zindex-layout-sidebar;
-    box-shadow: $layout-sidebar-box-shadow;
-    overflow: hidden;
-  }
-
-  &-sidebar {
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  // hide scrollbar with pure css tricks.
-  // might use plugin like slimscroll to beautify scrollbar as well.
-  &-sidebar-wrapper.no-scrollbar &-sidebar {
-    margin-right: -17px;
-    overflow-y: scroll;
+    padding-top: $layout-header-height;
+    background-color: $layout-sidebar-bg-color;
+    z-index: $zindex-layout-sidebar;
+    transition: width .3s;
   }
 
-  // main
-  // ----------------------------------------------
-  &-main-wrapper {
-    // might need to specify the minimum height via javascript for compatibility reasons.
-    min-height: calc(100vh - #{$layout-header-height});
-    margin-left: $layout-sidebar-width;
-    padding-bottom: $layout-footer-height;
-    @include transition(margin-left 0.2s);
-  }
-
-  &-main {
-    padding: $layout-main-padding;
-  }
-
-  // footer
-  // ----------------------------------------------
+  // main, footer
+  &-main,
   &-footer {
-    position: absolute;
-    left: $layout-sidebar-width;
-    right: 0;
-    bottom: 0;
-    height: $layout-footer-height;
-    background: $layout-footer-bg;
-    box-shadow: $layout-footer-box-shadow;
-    @include transition(left 0.2s);
-  }
-
-  // no footer
-  // ----------------------------------------------
-  &.no-footer &-main-wrapper {
-    padding-bottom: 0;
-  }
-
-  // top navigation layout
-  // ----------------------------------------------
-  &-top-nav {
-    .#{$layout-prefix-cls}-main-wrapper {
-      margin-left: 0;
-    }
-
-    .#{$layout-prefix-cls}-footer {
-      left: 0;
-    }
+    margin-left: $layout-sidebar-width;
+    transition: margin-left .3s;
   }
 
   // side navigation layout
-  // ----------------------------------------------
-  &-side-nav {
-    .#{$layout-prefix-cls}-sidebar-wrapper {
+  // ---
+  &-side-navigation {
+    .#{$layout-prefix-cls}-sidebar {
       padding-top: 0;
+      z-index: $zindex-layout-sidebar-side-navigation;
     }
 
-    .#{$layout-prefix-cls}-main-wrapper {
-      // might need to specify the minimum height via javascript for compatibility reasons.
-      min-height: 100vh;
-    }
-  }
-
-  // header fixed
-  // ----------------------------------------------
-  &-header-fixed {
     .#{$layout-prefix-cls}-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-    }
-
-    .#{$layout-prefix-cls}-main-wrapper {
-      // might need to specify the minimum height via javascript for compatibility reasons.
-      min-height: 100vh;
-      padding-top: $layout-header-height;
+      z-index: $zindex-layout-header-side-navigation;
     }
   }
+}
 
-  // sidebar fixed
-  // ----------------------------------------------
-  &-sidebar-fixed {
-    &.#{$layout-prefix-cls}-layout-side-nav,
-    &.#{$layout-prefix-cls}-header-fixed {
-      .#{$layout-prefix-cls}-sidebar-wrapper {
-        position: fixed;
-      }
-    }
+// header fixed
+// ---
+.header-fixed {
+  .#{$layout-prefix-cls}-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: left .3s;
+  }
 
-    &.#{$layout-prefix-cls}-layout-side-nav.#{$layout-prefix-cls}-header-fixed
-      .#{$layout-prefix-cls}-header {
+  .#{$layout-prefix-cls}-main {
+    padding-top: $layout-header-height;
+  }
+
+  &.#{$layout-prefix-cls}-side-navigation {
+    .#{$layout-prefix-cls}-header {
       left: $layout-sidebar-width;
     }
   }
+}
 
-  // collapsed
-  // ----------------------------------------------
-  &-sidebar-collapsed {
-    .#{$layout-prefix-cls}-sidebar-wrapper {
-      width: $layout-sidebar-collapsed-width;
-    }
+// sidebar fixed
+// ---
+.sidebar-fixed {
+  .#{$layout-prefix-cls}-sidebar {
+    position: fixed;
+  }
+}
 
-    .#{$layout-prefix-cls}-main-wrapper {
-      margin-left: $layout-sidebar-collapsed-width;
-    }
+// sidebar collapsed
+// ---
+.sidebar-collapsed {
+  .#{$layout-prefix-cls}-sidebar {
+    width: $layout-sidebar-collapsed-width;
+  }
 
-    .#{$layout-prefix-cls}-footer {
-      left: $layout-sidebar-collapsed-width;
-    }
+  .#{$layout-prefix-cls}-main,
+  .#{$layout-prefix-cls}-footer {
+    margin-left: $layout-sidebar-collapsed-width;
+  }
 
-    &.#{$layout-prefix-cls}-layout-side-nav.#{$layout-prefix-cls}-header-fixed
-      .#{$layout-prefix-cls}-header {
+  &.#{$layout-prefix-cls}-side-navigation {
+    .#{$layout-prefix-cls}-header {
       left: $layout-sidebar-collapsed-width;
     }
   }
 }
 
-@import './dark';
+// no header
+// ---
+.no-header {
+  .#{$layout-prefix-cls}-header {
+    display: none;
+  }
+
+  .#{$layout-prefix-cls}-sidebar {
+    padding-top: 0;
+  }
+
+  .#{$layout-prefix-cls}-main {
+    padding-top: 0;
+  }
+}
+
+// no sidebar
+// ---
+.no-sidebar {
+  .#{$layout-prefix-cls}-sidebar {
+    display: none;
+  }
+
+  .#{$layout-prefix-cls}-main {
+    margin-left: 0;
+  }
+
+  &.#{$layout-prefix-cls}-side-navigation {
+    .#{$layout-prefix-cls}-header {
+      left: 0;
+    }
+  }
+}
+
+// no footer
+// ---
+.no-footer {
+  .#{$layout-prefix-cls}-footer {
+    display: none;
+  }
+}
