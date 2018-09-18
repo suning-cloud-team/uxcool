@@ -17,7 +17,7 @@
         <slot name="actions" />
       </div>
     </div>
-    <div :class="[prefixCls + '-body']"
+    <div :class="bodyClazz"
          :style="bodyStyle">
       <slot />
     </div>
@@ -60,6 +60,10 @@
         type: String,
         default: '',
       },
+      bodyClass: {
+        type: String,
+        default: '',
+      },
       bodyStyle: {
         type: Object,
         default() {
@@ -77,9 +81,7 @@
     },
     computed: {
       clazz() {
-        const {
-          prefixCls, flex, bordered, color
-        } = this;
+        const { prefixCls, flex, bordered, color } = this;
 
         return {
           [prefixCls]: true,
@@ -98,6 +100,11 @@
         }
 
         return styleObject;
+      },
+      bodyClazz() {
+        const { bodyClass, prefixCls } = this;
+
+        return [`${prefixCls}-body`, bodyClass];
       },
     },
     mounted() {
