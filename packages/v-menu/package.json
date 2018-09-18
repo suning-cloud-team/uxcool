@@ -23,6 +23,9 @@
   "peerDependencies": {
     "vue": "^2.*.*"
   },
+  "dependencies": {
+    "@suning/v-utils": "^1.0.15"
+  },
   "devDependencies": {
     "@suning/v-style": "^1.0.15",
     "@suning/v-tools": "^1.0.31"
