@@ -1,13 +1,16 @@
 <template>
   <div>
-    <ux-heading level="2"
-                id="api">API</ux-heading>
+    <ux-heading level="2">API</ux-heading>
 
-    <h3 class="mume-header"
-        id="uxupload">UxUpload</h3>
+    <h3 class="mume-header">UxUpload</h3>
 
     <p>上传组件仅支持
       <code>IE10+</code>及现代浏览器</p>
+    <blockquote>
+      <p>后端代码,可参考:
+        <a href="https://github.com/blueimp/jQuery-File-Upload/blob/master/server/php/UploadHandler.php">jQuery-File-Upload</a>
+      </p>
+    </blockquote>
     <h4 class="mume-header"
         id="props">Props</h4>
 
@@ -26,6 +29,15 @@
           <td>已上传文件列表(v-model)</td>
           <td>Array</td>
           <td></td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td>上传方式, 可选值:
+            <code>select</code>,
+            <code>drag</code>
+          </td>
+          <td>String</td>
+          <td>'select'</td>
         </tr>
         <tr>
           <td>show-upload-list</td>
@@ -154,27 +166,27 @@
           <td>Boolean</td>
           <td>false</td>
         </tr>
+        <tr>
+          <td>chunk</td>
+          <td>是否 分片上传</td>
+          <td>Boolean</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>max-chunk-size</td>
+          <td>分片大小</td>
+          <td>String|Number</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>uploaded-bytes</td>
+          <td>已上传字节数, 使用该属性可实现断点续传</td>
+          <td>String|Number|Function=&gt;Promise</td>
+          <td>0</td>
+        </tr>
       </tbody>
     </table>
-    <h4 class="mume-header"
-        id="slots">Slots</h4>
-
-    <table class="api-table">
-      <thead>
-        <tr>
-          <th>名称</th>
-          <th>描述</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>extra</td>
-          <td>自定义额外行为</td>
-        </tr>
-      </tbody>
-    </table>
-    <h4 class="mume-header"
-        id="events">Events</h4>
+    <h4 class="mume-header">Events</h4>
 
     <table class="api-table">
       <thead>
@@ -196,6 +208,11 @@
           <td>remove</td>
           <td>移除文件时回调</td>
           <td>Function(file, fileList)</td>
+        </tr>
+        <tr>
+          <td>progress</td>
+          <td>上传进度改变时触发</td>
+          <td>Function(e, file, fileList)</td>
         </tr>
       </tbody>
     </table>
