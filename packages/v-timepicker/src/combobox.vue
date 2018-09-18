@@ -27,6 +27,7 @@
 
 <script>
   import { getHours, getMinutes, getSeconds, setHours, setMinutes, setSeconds } from 'date-fns';
+  import { leftPad } from '@suning/v-utils';
   import VSelect from './select.vue';
 
   export default {
@@ -103,7 +104,7 @@
     methods: {
       genItem(val, disabledOpts) {
         const item = {};
-        item.value = `${val}`.padStart(2, '0');
+        item.value = leftPad(`${val}`, 2, '0');
         if (disabledOpts && disabledOpts.indexOf(val) !== -1) {
           item.disabled = true;
         }
