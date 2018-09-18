@@ -11,7 +11,7 @@ export const ENV_PRE = 'PRE';
 export const ENV_PRD = 'PRD';
 
 // node服务器地址
-export const DEV_SERVER_URL = 'http://10.37.45.157:3000';
+export const DEV_SERVER_URL = 'http://localhost:3000';
 
 export const SIT_SERVER_URL = 'http://10.37.45.157:3000';
 

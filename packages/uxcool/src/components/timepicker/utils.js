@@ -1,5 +1,5 @@
 import { getHours, getMinutes, getSeconds } from 'date-fns';
-import { isFunction, raf } from '@suning/v-utils';
+import { isFunction, raf, leftPad } from '@suning/v-utils';
 
 const FIELD_HANDLE_METHODS = {
   hour: getHours,
@@ -8,15 +8,6 @@ const FIELD_HANDLE_METHODS = {
 };
 
 export function noop() {}
-
-export function leftPad(str, len = 2, fill = '0') {
-  let nStr = String(str);
-
-  while (nStr.length < len) {
-    nStr = `${fill}${nStr}`;
-  }
-  return nStr;
-}
 
 export function getValueByFieldName(fieldName, value) {
   const ret = -1;

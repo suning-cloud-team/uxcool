@@ -49,7 +49,8 @@
     </div>
 
     <div class="demo">
-      <ux-menu style="width:200px;">
+      <ux-menu style="width:200px;"
+               @click="onMenuClick">
         <ux-menu-item name="item-1">
           item-1
         </ux-menu-item>
@@ -164,6 +165,11 @@
       setTimeout(() => {
         this.openKeys = ['sub-menu-3'];
       }, 1500);
+    },
+    methods: {
+      onMenuClick(...args) {
+        console.log('onMenuClick', ...args);
+      },
     },
   };
 </script>

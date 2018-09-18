@@ -137,6 +137,10 @@
         type: String,
         default: '',
       },
+      getPopupContainer: {
+        type: Function,
+        default: null,
+      },
     },
     data() {
       return {

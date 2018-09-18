@@ -4,12 +4,13 @@
       :style="[paddingStyle]"
       @mouseenter="onMouseEnter"
       @mouseleave="onMouseLeave"
-      @click="onClick($event)">
+      @click="debounceOnClick">
     <slot />
   </li>
 </template>
 
 <script>
+  import { debounce } from '@suning/v-utils';
   import commonMixin from './mixins/common';
 
   export default {
@@ -51,6 +52,7 @@
       },
     },
     created() {
+      this.debounceOnClick = debounce(this.onClick, 50);
       this.rootMenu.addDescendants(this);
     },
     beforeDestroy() {

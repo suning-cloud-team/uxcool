@@ -2,7 +2,10 @@
   <article class="doc">
     <h1 class="ux-heading">Card
       <span class="subtitle">卡片</span>
+      <sup class="deprecated">Deprecated</sup>
     </h1>
+
+    <blockquote>不推荐使用，将在正式版中废弃该组件，请优先使用高级卡片组件。</blockquote>
 
     <ux-heading level="2"
                 id="overview">概述</ux-heading>
