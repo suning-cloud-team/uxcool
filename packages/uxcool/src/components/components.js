@@ -95,3 +95,5 @@ export { default as UxCalendar } from './calendar';
 export { default as UxUpload } from './upload';
 
 export * from './card';
+
+export { default as UxLayout } from './layout';
