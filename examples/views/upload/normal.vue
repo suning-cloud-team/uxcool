@@ -1,8 +1,7 @@
 <template>
   <div class="demo">
     <h4>normal</h4>
-    <ux-upload name="abc"
-               action="/upload">
+    <ux-upload action="/upload">
       <ux-button>Click to Upload</ux-button>
     </ux-upload>
   </div>

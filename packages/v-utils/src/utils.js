@@ -24,6 +24,15 @@ export function isArray(arr) {
   return Array.isArray(arr);
 }
 
+export function leftPad(str, len = 2, fill = '0') {
+  let nStr = String(str);
+
+  while (nStr.length < len) {
+    nStr = `${fill}${nStr}`;
+  }
+  return nStr;
+}
+
 export {
   raf,
   isPlainObject,

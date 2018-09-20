@@ -7,6 +7,7 @@
            :builtin-placements="buildinPlacements"
            :popup-transition-name="transitionName"
            :popup-animation="animation"
+           :get-popup-container="getPopupContainer"
            destroy-popup-on-hide
            @on-popup-visible-change="onPopupVisible">
     <template slot="trigger">
@@ -118,6 +119,14 @@
         type: String,
         default: '',
       },
+      getPopupContainer: {
+        type: Function,
+        default: null,
+      },
+      okConfirm: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -156,6 +165,14 @@
           ? `${formatDate(start, dateFormat)}~${formatDate(end, dateFormat)}`
           : '';
       },
+      isHasOkButton() {
+        const { showTime, showOk } = this;
+        return showTime || showOk;
+      },
+      isOkConfirm() {
+        const { isHasOkButton, okConfirm } = this;
+        return isHasOkButton && okConfirm;
+      },
     },
     watch: {
       selectedValue(nVal, oVal) {
@@ -188,12 +205,14 @@
         }
       },
       onQuickSelect(values) {
-        this.innerValues = values;
-        this.onChange(values);
+        this.onSelect(values);
       },
       onSelect(values) {
+        const { isOkConfirm, isHasOkButton, onChange } = this;
         this.innerValues = values;
-        this.onChange(values, !this.showOk && !this.showTime);
+        if (!isOkConfirm) {
+          onChange(values, !isHasOkButton);
+        }
       },
       onPopupVisible(visible) {
         if (visible) {
@@ -203,9 +222,15 @@
         this.$emit('open-change', visible);
       },
       onOk(values) {
-        this.setOpen(false);
-        if (this.showOk || this.showTime) {
+        const {
+          setOpen, isHasOkButton, isOkConfirm, onChange
+        } = this;
+        setOpen(false);
+        if (isHasOkButton) {
           this.$emit('ok', values);
+          if (isOkConfirm) {
+            onChange(values);
+          }
         }
       },
     },

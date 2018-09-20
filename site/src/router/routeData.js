@@ -261,6 +261,7 @@ export default [
           title: 'Card',
           subTitle: '卡片',
           group: 'business',
+          deprecated: true,
         },
         component: Card,
       },

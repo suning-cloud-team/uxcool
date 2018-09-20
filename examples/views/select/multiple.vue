@@ -11,7 +11,8 @@
                allow-clear
                @change="onChange"
                @select="onSelect"
-               @deselect="onDeselect">
+               @deselect="onDeselect"
+               @search="onSearch">
       <ux-option value="A"
                  label="A1"
                  disabled/>
@@ -63,7 +64,8 @@
     created() {
       setTimeout(() => {
         this.isShow = true;
-        this.values = ['B', 'A'];
+        // this.values = ['B', 'A'];
+        this.values = [];
       }, 1500);
     },
     methods: {
@@ -75,6 +77,9 @@
       },
       onChange(...args) {
         console.log('onChange', ...args);
+      },
+      onSearch(...args) {
+        console.log('onSearch', ...args);
       },
     },
   };

@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-align",
-  "version": "1.0.16",
+  "version": "1.0.18",
   "description": "html source node与 target node自动对齐",
   "main": "./cjs/index.js",
   "module": "./es/index.js",
@@ -22,7 +22,7 @@
     "vue": "^2.*.*"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.15",
+    "@suning/v-utils": "^1.0.17",
     "dom-align": "^1.6.7"
   },
   "devDependencies": {

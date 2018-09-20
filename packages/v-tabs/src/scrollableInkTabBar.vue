@@ -1,4 +1,5 @@
 <script>
+  import { HTMLElementType } from '@suning/v-utils';
   import debounce from 'lodash/debounce';
   import InkTabBar from './inkTabBar.vue';
   import {
@@ -15,7 +16,7 @@
       prefixCls: String,
       tabs: Array,
       tabBarPosition: String,
-      rootNode: HTMLElement,
+      rootNode: HTMLElementType(),
       scrollAnimated: {
         type: Boolean,
         default: true,

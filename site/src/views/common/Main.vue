@@ -1,36 +1,31 @@
 <template>
-  <main class="ux-layout-main-wrapper"
-        style="margin-left: 230px;">
-    <slot name="header"></slot>
-    <div class="ux-layout-main"
-         style="padding: 25px 0 25px 25px;">
-      <slot></slot>
-      <div class="footer-nav">
-        <router-link tabindex="-1"
-                     :class="linkClasses(i)"
-                     v-if="nav"
-                     v-for="(nav,i) in footerNavs"
-                     :key="i"
-                     :to="{name: nav.name}">
-          <template v-if="i===0">
-            <ux-icon type="arrow_left"></ux-icon>{{ nav.title }}
-          </template>
-          <template v-else>
-            {{ nav.title }}
-            <ux-icon type="arrow_right"></ux-icon>
-          </template>
+  <div class="app-main">
+    <slot></slot>
+    <div class="footer-nav">
+      <router-link tabindex="-1"
+                   :class="linkClasses(i)"
+                   v-if="nav"
+                   v-for="(nav,i) in footerNavs"
+                   :key="i"
+                   :to="{name: nav.name}">
+        <template v-if="i===0">
+          <ux-icon type="arrow_left"></ux-icon>{{ nav.title }}
+        </template>
+        <template v-else>
+          {{ nav.title }}
+          <ux-icon type="arrow_right"></ux-icon>
+        </template>
 
-        </router-link>
-      </div>
+      </router-link>
     </div>
 
-    <input type="hidden"
-           id="pagename"
-           v-model="pageName">
-    <input type="hidden"
-           id="resourceType"
+    <input id="pagename"
+           v-model="pageName"
+           type="hidden">
+    <input id="resourceType"
+           type="hidden"
            value="uxcoolVue">
-  </main>
+  </div>
 </template>
 <script>
   import { mapState, mapGetters } from 'vuex';
@@ -48,30 +43,8 @@
   };
 </script>
 
-<style lang="scss" scoped>
-  // .ux-layout-footer-nav {
-  //   padding: 20px;
-  //   text-align: right;
-  //   overflow: hidden;
-  //   .left,
-  //   .right {
-  //     &:focus {
-  //       text-decoration: none;
-  //     }
-  //   }
-  //   .left {
-  //     // float: left;
-  //     .fu {
-  //       margin-right: 8px;
-  //     }
-  //   }
-
-  //   .right {
-  //     // float: right;
-  //     margin-left: 30px;
-  //     .fu {
-  //       margin-left: 8px;
-  //     }
-  //   }
-  // }
+<style lang="scss">
+  .footer-nav {
+    background: #f8f8f8;
+  }
 </style>

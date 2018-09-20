@@ -1,22 +1,12 @@
 <template>
-  <div :class="wrapperClass">
-    <template v-if="layout === 'default'">
-      <ux-header></ux-header>
-      <ux-sidebar :class="{'no-scrollbar': noScrollbar}"></ux-sidebar>
-      <ux-main>
-        <router-view></router-view>
-      </ux-main>
-      <ux-footer></ux-footer>
-    </template>
-    <template v-else>
-      <ux-sidebar :class="{'no-scrollbar': noScrollbar}"></ux-sidebar>
-      <ux-main>
-        <ux-header slot="header"></ux-header>
-        <router-view></router-view>
-      </ux-main>
-      <ux-footer></ux-footer>
-    </template>
-  </div>
+  <ux-layout class="ux-doc">
+    <ux-header slot="header" />
+    <ux-sidebar slot="sidebar" />
+    <ux-footer slot="footer" />
+    <ux-main>
+      <router-view />
+    </ux-main>
+  </ux-layout>
 </template>
 
 <script>
@@ -80,30 +70,13 @@
   }
 
   export default {
-    data() {
-      return {
-        headerFixed: true,
-        sidebarFixed: true,
-        sidebarCollapsed: false,
-        noScrollbar: true,
-        noFooter: false,
-        layout: 'default', // 'default' | 'side
-      };
+    components: {
+      uxHeader,
+      uxSidebar,
+      uxMain,
+      uxFooter,
     },
     computed: {
-      wrapperClass() {
-        return [
-          `${prefixCls}`,
-          // `${prefixCls}-${this.$store.state.theme}`,
-          {
-            [`${prefixCls}-header-fixed`]: this.headerFixed,
-            [`${prefixCls}-sidebar-fixed`]: this.sidebarFixed,
-            [`${prefixCls}-sidebar-collapsed`]: this.sidebarCollapsed,
-            [`${prefixCls}-side-nav`]: this.layout === 'side',
-            'no-layout-footer': this.noFooter,
-          },
-        ];
-      },
       theme() {
         return this.$store.state.theme;
       },
@@ -119,12 +92,6 @@
         },
         immediate: true,
       },
-    },
-    components: {
-      uxHeader,
-      uxSidebar,
-      uxMain,
-      uxFooter,
     },
   };
 </script>

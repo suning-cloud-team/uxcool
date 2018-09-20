@@ -3,13 +3,27 @@
 // 先临时打个深色补丁，用复写的方式把深色主题写一遍吧，后面有时间定制主题
 
 .ux-layout-dark {
+  .app-header {
+    background: #1f344f;
+    box-shadow: 0 1px 0 #374b63;
+  }
+
+  .footer-nav {
+    background: #1f344f;
+  }
+
+  .app-footer {
+    background: #1f344f;
+    box-shadow: 0 0 1px #374b63;
+  }
+
   .version,
   .copyright {
     color: rgba(255, 255, 255, 0.6);
   }
 
   .doc {
-    background: $layout-header-bg-dark;
+    background: #1f344f;
     color: $text-color-secondary-dark;
 
     h1,

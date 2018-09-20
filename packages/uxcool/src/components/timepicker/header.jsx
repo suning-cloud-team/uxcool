@@ -1,6 +1,7 @@
 import { format as formatFn, isEqual as isDateEqual, getYear, getMonth, getDate } from 'date-fns';
+import { leftPad } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
-import { updatePortalElement, parseDate, leftPad } from './utils';
+import { updatePortalElement, parseDate } from './utils';
 import SubMixin from './mixins/sub';
 
 export default {

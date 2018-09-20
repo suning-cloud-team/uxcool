@@ -9,6 +9,8 @@
     <control-demo />
     <limit-demo />
     <manual-demo />
+    <drag-demo />
+    <chunk-demo />
   </div>
 </template>
 
@@ -22,6 +24,8 @@
   import ControlDemo from './control.vue';
   import LimitDemo from './limit.vue';
   import ManualDemo from './manual.vue';
+  import DragDemo from './drag.vue';
+  import ChunkDemo from './chunk.vue';
 
   export default {
     components: {
@@ -34,6 +38,8 @@
       ControlDemo,
       LimitDemo,
       ManualDemo,
+      DragDemo,
+      ChunkDemo,
     },
   };
 </script>

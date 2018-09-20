@@ -1,9 +1,10 @@
-@import '../../style/themes/default';
+@import '../../style/themes/index';
 @import '../../style/mixins/index';
 
 $box-prefix-cls: #{$ux-prefix}-box;
 
 @mixin make-color-solid-box($colors) {
+
   @each $key,
   $color in $colors {
     &-#{$key} &-header {
@@ -14,9 +15,9 @@ $box-prefix-cls: #{$ux-prefix}-box;
 
 .#{$box-prefix-cls} {
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: $box-margin-bottom;
   background: #fff;
-  border-radius: 3px;
+  border-radius: $box-border-radius;
 
   &-header {
     position: relative;
@@ -49,11 +50,15 @@ $box-prefix-cls: #{$ux-prefix}-box;
   &-body,
   &-footer {
     padding: 10px 20px;
-  } // bordered
+  }
+
+  // bordered
   &-bordered &-header {
     margin-bottom: -1px;
     border-bottom: 1px solid #eee;
-  } // solid
+  }
+
+  // solid
   &-solid &-header {
     margin: 0;
     padding: 0 20px;
@@ -71,10 +76,13 @@ $box-prefix-cls: #{$ux-prefix}-box;
       color: #fff;
     }
   }
+
   @include make-color-solid-box($colors); // flex
+
   &-flex &-header {
     display: flex;
   }
+
   &-flex &-title {
     flex: 1;
   }

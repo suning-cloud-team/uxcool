@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-tabs",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository": "git@git.cnsuning.com:fedc/v-tabs.git",
@@ -26,6 +26,7 @@
     "@suning/v-tools": "^1.0.31"
   },
   "dependencies": {
+    "@suning/v-utils": "^1.0.17",
     "lodash": "^4.17.4"
   }
 }

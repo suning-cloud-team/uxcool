@@ -10,6 +10,7 @@
       <br> {{ date1 }}
       <ux-range-date-picker v-model="date1"
                             :theme="theme"
+                            :open-value="openValue"
                             @calendar-change="onCalendarChange"
                             @change="onChange" />
     </div>
@@ -82,6 +83,8 @@
     </div>
 
     <month-demo />
+    <popup-container-demo />
+    <ok-confirm-demo />
   </div>
 </template>
 
@@ -99,12 +102,16 @@
   } from 'date-fns';
   import { Datepicker } from '@suning/uxcool';
   import MonthDemo from './month.vue';
+  import PopupContainerDemo from './popupContainer.vue';
+  import OkConfirmDemo from './okConfirm.vue';
 
   export default {
     components: {
       UxDatePicker: Datepicker,
       UxRangeDatePicker: Datepicker.Range,
       MonthDemo,
+      PopupContainerDemo,
+      OkConfirmDemo,
     },
     data() {
       return {
@@ -121,6 +128,7 @@
           当月: [startOfMonth(new Date()), endOfMonth(new Date())],
           未来一月: [new Date(), addMonths(new Date(), 1)],
         },
+        openValue: [subMonths(new Date(), 1), addMonths(new Date(), 1)],
       };
     },
     methods: {

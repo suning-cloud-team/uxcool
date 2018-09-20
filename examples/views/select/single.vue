@@ -9,7 +9,8 @@
                show-search
                @change="onChange"
                @select="onSelect"
-               @deselect="onDeselect">
+               @deselect="onDeselect"
+               @search="onSearch">
       <span slot="renderLabel"
             slot-scope="{label,value}">
         <ux-icon type="circle_selected" /> {{ label||value }}
@@ -43,13 +44,14 @@
     },
     data() {
       return {
-        value: '',
+        value: 'A',
         option2: 'c31',
       };
     },
     created() {
       setTimeout(() => {
         this.option2 = 'd41';
+        this.value = [];
       }, 3500);
     },
     methods: {
@@ -69,6 +71,9 @@
       },
       onChange(...args) {
         console.log('onChange', ...args);
+      },
+      onSearch(...args) {
+        console.log('onSearch', ...args);
       },
     },
   };

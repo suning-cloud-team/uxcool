@@ -7,6 +7,7 @@
            :builtin-placements="buildinPlacements"
            :popup-transition-name="transitionName"
            :popup-animation="animation"
+           :get-popup-container="getPopupContainer"
            destroy-popup-on-hide
            @on-popup-visible-change="onPopupVisible">
     <template slot="trigger">
@@ -115,6 +116,14 @@
         type: String,
         default: '',
       },
+      getPopupContainer: {
+        type: Function,
+        default: null,
+      },
+      okConfirm: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -162,6 +171,14 @@
         const { format, isShowTime } = this;
         return format || (isShowTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD');
       },
+      isHasOkButton() {
+        const { showTime, showOk } = this;
+        return showTime || showOk;
+      },
+      isOkConfirm() {
+        const { isHasOkButton, okConfirm } = this;
+        return isHasOkButton && okConfirm;
+      },
     },
     watch: {
       value(nVal, oVal) {
@@ -189,13 +206,19 @@
       setOpen(flag) {
         this.open = flag;
       },
-      onSelect(val) {
-        const { dateFormat } = this;
-        this.innerValue = val;
+      onChange(val, hide = true) {
+        const { setOpen, dateFormat } = this;
+        this.inputValue = val;
         this.$emit('change', val, formatDate(val, dateFormat));
-        if (!this.showOk && !this.showTime) {
-          this.inputValue = val;
-          this.setOpen(false);
+        if (hide) {
+          setOpen(false);
+        }
+      },
+      onSelect(val) {
+        const { isOkConfirm, onChange } = this;
+        this.innerValue = val;
+        if (!isOkConfirm) {
+          onChange(val);
         }
       },
       onFocus(e) {
@@ -209,10 +232,13 @@
         this.$emit('open-change', visible);
       },
       onOk(value) {
+        const { isHasOkButton, isOkConfirm, onChange } = this;
         this.setOpen(false);
-        if (this.showTime || this.showOk) {
-          this.inputValue = value;
+        if (isHasOkButton) {
           this.$emit('ok', value);
+          if (isOkConfirm) {
+            onChange(value);
+          }
         }
       },
     },
