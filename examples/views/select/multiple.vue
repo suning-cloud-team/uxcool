@@ -11,7 +11,8 @@
                allow-clear
                @change="onChange"
                @select="onSelect"
-               @deselect="onDeselect">
+               @deselect="onDeselect"
+               @search="onSearch">
       <ux-option value="A"
                  label="A1"
                  disabled/>
@@ -76,6 +77,9 @@
       },
       onChange(...args) {
         console.log('onChange', ...args);
+      },
+      onSearch(...args) {
+        console.log('onSearch', ...args);
       },
     },
   };
