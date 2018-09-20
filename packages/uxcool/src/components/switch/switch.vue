@@ -74,6 +74,10 @@
         type: Boolean,
         default: false,
       },
+      control: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -137,9 +141,11 @@
         }
       },
       onClick() {
-        const { innerChecked } = this;
+        const { control, innerChecked } = this;
         const checked = !innerChecked;
-        this.setChecked(checked);
+        if (!control) {
+          this.setChecked(checked);
+        }
         this.$emit('click', checked);
       },
       onMouseup(e) {

@@ -7,6 +7,7 @@
                :not-found-content="null"
                :filter-option="false"
                show-search
+               allow-clear
                style="width:200px;"
                @search="onSearch" />
     <h4>remote filter multiple</h4>
@@ -45,6 +46,7 @@
     },
     methods: {
       onSearch(val) {
+        console.log('filterOption onSearch', val);
         this.list = val ? this.source.filter(v => v.value.indexOf(val) > -1) : [];
       },
     },

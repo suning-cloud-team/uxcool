@@ -435,7 +435,7 @@ export default {
         setSearchInputValue(inputValue, false, false);
       } else if (autoClearSearchValue) {
         setTimeout(() => {
-          clearSearchInputValue();
+          clearSearchInputValue(false);
         }, 100);
       }
 
@@ -467,7 +467,7 @@ export default {
       const { removeSelected, clearSearchInputValue, autoClearSearchValue } = this;
       removeSelected(name);
       if (autoClearSearchValue) {
-        clearSearchInputValue();
+        clearSearchInputValue(false);
       }
     },
     onClear(e) {

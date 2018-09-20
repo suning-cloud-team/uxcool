@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  import { HTMLElementType } from '@suning/v-utils';
   import { offset, isTransform3dSupported } from './utils';
 
   export default {
@@ -12,8 +13,8 @@
     props: {
       prefixCls: String,
       inkBarAnimated: { type: Boolean, default: true },
-      wrapNode: HTMLElement,
-      activeTab: HTMLElement,
+      wrapNode: HTMLElementType(),
+      activeTab: HTMLElementType(),
       tabBarPosition: String,
       size: String,
     },

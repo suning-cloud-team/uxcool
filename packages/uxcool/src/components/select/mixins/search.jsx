@@ -27,9 +27,9 @@ export default {
         setInnerValue(value);
       }
     },
-    clearSearchInputValue() {
+    clearSearchInputValue(triggerSearch = true) {
       const { setSearchInputValue, filterOption } = this;
-      setSearchInputValue('', filterOption !== false, false);
+      setSearchInputValue('', triggerSearch && filterOption !== false, false);
     },
     searchFilterOptions(options = []) {
       const { searchInputValue, optionFilterProp, filterOption } = this;

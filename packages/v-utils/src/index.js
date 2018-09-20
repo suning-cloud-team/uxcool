@@ -12,6 +12,8 @@ export { default as browser } from './browser';
 
 export { default as CollapseTransition } from './transition/collapseTransition';
 
+export * from './ssr';
+
 const warned = {};
 
 export function warning(valid = true, message = '', ...args) {

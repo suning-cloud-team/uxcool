@@ -1,8 +1,5 @@
 <template>
   <v-range-date-picker v-bind="bindProps"
-                       :selected-value="innerValue"
-                       :picker-prefix-cls="`${prefixCls}-picker-container`"
-                       :date-input-placeholder="[startPlaceholder,endPlaceholder]"
                        v-on="bindListeners"
                        @change="onChange">
     <template slot="trigger">
@@ -141,6 +138,15 @@
         type: Function,
         default: null,
       },
+      // 当未设置 selectedValue 时,通过此项设置弹窗默认值
+      openValue: {
+        type: Array,
+        default: undefined,
+      },
+      okConfirm: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -149,7 +155,16 @@
     },
     computed: {
       bindProps() {
-        return omit(this.$props, ['selectedValue', 'placeholder', 'allowClear']);
+        const {
+          prefixCls, innerValue, startPlaceholder, endPlaceholder, openValue
+        } = this;
+        return {
+          ...this.$props,
+          selectedValue: innerValue,
+          pickerPrefixCls: `${prefixCls}-picker-container`,
+          dateInputPlaceholder: [startPlaceholder, endPlaceholder],
+          value: openValue || undefined,
+        };
       },
       bindListeners() {
         return omit(this.$listeners, ['change']);

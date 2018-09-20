@@ -64,10 +64,6 @@ export default {
       type: Function,
       default: null,
     },
-    preventGlobalDrag: {
-      type: Boolean,
-      default: true,
-    },
   },
   data() {
     return {
