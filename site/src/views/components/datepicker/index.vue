@@ -15,8 +15,13 @@
 
     <ux-heading level="2"
                 id="api">API</ux-heading>
+    <h3 class="mume-header"
+        id="uxdatepicker">UxDatePicker</h3>
+
+    <h4 class="mume-header"
+        id="props">Props</h4>
+
     <table class="api-table">
-      <caption>UxDatePicker Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -30,8 +35,7 @@
           <td>locale</td>
           <td>国际化配置</td>
           <td>Object</td>
-          <td>import locale from ‘@suning/uxcool/es/locale/en_US’
-          </td>
+          <td>import locale from '@suning/uxcool/es/datepicker/locale/zh_CN'</td>
         </tr>
         <tr>
           <td>theme</td>
@@ -105,10 +109,24 @@
           <td>String</td>
           <td></td>
         </tr>
+        <tr>
+          <td>get-popup-container</td>
+          <td>自定义下拉面板包裹容器</td>
+          <td>Function</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>ok-confirm</td>
+          <td>是否点击 ok 按钮时才更新值</td>
+          <td>Boolean</td>
+          <td>false</td>
+        </tr>
       </tbody>
     </table>
+    <h4 class="mume-header"
+        id="events">Events</h4>
+
     <table class="api-table">
-      <caption>UxDatePicker Events</caption>
       <thead>
         <tr>
           <th>事件名</th>
@@ -134,8 +152,13 @@
         </tr>
       </tbody>
     </table>
+    <h3 class="mume-header"
+        id="uxrangedatepicker">UxRangeDatePicker</h3>
+
+    <h4 class="mume-header"
+        id="props-1">Props</h4>
+
     <table class="api-table">
-      <caption>UxRangeDatePicker Props</caption>
       <thead>
         <tr>
           <th>参数名</th>
@@ -149,7 +172,7 @@
           <td>locale</td>
           <td>国际化配置</td>
           <td>Object</td>
-          <td>import locale from ‘@suning/uxcool/es/locale/en_US’</td>
+          <td>import locale from '@suning/uxcool/es/datepicker/locale/zh_CN'</td>
         </tr>
         <tr>
           <td>theme</td>
@@ -166,8 +189,7 @@
         <tr>
           <td>selectedValue</td>
           <td>当前选中值</td>
-          <td>Array&lt;date&gt;
-          </td>
+          <td>Array&lt;Date&gt;</td>
           <td></td>
         </tr>
         <tr>
@@ -221,19 +243,33 @@
         <tr>
           <td>placeholder</td>
           <td>输入框提示文字</td>
-          <td>[String,Array]</td>
+          <td>[String ,Array ]</td>
           <td></td>
         </tr>
         <tr>
           <td>ranges</td>
           <td>预设时间范围</td>
-          <td>Object{String: (Date:[] \| ()=>Date:[])</td>
+          <td>Object{String: (Date:[] | ()=&gt;Date:[])}</td>
           <td></td>
+        </tr>
+        <tr>
+          <td>get-popup-container</td>
+          <td>自定义下拉面板包裹容器</td>
+          <td>Function</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>ok-confirm</td>
+          <td>是否点击 ok 按钮时才更新值</td>
+          <td>Boolean</td>
+          <td>false</td>
         </tr>
       </tbody>
     </table>
+    <h4 class="mume-header"
+        id="events-1">Events</h4>
+
     <table class="api-table">
-      <caption>UxRangeDatePicker Events</caption>
       <thead>
         <tr>
           <th>事件名</th>

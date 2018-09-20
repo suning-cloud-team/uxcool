@@ -99,6 +99,10 @@
         type: Function,
         default: null,
       },
+      okConfirm: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
