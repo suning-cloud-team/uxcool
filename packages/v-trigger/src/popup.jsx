@@ -1,3 +1,4 @@
+import { HTMLElementType } from '@suning/v-utils';
 import Align from '@suning/v-align';
 
 export default {
@@ -28,7 +29,7 @@ export default {
       },
     },
     rootDomNode: {
-      type: HTMLElement,
+      type: HTMLElementType(),
       default: null,
     },
     align: {

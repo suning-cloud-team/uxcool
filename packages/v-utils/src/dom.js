@@ -1,4 +1,5 @@
 import { isFunction } from './utils';
+import { isServerRendering } from './ssr';
 
 export function addEventListener(element, eventName, fn, useCapture = false) {
   element.addEventListener(eventName, fn, useCapture);
@@ -129,4 +130,11 @@ export function updatePortalElement(portalElement, cb) {
     cb();
   }
   nElement.style.display = originDp;
+}
+
+// compatibility ssr
+export function HTMLElementType() {
+  const isSSR = isServerRendering();
+
+  return isSSR ? Object : window.HTMLElement;
 }
