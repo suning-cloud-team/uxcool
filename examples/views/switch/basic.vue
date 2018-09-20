@@ -61,17 +61,21 @@
     <h6>v-model</h6>
     {{modelChecked}}
     <ux-switch v-model="modelChecked" />
+
+    <control-demo />
   </div>
 </template>
 
 <script>
   import { Switch, Icon, Button } from '@suning/uxcool';
+  import ControlDemo from './control.vue';
 
   export default {
     components: {
       UxSwitch: Switch,
       UxIcon: Icon,
       UxButton: Button,
+      ControlDemo,
     },
     data() {
       return {
