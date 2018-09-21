@@ -180,7 +180,7 @@ export default {
           };
 
           // Validator.isTargetRule 规则, 使用 alias
-          if (el) {
+          if (el && el.setAttribute) {
             el.setAttribute('data-vv-as', normalizeAlias);
           }
         }
