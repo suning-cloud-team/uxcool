@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-datepicker",
-  "version": "1.0.47",
+  "version": "1.0.48",
   "description": "datepicker 基础组件",
   "main": "cjs/index.js",
   "module": "es/index.js",
