@@ -85,7 +85,7 @@
         </div>
       </div>
       <div :class="footerClasses">
-        <div v-if="showToday || hasTimePicker || isShowOk"
+        <div v-if="showToday || isShowOk"
              :class="`${prefixCls}-footer-btn`">
           <today-button v-if="showToday"
                         :prefix-cls="prefixCls"
