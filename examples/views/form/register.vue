@@ -9,25 +9,24 @@
           <ux-field-decorator name="email"
                               rules="required|email">
             <ux-input v-model="form.email">
-              <ux-icon type="mail"
-                       slot="prefix" />
+              <ux-icon slot="prefix"
+                       type="mail" />
             </ux-input>
           </ux-field-decorator>
         </ux-form-item>
         <ux-form-item label="Password">
-          <ux-field-decorator name="password"
-                              :rules="{required:true, regex: /^\d{6,}$/i}"
-                              :validator="{alias: 'Password' }">
+          <ux-field-decorator :rules="{required:true, regex: /^\d{6,}$/i}"
+                              name="password">
             <ux-input type="password"
                       v-model="form.password" />
           </ux-field-decorator>
         </ux-form-item>
         <ux-form-item label="Confirm Password">
-          <ux-field-decorator name="confirm"
-                              rules="required|confirmed:password"
-                              :validator="{alias: 'Confirm Password' }">
-            <ux-input type="password"
-                      v-model="form.confirm" />
+          <ux-field-decorator :validator="{alias: 'Confirm Password' }"
+                              name="confirm"
+                              rules="required|confirmed:password">
+            <ux-input v-model="form.confirm"
+                      type="password" />
           </ux-field-decorator>
         </ux-form-item>
         <ux-form-item label="Nickname">
@@ -44,7 +43,8 @@
         </ux-form-item>
         <ux-form-item label="Phone Number">
           <ux-field-decorator name="phone"
-                              rules="required">
+                              rules="required"
+                              alias="input nnnn">
             <ux-input v-model="form.phone">
               <ux-field-decorator slot="addonBefore"
                                   name="phoneSelect">
@@ -72,6 +72,16 @@
             </ux-col>
           </ux-row>
         </ux-form-item>
+        <ux-form-item label="测试tree">
+          <ux-field-decorator name="TreeSelect"
+                              rules="required">
+            <ux-tree-select v-model="form.treeSelect"
+                            :tree-data="treeData"
+                            show-search
+                            style="width:100%" />
+          </ux-field-decorator>
+
+        </ux-form-item>
         <ux-form-item label="Switch">
           <ux-field-decorator :rules="{ required: true, message:'请选择Switch的值'}"
                               name="switch">
@@ -90,7 +100,18 @@
 </template>
 
 <script>
-  import { Form, Switch, Input, Grid, Button, Icon, Checkbox, Tooltip, Select } from '@suning/uxcool';
+  import {
+    Form,
+    Switch,
+    Input,
+    Grid,
+    Button,
+    Icon,
+    Checkbox,
+    Tooltip,
+    Select,
+    TreeSelect,
+  } from '@suning/uxcool';
 
   // Validator.localize('zh_CN', {
   //   attributes: {
@@ -114,6 +135,7 @@
       UxTooltip: Tooltip,
       UxRow: Grid.Row,
       UxCol: Grid.Col,
+      UxTreeSelect: TreeSelect,
     },
     data() {
       return {
@@ -128,7 +150,36 @@
           phoneSelect: '87',
           captcha: '',
           switch: false,
+          treeSelect: '',
         },
+        treeData: [
+          {
+            title: '0-0',
+            key: '0-0',
+            children: [
+              {
+                title: '0-0-0',
+                key: '0-0-0',
+                children: [
+                  { title: 'C0-0-0-0', key: '0-0-0-0', disableCheckbox: true },
+                  { title: '0-0-0-1', key: '0-0-0-1' },
+                  { title: '0-0-0-2', key: '0-0-0-2' },
+                ],
+              },
+              {
+                title: '0-0-1',
+                key: '0-0-1',
+                disabled: true,
+                children: [
+                  { title: '0-0-1-0', key: '0-0-1-0', disabled: true },
+                  { title: '0-0-1-1', key: '0-0-1-1' },
+                  { title: '0-0-1-2', key: '0-0-1-2' },
+                ],
+              },
+              { title: '0-0-2', key: '0-0-2' },
+            ],
+          },
+        ],
       };
     },
     methods: {

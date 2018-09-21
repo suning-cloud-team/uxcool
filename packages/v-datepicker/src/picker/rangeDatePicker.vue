@@ -166,8 +166,8 @@
           : '';
       },
       isHasOkButton() {
-        const { showTime, showOk } = this;
-        return showTime || showOk;
+        const { isShowTime, showOk } = this;
+        return showOk === true || (showOk !== false && !!isShowTime);
       },
       isOkConfirm() {
         const { isHasOkButton, okConfirm } = this;

@@ -4,7 +4,6 @@
       <h6>ok confirm</h6>
 
       <ux-date-picker ok-confirm
-                      show-ok
                       show-time
                       @change="onChange" />
       <br>
@@ -19,7 +18,6 @@
       <br>
       <ux-range-date-picker :ranges="ranges"
                             ok-confirm
-                            show-today
                             show-time
                             @change="onChange" />
       <br>
