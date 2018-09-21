@@ -2,7 +2,8 @@
   <div class="demo">
     <h4>normal</h4>
     <ux-cascader v-model="value"
-                 :data-source="data" />
+                 :data-source="data"
+                 popup-placement="bottomRight" />
   </div>
 </template>
 

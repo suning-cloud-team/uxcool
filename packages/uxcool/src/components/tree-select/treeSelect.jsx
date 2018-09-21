@@ -230,12 +230,11 @@ export default {
     this.prevSelectionValue = null;
   },
   mounted() {
-    const { $refs: { triggerRef, treeRef } } = this;
+    const { $refs: { triggerRef } } = this;
     if (triggerRef) {
       this.triggerRef = triggerRef;
     }
     this.isMounted = true;
-    console.log('mounted treeRef', treeRef);
   },
   methods: {
     getValidValue(value) {
@@ -344,15 +343,6 @@ export default {
         style = getPopupWidth.prev;
       }
       return style;
-    },
-    wrapLoadData(parent) {
-      const { loadData, addNodes } = this;
-      return isFunction(loadData)
-        ? Promise.resolve(loadData(parent)).then(data =>
-          // addNodes(data, parent);
-          // updateSelectionValue();
-          data)
-        : null;
     },
     onPopupVisibleChange(visible) {
       this.setInnerVisible(visible);
@@ -490,8 +480,6 @@ export default {
       prefixCls,
       disabled,
       innerVisible,
-      lazy,
-      loadData,
       popupClasses,
       popupClass,
       popupStyle,
