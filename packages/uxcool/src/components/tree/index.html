@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-  <html>
-    <head>
+<!DOCTYPE html><html><head>
       <title>index</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///C:\Users\17061765\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.5\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
-      
+      <link rel="stylesheet" href="file:///C:\Users\17061765\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.8\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
       
       
       
@@ -221,112 +218,118 @@ code.language-yaml {
 <table>
 <thead>
 <tr>
-<th>参数名</th>
-<th>描述</th>
-<th>类型</th>
-<th>默认</th>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x9ED8;&#x8BA4;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>data-source</td>
-<td>数据源</td>
+<td>&#x6570;&#x636E;&#x6E90;</td>
 <td>Array</td>
 <td></td>
 </tr>
 <tr>
 <td>selected-keys</td>
-<td>需选中节点的 <code>key</code></td>
+<td>&#x9700;&#x9009;&#x4E2D;&#x8282;&#x70B9;&#x7684; <code>key</code></td>
 <td>Array</td>
 <td></td>
 </tr>
 <tr>
 <td>checked-keys</td>
-<td>需选中节点 <code>checkbox</code>框的 <code>key</code></td>
+<td>&#x9700;&#x9009;&#x4E2D;&#x8282;&#x70B9; <code>checkbox</code>&#x6846;&#x7684; <code>key</code></td>
 <td>Array</td>
 <td></td>
 </tr>
 <tr>
 <td>expanded-keys</td>
-<td>需展开节点的<code>key</code></td>
+<td>&#x9700;&#x5C55;&#x5F00;&#x8282;&#x70B9;&#x7684;<code>key</code></td>
 <td>Array</td>
 <td></td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用</td>
+<td>&#x662F;&#x5426;&#x7981;&#x7528;</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>row-key</td>
-<td>自定义唯一性标示</td>
+<td>&#x81EA;&#x5B9A;&#x4E49;&#x552F;&#x4E00;&#x6027;&#x6807;&#x793A;</td>
 <td>String|Function(originNode)</td>
 <td>key</td>
 </tr>
 <tr>
 <td>show-line</td>
-<td>是否显示连接线</td>
+<td>&#x662F;&#x5426;&#x663E;&#x793A;&#x8FDE;&#x63A5;&#x7EBF;</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>selectable</td>
-<td>设置节点是否可被选中</td>
+<td>&#x8BBE;&#x7F6E;&#x8282;&#x70B9;&#x662F;&#x5426;&#x53EF;&#x88AB;&#x9009;&#x4E2D;</td>
 <td>Boolean</td>
 <td>true</td>
 </tr>
 <tr>
+<td>checkable</td>
+<td>&#x662F;&#x5426;&#x663E;&#x793A;<code>Checkbox</code></td>
+<td>BOolean</td>
+<td>false</td>
+</tr>
+<tr>
 <td>check-strict</td>
-<td>父子节点之间是否不再关联选中</td>
+<td>&#x7236;&#x5B50;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x662F;&#x5426;&#x4E0D;&#x518D;&#x5173;&#x8054;&#x9009;&#x4E2D;</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>multiple</td>
-<td>是否可多选节点</td>
+<td>&#x662F;&#x5426;&#x53EF;&#x591A;&#x9009;&#x8282;&#x70B9;</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>default-expand-all</td>
-<td>是否默认展开所有节点,(<strong>大数据量时慎用</strong>),非响应属性</td>
+<td>&#x662F;&#x5426;&#x9ED8;&#x8BA4;&#x5C55;&#x5F00;&#x6240;&#x6709;&#x8282;&#x70B9;,(<strong>&#x5927;&#x6570;&#x636E;&#x91CF;&#x65F6;&#x614E;&#x7528;</strong>),&#x975E;&#x54CD;&#x5E94;&#x5C5E;&#x6027;</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>default-expand-parent</td>
-<td>是否当子节点展开时,父节点也同时展开, 非响应属性</td>
+<td>&#x662F;&#x5426;&#x5F53;&#x5B50;&#x8282;&#x70B9;&#x5C55;&#x5F00;&#x65F6;,&#x7236;&#x8282;&#x70B9;&#x4E5F;&#x540C;&#x65F6;&#x5C55;&#x5F00;, &#x975E;&#x54CD;&#x5E94;&#x5C5E;&#x6027;</td>
 <td>Boolean</td>
 <td>true</td>
 </tr>
 <tr>
 <td>default-expand-parent</td>
-<td>是否当子节点展开时,父节点也同时展开, 非响应属性</td>
+<td>&#x662F;&#x5426;&#x5F53;&#x5B50;&#x8282;&#x70B9;&#x5C55;&#x5F00;&#x65F6;,&#x7236;&#x8282;&#x70B9;&#x4E5F;&#x540C;&#x65F6;&#x5C55;&#x5F00;, &#x975E;&#x54CD;&#x5E94;&#x5C5E;&#x6027;</td>
 <td>Boolean</td>
 <td>true</td>
 </tr>
 <tr>
 <td>lazy</td>
-<td>是否异步加载</td>
+<td>&#x662F;&#x5426;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>load-data</td>
-<td>异步加载数据函数</td>
+<td>&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x51FD;&#x6570;</td>
 <td>Function(treeNode)=&gt;Promise</td>
 <td></td>
 </tr>
 <tr>
 <td>render-content</td>
-<td>自定义渲染内容</td>
+<td>&#x81EA;&#x5B9A;&#x4E49;&#x6E32;&#x67D3;&#x5185;&#x5BB9;</td>
 <td>Function({NOde: TreeNode})=&gt;VNode</td>
 <td></td>
 </tr>
 <tr>
 <td>filter-option</td>
-<td>自定义过滤函数</td>
+<td>&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6EE4;&#x51FD;&#x6570;</td>
 <td>Function(searchInput, originNode)=&gt;Boolean</td>
 <td></td>
 </tr>
@@ -337,14 +340,14 @@ code.language-yaml {
 <table>
 <thead>
 <tr>
-<th>名称</th>
-<th>描述</th>
+<th>&#x540D;&#x79F0;</th>
+<th>&#x63CF;&#x8FF0;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>renderContent</td>
-<td>自定义渲染内容</td>
+<td>&#x81EA;&#x5B9A;&#x4E49;&#x6E32;&#x67D3;&#x5185;&#x5BB9;</td>
 </tr>
 </tbody>
 </table>
@@ -353,25 +356,25 @@ code.language-yaml {
 <table>
 <thead>
 <tr>
-<th>事件名</th>
-<th>描述</th>
-<th>回调</th>
+<th>&#x4E8B;&#x4EF6;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x56DE;&#x8C03;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>check</td>
-<td><code>checkbox</code>被选中时触发</td>
+<td><code>checkbox</code>&#x88AB;&#x9009;&#x4E2D;&#x65F6;&#x89E6;&#x53D1;</td>
 <td>Function(checkedKeys,{checked:Boolean,checkedNodes,halfCheckedKeys, node:OriginNode, vm,e:DomEvent})</td>
 </tr>
 <tr>
 <td>expand</td>
-<td>节点展开时触发</td>
+<td>&#x8282;&#x70B9;&#x5C55;&#x5F00;&#x65F6;&#x89E6;&#x53D1;</td>
 <td>Function(expandedKeys, {expanded:Boolean, expandedNodes, node:OriginNode, vm, e:DomEvent})</td>
 </tr>
 <tr>
 <td>select</td>
-<td>节点选中时触发</td>
+<td>&#x8282;&#x70B9;&#x9009;&#x4E2D;&#x65F6;&#x89E6;&#x53D1;</td>
 <td>Function(selectedKeys, {selected: Boolean, selectedNodes, node:OriginNode, vm, e:domEvent})</td>
 </tr>
 </tbody>
@@ -381,15 +384,15 @@ code.language-yaml {
 <table>
 <thead>
 <tr>
-<th>方法名</th>
-<th>描述</th>
-<th>类型</th>
+<th>&#x65B9;&#x6CD5;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x7C7B;&#x578B;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>filter</td>
-<td>筛选树节点</td>
+<td>&#x7B5B;&#x9009;&#x6811;&#x8282;&#x70B9;</td>
 <td>Function(searchInput)</td>
 </tr>
 </tbody>
@@ -398,7 +401,6 @@ code.language-yaml {
       </div>
       
       
-    </body>
     
     
     
@@ -406,4 +408,6 @@ code.language-yaml {
     
     
     
-  </html>
+    
+  
+    </body></html>

@@ -237,10 +237,14 @@ $menu-prefix-cls: #{$ux-prefix}-menu;
   }
 
   &-submenu {
-    position: relative;
+    &-popup {
+      position: absolute;
+      border-radius: $border-radius-base;
+      z-index: $zindex-dropdown;
+    }
 
-    > .#{$menu-prefix-cls} {
-      background-color: $component-background;
+    &-content > .#{$menu-prefix-cls} {
+      // background-color: $component-background;
       border-radius: $border-radius-base;
       &-submenu-title:after {
         transition: transform 0.3s $ease-in-out;
@@ -358,11 +362,11 @@ $menu-prefix-cls: #{$ux-prefix}-menu;
         font-size: 16px;
         line-height: 42px;
         margin: 0;
-        + span {
-          max-width: 0;
-          display: inline-block;
-          opacity: 0;
-        }
+      }
+      span {
+        max-width: 0;
+        display: inline-block;
+        opacity: 0;
       }
     }
     &-tooltip {
