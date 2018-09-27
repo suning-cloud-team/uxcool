@@ -1,6 +1,6 @@
 import pick from 'lodash/pick';
 import assign from 'lodash/assign';
-import { isFunction, isDef } from './utils';
+import { isFunction, isDef, isArray } from './utils';
 
 const DATA_KEYS = [
   'class',
@@ -124,4 +124,26 @@ export function isSameTypeVNode(vnode, optionName = '') {
   }
   const { componentOptions: cp } = vnode;
   return !!(cp && cp.Ctor && cp.Ctor.options && cp.Ctor.options[optionName]);
+}
+
+export function getVNodeText(vn) {
+  function recursive(vnode) {
+    const ret = [];
+    if (!vnode) {
+      return ret;
+    }
+    const nodes = isArray(vnode) ? vnode : [vnode];
+
+    for (let i = 0, l = nodes.length; i < l; i += 1) {
+      const node = nodes[i];
+      if (!node.tag) {
+        ret.push((node.text || '').trim());
+      } else {
+        ret.push(...recursive(node.children));
+      }
+    }
+
+    return ret;
+  }
+  return recursive(vn);
 }

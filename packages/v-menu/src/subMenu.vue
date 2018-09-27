@@ -1,13 +1,13 @@
 <script>
+  import Trigger from '@suning/v-trigger';
+  import { isArray, warning } from '@suning/v-utils';
   import commonMixin from './mixins/common';
-  import vMenu from './menu.vue';
-  import { getAllDescendants, getRootSubMenu } from './utils';
+  import Menu from './menu.vue';
+  import { getAllDescendants, getRootSubMenu, getPopupPlacement, isTopSubMenu } from './utils';
 
   export default {
     name: 'SubMenu',
-    components: {
-      vMenu,
-    },
+    isSubMenuType: true,
     mixins: [commonMixin],
     props: {
       name: {
@@ -25,7 +25,6 @@
     },
     data() {
       return {
-        descendants: null,
         timerFn: null,
       };
     },
@@ -36,20 +35,22 @@
       rootSubMenu() {
         return getRootSubMenu(this);
       },
+
       isSelected() {
-        const { selectedItems, descendants } = this;
-        if (!descendants) {
+        const { eventName, ancestorSubMenuNames } = this;
+        if (ancestorSubMenuNames.length === 0) {
           return false;
         }
-        return selectedItems.some(v => descendants.indexOf(v) > -1);
+
+        return ancestorSubMenuNames.indexOf(eventName) > -1;
       },
       isOpen() {
-        const { openedSubMenus } = this;
-        return openedSubMenus.indexOf(this) > -1;
+        const { openedSubMenuEventNames, eventName } = this;
+        return openedSubMenuEventNames.indexOf(eventName) > -1;
       },
       isActive() {
-        const { disabled, activeItem } = this;
-        return !disabled && activeItem === this;
+        const { disabled, activeItemEventName, eventName } = this;
+        return !disabled && activeItemEventName === eventName;
       },
       mode() {
         const { rootMode, level } = this;
@@ -87,20 +88,24 @@
           [`${rootPrefixCls}-sub`]: true,
         };
       },
+      actions() {
+        const { disabled, trigger } = this;
+        if (disabled) {
+          return [];
+        }
+        return isArray(trigger) ? trigger : [trigger];
+      },
+      popupPlacement() {
+        return getPopupPlacement(this.mode);
+      },
     },
     created() {
       this.rootMenu.addDescendants(this);
-    },
-    mounted() {
-      this.init();
     },
     beforeDestroy() {
       this.rootMenu.removeDescendants(this);
     },
     methods: {
-      init() {
-        this.descendants = getAllDescendants(this);
-      },
       onSubMenuClick(e) {
         this.rootMenu.onSubMenuClick(e);
       },
@@ -125,26 +130,13 @@
           tirggerOpenChange(!isOpen, 'click');
         }
       },
-      mouseEvent(open, triggerName) {
-        const {
-          timerFn, isInlineMode, tirggerOpenChange, disabled
-        } = this;
-        if (isInlineMode || disabled) {
-          return;
-        }
-        if (timerFn) {
-          clearTimeout(timerFn);
-        }
-
-        this.timerFn = setTimeout(() => {
-          tirggerOpenChange(open, triggerName);
-        }, 250);
+      onMouseEnter($event) {
+        const { eventName } = this;
+        this.$emit('mouseenter', { name: eventName, domEvent: $event });
       },
-      onMouseEnter() {
-        this.mouseEvent(true, 'mouseEnter');
-      },
-      onMouseLeave() {
-        this.mouseEvent(false, 'mouseLeave');
+      onMouseLeave($event) {
+        const { eventName } = this;
+        this.$emit('mouseleave', { name: eventName, domEvent: $event });
       },
       onMenuActive(e) {
         this.rootMenu.onMenuActive(e);
@@ -161,12 +153,51 @@
           hover: false,
         });
       },
+      onPopupVisible(visible) {
+        this.tirggerOpenChange(visible, visible ? 'mouseenter' : 'mouseleave');
+      },
+      renderTrigger(titleElement, menuElement) {
+        const {
+          prefixCls,
+          isOpen,
+          actions,
+          getPopupContainer,
+          popupClass,
+          builtinPlacements,
+          popupPlacement,
+          subMenuCloseDelay,
+          subMenuOpenDelay,
+          onPopupVisible,
+        } = this;
+        const getContainer = isTopSubMenu(this) ? getPopupContainer : () => this.$el;
+        const props = {
+          prefixCls,
+          popupClass: [`${prefixCls}-popup`, popupClass],
+          visible: isOpen,
+          actions,
+          getPopupContainer: getContainer,
+          builtinPlacements,
+          popupPlacement,
+          mouseEnterDelay: subMenuOpenDelay,
+          mouseLeaveDelay: subMenuCloseDelay,
+        };
+        const on = {
+          'popup-visible-change': onPopupVisible,
+        };
+        return (
+          <Trigger {...{ props, on }}>
+            {titleElement}
+            {menuElement}
+          </Trigger>
+        );
+      },
     },
-    render(h) {
+    render() {
       const {
         rootPrefixCls,
-        $slots,
+        $slots: { default: slotDefault, title: slotTitle },
         title,
+        theme,
         classes,
         isInlineMode,
         disabled,
@@ -180,9 +211,8 @@
         subClasses,
         isOpen,
         subMenuMode,
+        renderTrigger,
       } = this;
-
-      const slotTitle = $slots.title;
       const attrs = {
         class: classes,
       };
@@ -214,29 +244,36 @@
           mouseleave: onTitleMouseLeave,
         };
       }
+
       if (!slotTitle && !title) {
         if (process.env.NODE_ENV !== 'production') {
-          console.warn('submenu需要一个标题');
+          warning(false, 'SubMenu需要一个标题');
         }
       }
-      // 标题元素
-      const titleElement = h('div', titleAttrs, [slotTitle || title]);
 
-      // 子菜单
-      const menuElement = h(
-        'v-menu',
-        {
-          class: subClasses,
-          props: {
-            prefixCls: rootPrefixCls,
-            isRoot: false,
-            visible: isOpen,
-            mode: subMenuMode,
-          },
+      const menuAttrs = {
+        class: subClasses,
+        props: {
+          prefixCls: rootPrefixCls,
+          isRoot: false,
+          visible: isInlineMode ? isOpen : true,
+          mode: subMenuMode,
+          theme,
         },
-        $slots.default
+      };
+      if (!isInlineMode) {
+        titleAttrs.slot = 'trigger';
+        menuAttrs.slot = 'popup';
+      }
+      // 标题元素
+      const titleElement = <div {...titleAttrs}>{slotTitle || <span>{title}</span>}</div>;
+      // 子菜单
+      const menuElement = <Menu {...menuAttrs}>{slotDefault}</Menu>;
+      return (
+        <li {...attrs}>
+          {isInlineMode ? [titleElement, menuElement] : renderTrigger(titleElement, menuElement)}
+        </li>
       );
-      return h('li', attrs, [titleElement, menuElement]);
     },
   };
 </script>

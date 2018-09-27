@@ -50,7 +50,9 @@
 
     <div class="demo">
       <ux-menu style="width:200px;"
-               @click="onMenuClick">
+               @click="onMenuClick"
+               @select="onMenuSelect"
+               @deselect="onMenuDeselect">
         <ux-menu-item name="item-1">
           item-1
         </ux-menu-item>
@@ -59,7 +61,8 @@
         </ux-menu-item>
         <ux-sub-menu name="sub-menu-1"
                      title="sub-menu-1">
-          <ux-menu-item name="sub-menu-1-1">sub-menu-1-1</ux-menu-item>
+          <ux-menu-item name="sub-menu-1-1"
+                        data-a="1">sub-menu-1-21</ux-menu-item>
           <ux-menu-item name="sub-menu-1-2">sub-menu-1-2</ux-menu-item>
         </ux-sub-menu>
         <ux-sub-menu name="sub-menu-2"
@@ -140,12 +143,15 @@
     </div>
 
     <selected-demo />
+
+    <collapsed-demo />
   </div>
 </template>
 
 <script>
   import { UxMenu } from '@suning/uxcool';
   import SelectedDemo from './selected.vue';
+  import CollapsedDemo from './collapsed.vue';
 
   const { SubMenu: UxSubMenu, MenuItemGroup: UxMenuItemGroup, MenuItem: UxMenuItem } = UxMenu;
   export default {
@@ -155,6 +161,7 @@
       UxMenuItemGroup,
       UxMenuItem,
       SelectedDemo,
+      CollapsedDemo,
     },
     data() {
       return {
@@ -169,6 +176,12 @@
     methods: {
       onMenuClick(...args) {
         console.log('onMenuClick', ...args);
+      },
+      onMenuSelect(...args) {
+        console.log('onMenuSelect', ...args);
+      },
+      onMenuDeselect(...args) {
+        console.log('onMenuDeselect', ...args);
       },
     },
   };

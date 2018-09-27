@@ -3,11 +3,11 @@
     <h1 class="ux-heading">Tree
       <span class="subtitle">树</span>
     </h1>
-    <basic-demo/>
-    <async-demo/>
-    <filter-demo/>
-    <render-demo/>
-    <huge-demo/>
+    <basic-demo />
+    <async-demo />
+    <filter-demo />
+    <render-demo />
+    <huge-demo />
     <hr>
     <ux-heading id="api"
                 level="2">API</ux-heading>
@@ -75,6 +75,12 @@
           <td>设置节点是否可被选中</td>
           <td>Boolean</td>
           <td>true</td>
+        </tr>
+        <tr>
+          <td>checkable</td>
+          <td>&#x662F;&#x5426;&#x663E;&#x793A;<code>Checkbox</code></td>
+          <td>BOolean</td>
+          <td>false</td>
         </tr>
         <tr>
           <td>check-strict</td>

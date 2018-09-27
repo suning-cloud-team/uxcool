@@ -6,8 +6,7 @@
         <ux-button slot="trigger">
           topLeft
         </ux-button>
-        <ux-menu slot="overlay"
-                 multiple>
+        <ux-menu slot="overlay">
           <ux-menu-item v-for="(v,i) in menus"
                         :key="i"
                         :name="v.name">

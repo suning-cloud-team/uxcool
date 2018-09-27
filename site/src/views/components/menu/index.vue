@@ -66,6 +66,13 @@
             <td>Boolean</td>
             <td>false</td>
           </tr>
+          <tr>
+            <td>inline-collapsed</td>
+            <td>是否折叠菜单(确保菜单有图标)**>= 0.4.0-alpha.13**</td>
+            <td>Boolean</td>
+            <td>false</td>
+          </tr>
+
         </tbody>
       </table>
       <table class="api-table">
