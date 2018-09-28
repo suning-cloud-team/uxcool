@@ -92,7 +92,7 @@ export default {
           },
         };
 
-        if (expandTrigger === 'hover' && node.isParent) {
+        if (expandTrigger === 'hover') {
           on = {
             ...on,
             mouseenter(e) {
