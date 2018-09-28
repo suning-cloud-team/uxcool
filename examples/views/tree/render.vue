@@ -8,7 +8,6 @@
              :data-source="dataSource"
              :selectable="selectable"
              default-expand-all
-             checkable
              @select="onSelect"
              @check="onCheck"
              @expand="onExpand">
@@ -30,7 +29,6 @@
              :selectable="selectable"
              :render-content="renderContent"
              default-expand-all
-             checkable
              @select="onSelect"
              @check="onCheck"
              @expand="onExpand " />

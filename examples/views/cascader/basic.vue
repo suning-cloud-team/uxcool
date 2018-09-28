@@ -2,6 +2,7 @@
   <div>
     <normal-demo />
     <hover-demo />
+    <hover-single-demo />
     <clear-demo />
     <search-demo />
     <disabled-demo />
@@ -26,6 +27,7 @@
   import AsyncDemo from './async.vue';
   import RenderDemo from './render.vue';
   import FocusDemo from './focus.vue';
+  import HoverSingleDemo from './hoverSingle.vue';
 
   export default {
     components: {
@@ -40,6 +42,7 @@
       AsyncDemo,
       RenderDemo,
       FocusDemo,
+      HoverSingleDemo,
     },
   };
 </script>

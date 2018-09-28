@@ -11,21 +11,26 @@
     </tag>
 
     <h6>custom</h6>
+    customColors: {{ customColors }}
     <tag v-for="(color, i) in customColors"
-         :key="`c-${i}`"
+         :key="color"
          :color="color"
-         closable>
+         closable
+         @close="(e)=>onClose(e,i)">
       {{ color }}
     </tag>
+    <ux-button @click="onAdd">add color</ux-button>
   </div>
 </template>
 <script>
   import { mapState } from 'vuex';
-  import { Tag } from '@suning/uxcool';
+  import { Tag, Button } from '@suning/uxcool';
 
+  let seed = 0;
   export default {
     components: {
       Tag,
+      UxButton: Button,
     },
     data() {
       return {
@@ -55,6 +60,16 @@
       onChange(checked, tag) {
         const { checkedTags } = this;
         this.checkedTags = checked ? [...checkedTags, tag] : checkedTags.filter(v => v !== tag);
+      },
+      onClose(e, i) {
+        this.customColors.splice(i, 1);
+      },
+      onAdd() {
+        const { colors } = this;
+        if (seed < colors.length) {
+          this.customColors.push(colors[seed]);
+          seed += 1;
+        }
       },
     },
   };

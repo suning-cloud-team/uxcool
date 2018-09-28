@@ -93,7 +93,7 @@ $tag-prefix-cls: #{$ux-prefix}-tag;
   }
 
   &-zoom-enter-active {
-    animation: uxFadeIn 2.2s $ease-in-out-circ;
+    animation: uxFadeIn 0.2s $ease-in-out-circ;
     animation-fill-mode: both;
   }
 

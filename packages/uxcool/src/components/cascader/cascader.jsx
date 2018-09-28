@@ -149,7 +149,7 @@ export default {
       return getNodesByValues(selectedValue);
     },
     showNodes() {
-      const { rootNode, activeNodes } = this;
+      const { rootNode, activeNodes, forceUpdateTriggerAlign } = this;
       const nodes = activeNodes.reduce(
         (r, node) => {
           // 每一层级获取下一级 节点列表
@@ -161,6 +161,7 @@ export default {
         },
         [rootNode]
       );
+      forceUpdateTriggerAlign();
       return nodes;
     },
     triggerClasses() {
@@ -214,16 +215,24 @@ export default {
     });
   },
   methods: {
+    forceUpdateTriggerAlign() {
+      const { $refs: { triggerRef }, innerVisible } = this;
+      if (triggerRef && innerVisible) {
+        this.$nextTick(() => {
+          triggerRef.forcePopupAlign();
+        });
+      }
+    },
     focus() {
-      const { $refs: { triggerRef } } = this;
-      if (triggerRef) {
-        triggerRef.focus();
+      const { $refs: { triggerNodeRef } } = this;
+      if (triggerNodeRef) {
+        triggerNodeRef.focus();
       }
     },
     blur() {
-      const { $refs: { triggerRef } } = this;
-      if (triggerRef) {
-        triggerRef.blur();
+      const { $refs: { triggerNodeRef } } = this;
+      if (triggerNodeRef) {
+        triggerNodeRef.blur();
       }
     },
     loadRootNodes() {
@@ -302,9 +311,8 @@ export default {
         expandTrigger, changeOnSelect, setInnerValue, setInnerVisible
       } = this;
       const isHoverTriggerClick = expandTrigger === 'hover' && e.type === 'click';
-      const isCanChangeOnSelect =
-        changeOnSelect && (expandTrigger === 'click' || isHoverTriggerClick);
-      if (!node.isParent || isCanChangeOnSelect) {
+      const isCanSelect = expandTrigger === 'click' || isHoverTriggerClick;
+      if ((!node.isParent || changeOnSelect) && isCanSelect) {
         setInnerValue(value, true, syncSelectedValue);
         if (!node.isParent || (changeOnSelect && isHoverTriggerClick)) {
           setInnerVisible(false);
@@ -321,7 +329,7 @@ export default {
     },
     onMenuItemSelect(e, node) {
       const {
-        $refs: { triggerRef },
+        $refs: { triggerNodeRef },
         canAsync,
         getActiveValue,
         asyncNode,
@@ -330,8 +338,8 @@ export default {
         syncValueAndVisible,
       } = this;
       // 重设焦点
-      if (triggerRef) {
-        triggerRef.focus();
+      if (triggerNodeRef) {
+        triggerNodeRef.focus();
       }
 
       if (canAsync(node)) {
@@ -344,7 +352,7 @@ export default {
         asyncNode(node).then(() => {
           // 如果用户在加载完成前已选择其他选项, 此时 应保持用户选中
           if (isEqual(currentSelectedValue, this.selectedValue)) {
-            // 强行触发 displayLabel 重新获取值
+            // 强行触发 使 displayLabel 重新获取值
             setInnerValue([...activeValue], false);
           }
           this.loadingSelectedValue = [];
@@ -455,7 +463,7 @@ export default {
         triggerNode = (
           <span
             slot="trigger"
-            ref="triggerRef"
+            ref="triggerNodeRef"
             tabIndex={disabled ? undefined : 0}
             class={triggerClasses}
           >
@@ -543,7 +551,7 @@ export default {
       'popup-visible-change': onPopupVisibleChange,
     };
     return (
-      <Trigger {...{ props: triggerProps, on }}>
+      <Trigger {...{ props: triggerProps, on, ref: 'triggerRef' }}>
         {renderTrigger()}
         {renderPopup()}
       </Trigger>
