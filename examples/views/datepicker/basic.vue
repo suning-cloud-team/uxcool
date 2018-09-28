@@ -4,7 +4,7 @@
             @click="changeTheme">
       {{ theme }}
     </button>
-    <!-- <div class="demo">
+    <div class="demo">
       <ux-date-picker :theme="theme"
                       @change="onChange" />
       <br> {{ date1 }}
@@ -30,15 +30,14 @@
       <h6>格式</h6>
       <ux-date-picker :theme="theme"
                       format="YYYY/MM/DD"
-                      show-today />
+                      show-today/>
       <br>
       <ux-range-date-picker :theme="theme"
                             format="YYYY/MM/DD" />
-    </div> -->
+    </div>
     <div class="demo">
       <h6>showTime</h6>
       <ux-date-picker :theme="theme"
-                      v-model="date"
                       show-time
                       format="YYYY/MM/DD HH:mm"
                       placeholder="Select Time"
@@ -46,7 +45,6 @@
                       @ok="onOk" />
       <br>
       <ux-range-date-picker :theme="theme"
-                            v-model="date1"
                             :placeholder="['Start Time', ' End Time']"
                             format="YYYY/MM/DD HH:mm"
                             show-time
@@ -54,7 +52,7 @@
                             @change="onChange"
                             @ok="onOk" />
     </div>
-    <!-- <div class="demo">
+    <div class="demo">
       <h6>不可选</h6>
       <ux-date-picker :theme="theme"
                       :disabled-date="disabledDate"
@@ -86,7 +84,7 @@
 
     <month-demo />
     <popup-container-demo />
-    <ok-confirm-demo /> -->
+    <ok-confirm-demo />
   </div>
 </template>
 

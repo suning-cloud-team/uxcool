@@ -1,4 +1,4 @@
-import { format as formatFn, getHours, getMinutes, getSeconds, isDate } from 'date-fns';
+import { format as formatFn, getHours, getMinutes, getSeconds } from 'date-fns';
 
 const defaultDisabledTime = {
   disabledHours() {
@@ -81,18 +81,3 @@ export function isValidArray(arr, size = 2) {
   }
   return Array.isArray(arr) && arr.length === size && arr.every(v => v);
 }
-
-export function normalizeDate(value) {
-  return isDate(value) ? value : undefined;
-}
-
-export function getValidDate(value) {
-  let ret = value;
-  if (!isDate(ret)) {
-    ret = new Date();
-  }
-
-  return ret;
-}
-
-export { isDate };

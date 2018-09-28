@@ -50,7 +50,7 @@
 <script>
   import Trigger from '@suning/v-trigger';
   import TimePickerPanel from '@suning/v-timepicker/es/panel';
-  import { formatDate, normalizeDate } from '../utils';
+  import { formatDate } from '../utils';
   import Calendar from '../calendar.vue';
   import localeEN from '../locale/en_US';
   import placements from './placements';
@@ -183,9 +183,8 @@
     watch: {
       value(nVal, oVal) {
         if (nVal !== oVal) {
-          const validDate = normalizeDate(nVal);
-          this.innerValue = validDate;
-          this.inputValue = validDate;
+          this.innerValue = nVal;
+          this.inputValue = nVal;
         }
       },
     },
@@ -193,12 +192,11 @@
       const {
         value, isOpen, disabledTime, disabled
       } = this;
-      const validDate = normalizeDate(value);
-      this.innerValue = validDate;
-      this.inputValue = validDate;
+      this.innerValue = value;
+      this.inputValue = value;
       this.open = disabled ? false : isOpen;
       if (disabledTime) {
-        const opts = disabledTime(validDate);
+        const opts = disabledTime(value);
         this.disabledHours = opts.disabledHours;
         this.disabledMinutes = opts.disabledMinutes;
         this.disabledSeconds = opts.disabledSeconds;
