@@ -137,6 +137,8 @@
     <max-tags-demo />
     <remote-filter-demo />
     <custom-input-demo />
+    <custom-attrs-demo />
+
   </div>
 </template>
 
@@ -155,6 +157,7 @@
   import SingleDemo from './single.vue';
   import RemoteFilterDemo from './remoteFilter.vue';
   import CustomInputDemo from './custom-input.vue';
+  import CustomAttrsDemo from './custom-attrs.vue';
 
   export default {
     components: {
@@ -174,6 +177,7 @@
       SingleDemo,
       RemoteFilterDemo,
       CustomInputDemo,
+      CustomAttrsDemo,
     },
     data() {
       return {

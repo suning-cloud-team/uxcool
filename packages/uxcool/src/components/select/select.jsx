@@ -680,11 +680,12 @@ export default {
         }
         nExtraParam.rootLineMapping[nExtraParam.rootGroupLine].nodeCnt += 1;
         if (isOptionGroup(option)) {
-          const { children } = option;
+          const { children, content } = option;
 
+          const attrs = omit(option, ['uid', 'label', 'children', 'content', 'originNode']);
           const groupNode = (
-            <VMenuItemGroup key={`group-${nExtraParam.line}`}>
-              <template slot="title">{option.content}</template>
+            <VMenuItemGroup {...{ key: `group-${nExtraParam.line}`, attrs }}>
+              <template slot="title">{content}</template>
               {renderChildren(children, false, level + 1, nExtraParam)}
             </VMenuItemGroup>
           );
@@ -695,11 +696,23 @@ export default {
             label: option.label,
             disabled: option.disabled || disabled,
           };
+          const attrs = omit(option, [
+            'uid',
+            'value',
+            'label',
+            'disabled',
+            'labelNode',
+            'content',
+            'selectionContent',
+            'originNode',
+          ]);
+
           if (nExtraParam.selected.line === -1 && innerValue.indexOf(option.value) > -1) {
             nExtraParam.selected.groupLine = nExtraParam.rootGroupLine;
             nExtraParam.selected.line = nExtraParam.line;
           }
-          ret.push(<VMenuItem {...{ key: option.value, props }}>{option.content}</VMenuItem>);
+          const menuItemAttrs = { key: option.value, props, attrs };
+          ret.push(<VMenuItem {...menuItemAttrs}>{option.content}</VMenuItem>);
         }
       }
       if (shouldNotFound && ret.length === 0 && normalizeNotFountContent) {

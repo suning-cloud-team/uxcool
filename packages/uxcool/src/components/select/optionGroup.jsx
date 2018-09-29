@@ -4,7 +4,7 @@ export default {
   name: buildComponentName('SelectOptionGroup'),
   isOptionGroupType: true,
   props: {
-    id: {
+    uid: {
       type: String,
       default: '',
     },
