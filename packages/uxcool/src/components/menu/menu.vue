@@ -107,7 +107,13 @@
     watch: {
       openKeys(nVal, oVal) {
         if (!isEqual(nVal, oVal)) {
-          this.setOpenKeys(nVal);
+          const { inlineCollapsed } = this;
+          const val = nVal || [];
+          this.setOpenKeys(val);
+          this.prevCollapsedOpenKeys = val;
+          if (!inlineCollapsed) {
+            this.collapsedOpenKeys = val;
+          }
         }
       },
       inlineCollapsed() {
@@ -115,11 +121,11 @@
       },
     },
     created() {
+      const val = this.openKeys || [];
+      this.setOpenKeys(val);
       // no reactive
-      this.prevCollapsedOpenKeys = [];
+      this.prevCollapsedOpenKeys = val;
       // no reactive
-
-      this.setOpenKeys(this.openKeys);
       this.updateCollapseOpenKeys();
     },
     methods: {

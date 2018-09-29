@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="demo">
+      <h4>horizontal</h4>
       <ux-menu mode="horizontal"
                theme="dark">
         <ux-menu-item name="item-1">
@@ -48,6 +49,7 @@
       </ux-menu>
     </div>
 
+    <h4>event</h4>
     <div class="demo">
       <ux-menu style="width:200px;"
                @click="onMenuClick"
@@ -96,10 +98,12 @@
       </ux-menu>
     </div>
 
+    <h4>open keys</h4>
     <div class="demo">
-      <ux-menu theme="dark"
-               :open-keys="openKeys"
-               style="width:200px;">
+      <ux-menu :open-keys="openKeys"
+               theme="dark"
+               style="width:200px;"
+               @open-change="onOpenChange">
         <ux-menu-item name="item-1">
           item-1
         </ux-menu-item>
@@ -141,10 +145,9 @@
         </ux-sub-menu>
       </ux-menu>
     </div>
-
     <selected-demo />
-
     <collapsed-demo />
+    <unique-demo />
   </div>
 </template>
 
@@ -152,6 +155,7 @@
   import { UxMenu } from '@suning/uxcool';
   import SelectedDemo from './selected.vue';
   import CollapsedDemo from './collapsed.vue';
+  import UniqueDemo from './unique.vue';
 
   const { SubMenu: UxSubMenu, MenuItemGroup: UxMenuItemGroup, MenuItem: UxMenuItem } = UxMenu;
   export default {
@@ -162,6 +166,7 @@
       UxMenuItem,
       SelectedDemo,
       CollapsedDemo,
+      UniqueDemo,
     },
     data() {
       return {
@@ -182,6 +187,9 @@
       },
       onMenuDeselect(...args) {
         console.log('onMenuDeselect', ...args);
+      },
+      onOpenChange(...args) {
+        console.log('onOpenChange', ...args);
       },
     },
   };

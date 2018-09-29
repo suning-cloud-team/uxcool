@@ -1,35 +1,27 @@
 <template>
-  <div class="demo"
-       style="width: 400px">
-    <h4>Collapsed</h4>
-    <ux-button icon="menu_fold"
-               @click="onClick" /> collapsed: {{ collapsed }}
-    <ux-menu :inline-collapsed="collapsed"
-             :open-keys="openKeys"
-             theme="dark">
+
+  <div class="demo">
+    <h4>unique</h4>
+    <ux-menu unique-opened
+             theme="dark"
+             style="width:200px;"
+             @open-change="onOpenChange">
       <ux-menu-item name="item-1">
-        <ux-icon type="account" />
-        <span>item-1 <strong>abc</strong></span>
+        item-1
       </ux-menu-item>
       <ux-menu-item name="item-2">
-        <ux-icon type="sixangle_three" />
-        <span>item-2</span>
+        item-2
       </ux-menu-item>
       <ux-sub-menu name="sub-menu-1"
                    title="sub-menu-1">
         <template slot="title">
-          <ux-icon type="box" />
-          <span>this is slot title</span>
+          this is slot title
         </template>
         <ux-menu-item name="sub-menu-1-1">sub-menu-1-1</ux-menu-item>
         <ux-menu-item name="sub-menu-1-2">sub-menu-1-2</ux-menu-item>
       </ux-sub-menu>
       <ux-sub-menu name="sub-menu-2"
                    title="sub-menu-2">
-        <template slot="title">
-          <ux-icon type="safty" />
-          <span>sub-menu-2</span>
-        </template>
         <ux-menu-item disabled
                       name="sub-menu-2-1">sub-menu-1-1</ux-menu-item>
         <ux-sub-menu title="sub-menu-2-2"
@@ -40,10 +32,6 @@
       </ux-sub-menu>
       <ux-sub-menu name="sub-menu-3"
                    title="sub-menu-3">
-        <template slot="title">
-          <ux-icon type="bells" />
-          <span>sub-menu-3</span>
-        </template>
         <ux-menu-item-group title="测试-group">
           <ux-menu-item name="sub-menu-3-1-1">sub-menu-3-1-1</ux-menu-item>
         </ux-menu-item-group>
@@ -58,7 +46,11 @@
                      title="sub-menu-3-4">
           <ux-menu-item name="sub-menu-3-4-1">sub-menu-3-4-1</ux-menu-item>
           <ux-menu-item name="sub-menu-3-4-2">sub-menu-3-4-2</ux-menu-item>
-          <ux-menu-item name="sub-menu-3-4-3">sub-menu-3-4-3</ux-menu-item>
+        </ux-sub-menu>
+        <ux-sub-menu name="sub-menu-4-4"
+                     title="sub-menu-4-4">
+          <ux-menu-item name="sub-menu-4-4-1">sub-menu-4-4-1</ux-menu-item>
+          <ux-menu-item name="sub-menu-4-4-2">sub-menu-4-4-2</ux-menu-item>
         </ux-sub-menu>
       </ux-sub-menu>
     </ux-menu>
@@ -67,7 +59,7 @@
 
 
 <script>
-  import { Menu, Button, Icon } from '@suning/uxcool';
+  import { Menu } from '@suning/uxcool';
 
   export default {
     components: {
@@ -75,23 +67,10 @@
       UxMenuItem: Menu.Item,
       UxSubMenu: Menu.SubMenu,
       UxMenuItemGroup: Menu.ItemGroup,
-      UxButton: Button,
-      UxIcon: Icon,
-    },
-    data() {
-      return {
-        collapsed: false,
-        openKeys: ['sub-menu-3'],
-      };
-    },
-    created() {
-      setTimeout(() => {
-        this.openKeys = ['sub-menu-2'];
-      }, 5500);
     },
     methods: {
-      onClick() {
-        this.collapsed = !this.collapsed;
+      onOpenChange(...args) {
+        console.log('onOpenChange', ...args);
       },
     },
   };

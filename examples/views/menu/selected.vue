@@ -64,10 +64,10 @@
     },
     created() {
       setTimeout(() => {
-        // this.selectedKeys = ['n-a-1-2'];
+        this.selectedKeys = ['n-a-1-2'];
         this.menus = [
           {
-            name: 'n-a-1',
+            name: 'a-1',
             label: 'l-n-a-1',
             children: [
               {

@@ -138,3 +138,17 @@ export function getAllItemSubMenuNames(selectedItems = []) {
   }
   return Object.keys(ret);
 }
+
+export function getItemParentSubMenus(vm) {
+  const ret = [];
+  let parent = vm.$parent;
+
+  while (parent) {
+    if (isSubMenuNode(parent)) {
+      ret.push(parent);
+    }
+    parent = parent.$parent;
+  }
+
+  return ret;
+}

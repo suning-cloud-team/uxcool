@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import { getAllItemSubMenuNames } from './utils';
+  import { getAllItemSubMenuNames, getItemParentSubMenus } from './utils';
   import menuMixin from './mixins/menu';
 
   export default {
@@ -181,9 +181,7 @@
             if (pos === -1) {
               // uniqueOpened 只展示当前菜单, 其他菜单收起
               if (uniqueOpened) {
-                const { rootSubMenu } = item;
-                const { descendants: rootSubMenuDescendants } = rootSubMenu;
-                openedSubMenus = openedSubMenus.filter(v => v === rootSubMenu || rootSubMenuDescendants.indexOf(v) > -1);
+                openedSubMenus = getItemParentSubMenus(item);
               }
               openedSubMenus.push(item);
               changed = true;
