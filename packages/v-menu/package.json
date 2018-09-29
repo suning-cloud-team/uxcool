@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-menu",
-  "version": "1.0.37",
+  "version": "1.0.38",
   "description": "uxcool menu 基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
