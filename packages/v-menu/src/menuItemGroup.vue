@@ -1,5 +1,6 @@
 <template>
-  <li :class="classes">
+  <li :class="classes"
+      :title="title">
     <div :class="titleClasses"
          :style="paddingStyle">
       <slot name="title">{{ title }}</slot>

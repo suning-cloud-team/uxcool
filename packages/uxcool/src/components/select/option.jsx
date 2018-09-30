@@ -4,7 +4,7 @@ export default {
   name: buildComponentName('SelectOption'),
   isOptionType: true,
   props: {
-    id: {
+    uid: {
       type: String,
       default: '',
     },
