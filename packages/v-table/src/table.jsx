@@ -1,5 +1,5 @@
 import debounce from 'lodash/debounce';
-import { isEqual, isArray } from '@suning/v-utils';
+import { isEqual, isArray, resetParentVisible } from '@suning/v-utils';
 import { noop, getRowKey, getScrollBarWidth, addEventListener, flatRows } from './utils';
 import ColumnMixin from './mixins/column';
 
@@ -315,10 +315,20 @@ export default {
       }
     },
     handleWinResize() {
-      const { isAnyColumnsFixed, syncFixedTableRowHeight, handleScrollPostion } = this;
+      const {
+        $refs: { tableWrapRef },
+        isAnyColumnsFixed,
+        syncFixedTableRowHeight,
+        handleScrollPostion,
+      } = this;
       if (isAnyColumnsFixed) {
+        if (!tableWrapRef) {
+          return;
+        }
+        const result = resetParentVisible(tableWrapRef);
         syncFixedTableRowHeight();
         handleScrollPostion();
+        result.reset();
       }
     },
     bindResizeEvent() {
@@ -391,7 +401,7 @@ export default {
     }
 
     return (
-      <div class={classes}>
+      <div class={classes} ref="tableWrapRef">
         {titleElement}
         <div class={`${prefixCls}-content`}>
           {/* scopeSlots属性需要要放置在实际有slot-scope的元素上 */}

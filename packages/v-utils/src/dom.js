@@ -138,3 +138,39 @@ export function HTMLElementType() {
 
   return isSSR ? Object : window.HTMLElement;
 }
+
+export function resetParentVisible(el) {
+  if (!el) {
+    return {
+      reset() {},
+    };
+  }
+  const updateElements = [];
+  let parent = el.parentNode;
+
+  while (parent && parent.nodeType === 1) {
+    const { display, width } = getComputedStyle(parent);
+    if (display === 'none') {
+      updateElements.push(parent);
+      parent.style.width = width;
+      parent.style.position = 'absolute';
+      parent.style.visibility = 'hidden';
+      parent.style.height = 'auto';
+      parent.style.display = 'block';
+    }
+    parent = parent.parentNode;
+  }
+
+  return {
+    reset() {
+      updateElements.forEach((elem) => {
+        const nElem = elem;
+        nElem.style.display = 'none';
+        nElem.style.width = null;
+        nElem.style.position = null;
+        nElem.style.visibility = null;
+        nElem.style.height = null;
+      });
+    },
+  };
+}
