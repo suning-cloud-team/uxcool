@@ -17,16 +17,23 @@
         <ux-form-item label="Password">
           <ux-field-decorator :rules="{required:true, regex: /^\d{6,}$/i}"
                               name="password">
-            <ux-input type="password"
-                      v-model="form.password" />
+            <ux-input v-model="form.password"
+                      name="password"
+                      type="password">
+              <ux-icon slot="prefix"
+                       type="lock" />
+            </ux-input>
           </ux-field-decorator>
         </ux-form-item>
         <ux-form-item label="Confirm Password">
           <ux-field-decorator :validator="{alias: 'Confirm Password' }"
                               name="confirm"
-                              rules="required|confirmed:password">
+                              rules="required|confirmed:@password">
             <ux-input v-model="form.confirm"
-                      type="password" />
+                      type="password">
+              <ux-icon slot="prefix"
+                       type="lock" />
+            </ux-input>
           </ux-field-decorator>
         </ux-form-item>
         <ux-form-item label="Nickname">

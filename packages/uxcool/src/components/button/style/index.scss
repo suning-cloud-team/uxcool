@@ -71,7 +71,15 @@ $btn-ghost-border: $border-color-base;
   }
 
   &-icon-only {
-    line-height: $btn-circle-size;
+    line-height: $btn-height-base;
+  }
+
+  &-sm#{&}-icon-only {
+    line-height: $btn-height-sm;
+  }
+
+  &-lg#{&}-icon-only {
+    line-height: $btn-height-lg;
   }
 
   &:before {

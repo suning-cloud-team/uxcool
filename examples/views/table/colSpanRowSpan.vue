@@ -4,7 +4,7 @@
     <ux-table :theme="theme"
               :columns="columns"
               v-model="data"
-              bordered/>
+              bordered />
   </div>
 </template>
 
@@ -19,6 +19,7 @@
     return [
       {
         title: 'Name',
+        align: 'center',
         dataIndex: 'name',
         onCell(record, rowIdx) {
           const r = {};
@@ -45,6 +46,7 @@
         title: 'Home phone',
         colspan: 2,
         dataIndex: 'tel',
+        align: 'center',
         onCell(record, rowIdx) {
           const r = {};
           if (rowIdx === 2) {
@@ -60,6 +62,7 @@
       {
         title: 'Phone',
         colspan: 0,
+        align: 'center',
         dataIndex: 'phone',
         onCell,
       },
