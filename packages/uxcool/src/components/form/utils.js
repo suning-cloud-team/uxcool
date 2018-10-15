@@ -237,7 +237,13 @@ function parseRule(rule) {
     if (Validator.isTargetRule(name)) {
       const selector = params[0];
       if (selector) {
-        params[0] = `$${selector.replace(/^\$/, '')}Ref`;
+        // @开头的selector 标示用户使用元素自定义属性
+        // 由于元素存在嵌套的情况veeValidate的updateDependencies不能取到实际元素,导致无法获取实际值,所以让用户指定实际值
+        if (selector.indexOf('@') !== 0) {
+          params[0] = `$${selector.replace(/^\$/, '')}Ref`;
+        } else {
+          params[0] = selector.slice(1);
+        }
       }
     }
   }
