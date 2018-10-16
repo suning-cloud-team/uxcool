@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { debounce } from '@suning/v-utils';
+  import { debounce, getVNodeText } from '@suning/v-utils';
   import commonMixin from './mixins/common';
 
   export default {
@@ -35,18 +35,18 @@
         return `${this.rootPrefixCls}-item`;
       },
       isSelected() {
-        const { selectedItems } = this;
-        return selectedItems.indexOf(this) > -1;
+        const { selectedItemEventNames, eventName } = this;
+        return selectedItemEventNames.indexOf(eventName) > -1;
       },
       classes() {
         const {
-          prefixCls, disabled, isSelected, activeItem
+          prefixCls, disabled, isSelected, activeItemEventName, eventName
         } = this;
         return {
           [prefixCls]: true,
           // TODO:
           [`${prefixCls}-selected`]: isSelected,
-          [`${prefixCls}-active`]: !disabled && activeItem === this,
+          [`${prefixCls}-active`]: !disabled && activeItemEventName === eventName,
           [`${prefixCls}-disabled`]: disabled,
         };
       },
@@ -110,6 +110,7 @@
           onMenuItemSelect(event);
         }
       },
+      getVNodeText,
     },
   };
 </script>

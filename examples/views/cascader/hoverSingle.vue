@@ -1,8 +1,10 @@
 <template>
   <div class="demo">
-    <h4>change on select</h4>
-    <ux-cascader :data-source="data"
-                 change-on-select />
+    <h4>hover single</h4>
+    <ux-cascader v-model="value"
+                 :data-source="data"
+                 change-on-select
+                 expand-trigger="hover" />
   </div>
 </template>
 
@@ -15,6 +17,7 @@
     },
     data() {
       return {
+        value: ['zhejiang', 'hangzhou', 'xihu'],
         data: [
           {
             value: 'zhejiang',
@@ -23,6 +26,7 @@
               {
                 value: 'hangzhou',
                 label: 'Hangzhou',
+                disabled: true,
                 children: [
                   {
                     value: 'xihu',

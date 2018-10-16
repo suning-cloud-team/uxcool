@@ -7,6 +7,7 @@ import SelectionMixin from './mixins/selection';
 import PaginationMixin from './mixins/pagination';
 import SortMixin from './mixins/sortable';
 import FilterMixin from './mixins/filter';
+import ApiMixin from './mixins/api';
 import { getColKey, getRowKey, normalizeCols, normalizeRows, flatRows, isFunction } from './utils';
 
 export default {
@@ -19,7 +20,7 @@ export default {
   components: {
     VTable,
   },
-  mixins: [SelectionMixin, PaginationMixin, SortMixin, FilterMixin],
+  mixins: [SelectionMixin, PaginationMixin, SortMixin, FilterMixin, ApiMixin],
   inheritAttrs: false,
   props: {
     ...VTable.props,
@@ -498,6 +499,7 @@ export default {
             attrs: $attrs,
             props: bindProps,
             on: $listeners,
+            ref: 'tableRef',
           }}
         >
           <template slot="title">{$slots.title}</template>

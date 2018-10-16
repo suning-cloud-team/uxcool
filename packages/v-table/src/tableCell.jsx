@@ -46,7 +46,7 @@ export default {
         column, record, colIdx, rowIdx
       } = this;
       const {
-        dataIndex, className, cellRender, onCell
+        dataIndex, align, className, cellRender, onCell
       } = column;
       // const val = !dataIndex ? '' : get(record, dataIndex) || '';
       let val = '';
@@ -58,6 +58,11 @@ export default {
         content: val,
         className,
       };
+
+      // align cell content
+      if (align) {
+        cellProps.style = { textAlign: align };
+      }
 
       if (isFunction(onCell)) {
         cellProps = { ...cellProps, ...onCell(record, rowIdx, column, colIdx) };
@@ -115,7 +120,7 @@ export default {
         class={`${prefixCls}-indent indent-level-${indent}`}
         style={{ paddingLeft: `${indent * indentSize}px` }}
       />
-      ) : null;
+    ) : null;
     // 由于添加html内容需要一个额外标签, 可能会影响实际页面元素布局, 暂不提供html方式
     // const tdElement = dangerouslySetInnerHTML ? (
     //   <td class={className} style={style} {...{ attrs: cellProps, on }}>

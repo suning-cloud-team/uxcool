@@ -1,4 +1,5 @@
 import { genUUID } from '../utils';
+import placements from '../placements';
 
 export default {
   props: {
@@ -56,11 +57,13 @@ export default {
     },
     subMenuOpenDelay: {
       type: Number,
-      default: 0,
+      // ms
+      default: 100,
     },
     subMenuCloseDelay: {
       type: Number,
-      default: 0.1,
+      // ms
+      default: 100,
     },
     triggerSubMenuAction: {
       type: String,
@@ -77,6 +80,24 @@ export default {
     },
     // 是否支持多选
     multiple: Boolean,
+    trigger: {
+      type: [Array, String],
+      default: 'hover',
+    },
+    getPopupContainer: {
+      type: Function,
+      default: null,
+    },
+    builtinPlacements: {
+      type: Object,
+      default() {
+        return placements;
+      },
+    },
+    popupClass: {
+      type: [String, Array, Object],
+      default: '',
+    },
   },
   computed: {
     uuid() {

@@ -16,6 +16,7 @@
       {
         key: 'name',
         title: 'Name',
+        align: 'center',
         dataIndex: 'name',
         cellRender(text) {
           return <a href="#">{text}</a>;

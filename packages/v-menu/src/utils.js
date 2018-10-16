@@ -1,4 +1,13 @@
+import { isSameTypeVNode } from '@suning/v-utils';
+
 let uidSeed = 0;
+
+function isMenuNode(vm) {
+  return isSameTypeVNode(vm.$vnode, 'isMenuType');
+}
+function isSubMenuNode(vm) {
+  return isSameTypeVNode(vm.$vnode, 'isSubMenuType');
+}
 
 export function noop() {}
 
@@ -52,11 +61,14 @@ export function getComponentLevel(inst) {
   }
   let level = 1;
   let parent = inst.$parent;
-  while (parent && !parent.isRoot) {
-    const { name } = parent.$options;
-    if (name !== 'Menu' && name !== 'MenuItemGroup' && !isWrapComponent(parent)) {
+  while (parent) {
+    if (isSubMenuNode(parent)) {
       level += 1;
     }
+    // const { name } = parent.$options;
+    // if (name !== 'Menu' && name !== 'MenuItemGroup' && !isWrapComponent(parent)) {
+    //   level += 1;
+    // }
     parent = parent.$parent;
   }
   return level;
@@ -77,4 +89,66 @@ export function getRootSubMenu(inst) {
     parent = parent.$parent;
   }
   return rootSubMenu;
+}
+
+const popupPlacementMap = {
+  horizontal: 'bottomLeft',
+  vertical: 'rightTop',
+};
+
+export function getPopupPlacement(mode) {
+  return popupPlacementMap[mode];
+}
+
+export function isTopSubMenu(vm) {
+  let parent = vm.$parent;
+
+  while (parent) {
+    if (isMenuNode(parent)) {
+      break;
+    }
+    parent = parent.$parent;
+  }
+
+  return parent ? parent.isRoot : false;
+}
+
+export function getItemSubMenuNames(vm) {
+  const names = [];
+  let parent = vm.$parent;
+
+  while (parent) {
+    if (isSubMenuNode(parent)) {
+      names.push(parent.eventName);
+    }
+    parent = parent.$parent;
+  }
+
+  return names;
+}
+
+export function getAllItemSubMenuNames(selectedItems = []) {
+  const ret = {};
+
+  for (let i = 0, l = selectedItems.length; i < l; i += 1) {
+    const names = getItemSubMenuNames(selectedItems[i]);
+    for (let j = 0, ll = names.length; j < ll; j += 1) {
+      ret[names[j]] = 1;
+    }
+  }
+  return Object.keys(ret);
+}
+
+export function getItemParentSubMenus(vm) {
+  const ret = [];
+  let parent = vm.$parent;
+
+  while (parent) {
+    if (isSubMenuNode(parent)) {
+      ret.push(parent);
+    }
+    parent = parent.$parent;
+  }
+
+  return ret;
 }

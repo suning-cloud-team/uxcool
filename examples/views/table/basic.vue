@@ -1,29 +1,30 @@
 <template>
   <div>
     <normal-demo />
-    <selection-single-demo/>
-    <selection-demo/>
-    <selection-row-demo/>
-    <selection-op-demo/>
-    <selection-custom-demo/>
-    <sort-filter-demo/>
-    <sort-filter-reset-demo/>
-    <custom-filter-panel-demo/>
+    <collapse-table-demo />
+    <selection-single-demo />
+    <selection-demo />
+    <selection-row-demo />
+    <selection-op-demo />
+    <selection-custom-demo />
+    <sort-filter-demo />
+    <sort-filter-reset-demo />
+    <custom-filter-panel-demo />
     <filter-demo />
-    <ajax-demo/>
-    <size-demo/>
-    <border-title-footer-demo/>
-    <expander-row-demo/>
-    <colspan-rowspan-demo/>
-    <tree-data-demo/>
-    <fixed-header-demo/>
-    <fixed-columns-demo/>
-    <fixed-columns-header-demo/>
-    <group-header-demo/>
-    <editable-cells-demo/>
-    <editable-rows-demo/>
-    <nest-table-demo/>
-    <async-nest-table-demo/>
+    <ajax-demo />
+    <size-demo />
+    <border-title-footer-demo />
+    <expander-row-demo />
+    <colspan-rowspan-demo />
+    <tree-data-demo />
+    <fixed-header-demo />
+    <fixed-columns-demo />
+    <fixed-columns-header-demo />
+    <group-header-demo />
+    <editable-cells-demo />
+    <editable-rows-demo />
+    <nest-table-demo />
+    <async-nest-table-demo />
     <tabs-demo />
     <node-pagination-demo />
     <fixed-columns-header-async-demo />
@@ -62,6 +63,7 @@
   import TabsDemo from './tabs.vue';
   import NodePaginationDemo from './node-pagination.vue';
   import PaginationDemo from './pagination.vue';
+  import CollapseTableDemo from './collapse-table.vue';
 
   export default {
     components: {
@@ -94,6 +96,7 @@
       TabsDemo,
       NodePaginationDemo,
       PaginationDemo,
+      CollapseTableDemo,
     },
   };
 </script>

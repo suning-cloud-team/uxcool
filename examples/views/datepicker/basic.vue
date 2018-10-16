@@ -30,7 +30,7 @@
       <h6>格式</h6>
       <ux-date-picker :theme="theme"
                       format="YYYY/MM/DD"
-                      show-today/>
+                      show-today />
       <br>
       <ux-range-date-picker :theme="theme"
                             format="YYYY/MM/DD" />
@@ -38,6 +38,7 @@
     <div class="demo">
       <h6>showTime</h6>
       <ux-date-picker :theme="theme"
+                      v-model="date"
                       show-time
                       format="YYYY/MM/DD HH:mm"
                       placeholder="Select Time"
@@ -45,6 +46,7 @@
                       @ok="onOk" />
       <br>
       <ux-range-date-picker :theme="theme"
+                            v-model="date1"
                             :placeholder="['Start Time', ' End Time']"
                             format="YYYY/MM/DD HH:mm"
                             show-time

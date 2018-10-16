@@ -887,4 +887,500 @@ export default [
     name: 'wrench',
     font: '\\e9dd',
   },
+  {
+    name: 'cipan',
+    font: '\\e9de',
+  },
+  {
+    name: 'delete',
+    font: '\\e9df',
+  },
+  {
+    name: 'dingdan',
+    font: '\\e9e0',
+  },
+  {
+    name: 'duliang',
+    font: '\\e9e1',
+  },
+  {
+    name: 'fapiao',
+    font: '\\e9e2',
+  },
+  {
+    name: 'fuwuqi',
+    font: '\\e9e3',
+  },
+  {
+    name: 'help',
+    font: '\\e9e4',
+  },
+  {
+    name: 'gailan',
+    font: '\\e9e5',
+  },
+  {
+    name: 'key',
+    font: '\\e9e6',
+  },
+  {
+    name: 'menu',
+    font: '\\e9e7',
+  },
+  {
+    name: 'message',
+    font: '\\e9e8',
+  },
+  {
+    name: 'monitor',
+    font: '\\e9e9',
+  },
+  {
+    name: 'more_9',
+    font: '\\e9ea',
+  },
+  {
+    name: 'quan',
+    font: '\\e9eb',
+  },
+  {
+    name: 'quanxian',
+    font: '\\e9ec',
+  },
+  {
+    name: 'quexian',
+    font: '\\e9ed',
+  },
+  {
+    name: 'renzheng',
+    font: '\\e9ee',
+  },
+  {
+    name: 'safe_setting',
+    font: '\\e9ef',
+  },
+  {
+    name: 'safe_zu',
+    font: '\\e9f0',
+  },
+  {
+    name: 'search_top',
+    font: '\\e9f1',
+  },
+  {
+    name: 'server',
+    font: '\\e9f2',
+  },
+  {
+    name: 'settings',
+    font: '\\e9f3',
+  },
+  {
+    name: 'gouwu',
+    font: '\\e9f4',
+  },
+  {
+    name: 'siyouwangluo',
+    font: '\\e9f5',
+  },
+  {
+    name: 'yewu',
+    font: '\\e9f6',
+  },
+  {
+    name: 'yingyong',
+    font: '\\e9f7',
+  },
+  {
+    name: 'download_f',
+    font: '\\e9f8',
+  },
+  {
+    name: 'protect',
+    font: '\\e9f9',
+  },
+  {
+    name: 'chart',
+    font: '\\e9fa',
+  },
+  {
+    name: 'cannot',
+    font: '\\e9fb',
+  },
+  {
+    name: 'code2',
+    font: '\\e9fc',
+  },
+  {
+    name: 'search_text',
+    font: '\\e9fd',
+  },
+  {
+    name: 'crawler',
+    font: '\\e9fe',
+  },
+  {
+    name: 'jiaohuan',
+    font: '\\e9ff',
+  },
+  {
+    name: 'center_align',
+    font: '\\ea00',
+  },
+  {
+    name: 'map_1',
+    font: '\\ea01',
+  },
+  {
+    name: 'ball',
+    font: '\\ea02',
+  },
+  {
+    name: 'out',
+    font: '\\ea03',
+  },
+  {
+    name: 'wife',
+    font: '\\ea04',
+  },
+  {
+    name: 'servers',
+    font: '\\ea05',
+  },
+  {
+    name: 'message1',
+    font: '\\ea06',
+  },
+  {
+    name: 'login',
+    font: '\\ea07',
+  },
+  {
+    name: 'example',
+    font: '\\ea08',
+  },
+  {
+    name: 'zoom_big',
+    font: '\\ea09',
+  },
+  {
+    name: 'relevance',
+    font: '\\ea0c',
+  },
+  {
+    name: 'relation_schema',
+    font: '\\ea0d',
+  },
+  {
+    name: 'Administrator',
+    font: '\\ea0e',
+  },
+  {
+    name: 'filtration',
+    font: '\\ea0f',
+  },
+  {
+    name: 'lateral_distribution',
+    font: '\\ea10',
+  },
+  {
+    name: 'history',
+    font: '\\ea11',
+  },
+  {
+    name: 'camera',
+    font: '\\ea12',
+  },
+  {
+    name: 'printscreen',
+    font: '\\ea13',
+  },
+  {
+    name: 'port',
+    font: '\\ea14',
+  },
+  {
+    name: 'unlocking',
+    font: '\\ea15',
+  },
+  {
+    name: 'code3',
+    font: '\\ea16',
+  },
+  {
+    name: 'folder_open2',
+    font: '\\ea17',
+  },
+  {
+    name: 'more_ap',
+    font: '\\ea18',
+  },
+  {
+    name: 'shrink',
+    font: '\\ea19',
+  },
+  {
+    name: 'spread',
+    font: '\\ea1a',
+  },
+  {
+    name: 'save_as',
+    font: '\\ea1b',
+  },
+  {
+    name: 'key1',
+    font: '\\ea1c',
+  },
+  {
+    name: 'template',
+    font: '\\ea1d',
+  },
+  {
+    name: 'configuration',
+    font: '\\ea1e',
+  },
+  {
+    name: 'flag',
+    font: '\\ea1f',
+  },
+  {
+    name: 'brush',
+    font: '\\ea20',
+  },
+  {
+    name: 'date2',
+    font: '\\ea21',
+  },
+  {
+    name: 'historic_record',
+    font: '\\ea22',
+  },
+  {
+    name: 'scan',
+    font: '\\ea23',
+  },
+  {
+    name: 'filtrate',
+    font: '\\ea24',
+  },
+  {
+    name: 'up__align',
+    font: '\\ea25',
+  },
+  {
+    name: 'move_up',
+    font: '\\ea26',
+  },
+  {
+    name: 'standard',
+    font: '\\ea27',
+  },
+  {
+    name: 'community',
+    font: '\\ea28',
+  },
+  {
+    name: 'time1',
+    font: '\\ea29',
+  },
+  {
+    name: 'monitor2',
+    font: '\\ea2a',
+  },
+  {
+    name: 'phone_bound',
+    font: '\\ea2b',
+  },
+  {
+    name: 'phone_separate',
+    font: '\\ea2c',
+  },
+  {
+    name: 'home3',
+    font: '\\ea2d',
+  },
+  {
+    name: 'data2',
+    font: '\\ea2e',
+  },
+  {
+    name: 'data_chart',
+    font: '\\ea2f',
+  },
+  {
+    name: 'data_set',
+    font: '\\ea30',
+  },
+  {
+    name: 'center_horizontally',
+    font: '\\ea31',
+  },
+  {
+    name: 'unlock1',
+    font: '\\ea32',
+  },
+  {
+    name: 'reminder',
+    font: '\\ea33',
+  },
+  {
+    name: 'reminder2',
+    font: '\\ea34',
+  },
+  {
+    name: 'drawing_pin',
+    font: '\\ea35',
+  },
+  {
+    name: 'exit1',
+    font: '\\ea36',
+  },
+  {
+    name: 'map2',
+    font: '\\ea37',
+  },
+  {
+    name: 'text2',
+    font: '\\ea38',
+  },
+  {
+    name: 'folder1',
+    font: '\\ea39',
+  },
+  {
+    name: 'sql',
+    font: '\\ea3a',
+  },
+  {
+    name: 'down_aligning',
+    font: '\\ea3b',
+  },
+  {
+    name: 'down_move',
+    font: '\\ea3c',
+  },
+  {
+    name: 'lock_open',
+    font: '\\ea3d',
+  },
+  {
+    name: 'computer_ok',
+    font: '\\ea3e',
+  },
+  {
+    name: 'add_text',
+    font: '\\ea3f',
+  },
+  {
+    name: 'new_guidance',
+    font: '\\ea40',
+  },
+  {
+    name: 'new_construction',
+    font: '\\ea41',
+  },
+  {
+    name: 'new_folder',
+    font: '\\ea42',
+  },
+  {
+    name: 'renewed',
+    font: '\\ea43',
+  },
+  {
+    name: 'demonstration',
+    font: '\\ea44',
+  },
+  {
+    name: 'business2',
+    font: '\\ea45',
+  },
+  {
+    name: 'date4',
+    font: '\\ea46',
+  },
+  {
+    name: 'en',
+    font: '\\ea47',
+  },
+  {
+    name: 'email_2',
+    font: '\\ea48',
+  },
+  {
+    name: 'right_align',
+    font: '\\ea49',
+  },
+  {
+    name: 'alarm2',
+    font: '\\ea4a',
+  },
+  {
+    name: 'preview',
+    font: '\\ea4b',
+  },
+  {
+    name: 'yun_up',
+    font: '\\ea4c',
+  },
+  {
+    name: 'online',
+    font: '\\ea4d',
+  },
+  {
+    name: 'obstacle',
+    font: '\\ea4e',
+  },
+  {
+    name: 'target',
+    font: '\\ea4f',
+  },
+  {
+    name: 'chinese',
+    font: '\\ea50',
+  },
+  {
+    name: 'chart_2',
+    font: '\\ea51',
+  },
+  {
+    name: 'journalism',
+    font: '\\ea52',
+  },
+  {
+    name: 'general_view',
+    font: '\\ea53',
+  },
+  {
+    name: 'longitudinal_distribution',
+    font: '\\ea54',
+  },
+  {
+    name: 'left_align',
+    font: '\\ea55',
+  },
+  {
+    name: 'A-B',
+    font: '\\ea56',
+  },
+  {
+    name: 'API',
+    font: '\\ea57',
+  },
+  {
+    name: 'dashuju',
+    font: '\\ea58',
+  },
+  {
+    name: 'devops',
+    font: '\\ea59',
+  },
+  {
+    name: 'loading_2',
+    font: '\\ea5a',
+  },
+  {
+    name: 'zhongjianjian',
+    font: '\\ea5b',
+  },
 ];

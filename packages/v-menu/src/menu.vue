@@ -1,15 +1,17 @@
 <template>
-  <ul role="menu"
-      :class="classes">
+  <ul :class="classes"
+      role="menu">
     <slot />
   </ul>
 </template>
 
 <script>
+  import { getAllItemSubMenuNames, getItemParentSubMenus } from './utils';
   import menuMixin from './mixins/menu';
 
   export default {
     name: 'Menu',
+    isMenuType: true,
     mixins: [menuMixin],
     data() {
       return {
@@ -17,6 +19,7 @@
         selectedItems: [],
         openedSubMenus: [],
         descendants: [],
+        ancestorSubMenuNames: [],
       };
     },
     computed: {
@@ -27,7 +30,7 @@
         return {
           [prefixCls]: true,
           [`${prefixCls}-root`]: isRoot,
-          [`${prefixCls}-${theme}`]: isRoot,
+          [`${prefixCls}-${theme}`]: true,
           [`${prefixCls}-${mode}`]: true,
           [`${prefixCls}-hidden`]: !visible,
         };
@@ -62,6 +65,14 @@
       }
     },
     methods: {
+      updateAncestorSubMenuNames() {
+        const { selectedItems } = this;
+        this.ancestorSubMenuNames = getAllItemSubMenuNames(selectedItems);
+      },
+      setOpenedSubMenus(subMenus = []) {
+        this.openedSubMenus = subMenus;
+        this.$emit('open-change', subMenus.map(v => v.eventName));
+      },
       init() {
         const {
           descendants,
@@ -71,6 +82,7 @@
           selectedItems,
           multiple,
           activeKey,
+          updateAncestorSubMenuNames,
         } = this;
         const openStrKeys = openKeys.map(v => String(v));
         const selectedStrKeys = selectedKeys.map(v => String(v));
@@ -90,6 +102,7 @@
             this.activeItem = v;
           }
         });
+        updateAncestorSubMenuNames();
       },
       addDescendants(item) {
         const { descendants } = this;
@@ -117,7 +130,9 @@
         this.openedSubMenus = openedSubMenus;
       },
       reloadSelectedKeys() {
-        const { descendants, selectedKeys, multiple } = this;
+        const {
+          descendants, selectedKeys, multiple, updateAncestorSubMenuNames
+        } = this;
         const selectedItems = [];
         this.selectedItems = selectedItems;
         const selectedStrKeys = selectedKeys.map(v => String(v));
@@ -131,21 +146,28 @@
             selectedItems.push(v);
           }
         });
+        updateAncestorSubMenuNames();
       },
       onMenuActive({ item, hover }) {
         this.activeItem = hover ? item : null;
       },
       onMenuItemClick(e) {
+        const { mode, setOpenedSubMenus } = this;
         const { item } = e;
         if (this.descendants.indexOf(item) > -1) {
           this.$emit('click', {
             ...e,
             item: {
+              ...item.$attrs,
               name: item.name,
               label: item.label,
               disabled: item.disabled,
             },
           });
+        }
+
+        if (mode !== 'inline') {
+          setOpenedSubMenus([]);
         }
       },
       onSubMenuClick(e) {
@@ -159,9 +181,7 @@
             if (pos === -1) {
               // uniqueOpened 只展示当前菜单, 其他菜单收起
               if (uniqueOpened) {
-                const { rootSubMenu } = item;
-                const { descendants: rootSubMenuDescendants } = rootSubMenu;
-                openedSubMenus = openedSubMenus.filter(v => v === rootSubMenu || rootSubMenuDescendants.indexOf(v) > -1);
+                openedSubMenus = getItemParentSubMenus(item);
               }
               openedSubMenus.push(item);
               changed = true;
@@ -171,13 +191,12 @@
             changed = true;
           }
           if (changed) {
-            this.openedSubMenus = openedSubMenus;
-            this.$emit('open-change', openedSubMenus.map(v => v.eventName));
+            this.setOpenedSubMenus(openedSubMenus);
           }
         }
       },
       onMenuItemDeselect(e) {
-        const { selectedItems } = this;
+        const { selectedItems, updateAncestorSubMenuNames } = this;
         const { item } = e;
         const pos = selectedItems.indexOf(item);
         if (pos > -1) {
@@ -187,15 +206,18 @@
         this.$emit('deselect', {
           ...e,
           item: {
+            ...item.$attrs,
             name: item.name,
             label: item.label,
             disabled: item.disabled,
           },
           selectedKeys: selectedItems.map(v => v.eventName),
         });
+
+        updateAncestorSubMenuNames();
       },
       onMenuItemSelect(e) {
-        const { multiple } = this;
+        const { multiple, updateAncestorSubMenuNames } = this;
         let { selectedItems } = this;
         const { item } = e;
         const pos = selectedItems.indexOf(item);
@@ -212,12 +234,15 @@
         this.$emit('select', {
           ...e,
           item: {
+            ...item.$attrs,
             name: item.name,
             label: item.label,
             disabled: item.disabled,
           },
           selectedKeys: selectedItems.map(v => v.eventName),
         });
+
+        updateAncestorSubMenuNames();
       },
     },
   };
