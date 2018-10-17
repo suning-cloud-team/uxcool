@@ -201,21 +201,19 @@ $pagination-prefix-cls: #{$ux-prefix}-pagination;
       display: inline-block;
       height: $input-height-base;
       line-height: $input-height-base;
+      user-select: none;
       input {
         @include input();
+        height: 28px;
         margin: 0 8px;
         width: 50px;
         text-align: center;
       }
       button {
         @include btn();
-        @include button-color($btn-default-color, $btn-default-bg, $btn-default-border);
-        &:hover,
-        &:focus,
-        &:active,
-        &.active {
-          background: #fff;
-        }
+        @include btn-primary;
+        height: 28px;
+        line-height: 28px;
         margin-left: 8px;
       }
     }
