@@ -15,7 +15,16 @@
                                   :value-path="`form['field${i}']`">
                 <!-- <ux-input :value="form[`field${i}`]"
                           @input="e=>form[`field${i}`] = e" /> -->
-                <ux-input v-model="form['field'+i]" />
+                <!-- <ux-input v-model="form['field'+i]" /> -->
+                <ux-range-date-picker />
+              </ux-field-decorator>
+            </ux-form-item>
+          </ux-col>
+          <ux-col :span="8">
+            <ux-form-item :label="`Fielda11 `">
+              <ux-field-decorator :name="`field-a11`"
+                                  rules="required">
+                <ux-date-picker />
               </ux-field-decorator>
             </ux-form-item>
           </ux-col>
@@ -35,11 +44,28 @@
       </ux-form>
     </div>
     <ux-button @click="destroy">destroy</ux-button>
+    <div>
+      <span>
+
+        <ux-range-date-picker />
+      </span>
+    </div>
+
   </div>
 </template>
 
 <script>
-  import { Form, Input, Grid, Button, Icon, Checkbox, Tooltip, Select } from '@suning/uxcool';
+  import {
+    Form,
+    Input,
+    Grid,
+    Button,
+    Icon,
+    Checkbox,
+    Tooltip,
+    Select,
+    Datepicker,
+  } from '@suning/uxcool';
 
   export default {
     components: {
@@ -57,6 +83,8 @@
       UxTooltip: Tooltip,
       UxRow: Grid.Row,
       UxCol: Grid.Col,
+      UxDatePicker: Datepicker,
+      UxRangeDatePicker: Datepicker.Range,
     },
     data() {
       return {

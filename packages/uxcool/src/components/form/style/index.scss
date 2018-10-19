@@ -9,7 +9,7 @@ $form-prefix-cls: #{$ux-prefix}-form;
 $form-component-height: $input-height-base;
 $form-component-max-height: $input-height-lg;
 $form-feedback-icon-size: 14px;
-$form-help-margin-top: ($form-component-height - $form-component-max-height) / 2+2px;
+$form-help-margin-top: ($form-component-height - $form-component-max-height) / 2+4px;
 
 .#{$form-prefix-cls} {
   @include reset-component;
@@ -79,7 +79,7 @@ input[type='checkbox'] {
   }
 
   &-control {
-    line-height: $form-component-max-height - 0.0001px; // https://github.com/ant-design/ant-design/issues/8220
+    line-height: $form-component-height - 0.0001px; // https://github.com/ant-design/ant-design/issues/8220
     position: relative;
     @include clearfix;
   }
@@ -96,7 +96,7 @@ input[type='checkbox'] {
   &-label {
     text-align: right;
     vertical-align: middle;
-    line-height: $form-component-max-height - 0.0001px;
+    line-height: $form-component-height - 0.0001px;
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
@@ -119,6 +119,9 @@ input[type='checkbox'] {
 
   &-no-colon &-label label:after {
     content: ' ';
+  }
+  .#{$ux-prefix}-calendar-picker {
+    vertical-align: top;
   }
 }
 

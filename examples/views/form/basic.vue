@@ -13,6 +13,7 @@
     <validator-demo />
     <custom-rules-demo />
     <file-demo />
+    <search-form-demo />
   </div>
 </template>
 
@@ -31,6 +32,7 @@
   import CustomRulesDemo from './customRules.vue';
   import ExtraDemo from './extra.vue';
   import FileDemo from './file.vue';
+  import SearchFormDemo from './search-form.vue';
 
   export default {
     components: {
@@ -47,6 +49,7 @@
       CustomRulesDemo,
       ExtraDemo,
       FileDemo,
+      SearchFormDemo,
     },
   };
 </script>
