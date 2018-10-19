@@ -184,6 +184,17 @@
         type: Function,
         default: defaultItemRender,
       },
+      mode: {
+        type: String,
+        default: 'normal',
+        validator(val) {
+          return ['normal', 'stream'].indexOf(val) > -1;
+        },
+      },
+      pageBufferSize: {
+        type: Number,
+        default: undefined,
+      },
     },
     data() {
       const { prefixCls, showLessItems, genTitle } = this;
@@ -196,7 +207,6 @@
         locale,
         prevDisabled: false,
         nextDisabled: false,
-        pageBufferSize: this.showLessItems ? 1 : 2,
         pagers: [],
         jumpPrevObj: {
           type: 'jump',
@@ -380,6 +390,8 @@
           jumpPrevObj,
           jumpNextObj,
           handleChange,
+          showLessItems,
+          mode,
         } = this;
         const list = [];
 
@@ -391,7 +403,17 @@
           return;
         }
 
-        if (totalPage <= 5 + pageBufferSize * 2) {
+        let bufferSize = showLessItems ? 1 : 2;
+
+        if (mode === 'stream') {
+          bufferSize = 4;
+        }
+        const pbs = Number(pageBufferSize);
+        if (typeof pbs === 'number' && pbs > 0) {
+          bufferSize = pbs;
+        }
+
+        if (mode !== 'stream' && totalPage <= 5 + bufferSize * 2) {
           for (let i = 1; i <= totalPage; i += 1) {
             list.push({
               ...pagerTpl,
@@ -411,47 +433,19 @@
             });
           }
         } else {
-          const firstPager = {
-            ...pagerTpl,
-            ...{
-              prefixCls,
-              onClick() {
-                handleChange(1);
-              },
-              onKeyPress() {
-                handleChange(1);
-              },
-              key: 1,
-              page: 1,
-              showTitle,
-            },
-          };
-          const lastPager = {
-            ...pagerTpl,
-            ...{
-              prefixCls,
-              onClick() {
-                handleChange(totalPage);
-              },
-              onKeyPress() {
-                handleChange(totalPage);
-              },
-              key: totalPage,
-              page: totalPage,
-              showTitle,
-            },
-          };
-          let left = Math.max(1, current - pageBufferSize);
-          let right = Math.min(totalPage, current + pageBufferSize);
+          let left = Math.max(1, current - bufferSize);
+          let right = Math.min(totalPage, current + bufferSize);
 
           // 选中开始几位时, 按钮个数保持最少pageBufferSize*2+1个
-          if (current < pageBufferSize + 1) {
-            right = 1 + pageBufferSize * 2;
+          if (current < bufferSize + 1) {
+            // prettier-ignore
+            right = 1 + (bufferSize * 2);
           }
 
           // 选中最后几页时,按钮个数保证最少pageBufferSize*2+1个
-          if (current > totalPage - pageBufferSize) {
-            left = totalPage - pageBufferSize * 2;
+          if (current > totalPage - bufferSize) {
+            // prettier-ignore
+            left = totalPage - (bufferSize * 2);
           }
 
           for (let i = left; i <= right; i += 1) {
@@ -473,23 +467,57 @@
             });
           }
 
-          // 最少4个按钮时才显示 省略条
-          if (current >= pageBufferSize * 2 + 1 && current !== 3) {
-            list[0].classes = `${prefixCls}-item-after-jump-prev`;
-            list.unshift(jumpPrevObj);
-          }
+          // stream 模式 不新增 省略条和 首尾节点
+          if (mode !== 'stream') {
+            const firstPager = {
+              ...pagerTpl,
+              ...{
+                prefixCls,
+                onClick() {
+                  handleChange(1);
+                },
+                onKeyPress() {
+                  handleChange(1);
+                },
+                key: 1,
+                page: 1,
+                showTitle,
+              },
+            };
 
-          if (current <= totalPage - pageBufferSize * 2 && current !== totalPage - 2) {
-            list[list.length - 1].classes = `${prefixCls}-item-after-jump-next`;
-            list.push(jumpNextObj);
-          }
+            const lastPager = {
+              ...pagerTpl,
+              ...{
+                prefixCls,
+                onClick() {
+                  handleChange(totalPage);
+                },
+                onKeyPress() {
+                  handleChange(totalPage);
+                },
+                key: totalPage,
+                page: totalPage,
+                showTitle,
+              },
+            };
+            // 最少4个按钮时才显示 省略条
+            if (current >= bufferSize * 2 + 1 && current !== 3) {
+              list[0].classes = `${prefixCls}-item-after-jump-prev`;
+              list.unshift(jumpPrevObj);
+            }
 
-          if (left !== 1) {
-            list.unshift(firstPager);
-          }
+            if (current <= totalPage - bufferSize * 2 && current !== totalPage - 2) {
+              list[list.length - 1].classes = `${prefixCls}-item-after-jump-next`;
+              list.push(jumpNextObj);
+            }
 
-          if (right !== totalPage) {
-            list.push(lastPager);
+            if (left !== 1) {
+              list.unshift(firstPager);
+            }
+
+            if (right !== totalPage) {
+              list.push(lastPager);
+            }
           }
         }
 

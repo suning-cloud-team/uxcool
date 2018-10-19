@@ -36,6 +36,17 @@
         type: String,
         default: 'light',
       },
+      mode: {
+        type: String,
+        default: 'normal',
+        validator(val) {
+          return ['normal', 'stream'].indexOf(val) > -1;
+        },
+      },
+      pageBufferSize: {
+        type: Number,
+        default: undefined,
+      },
     },
     computed: {
       bindProps() {

@@ -11,8 +11,9 @@
 
 <body>
   <div id="app">
-    <pagination :total="200" :page-size="20" :current="10" @change="paginationChange">
-    </pagination>
+    <ux-pagination :total="480" mode="stream" :page-buffer-size="-1" :page-size="20" :current="10"
+      @change="paginationChange">
+    </ux-pagination>
   </div>
 </body>
 
