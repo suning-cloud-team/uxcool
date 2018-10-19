@@ -51,16 +51,20 @@
     <div class="demo">
       <ux-pagination :total="total" />
     </div>
+
+    <stream-demo />
   </div>
 </template>
 
 
 <script>
   import { Pagination } from '@suning/uxcool';
+  import Stream from './stream.vue';
 
   export default {
     components: {
       UxPagination: Pagination,
+      StreamDemo: Stream,
     },
     data() {
       return {
