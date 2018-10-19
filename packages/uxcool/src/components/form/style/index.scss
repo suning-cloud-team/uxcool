@@ -64,7 +64,7 @@ input[type='checkbox'] {
   label {
     position: relative;
 
-    >.#{$iconfont-css-prefix} {
+    > .#{$iconfont-css-prefix} {
       vertical-align: top;
       font-size: $font-size-base;
     }
@@ -73,8 +73,8 @@ input[type='checkbox'] {
   @include reset-component;
   margin-bottom: $form-item-margin-bottom;
   vertical-align: top; // nested FormItem
-  &-control>&:last-child,
-  & [class^='#{$ux-prefix}-col-']>&:only-child {
+  &-control > &:last-child,
+  & [class^='#{$ux-prefix}-col-'] > &:only-child {
     margin-bottom: -$form-item-margin-bottom;
   }
 
@@ -89,7 +89,8 @@ input[type='checkbox'] {
   }
 
   &-with-help {
-    margin-bottom: $form-item-margin-bottom - $font-size-base * $line-height-base - $form-help-margin-top;
+    margin-bottom: $form-item-margin-bottom - $font-size-base * $line-height-base -
+      $form-help-margin-top;
   }
 
   &-label {
@@ -105,7 +106,7 @@ input[type='checkbox'] {
 
       &:after {
         content: if($form-item-trailing-colon, ':', ' ');
-        margin: 0 8px 0 2px;
+        margin: 0 16px 0 2px;
         position: relative;
         top: -0.5px;
       }
@@ -130,9 +131,9 @@ input[type='checkbox'] {
   clear: both;
 }
 
-.#{$form-prefix-cls}-extra {
-  padding-top: 4px;
-}
+// .#{$form-prefix-cls}-extra {
+// padding-top: 4px;
+// }
 
 .#{$form-prefix-cls}-text {
   display: inline-block;
@@ -151,14 +152,18 @@ form {
       padding-right: 24px;
     } // Fix overlapping between feedback icon and <Select>'s arrow.
     // https://github.com/ant-design/ant-design/issues/4431
-    >.#{$ux-prefix}-select .#{$ux-prefix}-select-arrow,
-    >.#{$ux-prefix}-select .#{$ux-prefix}-select-selection__clear,
-    :not(.#{$ux-prefix}-input-group-addon)>.#{$ux-prefix}-select .#{$ux-prefix}-select-arrow,
-    :not(.#{$ux-prefix}-input-group-addon)>.#{$ux-prefix}-select .#{$ux-prefix}-select-selection__clear {
+    > .#{$ux-prefix}-select .#{$ux-prefix}-select-arrow,
+    > .#{$ux-prefix}-select .#{$ux-prefix}-select-selection__clear,
+    :not(.#{$ux-prefix}-input-group-addon) > .#{$ux-prefix}-select .#{$ux-prefix}-select-arrow,
+    :not(.#{$ux-prefix}-input-group-addon)
+      > .#{$ux-prefix}-select
+      .#{$ux-prefix}-select-selection__clear {
       right: 28px;
     }
-    >.#{$ux-prefix}-select .#{$ux-prefix}-select-selection-selected-value,
-    :not(.#{$ux-prefix}-input-group-addon)>.#{$ux-prefix}-select .#{$ux-prefix}-select-selection-selected-value {
+    > .#{$ux-prefix}-select .#{$ux-prefix}-select-selection-selected-value,
+    :not(.#{$ux-prefix}-input-group-addon)
+      > .#{$ux-prefix}-select
+      .#{$ux-prefix}-select-selection-selected-value {
       padding-right: 42px;
     }
 
@@ -214,12 +219,12 @@ form {
     display: block;
   }
 
-  .#{$ux-prefix}-checkbox-vertical+.#{$ux-prefix}-checkbox-vertical,
-  .#{$ux-prefix}-radio-vertical+.#{$ux-prefix}-radio-vertical {
+  .#{$ux-prefix}-checkbox-vertical + .#{$ux-prefix}-checkbox-vertical,
+  .#{$ux-prefix}-radio-vertical + .#{$ux-prefix}-radio-vertical {
     margin-left: 0;
   }
 
-  .#{$ux-prefix}-input-number+.#{$form-prefix-cls}-text {
+  .#{$ux-prefix}-input-number + .#{$form-prefix-cls}-text {
     margin-left: 8px;
   }
 
@@ -231,7 +236,7 @@ form {
   .#{$ux-prefix}-input-group .#{$ux-prefix}-cascader-picker {
     width: auto;
   } // fix input with addon position. https://github.com/ant-design/ant-design/issues/8243
-  :not(.#{$ux-prefix}-input-group-wrapper)>.#{$ux-prefix}-input-group,
+  :not(.#{$ux-prefix}-input-group-wrapper) > .#{$ux-prefix}-input-group,
   .#{$ux-prefix}-input-group-wrapper {
     display: inline-block;
     vertical-align: middle;
@@ -335,8 +340,8 @@ form {
       margin-bottom: 24px;
     }
 
-    >.#{$form-prefix-cls}-item-control-wrapper,
-    >.#{$form-prefix-cls}-item-label {
+    > .#{$form-prefix-cls}-item-control-wrapper,
+    > .#{$form-prefix-cls}-item-label {
       display: inline-block;
       vertical-align: middle;
     }

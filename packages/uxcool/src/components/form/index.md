@@ -31,13 +31,15 @@
 | labelCol   | label 标签布局,同`Col`组件                    | Object  | 当`layout=horizontal`时,默认为`{ xs: 24, sm: 8, }`,其他情况为 null  |
 | wrapperCol | 输入控件布局样式 ,用法`labelCol`相同          | Object  | 当`layout=horizontal`时,默认为`{ xs: 24, sm: 16, }`,其他情况为 null |
 | required   | 是否必填, 如不设置,会根据校验规则自动生成     | Boolean |                                                                     |
-| colon      | 是否显示 `label` 后的冒号,配合`label`属性使用 | Boolean | false                                                               |
+| colon      | 是否显示 `label` 后的冒号,配合`label`属性使用 | Boolean | true                                                                |
+| extra      | 额外信息,与错误信息同时存在                   | String  |                                                                     |
 
 #### Slots
 
 | 名称  | 描述              |
 | ----- | ----------------- |
 | label | 自定义 label 内容 |
+| extra | 自定义额外内容    |
 
 ### UxFieldDecorator
 

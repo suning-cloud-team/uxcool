@@ -43,7 +43,15 @@ export default {
     },
     colon: {
       type: Boolean,
-      default: true,
+      default: false,
+    },
+    // help: {
+    //   type: String,
+    //   default: '',
+    // },
+    extra: {
+      type: String,
+      default: '',
     },
   },
   data() {
@@ -90,6 +98,9 @@ export default {
     },
   },
   methods: {
+    getExtraInfo() {
+      return getSlotOrValue('extra', this);
+    },
     addItemField(field) {
       const { fields, addFormField } = this;
       fields.push(field);
@@ -139,8 +150,15 @@ export default {
         </Row.Col>
       ) : null;
     },
+    renderExtra() {
+      const { rootPrefixCls, getExtraInfo } = this;
+      const extra = getExtraInfo();
+      return extra ? <div class={`${rootPrefixCls}-extra`}>{extra}</div> : null;
+    },
     renderWrapper() {
-      const { prefixCls, normalizeWrapperCol, $slots } = this;
+      const {
+        prefixCls, normalizeWrapperCol, $slots, renderExtra
+      } = this;
       return (
         <Row.Col
           {...{
@@ -148,7 +166,7 @@ export default {
             props: normalizeWrapperCol,
           }}
         >
-          <div class={`${prefixCls}-control`}>{$slots.default}</div>
+          <div class={`${prefixCls}-control`}>{[$slots.default, renderExtra()]}</div>
         </Row.Col>
       );
     },

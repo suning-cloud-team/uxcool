@@ -5,7 +5,8 @@
       <ux-form ref="formRef"
                :messages="{required: field => `请输入 ${field} 的值`,}"
                @submit="onSubmit">
-        <ux-form-item label="E-mail">
+        <ux-form-item label="E-mail"
+                      extra="abc11">
           <ux-field-decorator name="email"
                               rules="required|email">
             <ux-input v-model="form.email">
@@ -15,6 +16,8 @@
           </ux-field-decorator>
         </ux-form-item>
         <ux-form-item label="Password">
+          <span slot="extra"
+                style="color:red"> this is extra</span>
           <ux-field-decorator :rules="{required:true, regex: /^\d{6,}$/i}"
                               name="password">
             <ux-input v-model="form.password"
@@ -48,7 +51,8 @@
             <ux-input v-model="form.nickname" />
           </ux-field-decorator>
         </ux-form-item>
-        <ux-form-item label="Phone Number">
+        <ux-form-item label="Phone Number"
+                      extra="abc">
           <ux-field-decorator name="phone"
                               rules="required"
                               alias="input nnnn">
@@ -66,7 +70,8 @@
             </ux-input>
           </ux-field-decorator>
         </ux-form-item>
-        <ux-form-item label="Captcha">
+        <ux-form-item label="Captcha"
+                      extra="abc">
           <ux-row :gutter="8">
             <ux-col :span="12">
               <ux-field-decorator name="captcha"

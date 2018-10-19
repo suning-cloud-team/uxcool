@@ -2,7 +2,6 @@ import { isEqual } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
 import {
   makeVM,
-  getSlotOrValue,
   resolveModel,
   resolveGetter,
   resolveSetter,
@@ -36,14 +35,6 @@ export default {
     hasFeedback: {
       type: Boolean,
       default: false,
-    },
-    // help: {
-    //   type: String,
-    //   default: '',
-    // },
-    extra: {
-      type: String,
-      default: '',
     },
     alias: {
       type: String,
@@ -257,21 +248,15 @@ export default {
         </transition>
       );
     },
-    renderExtra() {
-      const { rootPrefixCls } = this;
-      const extra = getSlotOrValue('extra', this);
-      return extra ? <div class={`${rootPrefixCls}-extra`}>{extra}</div> : null;
-    },
   },
   render() {
     const {
-      $slots, prefixCls, classes, renderHelp, renderExtra
+      $slots, prefixCls, classes, renderHelp
     } = this;
     return (
       <span class={classes}>
         <span class={`${prefixCls}-children`}>{$slots.default}</span>
         {renderHelp()}
-        {renderExtra()}
       </span>
     );
   },
