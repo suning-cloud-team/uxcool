@@ -6,6 +6,7 @@
                :messages="{required: field => `请输入 ${field} 的值`,}"
                @submit="onSubmit">
         <ux-form-item label="E-mail"
+                      help="help content"
                       extra="abc11">
           <ux-field-decorator name="email"
                               rules="required|email">

@@ -45,10 +45,10 @@ export default {
       type: Boolean,
       default: false,
     },
-    // help: {
-    //   type: String,
-    //   default: '',
-    // },
+    help: {
+      type: String,
+      default: '',
+    },
     extra: {
       type: String,
       default: '',
@@ -65,10 +65,9 @@ export default {
       return `${this.rootPrefixCls}-item`;
     },
     classes() {
-      const { prefixCls, colon, hasError } = this;
+      const { prefixCls, colon } = this;
       return {
         [prefixCls]: true,
-        [`${prefixCls}-with-help`]: hasError,
         [`${prefixCls}-no-colon`]: !colon,
       };
     },
@@ -150,6 +149,15 @@ export default {
         </Row.Col>
       ) : null;
     },
+    renderHelp() {
+      const { rootPrefixCls, hasError } = this;
+      const help = getSlotOrValue('help', this);
+      return help && !hasError ? (
+        <div class={`${rootPrefixCls}-explain`} key="help">
+          {help}
+        </div>
+      ) : null;
+    },
     renderExtra() {
       const { rootPrefixCls, getExtraInfo } = this;
       const extra = getExtraInfo();
@@ -157,7 +165,7 @@ export default {
     },
     renderWrapper() {
       const {
-        prefixCls, normalizeWrapperCol, $slots, renderExtra
+        prefixCls, normalizeWrapperCol, $slots, renderHelp, renderExtra
       } = this;
       return (
         <Row.Col
@@ -166,7 +174,7 @@ export default {
             props: normalizeWrapperCol,
           }}
         >
-          <div class={`${prefixCls}-control`}>{[$slots.default, renderExtra()]}</div>
+          <div class={`${prefixCls}-control`}>{[$slots.default, renderHelp(), renderExtra()]}</div>
         </Row.Col>
       );
     },
@@ -175,8 +183,17 @@ export default {
       return [renderLabel(), renderWrapper()];
     },
     renderFormItem() {
-      const { classes, renderChildren } = this;
-      return <Row class={classes}>{renderChildren()}</Row>;
+      const {
+        prefixCls, classes, hasError, renderChildren
+      } = this;
+      const help = getSlotOrValue('help', this);
+      const itemCls = [
+        classes,
+        {
+          [`${prefixCls}-with-help`]: hasError || help,
+        },
+      ];
+      return <Row class={itemCls}>{renderChildren()}</Row>;
     },
   },
   render() {
