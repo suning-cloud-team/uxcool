@@ -52,9 +52,12 @@ export default {
       return `${rootPrefixCls}-item`;
     },
     classes() {
-      const { name, hasFeedback, formValidator: { flags } } = this;
+      const {
+        prefixCls, name, hasFeedback, formValidator: { flags }
+      } = this;
       const flag = flags[name] || {};
       return {
+        [`${prefixCls}-decorator`]: true,
         'has-feedback': hasFeedback || flag.pending,
         'has-success': !flag.pending && flag.valid,
         'has-error': flag.validated && flag.invalid,
@@ -131,7 +134,7 @@ export default {
     },
     buildFieldOptions() {
       const {
-        $slots,
+        $slots: { default: slotDefault },
         formRoot,
         globalValidatorOptions,
         validator: validatorOptions,
@@ -141,7 +144,6 @@ export default {
         normalizeAlias,
       } = this;
       let vnode = null;
-      const slotDefault = $slots.default;
       if (slotDefault) {
         [vnode] = slotDefault.filter(v => v.context && v.data);
       }
@@ -251,11 +253,17 @@ export default {
   },
   render() {
     const {
-      $slots, prefixCls, classes, renderHelp
+      $slots: { default: slotDefault, suffix: slotSuffix },
+      prefixCls,
+      classes,
+      renderHelp,
     } = this;
     return (
       <span class={classes}>
-        <span class={`${prefixCls}-children`}>{$slots.default}</span>
+        <span class={`${prefixCls}-children`}>
+          {slotDefault}
+          {slotSuffix}
+        </span>
         {renderHelp()}
       </span>
     );

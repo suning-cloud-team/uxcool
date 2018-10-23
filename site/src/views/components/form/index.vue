@@ -3,16 +3,16 @@
     <h1 class="ux-heading">Form
       <span class="subtitle">表单</span>
     </h1>
-    <login-demo/>
-    <horizontal-demo/>
-    <register-demo/>
-    <search-demo/>
-    <dynamic-demo/>
-    <method-demo/>
-    <modal-demo/>
-    <vuex-demo/>
-    <rules-demo/>
-    <custom-rules-demo/>
+    <login-demo />
+    <horizontal-demo />
+    <register-demo />
+    <search-demo />
+    <dynamic-demo />
+    <method-demo />
+    <modal-demo />
+    <vuex-demo />
+    <rules-demo />
+    <custom-rules-demo />
 
     <hr>
     <ux-heading level="2"
@@ -243,6 +243,25 @@
         </tr>
       </tbody>
     </table>
+
+    <h4 class="mume-header"
+        id="slots-1">Slots</h4>
+
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>&#x540D;&#x79F0;</th>
+          <th>&#x63CF;&#x8FF0;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>suffix</td>
+          <td>fieldDecorator &#x5143;&#x7D20;&#x540E;&#x7F00;</td>
+        </tr>
+      </tbody>
+    </table>
+
     <h3 class="mume-header"
         id="uxform-flags">UxForm Flags</h3>
 

@@ -53,6 +53,12 @@
 | hasFeedback | `UxInput`组件展示状态图标,                    | Boolean               | false |
 | alias       | 校验显示的字段名称, 默认为`FormItem`的`label` | String                |       |
 
+#### Slots
+
+| 名称   | 描述                    |
+| ------ | ----------------------- |
+| suffix | fieldDecorator 元素后缀 |
+
 ### UxForm Flags
 
 | 属性名    | 描述                 |

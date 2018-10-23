@@ -4,10 +4,9 @@
     <div slot="demo">
       <ux-form ref="formRef"
                @form-flags="validateFormFlags">
-        <ux-form-item label="text">
-          <ux-field-decorator name="abc">
-            text
-          </ux-field-decorator>
+        <ux-form-item label="text"
+                      class="ux-form-item-plain-text">
+          text
         </ux-form-item>
         <ux-form-item label="名称">
           <ux-field-decorator name="name"

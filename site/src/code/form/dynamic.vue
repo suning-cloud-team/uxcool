@@ -4,13 +4,16 @@
              @submit="onSubmit">
       <ux-form-item v-for="(item,i) in items"
                     :key="i"
-                    :label="`Field${i}`">
+                    v-bind="getFormItemAttrs(i)"
+                    help="abc">
         <ux-field-decorator :name="`field${i}`"
                             rules="required">
-          <ux-input v-model="item.value" />
+          <ux-input v-model="item.value"
+                    style="width:80%;margin-right:8px;" />
+          <ux-icon type="minus_circle_o"
+                   @click="()=>removeItem(item)" />
         </ux-field-decorator>
       </ux-form-item>
-
       <ux-form-item :wrapper-col="{offset:8}">
         <ux-button @click="addItem"
                    type="dashed"

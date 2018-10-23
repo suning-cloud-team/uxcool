@@ -88,6 +88,11 @@ input[type='checkbox'] {
     position: relative;
   }
 
+  &-decorator {
+    // display: inline-block;
+    // width: 100%;
+  }
+
   &-with-help {
     margin-bottom: $form-item-margin-bottom - $font-size-base * $line-height-base -
       $form-help-margin-top;
@@ -122,6 +127,16 @@ input[type='checkbox'] {
   }
   .#{$ux-prefix}-calendar-picker {
     vertical-align: top;
+  }
+
+  &-plain-text &-label {
+    line-height: inherit;
+  }
+
+  &-plain-text &-control {
+    line-height: inherit;
+    word-break: break-all;
+    word-wrap: break-word;
   }
 }
 
