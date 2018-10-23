@@ -84,7 +84,7 @@ export default function chunkRequest(request, reqs) {
               onProgress(e);
             },
             onSuccess(ret, xhr) {
-              ub = getChunkUploadBytes(xhr) || chunkSize;
+              ub = getChunkUploadBytes(xhr) || ub + chunkSize;
               onChunkSuccess(ret, { ...chunkEventData, xhr });
               if (ub < fileSize) {
                 chunkUploadFn();
