@@ -29,7 +29,7 @@
 | with-credentials | 请求时是否携带`Cookie`                                                                                                                  | Boolean                                         | false    |
 | on-preview       | 点击文件链接或预览图标时的回调; 传递此参数后,**链接的默认行为不会触发**                                                                 | Function                                        |          |
 | control          | 是否完全控制文件列表                                                                                                                    | Boolean                                         | false    |
-| chunk            | 是否 分片上传                                                                                                                           | Boolean                                         | false    |
+| chunk            | 是否 分片上传,(picture-card 不支持暂停和重启, 重启依赖于`uploaded-bytes`)                                                               | Boolean                                         | false    |
 | max-chunk-size   | 分片大小                                                                                                                                | String\|Number                                  |          |
 | uploaded-bytes   | 已上传字节数, 使用该属性可实现断点续传                                                                                                  | String\|Number\|Function=>Promise               | 0        |
 

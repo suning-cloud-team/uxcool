@@ -3,6 +3,8 @@
     <h4>normal</h4>
     <ux-upload action="/upload">
       <ux-button>Click to Upload</ux-button>
+      <span style="margin-left:8px"
+            @click.stop>this is upload tip</span>
     </ux-upload>
   </div>
 </template>

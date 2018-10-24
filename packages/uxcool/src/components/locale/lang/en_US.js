@@ -32,5 +32,7 @@ export default {
     removeFile: 'Remove file',
     uploadError: 'Upload error',
     previewFile: 'Preview file',
+    pause: 'Pause',
+    run: 'Start',
   },
 };

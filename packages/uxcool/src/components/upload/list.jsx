@@ -33,6 +33,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    showOperateIcon: {
+      type: Boolean,
+      default: false,
+    },
     list: {
       type: Array,
       default() {
@@ -44,6 +48,10 @@ export default {
       default() {
         return {};
       },
+    },
+    chunk: {
+      type: Boolean,
+      default: false,
     },
     onPreview: {
       type: Function,
@@ -64,6 +72,16 @@ export default {
       e.preventDefault();
       this.$emit('remove', file, e);
     },
+    onPause(file, e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.$emit('pause', file, e);
+    },
+    onRun(file, e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.$emit('run', file, e);
+    },
     handlePreview(file, e) {
       const { onPreview } = this;
       if (!isFunction(onPreview)) {
@@ -82,7 +100,11 @@ export default {
         showPreviewIcon,
         progressAttr,
         handlePreview,
+        onPause,
+        onRun,
         onRemove,
+        chunk,
+        showOperateIcon,
       } = this;
       return list.map((file) => {
         const {
@@ -91,6 +113,8 @@ export default {
 
         const onBindPreview = handlePreview.bind(this, file);
         const onBindRemove = onRemove.bind(this, file);
+        const onBindPause = onPause.bind(this, file);
+        const onBindRun = onRun.bind(this, file);
         let icon = <Icon type={status === 'uploading' ? 'loading' : 'file'} />;
         if (listType === 'picture' || listType === 'picture-card') {
           if (listType === 'picture-card' && status === 'uploading') {
@@ -117,39 +141,61 @@ export default {
           }
         }
 
-        let actions = showRemoveIcon ? (
-          <Icon type="close" title={locale.removeFile} on-click={onBindRemove} />
-        ) : null;
-        if (listType === 'picture-card' && status !== 'uploading') {
-          const linkUrl = url || thumbUrl;
-          const previewIcon = showPreviewIcon ? (
-            <a
-              rel="noopener noreferrer"
-              target="_blank"
-              title={locale.previewFile}
-              style={
-                linkUrl
-                  ? {}
-                  : {
-                      pointerEvents: 'none',
-                      opacity: 0.5,
-                    }
-              }
-              href={linkUrl}
-              on-click={onBindPreview}
-            >
-              <Icon type="eye_o" />
-            </a>
-          ) : null;
-          const removeIcon = showRemoveIcon ? (
-            <Icon type="delete_o" title={locale.removeFile} on-click={onBindRemove} />
-          ) : null;
-          actions = (
-            <span class={`${prefixCls}-list-item-actions`}>
-              {previewIcon}
-              {removeIcon}
-            </span>
+        let opIcon = null;
+        if (status !== 'success' && (showOperateIcon || chunk)) {
+          opIcon =
+            status === 'uploading' ? (
+              <Icon
+                title={locale.pause}
+                type="pause_circle_o"
+                class={`${prefixCls}-list-item-op`}
+                on-click={onBindPause}
+              />
+              ) : (
+              <Icon
+                title={locale.run}
+                type="play_circle_o"
+                class={`${prefixCls}-list-item-op`}
+                on-click={onBindRun}
+              />
           );
+        }
+
+        let actions = showRemoveIcon ? (
+          <span class={`${prefixCls}-list-item-ops`}>
+            {[opIcon, <Icon type="close" title={locale.removeFile} on-click={onBindRemove} />]}
+          </span>
+        ) : null;
+        if (listType === 'picture-card') {
+          const cardActions = [];
+          let previewIcon = null;
+          if (status !== 'uploading') {
+            const linkUrl = url || thumbUrl;
+            previewIcon = showPreviewIcon ? (
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                title={locale.previewFile}
+                style={
+                  linkUrl
+                    ? {}
+                    : {
+                        pointerEvents: 'none',
+                        opacity: 0.5,
+                      }
+                }
+                href={linkUrl}
+                on-click={onBindPreview}
+              >
+                <Icon type="eye_o" />
+              </a>
+            ) : null;
+            cardActions.push(previewIcon);
+          }
+          cardActions.push(showRemoveIcon ? (
+              <Icon type="delete_o" title={locale.removeFile} on-click={onBindRemove} />
+          ) : null);
+          actions = <span class={`${prefixCls}-list-item-actions`}>{cardActions}</span>;
         }
 
         const preview =
@@ -178,16 +224,16 @@ export default {
         );
         const cls = {
           [`${prefixCls}-list-item`]: true,
-          [`${prefixCls}-list-item-${file.status}`]: true,
+          [`${prefixCls}-list-item-${file.status === 'pause' ? 'uploading' : file.status}`]: true,
         };
 
-        let message = (fileError && fileError.statusText) || locale.uploadError;
+        let message = (fileError && fileError.message) || locale.uploadError;
         if (response && typeof response === 'string') {
           message = response;
         }
 
         let progress = null;
-        if (status === 'uploading') {
+        if (status === 'uploading' || status === 'pause') {
           progress = (
             <div key="progress" class={`${prefixCls}-list-item-progress`}>
               {'percent' in file ? (
