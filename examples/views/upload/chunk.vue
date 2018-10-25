@@ -3,11 +3,11 @@
     <h4>chunk</h4>
     <ux-upload :on-preview="onPreview"
                :data="buildFormData"
-               :auto-upload="false"
+               :chunk="chunk"
+               :before-ready="onBeforeReady"
                name="files"
                list-type="picture"
                action="/upload"
-               chunk
                max-chunk-size="102400"
                @success="onSuccess"
                @remove="onRemove"
@@ -28,7 +28,27 @@
       UxUpload: Upload,
       UxButton: Button,
     },
+    data() {
+      return {
+        chunk: true,
+      };
+    },
     methods: {
+      onBeforeReady(selectedFiles) {
+        const [file] = selectedFiles;
+
+        if (file.size > 700000) {
+          this.chunk = false;
+        } else {
+          this.chunk = true;
+        }
+
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve();
+          });
+        });
+      },
       buildFormData() {
         return {
           key: 123,

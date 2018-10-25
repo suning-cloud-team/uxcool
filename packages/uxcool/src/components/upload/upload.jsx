@@ -173,7 +173,7 @@ export default {
       const nFile = getFile(file, innerFileList);
       if (nFile) {
         nFile.status = 'uploading';
-        onChange({ file: { ...nFile }, fileList: innerFileList });
+        onChange({ file: { ...nFile }, fileList: [...innerFileList] });
       }
     },
     onSuccess(response, file) {
@@ -183,8 +183,9 @@ export default {
         nFile.status = 'success';
         nFile.response = response;
         const changedFile = { ...nFile };
-        onChange({ file: changedFile, fileList: innerFileList });
-        this.$emit('success', response, changedFile, innerFileList);
+        const fileList = [...innerFileList];
+        onChange({ file: changedFile, fileList });
+        this.$emit('success', response, changedFile, fileList);
       }
     },
     onError(error, response, file) {
@@ -195,8 +196,9 @@ export default {
         nFile.error = error;
         nFile.response = response;
         const changedFile = { ...nFile };
-        onChange({ file: changedFile, fileList: innerFileList });
-        this.$emit('error', error, response, changedFile, innerFileList);
+        const fileList = [...innerFileList];
+        onChange({ file: changedFile, fileList });
+        this.$emit('error', error, response, changedFile, fileList);
       }
     },
     onProgress(e, file) {
@@ -205,12 +207,13 @@ export default {
       if (nFile) {
         nFile.percent = e.percent;
         const changedFile = { ...nFile };
+        const fileList = [...innerFileList];
         onChange({
           event: e,
           file: changedFile,
-          fileList: innerFileList,
+          fileList,
         });
-        this.$emit('progress', e, changedFile, innerFileList);
+        this.$emit('progress', e, changedFile, fileList);
       }
     },
     onRemove(file) {
@@ -276,9 +279,10 @@ export default {
         if (uploaderRef && ((chunk && chunkId) || (!chunk && uid))) {
           uploaderRef.abort(chunk ? chunkId : uid);
           const changedFile = { ...nFile };
+          const fileList = [...innerFileList];
           nFile.status = 'pause';
-          onChange({ file: changedFile, fileList: innerFileList });
-          this.$emit('pause', changedFile, innerFileList);
+          onChange({ file: changedFile, fileList });
+          this.$emit('pause', changedFile, fileList);
         }
       }
     },
@@ -317,7 +321,7 @@ export default {
         } else {
           uploadFile(originFile);
         }
-        onChange({ file: { ...nFile }, fileList: innerFileList });
+        onChange({ file: { ...nFile }, fileList: [...innerFileList] });
       }
     },
     renderUploadList() {
