@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-  <html>
-    <head>
+<!DOCTYPE html><html><head>
       <title>index</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///C:\Users\17061765\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.5\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
-      
+      <link rel="stylesheet" href="file:///C:\Users\17061765\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.8\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
       
       
       
@@ -216,151 +213,151 @@ code.language-yaml {
 
 <h3 class="mume-header" id="uxupload">UxUpload</h3>
 
-<p>上传组件仅支持 <code>IE10+</code>及现代浏览器</p>
+<p>&#x4E0A;&#x4F20;&#x7EC4;&#x4EF6;&#x4EC5;&#x652F;&#x6301; <code>IE10+</code>&#x53CA;&#x73B0;&#x4EE3;&#x6D4F;&#x89C8;&#x5668;</p>
 <blockquote>
-<p>后端代码,可参考: <a href="https://github.com/blueimp/jQuery-File-Upload/blob/master/server/php/UploadHandler.php">jQuery-File-Upload</a></p>
+<p>&#x540E;&#x7AEF;&#x4EE3;&#x7801;,&#x53EF;&#x53C2;&#x8003;: <a href="https://github.com/blueimp/jQuery-File-Upload/blob/master/server/php/UploadHandler.php">jQuery-File-Upload</a></p>
 </blockquote>
 <h4 class="mume-header" id="props">Props</h4>
 
 <table>
 <thead>
 <tr>
-<th>参数名</th>
-<th>描述</th>
-<th>类型</th>
-<th>默认</th>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x9ED8;&#x8BA4;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>fileList</td>
-<td>已上传文件列表(v-model)</td>
+<td>&#x5DF2;&#x4E0A;&#x4F20;&#x6587;&#x4EF6;&#x5217;&#x8868;(v-model)</td>
 <td>Array</td>
 <td></td>
 </tr>
 <tr>
 <td>type</td>
-<td>上传方式, 可选值: <code>select</code>, <code>drag</code></td>
+<td>&#x4E0A;&#x4F20;&#x65B9;&#x5F0F;, &#x53EF;&#x9009;&#x503C;: <code>select</code>, <code>drag</code></td>
 <td>String</td>
-<td>'select'</td>
+<td>&apos;select&apos;</td>
 </tr>
 <tr>
 <td>show-upload-list</td>
-<td>是否显示上传列表,可以为<code>Object</code>,可包含<code>showPreviewIcon</code>,<code>showRemoveIcon</code>两个<code>Boolean</code>参数</td>
+<td>&#x662F;&#x5426;&#x663E;&#x793A;&#x4E0A;&#x4F20;&#x5217;&#x8868;,&#x53EF;&#x4EE5;&#x4E3A;<code>Object</code>,&#x53EF;&#x5305;&#x542B;<code>showPreviewIcon</code>,<code>showRemoveIcon</code>&#x4E24;&#x4E2A;<code>Boolean</code>&#x53C2;&#x6570;</td>
 <td>Boolean|Object</td>
 <td></td>
 </tr>
 <tr>
 <td>list-type</td>
-<td>上传列表样式,可选值:<code>text</code>,<code>picture</code>,<code>picture-card</code></td>
+<td>&#x4E0A;&#x4F20;&#x5217;&#x8868;&#x6837;&#x5F0F;,&#x53EF;&#x9009;&#x503C;:<code>text</code>,<code>picture</code>,<code>picture-card</code></td>
 <td>String</td>
-<td>'text'</td>
+<td>&apos;text&apos;</td>
 </tr>
 <tr>
 <td>name</td>
-<td>文件参数名</td>
+<td>&#x6587;&#x4EF6;&#x53C2;&#x6570;&#x540D;</td>
 <td>String</td>
-<td>'file'</td>
+<td>&apos;file&apos;</td>
 </tr>
 <tr>
 <td>action</td>
-<td>文件上传地址(required)</td>
+<td>&#x6587;&#x4EF6;&#x4E0A;&#x4F20;&#x5730;&#x5740;(required)</td>
 <td>String|Function(file)=&gt;String|Promise</td>
 <td></td>
 </tr>
 <tr>
 <td>accept</td>
-<td>接受上传的文件类型,<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-accept">详见</a></td>
+<td>&#x63A5;&#x53D7;&#x4E0A;&#x4F20;&#x7684;&#x6587;&#x4EF6;&#x7C7B;&#x578B;,<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-accept">&#x8BE6;&#x89C1;</a></td>
 <td>String</td>
 <td></td>
 </tr>
 <tr>
 <td>multiple</td>
-<td>是否支持多选(IE10+支持)</td>
+<td>&#x662F;&#x5426;&#x652F;&#x6301;&#x591A;&#x9009;(IE10+&#x652F;&#x6301;)</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>directory</td>
-<td>是否支持目录上传,<a href="https://caniuse.com/#feat=input-file-directory">caniuse</a></td>
+<td>&#x662F;&#x5426;&#x652F;&#x6301;&#x76EE;&#x5F55;&#x4E0A;&#x4F20;,<a href="https://caniuse.com/#feat=input-file-directory">caniuse</a></td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>data</td>
-<td>额外的参数</td>
+<td>&#x989D;&#x5916;&#x7684;&#x53C2;&#x6570;</td>
 <td>Object|Function(file)=&gt;Object|Promise</td>
 <td></td>
 </tr>
 <tr>
 <td>headers</td>
-<td>自定义请求头(IE10+支持)</td>
+<td>&#x81EA;&#x5B9A;&#x4E49;&#x8BF7;&#x6C42;&#x5934;(IE10+&#x652F;&#x6301;)</td>
 <td>Object</td>
 <td></td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>是否禁用</td>
+<td>&#x662F;&#x5426;&#x7981;&#x7528;</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>custom-request</td>
-<td>自定义底层请求实现</td>
+<td>&#x81EA;&#x5B9A;&#x4E49;&#x5E95;&#x5C42;&#x8BF7;&#x6C42;&#x5B9E;&#x73B0;</td>
 <td>Function(Options)</td>
 <td></td>
 </tr>
 <tr>
 <td>before-ready</td>
-<td>选择文件之后的钩子,参数为:<code>selectedFiles</code>当前选择文件列表,<code>fileList</code>除当次以外所有已选择的文件列表,返回<code>Boolean</code>,此处可验证上传文件个数</td>
+<td>&#x9009;&#x62E9;&#x6587;&#x4EF6;&#x4E4B;&#x540E;&#x7684;&#x94A9;&#x5B50;,&#x53C2;&#x6570;&#x4E3A;:<code>selectedFiles</code>&#x5F53;&#x524D;&#x9009;&#x62E9;&#x6587;&#x4EF6;&#x5217;&#x8868;,<code>fileList</code>&#x9664;&#x5F53;&#x6B21;&#x4EE5;&#x5916;&#x6240;&#x6709;&#x5DF2;&#x9009;&#x62E9;&#x7684;&#x6587;&#x4EF6;&#x5217;&#x8868;,&#x8FD4;&#x56DE;<code>Boolean</code>,&#x6B64;&#x5904;&#x53EF;&#x9A8C;&#x8BC1;&#x4E0A;&#x4F20;&#x6587;&#x4EF6;&#x4E2A;&#x6570;</td>
 <td>Function(selectedFiles, fileList) =&gt;Boolean</td>
 <td></td>
 </tr>
 <tr>
 <td>before-upload</td>
-<td>上传之前的钩子,可以返回<code>Promise</code>或<code>Boolean</code>,如果返回<code>false</code>则停止上传</td>
+<td>&#x4E0A;&#x4F20;&#x4E4B;&#x524D;&#x7684;&#x94A9;&#x5B50;,&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;<code>Promise</code>&#x6216;<code>Boolean</code>,&#x5982;&#x679C;&#x8FD4;&#x56DE;<code>false</code>&#x5219;&#x505C;&#x6B62;&#x4E0A;&#x4F20;</td>
 <td>Function(file, selectedFiles)=&gt;Promise|Boolean</td>
 <td></td>
 </tr>
 <tr>
 <td>before-remove</td>
-<td>删除文件之前的钩子,可以返回<code>Promise</code>或<code>Boolean</code>,如果返回<code>false</code>则停止删除</td>
+<td>&#x5220;&#x9664;&#x6587;&#x4EF6;&#x4E4B;&#x524D;&#x7684;&#x94A9;&#x5B50;,&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;<code>Promise</code>&#x6216;<code>Boolean</code>,&#x5982;&#x679C;&#x8FD4;&#x56DE;<code>false</code>&#x5219;&#x505C;&#x6B62;&#x5220;&#x9664;</td>
 <td>Function(deleteFile)=&gt;Promise|Boolean</td>
 <td></td>
 </tr>
 <tr>
 <td>with-credentials</td>
-<td>请求时是否携带<code>Cookie</code></td>
+<td>&#x8BF7;&#x6C42;&#x65F6;&#x662F;&#x5426;&#x643A;&#x5E26;<code>Cookie</code></td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>on-preview</td>
-<td>点击文件链接或预览图标时的回调; 传递此参数后,<strong>链接的默认行为不会触发</strong></td>
+<td>&#x70B9;&#x51FB;&#x6587;&#x4EF6;&#x94FE;&#x63A5;&#x6216;&#x9884;&#x89C8;&#x56FE;&#x6807;&#x65F6;&#x7684;&#x56DE;&#x8C03;; &#x4F20;&#x9012;&#x6B64;&#x53C2;&#x6570;&#x540E;,<strong>&#x94FE;&#x63A5;&#x7684;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;</strong></td>
 <td>Function</td>
 <td></td>
 </tr>
 <tr>
 <td>control</td>
-<td>是否完全控制文件列表</td>
+<td>&#x662F;&#x5426;&#x5B8C;&#x5168;&#x63A7;&#x5236;&#x6587;&#x4EF6;&#x5217;&#x8868;</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>chunk</td>
-<td>是否 分片上传</td>
+<td>&#x662F;&#x5426; &#x5206;&#x7247;&#x4E0A;&#x4F20;,(picture-card &#x4E0D;&#x652F;&#x6301;&#x6682;&#x505C;&#x548C;&#x91CD;&#x542F;, &#x91CD;&#x542F;&#x4F9D;&#x8D56;&#x4E8E;<code>uploaded-bytes</code>)</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>max-chunk-size</td>
-<td>分片大小</td>
+<td>&#x5206;&#x7247;&#x5927;&#x5C0F;</td>
 <td>String|Number</td>
 <td></td>
 </tr>
 <tr>
 <td>uploaded-bytes</td>
-<td>已上传字节数, 使用该属性可实现断点续传</td>
+<td>&#x5DF2;&#x4E0A;&#x4F20;&#x5B57;&#x8282;&#x6570;, &#x4F7F;&#x7528;&#x8BE5;&#x5C5E;&#x6027;&#x53EF;&#x5B9E;&#x73B0;&#x65AD;&#x70B9;&#x7EED;&#x4F20;</td>
 <td>String|Number|Function=&gt;Promise</td>
 <td>0</td>
 </tr>
@@ -371,43 +368,43 @@ code.language-yaml {
 <table>
 <thead>
 <tr>
-<th>事件名</th>
-<th>描述</th>
-<th>回调</th>
+<th>&#x4E8B;&#x4EF6;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x56DE;&#x8C03;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>change</td>
-<td>当上传状态改变时触发, 参数详见下面<code>onChange</code></td>
+<td>&#x5F53;&#x4E0A;&#x4F20;&#x72B6;&#x6001;&#x6539;&#x53D8;&#x65F6;&#x89E6;&#x53D1;, &#x53C2;&#x6570;&#x8BE6;&#x89C1;&#x4E0B;&#x9762;<code>onChange</code></td>
 <td>Function({...}))</td>
 </tr>
 <tr>
 <td>remove</td>
-<td>移除文件时回调</td>
+<td>&#x79FB;&#x9664;&#x6587;&#x4EF6;&#x65F6;&#x56DE;&#x8C03;</td>
 <td>Function(file, fileList)</td>
 </tr>
 <tr>
 <td>progress</td>
-<td>上传进度改变时触发</td>
+<td>&#x4E0A;&#x4F20;&#x8FDB;&#x5EA6;&#x6539;&#x53D8;&#x65F6;&#x89E6;&#x53D1;</td>
 <td>Function(e, file, fileList)</td>
 </tr>
 </tbody>
 </table>
-<h4 class="mume-header" id="change-%E4%BA%8B%E4%BB%B6">change 事件</h4>
+<h4 class="mume-header" id="change-%E4%BA%8B%E4%BB%B6">change &#x4E8B;&#x4EF6;</h4>
 
 <blockquote>
-<p>选择后(ready),上传中(uploading),进度(progress), 成功后(success),失败后(error),删除后(removed)都会触发此事件</p>
+<p>&#x9009;&#x62E9;&#x540E;(ready),&#x4E0A;&#x4F20;&#x4E2D;(uploading),&#x8FDB;&#x5EA6;(progress), &#x6210;&#x529F;&#x540E;(success),&#x5931;&#x8D25;&#x540E;(error),&#x5220;&#x9664;&#x540E;(removed)&#x90FD;&#x4F1A;&#x89E6;&#x53D1;&#x6B64;&#x4E8B;&#x4EF6;</p>
 </blockquote>
-<p>转台改变时,总是会传递一下参数:</p>
+<p>&#x8F6C;&#x53F0;&#x6539;&#x53D8;&#x65F6;,&#x603B;&#x662F;&#x4F1A;&#x4F20;&#x9012;&#x4E00;&#x4E0B;&#x53C2;&#x6570;:</p>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript"><span class="token punctuation">{</span>
   file<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
   fileList<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  event<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token comment">// `status = progress`有此属性</span>
+  event<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token comment">// `status = progress`&#x6709;&#x6B64;&#x5C5E;&#x6027;</span>
 <span class="token punctuation">}</span>
-</pre><p><strong>before-upload,before-ready 的参数 <code>file</code> 对象为选择文件的 <code>File</code> 实例,与下面的 <code>file</code> 不一致</strong></p>
+</pre><p><strong>before-upload,before-ready &#x7684;&#x53C2;&#x6570; <code>file</code> &#x5BF9;&#x8C61;&#x4E3A;&#x9009;&#x62E9;&#x6587;&#x4EF6;&#x7684; <code>File</code> &#x5B9E;&#x4F8B;,&#x4E0E;&#x4E0B;&#x9762;&#x7684; <code>file</code> &#x4E0D;&#x4E00;&#x81F4;</strong></p>
 <ol>
-<li><code>file</code> 当前操作的文件对象,</li>
+<li><code>file</code> &#x5F53;&#x524D;&#x64CD;&#x4F5C;&#x7684;&#x6587;&#x4EF6;&#x5BF9;&#x8C61;,</li>
 </ol>
 <pre data-role="codeBlock" data-info="" class="language-"><code>{
   uid:&apos;&apos;, //&#x6587;&#x4EF6;&#x552F;&#x4E00;&#x6807;&#x8BC6;
@@ -419,17 +416,16 @@ code.language-yaml {
 }
 </code></pre><ol start="2">
 <li>
-<p><code>fileList</code> 当前文件列表</p>
+<p><code>fileList</code> &#x5F53;&#x524D;&#x6587;&#x4EF6;&#x5217;&#x8868;</p>
 </li>
 <li>
-<p><code>event</code> 上传中的服务端响应, 包含进度等信息(IE10+支持)</p>
+<p><code>event</code> &#x4E0A;&#x4F20;&#x4E2D;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x54CD;&#x5E94;, &#x5305;&#x542B;&#x8FDB;&#x5EA6;&#x7B49;&#x4FE1;&#x606F;(IE10+&#x652F;&#x6301;)</p>
 </li>
 </ol>
 
       </div>
       
       
-    </body>
     
     
     
@@ -437,4 +433,6 @@ code.language-yaml {
     
     
     
-  </html>
+    
+  
+    </body></html>

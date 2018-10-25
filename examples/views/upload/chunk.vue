@@ -3,6 +3,7 @@
     <h4>chunk</h4>
     <ux-upload :on-preview="onPreview"
                :data="buildFormData"
+               :auto-upload="false"
                name="files"
                list-type="picture"
                action="/upload"
@@ -10,6 +11,7 @@
                max-chunk-size="102400"
                @success="onSuccess"
                @remove="onRemove"
+               @change="onChange"
                @chunk-send="onChunkSend"
                @chunk-success="onChunkSuccess"
                @chunk-error="onChunkError">
@@ -34,6 +36,9 @@
       },
       onSuccess(ret, file) {
         console.log('onSuccess', ret, file);
+      },
+      onChange(...args) {
+        console.log('onChange', args);
       },
       onProgress(e) {
         console.log('onProgress', e);

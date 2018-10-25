@@ -61,6 +61,7 @@ export default function chunkRequest(request, reqs) {
           };
           const chunkEventData = {
             file,
+            chunkId,
             chunk,
             chunkSize,
             chunkIdx: idx,

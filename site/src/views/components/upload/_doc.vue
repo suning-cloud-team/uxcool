@@ -168,7 +168,7 @@
         </tr>
         <tr>
           <td>chunk</td>
-          <td>是否 分片上传</td>
+          <td>&#x662F;&#x5426; &#x5206;&#x7247;&#x4E0A;&#x4F20;,(picture-card &#x4E0D;&#x652F;&#x6301;&#x6682;&#x505C;&#x548C;&#x91CD;&#x542F;, &#x91CD;&#x542F;&#x4F9D;&#x8D56;&#x4E8E;<code>uploaded-bytes</code>)</td>
           <td>Boolean</td>
           <td>false</td>
         </tr>
