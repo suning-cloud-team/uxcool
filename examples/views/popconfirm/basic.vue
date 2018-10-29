@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="demo">
-      <popconfirm title="Are you sure delete this task?">
+      <popconfirm placement="bottomRight"
+                  title="Are you sure delete this task?">
         Delete
       </popconfirm>
       <popconfirm disabled
@@ -10,7 +11,7 @@
       </popconfirm>
     </div>
     <custom-demo />
-    <slot-demo/>
+    <slot-demo />
   </div>
 </template>
 

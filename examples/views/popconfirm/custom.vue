@@ -3,6 +3,7 @@
     <div class="demo">
       <popconfirm title="Are you sure delete this task?"
                   :disabled="!isTrigger"
+                  placement="bottom"
                   @confirm="onConfirm"
                   @cancel="onCancel">
         <a @click="onDelete">Delete</a>

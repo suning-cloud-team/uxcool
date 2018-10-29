@@ -47,7 +47,7 @@ export default {
         ...$props,
         // trigger: isTrigger ? 'click' : 'none',
         trigger: 'click',
-        placement: 'top',
+        // placement: 'top',
         visible: innerVisible,
       };
     },
