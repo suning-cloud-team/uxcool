@@ -35,7 +35,7 @@
     "date-fns": "^1.29.0",
     "lodash": "^4.0.8",
     "object.omit": "^3.0.0",
-    "vee-validate": "^2.0.9",
+    "vee-validate": "~2.0.9",
     "vue-virtual-scroll-list": "^1.2.5"
   },
   "devDependencies": {
