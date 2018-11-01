@@ -56,11 +56,12 @@ export default function chunkRequest(request, reqs) {
               chunkIdx: idx,
               start: startOffset,
               end: endOffset,
-              isLastChunk: endOffset === fileSize,
+              isLastChunk: endOffset + 1 === fileSize,
             }),
           };
           const chunkEventData = {
             file,
+            chunkId,
             chunk,
             chunkSize,
             chunkIdx: idx,

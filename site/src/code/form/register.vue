@@ -66,7 +66,18 @@
         </ux-col>
       </ux-row>
     </ux-form-item>
-
+    <ux-form-item label="Upload"
+                  required>
+      <ux-field-decorator rules="fileRequired"
+                          name="upload">
+        <ux-upload v-model="form.fileList"
+                   action="/upload">
+          <ux-button>Click to Upload</ux-button>
+          <span style="margin-left:8px"
+                @click.stop>this is upload tip</span>
+        </ux-upload>
+      </ux-field-decorator>
+    </ux-form-item>
     <ux-form-item :wrapper-col="{offset:8}">
       <ux-button type="primary"
                  html-type="submit">Register</ux-button>
@@ -75,6 +86,17 @@
 </template>
 
 <script>
+  import { UxForm } from '@suning/uxcool';
+
+  UxForm.extendValidator('fileRequired', {
+    validate(value) {
+      console.log('fileRequird', value);
+      return value.some(v => v.status === 'success');
+    },
+    getMessage(field) {
+      return `${field} 至少上传一个文件`;
+    },
+  });
   export default {
     data() {
       return {
@@ -98,7 +120,12 @@
           formRef.validate().then(({ valid, values }) => {
             if (!valid) {
               console.log('Receive values', values);
+              return;
             }
+            console.log('submit value', {
+              ...values,
+              upload: values.upload.filter(v => v.status === 'success').map(v => v.response),
+            });
           });
         }
       },

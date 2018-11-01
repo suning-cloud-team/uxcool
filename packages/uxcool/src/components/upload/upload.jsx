@@ -136,6 +136,13 @@ export default {
         uploadFile(file);
       });
     },
+    abort(file) {
+      const { $refs: { uploaderRef }, chunk } = this;
+      const { chunkId, uid } = file;
+      if (uploaderRef && ((chunk && chunkId) || (!chunk && uid))) {
+        uploaderRef.abort(chunk ? chunkId : uid);
+      }
+    },
     setInnerFileList(fileList = [], pass = false) {
       const { innerFileList, control } = this;
       if (!control || pass) {
@@ -166,7 +173,7 @@ export default {
       const nFile = getFile(file, innerFileList);
       if (nFile) {
         nFile.status = 'uploading';
-        onChange({ file: { ...nFile }, fileList: innerFileList });
+        onChange({ file: { ...nFile }, fileList: [...innerFileList] });
       }
     },
     onSuccess(response, file) {
@@ -176,8 +183,9 @@ export default {
         nFile.status = 'success';
         nFile.response = response;
         const changedFile = { ...nFile };
-        onChange({ file: changedFile, fileList: innerFileList });
-        this.$emit('success', response, changedFile, innerFileList);
+        const fileList = [...innerFileList];
+        onChange({ file: changedFile, fileList });
+        this.$emit('success', response, changedFile, fileList);
       }
     },
     onError(error, response, file) {
@@ -188,8 +196,9 @@ export default {
         nFile.error = error;
         nFile.response = response;
         const changedFile = { ...nFile };
-        onChange({ file: changedFile, fileList: innerFileList });
-        this.$emit('error', error, response, changedFile, innerFileList);
+        const fileList = [...innerFileList];
+        onChange({ file: changedFile, fileList });
+        this.$emit('error', error, response, changedFile, fileList);
       }
     },
     onProgress(e, file) {
@@ -198,12 +207,13 @@ export default {
       if (nFile) {
         nFile.percent = e.percent;
         const changedFile = { ...nFile };
+        const fileList = [...innerFileList];
         onChange({
           event: e,
           file: changedFile,
-          fileList: innerFileList,
+          fileList,
         });
-        this.$emit('progress', e, changedFile, innerFileList);
+        this.$emit('progress', e, changedFile, fileList);
       }
     },
     onRemove(file) {
@@ -245,6 +255,12 @@ export default {
       e.dataTransfer.dropEffect = 'move';
     },
     onChunkSend(chunk) {
+      const { innerFileList } = this;
+      const { file, chunkId } = chunk;
+      const nFile = getFile(file, innerFileList);
+      if (nFile) {
+        nFile.chunkId = chunkId;
+      }
       this.$emit('chunk-send', chunk);
     },
     onChunkSuccess(response, chunk) {
@@ -253,6 +269,61 @@ export default {
     onChunkError(err, response, chunk) {
       this.$emit('chunk-error', err, response, chunk);
     },
+    onPause(file) {
+      const {
+        $refs: { uploaderRef }, innerFileList, onChange, chunk
+      } = this;
+      const nFile = file;
+      if (nFile) {
+        const { uid, chunkId } = nFile;
+        if (uploaderRef && ((chunk && chunkId) || (!chunk && uid))) {
+          uploaderRef.abort(chunk ? chunkId : uid);
+          const changedFile = { ...nFile };
+          const fileList = [...innerFileList];
+          nFile.status = 'pause';
+          onChange({ file: changedFile, fileList });
+          this.$emit('pause', changedFile, fileList);
+        }
+      }
+    },
+    onRun(file) {
+      const {
+        $refs: { uploaderRef },
+        innerFileList,
+        chunk,
+        data,
+        uploadedBytes,
+        uploadFile,
+        onChange,
+      } = this;
+      const nFile = file;
+
+      if (uploaderRef && nFile) {
+        const { originFile, size: fileSize } = nFile;
+        nFile.status = 'uploading';
+        if (chunk) {
+          Promise.resolve(isFunction(data) ? data(originFile) : data).then((formData) => {
+            const ubytesRet = isFunction(uploadedBytes)
+              ? uploadedBytes(originFile, formData)
+              : uploadedBytes;
+            Promise.resolve(ubytesRet).then((ubytes) => {
+              const ub = Number(ubytes) || 0;
+              if (ub >= fileSize) {
+                nFile.status = 'error';
+                nFile.error = new Error('uplodedbytes > file.size');
+                return;
+              }
+              // eslint-disable-next-line
+              nFile.percent = ub / fileSize * 100;
+              uploadFile(originFile);
+            });
+          });
+        } else {
+          uploadFile(originFile);
+        }
+        onChange({ file: { ...nFile }, fileList: [...innerFileList] });
+      }
+    },
     renderUploadList() {
       const {
         prefixCls,
@@ -260,7 +331,12 @@ export default {
         innerFileList,
         showUploadList,
         locale,
+        autoUpload,
+        chunk,
+        uploadedBytes,
         onRemove,
+        onPause,
+        onRun,
         onPreview,
       } = this;
       if (showUploadList === false) {
@@ -276,10 +352,15 @@ export default {
         showRemoveIcon,
         list: innerFileList,
         locale,
+        autoUpload,
+        chunk,
+        uploadedBytes,
         onPreview,
       };
       const on = {
         remove: onRemove,
+        pause: onPause,
+        run: onRun,
       };
       return <List {...{ props, on }} />;
     },

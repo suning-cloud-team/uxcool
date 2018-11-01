@@ -166,7 +166,8 @@ $upload-pictrue-card-size: 104px;
       }
     }
 
-    .#{$iconfont-css-prefix}-close {
+    .#{$iconfont-css-prefix}-close,
+    &-ops &-op {
       font-size: 14px;
       transition: all 0.3s;
       opacity: 0;
@@ -181,11 +182,17 @@ $upload-pictrue-card-size: 104px;
       }
     }
 
+    &-ops &-op {
+      right: 24px;
+      z-index: 10;
+    }
+
     &:hover &-info {
       background-color: $item-hover-bg;
     }
 
-    &:hover .#{$iconfont-css-prefix}-close {
+    &:hover .#{$iconfont-css-prefix}-close,
+    &:hover &-ops &-op {
       opacity: 1;
     }
 
@@ -195,7 +202,8 @@ $upload-pictrue-card-size: 104px;
       color: $error-color;
     }
 
-    &-error .#{$iconfont-css-prefix}-close {
+    &-error .#{$iconfont-css-prefix}-close,
+    &-error &-ops &-op {
       opacity: 1;
       color: $error-color !important;
     }
@@ -301,6 +309,9 @@ $upload-pictrue-card-size: 104px;
       top: 8px;
       line-height: 1;
       opacity: 1;
+    }
+    .#{$upload-item}-ops .#{$upload-item}-op {
+      top: 20px;
     }
   }
 

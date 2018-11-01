@@ -85,7 +85,7 @@ function modalConfrim(props) {
         bindProps.dialogClass = [prefixCls, `${prefixCls}-${type}`, bindProps.dialogClass];
 
         const cancelBtn = okCancel ? (
-          <button class="ux-btn" on-click={listeners.cancel}>
+          <button htmlType="button" class="ux-btn" on-click={listeners.cancel}>
             {cancelText}
           </button>
         ) : null;
@@ -96,7 +96,7 @@ function modalConfrim(props) {
           <div class={`${prefixCls}-content`}>{content}</div>
         );
         return (
-          <modal {...{ props: bindProps, on: { ...listeners, enter: onModalEnter } }}>
+          <modal {...{ props: bindProps, on: { ...listeners } }}>
             <div class={`${prefixCls}-body-wrapper`}>
               <div class={`${prefixCls}-body`}>
                 <icon type={iconType} />
@@ -107,6 +107,7 @@ function modalConfrim(props) {
                 {cancelBtn}
                 <button
                   ref="okBtnRef"
+                  htmlType="button"
                   class={['ux-btn', `ux-btn-${okType}`]}
                   on-click={listeners.ok}
                 >
