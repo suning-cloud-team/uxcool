@@ -111,7 +111,7 @@
           $vnode = $vnode.parent;
         }
         const filterDescendants = slotDefault.filter(node =>
-        /^([a-zA-Z]+)-tab-pane$/.test((node.componentOptions || {}).tag));
+          /^([a-zA-Z]+)-tab-pane$/.test((node.componentOptions || {}).tag));
         const idx = filterDescendants.indexOf($vnode);
         this.descendants.splice(idx, 0, item);
       },
@@ -139,11 +139,17 @@
       },
       descendants() {
         const { descendants, init, activeName } = this;
+        if (descendants.length === 0) {
+          return;
+        }
         if (!init) {
           if (!activeName) {
             // 默认选择第一项
-            const [descendant] = descendants.filter(v => !v.disabled);
-            this.setActiveName(descendant.name);
+            let [descendant] = descendants.filter(v => !v.disabled);
+            descendant = descendant || descendants[0];
+            if (descendant) {
+              this.setActiveName(descendant.name);
+            }
           }
           this.init = true;
         }

@@ -80,7 +80,7 @@
     },
     data() {
       return {
-        collapsed: false,
+        collapsed: true,
         openKeys: ['sub-menu-3'],
       };
     },

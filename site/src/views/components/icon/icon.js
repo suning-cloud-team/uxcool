@@ -1,5 +1,421 @@
 export default [
   {
+    name: 'about',
+    font: '\\ea5c',
+  },
+  {
+    name: 'anquan',
+    font: '\\ea5d',
+  },
+  {
+    name: 'baogao',
+    font: '\\ea5e',
+  },
+  {
+    name: 'baoguo',
+    font: '\\ea5f',
+  },
+  {
+    name: 'baojing',
+    font: '\\ea60',
+  },
+  {
+    name: 'bianji',
+    font: '\\ea61',
+  },
+  {
+    name: 'bingtu',
+    font: '\\ea62',
+  },
+  {
+    name: 'boce',
+    font: '\\ea63',
+  },
+  {
+    name: 'bofang',
+    font: '\\ea64',
+  },
+  {
+    name: 'cangku',
+    font: '\\ea65',
+  },
+  {
+    name: 'CDN',
+    font: '\\ea66',
+  },
+  {
+    name: 'cengji',
+    font: '\\ea67',
+  },
+  {
+    name: 'ceshi',
+    font: '\\ea68',
+  },
+  {
+    name: 'chexiao',
+    font: '\\ea69',
+  },
+  {
+    name: 'chizi',
+    font: '\\ea6a',
+  },
+  {
+    name: 'computer',
+    font: '\\ea6b',
+  },
+  {
+    name: 'cunchu',
+    font: '\\ea6c',
+  },
+  {
+    name: 'daiban',
+    font: '\\ea6d',
+  },
+  {
+    name: 'danao',
+    font: '\\ea6e',
+  },
+  {
+    name: 'daohang',
+    font: '\\ea6f',
+  },
+  {
+    name: 'date',
+    font: '\\ea70',
+  },
+  {
+    name: 'dayinji',
+    font: '\\ea71',
+  },
+  {
+    name: 'DDOS',
+    font: '\\ea72',
+  },
+  {
+    name: 'delete1',
+    font: '\\ea73',
+  },
+  {
+    name: 'dengchu',
+    font: '\\ea74',
+  },
+  {
+    name: 'dingwei',
+    font: '\\ea75',
+  },
+  {
+    name: 'duanxin',
+    font: '\\ea76',
+  },
+  {
+    name: 'duixiangcunchu',
+    font: '\\ea77',
+  },
+  {
+    name: 'erweima',
+    font: '\\ea78',
+  },
+  {
+    name: 'eyes',
+    font: '\\ea79',
+  },
+  {
+    name: 'fanghu',
+    font: '\\ea7a',
+  },
+  {
+    name: 'fangzi',
+    font: '\\ea7b',
+  },
+  {
+    name: 'fanlaji',
+    font: '\\ea7c',
+  },
+  {
+    name: 'fanzuobi',
+    font: '\\ea7d',
+  },
+  {
+    name: 'fanzuobicopy',
+    font: '\\ea7e',
+  },
+  {
+    name: 'fav',
+    font: '\\ea7f',
+  },
+  {
+    name: 'fenxiang',
+    font: '\\ea80',
+  },
+  {
+    name: 'fuwu',
+    font: '\\ea81',
+  },
+  {
+    name: 'fuwuchaxun',
+    font: '\\ea82',
+  },
+  {
+    name: 'fuwufenxi',
+    font: '\\ea83',
+  },
+  {
+    name: 'fuwuguanli',
+    font: '\\ea84',
+  },
+  {
+    name: 'fuwuqi1',
+    font: '\\ea85',
+  },
+  {
+    name: 'fuzai',
+    font: '\\ea86',
+  },
+  {
+    name: 'fwuxunhuan',
+    font: '\\ea87',
+  },
+  {
+    name: 'gerenxinx',
+    font: '\\ea88',
+  },
+  {
+    name: 'gerenzhongxin',
+    font: '\\ea89',
+  },
+  {
+    name: 'gongzuoliu',
+    font: '\\ea8a',
+  },
+  {
+    name: 'guanbi',
+    font: '\\ea8b',
+  },
+  {
+    name: 'guanliyuan',
+    font: '\\ea8c',
+  },
+  {
+    name: 'help1',
+    font: '\\ea8d',
+  },
+  {
+    name: 'hezuo',
+    font: '\\ea8e',
+  },
+  {
+    name: 'houtaiguanli',
+    font: '\\ea8f',
+  },
+  {
+    name: 'huojing',
+    font: '\\ea90',
+  },
+  {
+    name: 'ip',
+    font: '\\ea91',
+  },
+  {
+    name: 'jiankong',
+    font: '\\ea92',
+  },
+  {
+    name: 'jianrong',
+    font: '\\ea93',
+  },
+  {
+    name: 'jiekuan',
+    font: '\\ea94',
+  },
+  {
+    name: 'jinggao',
+    font: '\\ea95',
+  },
+  {
+    name: 'jiqiren',
+    font: '\\ea96',
+  },
+  {
+    name: 'kefu',
+    font: '\\ea97',
+  },
+  {
+    name: 'suo',
+    font: '\\ea98',
+  },
+  {
+    name: 'kuangjia',
+    font: '\\ea99',
+  },
+  {
+    name: 'lanya',
+    font: '\\ea9a',
+  },
+  {
+    name: 'lianjie',
+    font: '\\ea9b',
+  },
+  {
+    name: 'linggan',
+    font: '\\ea9c',
+  },
+  {
+    name: 'lishi',
+    font: '\\ea9d',
+  },
+  {
+    name: 'liwu',
+    font: '\\ea9e',
+  },
+  {
+    name: 'MOCK',
+    font: '\\ea9f',
+  },
+  {
+    name: 'mysql',
+    font: '\\eaa0',
+  },
+  {
+    name: 'PDA',
+    font: '\\eaa1',
+  },
+  {
+    name: 'qianbao',
+    font: '\\eaa2',
+  },
+  {
+    name: 'quanping',
+    font: '\\eaa3',
+  },
+  {
+    name: 'sao',
+    font: '\\eaa4',
+  },
+  {
+    name: 'saoma',
+    font: '\\eaa5',
+  },
+  {
+    name: 'save_o',
+    font: '\\eaa6',
+  },
+  {
+    name: 'setting_o',
+    font: '\\eaa7',
+  },
+  {
+    name: 'shaixuan',
+    font: '\\eaa8',
+  },
+  {
+    name: 'shenduceshi',
+    font: '\\eaa9',
+  },
+  {
+    name: 'shengyin',
+    font: '\\eaaa',
+  },
+  {
+    name: 'shibie',
+    font: '\\eaab',
+  },
+  {
+    name: 'shijian',
+    font: '\\eaac',
+  },
+  {
+    name: 'shipin',
+    font: '\\eaad',
+  },
+  {
+    name: 'shopping_o',
+    font: '\\eaae',
+  },
+  {
+    name: 'shuibiao',
+    font: '\\eaaf',
+  },
+  {
+    name: 'shuju',
+    font: '\\eab0',
+  },
+  {
+    name: 'sousou',
+    font: '\\eab1',
+  },
+  {
+    name: 'sousuo',
+    font: '\\eab2',
+  },
+  {
+    name: 'tianjia',
+    font: '\\eab3',
+  },
+  {
+    name: 'tongzhi',
+    font: '\\eab4',
+  },
+  {
+    name: 'VPC',
+    font: '\\eab5',
+  },
+  {
+    name: 'vs',
+    font: '\\eab6',
+  },
+  {
+    name: 'weixiu',
+    font: '\\eab7',
+  },
+  {
+    name: 'wendang',
+    font: '\\eab8',
+  },
+  {
+    name: 'wendingxing',
+    font: '\\eab9',
+  },
+  {
+    name: 'xiangji',
+    font: '\\eaba',
+  },
+  {
+    name: 'xianshibutong',
+    font: '\\eabb',
+  },
+  {
+    name: 'xiaoxi',
+    font: '\\eabc',
+  },
+  {
+    name: 'xinzeng',
+    font: '\\eabd',
+  },
+  {
+    name: 'yanzhengma',
+    font: '\\eabe',
+  },
+  {
+    name: 'yaoshi',
+    font: '\\eabf',
+  },
+  {
+    name: 'yemianliu',
+    font: '\\eac0',
+  },
+  {
+    name: 'yibiaopan',
+    font: '\\eac1',
+  },
+  {
+    name: 'yichang',
+    font: '\\eac2',
+  },
+  {
+    name: 'yidong',
+    font: '\\eac3',
+  },
+  {
     name: 'down',
     font: '\\e900',
   },
@@ -1062,6 +1478,14 @@ export default [
   {
     name: 'zoom_big',
     font: '\\ea09',
+  },
+  {
+    name: 'fangdajing',
+    font: '\\ea0a',
+  },
+  {
+    name: 'shareo',
+    font: '\\ea0b',
   },
   {
     name: 'relevance',
