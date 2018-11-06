@@ -24,16 +24,19 @@
     <div class="demo">
       <h6>disabled</h6>
       <ux-tabs :theme="theme">
-        <ux-tab-pane tab="Tab 1"
+        <ux-tab-pane :disabled="disabled"
+                     tab="tab1"
                      name="1">
+          <!-- <span slot="tab">tab {{ disabled ? 0 : 1 }}</span> -->
           Tab 1 Content
         </ux-tab-pane>
-        <ux-tab-pane disabled
+        <ux-tab-pane :disabled="disabled"
                      tab="Tab 2"
                      name="2">
           Tab 2 Content
         </ux-tab-pane>
-        <ux-tab-pane tab="Tab 3"
+        <ux-tab-pane :disabled="disabled"
+                     tab="Tab 3"
                      name="3">
           Tab 3 Content
         </ux-tab-pane>
@@ -148,7 +151,7 @@
       </ux-tabs>
     </div>
     <event-demo />
-    <modal-demo/>
+    <modal-demo />
   </div>
 </template>
 
@@ -179,6 +182,7 @@
         selectedPosition: 'top',
         isFeatureDialogShown: false,
         selectedTabInFeature: 'ANDROID',
+        disabled: true,
       };
     },
     computed: {
@@ -206,7 +210,8 @@
 
       setTimeout(() => {
         this.isFeatureDialogShown = true;
-      }, 1500);
+        this.disabled = false;
+      }, 2500);
     },
     methods: {
       changeTheme() {

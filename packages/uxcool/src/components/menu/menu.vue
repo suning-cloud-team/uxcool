@@ -137,13 +137,13 @@
         this.$emit('open-change', keys);
       },
       updateCollapseOpenKeys() {
-        const { inlineCollapsed, innerOpenKeys, prevCollapsedOpenKeys } = this;
+        const { inlineCollapsed, innerOpenKeys } = this;
         if (inlineCollapsed) {
           this.prevCollapsedOpenKeys = innerOpenKeys;
           this.collapsedOpenKeys = [];
         } else {
           setTimeout(() => {
-            this.collapsedOpenKeys = prevCollapsedOpenKeys;
+            this.collapsedOpenKeys = this.prevCollapsedOpenKeys;
             this.prevCollapsedOpenKeys = [];
           }, 100);
         }
