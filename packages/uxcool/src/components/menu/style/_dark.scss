@@ -33,7 +33,8 @@ $border-color: rgba(#fff, 0.2);
 
   &-dark#{&}-inline,
   &-dark#{&}-vertical {
-    border-right-color: $border-color;
+    // border-right-color: $border-color;
+    border-right: none;
   }
 
   &-dark#{&}-inline &-item,

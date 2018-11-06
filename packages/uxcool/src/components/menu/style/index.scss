@@ -138,17 +138,17 @@ $menu-prefix-cls: #{$ux-prefix}-menu;
       left: 1px;
       position: relative;
       z-index: 1;
-      &:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        border-right: 3px solid $primary-color;
-        transform: scaleY(0.0001);
-        opacity: 0;
-        transition: transform 0.15s $ease-out, opacity 0.15s $ease-out;
-      }
+      //   &:after {
+      //     content: '';
+      //     position: absolute;
+      //     right: 0;
+      //     top: 0;
+      //     bottom: 0;
+      //     border-right: 3px solid $primary-color;
+      //     transform: scaleY(0.0001);
+      //     opacity: 0;
+      //     transition: transform 0.15s $ease-out, opacity 0.15s $ease-out;
+      //   }
     }
   }
 
@@ -178,14 +178,14 @@ $menu-prefix-cls: #{$ux-prefix}-menu;
 
   &-inline {
     width: 100%;
-    .#{$menu-prefix-cls}-selected,
-    .#{$menu-prefix-cls}-item-selected {
-      &:after {
-        transition: transform 0.15s $ease-in-out, opacity 0.15s $ease-in-out;
-        opacity: 1;
-        transform: scaleY(1);
-      }
-    }
+    // .#{$menu-prefix-cls}-selected,
+    // .#{$menu-prefix-cls}-item-selected {
+    //   &:after {
+    //     transition: transform 0.15s $ease-in-out, opacity 0.15s $ease-in-out;
+    //     opacity: 1;
+    //     transform: scaleY(1);
+    //   }
+    // }
   }
 
   &-submenu-horizontal > & {
