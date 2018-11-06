@@ -33,6 +33,7 @@
 | required   | 是否必填, 如不设置,会根据校验规则自动生成     | Boolean |                                                                     |
 | colon      | 是否显示 `label` 后的冒号,配合`label`属性使用 | Boolean | true                                                                |
 | extra      | 额外信息,与错误信息同时存在                   | String  |                                                                     |
+| help       | 帮助信息, 如果有错误信息,则隐藏               | String  |                                                                     |
 
 #### Slots
 
@@ -40,6 +41,7 @@
 | ----- | ----------------- |
 | label | 自定义 label 内容 |
 | extra | 自定义额外内容    |
+| help  | 自定义帮助信息    |
 
 ### UxFieldDecorator
 
