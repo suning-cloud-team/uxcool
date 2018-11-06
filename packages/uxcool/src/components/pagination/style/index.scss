@@ -208,12 +208,13 @@ $pagination-prefix-cls: #{$ux-prefix}-pagination;
         margin: 0 8px;
         width: 50px;
         text-align: center;
+        padding: 0 11px;
       }
       button {
         @include btn();
         @include btn-primary;
-        height: 28px;
-        line-height: 28px;
+        height: 27px;
+        line-height: 27px;
         margin-left: 8px;
       }
     }

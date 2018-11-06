@@ -53,6 +53,7 @@
     </div>
 
     <stream-demo />
+    <tab-demo />
   </div>
 </template>
 
@@ -60,11 +61,13 @@
 <script>
   import { Pagination } from '@suning/uxcool';
   import Stream from './stream.vue';
+  import TabDemo from './tab.vue';
 
   export default {
     components: {
       UxPagination: Pagination,
       StreamDemo: Stream,
+      TabDemo,
     },
     data() {
       return {
