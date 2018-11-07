@@ -5,6 +5,12 @@
       <ux-form ref="formRef"
                @submit="onSubmit">
         <table-search-form>
+          <ux-form-item label="Field">
+            <ux-field-decorator name="Fieldselect">
+              <ux-select />
+              <!-- <ux-range-date-picker /> -->
+            </ux-field-decorator>
+          </ux-form-item>
           <ux-form-item v-for="i in cnt"
                         :key="i"
                         :label="`Field ${i}`">
@@ -16,6 +22,7 @@
               <!-- <ux-range-date-picker /> -->
             </ux-field-decorator>
           </ux-form-item>
+
           <template slot="op">
             <ux-button type="primary"
                        html-type="submit">Search</ux-button>
