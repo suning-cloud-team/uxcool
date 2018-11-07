@@ -217,10 +217,10 @@
         }
       },
       onSelect(val) {
-        const { isOkConfirm, onChange } = this;
+        const { isOkConfirm, isHasOkButton, onChange } = this;
         this.innerValue = val;
         if (!isOkConfirm) {
-          onChange(val);
+          onChange(val, !isHasOkButton);
         }
       },
       onFocus(e) {
