@@ -3,6 +3,10 @@
   width: auto;
   margin: 10px;
 
+  &-doc-open {
+    overflow: hidden;
+  }
+
   &-wrap {
     position: fixed;
     overflow: auto;
