@@ -8,6 +8,20 @@ $dialog-prefix-cls: #{$ux-prefix}-modal;
   top: 100px;
   padding-bottom: 24px;
 
+  // compatibility header position fixed
+  &-doc-open {
+    overflow: hidden;
+    .#{$ux-prefix}-cascader-menus,
+    .#{$ux-prefix}-dropdown,
+    .#{$ux-prefix}-dropdown-menu-submenu-popup,
+    .#{$ux-prefix}-select-dropdown,
+    .#{$ux-prefix}-calendar-picker-container,
+    .#{$ux-prefix}-calendar-time-picker-panel,
+    .#{$ux-prefix}-time-picker-panel {
+      z-index: $zindex-modal + 50;
+    }
+  }
+
   &-wrap {
     position: fixed;
     overflow: auto;

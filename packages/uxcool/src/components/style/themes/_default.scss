@@ -236,8 +236,9 @@ $zindex-modal: 1000 !default;
 $zindex-notification: 1010 !default;
 $zindex-message: 1010 !default;
 $zindex-popover: 1030 !default;
-$zindex-picker: 1050 !default;
-$zindex-dropdown: 1050 !default;
+// 在modal中实际zIndex= $zindex-modal+50,为解决头部fixed时的层级问题,&-doc-open
+$zindex-picker: 800 !default;
+$zindex-dropdown: 800 !default;
 $zindex-tooltip: 1060 !default;
 $zindex-layout-header: 900 !default;
 $zindex-layout-sidebar: 899 !default;
