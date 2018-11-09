@@ -138,6 +138,7 @@
     <remote-filter-demo />
     <custom-input-demo />
     <custom-attrs-demo />
+    <clear-demo />
 
   </div>
 </template>
@@ -158,6 +159,7 @@
   import RemoteFilterDemo from './remoteFilter.vue';
   import CustomInputDemo from './custom-input.vue';
   import CustomAttrsDemo from './custom-attrs.vue';
+  import ClearDemo from './clear.vue';
 
   export default {
     components: {
@@ -178,6 +180,7 @@
       RemoteFilterDemo,
       CustomInputDemo,
       CustomAttrsDemo,
+      ClearDemo,
     },
     data() {
       return {

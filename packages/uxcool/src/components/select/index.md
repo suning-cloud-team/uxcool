@@ -50,6 +50,7 @@
 | deselect             | `tags`和`multiple`模式时,`option`取消选中时触发 | Function(value, option)     |
 | scroll               | 下拉面板滚动时触发                              | Function(e)                 |
 | search               | 搜索值变化时触发                                | Function(searchValue)       |
+| clear                | 点击清除按钮时触发                              | Function()                  |  |
 
 ### UxOption
 

@@ -497,6 +497,7 @@ export default {
       setInnerVisible(false);
       setTimeout(() => {
         clearSearchInputValue();
+        this.$emit('clear');
       }, 100);
       maybeFocus();
     },
