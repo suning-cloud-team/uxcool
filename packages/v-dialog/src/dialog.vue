@@ -40,7 +40,7 @@
 
             <div :class="`${prefixCls}-body`"
                  :style="bodyStyle">
-              <slot/>
+              <slot />
             </div>
 
             <div v-if="$slots.footer"
@@ -56,6 +56,7 @@
 
 
 <script>
+  import { addClass, removeClass } from '@suning/v-utils';
   import Mixin from './mixin';
 
   const $doc = document.body;
@@ -156,22 +157,20 @@
         });
       },
       setDocOverflow(flag) {
+        const { prefixCls } = this;
         if (flag) {
           openModalCnt += 1;
           if (openModalCnt > 1) {
             return;
           }
+          addClass($doc, `${prefixCls}-doc-open`);
         } else {
           openModalCnt -= 1;
           if (openModalCnt > 0) {
             return;
           }
+          removeClass($doc, `${prefixCls}-doc-open`);
         }
-        let overflow = '';
-        if (flag) {
-          overflow = 'hidden';
-        }
-        $doc.style.overflow = overflow;
       },
       onClose(e) {
         this.$emit('input', false);

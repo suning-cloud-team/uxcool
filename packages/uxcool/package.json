@@ -1,6 +1,6 @@
 {
   "name": "@suning/uxcool",
-  "version": "0.4.0-alpha.26",
+  "version": "0.4.0-alpha.27",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -20,7 +20,7 @@
   "dependencies": {
     "@suning/v-checkbox": "^1.0.9",
     "@suning/v-datepicker": "^1.0.53",
-    "@suning/v-dialog": "^1.0.12",
+    "@suning/v-dialog": "^1.0.13",
     "@suning/v-menu": "^1.0.39",
     "@suning/v-notification": "^1.0.10",
     "@suning/v-pagination": "^1.0.22",

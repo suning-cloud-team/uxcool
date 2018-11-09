@@ -184,7 +184,7 @@
         <store-cmp />
         <p>error Content</p>
       </ux-modal>
-      <store-cmp/>
+      <store-cmp />
     </div>
 
     <h4>control</h4>
@@ -198,6 +198,7 @@
         <p>control Content</p>
       </ux-modal>
     </div>
+    <z-index-demo />
   </div>
 </template>
 
@@ -205,6 +206,7 @@
 <script>
   import Vue from 'vue';
   import { Button, Modal } from '@suning/uxcool';
+  import ZIndexDemo from './z-index.vue';
 
   Vue.component('StoreCmp', {
     created() {
@@ -218,6 +220,7 @@
     components: {
       UxModal: Modal,
       UxButton: Button,
+      ZIndexDemo,
     },
     data() {
       return {
