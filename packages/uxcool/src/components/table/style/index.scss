@@ -54,7 +54,7 @@ $table-header-icon-color: $text-color-secondary;
       transition: all 0.3s;
       width: 14px;
       font-weight: normal;
-      vertical-align: text-bottom;
+      // vertical-align: text-bottom;
 
       &:hover {
         color: $text-color;
@@ -164,10 +164,12 @@ $table-header-icon-color: $text-color-secondary;
   &-thead > tr > th {
     padding: $table-th-padding-vertical $table-th-padding-horizontal;
     word-break: break-all;
+    line-height: 1.6;
   }
   &-tbody > tr > td {
     padding: $table-padding-vertical $table-padding-horizontal;
     word-break: break-all;
+    line-height: 1.6;
   }
 
   &-thead > tr > th.#{$table-prefix-cls}-selection-column-custom {
