@@ -126,7 +126,9 @@
           checkbox1: false,
         },
         formValidatorOptions: {},
-        fieldOptions: {},
+        fieldOptions: {
+          events:'change'
+        },
         rules: [
           'required|numeric',
           {

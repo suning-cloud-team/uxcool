@@ -2,13 +2,13 @@
 
   <div class="demo">
     <ux-tree ref="tree1"
-             :selected-keys="['0-0-0', '0-0-2']"
+             :selected-keys="selectedKeys"
              :checked-keys="checkedKeys"
              :data-source="dataSource"
              :selectable="selectable"
              :default-expand-parent="expandParent"
-             checkable
-             @check="onCheck" />
+             @check="onCheck"
+             @node-click="onNodeClick" />
 
   </div>
 </template>
@@ -26,6 +26,7 @@
       return {
         checkedKeys: ['0-0-0', '0-0-1', '0-0-2'],
         expandedKeys: ['0-0', '0-0-1'],
+        selectedKeys: ['0-0-2'],
         selectable: false,
         dataSource: [
           {
@@ -107,6 +108,10 @@
       },
       onSelect(...args) {
         console.log('onSelect', ...args);
+      },
+      onNodeClick(...args) {
+        console.log('onClick', ...args);
+        this.selectedKeys = [...this.selectedKeys, args[1].key];
       },
     },
   };
