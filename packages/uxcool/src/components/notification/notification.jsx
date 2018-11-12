@@ -15,11 +15,16 @@ const defaultProps = {
 };
 
 const iconTypes = {
-  success: 'ok_circle_o',
-  info: 'info_circle_o',
-  warn: 'exclamation_circle_o',
-  warning: 'exclamation_circle_o',
-  error: 'close_circle_o',
+  // success: 'ok_circle_o',
+  // info: 'info_circle_o',
+  // warn: 'exclamation_circle_o',
+  // warning: 'exclamation_circle_o',
+  // error: 'close_circle_o',
+  success: 'ok_circle',
+  info: 'info_circle',
+  warn: 'exclamation_circle',
+  warning: 'exclamation_circle',
+  error: 'close_circle',
 };
 
 let customProps = { ...defaultProps };
