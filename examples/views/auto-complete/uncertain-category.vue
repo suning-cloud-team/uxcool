@@ -7,6 +7,7 @@
                       :dropdown-match-select-width="false"
                       size="large"
                       style="width:100%"
+                      allow-clear
                       @search="onSearch"
                       @change="onChange">
       <template slot="renderInputElement">

@@ -5,6 +5,7 @@
     <ux-auto-complete :data-source="dataSource"
                       :get-container="getContainer"
                       placeholder="请选择"
+                      allow-clear
                       @search="onSearch" />
   </div>
 </template>

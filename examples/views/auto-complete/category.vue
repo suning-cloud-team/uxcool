@@ -10,6 +10,7 @@
                       :filter-option="filterOption"
                       :render-input-element="getInputElement"
                       size="large"
+                      allow-clear
                       popup-class="certain-category-wrapper"
                       @change="onChange">
       <template slot="renderGroupLabel"
@@ -113,7 +114,7 @@
         return option.value.indexOf(value) > -1;
       },
       getInputElement() {
-        return <ux-search-input />;
+        return <ux-search-input ref="abc" />;
       },
     },
   };

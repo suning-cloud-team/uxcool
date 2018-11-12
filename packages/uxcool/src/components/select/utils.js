@@ -188,7 +188,7 @@ export function genInputElement(inputNode, data = {}) {
   const { input: onInput } = data.on || {};
   const inputFn = isFunction(onInput) ? (_, e) => onInput(e) : () => {};
   const inputInput = originInput ? [originInput, inputFn] : inputFn;
-
+  const ref = data.ref || inputNode.data.ref;
   return cloneVNode(
     inputNode,
     {
@@ -201,6 +201,7 @@ export function genInputElement(inputNode, data = {}) {
         ...overlayData.on,
         input: inputInput,
       },
+      ref,
     },
     false
   );

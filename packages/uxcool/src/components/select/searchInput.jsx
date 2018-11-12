@@ -112,7 +112,11 @@ export default {
           class: `${prefixCls}-search__field`,
           props: { value: rootSearchInputValue, disabled: rootDisabled, size: rootSize },
           on: { input: onInput },
+          ref: 'inputRef',
         });
+        // 强行将 inputRef 元素加入内部的$refs中,目的是在focus/blur时可以使用, 造成的后果是外部设置的ref无效,
+        // 如果不这么做, 会在使用allow-clear时出现第一次输入字符时丢失焦点的问题
+        inputNode.context = this;
       }
     }
     return (
