@@ -61,6 +61,10 @@
         type: String,
         default: 'light',
       },
+      control: {
+        type: Boolean,
+        default: false,
+      },
     },
     computed: {
       isSupportFlex() {
@@ -96,7 +100,10 @@
     },
     methods: {
       onTabClick(tab, name, e) {
-        this.$emit('input', name);
+        const { control } = this;
+        if (!control) {
+          this.$emit('input', name);
+        }
         this.$emit('tab-click', name, tab, e);
       },
     },

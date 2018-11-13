@@ -9,6 +9,10 @@
         tabRoot: this,
       };
     },
+    components: {
+      TabContent,
+      TabBar,
+    },
     props: {
       prefixCls: {
         type: String,
@@ -18,12 +22,22 @@
         type: String,
         default: 'top',
       },
-      value: String,
-      destroyInactiveTabPane: Boolean,
+      value: {
+        type: String,
+        default: undefined,
+      },
+      destroyInactiveTabPane: {
+        type: Boolean,
+        default: false,
+      },
       animated: { type: Boolean, default: true },
       size: {
         type: String,
         default: 'default',
+      },
+      control: {
+        type: Boolean,
+        default: false,
       },
     },
     data() {
@@ -33,9 +47,7 @@
         activeName: '',
       };
     },
-    created() {
-      this.activeName = this.value;
-    },
+
     computed: {
       classes() {
         const { prefixCls, tabBarPosition } = this;
@@ -54,6 +66,64 @@
           name: v.name,
           vm: v,
         }));
+      },
+    },
+    watch: {
+      value(nVal) {
+        this.setActiveName(nVal);
+      },
+      descendants() {
+        const { descendants, init, activeName } = this;
+        if (descendants.length === 0) {
+          return;
+        }
+        if (!init) {
+          if (!activeName) {
+            // 默认选择第一项
+            let [descendant] = descendants.filter(v => !v.disabled);
+            descendant = descendant || descendants[0];
+            if (descendant) {
+              this.setActiveName(descendant.name);
+            }
+          }
+          this.init = true;
+        }
+      },
+    },
+    created() {
+      this.activeName = this.value;
+    },
+    methods: {
+      setActiveName(name) {
+        this.activeName = name;
+      },
+      addDescendant(item) {
+        const { $slots } = this;
+        const { default: slotDefault } = $slots;
+        let { $vnode } = item;
+        while ($vnode.parent) {
+          $vnode = $vnode.parent;
+        }
+        const filterDescendants = slotDefault.filter(node =>
+          /^([a-zA-Z]+)-tab-pane$/.test((node.componentOptions || {}).tag));
+        const idx = filterDescendants.indexOf($vnode);
+        this.descendants.splice(idx, 0, item);
+      },
+      removeDescendant(item) {
+        this.descendants = this.descendants.filter(v => v !== item);
+      },
+      onTabClick(tab, name, e) {
+        const { control } = this;
+        if (!control) {
+          this.setActiveName(name);
+        }
+        this.$emit('tab-click', tab, name, e);
+      },
+      onPrevClick(e) {
+        this.$emit('prev-click', e);
+      },
+      onNextClick(e) {
+        this.$emit('next-click', e);
       },
     },
     render() {
@@ -98,62 +168,6 @@
       );
       const childrens = tabBarPosition === 'bottom' ? [tabContent, tabBar] : [tabBar, tabContent];
       return <div class={classes}>{childrens}</div>;
-    },
-    methods: {
-      setActiveName(name) {
-        this.activeName = name;
-      },
-      addDescendant(item) {
-        const { $slots } = this;
-        const { default: slotDefault } = $slots;
-        let { $vnode } = item;
-        while ($vnode.parent) {
-          $vnode = $vnode.parent;
-        }
-        const filterDescendants = slotDefault.filter(node =>
-          /^([a-zA-Z]+)-tab-pane$/.test((node.componentOptions || {}).tag));
-        const idx = filterDescendants.indexOf($vnode);
-        this.descendants.splice(idx, 0, item);
-      },
-      removeDescendant(item) {
-        this.descendants = this.descendants.filter(v => v !== item);
-      },
-      onTabClick(tab, name, e) {
-        this.setActiveName(name);
-        this.$emit('tab-click', tab, name, e);
-      },
-      onPrevClick(e) {
-        this.$emit('prev-click', e);
-      },
-      onNextClick(e) {
-        this.$emit('next-click', e);
-      },
-    },
-    components: {
-      TabContent,
-      TabBar,
-    },
-    watch: {
-      value(nVal) {
-        this.setActiveName(nVal);
-      },
-      descendants() {
-        const { descendants, init, activeName } = this;
-        if (descendants.length === 0) {
-          return;
-        }
-        if (!init) {
-          if (!activeName) {
-            // 默认选择第一项
-            let [descendant] = descendants.filter(v => !v.disabled);
-            descendant = descendant || descendants[0];
-            if (descendant) {
-              this.setActiveName(descendant.name);
-            }
-          }
-          this.init = true;
-        }
-      },
     },
   };
 </script>
