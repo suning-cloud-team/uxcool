@@ -32,14 +32,7 @@
       <template slot="timePicker"
                 slot-scope="props">
         <time-picker-panel v-if="isShowTime"
-                           :prefix-cls="`${prefixCls}-time-picker`"
-                           :value="innerValue"
-                           :disabled-hours="disabledHours"
-                           :disabled-minutes="disabledMinutes"
-                           :disabled-seconds="disabledSeconds"
-                           show-hour
-                           show-minute
-                           show-second
+                           v-bind="timePickerPanelProps"
                            @on-change="props.onChange" />
       </template>
     </calendar>
@@ -178,6 +171,27 @@
       isOkConfirm() {
         const { isHasOkButton, okConfirm } = this;
         return isHasOkButton && okConfirm;
+      },
+      timePickerPanelProps() {
+        const {
+          prefixCls,
+          innerValue,
+          disabledHours,
+          disabledMinutes,
+          disabledSeconds,
+          timeProps,
+        } = this;
+        return {
+          showHour: true,
+          showMinute: true,
+          showSecond: true,
+          ...timeProps,
+          prefixCls: `${prefixCls}-time-picker`,
+          value: innerValue,
+          disabledHours,
+          disabledMinutes,
+          disabledSeconds,
+        };
       },
     },
     watch: {

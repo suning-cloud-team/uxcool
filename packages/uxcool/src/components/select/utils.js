@@ -54,6 +54,9 @@ export function buildOptionsFromSlot(nodes = []) {
   return ret;
 }
 
+export function isUnRenderOption(option) {
+  return 'UNRENDER_OTPION' in option && option.UNRENDER_OTPION === true;
+}
 export function isOptionGroup(option) {
   return 'children' in option;
 }
