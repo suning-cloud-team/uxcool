@@ -621,7 +621,7 @@ export default {
           fOptions: this.fOptions,
         };
       }
-      this.prevOptions = options;
+      this.prevOptions = [...options];
       const renderLabelFn = $scopedSlots.renderLabel || renderLabel;
       const renderGroupLabelFn = $scopedSlots.renderGroupLabel || renderGroupLabel;
 
