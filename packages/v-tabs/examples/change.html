@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app" style="width:90%; margin:0 auto;">
+    <button @click="changeColor">change color</button>
+    <v-tabs :value="currentPane" @tab-click="onTabClick" @prev-click="onPrevClick" @next-click="onNextClick">
+      <v-tab-pane name="A"><span slot="tab" :style="color">A</span></v-tab-pane>
+      <v-tab-pane name="B" tab="B">BBB</v-tab-pane>
+      <v-tab-pane name="C" tab="C">abc</v-tab-pane>
+    </v-tabs>
+  </div>
+</body>
+
+</html>

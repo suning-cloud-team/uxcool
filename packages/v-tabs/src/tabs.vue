@@ -44,7 +44,9 @@
           [`${prefixCls}-${tabBarPosition}`]: true,
         };
       },
-      tabs() {
+    },
+    methods: {
+      getTabs() {
         const { descendants } = this;
         return descendants.map((v, i) => ({
           idx: i,
@@ -55,12 +57,39 @@
           vm: v,
         }));
       },
+      setActiveName(name) {
+        this.activeName = name;
+      },
+      addDescendant(item) {
+        const { $slots } = this;
+        const { default: slotDefault } = $slots;
+        let { $vnode } = item;
+        while ($vnode.parent) {
+          $vnode = $vnode.parent;
+        }
+        const filterDescendants = slotDefault.filter(node =>
+          /^([a-zA-Z]+)-tab-pane$/.test((node.componentOptions || {}).tag));
+        const idx = filterDescendants.indexOf($vnode);
+        this.descendants.splice(idx, 0, item);
+      },
+      removeDescendant(item) {
+        this.descendants = this.descendants.filter(v => v !== item);
+      },
+      onTabClick(tab, name, e) {
+        this.setActiveName(name);
+        this.$emit('tab-click', tab, name, e);
+      },
+      onPrevClick(e) {
+        this.$emit('prev-click', e);
+      },
+      onNextClick(e) {
+        this.$emit('next-click', e);
+      },
     },
     render() {
       const {
         prefixCls,
         classes,
-        tabs,
         tabBarPosition,
         size,
         onTabClick,
@@ -68,7 +97,9 @@
         onNextClick,
         animated,
         $slots,
+        getTabs,
       } = this;
+      const tabs = getTabs();
       const tabBar = (
         <tab-bar
           prefixCls={prefixCls}
@@ -99,36 +130,7 @@
       const childrens = tabBarPosition === 'bottom' ? [tabContent, tabBar] : [tabBar, tabContent];
       return <div class={classes}>{childrens}</div>;
     },
-    methods: {
-      setActiveName(name) {
-        this.activeName = name;
-      },
-      addDescendant(item) {
-        const { $slots } = this;
-        const { default: slotDefault } = $slots;
-        let { $vnode } = item;
-        while ($vnode.parent) {
-          $vnode = $vnode.parent;
-        }
-        const filterDescendants = slotDefault.filter(node =>
-          /^([a-zA-Z]+)-tab-pane$/.test((node.componentOptions || {}).tag));
-        const idx = filterDescendants.indexOf($vnode);
-        this.descendants.splice(idx, 0, item);
-      },
-      removeDescendant(item) {
-        this.descendants = this.descendants.filter(v => v !== item);
-      },
-      onTabClick(tab, name, e) {
-        this.setActiveName(name);
-        this.$emit('tab-click', tab, name, e);
-      },
-      onPrevClick(e) {
-        this.$emit('prev-click', e);
-      },
-      onNextClick(e) {
-        this.$emit('next-click', e);
-      },
-    },
+
     components: {
       TabContent,
       TabBar,

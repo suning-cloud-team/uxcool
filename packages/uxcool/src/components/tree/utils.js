@@ -140,7 +140,7 @@ export function getParentChecked(parent) {
   let np = parent;
   // 如果父级disabled, 则使用父级的父级的checked.以此类推
   while (np && (np.isDisabled || np.disableCheckbox)) {
-    np = parent.parent;
+    np = np.parent;
   }
 
   if (np) {

@@ -152,6 +152,7 @@
     </div>
     <event-demo />
     <modal-demo />
+    <color-demo />
   </div>
 </template>
 
@@ -162,6 +163,7 @@
   import { UxTabs, UxTabPane } from '@suning/uxcool/src/components/tabs';
   import EventDemo from './event.vue';
   import ModalDemo from './modal.vue';
+  import ColorDemo from './color.vue';
 
   export default {
     components: {
@@ -171,6 +173,7 @@
       UxOption,
       EventDemo,
       ModalDemo,
+      ColorDemo,
     },
     data() {
       return {
