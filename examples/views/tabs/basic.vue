@@ -153,6 +153,7 @@
     <event-demo />
     <modal-demo />
     <control-demo />
+    <color-demo />
   </div>
 </template>
 
@@ -164,6 +165,7 @@
   import EventDemo from './event.vue';
   import ModalDemo from './modal.vue';
   import ControlDemo from './control.vue';
+  import ColorDemo from './color.vue';
 
   export default {
     components: {
@@ -174,6 +176,7 @@
       EventDemo,
       ModalDemo,
       ControlDemo,
+      ColorDemo,
     },
     data() {
       return {

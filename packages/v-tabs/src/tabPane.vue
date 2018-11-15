@@ -1,7 +1,10 @@
 <template>
-  <div role="tabpanel"
-       :class="classes">
-    <slot></slot>
+  <div :class="classes"
+       role="tabpanel">
+    <div style="display:none">
+      <slot name="tab" />
+    </div>
+    <slot />
   </div>
 </template>
 

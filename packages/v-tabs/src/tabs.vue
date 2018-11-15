@@ -47,7 +47,6 @@
         activeName: '',
       };
     },
-
     computed: {
       classes() {
         const { prefixCls, tabBarPosition } = this;
@@ -55,17 +54,6 @@
           [prefixCls]: true,
           [`${prefixCls}-${tabBarPosition}`]: true,
         };
-      },
-      tabs() {
-        const { descendants } = this;
-        return descendants.map((v, i) => ({
-          idx: i,
-          isActive: v.isActive,
-          disabled: v.disabled,
-          tab: v.$slots.tab || v.tab,
-          name: v.name,
-          vm: v,
-        }));
       },
     },
     watch: {
@@ -94,6 +82,17 @@
       this.activeName = this.value;
     },
     methods: {
+      getTabs() {
+        const { descendants } = this;
+        return descendants.map((v, i) => ({
+          idx: i,
+          isActive: v.isActive,
+          disabled: v.disabled,
+          tab: v.$slots.tab || v.tab,
+          name: v.name,
+          vm: v,
+        }));
+      },
       setActiveName(name) {
         this.activeName = name;
       },
@@ -113,10 +112,7 @@
         this.descendants = this.descendants.filter(v => v !== item);
       },
       onTabClick(tab, name, e) {
-        const { control } = this;
-        if (!control) {
-          this.setActiveName(name);
-        }
+        this.setActiveName(name);
         this.$emit('tab-click', tab, name, e);
       },
       onPrevClick(e) {
@@ -130,7 +126,6 @@
       const {
         prefixCls,
         classes,
-        tabs,
         tabBarPosition,
         size,
         onTabClick,
@@ -138,7 +133,9 @@
         onNextClick,
         animated,
         $slots,
+        getTabs,
       } = this;
+      const tabs = getTabs();
       const tabBar = (
         <tab-bar
           prefixCls={prefixCls}
