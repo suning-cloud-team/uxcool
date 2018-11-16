@@ -8,6 +8,7 @@
              :selectable="selectable"
              :default-expand-parent="expandParent"
              checkable
+             show-line
              @check="onCheck" />
 
   </div>
