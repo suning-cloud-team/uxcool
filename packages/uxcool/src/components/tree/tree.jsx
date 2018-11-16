@@ -96,6 +96,10 @@ export default {
       type: Function,
       default: null,
     },
+    directory: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -104,9 +108,10 @@ export default {
   },
   computed: {
     classes() {
-      const { prefixCls, showLine } = this;
+      const { prefixCls, showLine, directory } = this;
       return {
         [prefixCls]: true,
+        [`${prefixCls}-directory`]: directory,
         [`${prefixCls}-show-line`]: showLine,
       };
     },

@@ -1,7 +1,8 @@
 @import '../../style/themes/default';
 @import '../../style/mixins/index';
 @import '../../checkbox/style/mixin';
-@import 'mixin';
+@import './mixin';
+@import './directory';
 
 $tree-prefix-cls: #{$ux-prefix}-tree;
 $tree-showline-icon-color: $text-color-secondary;
@@ -13,7 +14,6 @@ $tree-showline-icon-color: $text-color-secondary;
   margin: 0;
   padding: 0;
   user-select: none;
-
   ol,
   ul {
     list-style: none;
@@ -32,10 +32,11 @@ $tree-showline-icon-color: $text-color-secondary;
       user-select: none;
       border-top: 2px transparent solid;
       border-bottom: 2px transparent solid;
-      margin-top: -2px;
       /* Required to make elements draggable in old WebKit */
       -khtml-user-drag: element;
       -webkit-user-drag: element;
+
+      line-height: $tree-title-height - 4px;
     }
     &.drag-over {
       > span[draggable] {
@@ -60,9 +61,37 @@ $tree-showline-icon-color: $text-color-secondary;
         font-weight: 500 !important;
       }
     }
+
+    // When node is loading
+    &.#{$tree-prefix-cls}-treenode-loading {
+      span {
+        &.#{$tree-prefix-cls}-switcher {
+          &.#{$tree-prefix-cls}-switcher_open,
+          &.#{$tree-prefix-cls}-switcher_close {
+            &:before {
+              display: inline-block;
+              position: absolute;
+              left: 0;
+              width: 24px;
+              height: 24px;
+              @include iconfont-font('\E980');
+              animation: loadingCircle 1s infinite linear;
+              color: $primary-color;
+              transform: none;
+              font-size: 14px;
+            }
+
+            :root &:after {
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
+
     ul {
       margin: 0;
-      padding: 0 0 0 18px;
+      padding: 0 0 0 $tree-child-padding;
     }
     .#{$tree-prefix-cls}-node-content-wrapper {
       display: inline-block;
@@ -71,12 +100,11 @@ $tree-showline-icon-color: $text-color-secondary;
       margin: 0;
       cursor: pointer;
       text-decoration: none;
-      vertical-align: middle;
+      vertical-align: top;
       color: $text-color;
       transition: all 0.3s;
-      position: relative;
-      height: 24px;
-      line-height: 24px;
+      height: $tree-title-height;
+      line-height: $tree-title-height;
       &:hover {
         background-color: $item-hover-bg;
       }
@@ -84,39 +112,27 @@ $tree-showline-icon-color: $text-color-secondary;
         background-color: $primary-2;
       }
     }
-    .#{$tree-prefix-cls}-icon_loading {
-      display: inline-block;
-      font-style: normal;
-      height: 24px;
-      line-height: 24px;
-      vertical-align: middle;
-      padding-right: 3px;
-      &:after {
-        display: inline-block;
-        @include iconfont-font('\E980');
-        animation: loadingCircle 1s infinite linear;
-        color: $primary-color;
-      }
-    }
     span {
       &.#{$tree-prefix-cls}-checkbox {
-        margin: 4px 4px 0 2px;
+        margin: 2px 4px 0 2px;
       }
       &.#{$tree-prefix-cls}-switcher,
       &.#{$tree-prefix-cls}-iconEle {
         margin: 0;
         width: 24px;
         height: 24px;
-        line-height: 24px;
+        line-height: $tree-title-height;
         display: inline-block;
+        vertical-align: top;
         border: 0 none;
         cursor: pointer;
         outline: none;
         text-align: center;
-        vertical-align: top;
       }
+
       &.#{$tree-prefix-cls}-switcher {
-        vertical-align: middle;
+        position: relative;
+
         &.#{$tree-prefix-cls}-switcher-noop {
           cursor: default;
         }
@@ -140,6 +156,7 @@ $tree-showline-icon-color: $text-color-secondary;
       }
     }
   }
+
   > li {
     &:first-child {
       padding-top: 7px;
@@ -201,6 +218,14 @@ $tree-showline-icon-color: $text-color-secondary;
       position: absolute;
       left: 12px;
       margin: 22px 0;
+    }
+  }
+
+  &.#{$tree-prefix-cls}-icon-hide {
+    .#{$tree-prefix-cls}-treenode-loading {
+      .#{$tree-prefix-cls}-iconEle {
+        display: none;
+      }
     }
   }
 }

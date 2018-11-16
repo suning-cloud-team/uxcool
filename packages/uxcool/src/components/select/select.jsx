@@ -260,6 +260,7 @@ export default {
   watch: {
     value(nVal) {
       this.setInnerValue(nVal, false);
+      this.updateComboxInputValue();
     },
     visible(nVal) {
       this.setInnerVisible(nVal, false);
@@ -283,6 +284,7 @@ export default {
   },
   mounted() {
     this.isMounted = true;
+    this.updateComboxInputValue();
   },
   updated() {
     const {
@@ -313,6 +315,22 @@ export default {
     }
   },
   methods: {
+    updateComboxInputValue() {
+      const {
+        isCombobox,
+        setSearchInputValue,
+        innerValue,
+        optionMap,
+        normalizeOptionLabelProp,
+      } = this;
+      if (isCombobox) {
+        setSearchInputValue(
+          getComboboxValue(innerValue, optionMap, normalizeOptionLabelProp),
+          false,
+          false
+        );
+      }
+    },
     maybeFocus() {
       const { isMultipleOrTagsOrCombobox, multipleSearchInputFocus, singleSearchInputFocus } = this;
       setTimeout(() => {
