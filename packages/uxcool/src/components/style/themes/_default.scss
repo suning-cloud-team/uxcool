@@ -535,7 +535,8 @@ $btn-group-border: $primary-7 !default;
 
 // Checkbox
 $checkbox-size: 16 !default;
-
+$checkbox-color: $primary-color;
+$checkbox-check-color: #fff;
 // Radio
 $radio-size: 16px !default;
 
@@ -680,6 +681,13 @@ $avatar-border-radius: $border-radius-base !default;
 // Rate
 $rate-star-color: color(yellow) !default;
 $rate-star-bg: $border-color-split !default;
+
+// Tree
+// ---
+$tree-title-height: 24px;
+$tree-child-padding: 18px;
+$tree-directory-selected-color: #fff;
+$tree-directory-selected-bg: $primary-color;
 
 // Collapse
 // ---
