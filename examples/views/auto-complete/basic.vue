@@ -1,5 +1,6 @@
 <template>
   <div>
+    <value-demo />
     <normal-demo />
     <option-demo />
     <upper-demo />
@@ -19,6 +20,7 @@
   import UncertainCategoryDemo from './uncertain-category.vue';
   import CustomDemo from './custom.vue';
   import DisabledDemo from './disabled.vue';
+  import ValueDemo from './value.vue';
 
   export default {
     components: {
@@ -29,6 +31,7 @@
       UncertainCategoryDemo,
       CustomDemo,
       DisabledDemo,
+      ValueDemo,
     },
   };
 </script>
