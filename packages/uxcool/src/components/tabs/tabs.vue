@@ -55,7 +55,9 @@
       },
       animated: {
         type: Boolean,
-        default: false,
+        default() {
+          return this.type !== 'card';
+        },
       },
       theme: {
         type: String,
@@ -90,8 +92,8 @@
         };
       },
       isAnimated() {
-        const { animated, type } = this;
-        return animated || type === 'line';
+        const { animated } = this;
+        return animated;
       },
     },
     methods: {
