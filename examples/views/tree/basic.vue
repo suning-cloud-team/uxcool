@@ -1,6 +1,7 @@
 <template>
   <div>
     <normal-demo />
+    <directory-demo />
     <rowkey-demo />
     <async-demo />
     <render-demo />
@@ -19,6 +20,7 @@
   import FilterDemo from './filter.vue';
   import RowkeyDemo from './rowkey.vue';
   import EmptyDemo from './empty.vue';
+  import DirectoryDemo from './directory.vue';
 
   export default {
     components: {
@@ -29,6 +31,7 @@
       FilterDemo,
       RowkeyDemo,
       EmptyDemo,
+      DirectoryDemo,
     },
   };
 </script>
