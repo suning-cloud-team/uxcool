@@ -77,9 +77,11 @@
     methods: {
       onChange(value) {
         this.$emit('on-change', value);
+        this.$emit('change', value);
       },
       onPanelChange(value, next) {
         this.$emit('on-panel-change', value, next);
+        this.$emit('panel-change', value, next);
       },
       onPanelSelect(value, next) {
         this.onPanelChange(value, next);
