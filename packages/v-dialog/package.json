@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-dialog",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "description": "modal 基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -24,7 +24,7 @@
     "vue": "^2.*.*"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.19"
+    "@suning/v-utils": "^1.0.20"
   },
   "devDependencies": {
     "@suning/v-tools": "^1.0.31"
