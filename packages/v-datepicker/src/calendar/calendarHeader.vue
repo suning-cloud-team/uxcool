@@ -36,6 +36,7 @@
                   :locale="locale"
                   :mode="mode"
                   :value="value"
+                  :year-from="yearFrom"
                   :disabled-month="disabledMonth"
                   @on-show-year-panel="showYearPanel"
                   @on-show-decade-panel="showDescadePanel"
@@ -75,17 +76,17 @@
     },
     computed: {},
     methods: {
-      onChange(value) {
-        this.$emit('on-change', value);
-        this.$emit('change', value);
+      onChange(value, originMode) {
+        this.$emit('on-change', value, originMode);
+        this.$emit('change', value, originMode);
       },
-      onPanelChange(value, next) {
-        this.$emit('on-panel-change', value, next);
-        this.$emit('panel-change', value, next);
+      onPanelChange(value, next, originMode) {
+        this.$emit('on-panel-change', value, next, originMode);
+        this.$emit('panel-change', value, next, originMode);
       },
-      onPanelSelect(value, next) {
-        this.onPanelChange(value, next);
-        this.onChange(value);
+      onPanelSelect(value, next, originMode) {
+        this.onPanelChange(value, next, originMode);
+        this.onChange(value, originMode);
       },
       goMonth(direction) {
         this.onChange(addMonths(this.value, direction));

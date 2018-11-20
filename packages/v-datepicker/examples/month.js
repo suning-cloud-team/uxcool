@@ -15,7 +15,8 @@ const vm = new Vue({
     disabled: false,
     value: null,
   },
-  created() {},
+  created() {
+  },
   methods: {
     onChange(value) {
       console.log(value, 'value');

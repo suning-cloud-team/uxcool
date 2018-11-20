@@ -20,7 +20,7 @@ export default {
     },
     format: {
       type: String,
-      default: 'yyyy-MM',
+      default: 'YYYY-MM',
     },
     disabledMonth: {
       type: Function,
@@ -38,6 +38,7 @@ export default {
       const { prefixCls } = this;
       return {
         [prefixCls]: true,
+        [`${prefixCls}-month`]: true,
         [`${prefixCls}-month-calendar`]: true,
       };
     },
@@ -52,17 +53,17 @@ export default {
     setInnerValue(getValidDate(value), false);
   },
   methods: {
-    setInnerValue(val, trigger = true) {
+    setInnerValue(val, trigger = true, originMode) {
       this.innerValue = val;
       if (trigger) {
-        this.$emit('input', val);
+        this.$emit('change', val, originMode);
       }
     },
     setInnerMode(mode) {
       this.innerMode = mode;
     },
-    onChange(value) {
-      this.setInnerValue(value);
+    onChange(value, originMode) {
+      this.setInnerValue(value, originMode === 'month', originMode);
     },
     onPanelChange(_, mode) {
       if (mode !== 'date') {

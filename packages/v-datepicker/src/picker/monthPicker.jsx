@@ -9,6 +9,12 @@ export default {
       type: String,
       default: 'v-calendar',
     },
+    pickerPrefixCls: {
+      type: String,
+      default() {
+        return `${this.prefixCls}-picker`;
+      },
+    },
     visible: {
       type: Boolean,
       default: false,
@@ -57,6 +63,14 @@ export default {
       type: String,
       default: 'bottomLeft',
     },
+    transitionName: {
+      type: String,
+      default: '',
+    },
+    animation: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -78,7 +92,7 @@ export default {
     onPopupVisibleChange(visible) {
       this.setInnerVisible(visible);
     },
-    onInput(val) {
+    onChange(val) {
       this.setInnerVisible(false);
       this.$emit('input', val);
     },
@@ -87,6 +101,7 @@ export default {
     const {
       $slots,
       prefixCls,
+      pickerPrefixCls,
       value,
       locale,
       format,
@@ -97,11 +112,13 @@ export default {
       placement,
       builtinPlacements,
       getPopupContainer,
+      animation,
+      transitionName,
       onPopupVisibleChange,
-      onInput,
+      onChange,
     } = this;
     const triggerProps = {
-      prefixCls: `${prefixCls}-picker`,
+      prefixCls: pickerPrefixCls,
       visible: innerVisible,
       actions: disabled ? [] : ['click'],
       popupAlign: align,
@@ -109,6 +126,8 @@ export default {
       builtinPlacements,
       getPopupContainer,
       destroyPopupOnHide: true,
+      popupTransitionName: transitionName,
+      poupAnimation: animation,
     };
     const on = {
       'popup-visible-change': onPopupVisibleChange,
@@ -121,7 +140,7 @@ export default {
       disabledMonth,
     };
     const calendarOn = {
-      input: onInput,
+      change: onChange,
     };
     return (
       <Trigger {...{ props: triggerProps, on }}>
