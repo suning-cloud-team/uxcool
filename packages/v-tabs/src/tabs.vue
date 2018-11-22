@@ -112,7 +112,10 @@
         this.descendants = this.descendants.filter(v => v !== item);
       },
       onTabClick(tab, name, e) {
-        this.setActiveName(name);
+        const { control } = this;
+        if (!control) {
+          this.setActiveName(name);
+        }
         this.$emit('tab-click', tab, name, e);
       },
       onPrevClick(e) {

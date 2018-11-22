@@ -41,6 +41,9 @@
     methods: {
       onTabClick(name, ...args) {
         console.log(name, ...args);
+        if (name === '2') {
+          return;
+        }
         this.value = name;
       },
     },
