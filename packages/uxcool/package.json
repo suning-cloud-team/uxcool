@@ -1,6 +1,6 @@
 {
   "name": "@suning/uxcool",
-  "version": "0.5.0-next.16",
+  "version": "0.5.0-next.17",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@suning/v-checkbox": "^1.0.9",
-    "@suning/v-datepicker": "^1.0.56",
+    "@suning/v-datepicker": "^1.0.57",
     "@suning/v-dialog": "^1.0.16",
     "@suning/v-menu": "^1.0.41",
     "@suning/v-notification": "^1.0.10",
@@ -33,11 +33,11 @@
     "@suning/v-utils": "^1.0.21",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
     "date-fns": "^1.29.0",
+    "humanize-duration": "^3.15.3",
     "lodash": "^4.0.8",
     "object.omit": "^3.0.0",
     "vee-validate": "~2.0.9",
-    "vue-virtual-scroll-list": "^1.2.5",
-    "humanize-duration": "^3.15.3"
+    "vue-virtual-scroll-list": "^1.2.5"
   },
   "devDependencies": {
     "@suning/v-test-utils": "^1.0.3"
