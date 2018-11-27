@@ -14,6 +14,7 @@ import {
   splitValueBySeparator,
   getComboboxValue,
   getOptionOriginNode,
+  isUnRenderOption,
 } from './utils';
 import placements from './placements';
 import PlaceholderMixin from './mixins/placeholder';
@@ -191,6 +192,10 @@ export default {
       type: Function,
       default: null,
     },
+    control: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -259,7 +264,7 @@ export default {
   },
   watch: {
     value(nVal) {
-      this.setInnerValue(nVal, false);
+      this.setInnerValue(nVal, false, true);
       this.updateComboxInputValue();
     },
     visible(nVal) {
@@ -270,7 +275,7 @@ export default {
     const {
       value, visible, setInnerValue, setInnerVisible
     } = this;
-    setInnerValue(value, false);
+    setInnerValue(value, false, true);
     setInnerVisible(visible, false);
     // no reactive data
     this.optionMap = {};
@@ -345,15 +350,20 @@ export default {
         });
       }
     },
-    setInnerValue(value, trigger = true) {
-      const { innerValue, isMultipleOrTags, optionMap } = this;
+    setInnerValue(value, trigger = true, isPass) {
+      const {
+        innerValue, isMultipleOrTags, optionMap, control
+      } = this;
+      const pass = isPass || !control;
       let val = isValidValue(value) ? value : [];
       val = isArray(val) ? val : [val];
       if (!isMultipleOrTags) {
         val = isValidValue(val[0]) ? [val[0]] : [];
       }
       if (!isEqual(val, innerValue)) {
-        this.innerValue = val;
+        if (pass) {
+          this.innerValue = val;
+        }
         if (trigger) {
           let nVal = [...val];
           nVal = isMultipleOrTags ? nVal : nVal[0];
@@ -362,7 +372,9 @@ export default {
             ? nVal.map(v => buildOptionOriginNode(v, optionMap))
             : buildOptionOriginNode(nVal, optionMap);
 
-          this.$emit('input', nVal, valObj);
+          if (pass) {
+            this.$emit('input', nVal, valObj);
+          }
           // 兼容原有Select行为Function(Object, value)
           this.$emit('change', valObj, nVal);
         }
@@ -689,49 +701,51 @@ export default {
       const ret = [];
       for (let i = 0, l = options.length; i < l; i += 1) {
         const option = options[i];
-        nExtraParam.line += 1;
-        if (level === 0) {
-          nExtraParam.rootGroupLine = i;
-          nExtraParam.rootLineMapping[i] = {
-            realLine: nExtraParam.line,
-            nodeCnt: 0,
-          };
-        }
-        nExtraParam.rootLineMapping[nExtraParam.rootGroupLine].nodeCnt += 1;
-        if (isOptionGroup(option)) {
-          const { children, content } = option;
-
-          const attrs = omit(option, ['uid', 'label', 'children', 'content', 'originNode']);
-          const groupNode = (
-            <VMenuItemGroup {...{ key: `group-${nExtraParam.line}`, attrs }}>
-              <template slot="title">{content}</template>
-              {renderChildren(children, false, level + 1, nExtraParam)}
-            </VMenuItemGroup>
-          );
-          ret.push(groupNode);
-        } else {
-          const props = {
-            name: option.value || option.value === 0 ? option.value : 'NO_VALUE',
-            label: option.label,
-            disabled: option.disabled || disabled,
-          };
-          const attrs = omit(option, [
-            'uid',
-            'value',
-            'label',
-            'disabled',
-            'labelNode',
-            'content',
-            'selectionContent',
-            'originNode',
-          ]);
-
-          if (nExtraParam.selected.line === -1 && innerValue.indexOf(option.value) > -1) {
-            nExtraParam.selected.groupLine = nExtraParam.rootGroupLine;
-            nExtraParam.selected.line = nExtraParam.line;
+        if (!isUnRenderOption(option)) {
+          nExtraParam.line += 1;
+          if (level === 0) {
+            nExtraParam.rootGroupLine = i;
+            nExtraParam.rootLineMapping[i] = {
+              realLine: nExtraParam.line,
+              nodeCnt: 0,
+            };
           }
-          const menuItemAttrs = { key: option.value, props, attrs };
-          ret.push(<VMenuItem {...menuItemAttrs}>{option.content}</VMenuItem>);
+          nExtraParam.rootLineMapping[nExtraParam.rootGroupLine].nodeCnt += 1;
+          if (isOptionGroup(option)) {
+            const { children, content } = option;
+
+            const attrs = omit(option, ['uid', 'label', 'children', 'content', 'originNode']);
+            const groupNode = (
+              <VMenuItemGroup {...{ key: `group-${nExtraParam.line}`, attrs }}>
+                <template slot="title">{content}</template>
+                {renderChildren(children, false, level + 1, nExtraParam)}
+              </VMenuItemGroup>
+            );
+            ret.push(groupNode);
+          } else {
+            const props = {
+              name: option.value || option.value === 0 ? option.value : 'NO_VALUE',
+              label: option.label,
+              disabled: option.disabled || disabled,
+            };
+            const attrs = omit(option, [
+              'uid',
+              'value',
+              'label',
+              'disabled',
+              'labelNode',
+              'content',
+              'selectionContent',
+              'originNode',
+            ]);
+
+            if (nExtraParam.selected.line === -1 && innerValue.indexOf(option.value) > -1) {
+              nExtraParam.selected.groupLine = nExtraParam.rootGroupLine;
+              nExtraParam.selected.line = nExtraParam.line;
+            }
+            const menuItemAttrs = { key: option.value, props, attrs };
+            ret.push(<VMenuItem {...menuItemAttrs}>{option.content}</VMenuItem>);
+          }
         }
       }
       if (shouldNotFound && ret.length === 0 && normalizeNotFountContent) {

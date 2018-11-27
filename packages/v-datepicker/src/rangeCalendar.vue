@@ -2,9 +2,9 @@
   <div :class="classes">
     <div :class="`${prefixCls}-panel`">
       <a v-if="isShowClear"
-         role="button"
          :title="locale.clear"
          :class="`${prefixCls}-clear-btn`"
+         role="button"
          @click="clear" />
       <div :class="`${prefixCls}-date-panel`">
         <calendar-part :prefix-cls="prefixCls"
@@ -12,7 +12,6 @@
                        :mode="innerMode[0]"
                        :selected-value="selectedValue"
                        :hover-values="hoverValues"
-                       direction="left"
                        :locale="locale"
                        :has-time-picker="hasTimePicker"
                        :is-time-picker="isTimePicker"
@@ -21,22 +20,16 @@
                        :disabled-month="disabledStartMonth"
                        :disabled-date="disabledDate"
                        :disabled-time="disabledTime"
-                       enable-prev
                        :enable-next="enableBtn"
+                       direction="left"
+                       enable-prev
                        @on-value-change="onValueChange('left', $event)"
                        @on-panel-change="onStartPanelChange"
                        @on-day-hover="onDayHover"
                        @on-select="onSelect">
-          <time-picker-panel slot="timePicker"
-                             v-if="hasTimePicker"
-                             :prefix-cls="`${prefixCls}-time-picker`"
-                             :value="selectedValue[0]"
-                             show-hour
-                             show-minute
-                             show-second
-                             :disabled-hours="disabledStartTime.disabledHours"
-                             :disabled-minutes="disabledStartTime.disabledMinutes"
-                             :disabled-seconds="disabledStartTime.disabledSeconds"
+          <time-picker-panel v-if="hasTimePicker"
+                             slot="timePicker"
+                             v-bind="timeStartPickerProps"
                              @on-change="onTimePickerChange('left',$event)" />
         </calendar-part>
         <span :class="`${prefixCls}-range-middle`">~</span>
@@ -45,7 +38,6 @@
                        :mode="innerMode[1]"
                        :selected-value="selectedValue"
                        :hover-values="hoverValues"
-                       direction="right"
                        :locale="locale"
                        :has-time-picker="hasTimePicker"
                        :is-time-picker="isTimePicker"
@@ -55,6 +47,7 @@
                        :disabled-date="disabledDate"
                        :disabled-time="disabledTime"
                        :enable-prev="enableBtn"
+                       direction="right"
                        enable-next
                        @on-value-change="onValueChange('right', $event)"
                        @on-panel-change="onEndPanelChange"
@@ -62,26 +55,32 @@
                        @on-select="onSelect">
           <time-picker-panel v-if="hasTimePicker"
                              slot="timePicker"
-                             :prefix-cls="`${prefixCls}-time-picker`"
-                             :value="selectedValue[1]"
-                             :disabled-hours="disabledEndTime.disabledHours"
-                             :disabled-minutes="disabledEndTime.disabledMinutes"
-                             :disabled-seconds="disabledEndTime.disabledSeconds"
-                             show-hour
-                             show-minute
-                             show-second
+                             v-bind="timeEndPickerProps"
                              @on-change="onTimePickerChange('right',$event)" />
         </calendar-part>
         <div v-if="isRanges"
              :class="`${prefixCls}-range-quick-selector`">
-          <div v-for="(v,k) in ranges"
-               :class="`${prefixCls}-range-quick-selector-item`"
-               :key="k"
-               @mouseenter="onRangeMouseEnter(v)"
-               @mouseleave="onRangeMouseLeave"
-               @click.stop="onRangeClick(v)">
-            <a role="button">{{ k }}</a>
-          </div>
+          <template v-if="rangesIsArr">
+            <div v-for="(v,k) in ranges"
+                 :class="`${prefixCls}-range-quick-selector-item`"
+                 :key="k"
+                 @mouseenter="onRangeMouseEnter(v.dates)"
+                 @mouseleave="onRangeMouseLeave"
+                 @click.stop="onRangeClick(v.dates, v)">
+              <a role="button">{{ v.label }}</a>
+            </div>
+          </template>
+          <template v-else>
+            <div v-for="(v,k) in ranges"
+                 :class="`${prefixCls}-range-quick-selector-item`"
+                 :key="k"
+                 @mouseenter="onRangeMouseEnter(v)"
+                 @mouseleave="onRangeMouseLeave"
+                 @click.stop="onRangeClick(v)">
+              <a role="button">{{ k }}</a>
+            </div>
+          </template>
+
         </div>
       </div>
       <div :class="footerClasses">
@@ -224,7 +223,14 @@
       disabledDate: { type: Function, default: noop },
       dateInputPlaceholder: [String, Array],
       hasTimePicker: Boolean,
-      ranges: Object,
+      ranges: {
+        type: [Object, Array],
+        default: undefined,
+      },
+      showTime: {
+        type: [Boolean, Object],
+        default: false,
+      },
     },
     data() {
       return {
@@ -334,9 +340,66 @@
         //   结束时间和开始时间为同一天时, 结束时间的时分秒要在开始时间时分秒之后
         return genEndDisabledTime(start, end, cfg);
       },
+      rangesIsArr() {
+        return Array.isArray(this.ranges);
+      },
       isRanges() {
-        const { ranges } = this;
-        return ranges && Object.keys(ranges).length > 0;
+        const { ranges, rangesIsArr } = this;
+        let ret = false;
+        if (ranges) {
+          if (rangesIsArr) {
+            ret = ranges.length > 0;
+          } else {
+            ret = Object.keys(ranges).length > 0;
+          }
+        }
+        return ret;
+      },
+      timeProps() {
+        const { showTime } = this;
+        if (typeof showTime === 'object') {
+          return showTime;
+        }
+        return {};
+      },
+      timeStartPickerProps() {
+        const {
+          prefixCls,
+          timeProps,
+          selectedValue,
+          disabledStartTime: { disabledHours, disabledMinutes, disabledSeconds },
+        } = this;
+
+        return {
+          showHour: true,
+          showMinute: true,
+          showSecond: true,
+          ...timeProps,
+          prefixCls: `${prefixCls}-time-picker`,
+          value: selectedValue[0],
+          disabledHours,
+          disabledMinutes,
+          disabledSeconds,
+        };
+      },
+      timeEndPickerProps() {
+        const {
+          prefixCls,
+          timeProps,
+          selectedValue,
+          disabledEndTime: { disabledHours, disabledMinutes, disabledSeconds },
+        } = this;
+        return {
+          showHour: true,
+          showMinute: true,
+          showSecond: true,
+          ...timeProps,
+          prefixCls: `${prefixCls}-time-picker`,
+          value: selectedValue[1],
+          disabledHours,
+          disabledMinutes,
+          disabledSeconds,
+        };
       },
     },
     watch: {
@@ -504,12 +567,12 @@
       onRangeMouseLeave() {
         this.updateHoverValues([]);
       },
-      onRangeClick(range) {
+      onRangeClick(range, item) {
         const { getRangeVal } = this;
         const val = getRangeVal(range);
         if (Array.isArray(val)) {
           if (val.every(v => v instanceof Date)) {
-            this.$emit('on-quick-select', val);
+            this.$emit('on-quick-select', val, item);
           }
         }
       },

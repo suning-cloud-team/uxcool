@@ -1,45 +1,10 @@
 <template>
   <div>
-    <button class="ux-btn"
-            @click="changeTheme">
-      {{ theme }}
-    </button>
-    <div class="demo">
-      <ux-date-picker :theme="theme"
-                      @change="onChange" />
-      <br> {{ date1 }}
-      <ux-range-date-picker v-model="date1"
-                            :theme="theme"
-                            :open-value="openValue"
-                            @calendar-change="onCalendarChange"
-                            @change="onChange" />
-    </div>
-
-    <div class="demo">
-      <h6>快捷选择</h6>
-      <ux-range-date-picker :ranges="ranges"
-                            :theme="theme" />
-      <br>
-      <ux-range-date-picker :ranges="ranges"
-                            :theme="theme"
-                            show-today
-                            show-time />
-    </div>
-
-    <div class="demo">
-      <h6>格式</h6>
-      <ux-date-picker :theme="theme"
-                      format="YYYY/MM/DD"
-                      show-today />
-      <br>
-      <ux-range-date-picker :theme="theme"
-                            format="YYYY/MM/DD" />
-    </div>
     <div class="demo">
       <h6>showTime</h6>
       <ux-date-picker :theme="theme"
                       v-model="date"
-                      show-time
+                      :show-time="{hideDisabledOptions:true}"
                       format="YYYY/MM/DD HH:mm"
                       placeholder="Select Time"
                       @change="onChange"
@@ -48,8 +13,8 @@
       <ux-range-date-picker :theme="theme"
                             v-model="date1"
                             :placeholder="['Start Time', ' End Time']"
+                            :show-time="{showSecond: false}"
                             format="YYYY/MM/DD HH:mm"
-                            show-time
                             @calendar-change="onCalendarChange"
                             @change="onChange"
                             @ok="onOk" />
@@ -57,14 +22,15 @@
     <div class="demo">
       <h6>不可选</h6>
       <ux-date-picker :theme="theme"
+                      :show-time="{hideDisabledOptions:false}"
                       :disabled-date="disabledDate"
                       :disabled-time="disabledTime" />
       <br>
       <ux-range-date-picker :theme="theme"
+                            :show-time="{hideDisabledOptions:true}"
                             :disabled-date="disabledDate"
                             :disabled-time="disabledRangeTime" />
     </div>
-
     <div class="demo">
       <h6>禁用</h6>
       <ux-date-picker :theme="theme"
@@ -87,6 +53,8 @@
     <month-demo />
     <popup-container-demo />
     <ok-confirm-demo />
+
+    <slider-demo />
   </div>
 </template>
 
@@ -106,6 +74,7 @@
   import MonthDemo from './month.vue';
   import PopupContainerDemo from './popupContainer.vue';
   import OkConfirmDemo from './okConfirm.vue';
+  import SliderDemo from './slider.vue';
 
   export default {
     components: {
@@ -114,6 +83,7 @@
       MonthDemo,
       PopupContainerDemo,
       OkConfirmDemo,
+      SliderDemo,
     },
     data() {
       return {

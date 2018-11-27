@@ -29,6 +29,7 @@
                     :disabled-date="disabledDate"
                     :disabled-time="disabledTime"
                     :ranges="ranges"
+                    :show-time="showTime"
                     @on-select="onSelect"
                     @calendar-change="onCalendarChange"
                     @on-quick-select="onQuickSelect"
@@ -95,16 +96,22 @@
       disabledDate: Function,
       disabledTime: Function,
       dateInputPlaceholder: [String, Array],
-      showTime: Boolean,
+      showTime: {
+        type: [Boolean, Object],
+        default: false,
+      },
       showOk: {
         type: Boolean,
         default() {
-          return this.showTime;
+          return !!this.showTime;
         },
       },
-      showToday: Boolean,
+      showToday: {
+        type: Boolean,
+        default: false,
+      },
       ranges: {
-        type: Object,
+        type: [Object, Array],
         default: undefined,
       },
       placement: {
@@ -181,9 +188,15 @@
           this.inputValues = nVal;
         }
       },
+      isOpen(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.setOpen(nVal);
+        }
+      },
     },
     created() {
-      this.open = this.disabled ? false : this.isOpen;
+      const { disabled, isOpen, setOpen } = this;
+      setOpen(disabled ? false : isOpen);
     },
     methods: {
       setOpen(flag) {
@@ -193,25 +206,32 @@
       onCalendarChange(values) {
         this.$emit('calendar-change', values);
       },
-      onChange(values, hide = true) {
+      onChange(values, hide = true, extra) {
         const { dateFormat, setOpen } = this;
         this.inputValues = values;
-        this.$emit('change', values, [
-          formatDate(values[0], dateFormat),
-          formatDate(values[1], dateFormat),
-        ]);
+        this.$emit(
+          'change',
+          values,
+          [formatDate(values[0], dateFormat), formatDate(values[1], dateFormat)],
+          extra
+        );
         if (hide) {
           setOpen(false);
         }
       },
-      onQuickSelect(values) {
-        this.onSelect(values);
+      onQuickSelect(values, range) {
+        this.innerValues = values;
+        this.onChange(values, true, {
+          type: 'quick-select',
+          content: range,
+        });
+        this.$emit('quick-select', values, range);
       },
-      onSelect(values) {
+      onSelect(values, range) {
         const { isOkConfirm, isHasOkButton, onChange } = this;
         this.innerValues = values;
         if (!isOkConfirm) {
-          onChange(values, !isHasOkButton);
+          onChange(values, !isHasOkButton, range);
         }
       },
       onPopupVisible(visible) {
