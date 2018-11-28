@@ -174,3 +174,25 @@ export function resetParentVisible(el) {
     },
   };
 }
+
+const scrollBarStyle = {
+  position: 'absolute',
+  left: '-50px',
+  width: '50px',
+  height: '50px',
+  overflow: 'scroll',
+  visibility: 'hidden',
+};
+
+export function getScrollBarWidth() {
+  if (typeof getScrollBarWidth.w !== 'number') {
+    const div = document.createElement('div');
+    Object.keys(scrollBarStyle).forEach((key) => {
+      div.style[key] = scrollBarStyle[key];
+    });
+    document.body.appendChild(div);
+    getScrollBarWidth.w = div.offsetWidth - div.clientWidth;
+    document.body.removeChild(div);
+  }
+  return getScrollBarWidth.w;
+}

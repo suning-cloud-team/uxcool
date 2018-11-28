@@ -56,10 +56,11 @@
 
 
 <script>
-  import { addClass, removeClass } from '@suning/v-utils';
+  import { addClass, removeClass, getScrollBarWidth } from '@suning/v-utils';
   import Mixin from './mixin';
 
   const $doc = document.body;
+  const scrollBarW = getScrollBarWidth();
   let openModalCnt = 0;
   export default {
     name: 'Dialog',
@@ -125,21 +126,23 @@
     },
     methods: {
       focus() {
-        const { $refs: { dialogWrapRef } } = this;
+        const {
+          $refs: { dialogWrapRef },
+        } = this;
         if (dialogWrapRef) {
           dialogWrapRef.focus();
         }
       },
       blur() {
-        const { $refs: { dialogWrapRef } } = this;
+        const {
+          $refs: { dialogWrapRef },
+        } = this;
         if (dialogWrapRef) {
           dialogWrapRef.blur();
         }
       },
       setShowDialogWrap(flag) {
-        const {
-          mask, lastFocusElement, focus, blur
-        } = this;
+        const { mask, lastFocusElement, focus, blur } = this;
         this.showDialogWrap = flag;
 
         this.$nextTick(() => {
@@ -156,12 +159,18 @@
           }
         });
       },
+      hasScrollBar() {
+        return document.body.clientWidth < window.innerWidth;
+      },
       setDocOverflow(flag) {
-        const { prefixCls } = this;
+        const { prefixCls, hasScrollBar } = this;
         if (flag) {
           openModalCnt += 1;
           if (openModalCnt > 1) {
             return;
+          }
+          if (hasScrollBar()) {
+            $doc.style.paddingRight = `${scrollBarW}px`;
           }
           addClass($doc, `${prefixCls}-doc-open`);
         } else {
@@ -169,6 +178,7 @@
           if (openModalCnt > 0) {
             return;
           }
+          $doc.style.paddingRight = '';
           removeClass($doc, `${prefixCls}-doc-open`);
         }
       },

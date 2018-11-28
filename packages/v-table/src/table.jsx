@@ -1,6 +1,6 @@
 import debounce from 'lodash/debounce';
-import { isEqual, isArray, resetParentVisible } from '@suning/v-utils';
-import { noop, getRowKey, getScrollBarWidth, addEventListener, flatRows } from './utils';
+import { isEqual, isArray, resetParentVisible, getScrollBarWidth } from '@suning/v-utils';
+import { noop, getRowKey, addEventListener, flatRows } from './utils';
 import ColumnMixin from './mixins/column';
 
 import MainTable from './mainTable.vue';
