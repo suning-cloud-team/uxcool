@@ -18,7 +18,9 @@
 | min-slider-date     | 滑动范围下限                                                | Date\|Function=>Date                                                    |                |
 | compatibility       | 当滑动时超出范围时,是否以下限或上限按照时间间隔重新生成时间 | Boolean                                                                 | false          |
 | date-picker-props   | `rangeDatePicker`属性,详见 `Datepicker`组件                 | Object                                                                  |                |
+| date-picker-events  | `rangeDatePicker`事件,详见 `Datepicker`组件                 | Object                                                                  |                |
 | locale              | 国际化                                                      | Object                                                                  |                |
+| allow-clear         | 下拉框是否允许删除                                          | Boolean                                                                 | false          |
 
 #### Ranges 字段
 

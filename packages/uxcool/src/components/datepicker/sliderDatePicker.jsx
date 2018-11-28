@@ -282,6 +282,10 @@ export default {
       type: [Boolean, Object],
       default: true,
     },
+    allowClear:{
+      type:Boolean,
+      default:false,
+    },
     format: {
       type: String,
       default() {
@@ -321,6 +325,12 @@ export default {
       default: false,
     },
     datePickerProps: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+    datePickerEvents: {
       type: Object,
       default() {
         return {};
@@ -509,14 +519,19 @@ export default {
           setInnerSelectValue(innerSelectValue);
         }, 0);
       } else {
-        const item = findOptionByValue(val);
-        if (item) {
-          const { dates } = item;
-          const values = getDates(dates);
-          setInnerValue(values || []);
-          // 防止重新选择时间时状态不对
-          this.opMidMode = 'pause';
+        // clear
+        if (val === undefined) {
+          setInnerValue([]);
+        } else {
+          const item = findOptionByValue(val);
+          if (item) {
+            const { dates } = item;
+            const values = getDates(dates);
+            setInnerValue(values || []);
+          }
         }
+        // 防止重新选择时间时状态不对
+        this.opMidMode = 'pause';
       }
     },
     onSelect(_, node) {
@@ -628,6 +643,7 @@ export default {
         onRightBtnClick,
         renderSelectLabel,
         getPopupContainer,
+        allowClear,
       } = this;
       const props = {
         // 与上面的 onSelectChange 相配合, 防止value==='setting'时选中
@@ -638,6 +654,7 @@ export default {
         control: true,
         disabled,
         getContainer: getPopupContainer,
+        allowClear,
       };
       const on = {
         // 点击 select item
@@ -756,6 +773,7 @@ export default {
         innerValue,
         innerDateVisible,
         datePickerProps,
+        datePickerEvents,
         getDisabledDateAndTime,
         onDateOpenChange,
         onDateChange,
@@ -778,13 +796,30 @@ export default {
         isOpen: innerDateVisible,
       };
 
-      const on = {
+      let on = {
         'open-change': onDateOpenChange,
         change: onDateChange,
       };
+
+      Object.keys(on).forEach((k) => {
+        if (k in datePickerEvents && isFunction(datePickerEvents[k])) {
+          const bindEvent = datePickerEvents[k];
+          const originEvent = on[k];
+          on[k] = function chainFns(...args) {
+            originEvent(...args);
+            bindEvent(...args);
+          };
+        }
+      });
+
+      on = { ...datePickerEvents, ...on };
+
       return (
         <VRangeDatePicker {...{ props, on }}>
-          <span slot="trigger" style="position:absolute;top:0;left:0" />
+          <span
+            slot="trigger"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1"
+          />
         </VRangeDatePicker>
       );
     },
