@@ -13,6 +13,11 @@
     text-align: center;
     border-radius: $steps-small-icon-size;
     font-size: $font-size-sm;
+    .#{$steps-prefix-cls}-icon {
+      &.fu {
+        top: 0;
+      }
+    }
   }
   .#{$steps-prefix-cls}-item-title {
     font-size: $font-size-base;

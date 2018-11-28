@@ -1,58 +1,79 @@
 @import '../../style/themes/default';
 @import '../../style/mixins/index';
-@import 'mixin';
 
 $steps-prefix-cls: #{$ux-prefix}-steps;
-$process-icon-color: $processing-color !default;
-$process-icon-text-color: #fff !default;
+$process-icon-color: $primary-color !default;
 $process-title-color: $heading-color !default;
 $process-description-color: $text-color !default;
 $process-tail-color: $border-color-split !default;
-$wait-icon-color: $disabled-color;
-$wait-icon-text-color: $wait-icon-color;
+$process-icon-text-color: #fff !default;
+$wait-icon-color: $disabled-color !default;
 $wait-title-color: $text-color-secondary !default;
 $wait-description-color: $wait-title-color !default;
 $wait-tail-color: $process-tail-color !default;
 $finish-icon-color: $process-icon-color !default;
-$finish-icon-text-color: $finish-icon-color !default;
 $finish-title-color: $text-color !default;
 $finish-description-color: $text-color-secondary !default;
 $finish-tail-color: $primary-color !default;
 $error-icon-color: $error-color !default;
-$error-icon-text-color: $error-icon-color !default;
 $error-title-color: $error-color !default;
 $error-description-color: $error-color !default;
 $error-tail-color: $wait-tail-color !default;
-$steps-background: $steps-bg !default;
-
-$colorMap: (
-  process-icon: $processing-color,
-  process-icon-text: $process-icon-text-color,
-  process-title: $heading-color,
-  process-description: $text-color,
-  process-tail: $border-color-split,
-  wait-icon: $wait-icon-color,
-  wait-icon-text: $wait-icon-text-color,
-  wait-title: $text-color-secondary,
-  wait-description: $wait-title-color,
-  wait-tail: $process-tail-color,
-  finish-icon: $finish-icon-color,
-  finish-icon-text: $finish-icon-text-color,
-  finish-title: $text-color,
-  finish-description: $text-color-secondary,
-  finish-tail: $primary-color,
-  error-icon: $error-icon-color,
-  error-icon-text: $error-icon-text-color,
-  error-title: $error-color,
-  error-description: $error-color,
-  error-tail: $wait-tail-color
-);
+$steps-background: $component-background !default;
 
 $steps-icon-size: 32px;
 $steps-small-icon-size: 24px;
 $steps-dot-size: 8px;
 $steps-current-dot-size: 10px;
 $steps-desciption-max-width: 140px;
+
+$colorMap: (
+  process-icon: $processing-color,
+  process-title: $heading-color,
+  process-description: $text-color,
+  process-tail: $border-color-split,
+  wait-icon: $wait-icon-color,
+  wait-title: $text-color-secondary,
+  wait-description: $wait-title-color,
+  wait-tail: $process-tail-color,
+  finish-icon: $finish-icon-color,
+  finish-title: $text-color,
+  finish-description: $text-color-secondary,
+  finish-tail: $primary-color,
+  error-icon: $error-icon-color,
+  error-title: $error-color,
+  error-description: $error-color,
+  error-tail: $wait-tail-color,
+);
+
+@mixin step-item-status($status) {
+  $icon-color: map-get($colorMap, #{$status}-icon);
+  $title-color: map-get($colorMap, #{$status}-title);
+  $description-color: map-get($colorMap, #{$status}-description);
+  $tail-color: map-get($colorMap, #{$status}-tail);
+  &-#{$status} &-icon {
+    border-color: $icon-color;
+    background-color: $steps-background;
+    > .#{$steps-prefix-cls}-icon {
+      color: $icon-color;
+      .#{$steps-prefix-cls}-icon-dot {
+        background: $icon-color;
+      }
+    }
+  }
+  &-#{$status} > &-content > &-title {
+    color: $title-color;
+    &:after {
+      background-color: $tail-color;
+    }
+  }
+  &-#{$status} > &-content > &-description {
+    color: $description-color;
+  }
+  &-#{$status} > &-tail:after {
+    background-color: $tail-color;
+  }
+}
 
 .#{$steps-prefix-cls} {
   @include reset-component;
@@ -62,7 +83,6 @@ $steps-desciption-max-width: 140px;
 }
 
 .#{$steps-prefix-cls}-item {
-  $step-item: &;
   position: relative;
   display: inline-block;
   vertical-align: top;
@@ -94,9 +114,13 @@ $steps-desciption-max-width: 140px;
     font-size: $font-size-lg;
     margin-right: 8px;
     transition: background-color 0.3s, border-color 0.3s;
-    font-family: $font-family-no-number;
+    font-family: $font-family;
 
     > .#{$steps-prefix-cls}-icon {
+      &.fu {
+        transform: scale(1.4);
+        top: 1px;
+      }
       line-height: 1;
       top: -1px;
       color: $primary-color;
@@ -141,8 +165,8 @@ $steps-desciption-max-width: 140px;
     font-size: $font-size-base;
     color: $text-color-secondary;
   }
-  @include step-item-status(wait, $step-item);
-  @include step-item-status(process, $step-item);
+  @include step-item-status(wait);
+  @include step-item-status(process);
   &-process &-icon {
     background: $process-icon-color;
     > .#{$steps-prefix-cls}-icon {
@@ -152,8 +176,8 @@ $steps-desciption-max-width: 140px;
   &-process &-title {
     font-weight: 500;
   }
-  @include step-item-status(finish, $step-item);
-  @include step-item-status(error,$step-item);
+  @include step-item-status(finish);
+  @include step-item-status(error);
 
   &.#{$steps-prefix-cls}-next-error .#{$steps-prefix-cls}-item-title:after {
     background: $error-icon-color;
@@ -179,10 +203,8 @@ $steps-desciption-max-width: 140px;
   }
 }
 
-@import 'customIcon';
+@import 'custom-icon';
 @import 'small';
 @import 'vertical';
-@import 'labelPlacement';
-@import 'progressDot';
-
-@import 'dark';
+@import 'label-placement';
+@import 'progress-dot';
