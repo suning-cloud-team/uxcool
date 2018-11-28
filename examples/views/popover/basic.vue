@@ -155,6 +155,7 @@
         </template>
       </ux-popover>
     </div>
+    <container-demo />
   </div>
 </template>
 
@@ -162,10 +163,14 @@
 <script>
   import '@suning/uxcool/src/components/button/style/index.scss';
   import '@suning/uxcool/src/components/table/style/index.scss';
-  import '@suning/uxcool/src/components/popover/style/index.scss';
-  import UxPopover from '@suning/uxcool/src/components/popover';
+  import { Popover } from '@suning/uxcool';
+  import ContainerDemo from './container.vue';
 
   export default {
+    components: {
+      UxPopover: Popover,
+      ContainerDemo,
+    },
     data() {
       return {
         visible: false,
@@ -193,9 +198,6 @@
       onVisibleChange(visible) {
         this.visible = visible;
       },
-    },
-    components: {
-      UxPopover,
     },
   };
 </script>

@@ -13,9 +13,10 @@
            :popup-animation="animation"
            :popup-class="tooltipClass"
            :popup-style="tooltipStyle"
+           :get-popup-container="getPopupContainer"
            @on-popup-visible-change="onPopupVisible">
     <template slot="trigger">
-      <slot/>
+      <slot />
     </template>
     <template slot="popup">
       <div :class="`${prefixCls}-arrow`" />
@@ -116,6 +117,10 @@
         type: Object,
         default: null,
       },
+      getPopupContainer: {
+        type: Function,
+        default: null,
+      },
     },
     data() {
       return {
@@ -158,7 +163,9 @@
         this.$emit('visible-change', visible);
       },
       updateTooltipAlign() {
-        const { $refs: { tooltipTriggerRef } } = this;
+        const {
+          $refs: { tooltipTriggerRef },
+        } = this;
 
         if (tooltipTriggerRef) {
           tooltipTriggerRef.forcePopupAlign();
