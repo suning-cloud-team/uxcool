@@ -9,10 +9,8 @@ $table-header-icon-color: $text-color-secondary;
   // add
   .#{$ux-prefix}-spin-nested-loading {
     width: 100%;
+    vertical-align: top;
   }
-  // .#{$table-prefix-cls}-loading {
-  //   z-index: 1051;
-  // }
 }
 
 .#{$table-prefix-cls} {

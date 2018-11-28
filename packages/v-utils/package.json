@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-utils",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",

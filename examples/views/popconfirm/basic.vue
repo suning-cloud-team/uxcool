@@ -12,6 +12,7 @@
     </div>
     <custom-demo />
     <slot-demo />
+    <container-demo />
   </div>
 </template>
 
@@ -20,12 +21,14 @@
   import { Popconfirm } from '@suning/uxcool';
   import CustomDemo from './custom.vue';
   import SlotDemo from './slot.vue';
+  import ContainerDemo from './container.vue';
 
   export default {
     components: {
       Popconfirm,
       CustomDemo,
       SlotDemo,
+      ContainerDemo,
     },
   };
 </script>

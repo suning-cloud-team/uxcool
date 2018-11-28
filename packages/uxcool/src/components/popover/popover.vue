@@ -91,6 +91,10 @@
         type: Boolean,
         default: true,
       },
+      getPopupContainer: {
+        type: Function,
+        default: null,
+      },
     },
     data() {
       return {

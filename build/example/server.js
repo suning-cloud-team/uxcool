@@ -19,6 +19,8 @@ function buildConfig(config) {
       stats: 'errors-only',
       open: true,
       openPage: 'index.html',
+      host: '0.0.0.0',
+      public: 'localhost:8080',
       proxy: {
         '/upload': {
           target: 'http://localhost/jQuery-File-Upload/server/php/',

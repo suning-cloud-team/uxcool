@@ -68,7 +68,7 @@
     <div class="demo">
       <ux-tooltip trigger="focus">
         <div slot="content">
-          测试1<br/>测试2
+          测试1<br />测试2
         </div>
         <button class="ux-btn">Bottom</button>
       </ux-tooltip>
@@ -99,6 +99,7 @@
         <button class="ux-btn">中心对齐</button>
       </ux-tooltip>
     </div>
+    <container-demo />
   </div>
 
 </template>
@@ -106,12 +107,13 @@
 
 <script>
   import '@suning/uxcool/src/components/button/style/index.scss';
-  import '@suning/uxcool/src/components/tooltip/style/index.scss';
-  import UxTooltip from '@suning/uxcool/src/components/tooltip/index';
+  import { Tooltip as UxTooltip } from '@suning/uxcool';
+  import ContainerDemo from './container.vue';
 
   export default {
     components: {
       UxTooltip,
+      ContainerDemo,
     },
     data() {
       return {

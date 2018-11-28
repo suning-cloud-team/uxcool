@@ -8,10 +8,22 @@
                         :ranges="ranges"
                         :compatibility="true"
                         :date-picker-props="datePickerProps"
-                        :min-slider-date="minSliderDate"
+                        :date-picker-events="datePickerEvents"
+                        allow-clear
+                        style="width:500px"
+                        @change="onChange" />
+
+    <br>
+    <h4>slider hide second</h4>
+    <slider-date-picker v-model="selectedValue"
+                        :show-slider-bar="true"
+                        :ranges="ranges"
+                        :compatibility="true"
+                        :date-picker-props="datePickerProps"
+                        :date-picker-events="datePickerEvents"
                         :show-time="{showSecond:false}"
+                        allow-clear
                         format="YYYY-MM-DD HH:mm"
-                        max-history-len="0"
                         style="width:500px"
                         @change="onChange" />
   </div>
@@ -53,9 +65,16 @@
         datePickerProps: {
           // showTime: false,
         },
+        datePickerEvents: {},
       };
     },
-    created() {},
+    created() {
+      const { onOpenChange, onCalendarChange } = this;
+      this.datePickerEvents = {
+        'open-change': onOpenChange,
+        'calendar-change': onCalendarChange,
+      };
+    },
     methods: {
       getDateStr() {
         const { selectedValue } = this;
@@ -66,6 +85,12 @@
       },
       minSliderDate() {
         return minDate;
+      },
+      onOpenChange(...args) {
+        console.log('onOpenChange', ...args);
+      },
+      onCalendarChange(...args) {
+        console.log('onCalendarChange', ...args);
       },
     },
   };
