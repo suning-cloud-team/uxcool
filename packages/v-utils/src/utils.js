@@ -10,6 +10,8 @@ import set from 'lodash/set';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 import isEqualWith from 'lodash/isEqualWith';
+import cloneDeep from 'lodash/cloneDeep';
+import cloneDeepWith from 'lodash/cloneDeepWith';
 
 export function noop() {}
 
@@ -46,4 +48,6 @@ export {
   get as getValueByPath,
   isEqual,
   isEqualWith,
+  cloneDeep,
+  cloneDeepWith,
 };

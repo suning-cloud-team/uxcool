@@ -1,7 +1,14 @@
 import omit from 'object.omit';
 import VMenu, { VMenuItem, VMenuItemGroup } from '@suning/v-menu';
 import Trigger from '@suning/v-trigger';
-import { isArray, isFunction, isEqual, isPlainObject, updatePortalElement } from '@suning/v-utils';
+import {
+  isArray,
+  isFunction,
+  isEqual,
+  isPlainObject,
+  updatePortalElement,
+  cloneDeepWith,
+} from '@suning/v-utils';
 import VirtualList from '../virtual-list';
 import { buildComponentName } from '../utils';
 import {
@@ -652,7 +659,14 @@ export default {
           fOptions: this.fOptions,
         };
       }
-      this.prevOptions = [...options];
+      this.prevOptions = cloneDeepWith(options, (value, name) => {
+        // `labelNode` 是 `VNode` 类型,没有clone必要, clone时反而会造成问题
+        if (name === 'labelNode') {
+          return value;
+        }
+        return undefined;
+      });
+      // this.prevOptions = [...options];
       const renderLabelFn = $scopedSlots.renderLabel || renderLabel;
       const renderGroupLabelFn = $scopedSlots.renderGroupLabel || renderGroupLabel;
 
