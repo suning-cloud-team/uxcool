@@ -72,8 +72,8 @@ export default {
       return this.fieldRules.rules;
     },
     normalizeAlias() {
-      const { alias, formItemNode } = this;
-      return alias || formItemNode.label;
+      const { alias, formItemNode, name } = this;
+      return alias || formItemNode.label || name;
     },
   },
   mounted() {

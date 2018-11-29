@@ -43,8 +43,7 @@ $input-affix-width: 19px;
 @mixin input() {
   position: relative;
   display: inline-block;
-  padding: $input-padding-vertical-base - 1 $input-padding-horizontal-base
-    $input-padding-vertical-base;
+  padding: $input-padding-vertical-base $input-padding-horizontal-base;
   width: 100%;
   height: $input-height-base;
   font-size: $font-size-base;
