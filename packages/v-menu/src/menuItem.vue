@@ -1,5 +1,6 @@
 <template>
   <li slot-scope="props"
+      :title="getAttrTitleVal($slots.default, title)"
       :class="classes"
       :style="[paddingStyle]"
       @mouseenter="onMouseEnter"
@@ -10,8 +11,9 @@
 </template>
 
 <script>
-  import { debounce, getVNodeText } from '@suning/v-utils';
+  import { debounce } from '@suning/v-utils';
   import commonMixin from './mixins/common';
+  import { getTitle } from './utils';
 
   export default {
     name: 'MenuItem',
@@ -39,9 +41,7 @@
         return selectedItemEventNames.indexOf(eventName) > -1;
       },
       classes() {
-        const {
-          prefixCls, disabled, isSelected, activeItemEventName, eventName
-        } = this;
+        const { prefixCls, disabled, isSelected, activeItemEventName, eventName } = this;
         return {
           [prefixCls]: true,
           // TODO:
@@ -110,7 +110,10 @@
           onMenuItemSelect(event);
         }
       },
-      getVNodeText,
+      getAttrTitleVal(slotTitle, title) {
+        const { hasTitleAttr } = this;
+        return hasTitleAttr ? getTitle(slotTitle, title) : '';
+      },
     },
   };
 </script>

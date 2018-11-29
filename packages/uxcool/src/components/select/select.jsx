@@ -794,6 +794,7 @@ export default {
         selectedKeys: innerValue,
         multiple: isMultipleOrTags,
         mode: 'vertical',
+        hasTitleAttr: true,
       };
       const on = isMultipleOrTags
         ? {

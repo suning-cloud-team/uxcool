@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <button class="ux-btn"
+    <button class="ux-btn"
             @click="changeTheme">{{theme}}</button>
 
     <div class="demo">
@@ -138,8 +138,9 @@
     <remote-filter-demo />
     <custom-input-demo />
     <custom-attrs-demo />
-    <clear-demo /> -->
+    <clear-demo />
     <disabled-demo />
+    <single-demo />
   </div>
 </template>
 
