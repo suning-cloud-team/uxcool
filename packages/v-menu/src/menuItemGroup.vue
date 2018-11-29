@@ -1,6 +1,6 @@
 <template>
   <li :class="classes"
-      :title="title">
+      :title="getAttrTitleVal($slots.title, title)">
     <div :class="titleClasses"
          :style="paddingStyle">
       <slot name="title">{{ title }}</slot>
@@ -14,6 +14,7 @@
 
 <script>
   import commonMixin from './mixins/common';
+  import { getTitle } from './utils';
 
   export default {
     name: 'MenuItemGroup',
@@ -23,12 +24,6 @@
         type: String,
         default: '',
       },
-    },
-    created() {
-      this.rootMenu.addDescendants(this);
-    },
-    beforeDestroy() {
-      this.rootMenu.removeDescendants(this);
     },
     computed: {
       paddingStyle() {
@@ -57,6 +52,18 @@
         return {
           [`${rootPrefixCls}-item-group-list`]: true,
         };
+      },
+    },
+    created() {
+      this.rootMenu.addDescendants(this);
+    },
+    beforeDestroy() {
+      this.rootMenu.removeDescendants(this);
+    },
+    methods: {
+      getAttrTitleVal(slotTitle, title) {
+        const { hasTitleAttr } = this;
+        return hasTitleAttr ? getTitle(slotTitle, title) : '';
       },
     },
   };

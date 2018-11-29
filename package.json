@@ -102,6 +102,7 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
+    "@suning/uxcool-table-search-form": "^1.0.5",
     "humanize-duration": "^3.15.3",
     "lodash.debounce": "^4.0.8",
     "nprogress": "^0.2.0",

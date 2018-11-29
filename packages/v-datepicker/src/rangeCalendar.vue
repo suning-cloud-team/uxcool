@@ -115,7 +115,7 @@
 </template>
 
 <script>
-  import deepCopy from 'deepcopy';
+  import { cloneDeep } from '@suning/v-utils';
   import {
     addMonths,
     isSameMonth,
@@ -255,7 +255,9 @@
         return showOk === true || (showOk !== false && !!hasTimePicker);
       },
       isTodayInView() {
-        const { innerValues: [start, end] } = this;
+        const {
+          innerValues: [start, end],
+        } = this;
         const today = new Date();
         return isSameMonth(today, start) || isSameMonth(today, end);
       },
@@ -441,7 +443,7 @@
         return [date, addMonths(date, 1)];
       },
       updateHoverValues(values) {
-        const hoverValues = deepCopy(values);
+        const hoverValues = cloneDeep(values);
         this.hoverValues = hoverValues;
         this.$emit('on-hover-change', hoverValues);
       },
@@ -460,22 +462,24 @@
         }
       },
       disabledStartMonth(month) {
-        const { innerValues: [, end] } = this;
+        const {
+          innerValues: [, end],
+        } = this;
         const eVal = formatDate(end, 'YYYY-MM');
         const mVal = formatDate(month, 'YYYY-MM');
         return isAfter(mVal, eVal) || isEqual(mVal, eVal);
       },
       disabledEndMonth(month) {
-        const { innerValues: [start] } = this;
+        const {
+          innerValues: [start],
+        } = this;
         const sVal = formatDate(start, 'YYYY-MM');
         const mVal = formatDate(month, 'YYYY-MM');
         return isBefore(mVal, sVal) || isEqual(mVal, sVal);
       },
 
       isAllowedDateAndTime(selectedValue) {
-        const {
-          disabledDate, disabledStartTime, disabledEndTime, hasTimePicker
-        } = this;
+        const { disabledDate, disabledStartTime, disabledEndTime, hasTimePicker } = this;
         if (!hasTimePicker) {
           return (
             isAllowedDate(selectedValue[0], disabledDate) &&
@@ -530,7 +534,7 @@
       onTimePickerChange(type, value) {
         const { selectedValue } = this;
 
-        const values = deepCopy(selectedValue);
+        const values = cloneDeep(selectedValue);
 
         const idx = type === 'left' ? 0 : 1;
         values[idx] = value;

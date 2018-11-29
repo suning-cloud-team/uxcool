@@ -83,6 +83,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@suning/uxcool-table-search-form@^1.0.5":
+  version "1.0.5"
+  resolved "http://snpm.cnsuning.com/@suning%2fuxcool-table-search-form/-/uxcool-table-search-form-1.0.5.tgz#495833c22e5d7650f0d123ca7c9d49f330b61a91"
+
 "@types/jest@^22.2.3":
   version "22.2.3"
   resolved "http://registry.npm.taobao.org/@types/jest/download/@types/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
@@ -2446,10 +2450,6 @@ deep-extend@~0.4.0:
 deep-is@~0.1.3:
   version "0.1.3"
   resolved "http://registry.npm.taobao.org/deep-is/download/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
-
-deepcopy@^0.6.3:
-  version "0.6.3"
-  resolved "http://registry.npm.taobao.org/deepcopy/download/deepcopy-0.6.3.tgz#634780f2f8656ab771af8fa8431ed1ccee55c7b0"
 
 deepmerge@^2.0.1:
   version "2.0.1"

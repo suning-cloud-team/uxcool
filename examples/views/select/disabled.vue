@@ -16,7 +16,6 @@
     <h4>disabled multiple</h4>
     <ux-select v-model="value"
                :disabled="disabled"
-               visible
                mode="tags"
                style="width:200px;"
                show-search>
@@ -28,6 +27,11 @@
       <ux-option value="C"
                  label="C3" />
     </ux-select>
+    <h4>disabled date source</h4>
+    <ux-select v-model="value1"
+               :data-source="list"
+               style="width:200px;"
+               show-search />
   </div>
 
 </template>
@@ -43,15 +47,21 @@
     data() {
       return {
         value: ['A'],
+        value1: '',
         disabled: false,
+        list: [
+          { value: 1, label: 'a-1', disabled: false },
+          { value: 2, label: 'a-2', disabled: false },
+        ],
       };
     },
     created() {
       setTimeout(() => {
-        this.disabled = true;
+        // this.disabled = true;
         // setTimeout(() => {
         //   this.disabled = false;
         // }, 3500);
+        this.list[0].disabled = true;
       }, 1500);
     },
   };

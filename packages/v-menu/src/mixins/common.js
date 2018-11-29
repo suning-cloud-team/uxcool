@@ -81,5 +81,8 @@ export default {
     subMenuCloseDelay() {
       return this.rootMenu.subMenuCloseDelay;
     },
+    hasTitleAttr() {
+      return this.rootMenu.hasTitleAttr;
+    },
   },
 };

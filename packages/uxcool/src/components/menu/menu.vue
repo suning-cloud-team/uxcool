@@ -70,6 +70,10 @@
         type: Boolean,
         default: false,
       },
+      hasTitleAttr: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -86,9 +90,7 @@
         };
       },
       bindProps() {
-        const {
-          $props, inlineCollapsed, mode, collapsedOpenKeys
-        } = this;
+        const { $props, inlineCollapsed, mode, collapsedOpenKeys } = this;
 
         return {
           ...$props,

@@ -1,4 +1,4 @@
-import { isSameTypeVNode } from '@suning/v-utils';
+import { isSameTypeVNode, getVNodeText } from '@suning/v-utils';
 
 let uidSeed = 0;
 
@@ -151,4 +151,9 @@ export function getItemParentSubMenus(vm) {
   }
 
   return ret;
+}
+
+export function getTitle(slotTitle, title) {
+  const vnodeTitle = getVNodeText(slotTitle);
+  return (vnodeTitle || []).length === 0 ? title : vnodeTitle;
 }

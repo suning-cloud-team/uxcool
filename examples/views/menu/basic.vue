@@ -52,6 +52,7 @@
     <h4>event</h4>
     <div class="demo">
       <ux-menu style="width:200px;"
+               has-title-attr
                @click="onMenuClick"
                @select="onMenuSelect"
                @deselect="onMenuDeselect">

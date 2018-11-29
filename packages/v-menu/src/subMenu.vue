@@ -3,7 +3,7 @@
   import { isArray, warning } from '@suning/v-utils';
   import commonMixin from './mixins/common';
   import Menu from './menu.vue';
-  import { getAllDescendants, getRootSubMenu, getPopupPlacement, isTopSubMenu } from './utils';
+  import { getRootSubMenu, getPopupPlacement, isTopSubMenu, getTitle } from './utils';
 
   export default {
     name: 'SubMenu',
@@ -64,9 +64,7 @@
         return rootMode === 'horizontal' ? 'vertical' : rootMode;
       },
       classes() {
-        const {
-          prefixCls, disabled, mode, isActive, isSelected, isOpen
-        } = this;
+        const { prefixCls, disabled, mode, isActive, isSelected, isOpen } = this;
         return {
           [prefixCls]: true,
           [`${prefixCls}-${mode}`]: true,
@@ -119,9 +117,7 @@
         });
       },
       onClick($event) {
-        const {
-          isInlineMode, eventName, tirggerOpenChange, isOpen
-        } = this;
+        const { isInlineMode, eventName, tirggerOpenChange, isOpen } = this;
         this.$emit('click', {
           name: eventName,
           domEvent: $event,
@@ -212,6 +208,7 @@
         isOpen,
         subMenuMode,
         renderTrigger,
+        hasTitleAttr,
       } = this;
       const attrs = {
         class: classes,
@@ -230,9 +227,18 @@
         };
       }
 
+      if (!slotTitle && !title) {
+        if (process.env.NODE_ENV !== 'production') {
+          warning(false, 'SubMenu需要一个标题');
+        }
+      }
+
       const titleAttrs = {
         class: titleClasses,
         style: [paddingStyle],
+        attrs: {
+          title: hasTitleAttr ? getTitle(slotTitle, title) : '',
+        },
       };
       if (!disabled && isInlineMode) {
         titleAttrs.on = {
@@ -243,12 +249,6 @@
           mouseenter: onTitleMouseEnter,
           mouseleave: onTitleMouseLeave,
         };
-      }
-
-      if (!slotTitle && !title) {
-        if (process.env.NODE_ENV !== 'production') {
-          warning(false, 'SubMenu需要一个标题');
-        }
       }
 
       const menuAttrs = {

@@ -1,13 +1,25 @@
 <template>
   <div>
-    <button class="ux-btn"
-            @click="changeTheme">{{theme}}</button>
     <div class="demo">
       <h6>basic</h6>
       <ux-steps current="1"
                 :theme="theme">
         <ux-step title="已完成"
                  :desc="description"></ux-step>
+        <ux-step title="进行中"
+                 :desc="description"></ux-step>
+        <ux-step title="待运行"
+                 :desc="description"></ux-step>
+        <ux-step title="待运行"
+                 :desc="description"></ux-step>
+      </ux-steps>
+    </div>
+    <div class="demo">
+      <h6>label vertical</h6>
+      <ux-steps current="1"
+                label-placement="vertical">
+        <ux-step :desc="description"
+                 title="已完成" />
         <ux-step title="进行中"
                  :desc="description"></ux-step>
         <ux-step title="待运行"

@@ -98,6 +98,10 @@ export default {
       type: [String, Array, Object],
       default: '',
     },
+    hasTitleAttr: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     uuid() {

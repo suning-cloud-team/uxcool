@@ -139,7 +139,8 @@
     <custom-input-demo />
     <custom-attrs-demo />
     <clear-demo />
-
+    <disabled-demo />
+    <single-demo />
   </div>
 </template>
 
