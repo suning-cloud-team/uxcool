@@ -1,16 +1,15 @@
 <template>
   <div v-show="visible"
        :class="classes">
-    <div role="panel"
-         :class="`${prefixCls}-panel`">
+    <div :class="`${prefixCls}-panel`"
+         role="panel">
       <date-input v-if="showDateInput"
                   :prefix-cls="prefixCls"
                   :locale="locale"
                   :format="dateFormat"
                   :value="selectedValue"
                   :placeholder="dateInputPlaceholder"
-                  @on-change="updateValue">
-      </date-input>
+                  @on-change="updateValue" />
       <div :class="`${prefixCls}-date-panel`">
         <calendar-header :prefix-cls="prefixCls"
                          :format="dateFormat"
@@ -19,13 +18,12 @@
                          :locale="locale"
                          :is-time-picker="isTimePicker"
                          @on-change="updateInnerValue"
-                         @on-panel-change="onPanelChange">
-        </calendar-header>
+                         @on-panel-change="onPanelChange" />
         <div v-if="hasTimePicker&&isTimePicker">
           <div :class="`${prefixCls}-time-picker`">
             <div :class="`${prefixCls}-time-picker-panel`">
-              <slot name="timePicker"
-                    :on-change="updateValue"></slot>
+              <slot :on-change="updateValue"
+                    name="timePicker" />
             </div>
           </div>
         </div>
@@ -36,8 +34,7 @@
                       :format="format"
                       :locale="locale"
                       :disabled-date="disabledDate"
-                      @on-select="updateValue">
-          </date-table>
+                      @on-select="updateValue" />
         </div>
         <calendar-footer :prefix-cls="prefixCls"
                          :locale="locale"
@@ -51,8 +48,7 @@
                          :disabled-date="disabledDate"
                          @on-ok="onOK"
                          @on-today="updateValue"
-                         @on-time-picker="onTimePickerClick">
-        </calendar-footer>
+                         @on-time-picker="onTimePickerClick" />
       </div>
     </div>
   </div>
@@ -68,6 +64,12 @@
 
   export default {
     name: 'Calendar',
+    components: {
+      DateInput,
+      CalendarHeader,
+      DateTable,
+      CalendarFooter,
+    },
     props: {
       locale: Object,
       prefixCls: String,
@@ -118,6 +120,10 @@
         type: Boolean,
         default: false,
       },
+      controlMode: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -126,12 +132,6 @@
         innerValue: this.value,
         innerMode: this.mode,
       };
-    },
-    created() {
-      const { innerValue } = this;
-      if (!(innerValue instanceof Date)) {
-        this.innerValue = new Date();
-      }
     },
     computed: {
       okDisabled() {
@@ -162,14 +162,34 @@
         };
       },
     },
+    watch: {
+      value(nVal) {
+        this.selectedValue = nVal;
+        this.innerValue = nVal;
+      },
+      mode(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerMode = nVal;
+        }
+      },
+    },
+    created() {
+      const { innerValue } = this;
+      if (!(innerValue instanceof Date)) {
+        this.innerValue = new Date();
+      }
+    },
     methods: {
       isAllowedDate(value) {
         const { disabledDate, disabledTime } = this;
         return isAllowedDate(value, disabledDate, disabledTime);
       },
       onPanelChange(value, next) {
-        this.innerMode = next;
-        this.$emit('on-panel-change', value || this.selectedValue, next);
+        const { controlMode, innerValue } = this;
+        if (!controlMode) {
+          this.innerMode = next;
+        }
+        this.$emit('on-panel-change', value || innerValue, next);
       },
       updateValue(value) {
         this.selectedValue = value;
@@ -190,12 +210,6 @@
           onPanelChange(null, 'time');
         }
       },
-    },
-    components: {
-      DateInput,
-      CalendarHeader,
-      DateTable,
-      CalendarFooter,
     },
   };
 </script>

@@ -74,7 +74,7 @@
       mode: {
         type: Array,
         validator(val) {
-          return val.every(v => ['date', 'month', 'year', 'decade'].indexOf(v) > -1);
+          return val.every(v => ['time', 'date', 'month'].indexOf(v) > -1);
         },
         default() {
           return ['date', 'date'];
@@ -147,6 +147,10 @@
         type: Boolean,
         default: false,
       },
+      controlMode: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -155,9 +159,7 @@
     },
     computed: {
       bindProps() {
-        const {
-          prefixCls, innerValue, startPlaceholder, endPlaceholder, openValue
-        } = this;
+        const { prefixCls, innerValue, startPlaceholder, endPlaceholder, openValue } = this;
         return {
           ...this.$props,
           selectedValue: innerValue,

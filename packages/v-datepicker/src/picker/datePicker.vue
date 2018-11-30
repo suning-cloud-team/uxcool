@@ -27,8 +27,8 @@
               :disabled-date="disabledDate"
               :disabled-time="disabledTime"
               :date-input-placeholder="dateInputPlaceholder"
-              @on-select="onSelect"
-              @on-ok="onOk">
+              :control-mode="controlMode"
+              v-on="bindListeners">
       <template slot="timePicker"
                 slot-scope="props">
         <time-picker-panel v-if="isShowTime"
@@ -117,6 +117,10 @@
         type: Boolean,
         default: false,
       },
+      controlMode: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -193,6 +197,17 @@
           disabledSeconds,
         };
       },
+      bindListeners() {
+        const {
+          $listeners, onPanelChange, onSelect, onOk
+        } = this;
+        return {
+          ...$listeners,
+          'on-panel-change': onPanelChange,
+          'on-select': onSelect,
+          'on-ok': onOk,
+        };
+      },
     },
     watch: {
       value(nVal, oVal) {
@@ -221,6 +236,9 @@
     methods: {
       setOpen(flag) {
         this.open = flag;
+      },
+      onPanelChange(...args) {
+        this.$emit('panel-change', ...args);
       },
       onChange(val, hide = true) {
         const { setOpen, dateFormat } = this;

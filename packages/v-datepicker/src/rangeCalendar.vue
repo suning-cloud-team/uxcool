@@ -231,6 +231,10 @@
         type: [Boolean, Object],
         default: false,
       },
+      controlMode: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -255,9 +259,7 @@
         return showOk === true || (showOk !== false && !!hasTimePicker);
       },
       isTodayInView() {
-        const {
-          innerValues: [start, end],
-        } = this;
+        const { innerValues: [start, end] } = this;
         const today = new Date();
         return isSameMonth(today, start) || isSameMonth(today, end);
       },
@@ -462,24 +464,22 @@
         }
       },
       disabledStartMonth(month) {
-        const {
-          innerValues: [, end],
-        } = this;
+        const { innerValues: [, end] } = this;
         const eVal = formatDate(end, 'YYYY-MM');
         const mVal = formatDate(month, 'YYYY-MM');
         return isAfter(mVal, eVal) || isEqual(mVal, eVal);
       },
       disabledEndMonth(month) {
-        const {
-          innerValues: [start],
-        } = this;
+        const { innerValues: [start] } = this;
         const sVal = formatDate(start, 'YYYY-MM');
         const mVal = formatDate(month, 'YYYY-MM');
         return isBefore(mVal, sVal) || isEqual(mVal, sVal);
       },
 
       isAllowedDateAndTime(selectedValue) {
-        const { disabledDate, disabledStartTime, disabledEndTime, hasTimePicker } = this;
+        const {
+          disabledDate, disabledStartTime, disabledEndTime, hasTimePicker
+        } = this;
         if (!hasTimePicker) {
           return (
             isAllowedDate(selectedValue[0], disabledDate) &&
@@ -522,14 +522,20 @@
         this.innerValues = direction === 'left' ? [value, innerValues[1]] : [innerValues[0], value];
       },
       onStartPanelChange(value, next) {
-        const { innerMode, selectedValue } = this;
-        this.innerMode = [next, innerMode[1]];
-        this.$emit('on-panel-change', [value || selectedValue[0], selectedValue[1]]);
+        const { controlMode, innerMode, innerValues } = this;
+        const mode = [next, innerMode[1]];
+        if (!controlMode) {
+          this.innerMode = mode;
+        }
+        this.$emit('on-panel-change', [value || innerValues[0], innerValues[1]], mode);
       },
       onEndPanelChange(value, next) {
-        const { innerMode, selectedValue } = this;
-        this.innerMode = [innerMode[0], next];
-        this.$emit('on-panel-change', [selectedValue[0], value || selectedValue[1]]);
+        const { controlMode, innerMode, innerValues } = this;
+        const mode = [innerMode[0], next];
+        if (!controlMode) {
+          this.innerMode = mode;
+        }
+        this.$emit('on-panel-change', [innerValues[0], value || innerValues[1]], mode);
       },
       onTimePickerChange(type, value) {
         const { selectedValue } = this;

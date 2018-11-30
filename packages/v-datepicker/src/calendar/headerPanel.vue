@@ -52,18 +52,18 @@
       },
     },
     methods: {
-      goNextPanel(value, next) {
-        this.$emit('on-select', value, next);
+      goNextPanel(value, next, originMode) {
+        this.$emit('on-select', value, next, originMode);
       },
       onMonthSelect(value) {
-        this.goNextPanel(value, 'date');
+        this.goNextPanel(value, 'date', 'month');
       },
       onYearSelect(value) {
         const { yearFrom, goNextPanel } = this;
-        goNextPanel(value, yearFrom);
+        goNextPanel(value, yearFrom, 'year');
       },
       onDecadeSelect(value) {
-        this.goNextPanel(value, 'year');
+        this.goNextPanel(value, 'year', 'descade');
       },
       onShowYearPanel(from) {
         this.$emit('on-show-year-panel', from);
