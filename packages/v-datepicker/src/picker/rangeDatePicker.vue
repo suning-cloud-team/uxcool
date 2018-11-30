@@ -30,10 +30,8 @@
                     :disabled-time="disabledTime"
                     :ranges="ranges"
                     :show-time="showTime"
-                    @on-select="onSelect"
-                    @calendar-change="onCalendarChange"
-                    @on-quick-select="onQuickSelect"
-                    @on-ok="onOk" />
+                    :control-mode="controlMode"
+                    v-on="bindListeners" />
   </trigger>
 </template>
 
@@ -134,6 +132,10 @@
         type: Boolean,
         default: false,
       },
+      controlMode: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -180,6 +182,17 @@
         const { isHasOkButton, okConfirm } = this;
         return isHasOkButton && okConfirm;
       },
+      bindListeners() {
+        const { $listeners, onPanelChange, onSelect, onCalendarChange, onQuickSelect, onOk } = this;
+        return {
+          ...$listeners,
+          'on-panel-change': onPanelChange,
+          'on-select': onSelect,
+          'calendar-change': onCalendarChange,
+          'on-quick-select': onQuickSelect,
+          'on-ok': onOk,
+        };
+      },
     },
     watch: {
       selectedValue(nVal, oVal) {
@@ -201,6 +214,9 @@
     methods: {
       setOpen(flag) {
         this.open = flag;
+      },
+      onPanelChange(...args) {
+        this.$emit('panel-change', ...args);
       },
       // 每次选择时间后都触发
       onCalendarChange(values) {
@@ -242,9 +258,7 @@
         this.$emit('open-change', visible);
       },
       onOk(values) {
-        const {
-          setOpen, isHasOkButton, isOkConfirm, onChange
-        } = this;
+        const { setOpen, isHasOkButton, isOkConfirm, onChange } = this;
         setOpen(false);
         if (isHasOkButton) {
           this.$emit('ok', values);

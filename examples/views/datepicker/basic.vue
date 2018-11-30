@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="demo">
+    <!-- <div class="demo">
       <h6>showTime</h6>
       <ux-date-picker :theme="theme"
                       v-model="date"
@@ -54,7 +54,8 @@
     <popup-container-demo />
     <ok-confirm-demo />
 
-    <slider-demo />
+    <slider-demo /> -->
+    <control-mode-demo />
   </div>
 </template>
 
@@ -75,6 +76,7 @@
   import PopupContainerDemo from './popupContainer.vue';
   import OkConfirmDemo from './okConfirm.vue';
   import SliderDemo from './slider.vue';
+  import ControlModeDemo from './controlMode.vue';
 
   export default {
     components: {
@@ -84,6 +86,7 @@
       PopupContainerDemo,
       OkConfirmDemo,
       SliderDemo,
+      ControlModeDemo,
     },
     data() {
       return {

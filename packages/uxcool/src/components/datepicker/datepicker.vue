@@ -103,6 +103,10 @@
         type: Boolean,
         default: false,
       },
+      controlMode: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {

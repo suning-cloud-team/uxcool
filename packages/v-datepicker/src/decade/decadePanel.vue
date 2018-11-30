@@ -59,6 +59,13 @@
         return startYear + 99;
       },
     },
+    watch: {
+      value(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerValue = nVal;
+        }
+      },
+    },
     methods: {
       goYear(direction) {
         const nYear = addYears(this.innerValue, direction);
