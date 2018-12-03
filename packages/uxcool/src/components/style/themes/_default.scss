@@ -685,8 +685,8 @@ $rate-star-bg: $border-color-split !default;
 // ---
 $tree-title-height: 24px;
 $tree-child-padding: 18px;
-$tree-directory-selected-color: #fff;
-$tree-directory-selected-bg: $primary-color;
+$tree-directory-selected-color: $primary-color;
+$tree-directory-selected-bg: $item-active-bg;
 
 // Collapse
 // ---
