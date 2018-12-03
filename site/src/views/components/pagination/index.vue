@@ -70,7 +70,8 @@
           <td>show-before-total</td>
           <td>分页条之前显示自定义内容</td>
           <td>Function(total, pageSize, totalPage, pageNo, range)
-            <br>total: 总数; pageSize: 每页条数;totalPage:总页数; pageNo: 当前页;range:当前页数据范围</td>
+            <br>total: 总数; pageSize: 每页条数;totalPage:总页数; pageNo: 当前页;range:当前页数据范围
+          </td>
           <td>noop</td>
         </tr>
         <tr>
@@ -82,7 +83,7 @@
         <tr>
           <td>item-render</td>
           <td>自定义页码Dom结构</td>
-          <td>(pageNo,type:'page'|'next'|'prev')=&gt;String</td>
+          <td>(pageNo,type:'page'|'next'|'prev')=&gt;String\|VNode</td>
           <td>-</td>
         </tr>
       </tbody>

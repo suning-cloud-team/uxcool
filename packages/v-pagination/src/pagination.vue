@@ -6,18 +6,20 @@
         :class="beforeTotalClasses"
         v-html="beforeTotalLiteral" />
     <li :title="genTitle(locale.prev_page)"
-        tabindex="0"
         :class="prevClasses"
+        tabindex="0"
         @click="prev"
-        @keypress.enter="prev"
-        v-html="itemRender(prevPageNo, 'prev')" />
+        @keypress.enter="prev">
+      <v-nodes :vnodes="itemRender(prevPageNo, 'prev' ,prevIcon)" />
+    </li>
     <li :class="simpleSepClasses" />
     <li :title="genTitle(locale.next_page)"
-        tabindex="0"
         :class="nextClasses"
+        tabindex="0"
         @click="next"
-        @keypress.enter="next"
-        v-html="itemRender(nextPageNo,'next')" />
+        @keypress.enter="next">
+      <v-nodes :vnodes="itemRender(nextPageNo,'next', nextIcon)" />
+    </li>
   </ul>
   <ul v-else
       :class="[classes,className]"
@@ -29,19 +31,21 @@
         v-html="beforeTotalLiteral" />
 
     <li :title="genTitle(locale.prev_page)"
-        tabindex="0"
         :class="prevClasses"
+        tabindex="0"
         @click="prev"
-        @keypress.enter="prev"
-        v-html="itemRender(prevPageNo, 'prev')" />
-    <template v-for="(item,idx) in pagers">
+        @keypress.enter="prev">
+      <v-nodes :vnodes="itemRender(prevPageNo, 'prev', prevIcon)" />
+    </li>
+    <template v-for="(item) in pagers">
       <li v-if="item.type === 'jump'"
           :title="item.title"
-          tabindex="0"
           :class="item.classes"
+          tabindex="0"
           @click="item.onClick"
-          @keypress="item.onKeyPress"
-          v-html="itemRender(item.getPage(), `jump-${item.key}`)" />
+          @keypress="item.onKeyPress">
+        <v-nodes :vnodes="itemRender(item.getPage(), `jump-${item.key}`, item.jumpIcon())" />
+      </li>
       <pager v-if="item.type==='pager'"
              :page="item.page"
              :active="item.active"
@@ -49,15 +53,17 @@
              :root-prefix-cls="item.prefixCls"
              :class-name="item.classes"
              @click.native="item.onClick"
-             @keypress.native.enter="item.onKeyPress"
-             v-html="itemRender(item.page, 'page')" />
+             @keypress.native.enter="item.onKeyPress">
+        <v-nodes :vnodes="itemRender(item.page, 'page', getPageItem(item))" />
+      </pager>
     </template>
     <li :title="genTitle(locale.next_page)"
-        tabindex="0"
         :class="nextClasses"
+        tabindex="0"
         @click="next"
-        @keypress.enter="next"
-        v-html="itemRender(nextPageNo,'next')" />
+        @keypress.enter="next">
+      <v-nodes :vnodes="itemRender(nextPageNo,'next', nextIcon)" />
+    </li>
     <li v-if="showAfterTotal !== noop"
         :class="afterTotalClasses"
         v-html="afterTotalLiteral" />
@@ -73,6 +79,7 @@
 </template>
 
 <script>
+  import { isFunction } from '@suning/v-utils';
   import Pager from './pager.vue';
   import Options from './options.vue';
 
@@ -89,8 +96,9 @@
     next_3: '向后 3 页',
     confirm: '确定',
   };
-  function defaultItemRender(page, type) {
-    return `<a>${type === 'page' ? page : ''}</a>`;
+  function defaultItemRender(page, type, node) {
+    return node;
+    // return `<a>${type === 'page' ? page : ''}</a>`;
   }
 
   function noop() {}
@@ -114,6 +122,12 @@
     components: {
       Pager,
       Options,
+      VNodes: {
+        functional: true,
+        render(h, ctx) {
+          return ctx.props.vnodes;
+        },
+      },
     },
     props: {
       prefixCls: {
@@ -195,6 +209,22 @@
         type: Number,
         default: undefined,
       },
+      renderPrevIcon: {
+        type: Function,
+        default: undefined,
+      },
+      renderNextIcon: {
+        type: Function,
+        default: undefined,
+      },
+      renderJumpPrevIcon: {
+        type: Function,
+        default: undefined,
+      },
+      renderJumpNextIcon: {
+        type: Function,
+        default: undefined,
+      },
     },
     data() {
       const { prefixCls, showLessItems, genTitle } = this;
@@ -216,6 +246,7 @@
           onClick: this.jumpPrev,
           onKeyPress: this.jumpPrev,
           getPage: this.getJumpPrevPage,
+          jumpIcon: () => this.jumpPrevIcon,
         },
         jumpNextObj: {
           type: 'jump',
@@ -225,6 +256,7 @@
           onClick: this.jumpNext,
           onKeyPress: this.jumpNext,
           getPage: this.getJumpNextPage,
+          jumpIcon: () => this.jumpNextIcon,
         },
       };
     },
@@ -285,6 +317,22 @@
       afterTotalLiteral() {
         return this.genTotalLiteral(this.showAfterTotal);
       },
+      prevIcon() {
+        const { renderPrevIcon, getIconNode } = this;
+        return getIconNode(renderPrevIcon);
+      },
+      nextIcon() {
+        const { renderNextIcon, getIconNode } = this;
+        return getIconNode(renderNextIcon);
+      },
+      jumpPrevIcon() {
+        const { renderJumpPrevIcon, getIconNode } = this;
+        return getIconNode(renderJumpPrevIcon);
+      },
+      jumpNextIcon() {
+        const { renderJumpNextIcon, getIconNode } = this;
+        return getIconNode(renderJumpNextIcon);
+      },
     },
     watch: {
       pageSize(newVal, val) {
@@ -306,6 +354,13 @@
       this.reRender();
     },
     methods: {
+      getPageItem(item) {
+        return <a>{item.page}</a>;
+      },
+      getIconNode(fn) {
+        const { $props, prefixCls } = this;
+        return isFunction(fn) ? fn({ ...$props }) : <a class={`${prefixCls}-item-link`} />;
+      },
       genTotalLiteral(cb) {
         const {
           total, pageNo, usedPageSize: pageSize, totalPage

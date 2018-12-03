@@ -28,6 +28,9 @@
     "@suning/v-style": "^1.0.15",
     "@suning/v-tools": "^1.0.31"
   },
+  "dependencies": {
+    "@suning/v-utils": "^1.0.23"
+  },
   "vueCompileOpts": {
     "preserveWhitespace": false
   }

@@ -576,8 +576,10 @@ $badge-status-size: 6px !default;
 
 // Pagination
 // ---
-$pagination-item-size: 32px !default;
+$pagination-item-size: 28px !default;
 $pagination-item-size-sm: 24px !default;
+$pagination-font-family: Arial !default;
+$pagination-font-weight-active: 500 !default;
 $pagination-item-bg-dark: rgba(#fff, 0.1) !default;
 $pagination-item-border-dark: rgba(#fff, 0.1) !default;
 $pagination-item-color-dark: #008dff !default;
