@@ -8,6 +8,7 @@
   import omit from 'object.omit';
   import VPagination from '@suning/v-pagination';
   import { buildComponentName } from '../utils';
+  import Icon from '../icon';
 
   export default {
     name: buildComponentName('Pagination'),
@@ -50,7 +51,56 @@
     },
     computed: {
       bindProps() {
-        return omit(this.$props, ['theme']);
+        const {
+          renderPrevIcon, renderNextIcon, renderJumpPrevIcon, renderJumpNextIcon
+        } = this;
+        return {
+          renderPrevIcon,
+          renderNextIcon,
+          renderJumpPrevIcon,
+          renderJumpNextIcon,
+          ...omit(this.$props, ['theme']),
+        };
+      },
+    },
+    methods: {
+      renderPrevIcon() {
+        const { prefixCls } = this;
+        return (
+          <a class={`${prefixCls}-item-link`}>
+            <Icon type="left" />
+          </a>
+        );
+      },
+      renderNextIcon() {
+        const { prefixCls } = this;
+        return (
+          <a class={`${prefixCls}-item-link`}>
+            <Icon type="right" />
+          </a>
+        );
+      },
+      renderJumpPrevIcon() {
+        const { prefixCls } = this;
+        return (
+          <a class={`${prefixCls}-item-link`}>
+            <div class={`${prefixCls}-item-container`}>
+              <Icon class={`${prefixCls}-item-link-icon`} type="double_left" />
+              <span class={`${prefixCls}-item-ellipsis`}>•••</span>
+            </div>
+          </a>
+        );
+      },
+      renderJumpNextIcon() {
+        const { prefixCls } = this;
+        return (
+          <a class={`${prefixCls}-item-link`}>
+            <div class={`${prefixCls}-item-container`}>
+              <Icon class={`${prefixCls}-item-link-icon`} type="double_right" />
+              <span class={`${prefixCls}-item-ellipsis`}>•••</span>
+            </div>
+          </a>
+        );
       },
     },
   };

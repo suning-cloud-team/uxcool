@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <div class="demo">
+    <div class="demo">
       <h6>showTime</h6>
       <ux-date-picker :theme="theme"
                       v-model="date"
@@ -54,7 +54,7 @@
     <popup-container-demo />
     <ok-confirm-demo />
 
-    <slider-demo /> -->
+    <slider-demo />
     <control-mode-demo />
   </div>
 </template>

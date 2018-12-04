@@ -576,8 +576,10 @@ $badge-status-size: 6px !default;
 
 // Pagination
 // ---
-$pagination-item-size: 32px !default;
+$pagination-item-size: 28px !default;
 $pagination-item-size-sm: 24px !default;
+$pagination-font-family: Arial !default;
+$pagination-font-weight-active: 500 !default;
 $pagination-item-bg-dark: rgba(#fff, 0.1) !default;
 $pagination-item-border-dark: rgba(#fff, 0.1) !default;
 $pagination-item-color-dark: #008dff !default;
@@ -685,8 +687,8 @@ $rate-star-bg: $border-color-split !default;
 // ---
 $tree-title-height: 24px;
 $tree-child-padding: 18px;
-$tree-directory-selected-color: #fff;
-$tree-directory-selected-bg: $primary-color;
+$tree-directory-selected-color: $primary-color;
+$tree-directory-selected-bg: $item-active-bg;
 
 // Collapse
 // ---

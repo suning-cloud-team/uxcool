@@ -1,37 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import UxModal from '@suning/uxcool/src/components/modal';
-import Tooltip from './views/tooltip/index';
-import Popover from './views/popover/index';
-import Pagination from './views/pagination/index';
-import Spin from './views/spin/index';
-import Steps from './views/steps/index';
-import Tabs from './views/tabs/index';
-import Button from './views/button/index';
-import Modal from './views/modal/index';
-import Message from './views/message/index';
-import Grid from './views/grid/index';
-import Breadcrumb from './views/breadcrumb/index';
-import Icon from './views/icon/index';
-import Card from './views/card/index';
-import Checkbox from './views/checkbox/index';
-import Radio from './views/radio/index';
-import Dropdown from './views/dropdown/index';
-import Divider from './views/divider/index';
-import Tag from './views/tag/index';
-import Switch from './views/switch/index';
-import Alert from './views/alert/index';
-import Slider from './views/slider/index';
-import BackTop from './views/backtop/index';
-import Avatar from './views/avatar/index';
-import Popconfirm from './views/popconfirm/index';
-import InputNumber from './views/input-number/index';
-import Notification from './views/notification/index';
-import Anchor from './views/anchor/index';
-import Transfer from './views/transfer/index';
-import Rate from './views/rate/index';
-import Affix from './views/affix/index';
-import Box from './views/box/index';
 
 Vue.use(Router);
 const routes = [
@@ -48,17 +17,17 @@ const routes = [
   {
     name: 'Tooltip',
     path: '/tooltip',
-    component: Tooltip,
+    component: () => import('./views/tooltip/index'),
   },
   {
     name: 'Popover',
     path: '/popover',
-    component: Popover,
+    component: () => import('./views/popover/index'),
   },
   {
     name: 'Pagination',
     path: '/pagination',
-    component: Pagination,
+    component: () => import('./views/pagination/index'),
   },
   {
     name: 'Menu',
@@ -78,52 +47,47 @@ const routes = [
   {
     name: 'Spin',
     path: '/spin',
-    component: Spin,
+    component: () => import('./views/spin/index'),
   },
   {
     name: 'Steps',
     path: '/steps',
-    component: Steps,
+    component: () => import('./views/steps/index'),
   },
   {
     name: 'Tabs',
     path: '/tabs',
-    component: Tabs,
+    component: () => import('./views/tabs/index'),
   },
   {
     name: 'Button',
     path: '/button',
-    component: Button,
+    component: () => import('./views/button/index'),
   },
   {
     name: 'Modal',
     path: '/modal',
-    component: Modal,
+    component: () => import('./views/modal/index'),
   },
   {
     name: 'Message',
     path: '/message',
-    component: Message,
+    component: () => import('./views/message/index'),
   },
   {
     name: 'Grid',
     path: '/grid',
-    component: Grid,
+    component: () => import('./views/grid/index'),
   },
-  // {
-  //   name: 'Chart',
-  //   path: '/chart',
-  //   component: () => import('./views/chart/index'),
-  // },
   {
     name: 'Breadcrumb',
     path: '/breadcrumb',
-    component: Breadcrumb,
+    component: () => import('./views/breadcrumb/index'),
   },
   {
     name: 'Icon',
     path: '/icon',
-    component: Icon,
+    component: () => import('./views/icon/index'),
   },
   {
     name: 'Progress',
@@ -133,17 +97,17 @@ const routes = [
   {
     name: 'Card',
     path: '/card',
-    component: Card,
+    component: () => import('./views/card/index'),
   },
   {
     name: 'Checkbox',
     path: '/checkbox',
-    component: Checkbox,
+    component: () => import('./views/checkbox/index'),
   },
   {
     name: 'Radio',
     path: '/radio',
-    component: Radio,
+    component: () => import('./views/radio/index'),
   },
   {
     name: 'Table',
@@ -153,32 +117,32 @@ const routes = [
   {
     name: 'Dropdown',
     path: '/dropdown',
-    component: Dropdown,
+    component: () => import('./views/dropdown/index'),
   },
   {
     name: 'Divider',
     path: '/divider',
-    component: Divider,
+    component: () => import('./views/divider/index'),
   },
   {
     name: 'Tag',
     path: '/tag',
-    component: Tag,
+    component: () => import('./views/tag/index'),
   },
   {
     name: 'Switch',
     path: '/switch',
-    component: Switch,
+    component: () => import('./views/switch/index'),
   },
   {
     name: 'Alert',
     path: '/alert',
-    component: Alert,
+    component: () => import('./views/alert/index'),
   },
   {
     name: 'Slider',
     path: '/slider',
-    component: Slider,
+    component: () => import('./views/slider/index'),
   },
   {
     name: 'Form',
@@ -188,47 +152,47 @@ const routes = [
   {
     name: 'BackTop',
     path: '/backtop',
-    component: BackTop,
+    component: () => import('./views/backtop/index'),
   },
   {
     name: 'Avatar',
     path: '/avatar',
-    component: Avatar,
+    component: () => import('./views/avatar/index'),
   },
   {
     name: 'Popconfirm',
     path: '/popconfirm',
-    component: Popconfirm,
+    component: () => import('./views/popconfirm/index'),
   },
   {
     name: 'InputNumber',
     path: '/inputnumber',
-    component: InputNumber,
+    component: () => import('./views/input-number/index'),
   },
   {
     name: 'Notification',
     path: '/notification',
-    component: Notification,
+    component: () => import('./views/notification/index'),
   },
   {
     name: 'Anchor',
     path: '/anchor',
-    component: Anchor,
+    component: () => import('./views/anchor/index'),
   },
   {
     name: 'Transfer',
     path: '/transfer',
-    component: Transfer,
+    component: () => import('./views/transfer/index'),
   },
   {
     name: 'Rate',
     path: '/rate',
-    component: Rate,
+    component: () => import('./views/rate/index'),
   },
   {
     name: 'Affix',
     path: '/affix',
-    component: Affix,
+    component: () => import('./views/affix/index'),
   },
   {
     name: 'Tree',
@@ -238,7 +202,7 @@ const routes = [
   {
     name: 'Box',
     path: '/box',
-    component: Box,
+    component: () => import('./views/box/index'),
   },
   {
     name: 'Collapse',

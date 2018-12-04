@@ -1,6 +1,6 @@
 import Vue from 'vue';
+// import 'babel-polyfill';
 import '@suning/uxcool-table-search-form/assets/index.css';
-
 import router, { routes } from './router';
 import App from './app.vue';
 import store from './store';

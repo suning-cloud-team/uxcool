@@ -105,8 +105,7 @@
       <h6>step change</h6>
       <ux-steps :current="current"
                 :theme="theme">
-        <ux-step title="Login"
-                 v-for="(step,i) in steps"
+        <ux-step v-for="(step,i) in steps"
                  :key="i"
                  :title="step.title">
         </ux-step>

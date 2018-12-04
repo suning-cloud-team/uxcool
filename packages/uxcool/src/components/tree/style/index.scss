@@ -114,7 +114,8 @@ $tree-showline-icon-color: $text-color-secondary;
     }
     span {
       &.#{$tree-prefix-cls}-checkbox {
-        margin: 2px 4px 0 2px;
+        margin: 4px 4px 0 2px;
+        margin: 5px 4px 0 2px\9;
       }
       &.#{$tree-prefix-cls}-switcher,
       &.#{$tree-prefix-cls}-iconEle {

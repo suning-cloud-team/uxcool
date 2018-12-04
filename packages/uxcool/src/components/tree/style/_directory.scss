@@ -30,7 +30,7 @@ $tree-prefix-cls: #{$ux-prefix}-tree;
 
           &:hover {
             background: transparent;
-
+            // color: $tree-directory-selected-color;
             &:before {
               background: $item-hover-bg;
             }
@@ -59,30 +59,30 @@ $tree-prefix-cls: #{$ux-prefix}-tree;
 
       &.#{$tree-prefix-cls}-treenode-selected {
         > span {
-          &.#{$tree-prefix-cls}-switcher {
-            color: $tree-directory-selected-color;
-          }
+          // &.#{$tree-prefix-cls}-switcher {
+          //   color: $tree-directory-selected-color;
+          // }
 
-          &.#{$tree-prefix-cls}-checkbox {
-            .#{$tree-prefix-cls}-checkbox-inner {
-              border-color: $primary-color;
-            }
+          // &.#{$tree-prefix-cls}-checkbox {
+          //   .#{$tree-prefix-cls}-checkbox-inner {
+          //     border-color: $primary-color;
+          //   }
 
-            &.#{$tree-prefix-cls}-checkbox-indeterminate,
-            &.#{$tree-prefix-cls}-checkbox-checked {
-              &:after {
-                border-color: $checkbox-check-color;
-              }
+          //   &.#{$tree-prefix-cls}-checkbox-indeterminate,
+          //   &.#{$tree-prefix-cls}-checkbox-checked {
+          //     &:after {
+          //       border-color: $checkbox-check-color;
+          //     }
 
-              .#{$tree-prefix-cls}-checkbox-inner {
-                background: $checkbox-check-color;
+          //     .#{$tree-prefix-cls}-checkbox-inner {
+          //       background: $checkbox-check-color;
 
-                &:after {
-                  border-color: $primary-color;
-                }
-              }
-            }
-          }
+          //       &:after {
+          //         border-color: $primary-color;
+          //       }
+          //     }
+          //   }
+          // }
 
           &.#{$tree-prefix-cls}-node-content-wrapper {
             &:before {
@@ -92,5 +92,28 @@ $tree-prefix-cls: #{$ux-prefix}-tree;
         }
       }
     }
+
+    ul.ux-motion-collapse-leave-active {
+      > .#{$tree-prefix-cls}-treenode-selected {
+        > span {
+          &.#{$tree-prefix-cls}-node-content-wrapper {
+            &:before {
+              background: none;
+            }
+          }
+        }
+      }
+    }
+    // ul.ux-motion-collapse-enter-to {
+    //   > .#{$tree-prefix-cls}-treenode-selected {
+    //     > span {
+    //       &.#{$tree-prefix-cls}-node-content-wrapper {
+    //         &:before {
+    //           opacity: 0;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
   }
 }
