@@ -97,3 +97,5 @@ export { default as UxUpload } from './upload';
 export * from './card';
 
 export { default as UxLayout } from './layout';
+
+export { default as UxDrawer } from './drawer';

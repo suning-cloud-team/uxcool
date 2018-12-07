@@ -625,7 +625,17 @@ export default [
           group: 'data',
         },
         component: () => import('@/views/components/card-advance/index.vue'),
-      }
+      },
+      {
+        name: 'drawer',
+        path: 'drawer',
+        meta: {
+          title: 'Drawer',
+          subTitle: '抽屉',
+          group: 'notice',
+        },
+        component: () => import('@/views/components/drawer/index.vue'),
+      },
     ],
   },
   {
