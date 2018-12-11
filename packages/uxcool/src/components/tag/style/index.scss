@@ -38,7 +38,7 @@ $tag-prefix-cls: #{$ux-prefix}-tag;
   }
 
   .#{$iconfont-css-prefix}-close {
-    @include iconfont-size-under-12px(10px);
+    // @include iconfont-size-under-12px(10px);
     cursor: pointer;
     margin-left: 3px;
     transition: all 0.3s;
@@ -51,7 +51,7 @@ $tag-prefix-cls: #{$ux-prefix}-tag;
   }
 
   // TODO delete this ugly patch later
-  @import 'dark';
+  // @import 'dark';
 
   &-has-color {
     border-color: transparent;

@@ -108,6 +108,7 @@
     },
     methods: {
       onChange(...args) {
+        console.log(this.$refs);
         console.log('onChange', ...args);
       },
       filterOption(value, option) {

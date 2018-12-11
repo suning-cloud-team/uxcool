@@ -1,3 +1,4 @@
+import { isFunction } from '@suning/v-utils';
 import Icon from '../icon';
 import { buildComponentName } from '../utils';
 
@@ -17,11 +18,15 @@ export default {
       type: Boolean,
       default: false,
     },
+    onBeforeClose: {
+      type: Function,
+      default: null,
+    },
     theme: {
       type: String,
       default: 'light',
       validator(val) {
-        return ['light', 'dark'].indexOf(val) > -1;
+        return ['light'].indexOf(val) > -1;
       },
     },
   },
@@ -62,13 +67,18 @@ export default {
       this.$emit('after-close');
     },
     onClose(e) {
-      const { $refs } = this;
+      const { $refs, onBeforeClose } = this;
       const { tagRef } = $refs;
       if (tagRef) {
         tagRef.style.width = `${tagRef.getBoundingClientRect().width}px`;
       }
-      this.closed = true;
-      this.$emit('close', e);
+      Promise.resolve(isFunction(onBeforeClose) ? onBeforeClose(e) : true).then((ret) => {
+        if (ret === false) {
+          return;
+        }
+        this.closed = true;
+        this.$emit('close', e);
+      });
     },
   },
   render() {

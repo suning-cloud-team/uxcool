@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-  <html>
-    <head>
+<!DOCTYPE html><html><head>
       <title>index</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///C:\Users\17061765\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.4\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
-      
+      <link rel="stylesheet" href="file:///C:\Users\17061765\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.11\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
       
       
       
@@ -221,24 +218,30 @@ code.language-yaml {
 <table>
 <thead>
 <tr>
-<th>参数名</th>
-<th>描述</th>
-<th>类型</th>
-<th>默认</th>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x9ED8;&#x8BA4;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>color</td>
-<td>tag 颜色</td>
+<td>tag &#x989C;&#x8272;</td>
 <td>String</td>
 <td></td>
 </tr>
 <tr>
 <td>closable</td>
-<td>是否可关闭</td>
+<td>&#x662F;&#x5426;&#x53EF;&#x5173;&#x95ED;</td>
 <td>Boolean</td>
 <td>false</td>
+</tr>
+<tr>
+<td>on-before-close</td>
+<td>&#x5173;&#x95ED;&#x524D;&#x94A9;&#x5B50;</td>
+<td>Function(e)=&gt;Boolean|Promise</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -247,20 +250,20 @@ code.language-yaml {
 <table>
 <thead>
 <tr>
-<th>事件名</th>
-<th>描述</th>
-<th>类型</th>
+<th>&#x4E8B;&#x4EF6;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x7C7B;&#x578B;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>close</td>
-<td>tag 关闭后触发</td>
+<td>tag &#x5173;&#x95ED;&#x540E;&#x89E6;&#x53D1;</td>
 <td>Function(e)</td>
 </tr>
 <tr>
 <td>after-close</td>
-<td>tag 关闭动画结束后触发</td>
+<td>tag &#x5173;&#x95ED;&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#x89E6;&#x53D1;</td>
 <td>Function()</td>
 </tr>
 </tbody>
@@ -272,16 +275,16 @@ code.language-yaml {
 <table>
 <thead>
 <tr>
-<th>参数名</th>
-<th>描述</th>
-<th>类型</th>
-<th>默认</th>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x9ED8;&#x8BA4;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>checked</td>
-<td>是否选中</td>
+<td>&#x662F;&#x5426;&#x9009;&#x4E2D;</td>
 <td>Boolean</td>
 <td>false</td>
 </tr>
@@ -292,73 +295,30 @@ code.language-yaml {
 <table>
 <thead>
 <tr>
-<th>事件名</th>
-<th>描述</th>
-<th>类型</th>
+<th>&#x4E8B;&#x4EF6;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+<th>&#x7C7B;&#x578B;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>change</td>
-<td>checked 变化时触发</td>
+<td>checked &#x53D8;&#x5316;&#x65F6;&#x89E6;&#x53D1;</td>
 <td>Function(checked)</td>
 </tr>
 </tbody>
 </table>
 
       </div>
-      <div class="md-sidebar-toc"><ul>
-<li><a href="#api">API</a>
-<ul>
-<li><a href="#uxtag">UxTag</a>
-<ul>
-<li><a href="#props">Props</a></li>
-<li><a href="#events">Events</a></li>
-</ul>
-</li>
-<li><a href="#uxcheckabletag">UxCheckableTag</a>
-<ul>
-<li><a href="#props-1">Props</a></li>
-<li><a href="#events-1">Events</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-      <a id="sidebar-toc-btn">≡</a>
-    </body>
-    
-    
-    
-    
-    
-    
-    <script>
-(function bindTaskListEvent() {
-  var taskListItemCheckboxes = document.body.getElementsByClassName('task-list-item-checkbox')
-  for (var i = 0; i < taskListItemCheckboxes.length; i++) {
-    var checkbox = taskListItemCheckboxes[i]
-    var li = checkbox.parentElement
-    if (li.tagName !== 'LI') li = li.parentElement
-    if (li.tagName === 'LI') {
-      li.classList.add('task-list-item')
-    }
-  }
-}())    
-</script>
-    
-<script>
-
-var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
-sidebarTOCBtn.addEventListener('click', function(event) {
-  event.stopPropagation()
-  if (document.body.hasAttribute('html-show-sidebar-toc')) {
-    document.body.removeAttribute('html-show-sidebar-toc')
-  } else {
-    document.body.setAttribute('html-show-sidebar-toc', true)
-  }
-})
-</script>
       
-  </html>
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

@@ -1,5 +1,5 @@
 <template>
-  <ux-demo title="大小"
+  <ux-demo title="热门标签"
            vertical>
     <div slot="demo">
       LIST:

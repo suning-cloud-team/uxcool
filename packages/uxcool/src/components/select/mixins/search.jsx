@@ -11,7 +11,6 @@ export default {
         setInnerValue,
         setInnerVisible,
         forceUpdateTriggerAlign,
-        maybeFocus,
       } = this;
       this.searchInputValue = value;
       if (!innerVisible && changeVisible) {
@@ -26,7 +25,6 @@ export default {
 
       if (isCombobox && trigger) {
         setInnerValue(value);
-        maybeFocus();
       }
     },
     clearSearchInputValue(triggerSearch = true) {

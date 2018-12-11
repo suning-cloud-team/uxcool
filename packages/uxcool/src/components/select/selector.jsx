@@ -81,7 +81,14 @@ export default {
         return null;
       }
       return (
-        <span key="clear" class={`${prefixCls}-selection__clear`} on-click={onSelectorClear} />
+        <span
+          key="clear"
+          class={`${prefixCls}-selection__clear`}
+          unselectable="on"
+          style="user-select:none"
+          on-click={onSelectorClear}
+          on-mousedown={e => e.preventDefault()}
+        />
       );
     },
   },

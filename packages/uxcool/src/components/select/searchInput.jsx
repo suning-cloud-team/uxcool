@@ -116,7 +116,13 @@ export default {
         });
         // 强行将 inputRef 元素加入内部的$refs中,目的是在focus/blur时可以使用, 造成的后果是外部设置的ref无效,
         // 如果不这么做, 会在使用allow-clear时出现第一次输入字符时丢失焦点的问题
-        inputNode.context = this;
+        // ********************
+        // **上面分析的原因是不对的**,导致allow-clear出现第一次输入字符时丢失焦点
+        // 原因主要是placeholder元素在input元素之前,
+        // 导致输入字符时,placeholder元素消失,而allow-clear元素在底部出现, 进而导致整个selector重新渲染,失去焦点
+        // hw 2018.12.11
+        // ********************
+        // inputNode.context = this;
       }
     }
     return (

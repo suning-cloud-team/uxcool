@@ -8,7 +8,9 @@ export default {
     renderPlaceholderNode() {
       const { prefixCls, placeholder, searchInputValue } = this;
       return !searchInputValue && placeholder ? (
-        <span class={`${prefixCls}-selection__placeholder`}>{placeholder}</span>
+        <span key="placeholder" class={`${prefixCls}-selection__placeholder`}>
+          {placeholder}
+        </span>
       ) : null;
     },
   },
