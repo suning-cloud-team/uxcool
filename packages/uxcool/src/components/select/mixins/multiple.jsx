@@ -119,8 +119,8 @@ export default {
       }
       return (
         <Selector slot="trigger" selections={selectionValue}>
-          {selectionValue.length === 0 ? placeholderNode : null}
           {listNode}
+          {selectionValue.length === 0 ? placeholderNode : null}
         </Selector>
       );
     },
