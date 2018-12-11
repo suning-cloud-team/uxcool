@@ -254,6 +254,11 @@ const routes = [
     path: '/cardadvance',
     component: () => import('./views/card-advance/index'),
   },
+  {
+    name: 'Drawer',
+    path: '/drawer',
+    component: () => import('./views/drawer/index'),
+  },
 ];
 
 const router = new Router({
