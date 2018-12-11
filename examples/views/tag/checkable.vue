@@ -1,7 +1,7 @@
 <template>
 
   <div class="demo">
-    <h6>checkableTag</h6>
+    <h6>热门标签</h6>
     <p>受控组件, 需用户自己维护状态</p>
     LIST:
     <checkable-tag v-for="(tag,i) in tags"

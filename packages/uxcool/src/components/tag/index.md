@@ -4,10 +4,11 @@
 
 #### Props
 
-| 参数名   | 描述       | 类型    | 默认  |
-| -------- | ---------- | ------- | ----- |
-| color    | tag 颜色   | String  |       |
-| closable | 是否可关闭 | Boolean | false |
+| 参数名          | 描述       | 类型                          | 默认  |
+| --------------- | ---------- | ----------------------------- | ----- |
+| color           | tag 颜色   | String                        |       |
+| closable        | 是否可关闭 | Boolean                       | false |
+| on-before-close | 关闭前钩子 | Function(e)=>Boolean\|Promise |       |
 
 #### Events
 

@@ -22,8 +22,9 @@
            closable
            @after-close="onAfterClose">Tag 4</tag>
     </div>
-    <color-demo/>
-    <checkable-demo/>
+    <color-demo />
+    <checkable-demo />
+    <before-close-demo />
   </div>
 </template>
 <script>
@@ -31,12 +32,14 @@
   import { Tag } from '@suning/uxcool';
   import CheckableDemo from './checkable.vue';
   import ColorDemo from './color.vue';
+  import BeforeCloseDemo from './beforeClose.vue';
 
   export default {
     components: {
       Tag,
       CheckableDemo,
       ColorDemo,
+      BeforeCloseDemo,
     },
     computed: mapState(['theme']),
     methods: {
