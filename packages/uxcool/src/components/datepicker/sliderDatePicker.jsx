@@ -282,9 +282,9 @@ export default {
       type: [Boolean, Object],
       default: true,
     },
-    allowClear:{
-      type:Boolean,
-      default:false,
+    allowClear: {
+      type: Boolean,
+      default: false,
     },
     format: {
       type: String,

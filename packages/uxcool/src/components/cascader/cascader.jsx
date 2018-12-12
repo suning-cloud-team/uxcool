@@ -178,14 +178,7 @@ export default {
           size === 'large' || size === 'small',
       };
     },
-    displayLabel() {
-      const { innerValue, getNodesByValues, displayRender } = this;
-      const nodes = getNodesByValues(innerValue);
-      return displayRender(
-        nodes.map(node => node[DefaultLabel]),
-        nodes.map(node => ({ ...node.originNode }))
-      );
-    },
+    displayLabel() {},
   },
   watch: {
     dataSource(nVal) {
@@ -194,10 +187,10 @@ export default {
       clearNodesMap();
       this.rootNode = createNodes(nVal, null, 0);
     },
-    value(nVal, oVal) {
-      if (!isEqual(nVal, oVal)) {
-        this.setInnerValue(nVal, false);
-      }
+    value(nVal) {
+      // if (!isEqual(nVal, oVal)) {
+      this.setInnerValue(nVal, false);
+      // }
     },
     popupVisible(nVal, oVal) {
       if (nVal !== oVal) {
@@ -215,6 +208,14 @@ export default {
     });
   },
   methods: {
+    getDisplayLabel() {
+      const { innerValue, getNodesByValues, displayRender } = this;
+      const nodes = getNodesByValues(innerValue);
+      return displayRender(
+        nodes.map(node => node[DefaultLabel]),
+        nodes.map(node => ({ ...node.originNode }))
+      );
+    },
     forceUpdateTriggerAlign() {
       const { $refs: { triggerRef }, innerVisible } = this;
       if (triggerRef && innerVisible) {
@@ -352,7 +353,7 @@ export default {
         asyncNode(node).then(() => {
           // 如果用户在加载完成前已选择其他选项, 此时 应保持用户选中
           if (isEqual(currentSelectedValue, this.selectedValue)) {
-            // 强行触发 使 displayLabel 重新获取值
+            // 强行触发 使 `displayLabel` 重新获取值,**其实无效,改用getDisplayLabel来处理** hw 2018-12-12
             setInnerValue([...activeValue], false);
           }
           this.loadingSelectedValue = [];
@@ -414,17 +415,18 @@ export default {
         showSearch,
         innerVisible,
         triggerClasses,
-        displayLabel,
         allowClear,
         innerValue,
         onClear,
         searchValue,
+        getDisplayLabel,
         getSlotDefaultTriggerNode,
         onSearchInput,
         onSearchInputClick,
         onSearchInputBlur,
       } = this;
 
+      const displayLabel = getDisplayLabel();
       let triggerNode = getSlotDefaultTriggerNode();
       if (!triggerNode) {
         const arrowCls = {
