@@ -282,9 +282,9 @@ export default {
       type: [Boolean, Object],
       default: true,
     },
-    allowClear:{
-      type:Boolean,
-      default:false,
+    allowClear: {
+      type: Boolean,
+      default: false,
     },
     format: {
       type: String,
@@ -382,9 +382,6 @@ export default {
         normalizeValue(nVal);
       }
     },
-    dataSource(nVal) {
-      console.log('dataSource', nVal);
-    },
   },
   created() {
     const { normalizeValue, value } = this;
@@ -451,7 +448,7 @@ export default {
       };
     },
     normalizeValue(value) {
-      const { ranges, updateSeletValue } = this;
+      const { ranges, updateSelectValue } = this;
       const ret = value;
 
       if (isString(value) && ranges) {
@@ -465,10 +462,10 @@ export default {
         if (range) {
           const { dates } = range;
           const nDates = getDates(dates);
-          updateSeletValue(nDates, 'quick-select', true, range);
+          updateSelectValue(nDates, 'quick-select', true, range);
         }
       } else if (isArray(value) && value.length >= 2) {
-        updateSeletValue(value, 'normal', false);
+        updateSelectValue(value, 'normal', false);
       }
       return ret;
     },
@@ -508,36 +505,41 @@ export default {
     onDateOpenChange(visible) {
       this.setInnerDateVisible(visible);
     },
+    updateSelectHistoryValue(val) {
+      const { setInnerSelectValue, findOptionByValue, setInnerValue } = this;
+      setInnerSelectValue(val);
+      // clear
+      if (val === undefined) {
+        setInnerValue([]);
+      } else {
+        const item = findOptionByValue(val);
+        if (item) {
+          const { dates } = item;
+          const values = getDates(dates);
+          setInnerValue(values || []);
+        }
+      }
+      // 防止重新选择时间时状态不对
+      this.opMidMode = 'pause';
+    },
     onSelectChange(_, val) {
       const {
-        setInnerSelectValue, innerSelectValue, findOptionByValue, setInnerValue
+        setInnerSelectValue, innerSelectValue
       } = this;
-      setInnerSelectValue(val);
       // hack 使光标不选中setting对应的选项
       if (isUnSelectOption(val)) {
+        setInnerSelectValue(val);
         setTimeout(() => {
-          setInnerSelectValue(innerSelectValue);
+          setInnerSelectValue(innerSelectValue, 'reset');
         }, 0);
-      } else {
-        // clear
-        if (val === undefined) {
-          setInnerValue([]);
-        } else {
-          const item = findOptionByValue(val);
-          if (item) {
-            const { dates } = item;
-            const values = getDates(dates);
-            setInnerValue(values || []);
-          }
-        }
-        // 防止重新选择时间时状态不对
-        this.opMidMode = 'pause';
       }
     },
     onSelect(_, node) {
       const { value } = node;
       if (isUnSelectOption(value)) {
         this.setInnerDateVisible(true);
+      } else {
+        this.updateSelectHistoryValue(value);
       }
     },
     onBaseBtnClick(mode, type = 'left') {
@@ -545,7 +547,7 @@ export default {
         innerSelectOption,
         originSlideOption,
         innerValue,
-        updateSeletValue,
+        updateSelectValue,
         minSliderDate,
         maxSliderDate,
         compatibility,
@@ -580,7 +582,7 @@ export default {
           endDate
         );
 
-        updateSeletValue(dates, 'normal', true, null, 'slide', {
+        updateSelectValue(dates, 'normal', true, null, 'slide', {
           UNRENDER_OTPION: true,
         });
       }
@@ -688,7 +690,7 @@ export default {
           selectNode
       );
     },
-    updateSeletValue(
+    updateSelectValue(
       values,
       type = 'normal',
       trigger = true,
@@ -756,10 +758,10 @@ export default {
       setInnerValue(values, trigger);
     },
     onDateChange(values, _, extra = {}) {
-      const { updateSeletValue } = this;
+      const { updateSelectValue } = this;
       // 防止重新选择时间时状态不对
       this.opMidMode = 'pause';
-      updateSeletValue(values, extra.type, true, extra.content);
+      updateSelectValue(values, extra.type, true, extra.content);
     },
     renderDatepicker() {
       const {

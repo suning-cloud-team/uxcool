@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <h4>normal</h4>
+    <h4>events</h4>
     events: {{ value }}
     <ux-cascader :data-source="data"
                  v-model="value"
