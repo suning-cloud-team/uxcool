@@ -259,6 +259,11 @@ const routes = [
     path: '/drawer',
     component: () => import('./views/drawer/index'),
   },
+  {
+    name: 'Chart',
+    path: '/chart',
+    component: () => import('./views/chart/index'),
+  },
 ];
 
 const router = new Router({

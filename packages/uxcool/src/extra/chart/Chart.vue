@@ -3,8 +3,8 @@
        :style="canvasStyle">
     <div ref="canvas"
          :style="canvasStyle" />
-    <div :class="loadingClass"
-         v-show="loading">
+    <div v-show="loading"
+         :class="loadingClass">
       <div class="loader">
         <svg class="circular"
              viewBox="25 25 50 50">
@@ -14,17 +14,17 @@
                   r="20"
                   fill="none" />
         </svg>
-        <div>{{loadingTip}}</div>
+        <div>{{ loadingTip }}</div>
       </div>
     </div>
 
-    <div :class="msgClass"
-         v-if="showMsg && !loading">
+    <div v-if="showMsg && !loading"
+         :class="msgClass">
       <div :class="msgBoxClass">
-        <p>{{msg}}</p>
+        <p>{{ msg }}</p>
       </div>
     </div>
-    <slot/>
+    <slot />
   </div>
 </template>
 
@@ -37,6 +37,7 @@
   // default theme
   import light from './theme/light';
   import dark from './theme/dark';
+  import uxcool from './theme/uxcool';
 
   // enumerating ECharts events for now
   const ACTION_EVENTS = [
@@ -81,6 +82,7 @@
   // register theme
   echarts.registerTheme('light', light);
   echarts.registerTheme('dark', dark);
+  echarts.registerTheme('uxcool', uxcool);
 
   export default {
     name: 'UxChart',
@@ -142,7 +144,9 @@
     },
     watch: {
       group(group) {
-        this.chart.group = group;
+        if (this.chart) {
+          this.chart.group = group;
+        }
       },
       theme: {
         deep: true,
@@ -150,6 +154,35 @@
           this.refresh();
         },
       },
+    },
+
+    created() {
+      this.$watch(
+        'options',
+        (opt) => {
+          if (!this.chart) {
+            this.init();
+          } else {
+            this.chart.setOption(opt, true);
+          }
+        },
+        {
+          deep: !this.shallowWatch,
+        }
+      );
+    },
+    mounted() {
+      if (this.options) {
+        this.init();
+      }
+    },
+    activated() {
+      if (this.autoResize && this.chart) {
+        this.chart.resize();
+      }
+    },
+    beforeDestroy() {
+      this.destroy();
     },
     methods: {
       mergeOption(...args) {
@@ -201,41 +234,15 @@
           window.removeEventListener('resize', this.resizeHandler);
         }
 
-        this.chart.dispose();
+        if (this.chart) {
+          this.chart.dispose();
+        }
         this.chart = null;
       },
       refresh() {
         this.destroy();
         this.init();
       },
-    },
-    created() {
-      this.$watch(
-        'options',
-        (opt) => {
-          if (!this.chart) {
-            this.init();
-          } else {
-            this.chart.setOption(opt, true);
-          }
-        },
-        {
-          deep: !this.shallowWatch,
-        }
-      );
-    },
-    mounted() {
-      if (this.options) {
-        this.init();
-      }
-    },
-    activated() {
-      if (this.autoResize && this.chart) {
-        this.chart.resize();
-      }
-    },
-    beforeDestroy() {
-      this.destroy();
     },
     // static methods
     connect(group) {
