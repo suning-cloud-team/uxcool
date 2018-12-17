@@ -16,7 +16,7 @@
           </ux-field-decorator>
         </ux-form-item>
         <ux-form-item>
-          <ux-field-decorator :rules="[{required:true,},{ regex: /^\d{6,}$/i,message:'测试用例regex'}]"
+          <ux-field-decorator :rules="[{required:true,},{regex: /^\d{6,}$/i,message:'测试用例regex', }]"
                               name="password">
             <ux-input type="password"
                       placeholder="Password"
