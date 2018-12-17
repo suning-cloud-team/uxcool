@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <button class="ux-btn"
             @click="changeTheme">{{theme}}</button>
 
@@ -140,7 +140,8 @@
     <custom-attrs-demo />
     <clear-demo />
     <disabled-demo />
-    <single-demo />
+    <single-demo /> -->
+  <async-demo />
   </div>
 </template>
 

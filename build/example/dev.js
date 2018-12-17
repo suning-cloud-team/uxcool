@@ -5,16 +5,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const rimraf = require('rimraf');
 
 const postCssUtils = require('../postCss');
-const {
-  getRoot,
-  getPackageJSON
-} = require('../utils');
+const { getRoot, getPackageJSON } = require('../utils');
 const alias = require('./alias');
 
 const root = getRoot();
-const {
-  vueCompileOpts = {}
-} = getPackageJSON(path.resolve(root, 'package.json'));
+const { vueCompileOpts = {} } = getPackageJSON(path.resolve(root, 'package.json'));
 const srcPath = path.resolve(root, 'examples');
 const distPath = path.resolve(root, 'examples/dist');
 
@@ -57,7 +52,7 @@ function getConfig(env) {
   process.env.NODE_ENV = 'development';
   return {
     entry: {
-      vendor: ['vue', 'echarts'],
+      // vendor: ['vue', 'echarts'],
       single: path.resolve(srcPath, 'index.js'),
       global: path.resolve(srcPath, 'global.js'),
     },
@@ -70,7 +65,8 @@ function getConfig(env) {
       extensions: ['.js', '.json', '.jsx'],
     },
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.js(x)?$/,
           loader: 'babel-loader?cacheDirectory',
           exclude: /node_modules/,
@@ -96,7 +92,8 @@ function getConfig(env) {
           test: /\.(s)?css$/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: [{
+            use: [
+              {
                 loader: 'css-loader',
                 options: {},
               },
@@ -119,9 +116,9 @@ function getConfig(env) {
       ],
     },
     plugins: [
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-      }),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: 'vendor',
+      // }),
       new ExtractTextPlugin('example.css'),
       new HtmlWebpackPlugin({
         title: 'example',
@@ -136,6 +133,9 @@ function getConfig(env) {
         template: path.resolve(srcPath, 'global.html'),
       }),
     ],
+    externals: {
+      vue: 'Vue',
+    },
   };
 }
 

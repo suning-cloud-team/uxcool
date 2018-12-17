@@ -1,12 +1,12 @@
 <template>
   <div>
-    <!-- <normal-demo/>
+    <normal-demo/>
     <target-demo />
     <render-demo />
     <event-demo />
-    <search-demo /> -->
+    <search-demo />
     <custom-demo />
-    <!-- <huge-demo /> -->
+    <huge-demo />
   </div>
 </template>
 

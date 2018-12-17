@@ -3,6 +3,8 @@
     <h4>async</h4>
     value: {{ value }}
     <ux-select v-model="value"
+               option-label-prop="label"
+               show-search
                style="width:200px;margin-left:200px;">
       <!-- <ux-option value="A">A</ux-option>
       <ux-option value="B">B</ux-option>
@@ -25,7 +27,7 @@
     },
     data() {
       return {
-        value: 'B',
+        value: '',
         list: [],
       };
     },

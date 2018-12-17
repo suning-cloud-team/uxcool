@@ -304,7 +304,7 @@ export default {
   },
 
   // check if delta should update when prorps change.
-  beforeUpdate: function() {
+  updated: function() {
     var delta = this.delta;
     delta.keeps = this.remain + (this.bench || this.remain);
 
