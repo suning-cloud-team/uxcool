@@ -209,7 +209,7 @@ export default {
     },
     updateField() {
       const { field, buildFieldOptions } = this;
-      if (isValidateField(field) && !field.updated) {
+      if (isValidateField(field)) {
         const options = buildFieldOptions();
         field.update(options);
       }
