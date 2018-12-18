@@ -1,4 +1,5 @@
 import isNaN from 'lodash/isNaN';
+import { isDef } from '@suning/v-utils/cjs/utils';
 
 export { isNaN };
 
@@ -51,4 +52,8 @@ export function getRatio(e) {
     ratio = 10;
   }
   return ratio;
+}
+
+export function getValidateValue(val) {
+  return !isDef(val) || val === '' ? undefined : Number(val);
 }
