@@ -3,31 +3,31 @@
     <section>
       <h3>饼图示例</h3>
       <figure>
-        <ux-chart :options="pieOption"></ux-chart>
+        <ux-chart :options="pieOption" />
       </figure>
     </section>
     <section>
       <h3>环形图示例</h3>
       <figure>
-        <ux-chart :options="doughnutOption"></ux-chart>
+        <ux-chart :options="doughnutOption" />
       </figure>
     </section>
     <section>
       <h3>柱状图示例</h3>
       <figure>
-        <ux-chart :options="barOption"></ux-chart>
+        <ux-chart :options="barOption" />
       </figure>
     </section>
     <section>
       <h3>折线图示例</h3>
       <figure>
-        <ux-chart :options="lineOption"></ux-chart>
+        <ux-chart :options="lineOption" />
       </figure>
     </section>
     <section>
       <h3>堆叠区域图示例</h3>
       <figure>
-        <ux-chart :options="areaOption"></ux-chart>
+        <ux-chart :options="areaOption" />
       </figure>
     </section>
     <section>
@@ -37,28 +37,32 @@
                   :loading="loading"
                   :msg="msg"
                   :show-msg="showMsg"
-                  loading-tip="正在加载"></ux-chart>
+                  loading-tip="正在加载" />
       </figure>
       <ux-button @click="loadData">load</ux-button>
     </section>
     <section>
       <h3>地图示例</h3>
       <figure>
-        <ux-chart :options="mapOption"
+        <ux-chart v-show="!provinceMode"
+                  :options="mapOption"
                   height="500px"
-                  @click="clickProvince"
-                  v-show="!provinceMode"></ux-chart>
-        <ux-chart ref="province"
+                  @click="clickProvince" />
+        <ux-chart v-show="provinceMode"
+                  ref="province"
                   :options="provinceOption"
-                  height="500px"
-                  v-show="provinceMode"></ux-chart>
+                  height="500px" />
       </figure>
     </section>
     <section>
       <h3>自定义主题示例</h3>
       <figure>
         <ux-chart :options="barOption"
-                  theme="ovilia-green"></ux-chart>
+                  theme="ovilia-green" />
+      </figure>
+      <figure>
+        <ux-chart :options="barOption"
+                  theme="uxcool" />
       </figure>
     </section>
   </div>
@@ -140,6 +144,15 @@
         provinceMode: false,
       };
     },
+    mounted() {
+      this.$refs.province.chart.getZr().on('click', (e) => {
+        // 点击的空白区域
+        if (!e.target) {
+          this.provinceMode = false;
+          this.provinceOption.series = [];
+        }
+      });
+    },
     methods: {
       loadData() {
         this.loading = true;
@@ -171,15 +184,6 @@
           this.$refs.province.chart.resize();
         });
       },
-    },
-    mounted() {
-      this.$refs.province.chart.getZr().on('click', (e) => {
-        // 点击的空白区域
-        if (!e.target) {
-          this.provinceMode = false;
-          this.provinceOption.series = [];
-        }
-      });
     },
   };
 </script>

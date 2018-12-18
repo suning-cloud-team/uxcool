@@ -141,6 +141,7 @@
     <clear-demo />
     <disabled-demo />
     <single-demo />
+    <extra-demo />
   </div>
 </template>
 
@@ -161,6 +162,7 @@
   import CustomInputDemo from './custom-input.vue';
   import CustomAttrsDemo from './custom-attrs.vue';
   import ClearDemo from './clear.vue';
+  import ExtraDemo from './extra.vue';
 
   export default {
     components: {
@@ -182,6 +184,7 @@
       CustomInputDemo,
       CustomAttrsDemo,
       ClearDemo,
+      ExtraDemo,
     },
     data() {
       return {

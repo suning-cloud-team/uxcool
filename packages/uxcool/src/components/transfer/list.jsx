@@ -1,6 +1,6 @@
-import VirtualList from 'vue-virtual-scroll-list';
 import { isFunction, isVNode, isPlainObject } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
+import VirtualList from '../virtual-list';
 import Search from './search';
 import Item from './item';
 import Checkbox from '../checkbox';

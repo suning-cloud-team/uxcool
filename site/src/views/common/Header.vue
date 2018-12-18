@@ -54,6 +54,11 @@
       href: '/template/index.html',
     },
     {
+      name: 'editor',
+      text: '可视化编辑',
+      href: '/visual-editor/index.html',
+    },
+    {
       name: 'vue',
       text: 'Vue组件',
       href: '/vue/index.html',

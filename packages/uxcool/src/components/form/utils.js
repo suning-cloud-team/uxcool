@@ -278,15 +278,17 @@ export function parseFieldRules(rules) {
       return np;
     }, r);
   } else if (isPlainObject(rules)) {
-    const keys = Object.keys(rules);
-    if ('message' in rules && keys.length > 1) {
+    if ('message' in rules) {
       const nRules = omit(rules, 'message');
-      r = {
-        rules: nRules,
-        messages: {
-          [keys[0]]: rules.message,
-        },
-      };
+      const keys = Object.keys(nRules);
+      if (keys.length >= 1) {
+        r = {
+          rules: nRules,
+          messages: {
+            [keys[0]]: rules.message,
+          },
+        };
+      }
     } else if (!('message' in rules)) {
       r.rules = rules;
     }

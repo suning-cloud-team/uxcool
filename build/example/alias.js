@@ -6,6 +6,6 @@ const root = getRoot();
 const srcPath = path.resolve(root, 'examples');
 
 module.exports = {
-  vue$: 'vue/dist/vue.runtime.esm.js',
+  // vue$: 'vue/dist/vue.runtime.esm.js',
   '@': srcPath,
 };
