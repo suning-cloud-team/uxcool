@@ -32,13 +32,17 @@
 | token-separator-prop        | `tags`和`multiple`模式下,分割字符对应的`Option`属性,可选值: `value`, `label`                                                               | String                                | label         |
 | token-separators            | 定义`tags`和`multiple`模式下,自定分词的分隔符                                                                                              | Array                                 |               |
 | lazy                        | `lazy`模式,可设置`Object{height: 32, remain: 8}`, `height`:每行数据高度, `remain`:保留多少行(设置后可自动撑开高度),或`false`关闭`lazy`模式 | {height: 32, remain: 8}               |
+| extra-top-content           | 顶部额外内容                                                                                                                               | Function()=>VNode                     |               |
+| extra-bottom-content        | 底部额外内容                                                                                                                               | Function()=>VNode                     |               |
 
 #### Slots
 
-| 名称             | 描述                                               |
-| ---------------- | -------------------------------------------------- |
-| renderGroupLabel | 自定义`group label`渲染函数(**仅支持 slot-scope**) |
-| renderLabel      | 自定义`label`渲染 (**仅支持 slot-scope**)          |
+| 名称               | 描述                                               |
+| ------------------ | -------------------------------------------------- |
+| renderGroupLabel   | 自定义`group label`渲染函数(**仅支持 slot-scope**) |
+| renderLabel        | 自定义`label`渲染 (**仅支持 slot-scope**)          |
+| extraTopContent    | 自定义顶部额外内容                                 |
+| extraBottomContent | 自定义底部额外内容                                 |
 
 #### Events
 

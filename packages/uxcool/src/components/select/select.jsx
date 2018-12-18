@@ -203,6 +203,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    extraTopContent: {
+      type: Function,
+      default: null,
+    },
+    extraBottomContent: {
+      type: Function,
+      default: null,
+    },
   },
   data() {
     return {
@@ -776,12 +784,15 @@ export default {
     },
     renderPopup(options) {
       const {
+        $slots,
         prefixCls,
         innerValue,
         nLazy,
         isTags,
         isMultipleOrTags,
         dropdownMenuStyle,
+        extraTopContent,
+        extraBottomContent,
         onMenuSelect,
         onMenuDeselect,
         onScroll,
@@ -848,31 +859,51 @@ export default {
         virtualProps.start = selected.groupLine || 0;
         this.isVirtualInit = true;
       }
-      return nLazy ? (
-        <VirtualList
-          {...{
-            props: virtualProps,
-            slot: 'popup',
-            ref: 'virtualListRef',
-          }}
-        >
-          {children}
-        </VirtualList>
-        ) : (
-        <VMenu
-          {...{
-            style: dropdownMenuStyle,
-            props,
-            on,
-            nativeOn: {
-              scroll: onScroll,
-            },
-            slot: 'popup',
-            ref: 'menuRef',
-          }}
-        >
-          {children}
-        </VMenu>
+
+      const extraTopContentFn = $slots.extraTopContent
+        ? () => $slots.extraTopContent
+        : extraTopContent;
+      const extraBottomContentFn = $slots.extraBottomContent
+        ? () => $slots.extraBottomContent
+        : extraBottomContent;
+
+      return (
+        <div slot="popup">
+          {isFunction(extraTopContentFn) ? (
+            <div class={[`${prefixCls}-dropdown-extra`, `${prefixCls}-dropdown-extra-top`]}>
+              {extraTopContentFn()}
+            </div>
+          ) : null}
+          {nLazy ? (
+            <VirtualList
+              {...{
+                props: virtualProps,
+                ref: 'virtualListRef',
+              }}
+            >
+              {children}
+            </VirtualList>
+          ) : (
+            <VMenu
+              {...{
+                style: dropdownMenuStyle,
+                props,
+                on,
+                nativeOn: {
+                  scroll: onScroll,
+                },
+                ref: 'menuRef',
+              }}
+            >
+              {children}
+            </VMenu>
+          )}
+          {isFunction(extraBottomContentFn) ? (
+            <div class={[`${prefixCls}-dropdown-extra`, `${prefixCls}-dropdown-extra-bottom`]}>
+              {extraBottomContentFn()}
+            </div>
+          ) : null}
+        </div>
       );
     },
   },

@@ -458,6 +458,16 @@ $select-prefix-cls: #{$ux-prefix}-select;
   outline: none;
   font-size: $font-size-base;
 
+  &-extra {
+    position: relative;
+    display: block;
+    padding: 5px $control-padding-horizontal;
+    line-height: 22px;
+    font-weight: normal;
+    color: $text-color;
+    user-select: none;
+  }
+
   &-menu {
     outline: none;
     margin-bottom: 0;

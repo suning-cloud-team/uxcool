@@ -20,7 +20,11 @@
                allow-clear
                @change="onChange"
                @select="onSelect"
-               @deselect="onDeselect" />
+               @deselect="onDeselect">
+      <span slot="extraBottomContent">
+        This is extra bottom content
+      </span>
+    </ux-select>
   </div>
 </template>
 

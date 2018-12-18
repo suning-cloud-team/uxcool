@@ -1,5 +1,5 @@
 <template>
-  <!-- <div>
+  <div>
     <button class="ux-btn"
             @click="changeTheme">{{theme}}</button>
 
@@ -140,8 +140,8 @@
     <custom-attrs-demo />
     <clear-demo />
     <disabled-demo />
-    <single-demo /> -->
-  <async-demo />
+    <single-demo />
+    <extra-demo />
   </div>
 </template>
 
@@ -162,6 +162,7 @@
   import CustomInputDemo from './custom-input.vue';
   import CustomAttrsDemo from './custom-attrs.vue';
   import ClearDemo from './clear.vue';
+  import ExtraDemo from './extra.vue';
 
   export default {
     components: {
@@ -183,6 +184,7 @@
       CustomInputDemo,
       CustomAttrsDemo,
       ClearDemo,
+      ExtraDemo,
     },
     data() {
       return {
