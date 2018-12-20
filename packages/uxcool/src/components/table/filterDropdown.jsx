@@ -1,4 +1,4 @@
-import { isFunction } from '@suning/v-utils';
+import { isFunction, closest } from '@suning/v-utils';
 import { VMenu as Menu, VSubMenu as SubMenu, VMenuItem as MenuItem } from '@suning/v-menu';
 
 import Dropdown from '../dropdown';
@@ -112,14 +112,25 @@ export default {
       }
     },
   },
-  created() {
+  mounted() {
     this.setInnerSelectedKeys(this.selectedKeys);
     this.initDropdownVisible();
   },
   methods: {
-    initDropdownVisible() {
+    getFilterDropdownVisible() {
       const { column } = this;
-      const visible = 'filterDropdownVisible' in column ? !!column.filterDropdownVisible : false;
+      let visible = false;
+      if ('filterDropdownVisible' in column) {
+        // 修正由于filter操作同时存在于浮动表和普通表中,导致操作异常的问题
+        const isMainTable = closest(this.$el, '.ux-table-scroll');
+        visible = isMainTable && !!column.fixed ? false : !!column.filterDropdownVisible;
+      }
+      return visible;
+    },
+    initDropdownVisible() {
+      const { getFilterDropdownVisible } = this;
+      // const visible = 'filterDropdownVisible' in column ? !!column.filterDropdownVisible : false;
+      const visible = getFilterDropdownVisible();
       this.dropdownVisible = visible;
     },
     setDropdownVisible(visible) {

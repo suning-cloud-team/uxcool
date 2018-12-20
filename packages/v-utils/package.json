@@ -21,6 +21,7 @@
     "@suning/v-tools": "^1.0.31"
   },
   "dependencies": {
+    "dom-closest": "^0.2.0",
     "lodash": "^4.17.5",
     "raf": "^3.4.0",
     "warning": "^3.0.0"
