@@ -86,7 +86,7 @@ $table-header-icon-color: $text-color-secondary;
 
   &-thead > tr,
   &-tbody > tr {
-    transition: all 0.3s;
+    transition: all 0.3s, height 0s;
     &.#{$table-prefix-cls}-row-hover,
     &:hover {
       & > td {
