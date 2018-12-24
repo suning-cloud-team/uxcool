@@ -1,5 +1,8 @@
+import closest from 'dom-closest';
 import { isFunction } from './utils';
 import { isServerRendering } from './ssr';
+
+export { closest };
 
 export function addEventListener(element, eventName, fn, useCapture = false) {
   element.addEventListener(eventName, fn, useCapture);

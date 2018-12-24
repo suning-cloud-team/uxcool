@@ -49,8 +49,8 @@
 
     <disabled-demo />
 
-    <focus-demo/>
-    <event-demo/>
+    <focus-demo />
+    <event-demo />
   </div>
 </template>
 

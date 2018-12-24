@@ -120,3 +120,9 @@ table pagination 属性:
 | expanded-row-change | 展开/收缩行时触发         | Function(expandRows)                 |
 | expand              | 展开/收缩行时触发         | Function(expanded, record)           |
 | change              | 分页,排序, 筛选变化时触发 | Function(pagination, filter, sorter) |  |
+
+#### metnods
+
+| 名称           | 描述                                           |
+| -------------- | ---------------------------------------------- |
+| alignRowHeight | 当 fixed table 与 table 行高不一致时调用此方法 |

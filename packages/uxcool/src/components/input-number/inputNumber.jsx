@@ -1,5 +1,6 @@
+import { isDef } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
-import { isNotCompleteNumber, getMaxPrecision, isNaN, getRatio } from './utils';
+import { isNotCompleteNumber, getMaxPrecision, isNaN, getRatio, getValidateValue } from './utils';
 import InputHandler from './inputHandler';
 
 // prettier-ignore
@@ -14,9 +15,9 @@ export default {
       default: 'ux-input-number',
     },
     value: {
-      // type: [Number, String],
-      type: Number,
-      default: null,
+      type: [Number, String],
+      // type: Number,
+      default: undefined,
     },
     size: {
       type: String,
@@ -197,13 +198,20 @@ export default {
   },
   methods: {
     initValue() {
-      const { value, normalizeValue } = this;
-      const nVal = normalizeValue(parseFloat(value));
-      this.innerValue = nVal;
-      if (String(value) !== nVal) {
-        this.$emit('input', Number(nVal));
-        // 暂不触发
-        // this.$emit('change', Number(nVal));
+      const { innerValue, value, normalizeValue } = this;
+      let nVal = parseFloat(value, 10);
+      if (!isNaN(nVal)) {
+        nVal = normalizeValue(nVal);
+      } else {
+        nVal = value;
+      }
+      nVal = getValidateValue(nVal);
+      if (innerValue !== nVal) {
+        this.innerValue = nVal;
+        if (isDef(nVal) && String(value) !== String(nVal)) {
+          this.$emit('input', nVal);
+          this.$emit('input-change', nVal);
+        }
       }
     },
     toNumber(v) {
@@ -228,17 +236,20 @@ export default {
     },
     getCurrentValidValue(val) {
       const { innerValue, getValidValue, toNumber } = this;
-      let r = innerValue;
+
       if (val === '') {
-        r = val;
-      } else if (!isNotCompleteNumber(val)) {
+        return val;
+      }
+
+      let r = innerValue;
+      if (!isNotCompleteNumber(val)) {
         r = getValidValue(val);
       }
       return toNumber(r);
     },
     toPrecision(val) {
       const { step, precision: defaultPrecision } = this;
-      if (val === '') {
+      if (!isDef(val) || val === '') {
         return val;
       }
       const precision = getMaxPrecision(val, step, 1, defaultPrecision);
@@ -249,22 +260,31 @@ export default {
 
       return String(val);
     },
+    onInputChange(value) {
+      this.$emit('input-change', value);
+    },
     normalizeValue(val) {
       const { getCurrentValidValue, toPrecision } = this;
       const nVal = getCurrentValidValue(val);
       return toPrecision(nVal);
     },
     setValue(val, forceUpdate = false) {
-      const { innerValue, normalizeValue } = this;
-      const nVal = normalizeValue(val);
+      const {
+        innerValue, inputValue, normalizeValue, onInputChange
+      } = this;
+      const nVal = getValidateValue(normalizeValue(val));
       this.innerValue = nVal;
       if (nVal !== innerValue) {
-        this.$emit('input', Number(nVal));
-        this.$emit('change', Number(nVal));
+        this.$emit('input', nVal);
+        this.$emit('change', nVal);
       }
       // 当 输入的字符为无效字符时,会重置为上一个有效值, 此时由于值未变更, vue无法判定是否需要重绘, 需手动触发重绘
       if (forceUpdate && nVal === innerValue) {
         this.$forceUpdate();
+      }
+
+      if (nVal !== innerValue || nVal !== inputValue) {
+        onInputChange(nVal);
       }
     },
     stop() {
@@ -335,12 +355,12 @@ export default {
       _step(e, 'down', ratio, autoStep, recursive);
     },
     onInput(e) {
-      const { parser } = this;
+      const { parser, onInputChange } = this;
       this.inputting = true;
       const val = e.target.value;
-      this.inputValue = parser(val.trim().replace(/。/g, '.'));
-      // 是否需要触发Change
-      // this.$emit('input-change', );
+      const inputValue = parser(val.trim().replace(/。/g, '.'));
+      this.inputValue = inputValue;
+      onInputChange(inputValue);
     },
     onChange() {
       const { inputValue } = this;

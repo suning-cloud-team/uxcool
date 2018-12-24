@@ -1,6 +1,7 @@
 <template>
   <div>
     <normal-demo />
+    <manual-demo />
     <collapse-table-demo />
     <selection-single-demo />
     <selection-demo />
@@ -28,6 +29,7 @@
     <tabs-demo />
     <node-pagination-demo />
     <fixed-columns-header-async-demo />
+
   </div>
 </template>
 
@@ -64,6 +66,7 @@
   import NodePaginationDemo from './node-pagination.vue';
   import PaginationDemo from './pagination.vue';
   import CollapseTableDemo from './collapse-table.vue';
+  import ManualDemo from './manualResize.vue';
 
   export default {
     components: {
@@ -97,6 +100,7 @@
       NodePaginationDemo,
       PaginationDemo,
       CollapseTableDemo,
+      ManualDemo,
     },
   };
 </script>

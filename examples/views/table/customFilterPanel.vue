@@ -4,6 +4,7 @@
     <p>filterDropdown, filterDropdownVisible ,onFilterDropdownVisibleChange需配合使用</p>
     <ux-table :theme="theme"
               :columns="columns"
+              :scroll="{x:'150%'}"
               v-model="data" />
   </div>
 </template>
@@ -17,6 +18,8 @@
     const { columnFilter, onSearch, onInputChange, onFilterDropdownVisible } = this;
     return [
       {
+        fixed: 'left',
+        width: 150,
         key: 'name',
         title: 'Name',
         dataIndex: 'name',
@@ -70,6 +73,7 @@
       },
       {
         key: 'age',
+        width: 200,
         title: 'Age',
         dataIndex: 'age',
       },
@@ -88,6 +92,10 @@
             value: 'New York',
           },
         ],
+        filterDropdownVisible: columnFilter.addr.filterDropdownVisible,
+        onFilterDropdownVisibleChange(visible) {
+          onFilterDropdownVisible('addr', visible);
+        },
         onFilter(v, record) {
           return record.address.includes(v);
         },
@@ -147,7 +155,10 @@
         columnFilter: {
           name: {
             searchVal: '',
-            filterDropdownVisible: false,
+            filterDropdownVisible: true,
+          },
+          addr: {
+            filterDropdownVisible: true,
           },
         },
       };

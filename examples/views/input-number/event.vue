@@ -3,12 +3,13 @@
     <h6>event</h6>
 
     <div class="demo">
+      value: {{val}}
       <ux-input-number v-model="val"
+                       :min="1"
+                       :max="10"
                        @input="onInput"
                        @change="onChange"
-                       @keypress="onKeypress"
-                       @focus="onFocus"
-                       @blur="onBlur" />
+                       @input-change="onInputChange" />
     </div>
   </div>
 </template>
@@ -24,8 +25,8 @@
     },
     data() {
       return {
-        val: 5,
-        readonly: false,
+        val: 0,
+        readonly: undefined,
         disabled: false,
       };
     },
@@ -44,6 +45,9 @@
       },
       onKeypress(e) {
         console.log('onKeypress', e);
+      },
+      onInputChange(val) {
+        console.log('onInputChange', val);
       },
     },
   };
