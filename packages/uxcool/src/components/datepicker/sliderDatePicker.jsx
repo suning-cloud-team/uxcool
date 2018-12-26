@@ -523,9 +523,7 @@ export default {
       this.opMidMode = 'pause';
     },
     onSelectChange(_, val) {
-      const {
-        setInnerSelectValue, innerSelectValue
-      } = this;
+      const { setInnerSelectValue, innerSelectValue } = this;
       // hack 使光标不选中setting对应的选项
       if (isUnSelectOption(val)) {
         setInnerSelectValue(val);
@@ -621,17 +619,23 @@ export default {
       }
       onBaseBtnClick('run', 'right');
     },
-    renderSelectLabel({ duration, label }) {
-      const tag = duration ? <Tag>{duration}</Tag> : '';
-      return (
+    renderSelectLabel({ value, duration, label }) {
+      const { prefixCls } = this;
+      return value === 'setting' ? (
+        <div class={`${prefixCls}-slider-setting`}>
+          <Icon type="calendar" />
+          <span class={`${prefixCls}-slider-setting-label`}>{label}</span>
+        </div>
+        ) : (
         <div>
-          {tag}
+          {duration ? <Tag>{duration}</Tag> : ''}
           {label}
         </div>
       );
     },
     renderSelect() {
       const {
+        prefixCls,
         innerSelectValue,
         showSliderBar,
         dataSource,
@@ -657,6 +661,7 @@ export default {
         disabled,
         getContainer: getPopupContainer,
         allowClear,
+        popupClass: `${prefixCls}-slider-dropdown`,
       };
       const on = {
         // 点击 select item

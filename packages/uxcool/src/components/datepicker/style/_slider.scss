@@ -3,4 +3,17 @@
   .#{$ux-prefix}-btn {
     padding: 0 8px;
   }
+  &-dropdown {
+    .#{$ux-prefix}-select-dropdown-menu-item:hover {
+      color: $primary-4;
+    }
+  }
+  &-setting {
+    .fu {
+      transform: scale(1.2);
+    }
+    &-label {
+      margin-left: 5px;
+    }
+  }
 }
