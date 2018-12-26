@@ -5,30 +5,31 @@
     </h1>
     <ux-heading level="2"
                 id="overview">概览</ux-heading>
-    <normal-demo/>
-    <selection-single-demo/>
-    <selection-demo/>
-    <selection-row-demo/>
-    <selection-op-demo/>
-    <selection-custom-demo/>
-    <sort-filter-demo/>
-    <sort-filter-reset-demo/>
-    <custom-filter-panel-demo/>
+    <normal-demo />
+    <selection-single-demo />
+    <selection-demo />
+    <selection-row-demo />
+    <selection-op-demo />
+    <selection-custom-demo />
+    <sort-filter-demo />
+    <sort-filter-reset-demo />
+    <custom-filter-panel-demo />
     <filter-demo />
-    <ajax-demo/>
-    <size-demo/>
-    <border-title-footer-demo/>
-    <expander-row-demo/>
-    <colspan-rowspan-demo/>
-    <tree-data-demo/>
-    <fixed-header-demo/>
-    <fixed-columns-demo/>
-    <fixed-columns-header-demo/>
-    <group-header-demo/>
-    <editable-cells-demo/>
-    <editable-rows-demo/>
-    <nest-table-demo/>
-    <async-nest-table-demo/>
+    <ajax-demo />
+    <size-demo />
+    <border-title-footer-demo />
+    <expander-row-demo />
+    <colspan-rowspan-demo />
+    <tree-data-demo />
+    <tree-relation-demo />
+    <fixed-header-demo />
+    <fixed-columns-demo />
+    <fixed-columns-header-demo />
+    <group-header-demo />
+    <editable-cells-demo />
+    <editable-rows-demo />
+    <nest-table-demo />
+    <async-nest-table-demo />
     <hr>
 
     <ux-heading level="2"
@@ -590,6 +591,7 @@
   import EditableRowsDemo from './editableRows.vue';
   import NestTableDemo from './nestTable.vue';
   import AsyncNestTableDemo from './asyncNestTable.vue';
+  import TreeRelationDemo from './treeRelation.vue';
 
   export default {
     components: {
@@ -617,6 +619,7 @@
       EditableRowsDemo,
       NestTableDemo,
       AsyncNestTableDemo,
+      TreeRelationDemo,
     },
     data() {
       return {
