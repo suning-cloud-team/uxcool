@@ -1,6 +1,6 @@
 <template>
-  <ux-demo title="树形数据"
-           :height="200"
+  <ux-demo :height="200"
+           title="树形表格"
            vertical>
     <div slot="demo">
       <ux-table :theme="theme"

@@ -1,6 +1,7 @@
 <template>
   <div>
     <normal-demo />
+    <tree-relation-demo />
     <manual-demo />
     <collapse-table-demo />
     <selection-single-demo />
@@ -35,8 +36,6 @@
 
 
 <script>
-  import '@suning/uxcool/src/components/table/style/index.scss';
-  import UxTable from '@suning/uxcool/src/components/table';
   import NormalDemo from './normal.vue';
   import SelectionSingleDemo from './selectionSingle.vue';
   import SelectionDemo from './selection.vue';
@@ -67,11 +66,12 @@
   import PaginationDemo from './pagination.vue';
   import CollapseTableDemo from './collapse-table.vue';
   import ManualDemo from './manualResize.vue';
+  import TreeRelationDemo from './tree-relation.vue';
 
   export default {
     components: {
-      UxTable,
       NormalDemo,
+      TreeRelationDemo,
       SelectionSingleDemo,
       SelectionDemo,
       SelectionRowDemo,

@@ -75,10 +75,11 @@ export default {
         fixed,
         rowRefName,
         renderExpandRows,
-        getNeedIndentSpaced,
+        // getNeedIndentSpaced,
       } = this;
       const nRowProps = rowProps;
-      const needIndentSpaced = getNeedIndentSpaced(rowDatas);
+      // const needIndentSpaced = getNeedIndentSpaced(rowDatas);
+      const needIndentSpaced = true;
       return rowDatas.map((record) => {
         const { idx } = nRowProps;
         const nRecord = { ...record };

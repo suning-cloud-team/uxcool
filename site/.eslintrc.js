@@ -11,7 +11,7 @@ module.exports = {
         },
       },
     },
-    'import/core-modules': ['@suning/uxcool'],
+    'import/core-modules': ['@suning/uxcool', '@suning/v-utils'],
   },
   rules: {
     'vue/html-self-closing': 0,
