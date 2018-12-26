@@ -9,7 +9,6 @@ $input-box-height: 34px;
   outline: 0;
   width: 44%;
   text-align: center;
-  vertical-align: top;
   @include placeholder();
 
   &[disabled] {
