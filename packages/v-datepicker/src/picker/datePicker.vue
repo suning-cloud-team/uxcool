@@ -129,7 +129,7 @@
         inputValue: null,
         open: false,
         align: {
-          points: ['tl', 'tl'],
+          // points: ['tl', 'tl'],
         },
         disabledHours: null,
         disabledMinutes: null,

@@ -1,27 +1,25 @@
 <template>
   <div class="demo">
-    <div class="demo">
-      <h6>ok confirm</h6>
+    <h6>ok confirm</h6>
 
-      <ux-date-picker ok-confirm
-                      show-time
-                      @change="onChange" />
-      <br>
-      <ux-range-date-picker ok-confirm
-                            @calendar-change="onCalendarChange"
-                            @change="onChange" />
-      <br>
-      <ux-range-date-picker :ranges="ranges"
-                            ok-confirm
-                            show-ok
-                            @change="onChange" />
-      <br>
-      <ux-range-date-picker :ranges="ranges"
-                            ok-confirm
-                            show-time
-                            @change="onChange" />
-      <br>
-    </div>
+    <ux-date-picker ok-confirm
+                    show-time
+                    @change="onChange" />
+    <br>
+    <ux-range-date-picker ok-confirm
+                          @calendar-change="onCalendarChange"
+                          @change="onChange" />
+    <br>
+    <ux-range-date-picker :ranges="ranges"
+                          ok-confirm
+                          show-ok
+                          @change="onChange" />
+    <br>
+    <ux-range-date-picker :ranges="ranges"
+                          ok-confirm
+                          show-time
+                          @change="onChange" />
+    <br>
   </div>
 </template>
 

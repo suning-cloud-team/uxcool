@@ -167,7 +167,9 @@ export default {
               post(beforeFile);
               return;
             }
-            post(file);
+            if (beforeFile !== false) {
+              post(file);
+            }
           },
           (err) => {
             if (process.env.NODE_ENV !== 'production') {
