@@ -126,6 +126,13 @@
         type: Object,
         default: undefined,
       },
+      placement: {
+        type: String,
+        default: 'bottomLeft',
+        validator(val) {
+          return ['bottomLeft', 'bottomRight', 'topRight', 'topLeft'].indexOf(val) > -1;
+        },
+      },
       transitionName: {
         type: String,
         default: 'slide-up',
@@ -159,7 +166,9 @@
     },
     computed: {
       bindProps() {
-        const { prefixCls, innerValue, startPlaceholder, endPlaceholder, openValue } = this;
+        const {
+          prefixCls, innerValue, startPlaceholder, endPlaceholder, openValue
+        } = this;
         return {
           ...this.$props,
           selectedValue: innerValue,

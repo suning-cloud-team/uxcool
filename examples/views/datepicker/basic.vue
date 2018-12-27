@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div class="demo">
       <h6>showTime</h6>
       <ux-date-picker :theme="theme"
@@ -49,13 +50,14 @@
       <ux-range-date-picker v-model="rangeDate"
                             :theme="theme" />
     </div>
-
+    <placement-demo />
     <month-demo />
     <popup-container-demo />
     <ok-confirm-demo />
 
     <slider-demo />
     <control-mode-demo />
+
   </div>
 </template>
 
@@ -77,6 +79,7 @@
   import OkConfirmDemo from './okConfirm.vue';
   import SliderDemo from './slider.vue';
   import ControlModeDemo from './controlMode.vue';
+  import PlacementDemo from './placement.vue';
 
   export default {
     components: {
@@ -87,6 +90,7 @@
       OkConfirmDemo,
       SliderDemo,
       ControlModeDemo,
+      PlacementDemo,
     },
     data() {
       return {

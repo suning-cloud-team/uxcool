@@ -142,7 +142,7 @@
         buildinPlacements: placements,
         open: false,
         align: {
-          points: ['tl', 'tl'],
+          // points: ['tl', 'tl'],
         },
         innerValues: this.selectedValue,
         inputValues: this.selectedValue,
@@ -183,7 +183,9 @@
         return isHasOkButton && okConfirm;
       },
       bindListeners() {
-        const { $listeners, onPanelChange, onSelect, onCalendarChange, onQuickSelect, onOk } = this;
+        const {
+          $listeners, onPanelChange, onSelect, onCalendarChange, onQuickSelect, onOk
+        } = this;
         return {
           ...$listeners,
           'on-panel-change': onPanelChange,
@@ -258,7 +260,9 @@
         this.$emit('open-change', visible);
       },
       onOk(values) {
-        const { setOpen, isHasOkButton, isOkConfirm, onChange } = this;
+        const {
+          setOpen, isHasOkButton, isOkConfirm, onChange
+        } = this;
         setOpen(false);
         if (isHasOkButton) {
           this.$emit('ok', values);

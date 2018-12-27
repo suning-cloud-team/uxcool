@@ -55,7 +55,7 @@ export default {
       type: Object,
       default() {
         return {
-          points: ['tl', 'tl'],
+          // points: ['tl', 'tl'],
         };
       },
     },

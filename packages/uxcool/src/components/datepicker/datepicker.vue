@@ -87,6 +87,13 @@
         type: String,
         default: '',
       },
+      placement: {
+        type: String,
+        default: 'bottomLeft',
+        validator(val) {
+          return ['bottomLeft', 'bottomRight', 'topRight', 'topLeft'].indexOf(val) > -1;
+        },
+      },
       transitionName: {
         type: String,
         default: 'slide-up',
