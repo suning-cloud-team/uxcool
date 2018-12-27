@@ -1,6 +1,7 @@
 <template>
   <div>
-    <normal-demo/>
+    <normal-demo />
+    <before-upload-demo />
     <picture-demo />
     <avatar-demo />
     <preset-demo />
@@ -26,6 +27,7 @@
   import ManualDemo from './manual.vue';
   import DragDemo from './drag.vue';
   import ChunkDemo from './chunk.vue';
+  import BeforeUploadDemo from './beforeUpload.vue';
 
   export default {
     components: {
@@ -40,6 +42,7 @@
       ManualDemo,
       DragDemo,
       ChunkDemo,
+      BeforeUploadDemo,
     },
   };
 </script>
