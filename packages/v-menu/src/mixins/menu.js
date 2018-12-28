@@ -102,6 +102,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isDropdownMenu: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     uuid() {

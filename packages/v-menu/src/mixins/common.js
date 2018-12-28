@@ -84,5 +84,8 @@ export default {
     hasTitleAttr() {
       return this.rootMenu.hasTitleAttr;
     },
+    isDropdownMenu() {
+      return this.rootMenu.isDropdownMenu;
+    },
   },
 };

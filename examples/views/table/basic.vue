@@ -3,6 +3,7 @@
     <normal-demo />
     <tree-relation-demo />
     <manual-demo />
+    <header-cell-demo />
     <collapse-table-demo />
     <selection-single-demo />
     <selection-demo />
@@ -67,6 +68,7 @@
   import CollapseTableDemo from './collapse-table.vue';
   import ManualDemo from './manualResize.vue';
   import TreeRelationDemo from './tree-relation.vue';
+  import HeaderCellDemo from './header-cell.vue';
 
   export default {
     components: {
@@ -101,6 +103,7 @@
       PaginationDemo,
       CollapseTableDemo,
       ManualDemo,
+      HeaderCellDemo,
     },
   };
 </script>

@@ -190,6 +190,7 @@ export default {
       // menu组件时
       if (isMenuCmp(overlayNode)) {
         nOverlayProps.mode = 'vertical';
+        nOverlayProps.isDropdownMenu = true;
         nOverlayProps.prefixCls = `${prefixCls}-menu`;
       }
 
