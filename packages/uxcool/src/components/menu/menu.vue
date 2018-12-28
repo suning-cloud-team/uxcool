@@ -74,6 +74,14 @@
         type: Boolean,
         default: false,
       },
+      isDropdownMenu: {
+        type: Boolean,
+        default: false,
+      },
+      getPopupContainer: {
+        type: Function,
+        default: null,
+      },
     },
     data() {
       return {
@@ -90,7 +98,9 @@
         };
       },
       bindProps() {
-        const { $props, inlineCollapsed, mode, collapsedOpenKeys } = this;
+        const {
+          $props, inlineCollapsed, mode, collapsedOpenKeys
+        } = this;
 
         return {
           ...$props,

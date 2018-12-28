@@ -64,7 +64,9 @@
         return rootMode === 'horizontal' ? 'vertical' : rootMode;
       },
       classes() {
-        const { prefixCls, disabled, mode, isActive, isSelected, isOpen } = this;
+        const {
+          prefixCls, disabled, mode, isActive, isSelected, isOpen
+        } = this;
         return {
           [prefixCls]: true,
           [`${prefixCls}-${mode}`]: true,
@@ -117,7 +119,9 @@
         });
       },
       onClick($event) {
-        const { isInlineMode, eventName, tirggerOpenChange, isOpen } = this;
+        const {
+          isInlineMode, eventName, tirggerOpenChange, isOpen
+        } = this;
         this.$emit('click', {
           name: eventName,
           domEvent: $event,
@@ -156,6 +160,7 @@
         const {
           prefixCls,
           isOpen,
+          isDropdownMenu,
           actions,
           getPopupContainer,
           popupClass,
@@ -165,7 +170,8 @@
           subMenuOpenDelay,
           onPopupVisible,
         } = this;
-        const getContainer = isTopSubMenu(this) ? getPopupContainer : () => this.$el;
+        const getContainer =
+          isTopSubMenu(this) && !isDropdownMenu ? getPopupContainer : () => this.$el;
         const props = {
           prefixCls,
           popupClass: [`${prefixCls}-popup`, popupClass],
