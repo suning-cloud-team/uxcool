@@ -50,5 +50,9 @@ export default {
     getCheckedKeys() {
       return this.getStoreCheckedKeys();
     },
+
+    getTreeOriginNodes() {
+      return this.nodes.map(v => v.originNode);
+    },
   },
 };

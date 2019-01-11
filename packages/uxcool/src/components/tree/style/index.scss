@@ -64,7 +64,7 @@ $tree-showline-icon-color: $text-color-secondary;
 
     // When node is loading
     &.#{$tree-prefix-cls}-treenode-loading {
-      span {
+      > span {
         &.#{$tree-prefix-cls}-switcher {
           &.#{$tree-prefix-cls}-switcher_open,
           &.#{$tree-prefix-cls}-switcher_close {
@@ -230,3 +230,5 @@ $tree-showline-icon-color: $text-color-secondary;
     }
   }
 }
+
+@import './draggable';

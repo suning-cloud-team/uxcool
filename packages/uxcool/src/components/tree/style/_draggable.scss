@@ -1,0 +1,17 @@
+@import '../../style/themes/default';
+
+.#{$tree-prefix-cls}-draggable {
+  .#{$tree-prefix-cls}-node-content-wrapper {
+    width: calc(100% - 24px);
+  }
+  .#{$tree-prefix-cls}-checkbox + .#{$tree-prefix-cls}-node-content-wrapper {
+    width: calc(100% - 46px);
+  }
+  .not-allow-drag .#{$tree-prefix-cls}-node-content-wrapper {
+    cursor: not-allowed;
+  }
+  .not-allow-drop.drag-over .#{$tree-prefix-cls}-node-content-wrapper {
+    background: transparent;
+    color: $text-color;
+  }
+}

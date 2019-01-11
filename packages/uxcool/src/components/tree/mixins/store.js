@@ -24,7 +24,7 @@ export default {
     };
   },
   methods: {
-    createNodes(nodes, parent, level) {
+    createNodes(nodes, parent, level, deepClone = true, from = 'init') {
       const {
         treeStore,
         rowKey,
@@ -57,7 +57,7 @@ export default {
         const key = getNodeKey(item, rowKey, treeStore);
         const nNode = normalizeNode(item, {
           key,
-          originNode: item,
+          originNode: item.originNode ? item.originNode : item,
           childCheckState: -1,
           parent,
           level,
@@ -78,14 +78,19 @@ export default {
             checkStrict
           ),
           isHalfChecked: false,
-          isLoaded: false,
+          isLoaded: from === 'drop' ? !!item.$$isLoaded : false,
           isLoading: false,
+          // 'top', 'bottom', 'mid', 'none'
+          dragOverGap: 'none',
+          isDragNode: !!item.$$isDragNode,
         });
 
         let isParent = false;
         let childNodes = null;
         if (isArray(children) && children.length > 0) {
-          childNodes = createNodes(children, nNode, level + 1);
+          childNodes = deepClone
+            ? createNodes(children, nNode, level + 1, deepClone, from)
+            : children;
           isParent = true;
         }
 
@@ -106,7 +111,7 @@ export default {
           }
         }
 
-        if (defaultExpandParent && nNode.isExpanded) {
+        if (from !== 'drop' && defaultExpandParent && nNode.isExpanded) {
           checkParentExpand(nNode);
         }
 
@@ -177,7 +182,7 @@ export default {
         this.treeStore.rootNodes.push(node);
       }
     },
-    addNodes(nodes, parent) {
+    addNodes(nodes, parent, replace = true, deepClone = true) {
       const { createNodes } = this;
 
       let nNodes = nodes;
@@ -186,14 +191,23 @@ export default {
       }
       let ret;
       if (parent) {
-        ret = createNodes(nNodes, parent, parent.level + 1);
+        ret = createNodes(nNodes, parent, parent.level + 1, deepClone);
         const np = parent;
-        const isParent = ret.length > 0;
+        let { children } = np;
+        if (!replace && isArray(children)) {
+          children.push(...ret);
+        } else {
+          children = ret;
+        }
+        const isParent = children.length > 0;
         np.isParent = isParent;
-        np.isLeaf = np.isLeaf || !isParent;
-        np.children = ret;
+        // np.isLeaf = np.isLeaf || !isParent;
+        np.isLeaf = !isParent;
+        np.children = children;
+        np.originNode.children = children.map(v => v.originNode);
       } else {
-        ret = createNodes(nNodes, null, 0);
+        this.clearNodesMap();
+        ret = createNodes(nNodes, null, 0, deepClone);
       }
       return ret;
     },
@@ -206,6 +220,43 @@ export default {
         .map(k => getStoreNode(k))
         .filter(node => !!node)
         .sort((a, b) => a.pos - b.pos);
+    },
+    setChildren(data, childNode, cb, idx = -1) {
+      const nData = data;
+      const nChildNode = childNode;
+      let { children } = nData;
+      if (!isArray(children)) {
+        children = [];
+      }
+      nChildNode.$$isDragNode = true;
+      if (idx === -1) {
+        children.push(nChildNode);
+      } else {
+        children.splice(idx, 0, nChildNode);
+      }
+
+      nData.children = children;
+      if (isFunction(cb)) {
+        cb();
+      }
+    },
+    addChildren(data, childNode, cb) {
+      this.setChildren(data, childNode, cb);
+    },
+    removeChildren(data, originNode) {
+      const nData = data;
+      const { children } = nData;
+      if (isArray(children)) {
+        nData.children = children.filter(v => v !== originNode);
+        // nNode.children = nChildren;
+        // if (!isVirtualParent) {
+        //   if (nNode.parent === null) {
+        //     this.nodes = this.addNodes(nodes, null, true, false);
+        //   } else {
+        //     this.addNodes(nNode.parent.children, nNode.parent, true, false);
+        //   }
+        // }
+      }
     },
     resetStoreKeys(keyName, cb) {
       const { getSortNodes } = this;

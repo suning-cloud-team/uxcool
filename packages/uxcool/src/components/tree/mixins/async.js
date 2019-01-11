@@ -8,8 +8,8 @@ export default {
         return lazy && isFunction(loadData);
       }
       const { isLoaded, isLoading, children } = parent;
-
-      return lazy && !isLoaded && !isLoading && (!children || children.length === 0);
+      const hasChildren = children && children.filter(v => !v.isDragNode).length !== 0;
+      return lazy && !isLoaded && !isLoading && !hasChildren;
     },
     asyncNode(parent) {
       const { lazy, loadData, addNodes } = this;
@@ -23,8 +23,9 @@ export default {
         if (nParent) {
           nParent.isLoading = false;
           nParent.isLoaded = true;
+          nParent.originNode.$$isLoaded = true;
         }
-        return addNodes(data, nParent);
+        return addNodes(data, nParent, false);
       });
     },
   },

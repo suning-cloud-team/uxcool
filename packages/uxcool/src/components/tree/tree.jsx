@@ -1,5 +1,6 @@
 import { isArray, isEqual, isFunction, debounce } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
+import { getDragNodeKeys, calcDragOverGap } from './utils';
 import InnerNode from './innerNode';
 import StoreMixin from './mixins/store';
 import AsyncMixin from './mixins/async';
@@ -100,19 +101,40 @@ export default {
       type: Boolean,
       default: false,
     },
+    draggable: {
+      type: Boolean,
+      default: false,
+    },
+    allowDrag: {
+      type: Function,
+      default: null,
+    },
+    allowDrop: {
+      type: Function,
+      default: null,
+    },
   },
   data() {
     return {
       nodes: [],
+      dragNode: null,
+      // 当前拖拽包含所有节点key
+      dragNodeKeys: [],
+      dragOverNode: null,
+      dropPosition: null,
+      dragEnterTimer: null,
     };
   },
   computed: {
     classes() {
-      const { prefixCls, showLine, directory } = this;
+      const {
+        prefixCls, showLine, directory, draggable
+      } = this;
       return {
         [prefixCls]: true,
         [`${prefixCls}-directory`]: directory,
         [`${prefixCls}-show-line`]: showLine,
+        [`${prefixCls}-draggable`]: draggable,
       };
     },
     filterNodes() {
@@ -253,21 +275,213 @@ export default {
       const {
         canAsync, asyncNode, triggerExpand, triggerAsyncEvent
       } = this;
+      const { isExpanded } = node;
 
       if (canAsync(node)) {
-        asyncNode(node).then((data) => {
-          const nNode = node;
-          if (data && data.length > 0) {
-            nNode.isParent = true;
-          }
-          nNode.children = data || [];
-          if (node.isParent) {
-            triggerExpand(e, node, vm);
-          }
-          triggerAsyncEvent();
-        });
+        if (isExpanded) {
+          asyncNode(node).then(() => {
+            if (node.isParent) {
+              triggerExpand(e, node, vm);
+            }
+            triggerAsyncEvent();
+          });
+        }
       } else {
         triggerExpand(e, node, vm);
+      }
+    },
+    onNodeDragStart(e, node) {
+      const originNode = { ...node.originNode };
+      this.dragNode = node;
+      this.dragNodeKeys = getDragNodeKeys([node]);
+      this.$emit('dragstart', { e, node: originNode });
+    },
+    clearDragOverGap(dragOverNode) {
+      const nDragOverNode = dragOverNode;
+      if (nDragOverNode) {
+        nDragOverNode.dragOverGap = 'none';
+      }
+    },
+    onNodeDragEnd(e, node) {
+      const { clearDragOverGap, dragOverNode } = this;
+      clearDragOverGap(dragOverNode);
+      this.$emit('dragend', { e, node: { ...node.originNode } });
+    },
+    clearDragEnterTimer() {
+      if (this.dragEnterTimer) {
+        clearTimeout(this.dragEnterTimer);
+      }
+    },
+    triggerDragExpand(e, node = {}, vm) {
+      // 因为drop之后重新生成了node,所以需要重新获取
+      const nNode = this.getStoreNode(node.key);
+      nNode.isExpanded = nNode.children && nNode.children.length > 0;
+      this.triggerExpand(e, nNode, vm);
+    },
+    onNodeDragEnter(e, node, vm) {
+      const { canAsync } = this;
+      this.clearDragEnterTimer();
+      if (!canAsync(node)) {
+        this.dragEnterTimer = setTimeout(() => {
+          // 因为drop之后重新生成了node,所以需要重新获取
+          this.triggerDragExpand(e, node, vm);
+          this.$emit('dragenter', {
+            e,
+            // drop时直接操作的的是node的originNode,所以数据时正确的
+            node: { ...node.originNode },
+            expandedKeys: this.getStoreExpandedKeys(),
+          });
+        }, 500);
+      }
+    },
+    onNodeDragLeave(e, node) {
+      this.clearDragOverGap(node);
+      this.$emit('dragleave', { e, node: { ...node.originNode } });
+    },
+
+    onNodeDragOver(e, node, { $refs: { selectorRef } }) {
+      const { dragNode, clearDragOverGap, dragOverNode: oldDragOverNode } = this;
+      if (!dragNode) {
+        this.dragOverNode = null;
+        return;
+      }
+
+      clearDragOverGap(oldDragOverNode);
+
+      const dragOverNode = node;
+      dragOverNode.dragOverGap = calcDragOverGap(e, selectorRef);
+
+      this.dragOverNode = dragOverNode;
+      this.$emit('dragover', { e, node: { ...node.originNode } });
+    },
+    isDropInSelf(dropNode) {
+      const { dragNodeKeys = [] } = this;
+      const { key } = dropNode;
+
+      return dragNodeKeys.indexOf(key) > -1;
+    },
+    onNodeDrop(e, dropNode, vm) {
+      const that = this;
+      const {
+        dragNode,
+        dragOverNode,
+        dragNodeKeys,
+        isDropInSelf,
+        addChildren,
+        setChildren,
+        removeChildren,
+        createNodes,
+        onNodeExpand,
+        getStoreNode,
+        clearDragEnterTimer,
+        updateStoreExpandedKeys,
+      } = that;
+      const nDropNode = dropNode;
+
+      // const originNode = { ...nDropNode.originNode };
+      const isAllowDrop = !isDropInSelf(nDropNode);
+      if (!isAllowDrop) {
+        e.preventDefault();
+        return;
+      }
+
+      if (dragNode) {
+        clearDragEnterTimer();
+        let treeData = this.nodes.map(v => v.originNode);
+        const { parent: dragParent } = dragNode;
+        const dragParentChilds = !dragParent
+          ? {
+            set children(childs) {
+              treeData = childs;
+            },
+            get children() {
+              return treeData;
+            },
+          }
+          : {
+            set children(childs) {
+              dragParent.originNode.children = childs;
+            },
+            get children() {
+              return dragParent.originNode.children;
+            },
+        };
+
+        removeChildren(dragParentChilds, dragNode.originNode);
+
+        // 同步当前父级展开状态
+        if (dragParent && (!dragParentChilds.children || dragParentChilds.children.length === 0)) {
+          updateStoreExpandedKeys(dragParent.key, 'del');
+        }
+        const { parent: dropParent } = nDropNode;
+        const dropParentChilds = !dropParent
+          ? {
+            set children(childs) {
+              treeData = childs;
+            },
+            get children() {
+              return treeData;
+            },
+          }
+          : {
+            set children(childs) {
+              dropParent.originNode.children = childs;
+            },
+            get children() {
+              return dropParent.originNode.children;
+            },
+        };
+        const { dragOverGap } = dragOverNode;
+        const dropChilds = {
+          set children(childs) {
+            nDropNode.originNode.children = childs;
+          },
+          get children() {
+            return nDropNode.originNode.children;
+          },
+        };
+        if (dragOverGap === 'mid') {
+          addChildren(dropChilds, dragNode.originNode);
+        } else if (
+          dragOverGap === 'bottom' &&
+          dropChilds.children &&
+          dropChilds.children.length > 0 &&
+          nDropNode.isExpanded
+        ) {
+          setChildren(dropChilds, dragNode.originNode, null, 0);
+        } else {
+          const idx = dropParentChilds.children.indexOf(nDropNode.originNode);
+          setChildren(
+            dropParentChilds,
+            dragNode.originNode,
+            null,
+            dragOverGap === 'top' ? idx : idx + 1
+          );
+        }
+
+        this.nodes = createNodes(
+          treeData || this.nodes.map(v => v.originNode),
+          null,
+          0,
+          true,
+          'drop'
+        );
+
+        if (dragOverGap === 'mid') {
+          const newDropNode = getStoreNode(nDropNode.key);
+          newDropNode.isExpanded = true;
+          onNodeExpand(e, newDropNode, vm);
+        } else if (dropParent) {
+          this.triggerDragExpand(e, dropParent, vm);
+        }
+
+        this.$emit('drop', {
+          e,
+          dragOverGap,
+          node: { ...dropNode.originNode },
+          dragNode: { ...dragNode.originNode },
+          dragNodeKeys,
+        });
       }
     },
     triggerAsyncEvent() {

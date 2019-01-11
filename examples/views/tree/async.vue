@@ -1,6 +1,7 @@
 <template>
 
   <div class="demo">
+    <h4>async</h4>
     <ux-search-input placeholder="Search"
                      @input="onSearchInput" />
     <ux-tree ref="tree1"
@@ -15,7 +16,8 @@
              checkable
              @select="onSelect"
              @check="onCheck"
-             @expand="onExpand" />
+             @expand="onExpand"
+             @checked-keys-change="onCheckedKeysChange" />
 
   </div>
 </template>
@@ -79,7 +81,7 @@
                   disabled: i === 2,
                   isLeaf: node.key === '0-0-0-0' && node.level === 2,
               })));
-            }, 10000);
+            }, 1000);
           }
         });
       },
@@ -94,6 +96,9 @@
       },
       onSelect(...args) {
         console.log('onSelect', ...args);
+      },
+      onCheckedKeysChange(...args) {
+        console.log('onCheckedKeysChange', ...args);
       },
     },
   };
