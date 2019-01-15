@@ -1,34 +1,22 @@
 <template>
   <div class="demo">
-    <h4>single</h4>
+    <h4>search</h4>
     <ux-select v-model="value"
-               :render-group-label="renderGroupLabel"
-               option-label-prop="children"
-               style="width:200px;"
-               allow-clear
+               :data-source="data"
+               style="width:200px"
                show-search
                @change="onChange"
-               @select="onSelect"
                @deselect="onDeselect"
-               @search="onSearch">
-      <span slot="renderLabel"
-            slot-scope="{label,value}">
-        <ux-icon type="circle_selected" /> {{ label||value }}
-      </span>
-      <ux-option-group id="1"
-                       label="abc">
-        <ux-option value="A">A1</ux-option>
-        <!-- <ux-option value="A"
-                   label="A1" /> -->
-        <ux-option value="B"
-                   label="B2" />
-      </ux-option-group>
-
-      <ux-option id="2"
-                 c="1"
-                 value="C"
-                 label="C3">{{ option2 }}</ux-option>
-    </ux-select>
+               @search="onSearch" />
+    <h4> multiple search</h4>
+    <ux-select v-model="value"
+               :data-source="data"
+               mode="multiple"
+               style="width:200px"
+               show-search
+               @change="onChange"
+               @deselect="onDeselect"
+               @search="onSearch" />
   </div>
 </template>
 
@@ -46,13 +34,23 @@
       return {
         value: 'A',
         option2: 'c31',
+        data: [
+          {
+            value: 1,
+            label: 'label-1',
+          },
+          {
+            value: 2,
+            label: 'label-2',
+          },
+        ],
       };
     },
     created() {
-      setTimeout(() => {
-        this.option2 = 'd41';
-        // this.value = [];
-      }, 3500);
+      // setTimeout(() => {
+      //   this.option2 = 'd41';
+      //   this.value = [];
+      // }, 3500);
     },
     methods: {
       renderGroupLabel(option) {
@@ -73,6 +71,17 @@
         console.log('onChange', ...args);
       },
       onSearch(...args) {
+        const key = new Date().getTime();
+        this.data = [
+          {
+            value: `${key}-3`,
+            label: `${key}-label-3`,
+          },
+          {
+            value: `${key}-4`,
+            label: `${key}-label-4`,
+          },
+        ];
         console.log('onSearch', ...args);
       },
     },
