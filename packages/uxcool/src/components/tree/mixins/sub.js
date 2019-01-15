@@ -1,5 +1,9 @@
 export default {
-  inject: ['treeRoot'],
+  inject: {
+    treeRoot: {
+      default: false,
+    },
+  },
   computed: {
     isChildren() {
       return !!this.treeRoot;
@@ -19,6 +23,22 @@ export default {
     treeRenderContentFn() {
       return this.treeRoot.renderContentFn;
     },
+    draggable() {
+      const { isChildren, treeRoot } = this;
+      return isChildren ? treeRoot.draggable : false;
+    },
+    rootDragState() {
+      const { isChildren, treeRoot } = this;
+      return isChildren ? treeRoot.dragState : {};
+    },
+    allowDrop() {
+      const { isChildren, treeRoot } = this;
+      return isChildren ? treeRoot.allowDrop : {};
+    },
+    allowDrag() {
+      const { isChildren, treeRoot } = this;
+      return isChildren ? treeRoot.allowDrag : {};
+    },
   },
   methods: {
     onNodeSelect(...args) {
@@ -32,6 +52,30 @@ export default {
     },
     onNodeClick(...args) {
       this.treeRoot.onNodeClick(...args);
+    },
+    onNodeDragStart(...args) {
+      const { isChildren, treeRoot } = this;
+      return isChildren ? treeRoot.onNodeDragStart(...args) : false;
+    },
+    onNodeDragOver(...args) {
+      const { isChildren, treeRoot } = this;
+      return isChildren ? treeRoot.onNodeDragOver(...args) : false;
+    },
+    onNodeDragEnter(...args) {
+      const { isChildren, treeRoot } = this;
+      return isChildren ? treeRoot.onNodeDragEnter(...args) : false;
+    },
+    onNodeDragEnd(...args) {
+      const { isChildren, treeRoot } = this;
+      return isChildren ? treeRoot.onNodeDragEnd(...args) : false;
+    },
+    onNodeDragLeave(...args) {
+      const { isChildren, treeRoot } = this;
+      return isChildren ? treeRoot.onNodeDragLeave(...args) : false;
+    },
+    onNodeDrop(...args) {
+      const { isChildren, treeRoot } = this;
+      return isChildren ? treeRoot.onNodeDrop(...args) : false;
     },
   },
 };

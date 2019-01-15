@@ -15,6 +15,11 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isNotAllowDrop: false,
+    };
+  },
   computed: {
     isLeaf() {
       const {
@@ -47,6 +52,14 @@ export default {
     isExpanded() {
       return this.node.isExpanded;
     },
+    isAllowDrag() {
+      const { allowDrag, node } = this;
+      return !(isFunction(allowDrag) && allowDrag(node.originNode) === false);
+    },
+    isAllowDrop() {
+      const { allowDrop, node } = this;
+      return !(isFunction(allowDrop) && allowDrop(node.originNode) === false);
+    },
     classes() {
       const {
         prefixCls,
@@ -57,9 +70,12 @@ export default {
           isSelected,
           isHalfChecked,
           isLoading,
+          dragOverGap,
         },
         isDisabled,
         isExpanded,
+        isAllowDrag,
+        isAllowDrop,
       } = this;
 
       return {
@@ -69,6 +85,11 @@ export default {
         [`${prefixCls}-treenode-checkbox-indeterminate`]: !isNodeDisabled && isHalfChecked,
         [`${prefixCls}-treenode-selected`]: isSelected,
         [`${prefixCls}-treenode-loading`]: isLoading,
+        'drag-over': !isDisabled && dragOverGap === 'mid',
+        'drag-over-gap-top': !isDisabled && dragOverGap === 'top',
+        'drag-over-gap-bottom': !isDisabled && dragOverGap === 'bottom',
+        'not-allow-drop': !isDisabled && !isAllowDrop,
+        'not-allow-drag': !isDisabled && !isAllowDrag,
       };
     },
     checkboxClasses() {
@@ -96,7 +117,7 @@ export default {
     },
     selectorClasses() {
       const {
-        prefixCls, isDisabled, nodeState, node: { isSelected }
+        prefixCls, isDisabled, nodeState, draggable, node: { isSelected }
       } = this;
       const wrapCls = `${prefixCls}-node-content-wrapper`;
 
@@ -104,6 +125,7 @@ export default {
         [wrapCls]: true,
         [`${wrapCls}-${nodeState || 'normal'}`]: true,
         [`${prefixCls}-node-selected`]: !isDisabled && isSelected,
+        draggable: !isDisabled && draggable,
       };
     },
     innerSwitcher() {
@@ -155,6 +177,57 @@ export default {
       node.isExpanded = !isExpanded;
       onNodeExpand(e, node, this);
     },
+    onDragStart(e) {
+      e.stopPropagation();
+      const { isAllowDrag, node, onNodeDragStart } = this;
+      if (!isAllowDrag) {
+        e.preventDefault();
+        return;
+      }
+      onNodeDragStart(e, node, this);
+      try {
+        // firefox drag
+        e.dataTransfer.setData('text/plain', '');
+      } catch (err) {
+        // empty
+      }
+    },
+    onDrag(e) {
+      e.stopPropagation();
+    },
+    onDragEnter(e) {
+      const { node, onNodeDragEnter } = this;
+      e.preventDefault();
+      e.stopPropagation();
+      onNodeDragEnter(e, node, this);
+    },
+    onDragOver(e) {
+      const { node, onNodeDragOver } = this;
+      e.preventDefault();
+      e.stopPropagation();
+      onNodeDragOver(e, node, this);
+    },
+    onDragEnd(e) {
+      const { node, onNodeDragEnd } = this;
+      e.stopPropagation();
+      onNodeDragEnd(e, node, this);
+    },
+    onDragLeave(e) {
+      const { node, onNodeDragLeave } = this;
+      e.stopPropagation();
+      onNodeDragLeave(e, node, this);
+    },
+    onDrop(e) {
+      const {
+        isAllowDrop, dragOverGap, node, onNodeDrop
+      } = this;
+      e.stopPropagation();
+      if (!isAllowDrop && dragOverGap === 'mid') {
+        e.preventDefault();
+        return;
+      }
+      onNodeDrop(e, node, this);
+    },
     renderSwitcher() {
       const {
         prefixCls, isExpanded, isLeaf, onExpand
@@ -184,6 +257,7 @@ export default {
     renderSelector() {
       const {
         prefixCls,
+        draggable,
         selectorClasses,
         node,
         isDisabled,
@@ -192,6 +266,8 @@ export default {
         isExpanded,
         onSelectorClick,
         treeRenderContentFn,
+        onDragStart,
+        onDragEnd,
       } = this;
 
       const { title, isLoading } = node;
@@ -200,12 +276,25 @@ export default {
       const attrs = {
         title,
       };
+      if (!isDisabled && draggable) {
+        attrs.draggable = true;
+      }
       const on = {
         click: onSelectorClick,
+        dragstart: onDragStart,
+        // drag: onDrag,
+        dragend: onDragEnd,
       };
 
       const selectorElement = (
-        <span {...{ class: selectorClasses, attrs, on }}>
+        <span
+          {...{
+            class: selectorClasses,
+            attrs,
+            on,
+            ref: 'selectorRef',
+          }}
+        >
           {isFunction(treeRenderContentFn)
             ? treeRenderContentFn({
                 node: {
@@ -254,7 +343,17 @@ export default {
       innerCheckbox,
       innerSelector,
       innerChildren,
+      onDragEnter,
+      onDragOver,
+      onDragLeave,
+      onDrop,
     } = this;
+    const on = {
+      dragenter: onDragEnter,
+      dragleave: onDragLeave,
+      dragover: onDragOver,
+      drop: onDrop,
+    };
     return (
       <li
         v-show={isVisible}
@@ -263,6 +362,7 @@ export default {
           attrs: {
             tabindex: 0,
           },
+          on,
         }}
       >
         {[innerSwitcher, innerCheckbox, innerSelector, innerChildren]}

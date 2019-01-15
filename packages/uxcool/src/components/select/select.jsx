@@ -300,6 +300,7 @@ export default {
     this.selectedPos = null;
     this.rootLineMapping = null;
     this.isVirtualInit = false;
+    this.innerValueObj = {};
     // no reactive data
   },
   mounted() {
@@ -403,12 +404,14 @@ export default {
     },
     // optionMap是非响应式属性(optionMap设为响应式时,可能造成无限循环),为防止optionMap更新后无法获取最新的值, 因此作为方法使用
     getSelectionValue() {
-      const { optionMap, innerValue } = this;
+      const { optionMap, innerValue, innerValueObj } = this;
       const values = [];
       for (let i = 0, l = innerValue.length; i < l; i += 1) {
         const key = innerValue[i];
         if (key in optionMap) {
           values.push(optionMap[key]);
+        } else if (key in innerValueObj) {
+          values.push(innerValueObj[key]);
         } else {
           const option = {
             value: key,
@@ -648,6 +651,20 @@ export default {
         return nOption;
       });
     },
+    // 保持已选中值正常显示,所以需要在datasource变化时缓存数据
+    cacheOldValues() {
+      const { innerValue, optionMap, innerValueObj } = this;
+
+      const values = isArray(innerValue) ? innerValue : [innerValue];
+      this.innerValueObj = values.reduce((r, key) => {
+        const nr = r;
+        const obj = optionMap[key] || innerValueObj[key];
+        if (obj) {
+          nr[key] = obj;
+        }
+        return nr;
+      }, {});
+    },
     getFormatOptionsAndOptionMap(options) {
       const {
         $scopedSlots,
@@ -659,6 +676,7 @@ export default {
         formatOptions,
         normalizeOptionLabelProp,
         setSearchInputValue,
+        cacheOldValues,
       } = this;
 
       if (isEqual(prevOptions, options)) {
@@ -674,7 +692,7 @@ export default {
         }
         return undefined;
       });
-      // this.prevOptions = [...options];
+      cacheOldValues();
       const renderLabelFn = $scopedSlots.renderLabel || renderLabel;
       const renderGroupLabelFn = $scopedSlots.renderGroupLabel || renderGroupLabel;
 

@@ -191,3 +191,34 @@ export function removeNodeOriginExpand(node) {
     delete nNode.originExpand;
   }
 }
+
+export function getDragNodeKeys(nodes = []) {
+  const keys = [];
+  for (let i = 0, l = nodes.length; i < l; i += 1) {
+    const node = nodes[i];
+    const { key, children } = node;
+    keys.push(key);
+    if (isArray(children) && children.length > 0) {
+      keys.push(...getDragNodeKeys(children));
+    }
+  }
+
+  return keys;
+}
+
+const DRAG_MIN_GAP = 2;
+const DRAG_SIDE_RANGE = 0.25;
+
+export function calcDragOverGap(e, el) {
+  const { clientY } = e;
+  const { top, bottom, height } = el.getBoundingClientRect();
+  const offset = Math.max(height * DRAG_SIDE_RANGE, DRAG_MIN_GAP);
+  let gap = 'mid';
+  if (clientY <= top + offset) {
+    gap = 'top';
+  } else if (clientY >= bottom - offset) {
+    gap = 'bottom';
+  }
+
+  return gap;
+}

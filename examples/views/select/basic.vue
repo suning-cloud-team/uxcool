@@ -1,7 +1,5 @@
 <template>
   <div>
-    <button class="ux-btn"
-            @click="changeTheme">{{theme}}</button>
 
     <div class="demo">
       <h4>single custom filterOption</h4>
@@ -140,8 +138,8 @@
     <custom-attrs-demo />
     <clear-demo />
     <disabled-demo />
-    <single-demo />
     <extra-demo />
+    <search-demo />
   </div>
 </template>
 
@@ -163,6 +161,7 @@
   import CustomAttrsDemo from './custom-attrs.vue';
   import ClearDemo from './clear.vue';
   import ExtraDemo from './extra.vue';
+  import SearchDemo from './search.vue';
 
   export default {
     components: {
@@ -185,6 +184,7 @@
       CustomAttrsDemo,
       ClearDemo,
       ExtraDemo,
+      SearchDemo,
     },
     data() {
       return {

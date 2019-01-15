@@ -8,6 +8,9 @@
     <huge-demo />
     <filter-demo />
     <empty-demo />
+    <drag-demo />
+    <drag-checkbox-demo />
+    <drag-async-demo />
   </div>
 </template>
 
@@ -21,6 +24,9 @@
   import RowkeyDemo from './rowkey.vue';
   import EmptyDemo from './empty.vue';
   import DirectoryDemo from './directory.vue';
+  import DragDemo from './draggable.vue';
+  import DragCheckboxDemo from './draggable-checkbox.vue';
+  import DragAsyncDemo from './draggable-async.vue';
 
   export default {
     components: {
@@ -32,6 +38,9 @@
       RowkeyDemo,
       EmptyDemo,
       DirectoryDemo,
+      DragDemo,
+      DragCheckboxDemo,
+      DragAsyncDemo,
     },
   };
 </script>
