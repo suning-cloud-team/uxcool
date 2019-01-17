@@ -224,17 +224,11 @@ $pagination-prefix-cls: #{$ux-prefix}-pagination;
     vertical-align: middle;
     margin-left: 16px;
 
-    &-size-changer.#{$ux-prefix}-select {
-      display: inline-block;
-      width: auto;
-      margin-right: 8px;
-    }
-
     &-quick-jumper {
       display: inline-block;
       vertical-align: top;
-      height: $input-height-base;
-      line-height: $input-height-base;
+      height: $pagination-item-size;
+      line-height: $pagination-item-size;
       user-select: none;
       input {
         @include input;
@@ -250,6 +244,25 @@ $pagination-prefix-cls: #{$ux-prefix}-pagination;
         height: $pagination-item-size;
         line-height: $pagination-item-size - 1px;
         margin-left: 8px;
+      }
+    }
+  }
+
+  &-options-size-changer {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+
+    .#{$ux-prefix}-select {
+      display: inline-block;
+      width: auto;
+
+      &-selection {
+        height: $pagination-item-size;
+
+        &__rendered {
+          line-height: $pagination-item-size - 2px;
+        }
       }
     }
   }
@@ -302,7 +315,8 @@ $pagination-prefix-cls: #{$ux-prefix}-pagination;
     }
   }
 
-  &.mini &-total-text,
+  &.mini &-before-total-text,
+  &.mini &-after-total-text,
   &.mini &-simple-pager {
     height: $pagination-item-size-sm;
     line-height: $pagination-item-size-sm;
@@ -354,6 +368,20 @@ $pagination-prefix-cls: #{$ux-prefix}-pagination;
       input {
         @include input-sm;
         width: 44px;
+      }
+
+      button {
+        height: $pagination-item-size-sm;
+        padding: $btn-padding-sm;
+        line-height: $pagination-item-size-sm - 1px;
+      }
+    }
+
+    &-size-changer .#{$ux-prefix}-select-selection {
+      height: $pagination-item-size-sm;
+
+      &__rendered {
+        line-height: $pagination-item-size-sm - 2px;
       }
     }
   }

@@ -35,6 +35,22 @@
     </div>
 
     <div class="demo">
+      <ux-pagination :current="10"
+                     :total="100"
+                     show-size-changer
+                     @page-size-change="pageSizeChange"
+                     @change="paginationChange" />
+      <ux-pagination :current="10"
+                     :total="100"
+                     :page-size="50"
+                     :page-size-options="[10, 50, 100]"
+                     show-size-changer
+                     @page-size-change="pageSizeChange"
+                     @change="paginationChange" />
+
+    </div>
+
+    <div class="demo">
       <ux-pagination :current="current"
                      :total="500"
                      theme="dark"
@@ -84,6 +100,9 @@
       paginationChange(p) {
         console.log(p);
         this.current = p;
+      },
+      pageSizeChange(current, size) {
+        console.log('pageSizeChange', current, size);
       },
       showBeforeTotal(total, pageSize, totalPage, pageNo, range) {
         return `共${total}条, 每页显示${pageSize}条, ${range[0]}-${
