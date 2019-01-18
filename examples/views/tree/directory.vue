@@ -25,7 +25,7 @@
     },
     data() {
       return {
-        checkedKeys: ['0-0-0', '0-0-1', '0-0-2'],
+        checkedKeys: ['0-0-0-0-0'],
         expandedKeys: ['0-0', '0-0-1'],
         dataSource: [
           {
@@ -36,9 +36,18 @@
                 title: '0-0-0',
                 key: '0-0-0',
                 children: [
-                  { title: '0-0-0-0', key: '0-0-0-0', disableCheckbox: true },
-                  { title: '0-0-0-1', key: '0-0-0-1' },
-                  { title: '0-0-0-2', key: '0-0-0-2' },
+                  {
+                    title: '0-0-0-0',
+                    key: '0-0-0-0',
+                    disableCheckbox: true,
+                    children: [
+                      { title: '0-0-0-0-0', key: '0-0-0-0-0', disableCheckbox: true },
+                      { title: '0-0-0-0-1', key: '0-0-0-0-1', disableCheckbox: true },
+                      { title: '0-0-0-0-2', key: '0-0-0-0-2', disableCheckbox: true },
+                    ],
+                  },
+                  { title: '0-0-0-1', key: '0-0-0-1', disableCheckbox: true },
+                  { title: '0-0-0-2', key: '0-0-0-2', disableCheckbox: true },
                 ],
               },
               {
