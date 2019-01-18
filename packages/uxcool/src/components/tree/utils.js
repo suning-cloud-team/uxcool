@@ -99,6 +99,10 @@ export function getNodeChildCheckState(childrens = []) {
 
   const childrensNoDisabled = childrens.filter(v => v.isParent || (!v.isDisabled && !v.disableCheckbox));
 
+  if (childrensNoDisabled.length === 0) {
+    return 0;
+  }
+
   if (
     childrensNoDisabled.every((v) => {
       if (v.isDisabled || v.disableCheckbox) {
