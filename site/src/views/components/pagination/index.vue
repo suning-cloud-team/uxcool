@@ -8,6 +8,7 @@
     <demo-simple></demo-simple>
     <demo-goto></demo-goto>
     <demo-custom></demo-custom>
+    <demo-page-size></demo-page-size>
 
     <hr>
 
@@ -67,6 +68,18 @@
           <td>true</td>
         </tr>
         <tr>
+          <td>show-size-changer</td>
+          <td>是否显示页码选择下拉框</td>
+          <td>Boolean</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>page-size-options</td>
+          <td>页码大小可选项,当<code>pageSize</code>不在可选项中时，默认以可选项第一项作为分页大小。</td>
+          <td>Array</td>
+          <td>[10, 20, 30]</td>
+        </tr>
+        <tr>
           <td>show-before-total</td>
           <td>分页条之前显示自定义内容</td>
           <td>Function(total, pageSize, totalPage, pageNo, range)
@@ -103,6 +116,11 @@
           <td>页面变化时的回调</td>
           <td>Function(pageNo, pageSize)</td>
         </tr>
+        <tr>
+          <td>page-size-change</td>
+          <td>页面大小变化时的回调</td>
+          <td>Function(pageNo, pageSize)</td>
+        </tr>
       </tbody>
     </table>
   </article>
@@ -114,6 +132,7 @@
   import DemoSimple from './simple.vue';
   import DemoGoto from './goto.vue';
   import DemoCustom from './custom.vue';
+  import DemoPageSize from './pageSize.vue';
 
   export default {
     components: {
@@ -122,6 +141,7 @@
       DemoSimple,
       DemoGoto,
       DemoCustom,
+      DemoPageSize,
     },
   };
 </script>
