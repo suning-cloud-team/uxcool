@@ -1,5 +1,717 @@
 export default [
   {
+    name: 'wenjianjia_o',
+    font: '\\eb03',
+  },
+  {
+    name: 'daibanshixiang_o',
+    font: '\\eb36',
+  },
+  {
+    name: 'huodong_o',
+    font: '\\eb37',
+  },
+  {
+    name: 'jiaoshiguanli_o',
+    font: '\\eb68',
+  },
+  {
+    name: 'kejiaoguanli_o',
+    font: '\\eb6a',
+  },
+  {
+    name: 'quanxiankuaizhuang_o',
+    font: '\\eb6b',
+  },
+  {
+    name: 'rizhi_o',
+    font: '\\eb6c',
+  },
+  {
+    name: 'shenpi_o',
+    font: '\\eb6d',
+  },
+  {
+    name: 'wenjuantiaocha_o',
+    font: '\\eb6e',
+  },
+  {
+    name: 'xueli_o',
+    font: '\\eb6f',
+  },
+  {
+    name: 'yewuzongshu_o',
+    font: '\\eb70',
+  },
+  {
+    name: 'yiji-caozuoliu_o',
+    font: '\\eb71',
+  },
+  {
+    name: 'yiji-shujuzhiliang_o',
+    font: '\\eb72',
+  },
+  {
+    name: 'yiji-suanfapingtai_o',
+    font: '\\eb73',
+  },
+  {
+    name: 'yiji-yunweizhongxin_o',
+    font: '\\eb74',
+  },
+  {
+    name: 'yonghushezhi_o',
+    font: '\\eb75',
+  },
+  {
+    name: 'zhengshu_o',
+    font: '\\eb76',
+  },
+  {
+    name: 'zhudifangjia_o',
+    font: '\\eb77',
+  },
+  {
+    name: 'zichanqingkuang_o',
+    font: '\\eb78',
+  },
+  {
+    name: 'zuzhi_o',
+    font: '\\eb79',
+  },
+  {
+    name: 'xunhuan',
+    font: '\\eac6',
+  },
+  {
+    name: 'anliji',
+    font: '\\eac7',
+  },
+  {
+    name: 'chexiao1',
+    font: '\\eac9',
+  },
+  {
+    name: 'daihebing',
+    font: '\\eaca',
+  },
+  {
+    name: 'mokuai',
+    font: '\\eacb',
+  },
+  {
+    name: 'tuoputu',
+    font: '\\eacd',
+  },
+  {
+    name: 'tuozhuai',
+    font: '\\eacf',
+  },
+  {
+    name: 'addpeople_fill',
+    font: '\\ead1',
+  },
+  {
+    name: 'ahasyingyonggaokeyong',
+    font: '\\ead2',
+  },
+  {
+    name: 'anquanzhongxinon',
+    font: '\\ead3',
+  },
+  {
+    name: 'API_o',
+    font: '\\ead4',
+  },
+  {
+    name: 'APSweifuwu',
+    font: '\\ead5',
+  },
+  {
+    name: 'assessment',
+    font: '\\ead6',
+  },
+  {
+    name: 'backup',
+    font: '\\ead7',
+  },
+  {
+    name: 'baocun',
+    font: '\\ead8',
+  },
+  {
+    name: 'biz-appstore',
+    font: '\\ead9',
+  },
+  {
+    name: 'bluetooth-audio',
+    font: '\\eada',
+  },
+  {
+    name: 'bofang_o',
+    font: '\\eadb',
+  },
+  {
+    name: 'broken-image',
+    font: '\\eadc',
+  },
+  {
+    name: 'bulb',
+    font: '\\eadd',
+  },
+  {
+    name: 'clock_fill',
+    font: '\\eade',
+  },
+  {
+    name: 'cloud-done',
+    font: '\\eadf',
+  },
+  {
+    name: 'cloud-upload',
+    font: '\\eae0',
+  },
+  {
+    name: 'create-new-folder',
+    font: '\\eae1',
+  },
+  {
+    name: 'daibukao',
+    font: '\\eae2',
+  },
+  {
+    name: 'dashuju_o',
+    font: '\\eae3',
+  },
+  {
+    name: 'dashujukeshihuaico',
+    font: '\\eae4',
+  },
+  {
+    name: 'dashujuyunyingjiance',
+    font: '\\eae5',
+  },
+  {
+    name: 'dingzhi',
+    font: '\\eae6',
+  },
+  {
+    name: 'dingzhikaifafuwu',
+    font: '\\eae7',
+  },
+  {
+    name: 'ehpcdanxinggaoxingnengjisuan',
+    font: '\\eae8',
+  },
+  {
+    name: 'ERP_asset_containers',
+    font: '\\eae9',
+  },
+  {
+    name: 'event-available',
+    font: '\\eaea',
+  },
+  {
+    name: 'explore',
+    font: '\\eaeb',
+  },
+  {
+    name: 'faburen',
+    font: '\\eaec',
+  },
+  {
+    name: 'favorite',
+    font: '\\eaed',
+  },
+  {
+    name: 'fenxi',
+    font: '\\eaee',
+  },
+  {
+    name: 'fenxiang_o',
+    font: '\\eaef',
+  },
+  {
+    name: 'fl-shuju',
+    font: '\\eaf0',
+  },
+  {
+    name: 'flight-takeoff',
+    font: '\\eaf1',
+  },
+  {
+    name: 'Fun_IconA2',
+    font: '\\eaf2',
+  },
+  {
+    name: 'fuzaijunheng',
+    font: '\\eaf3',
+  },
+  {
+    name: 'games',
+    font: '\\eaf4',
+  },
+  {
+    name: 'gonggaobiangeng',
+    font: '\\eaf5',
+  },
+  {
+    name: 'grade',
+    font: '\\eaf6',
+  },
+  {
+    name: 'guanli',
+    font: '\\eaf7',
+  },
+  {
+    name: 'guize',
+    font: '\\eaf8',
+  },
+  {
+    name: 'headset',
+    font: '\\eaf9',
+  },
+  {
+    name: 'high-quality',
+    font: '\\eafa',
+  },
+  {
+    name: 'history_o',
+    font: '\\eafb',
+  },
+  {
+    name: 'home_o',
+    font: '\\eafc',
+  },
+  {
+    name: 'hourglass-full',
+    font: '\\eafd',
+  },
+  {
+    name: 'huanjingpeizhi',
+    font: '\\eafe',
+  },
+  {
+    name: 'huiyuanqiagoumai',
+    font: '\\eaff',
+  },
+  {
+    name: 'huiyuanqiaguanli',
+    font: '\\eb00',
+  },
+  {
+    name: 'hunheyunshujubeifen',
+    font: '\\eb01',
+  },
+  {
+    name: 'iconpaixu',
+    font: '\\eb02',
+  },
+  {
+    name: 'invert-colors',
+    font: '\\eb04',
+  },
+  {
+    name: 'ios-basketball',
+    font: '\\eb05',
+  },
+  {
+    name: 'ios-bug',
+    font: '\\eb06',
+  },
+  {
+    name: 'ios-chatboxes',
+    font: '\\eb07',
+  },
+  {
+    name: 'ios-chatbubbles',
+    font: '\\eb08',
+  },
+  {
+    name: 'ios-compass',
+    font: '\\eb09',
+  },
+  {
+    name: 'filter_o',
+    font: '\\eb0a',
+  },
+  {
+    name: 'ios-lock',
+    font: '\\eb0b',
+  },
+  {
+    name: 'ios-person-add',
+    font: '\\eb0c',
+  },
+  {
+    name: 'ios-rocket',
+    font: '\\eb0d',
+  },
+  {
+    name: 'ios-settings',
+    font: '\\eb0e',
+  },
+  {
+    name: 'ios-videocam',
+    font: '\\eb0f',
+  },
+  {
+    name: 'ios-wifi',
+    font: '\\eb10',
+  },
+  {
+    name: 'jiejuefangan',
+    font: '\\eb11',
+  },
+  {
+    name: 'jifen-kuai',
+    font: '\\eb12',
+  },
+  {
+    name: 'jiqun',
+    font: '\\eb13',
+  },
+  {
+    name: 'kaifa',
+    font: '\\eb14',
+  },
+  {
+    name: 'kechengkaifagongju',
+    font: '\\eb15',
+  },
+  {
+    name: 'kechengshouquan',
+    font: '\\eb16',
+  },
+  {
+    name: 'koucaihuatong',
+    font: '\\eb17',
+  },
+  {
+    name: 'local-play',
+    font: '\\eb18',
+  },
+  {
+    name: 'logo-buffer',
+    font: '\\eb19',
+  },
+  {
+    name: 'mengxiaoguanli',
+    font: '\\eb1a',
+  },
+  {
+    name: 'message_fill',
+    font: '\\eb1b',
+  },
+  {
+    name: 'mianshou',
+    font: '\\eb1c',
+  },
+  {
+    name: 'minganshujujiankongshitu',
+    font: '\\eb1d',
+  },
+  {
+    name: 'MROxitong-eduguanli',
+    font: '\\eb1e',
+  },
+  {
+    name: 'MROxitong-xinxiguanli',
+    font: '\\eb1f',
+  },
+  {
+    name: 'mysql_o',
+    font: '\\eb20',
+  },
+  {
+    name: 'neibufankui',
+    font: '\\eb21',
+  },
+  {
+    name: 'nengyuan',
+    font: '\\eb22',
+  },
+  {
+    name: 'notifications-off',
+    font: '\\eb23',
+  },
+  {
+    name: 'notifications',
+    font: '\\eb24',
+  },
+  {
+    name: 'optimize',
+    font: '\\eb25',
+  },
+  {
+    name: 'ossduixiangcunchuOSS',
+    font: '\\eb26',
+  },
+  {
+    name: 'panorama',
+    font: '\\eb27',
+  },
+  {
+    name: 'perm-camera',
+    font: '\\eb28',
+  },
+  {
+    name: 'person-add',
+    font: '\\eb29',
+  },
+  {
+    name: 'pie-chart',
+    font: '\\eb2a',
+  },
+  {
+    name: 'pinpaixingxiang',
+    font: '\\eb2b',
+  },
+  {
+    name: 'publishgoods_fill',
+    font: '\\eb2c',
+  },
+  {
+    name: 'qingchuhuancun',
+    font: '\\eb2d',
+  },
+  {
+    name: 'qrcode_fill',
+    font: '\\eb2e',
+  },
+  {
+    name: 'radio',
+    font: '\\eb2f',
+  },
+  {
+    name: 'recent-actors',
+    font: '\\eb30',
+  },
+  {
+    name: 'record-voice-over',
+    font: '\\eb31',
+  },
+  {
+    name: 'remenkecheng',
+    font: '\\eb32',
+  },
+  {
+    name: 'remind_fill',
+    font: '\\eb33',
+  },
+  {
+    name: 'rengongzhineng',
+    font: '\\eb34',
+  },
+  {
+    name: 'rongqiyun_1',
+    font: '\\eb35',
+  },
+  {
+    name: 'sd-card',
+    font: '\\eb38',
+  },
+  {
+    name: 'security',
+    font: '\\eb39',
+  },
+  {
+    name: 'service_fill',
+    font: '\\eb3a',
+  },
+  {
+    name: 'shichang',
+    font: '\\eb3b',
+  },
+  {
+    name: 'shop_o',
+    font: '\\eb3c',
+  },
+  {
+    name: 'shopping-cart',
+    font: '\\eb3d',
+  },
+  {
+    name: 'shoucang',
+    font: '\\eb3e',
+  },
+  {
+    name: 'shoufeiguanli',
+    font: '\\eb3f',
+  },
+  {
+    name: 'shouye-shengtaikongzhi-erjibaohuqu',
+    font: '\\eb40',
+  },
+  {
+    name: 'shouyi',
+    font: '\\eb41',
+  },
+  {
+    name: 'shuffle',
+    font: '\\eb42',
+  },
+  {
+    name: 'shujuchuanshu_f',
+    font: '\\eb43',
+  },
+  {
+    name: 'shujuguanli',
+    font: '\\eb44',
+  },
+  {
+    name: 'shujukeshihua',
+    font: '\\eb45',
+  },
+  {
+    name: 'shujuku',
+    font: '\\eb46',
+  },
+  {
+    name: 'shujukushenji',
+    font: '\\eb47',
+  },
+  {
+    name: 'shujuyingsheguanli',
+    font: '\\eb48',
+  },
+  {
+    name: 'shujuzhanshi3',
+    font: '\\eb49',
+  },
+  {
+    name: 'sujuyuce',
+    font: '\\eb4a',
+  },
+  {
+    name: 'swap_o',
+    font: '\\eb4b',
+  },
+  {
+    name: 'sync',
+    font: '\\eb4c',
+  },
+  {
+    name: 'tianchongxing',
+    font: '\\eb4d',
+  },
+  {
+    name: 'tongji',
+    font: '\\eb4e',
+  },
+  {
+    name: 'tongyong-wenxintishitubiao',
+    font: '\\eb4f',
+  },
+  {
+    name: 'trash_fill',
+    font: '\\eb50',
+  },
+  {
+    name: 'tuihuo-kuai',
+    font: '\\eb51',
+  },
+  {
+    name: 'tuijian',
+    font: '\\eb52',
+  },
+  {
+    name: 'visibility',
+    font: '\\eb53',
+  },
+  {
+    name: 'volume-up',
+    font: '\\eb54',
+  },
+  {
+    name: 'wangluo',
+    font: '\\eb55',
+  },
+  {
+    name: 'warning_fill',
+    font: '\\eb56',
+  },
+  {
+    name: 'wendangguanlixitong-baoetongxitongtubiao',
+    font: '\\eb57',
+  },
+  {
+    name: 'wendangguanlixitong-shujuzhongxintubiao',
+    font: '\\eb58',
+  },
+  {
+    name: 'woderenwu',
+    font: '\\eb59',
+  },
+  {
+    name: 'xiaoxi_o',
+    font: '\\eb5a',
+  },
+  {
+    name: 'xihuan',
+    font: '\\eb5b',
+  },
+  {
+    name: 'xingnengguanli',
+    font: '\\eb5c',
+  },
+  {
+    name: 'xinzengchangjing',
+    font: '\\eb5d',
+  },
+  {
+    name: 'yewu_o',
+    font: '\\eb5e',
+  },
+  {
+    name: 'yibiaopan_o',
+    font: '\\eb5f',
+  },
+  {
+    name: 'yingjicaigou',
+    font: '\\eb60',
+  },
+  {
+    name: 'yingyongchaxun',
+    font: '\\eb61',
+  },
+  {
+    name: 'yingyongfuwujihuo-copy',
+    font: '\\eb62',
+  },
+  {
+    name: 'yishengmenzhen',
+    font: '\\eb63',
+  },
+  {
+    name: 'z_apiIRM_normal',
+    font: '\\eb64',
+  },
+  {
+    name: 'zaixian',
+    font: '\\eb65',
+  },
+  {
+    name: 'zengjiarili_huaban',
+    font: '\\eb66',
+  },
+  {
+    name: 'zhibokecheng',
+    font: '\\eb67',
+  },
+  {
+    name: 'zhuti',
+    font: '\\eb69',
+  },
+  {
+    name: 'closemenu',
+    font: '\\eac4',
+  },
+  {
+    name: 'openmenu',
+    font: '\\eac5',
+  },
+  {
     name: 'about',
     font: '\\ea5c',
   },

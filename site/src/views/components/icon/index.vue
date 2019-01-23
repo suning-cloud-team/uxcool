@@ -7,42 +7,42 @@
       如何使用
     </h2>
     <ux-code>
-      {{code}}
+      {{ code }}
     </ux-code>
     <h2 class="ux-heading">图标列表</h2>
 
-    <ux-row>
-      <ux-col :lg="4"
-              :md="6"
-              :sm="8"
+    <ux-row flex>
+      <ux-col v-clipboard="copyText(icon)"
               v-for="(icon, i) in list"
-              :key="i">
-        <div class="icon-item"
-             v-clipboard="copyText(icon)"
-             @success="onCopySuccess">
-          <ux-icon :type="icon.name"></ux-icon>
-          <div class="icon-item-name">{{icon.name}}</div>
-          <div class="icon-item-code">{{icon.font}}</div>
-        </div>
+              :xl="4"
+              :lg="6"
+              :md="8"
+              :sm="12"
+              :key="i"
+              class="icon-item"
+              @success="onCopySuccess">
+        <ux-icon :type="icon.name" />
+        <div class="icon-item-code">{{ icon.font }}</div>
+        <div class="icon-item-name">{{ icon.name }}</div>
       </ux-col>
     </ux-row>
   </div>
 </template>
 
 <script>
-  import list from './icon';
   import UxMessage from '@suning/uxcool/es/message';
+  import list from './icon';
 
   export default {
     data() {
       return {
         list,
-        code: '<ux-icon type="down"></ux-icon>',
+        code: '<ux-icon type="down" />',
       };
     },
     methods: {
       copyText({ name }) {
-        return `<ux-icon type="${name}"></ux-icon>`;
+        return `<ux-icon type="${name}" />`;
       },
       onCopySuccess() {
         UxMessage.success('图标组件代码已复制到剪贴板');
@@ -53,23 +53,32 @@
 
 <style lang="scss" scoped>
   .icon-item {
-    padding: 20px;
+    padding: 16px;
     text-align: center;
     cursor: pointer;
 
-    i {
-      margin-bottom: 15px;
-      font-size: 34px;
-    }
-
     &-name {
-      margin-bottom: 10px;
       font-size: 16px;
+      word-break: break-all;
+      word-wrap: break-word;
     }
 
     &-code {
+      margin: 10px 0;
       font-size: 12px;
-      margin-bottom: 10px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+
+      i {
+        transform: scale(1.2);
+      }
+    }
+
+    i {
+      font-size: 36px;
+      transition: transform 0.3s;
     }
   }
 </style>
