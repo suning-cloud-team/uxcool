@@ -154,7 +154,7 @@ export default {
         (r, node) => {
           // 每一层级获取下一级 节点列表
           const children = node[DefaultChildren];
-          if (children) {
+          if (isArray(children)&&children.length>0) {
             r.push(children);
           }
           return r;

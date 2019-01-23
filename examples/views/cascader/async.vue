@@ -5,8 +5,8 @@
     <h6>select</h6>
     <ux-cascader v-model="value"
                  :data-source="data"
-                 style="width:200px"
-                 change-on-select />
+                 :load-data="loadData"
+                 style="width:200px" />
     <h6>change on select</h6>
     <ux-cascader v-model="value"
                  :data-source="data"
@@ -42,7 +42,11 @@
         return new Promise((resolve) => {
           setTimeout(() => {
             if (node) {
-              resolve(mock(node, 3));
+              if (node.value === 'value-0-1') {
+                resolve(mock(node, 3));
+              } else {
+                resolve(null);
+              }
             } else {
               resolve(mock({ value: 0 }, 4));
               // throw new Error('abc');

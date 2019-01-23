@@ -23,33 +23,35 @@ export default {
       }
       for (let i = 0; i < l; i += 1) {
         const node = nodes[i];
+        if (node) {
+          const nNode = {
+            ...node,
+            originNode: { ...node },
+            parent,
+            level,
+            isLoading: false,
+            isLoaded: false,
+            isParent: isFunction(loadData) ? node.isParent !== false : false,
+          };
 
-        const nNode = {
-          ...node,
-          originNode: { ...node },
-          parent,
-          level,
-          isLoading: false,
-          isLoaded: false,
-          isParent: isFunction(loadData) ? node.isParent !== false : false,
-        };
+          // 节点属性重置为默认属性名
+          Object.keys(normalizeFieldNames).forEach((k) => {
+            const fieldName = normalizeFieldNames[k];
+            const val = nNode[fieldName];
+            delete nNode[fieldName];
+            nNode[DEFAULT_FIELD_NAMES[k]] = val;
+          });
 
-        // 节点属性重置为默认属性名
-        Object.keys(normalizeFieldNames).forEach((k) => {
-          const fieldName = normalizeFieldNames[k];
-          const val = nNode[fieldName];
-          delete nNode[fieldName];
-          nNode[DEFAULT_FIELD_NAMES[k]] = val;
-        });
-
-        const children = nNode[DefaultChildren];
-        if (isArray(children) && children.length > 0) {
-          nNode[DefaultChildren] = createNodes(children, nNode, level + 1);
-          nNode.isParent = true;
+          const children = nNode[DefaultChildren];
+          if (isArray(children) && children.length > 0) {
+            nNode[DefaultChildren] = createNodes(children, nNode, level + 1);
+            nNode.isParent = true;
+          }
+          registerNode(nNode);
+          ret.push(nNode);
         }
-        registerNode(nNode);
-        ret.push(nNode);
       }
+
       return ret;
     },
     clearNodesMap() {
