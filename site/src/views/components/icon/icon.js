@@ -192,10 +192,6 @@ export default [
     font: '\\eae5',
   },
   {
-    name: 'dingzhi',
-    font: '\\eae6',
-  },
-  {
     name: 'dingzhikaifafuwu',
     font: '\\eae7',
   },
