@@ -19,6 +19,8 @@
 | search-placeholder | 搜索框 placeholder                                                                                                                         | String                                  | 请输入搜索内容 |
 | not-found-content  | 自定义列表为空时文案                                                                                                                       | String                                  | 无匹配结果     |
 | lazy               | `lazy`模式,可设置`Object{height: 33, remain: 4}`, `height`:每行数据高度, `remain`:保留多少行(设置后可自动撑开高度),或`false`关闭`lazy`模式 | {height:33, remain:4}                   |
+| order              | 右侧列表数据展示方式, 可选值: original(与左侧顺序一致), push(选中顺序), unshift(选中倒序)                                                  | String                                  | original       |
+| sort               | 中间按钮排列顺序,可选值: ltr, rtl                                                                                                          | String                                  | ltr            |
 
 #### Slots
 

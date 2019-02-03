@@ -82,6 +82,13 @@ export default {
         return ['original', 'push', 'unshift'].indexOf(val) > -1;
       },
     },
+    sort: {
+      type: String,
+      default: 'ltr',
+      validator(val) {
+        return ['ltr', 'rtl'].indexOf(val) > -1;
+      },
+    },
   },
   data() {
     return {
@@ -295,22 +302,23 @@ export default {
     },
     renderOperation() {
       const {
-        prefixCls, operations, leftSelectedKeys, rightSelectedKeys, moveTo
+        prefixCls, sort, operations, leftSelectedKeys, rightSelectedKeys, moveTo
       } = this;
       const leftDisabled = rightSelectedKeys.length === 0;
       const rightDisabled = leftSelectedKeys.length === 0;
-      return (
-        <div class={`${prefixCls}-operation`}>
-          <Button
-            type="primary"
-            disabled={leftDisabled}
-            size="small"
-            icon="left"
-            on-click={() => moveTo('left')}
-          >
-            {operations[0]}
-          </Button>
-          <Button
+      const opBtns = [
+        <Button
+          type="primary"
+          disabled={leftDisabled}
+          size="small"
+          icon="left"
+          on-click={() => moveTo('left')}
+        >
+          {operations[0]}
+        </Button>,
+      ];
+      if (sort === 'ltr') {
+        opBtns.push(<Button
             type="primary"
             disabled={rightDisabled}
             size="small"
@@ -318,9 +326,20 @@ export default {
             on-click={() => moveTo('right')}
           >
             {operations[1]}
-          </Button>
-        </div>
-      );
+          </Button>);
+      } else {
+        opBtns.unshift(<Button
+            type="primary"
+            disabled={rightDisabled}
+            size="small"
+            icon="right"
+            on-click={() => moveTo('right')}
+          >
+            {operations[1]}
+          </Button>);
+      }
+
+      return <div class={`${prefixCls}-operation`}>{opBtns}</div>;
     },
   },
   render() {

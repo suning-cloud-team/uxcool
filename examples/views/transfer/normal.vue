@@ -3,6 +3,7 @@
     <ux-transfer :data-source="dataSource"
                  :operations="operations"
                  show-search
+                 sort="rtl"
                  @select-change="onSelectChange"
                  @search-change="onSearchChange"
                  @change="onChange"
