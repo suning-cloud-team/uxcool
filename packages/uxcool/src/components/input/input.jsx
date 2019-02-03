@@ -99,7 +99,7 @@ export default {
     blur() {
       const { $refs: { inputRef } } = this;
       if (inputRef) {
-        inputRef.focus();
+        inputRef.blur();
       }
     },
     getInputElement() {
