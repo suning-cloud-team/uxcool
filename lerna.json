@@ -8,6 +8,9 @@
     "publish": {
       "allowBranch": ["release-*"],
       "ignore": ["ignored-file", "*.md"]
+    },
+    "run": {
+      "stream": true
     }
   }
 }
