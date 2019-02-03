@@ -3,12 +3,11 @@
     <h4>single</h4>
     <ux-select v-model="value"
                :render-group-label="renderGroupLabel"
-                 :show-arrow="false"
+               :show-arrow="false"
                option-label-prop="children"
                style="width:200px;"
                allow-clear
                show-search
-             
                @change="onChange"
                @select="onSelect"
                @deselect="onDeselect"
