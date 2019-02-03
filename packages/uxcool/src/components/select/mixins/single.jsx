@@ -31,6 +31,7 @@ export default {
     renderSingleTrigger() {
       const {
         prefixCls,
+        showArrow,
         showSearch,
         getSelectionValue,
         placeholderNode,
@@ -54,7 +55,7 @@ export default {
         triggerNode = placeholderNode;
       }
       return (
-        <Selector slot="trigger" show-arrow selections={selectionValue}>
+        <Selector slot="trigger" show-arrow={showArrow} selections={selectionValue}>
           <div class={`${prefixCls}-selection__rendered`}>
             {triggerNode}
             {showSearch ? (
