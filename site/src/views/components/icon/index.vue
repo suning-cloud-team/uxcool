@@ -23,7 +23,7 @@
       </li>
     </ul>
     <blockquote>
-      <p><code>0.5.0-next.36</code>版本对图标进行了重命名, 增删了部分图标。为了向后兼容，大部分旧图标的旧命名还会保留一段时间(不推荐使用)，但可能会在后续版本中移除。建议有条件的项目组使用最新的图标命名。</p>
+      <p><code>0.5.0-next.37</code>版本对图标进行了重命名, 增删了部分图标。为了向后兼容，大部分旧图标的旧命名还会保留一段时间(不推荐使用)，但可能会在后续版本中移除。建议有条件的项目组使用最新的图标命名。</p>
     </blockquote>
     <h2 class="ux-heading">
       如何使用
@@ -68,7 +68,7 @@
   export default {
     data() {
       return {
-        code: '<ux-icon type="down" />',
+        code: '<ux-icon type="all-d" />',
         list: [],
       };
     },
