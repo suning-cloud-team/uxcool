@@ -118,8 +118,8 @@
       onNodeDrop(...args) {
         console.log('getTreeOriginNodes', this.$refs.tree1.getTreeOriginNodes());
       },
-      allowDrop(node) {
-        if (node.key === '0-0-0') {
+      allowDrop(node, { level }) {
+        if (node.key === '0-0-0' || level > 1) {
           return false;
         }
         return true;

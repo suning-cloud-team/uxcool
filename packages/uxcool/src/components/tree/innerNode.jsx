@@ -54,11 +54,11 @@ export default {
     },
     isAllowDrag() {
       const { allowDrag, node } = this;
-      return !(isFunction(allowDrag) && allowDrag(node.originNode) === false);
+      return !(isFunction(allowDrag) && allowDrag(node.originNode, node) === false);
     },
     isAllowDrop() {
       const { allowDrop, node } = this;
-      return !(isFunction(allowDrop) && allowDrop(node.originNode) === false);
+      return !(isFunction(allowDrop) && allowDrop(node.originNode, node) === false);
     },
     classes() {
       const {
@@ -218,11 +218,9 @@ export default {
       onNodeDragLeave(e, node, this);
     },
     onDrop(e) {
-      const {
-        isAllowDrop, dragOverGap, node, onNodeDrop
-      } = this;
+      const { isAllowDrop, node, onNodeDrop } = this;
       e.stopPropagation();
-      if (!isAllowDrop && dragOverGap === 'mid') {
+      if (!isAllowDrop && node.dragOverGap === 'mid') {
         e.preventDefault();
         return;
       }
