@@ -4,6 +4,7 @@
     <directory-demo />
     <rowkey-demo />
     <async-demo />
+    <async-rebuild-demo />
     <render-demo />
     <huge-demo />
     <filter-demo />
@@ -18,6 +19,7 @@
 <script>
   import NormalDemo from './normal.vue';
   import AsyncDemo from './async.vue';
+  import AsyncRebuildDemo from './async-rebuild.vue';
   import RenderDemo from './render.vue';
   import HugeDemo from './huge.vue';
   import FilterDemo from './filter.vue';
@@ -32,6 +34,7 @@
     components: {
       NormalDemo,
       AsyncDemo,
+      AsyncRebuildDemo,
       RenderDemo,
       HugeDemo,
       FilterDemo,

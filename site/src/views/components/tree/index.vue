@@ -5,6 +5,7 @@
     </h1>
     <basic-demo />
     <async-demo />
+    <async-rebuild-demo />
     <filter-demo />
     <render-demo />
     <huge-demo />
@@ -79,7 +80,7 @@
         <tr>
           <td>checkable</td>
           <td>&#x662F;&#x5426;&#x663E;&#x793A;<code>Checkbox</code></td>
-          <td>BOolean</td>
+          <td>Boolean</td>
           <td>false</td>
         </tr>
         <tr>
@@ -203,6 +204,16 @@
           <td>筛选树节点</td>
           <td>Function(searchInput)</td>
         </tr>
+        <tr>
+          <td>rebuildAsyncTree</td>
+          <td>重置异步树</td>
+          <td>Function(nodes)</td>
+        </tr>
+        <tr>
+          <td>getStoreNode</td>
+          <td>根据key获取组件内部渲染节点用的节点数据，内部方法，一般不推荐使用。</td>
+          <td>Function(key) => Object | null</td>
+        </tr>
       </tbody>
     </table>
   </article>
@@ -211,6 +222,7 @@
 <script>
   import BasicDemo from './basic.vue';
   import AsyncDemo from './async.vue';
+  import AsyncRebuildDemo from './async-rebuild.vue';
   import FilterDemo from './filter.vue';
   import HugeDemo from './huge.vue';
   import RenderDemo from './render.vue';
@@ -219,6 +231,7 @@
     components: {
       BasicDemo,
       AsyncDemo,
+      AsyncRebuildDemo,
       FilterDemo,
       HugeDemo,
       RenderDemo,

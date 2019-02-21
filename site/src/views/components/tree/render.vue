@@ -31,7 +31,10 @@
     <div slot="desc">
       支持通过
       <code>renderContent</code> 参数,或
-      <code>renderContent slot-scope</code>自定义内容
+      <code>renderContent slot-scope</code>自定义内容。
+      <blockquote>
+        <p><code>renderContent</code>中暴露的<code>node</code>是内部渲染节点使用数据的副本，所以修改node属性并不会造成节点内容重新渲染。如果有需要操作节点数据的相关需求，可以通过实例方法<code>getStoreNode</code>获取到真实的节点数据，再去修改相关属性。</p>
+      </blockquote>
     </div>
     <ux-code slot="code">
       {{ code }}
@@ -96,7 +99,7 @@
           <span>
             <ux-icon type="blub" /> {node.title}-level-2222-{node.level}
           </span>
-          ) : (
+        ) : (
           <span style="color: green">
             {node.title}-level-333-{node.level}
           </span>

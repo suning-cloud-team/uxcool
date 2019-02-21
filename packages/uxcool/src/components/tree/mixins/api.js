@@ -54,5 +54,19 @@ export default {
     getTreeOriginNodes() {
       return this.nodes.map(v => v.originNode);
     },
+    rebuildAsyncTree(nodes) {
+      const {
+        addNodes,
+        updateStoreSelectedKeys,
+        updateStoreExpandedKeys,
+        updateStoreCheckedKeys,
+      } = this;
+      // 清空treeStore中保存的key
+      updateStoreSelectedKeys([], null, true);
+      updateStoreExpandedKeys([], null, true);
+      updateStoreCheckedKeys([], null, true);
+      // 跟异步加载相同的处理逻辑设置首层节点
+      this.nodes = addNodes(nodes, null, false);
+    },
   },
 };
