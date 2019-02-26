@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-trigger",
-  "version": "1.0.52",
+  "version": "1.0.53",
   "description": "trigger ",
   "main": "cjs/index.js",
   "module": "es/index.js",

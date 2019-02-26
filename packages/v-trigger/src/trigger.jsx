@@ -211,7 +211,16 @@ export default {
   },
   methods: {
     normalizeActions(actions = []) {
-      return actions.sort((a, b) => a - b).join(',');
+      return actions
+        .sort((a, b) => {
+          if (a < b) {
+            return -1;
+          } else if (a > b) {
+            return 1;
+          }
+          return 0;
+        })
+        .join(',');
     },
     bindVNodeElementEvents() {
       const {
@@ -437,6 +446,7 @@ export default {
           Popup,
         },
         data: {
+          actions,
           popupProp: {
             visible: popupVisible,
             align: originAlign,
@@ -469,6 +479,7 @@ export default {
               popupStyle,
             },
             rootDomNode,
+            actions: nActions,
           } = this;
           if (!visible && !portalInit && !initPopupFirst) {
             return '';
@@ -492,7 +503,7 @@ export default {
               afterenter: onPopupAfterEnter,
             },
           };
-          if (actions.indexOf('hover') !== -1) {
+          if (nActions.indexOf('hover') !== -1) {
             data.nativeOn = {
               mouseenter: onPopupMouseEnter,
               mouseleave: onPopupMouseLeave,
@@ -515,6 +526,7 @@ export default {
         $el,
         portal,
         align,
+        actions,
         popupVisible,
         popupTransitionName,
         popupAnimation,
@@ -537,6 +549,7 @@ export default {
         if (!isEqual(portal.rootDomNode, $el) || !isEqual(portal.popupProp, nProp)) {
           portal.rootDomNode = $el;
           portal.popupProp = nProp;
+          portal.actions = actions;
         }
       }
     },
