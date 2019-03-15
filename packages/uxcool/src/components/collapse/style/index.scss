@@ -4,10 +4,10 @@
 $collapse-prefix-cls: #{$ux-prefix}-collapse;
 
 @mixin collapse-close() {
-  transform: rotate(0);
+  transform: translateY(-50%) rotate(0);
 }
 @mixin collapse-open() {
-  transform: rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
 }
 
 .#{$collapse-prefix-cls} {
@@ -45,7 +45,7 @@ $collapse-prefix-cls: #{$ux-prefix}-collapse;
         line-height: 46px;
         vertical-align: top;
         transition: transform 0.24s;
-        top: 0;
+        top: 50%;
         left: $padding-md;
         &:before {
           content: '\e903';
