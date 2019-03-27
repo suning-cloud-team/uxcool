@@ -69,6 +69,10 @@ export default {
       type: [Object, Boolean],
       default: true,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -221,10 +225,13 @@ export default {
       };
     },
     renderItem(item) {
-      const { normalizeItem, checkedKeysObj, onItemClick } = this;
+      const {
+        normalizeItem, checkedKeysObj, onItemClick, disabled
+      } = this;
       const nItem = normalizeItem(item);
       const key = nItem.$$_key;
       const props = {
+        disabled,
         item: nItem,
         title: nItem.title,
         label: nItem.label,
@@ -242,6 +249,7 @@ export default {
         $slots,
         $scopedSlots: { body: bodyFn },
         prefixCls,
+        disabled,
         nLazy,
         filtedDataSource,
         showSearch,
@@ -257,6 +265,7 @@ export default {
         <Search
           class={`${prefixCls}-body-search-wrapper`}
           placeholder={searchPlaceholder}
+          disabled={disabled}
           on-input={onSearchInput}
           on-clear={onSearchClear}
         />
@@ -311,6 +320,7 @@ export default {
       prefixCls,
       classes,
       title,
+      disabled,
       filtedDataSource,
       checkedKeys,
       itemsUnit,
@@ -325,6 +335,7 @@ export default {
     const checkBoxAll = (
       <Checkbox
         control
+        disabled={disabled}
         checked={checkBoxAllStatus.checkAll}
         indeterminate={checkBoxAllStatus.checkPart}
         on-change={onCheckAllChange}

@@ -1,6 +1,7 @@
 <template>
   <div>
     <ux-transfer :data-source="dataSource"
+                 :operations="operations"
                  @select-change="onSelectChange"
                  @search-change="onSearchChange"
                  @change="onChange"
@@ -25,11 +26,16 @@
       return {
         dataSource: mockData(),
         targetKeys: [0, 2, 5],
+        operations: [{ disabled: false }, { disabled: false }],
       };
     },
     methods: {
       onSelectChange(...args) {
         console.log('select--change', ...args);
+        // 左侧至少要保留一项, 当全选时禁用右移操作
+        if (args[2] === 'left') {
+          this.operations.splice(1, 1, { disabled: args[0].length === 10 });
+        }
       },
       onChange(...args) {
         console.log('change', ...args);

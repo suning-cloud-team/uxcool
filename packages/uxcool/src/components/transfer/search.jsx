@@ -9,6 +9,10 @@ export default {
       type: String,
       default: `${getComponentPrefix()}-transfer-list-search`,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -27,10 +31,11 @@ export default {
   },
   render() {
     const {
-      $attrs, prefixCls, innerValue, onInput, onClear
+      $attrs, prefixCls, disabled, innerValue, onInput, onClear
     } = this;
     const props = {
       value: innerValue,
+      disabled,
     };
     const icon = innerValue ? (
       <span role="link" class={`${prefixCls}-action`} on-click={onClear}>

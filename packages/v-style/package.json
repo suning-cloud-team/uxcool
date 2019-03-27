@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-style",
-  "version": "1.0.17-0",
+  "version": "1.0.17-1",
   "description": "基础样式库,包括fonts, theme等",
   "main": "assets/index.scss",
   "scripts": {

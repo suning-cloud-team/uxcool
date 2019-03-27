@@ -31,6 +31,7 @@ function buildConfig(config) {
         },
       },
     },
+    devtool: '#sourcemap',
   });
 }
 module.exports = configFn({ server: true }).then(buildConfig);

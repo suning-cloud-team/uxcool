@@ -3,13 +3,13 @@
     <h1 class="ux-heading">Transfer
       <span class="subtitle">穿梭框</span>
     </h1>
-    <basic-demo/>
-    <target-demo/>
-    <search-demo/>
-    <event-demo/>
-    <render-demo/>
-    <custom-demo/>
-    <huge-demo/>
+    <basic-demo />
+    <target-demo />
+    <search-demo />
+    <event-demo />
+    <render-demo />
+    <custom-demo />
+    <huge-demo />
     <hr>
     <ux-heading id="api"
                 level="2">API
@@ -44,6 +44,12 @@
             <code>row-key</code>属性指定唯一标示,</td>
           <td>Array&lt;Object{key,title,label,disabled}&gt;</td>
           <td></td>
+        </tr>
+        <tr>
+          <td>disabled</td>
+          <td>是否禁用组件</td>
+          <td>Boolean</td>
+          <td>false</td>
         </tr>
         <tr>
           <td>target-keys</td>
@@ -91,9 +97,9 @@
         </tr>
         <tr>
           <td>operations</td>
-          <td>自定义操作按钮文案</td>
-          <td>Array</td>
-          <td></td>
+          <td>自定义操作按钮文案。 当需要动态控制按钮是否禁用时，可以把operations元素设置为对象，通过对象的disabled属性控制。</td>
+          <td>Array&lt;Object{disabled, text}&gt; | Array&lt;String&gt;</td>
+          <td>[]</td>
         </tr>
         <tr>
           <td>show-search</td>
@@ -130,6 +136,23 @@
             <code>lazy</code>模式</td>
           <td>{height:33, remain:4}</td>
           <td></td>
+        </tr>
+        <tr>
+          <td>order</td>
+          <td>右侧显示顺序：<br>
+            <code>original</code>: 与左侧一致<br>
+            <code>push</code>: 选中顺序<br>
+            <code>unshift</code>: 选中顺序倒序<br>
+          </td>
+          <td>String</td>
+          <td>original</td>
+        </tr>
+        <tr>
+          <td>sort</td>
+          <td>中间操作按钮排序顺序， 可选值：
+            <code>ltr</code>，<code>rtl</code></td>
+          <td>String</td>
+          <td>ltr</td>
         </tr>
       </tbody>
     </table>
