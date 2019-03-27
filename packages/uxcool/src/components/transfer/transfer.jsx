@@ -1,4 +1,4 @@
-import { isFunction, isEqual, warning, isDef } from '@suning/v-utils';
+import { isFunction, isEqual, warning, isDef, isPlainObject } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
 import List from './list';
 import Button from '../button';
@@ -18,6 +18,10 @@ export default {
       default() {
         return [];
       },
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     targetKeys: {
       type: Array,
@@ -99,9 +103,10 @@ export default {
   },
   computed: {
     classes() {
-      const { prefixCls } = this;
+      const { prefixCls, disabled } = this;
       return {
         [prefixCls]: true,
+        [`${prefixCls}-disabled`]: disabled,
       };
     },
     normalizeDataSource() {
@@ -142,7 +147,9 @@ export default {
       };
     },
     disabledItemKeys() {
-      const { normalizeDataSource: { left, right } } = this;
+      const {
+        normalizeDataSource: { left, right },
+      } = this;
 
       return [...left, ...right].reduce((r, v) => {
         const nr = r;
@@ -161,6 +168,7 @@ export default {
         titles,
         normalizeDataSource,
         lazy,
+        disabled,
       } = this;
       const commonProps = {
         filterOption,
@@ -168,6 +176,7 @@ export default {
         searchPlaceholder,
         notFoundContent,
         lazy,
+        disabled,
       };
 
       return ['left', 'right'].reduce((r, k) => {
@@ -300,12 +309,42 @@ export default {
 
       handleChange(direction, moveKeys);
     },
+
+    normalizeOperation(operation) {
+      let disabled = false;
+      let text = '';
+
+      if (isPlainObject(operation)) {
+        ({ disabled, text = '' } = operation);
+      } else if (typeof operation === 'string') {
+        text = operation;
+      }
+
+      return {
+        disabled,
+        text,
+      };
+    },
+
     renderOperation() {
       const {
-        prefixCls, sort, operations, leftSelectedKeys, rightSelectedKeys, moveTo
+        prefixCls,
+        sort,
+        operations,
+        leftSelectedKeys,
+        rightSelectedKeys,
+        moveTo,
+        disabled,
+        normalizeOperation,
       } = this;
-      const leftDisabled = rightSelectedKeys.length === 0;
-      const rightDisabled = leftSelectedKeys.length === 0;
+
+      // fix issue #175
+      const toLeftOp = normalizeOperation(operations[0]);
+      const toRightOp = normalizeOperation(operations[1]);
+
+      const leftDisabled = disabled || toLeftOp.disabled || rightSelectedKeys.length === 0;
+      const rightDisabled = disabled || toRightOp.disabled || leftSelectedKeys.length === 0;
+
       const opBtns = [
         <Button
           type="primary"
@@ -314,29 +353,26 @@ export default {
           icon="left"
           on-click={() => moveTo('left')}
         >
-          {operations[0]}
+          {toLeftOp.text}
         </Button>,
       ];
+
+      const toRightBtn = (
+        <Button
+          type="primary"
+          disabled={rightDisabled}
+          size="small"
+          icon="right"
+          on-click={() => moveTo('right')}
+        >
+          {toRightOp.text}
+        </Button>
+      );
+
       if (sort === 'ltr') {
-        opBtns.push(<Button
-            type="primary"
-            disabled={rightDisabled}
-            size="small"
-            icon="right"
-            on-click={() => moveTo('right')}
-          >
-            {operations[1]}
-          </Button>);
+        opBtns.push(toRightBtn);
       } else {
-        opBtns.unshift(<Button
-            type="primary"
-            disabled={rightDisabled}
-            size="small"
-            icon="right"
-            on-click={() => moveTo('right')}
-          >
-            {operations[1]}
-          </Button>);
+        opBtns.unshift(toRightBtn);
       }
 
       return <div class={`${prefixCls}-operation`}>{opBtns}</div>;

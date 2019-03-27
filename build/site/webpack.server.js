@@ -17,6 +17,7 @@ module.exports = configFn({ server: true }).then(config =>
       noInfo: true,
       stats: 'errors-only',
       open: true,
-      openPage: '/index.html',
+      openPage: 'index.html',
     },
-  }));
+    devtool: 'sourcemap',
+}));

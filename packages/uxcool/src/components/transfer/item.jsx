@@ -27,13 +27,17 @@ export default {
       type: [String, Object, Array],
       default: '',
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     classes() {
-      const { prefixCls, item } = this;
+      const { prefixCls, item, disabled } = this;
       return {
         [prefixCls]: true,
-        [`${prefixCls}-disabled`]: !!item.disabled,
+        [`${prefixCls}-disabled`]: !!item.disabled || disabled,
       };
     },
   },
@@ -43,9 +47,9 @@ export default {
   },
   methods: {
     onClick(e) {
-      const { item } = this;
+      const { item, disabled } = this;
       e.stopPropagation();
-      if (item.disabled) {
+      if (item.disabled || disabled) {
         return;
       }
       this.$emit('click', item);
@@ -53,11 +57,11 @@ export default {
   },
   render() {
     const {
-      classes, checked, title, item, label, onDebounceClick
+      classes, checked, title, item, label, onDebounceClick, disabled
     } = this;
     return (
       <li class={classes} title={title} on-click={onDebounceClick}>
-        <Checkbox control checked={checked} disabled={item.disabled} />
+        <Checkbox control checked={checked} disabled={item.disabled || disabled} />
         <span>{label}</span>
       </li>
     );
