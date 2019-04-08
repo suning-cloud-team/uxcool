@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import { addMonths } from 'date-fns';
+  // import { addMonths } from 'date-fns';
   import Trigger from '@suning/v-trigger';
   import { formatDate, isValidArray } from '../utils';
   import RangeCalendar from '../rangeCalendar.vue';
@@ -67,8 +67,10 @@
       value: {
         type: Array,
         default() {
-          const date = new Date();
-          return [date, addMonths(date, 1)];
+          // const date = new Date();
+          // return [date, addMonths(date, 1)];
+          // issue 166: 不能在default中提供默认范围，否则不好处理用户设置的默认显示时间。当然也可以在这边把用户设置的默认时间设置到默认值上，但是在属性校验阶段不一定能获取到其他属性，需要对属性定义顺序做调整
+          return [];
         },
       },
       selectedValue: {

@@ -16,7 +16,7 @@
 | autofocus            | 自动获取焦点                                                                            | Boolean                    | false      |
 | size                 | 大小,可选值:`small`,`default`,`large`                                                   | String                     |            |
 | addon                | 额外内容                                                                                | String                     |            |
-| allow-clear          | 是否显示清除按钮                                                                        | Boolean                    | false      |
+| allow-clear          | 是否显示清除按钮                                                                        | Boolean                    | true      |
 | clear-text           | 清除按钮提示文案                                                                        | String                     | clear      |
 | placeholder          | 占位符                                                                                  | String                     | 请选择时间 |
 | format               | [时间格式](https://date-fns.org/v1.29.0/docs/format),(此字段可以控制面板中实际展示的列) | String                     | HH:mm:ss   |

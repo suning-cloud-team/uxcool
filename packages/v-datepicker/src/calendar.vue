@@ -60,7 +60,7 @@
   import CalendarHeader from './calendar/calendarHeader.vue';
   import DateTable from './date/dateTable.vue';
   import CalendarFooter from './calendar/calendarFooter.vue';
-  import { noop, isAllowedDate } from './utils';
+  import { noop, isAllowedDate, syncTime } from './utils';
 
   export default {
     name: 'Calendar',
@@ -102,6 +102,10 @@
       },
       showOk: {
         type: Boolean,
+        default: false,
+      },
+      showTime: {
+        type: [Boolean, Object],
         default: false,
       },
       dateInputPlaceholder: {
@@ -174,9 +178,14 @@
       },
     },
     created() {
-      const { innerValue } = this;
+      const { innerValue, showTime } = this;
       if (!(innerValue instanceof Date)) {
-        this.innerValue = new Date();
+        let date = new Date();
+
+        if (typeof showTime === 'object') {
+          date = syncTime(date, showTime.defaultValue);
+        }
+        this.innerValue = date;
       }
     },
     methods: {
