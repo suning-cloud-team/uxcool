@@ -50,7 +50,7 @@
           <td>false</td>
         </tr>
         <tr>
-          <td>value</td>
+          <td>value(v-model)</td>
           <td>当前选中值</td>
           <td>Date</td>
           <td></td>
@@ -72,6 +72,12 @@
           <td>是否可选择时间</td>
           <td>Boolean</td>
           <td>false</td>
+        </tr>
+        <tr>
+          <td>showTime.defaultTime</td>
+          <td>选择日期后的默认时分秒</td>
+          <td>Date</td>
+          <td>new Date()</td>
         </tr>
         <tr>
           <td>show-ok</td>
@@ -187,7 +193,7 @@
           <td>false</td>
         </tr>
         <tr>
-          <td>selectedValue</td>
+          <td>selectedValue(v-model)</td>
           <td>当前选中值</td>
           <td>Array&lt;Date&gt;</td>
           <td></td>
@@ -207,8 +213,14 @@
         <tr>
           <td>show-time</td>
           <td>是否可选择时间</td>
-          <td>Boolean</td>
+          <td>Boolean | Object</td>
           <td>false</td>
+        </tr>
+        <tr>
+          <td>showTime.defaultValue</td>
+          <td>设置用户选择日期后的默认时分秒</td>
+          <td>Array&lt;Date&gt;</td>
+          <td>[new Date(), new Date()]</td>
         </tr>
         <tr>
           <td>show-ok</td>

@@ -50,6 +50,12 @@
       <ux-range-date-picker v-model="rangeDate"
                             :theme="theme" />
     </div>
+    <div class="demo">
+      <h6>默认时间</h6>
+      <ux-date-picker :show-time="{defaultValue: new Date(2019, 3, 4, 12)}" />
+      <ux-range-date-picker :show-time="{defaultValue: [new Date(2019, 3, 4, 0), new Date(2019, 3, 4, 23, 59,59)]}"
+                            :theme="theme" />
+    </div>
     <placement-demo />
     <month-demo />
     <popup-container-demo />

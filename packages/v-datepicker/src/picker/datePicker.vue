@@ -24,6 +24,7 @@
               :show-ok="showOk"
               :has-time-picker="isShowTime"
               :show-today="showToday"
+              :show-time="showTime"
               :disabled-date="disabledDate"
               :disabled-time="disabledTime"
               :date-input-placeholder="dateInputPlaceholder"

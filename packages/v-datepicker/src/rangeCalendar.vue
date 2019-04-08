@@ -115,7 +115,7 @@
 </template>
 
 <script>
-  import { cloneDeep } from '@suning/v-utils';
+  import { cloneDeep, isPlainObject } from '@suning/v-utils';
   import {
     addMonths,
     isSameMonth,
@@ -130,7 +130,7 @@
     getSeconds,
   } from 'date-fns';
   import TimePickerPanel from '@suning/v-timepicker/es/panel';
-  import { noop, isValidArray, formatDate, isAllowedDate, getTimeConfig } from './utils';
+  import { noop, isValidArray, formatDate, isAllowedDate, getTimeConfig, syncTime } from './utils';
   import CalendarPart from './rangeCalendar/calendarPart.vue';
   import TodayButton from './calendar/todayButton.vue';
   import TimePickerButton from './calendar/timePickerButton.vue';
@@ -259,7 +259,9 @@
         return showOk === true || (showOk !== false && !!hasTimePicker);
       },
       isTodayInView() {
-        const { innerValues: [start, end] } = this;
+        const {
+          innerValues: [start, end],
+        } = this;
         const today = new Date();
         return isSameMonth(today, start) || isSameMonth(today, end);
       },
@@ -430,7 +432,9 @@
         return [start, newEnd];
       },
       normalizeAnchor() {
-        const { selectedValue, value, getValueFromSelectedValue } = this;
+        const {
+          selectedValue, value, getValueFromSelectedValue, showTime
+        } = this;
         let normalizedValue = getValueFromSelectedValue(selectedValue);
 
         if (isValidArray(normalizedValue)) {
@@ -441,7 +445,16 @@
         if (isValidArray(normalizedValue)) {
           return normalizedValue;
         }
+
         const date = new Date();
+
+        // issue #166 如果设置了默认值且selected-value和value都没有的情况下，以默认值同步innerValue的时分秒
+        if (isPlainObject(showTime) && isValidArray(showTime.defaultValue)) {
+          const [defaultStart, defaultEnd] = showTime.defaultValue;
+
+          return [syncTime(date, defaultStart), syncTime(addMonths(date, 1), defaultEnd)];
+        }
+
         return [date, addMonths(date, 1)];
       },
       updateHoverValues(values) {
@@ -464,13 +477,17 @@
         }
       },
       disabledStartMonth(month) {
-        const { innerValues: [, end] } = this;
+        const {
+          innerValues: [, end],
+        } = this;
         const eVal = formatDate(end, 'YYYY-MM');
         const mVal = formatDate(month, 'YYYY-MM');
         return isAfter(mVal, eVal) || isEqual(mVal, eVal);
       },
       disabledEndMonth(month) {
-        const { innerValues: [start] } = this;
+        const {
+          innerValues: [start],
+        } = this;
         const sVal = formatDate(start, 'YYYY-MM');
         const mVal = formatDate(month, 'YYYY-MM');
         return isBefore(mVal, sVal) || isEqual(mVal, sVal);
@@ -503,8 +520,23 @@
           updateHoverValues(values);
         }
       },
+      // 选择的时间与上一次选择的时间范围时间部分保持同步
+      getSyncTime(values) {
+        const { selectedValue, innerValues } = this;
+        return values.map((val, i) => {
+          // 上一次选择过有效范围的话会通过事件通知外部组件更新selectedValue
+          // 如果selectedValue没有值，可能是还没有选择过,取innerValue
+          const prevSelected = selectedValue[i] || innerValues[i];
+
+          if (val && prevSelected) {
+            return syncTime(val, prevSelected);
+          }
+
+          return val;
+        });
+      },
       onSelect(value) {
-        const { firstSelectedVal, updateSelectedValues } = this;
+        const { firstSelectedVal, updateSelectedValues, getSyncTime } = this;
         const values = [];
         if (!firstSelectedVal) {
           this.firstSelectedVal = value;
@@ -515,7 +547,9 @@
           values.push(value, firstSelectedVal);
         }
 
-        updateSelectedValues(values);
+        // issue 165 166: 选择完范围后与上一次的选择同步时分秒
+        updateSelectedValues(getSyncTime(values));
+        // updateSelectedValues(values);
       },
       onValueChange(direction, value) {
         const { innerValues } = this;
@@ -548,6 +582,7 @@
         if (isBefore(values[1], values[0])) {
           values[1 - idx] = values[idx];
         }
+
         this.updateSelectedValues(values);
       },
       onTodayClick() {

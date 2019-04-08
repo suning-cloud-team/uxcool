@@ -1,4 +1,13 @@
-import { format as formatFn, getHours, getMinutes, getSeconds, isDate } from 'date-fns';
+import {
+  format as formatFn,
+  getHours,
+  getMinutes,
+  getSeconds,
+  isDate,
+  setHours,
+  setMinutes,
+  setSeconds,
+} from 'date-fns';
 
 const defaultDisabledTime = {
   disabledHours() {
@@ -93,6 +102,19 @@ export function getValidDate(value) {
   }
 
   return ret;
+}
+
+// 时分秒保持同步
+export function syncTime(date, time) {
+  if (!isDate(date) || !isDate(time)) {
+    return date;
+  }
+
+  let result = setHours(date, getHours(time));
+  result = setMinutes(result, getMinutes(time));
+  result = setSeconds(result, getSeconds(time));
+
+  return result;
 }
 
 export { isDate };

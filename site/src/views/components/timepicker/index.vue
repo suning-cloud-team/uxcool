@@ -102,7 +102,7 @@
           <td>allow-clear</td>
           <td>是否显示清除按钮</td>
           <td>Boolean</td>
-          <td>false</td>
+          <td>true</td>
         </tr>
         <tr>
           <td>clear-text</td>
