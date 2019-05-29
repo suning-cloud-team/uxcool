@@ -183,9 +183,9 @@ $font-family: 'Chinese Quote', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'P
   'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif,
   'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
 $code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace !default;
-$heading-color: fade(#000, 85%) !default;
-$text-color: fade(#000, 65%) !default;
-$text-color-secondary: fade(#000, 45%) !default;
+$heading-color: #000 !default;
+$text-color: #333 !default;
+$text-color-secondary: #888 !default;
 $heading-color-dark: fade(#fff, 100%) !default;
 $text-color-dark: fade(#fff, 85%) !default;
 $text-color-secondary-dark: fade(#fff, 65%) !default;
@@ -324,7 +324,7 @@ $background-color-dark: rgba(20, 20, 20, 1) !default;
 $background-color-active: #eee !default;
 
 // Disabled states
-$disabled-color: fade(#000, 25%) !default;
+$disabled-color: #aaa !default;
 $disabled-color-dark: fade(#fff, 35%) !default;
 $disabled-bg: $background-color-base !default;
 $disabled-bg-dark: $background-color-dark !default;
@@ -547,19 +547,26 @@ $radio-button-color: $btn-default-color !default;
 
 // Table
 // --
-$table-header-bg: $background-color-light !default;
+// $table-header-bg: $background-color-light !default;
+$table-header-bg: #f6f7f9 !default;
 // $table-header-bg-dark: rgba(26, 26, 26, 1) !default;
 $table-header-bg-dark: getLevelColor($black, 4) !default;
-$table-header-sort-bg: $background-color-base !default;
+$table-header-sort-bg: #ecedf0 !default;
 $table-header-sort-bg-dark: $background-color-dark !default;
 $table-row-hover-bg: $primary-1 !default;
 $table-row-hover-bg-dark: getLevelColor($black, 2) !default;
 $table-selected-row-bg: #fafafa !default;
 $table-selected-row-bg-dark: getLevelColor($black, 2) !default;
-$table-th-padding-vertical: 16px !default;
-$table-th-padding-horizontal: 11px !default;
-$table-padding-vertical: 11px !default;
+// $table-th-padding-vertical: 10px !default;
+// $table-th-padding-horizontal: 11px !default;
+$table-padding-vertical: 10px !default;
 $table-padding-horizontal: 11px !default;
+
+$table-padding-vertical-md: 8px !default;
+$table-padding-horizontal-md: 6px !default;
+$table-padding-vertical-sm: 5px !default;
+$table-padding-horizontal-sm: 5px !default;
+$table-header-icon-color: $text-color-secondary !default;
 
 // Tag
 // --
@@ -718,3 +725,9 @@ $box-border-radius: $border-radius-sm !default;
 // Transfer
 // ---
 $transfer-disabled-bg: $disabled-bg !default;
+
+// Breadcrumb
+// ---
+$breadcrumb-color: $text-color !default;
+$breadcrumb-active-color: $text-color-secondary !default;
+$breadcrumb-divider-color: $breadcrumb-color !default;
