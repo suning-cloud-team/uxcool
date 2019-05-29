@@ -2,7 +2,7 @@
 @import '../../style/mixins/index';
 
 $table-prefix-cls: #{$ux-prefix}-table;
-$table-header-icon-color: $text-color-secondary;
+// $table-header-icon-color: $text-color-secondary;
 
 .#{$table-prefix-cls}-wrapper {
   @include clearfix;
@@ -35,7 +35,7 @@ $table-header-icon-color: $text-color-secondary;
     transition: background 0.3s ease;
     text-align: left;
     color: $heading-color;
-    font-weight: 500;
+    font-weight: 600;
     border-bottom: $border-width-base $border-style-base $border-color-split;
 
     &[colspan] {
@@ -160,7 +160,7 @@ $table-header-icon-color: $text-color-secondary;
   }
 
   &-thead > tr > th {
-    padding: $table-th-padding-vertical $table-th-padding-horizontal;
+    padding: $table-padding-vertical $table-padding-horizontal;
     word-break: break-all;
     line-height: 1.6;
   }

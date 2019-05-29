@@ -1,9 +1,8 @@
 <template>
-  <ux-demo title="ajax"
-           :height="200"
+  <ux-demo :height="200"
+           title="ajax"
            vertical>
     <div slot="demo">
-      {{theme}}
       <ux-table :theme="theme"
                 :columns="columns"
                 v-model="data"
@@ -114,7 +113,11 @@
         return `${record.name}-${record.age}`;
       },
       queryData() {
-        const { filterInfo, sortInfo: { field: sortField, order: sortOrder }, pagination } = this;
+        const {
+          filterInfo,
+          sortInfo: { field: sortField, order: sortOrder },
+          pagination,
+        } = this;
         const { current, pageSize } = pagination;
         const params = {
           current,
@@ -124,7 +127,7 @@
           ...filterInfo,
         };
         this.loading = true;
-        return Axios.get('http://dip.cnsuning.com/service/2698/1.0.0/table', { params }).then(({ data }) => {
+        return Axios.get('http://dip.cnsuning.com/service/2698/1.0.0/table', { params }).then(({ data: { data } }) => {
           // effect
           setTimeout(() => {
             this.pagination = { ...pagination, total: data.total };

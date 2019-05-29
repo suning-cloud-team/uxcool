@@ -3,6 +3,10 @@
     <h1 class="ux-heading">Table
       <span class="subtitle">表格</span>
     </h1>
+
+    <blockquote>
+      <p><code>0.5.0-next.45</code>对表格样式做了微调</p>
+    </blockquote>
     <ux-heading level="2"
                 id="overview">概览</ux-heading>
     <normal-demo />

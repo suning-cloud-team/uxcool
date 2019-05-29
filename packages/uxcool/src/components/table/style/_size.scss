@@ -1,13 +1,13 @@
 .#{$table-prefix-cls}-middle {
   > .#{$table-prefix-cls}-title,
-  > .#{$table-prefix-cls}-footer {
-    padding: $table-padding-vertical * 3/4 $table-padding-horizontal/2;
+  .#{$table-prefix-cls}-footer {
+    padding: $table-padding-vertical-md $table-padding-horizontal-md;
   }
   > .#{$table-prefix-cls}-content {
     table {
       th,
       td {
-        padding: $table-padding-vertical * 3/4 $table-padding-horizontal/2;
+        padding: $table-padding-vertical-md $table-padding-horizontal-md;
       }
     }
   }
@@ -18,8 +18,8 @@
   border-radius: $border-radius-base;
 
   > .#{$table-prefix-cls}-title,
-  > .#{$table-prefix-cls}-footer {
-    padding: $table-padding-vertical/2 $table-padding-horizontal/2;
+  .#{$table-prefix-cls}-footer {
+    padding: $table-padding-vertical-sm $table-padding-horizontal-sm;
   }
 
   > .#{$table-prefix-cls}-title {
@@ -29,10 +29,10 @@
   > .#{$table-prefix-cls}-content {
     table {
       border: 0;
-      padding: 0 $table-padding-horizontal/2;
+      padding: 0 $table-padding-horizontal-sm;
       th,
       td {
-        padding: $table-padding-vertical/2 $table-padding-horizontal/2;
+        padding: $table-padding-vertical-sm $table-padding-horizontal-sm;
       }
       th {
         background: $component-background;
