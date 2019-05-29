@@ -5,14 +5,14 @@ $breadcrumb-prefix-cls: #{$ux-prefix}-breadcrumb;
 
 .#{$breadcrumb-prefix-cls} {
   @include reset-component;
-  color: $text-color-secondary;
+  color: $breadcrumb-color;
 
   .#{$iconfont-css-prefix} {
     font-size: $font-size-sm;
   }
 
   a {
-    color: $text-color-secondary;
+    color: $breadcrumb-color;
     transition: color 0.3s;
     &:hover {
       color: $primary-5;
@@ -20,7 +20,7 @@ $breadcrumb-prefix-cls: #{$ux-prefix}-breadcrumb;
   }
 
   & > span:last-child {
-    color: $text-color;
+    color: $breadcrumb-active-color;
   }
 
   & > span:last-child &-separator {
@@ -29,7 +29,7 @@ $breadcrumb-prefix-cls: #{$ux-prefix}-breadcrumb;
 
   &-separator {
     margin: 0 $padding-xs;
-    color: $text-color-secondary;
+    color: $breadcrumb-divider-color;
   }
 
   &-link {
