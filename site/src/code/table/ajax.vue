@@ -95,7 +95,11 @@
         return `${record.name}-${record.age}`;
       },
       queryData() {
-        const { filterInfo, sortInfo: { field: sortField, order: sortOrder }, pagination } = this;
+        const {
+          filterInfo,
+          sortInfo: { field: sortField, order: sortOrder },
+          pagination,
+        } = this;
         const { current, pageSize } = pagination;
         const params = {
           current,
@@ -105,7 +109,7 @@
           ...filterInfo,
         };
         this.loading = true;
-        return Axios.get('http://dippre.cnsuning.com:80/service/2698/1.0.0/table', { params }).then(({ data }) => {
+        return Axios.get('http://dippre.cnsuning.com:80/service/2698/1.0.0/table', { params }).then(({ data: { data } }) => {
             // loading effect
             setTimeout(() => {
               this.pagination = { ...pagination, total: data.total };

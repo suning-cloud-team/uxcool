@@ -3,6 +3,10 @@
     <h1 class="ux-heading">Breadcrumb
       <span class="subtitle">面包屑</span>
     </h1>
+
+    <blockquote>
+      <p><code>0.5.0-next.45</code>开始，面包屑颜色改为当前路径置灰。</p>
+    </blockquote>
     <demo-basic></demo-basic>
     <demo-link></demo-link>
     <demo-router-link></demo-router-link>
