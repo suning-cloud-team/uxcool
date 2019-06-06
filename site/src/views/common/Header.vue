@@ -32,6 +32,8 @@
 </style>
 
 <script>
+  import { version } from '@suning/uxcool/package.json';
+
   const menu = [
     {
       name: 'home',
@@ -90,7 +92,7 @@
     data() {
       return {
         menu,
-        version: process.env.PKG_VERSION,
+        version,
         activeMenu: ['vue'],
       };
     },

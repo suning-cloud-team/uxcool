@@ -1,4 +1,5 @@
 <script>
+  import { isSameTypeVNode } from '@suning/v-utils';
   import TabBar from './tabBar.vue';
   import TabContent from './tabContent.vue';
 
@@ -103,8 +104,9 @@
         while ($vnode.parent) {
           $vnode = $vnode.parent;
         }
-        const filterDescendants = slotDefault.filter(node =>
-          /^([a-zA-Z]+)-tab-pane$/.test((node.componentOptions || {}).tag));
+
+        // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/188
+        const filterDescendants = slotDefault.filter(node => isSameTypeVNode(node, 'isTabPane'));
         const idx = filterDescendants.indexOf($vnode);
         this.descendants.splice(idx, 0, item);
       },

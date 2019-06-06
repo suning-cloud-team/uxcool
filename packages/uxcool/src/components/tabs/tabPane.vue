@@ -2,9 +2,9 @@
   <v-tab-pane v-bind="$props"
               v-on="$listeners">
     <template slot="tab">
-      <slot name="tab"></slot>
+      <slot name="tab" />
     </template>
-    <slot></slot>
+    <slot />
   </v-tab-pane>
 </template>
 
@@ -15,6 +15,10 @@
 
   export default {
     name: buildComponentName('TabPane'),
+    components: {
+      VTabPane,
+    },
+    isTabPane: true,
     props: {
       name: {
         type: String,
@@ -23,9 +27,6 @@
       tab: String,
       disabled: Boolean,
       closable: Boolean,
-    },
-    components: {
-      VTabPane,
     },
   };
 </script>
