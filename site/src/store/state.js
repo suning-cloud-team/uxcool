@@ -22,7 +22,12 @@ function handleRoutes(data, groupMapping) {
     }
   });
   routeMap.forEach((v) => {
-    v.sort((a, b) => (a.name || '') > b.name);
+    v.sort(({ name: name1 = '' }, { name: name2 = '' }) => {
+      if (name1 < name2) {
+        return -1;
+      }
+      return 1;
+    });
   });
   return routeMap;
 }
@@ -104,7 +109,6 @@ const footerNavData = buildFooterNavData(menuData);
 //   }
 // });
 
-console.log('menuddata', menuData);
 export default {
   // 组件主题 light | dark
   theme: 'light',
