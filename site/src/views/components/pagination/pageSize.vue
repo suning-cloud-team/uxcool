@@ -18,7 +18,7 @@
                      @page-size-change="pageSizeChange"
                      @change="change" />
     </div>
-    <div slot="desc">通过<code>show-page-sizer</code>设置是否显示页码大小下拉框, 通过<code>page-size-options</code>传入页码大小可选值。</div>
+    <div slot="desc">通过<code>show-size-changer</code>设置是否显示页码大小下拉框, 通过<code>page-size-options</code>传入页码大小可选值。</div>
     <ux-code slot="code">
       {{ code }}
     </ux-code>

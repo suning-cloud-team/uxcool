@@ -15,8 +15,9 @@ export default {
     },
     handlePagerChange(current, pageSize) {
       const { pagination, setInnerPager, onPagerOrFiterOrSortChange } = this;
-      const pager = { ...this.innerPager, current };
+      const pager = { ...this.innerPager, current, pageSize };
 
+      // 表示不能理解，这块估计是把antdesign的属性和uxcool的属性记混了才写出来的
       if (isFunction(pagination.onChange)) {
         pagination.onChange(current, pageSize);
       }
@@ -45,7 +46,11 @@ export default {
         pager = { ...pager, ...pagination };
       }
       pager.current = getCurrent(pager.current, pager.total, pager.pageSize);
-      pager.on = { change: handlePagerChange };
+      /**
+       * http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/185
+       * 添加pageSizeChange监听
+       * */
+      pager.on = { change: handlePagerChange, 'page-size-change': handlePagerChange };
       setInnerPager(pager);
     },
     renderPagination(pagerPosition) {
