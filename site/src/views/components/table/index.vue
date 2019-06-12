@@ -562,7 +562,7 @@
         </tr>
         <tr>
           <td>change</td>
-          <td>分页,排序, 筛选变化时触发</td>
+          <td>分页,排序, 筛选变化时触发。<code>0.5.0-next.47</code>开始，表格分页支持分页大小改变。</td>
           <td>Function(pagination, filter, sorter)</td>
         </tr>
       </tbody>

@@ -2,28 +2,27 @@
   <article class="doc">
 
     <div class="mume markdown-preview">
-      <h1 class="ux-heading"
-          >UXCool</h1>
+      <h1 class="ux-heading">UXCool</h1>
 
       <blockquote>使用过程中遇到bug或者其他问题，欢迎到
-          <a href="http://git.cnsuning.com/ux/uxcool-lerna/issues"
-              target="_blank">http://git.cnsuning.com/ux/uxcool-lerna/issues</a> 提issue，也可以在豆芽群交流。
-          <img src="../../../static/qrcode.png"
-                class="group-qrcode"
-                alt="豆芽交流群">
+        <a href="http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues"
+           target="_blank">http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues</a> 提issue，也可以在豆芽群交流。
+        <img src="../../../static/qrcode.png"
+             class="group-qrcode"
+             alt="豆芽交流群">
       </blockquote>
 
       <h2 class="ux-heading"
           id="%E6%94%AF%E6%8C%81%E7%8E%AF%E5%A2%83">支持环境</h2>
 
-       <p>现代浏览器和 IE10 及以上(需要 polyfills)</p>
+      <p>现代浏览器和 IE10 及以上(需要 polyfills)</p>
       <h2 class="ux-heading">安装</h2>
 
       <h3 class="ux-heading">使用 npm 或者 yarn 安装</h3>
       <p>推荐使用 npm 或 yarn 方式进行开发.</p>
       <p>UXCool 以
         <code>@suning/uxcool</code>发布于 snpm 上,并且使用 sass 作为 css 开发环境,所以在安装之前需要对 npm 作一些设置.</p>
-      <ux-code >
+      <ux-code>
 npm config set registry=http://snpm.cnsuning.com
 npm config set @suning:registry=http://snpm.cnsuning.com
 // 如未用到sass则无需此配置(需proxy配置)
@@ -49,26 +48,27 @@ npm config set SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
       <blockquote>
         <p>不推荐使用已构建文件,这样无法快速获得 bug 修复,且无法按需加载!</p>
       </blockquote>
-      <h2 class="ux-heading" >示例</h2>
+      <h2 class="ux-heading">示例</h2>
 
       <ux-code>
 import Vue from &apos;vue&apos;;
-import  UxCool from &apos;@suning/uxcool&apos;;
+import UxCool from &apos;@suning/uxcool&apos;;
 
 Vue.use(UxCool);
-    </ux-code>
+      </ux-code>
       <p>引入样式:</p>
       <ux-code>
-import &apos;@suning/uxcool/dist/uxcool.css&apos;;
+        import &apos;@suning/uxcool/dist/uxcool.css&apos;;
       </ux-code>
-      <h3 class="ux-heading" >按需加载</h3>
+      <h3 class="ux-heading">按需加载</h3>
       <ux-code>
 import &apos;@suning/uxcool/es/select/style/css&apos;;
-import { UxSelect,  UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/select&apos;;
+import { UxSelect, UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/select&apos;;
       </ux-code>
       <blockquote>
         <p>PS：附送前后端分离开发利器，
-          <a href="http://dippre.cnsuning.com" target="_blank">数据接口平台 DIP</a>
+          <a href="http://dippre.cnsuning.com"
+             target="_blank">数据接口平台 DIP</a>
         </p>
       </blockquote>
     </div>
@@ -77,7 +77,6 @@ import { UxSelect,  UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/selec
 
 <script>
   export default {};
-
 </script>
 
 <scss>
