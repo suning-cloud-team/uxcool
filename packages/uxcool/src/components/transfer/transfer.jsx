@@ -425,7 +425,7 @@ export default {
             on,
           }}
         >
-          <template slot="notFountContent">{$slots.notFoundContent}</template>
+          <template slot="notFoundContent">{$slots.notFoundContent}</template>
           <template slot="footer">{$slots.leftFooter}</template>
         </List>
         {operationElement}
@@ -437,7 +437,7 @@ export default {
             on,
           }}
         >
-          <template slot="notFountContent">{$slots.notFoundContent}</template>
+          <template slot="notFoundContent">{$slots.notFoundContent}</template>
           <template slot="footer">{$slots.rightFooter}</template>
         </List>
       </div>
