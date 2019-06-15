@@ -25,7 +25,7 @@
   </ux-demo>
 </template>
 <script>
-  import code from '@/code/pagination/pageSize';
+  import code from '@/code/pagination/pageSize.vue';
 
   export default {
     data() {
