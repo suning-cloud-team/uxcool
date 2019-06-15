@@ -2939,10 +2939,10 @@ doctrine@^2.1.0:
   dependencies:
     esutils "^2.0.2"
 
-dom-align@^1.6.7:
-  version "1.8.2"
-  resolved "http://snpm.cnsuning.com/dom-align/-/dom-align-1.8.2.tgz#fdcd36bce25ba8d34fe3582efd57ac767df490bd"
-  integrity sha1-/c02vOJbqNNP41gu/Vesdn30kL0=
+dom-align@^1.8.3:
+  version "1.8.3"
+  resolved "http://snpm.cnsuning.com/dom-align/-/dom-align-1.8.3.tgz#f1fc197228109eca24f04cc6ad3b06f6eb8a54bb"
+  integrity sha1-8fwZcigQnsok8EzGrTsG9uuKVLs=
 
 dom-closest@^0.2.0:
   version "0.2.0"
