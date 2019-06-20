@@ -320,7 +320,9 @@ export default {
         if (triggerRef) {
           const alignElement = triggerRef.getPortalPopupElement();
           updatePortalElement(alignElement, () => {
-            const { selectedPos: { line } } = this;
+            const {
+              selectedPos: { line },
+            } = this;
             if (nLazy) {
               if (virtualListRef) {
                 if (line > 0) {
@@ -359,7 +361,10 @@ export default {
       }, 0);
     },
     forceUpdateTriggerAlign() {
-      const { $refs: { triggerRef }, innerVisible } = this;
+      const {
+        $refs: { triggerRef },
+        innerVisible,
+      } = this;
       if (triggerRef && innerVisible) {
         this.$nextTick(() => {
           triggerRef.forcePopupAlign();
@@ -634,6 +639,9 @@ export default {
             nOptionMap
           );
         } else {
+          if (isEqual(option.labelNode, {}) || isEqual(option.labelNode, [])) {
+            nOption.labelNode = undefined;
+          }
           const labelNode =
             option.labelNode || (isFunction(renderLabel) ? renderLabel(option) : undefined);
           nOption.content = labelNode || option.label || option.value;
