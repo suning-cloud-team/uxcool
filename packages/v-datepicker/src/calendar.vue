@@ -168,8 +168,8 @@
     },
     watch: {
       value(nVal) {
-        this.selectedValue = nVal;
-        this.innerValue = nVal;
+        this.selectedValue = nVal ? nVal : new Date();
+        this.innerValue = nVal ? nVal : new Date();
       },
       mode(nVal, oVal) {
         if (nVal !== oVal) {
