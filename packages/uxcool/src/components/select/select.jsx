@@ -643,7 +643,7 @@ export default {
             nOption.labelNode = undefined;
           }
           const labelNode =
-            option.labelNode || (isFunction(renderLabel) ? renderLabel(option) : undefined);
+            nOption.labelNode || (isFunction(renderLabel) ? renderLabel(option) : undefined);
           nOption.content = labelNode || option.label || option.value;
           let selectionContent = option.label || option.value;
           if (normalizeOptionLabelProp) {
