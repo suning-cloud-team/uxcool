@@ -34,6 +34,7 @@
     <editable-rows-demo />
     <nest-table-demo />
     <async-nest-table-demo />
+    <custom-header-demo />
     <hr>
 
     <ux-heading level="2"
@@ -174,14 +175,14 @@
         </tr>
         <tr>
           <td>on-row</td>
-          <td>设置行属性</td>
-          <td>Function(columns, rowIdx)</td>
+          <td>设置行属性, 返回一个包含<code>className</code>, <code>style</code>, <code>attrs</code>, <code>on</code>属性的对象。</td>
+          <td>Function(columns, rowIdx) => Object { className: String | Object, style: Object, attrs: Object, on: Object }</td>
           <td></td>
         </tr>
         <tr>
           <td>on-header-row</td>
-          <td>设置头部行属性</td>
-          <td>Function (record, rowIdx)</td>
+          <td>设置头部行属性, 返回一个包含<code>className</code>、<code>style</code>、<code>attrs</code>属性的对象</td>
+          <td>Function (record, rowIdx) => Object { className: String | Object, style: Object, attrs: Object }</td>
           <td></td>
         </tr>
       </tbody>
@@ -512,6 +513,8 @@
 
     <ux-code non-copyable>{{code}}</ux-code>
 
+    <p>具体可参照<strong>自定义表头</strong>demo。</p>
+
     <table class="api-table">
       <caption>UxTable Slots</caption>
       <thead>
@@ -596,6 +599,7 @@
   import NestTableDemo from './nestTable.vue';
   import AsyncNestTableDemo from './asyncNestTable.vue';
   import TreeRelationDemo from './treeRelation.vue';
+  import CustomHeaderDemo from './customHeader.vue';
 
   export default {
     components: {
@@ -624,11 +628,12 @@
       NestTableDemo,
       AsyncNestTableDemo,
       TreeRelationDemo,
+      CustomHeaderDemo,
     },
     data() {
       return {
         code:
-          '<ux-table v-bind:on-row="{ prop: \'\', on: { click(record) {}, mouseenter() {} } }" />',
+          '<ux-table :on-row="() => ({ prop: \'\', on: { click(record) {}, mouseenter() {} } })" />',
       };
     },
   };

@@ -3,7 +3,7 @@
     <h1 class="ux-heading">Upload
       <span class="subtitle">上传</span>
     </h1>
-    <basic-demo/>
+    <basic-demo />
     <picture-demo />
     <avatar-demo />
     <preset-demo />
@@ -11,8 +11,9 @@
     <multiple-demo />
     <control-demo />
     <limit-demo />
+    <manual-demo />
     <hr>
-    <doc/>
+    <doc />
   </article>
 </template>
 
@@ -26,6 +27,7 @@
   import MultipleDemo from './multiple.vue';
   import ControlDemo from './control.vue';
   import LimitDemo from './limit.vue';
+  import ManualDemo from './manual.vue';
 
   export default {
     components: {
@@ -38,6 +40,7 @@
       MultipleDemo,
       ControlDemo,
       LimitDemo,
+      ManualDemo,
     },
   };
 </script>
