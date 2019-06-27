@@ -1,7 +1,7 @@
 <template>
   <div>
     <normal-demo />
-    <offset-demo />
+    <!-- <offset-demo /> -->
     <!-- <container-demo /> -->
 
   </div>
