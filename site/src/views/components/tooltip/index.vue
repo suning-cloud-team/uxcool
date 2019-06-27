@@ -53,7 +53,7 @@
           <td>触发行为,可选值:
             <code>hover</code>,
             <code>click</code>,
-            <code>foucs</code>
+            <code>focus</code>
           </td>
           <td>String|Array</td>
           <td>hover</td>

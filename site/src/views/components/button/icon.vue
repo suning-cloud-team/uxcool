@@ -1,5 +1,5 @@
 <template>
-  <ux-demo title="图表按钮"
+  <ux-demo title="图标按钮"
            vertical>
     <div slot="demo"
          class="gutter-group">

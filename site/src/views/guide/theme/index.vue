@@ -25,7 +25,7 @@
              alt="light theme">
       </a>
     </div>
-    <div class="theme-picker-panel">
+    <!-- <div class="theme-picker-panel">
       <label :class="radioClass">
         <input type="radio"
                value="dark"
@@ -38,7 +38,7 @@
         <img src="../../../static/dark.png"
              alt="dark theme">
       </a>
-    </div>
+    </div> -->
     <div class="theme-picker-panel">
       <label :class="radioClass">
         <input type="radio"
