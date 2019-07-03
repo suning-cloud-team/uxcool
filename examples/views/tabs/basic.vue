@@ -154,6 +154,7 @@
     <modal-demo />
     <control-demo />
     <color-demo />
+    <tab-slot-demo />
   </div>
 </template>
 
@@ -166,6 +167,7 @@
   import ModalDemo from './modal.vue';
   import ControlDemo from './control.vue';
   import ColorDemo from './color.vue';
+  import TabSlotDemo from './tab-slot.vue';
 
   export default {
     components: {
@@ -177,6 +179,7 @@
       ModalDemo,
       ControlDemo,
       ColorDemo,
+      TabSlotDemo,
     },
     data() {
       return {
