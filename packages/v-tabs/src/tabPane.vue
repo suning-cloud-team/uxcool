@@ -1,9 +1,6 @@
 <template>
   <div :class="classes"
        role="tabpanel">
-    <div style="display:none">
-      <slot name="tab" />
-    </div>
     <slot />
   </div>
 </template>
@@ -14,7 +11,7 @@
     inject: ['tabRoot'],
     props: {
       name: { type: String, required: true },
-      tab: String,
+      tab: [String, Array],
       disabled: Boolean,
       closable: Boolean,
     },

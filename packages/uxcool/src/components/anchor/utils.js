@@ -1,29 +1,39 @@
-const REG_ANCHOR_ID = /#[^#]+$/;
-
-export function getAnchorRelateElement(href = '') {
-  const matches = href.match(REG_ANCHOR_ID);
-  if (!matches) {
-    return null;
+export default function scrollTop(
+  el,
+  from = 0,
+  to,
+  duration = 500,
+  endCallback
+) {
+  if (!window.requestAnimationFrame) {
+    window.requestAnimationFrame =
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      function(callback) {
+        return window.setTimeout(callback, 1000 / 60);
+      };
   }
+  const difference = Math.abs(from - to);
+  const step = Math.ceil((difference / duration) * 50);
 
-  return document.querySelector(matches[0]);
-}
+  function scroll(start, end, step) {
+    if (start === end) {
+      endCallback && endCallback();
+      return;
+    }
 
-export function getElementOffsetTop(element, container) {
-  let top = 0;
-  if (!element || !container) {
-    return top;
+    let d = start + step > end ? end : start + step;
+    if (start > end) {
+      d = start - step < end ? end : start - step;
+    }
+
+    if (el === window) {
+      window.scrollTo(d, d);
+    } else {
+      el.scrollTop = d;
+    }
+    window.requestAnimationFrame(() => scroll(d, end, step));
   }
-
-  const box = element.getBoundingClientRect();
-  if (container.window === window) {
-    const doc = element.ownerDocument;
-    const docElement = doc && doc.documentElement;
-    const body = doc && doc.body;
-    top = box.top - docElement.clientTop || body.clientTop || 0;
-  } else {
-    const containerRect = container.getBoundingClientRect();
-    top = box.top - containerRect.top;
-  }
-  return top;
+  scroll(from, to, step);
 }

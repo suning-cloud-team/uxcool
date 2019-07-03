@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+// eslint-disable-next-line
 import UxModal from '@suning/uxcool/src/components/modal';
 
 Vue.use(Router);
@@ -58,6 +59,11 @@ const routes = [
     name: 'Tabs',
     path: '/tabs',
     component: () => import('./views/tabs/index'),
+  },
+  {
+    name: 'TabsTest',
+    path: '/tabs-test',
+    component: () => import('./views/tabs-test/index'),
   },
   {
     name: 'Button',
@@ -265,6 +271,17 @@ const routes = [
   //   component: () => import('./views/chart/index'),
   // },
 ];
+
+function compare(a, b) {
+  if (a.name > b.name) {
+    return 1;
+  } else if (a.name < b.name) {
+    return -1;
+  }
+  return 0;
+}
+
+routes.sort(compare);
 
 const router = new Router({
   routes,

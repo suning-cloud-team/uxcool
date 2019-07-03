@@ -175,6 +175,7 @@
         const props = {
           prefixCls,
           popupClass: [`${prefixCls}-popup`, popupClass],
+          initPopupFirst: true,
           visible: isOpen,
           actions,
           getPopupContainer: getContainer,

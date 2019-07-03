@@ -1,5 +1,5 @@
-import Anchor from './anchor';
-import AnchorLink from './anchorLink';
+import Anchor from './anchor.vue';
+import AnchorLink from './anchorLink.vue';
 
 Anchor.Link = AnchorLink;
 
