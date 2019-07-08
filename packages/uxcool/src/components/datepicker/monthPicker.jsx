@@ -35,6 +35,13 @@ export default {
       type: String,
       default: 'slide-up',
     },
+    size: {
+      type: String,
+      default: 'default',
+      validator(value) {
+        return ['small', 'large', 'default'].indexOf(value) > -1;
+      },
+    },
   },
   data() {
     return {
@@ -55,18 +62,24 @@ export default {
       return !disabled && innerValue && allowClear;
     },
     pickerClasses() {
-      const { prefixCls } = this;
+      const { prefixCls, size } = this;
       return {
         [`${prefixCls}-picker`]: true,
+        [`${prefixCls}-picker-${size}`]: true,
       };
     },
     pickerInputClass() {
-      const { prefixCls, disabled } = this;
+      const { prefixCls, disabled, size } = this;
       const inputPrefix = 'ux-input';
+      const map = {
+        small: 'sm',
+        large: 'lg',
+      };
       return {
         [inputPrefix]: true,
         [`${prefixCls}-picker-input`]: true,
         [`${inputPrefix}-disabled`]: disabled,
+        [`${inputPrefix}-${map[size]}`]: size !== 'default',
       };
     },
     inputPlaceholder() {

@@ -38,12 +38,6 @@
           <td>import locale from '@suning/uxcool/es/datepicker/locale/zh_CN'</td>
         </tr>
         <tr>
-          <td>theme</td>
-          <td>主题</td>
-          <td>light|dark</td>
-          <td>light</td>
-        </tr>
-        <tr>
           <td>is-open</td>
           <td>弹层是否展开</td>
           <td>Boolean</td>
@@ -127,6 +121,12 @@
           <td>Boolean</td>
           <td>false</td>
         </tr>
+        <tr>
+          <td>size</td>
+          <td>尺寸大小: <code>small</code>,<code>default</code>, <code>large</code></td>
+          <td>String</td>
+          <td>default</td>
+        </tr>
       </tbody>
     </table>
     <h4 class="mume-header"
@@ -179,12 +179,6 @@
           <td>国际化配置</td>
           <td>Object</td>
           <td>import locale from '@suning/uxcool/es/datepicker/locale/zh_CN'</td>
-        </tr>
-        <tr>
-          <td>theme</td>
-          <td>主题</td>
-          <td>light|dark</td>
-          <td>light</td>
         </tr>
         <tr>
           <td>is-open</td>
@@ -275,6 +269,12 @@
           <td>是否点击 ok 按钮时才更新值</td>
           <td>Boolean</td>
           <td>false</td>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>尺寸大小: <code>small</code>,<code>default</code>, <code>large</code></td>
+          <td>String</td>
+          <td>default</td>
         </tr>
       </tbody>
     </table>
