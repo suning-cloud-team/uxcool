@@ -72,7 +72,9 @@ export default {
   methods: {
     onSelect(item) {
       const { type } = this;
-      this.$emit('select', type, item.value);
+      if (!item.isDisabled) {
+        this.$emit('select', type, item.value);
+      }
     },
     onMouseEnter(e) {
       this.active = true;
@@ -82,7 +84,10 @@ export default {
       this.active = false;
     },
     mountScrollToTarget() {
-      const { $refs: { wrapRef, selectedRef }, triggerRef } = this;
+      const {
+        $refs: { wrapRef, selectedRef },
+        triggerRef,
+      } = this;
       if (selectedRef) {
         let alignElement;
         if (triggerRef) {
@@ -94,7 +99,9 @@ export default {
       }
     },
     scrollToTarget(duration = 120) {
-      const { $refs: { wrapRef, selectedRef } } = this;
+      const {
+        $refs: { wrapRef, selectedRef },
+      } = this;
       if (selectedRef) {
         scrollTo(wrapRef, selectedRef.offsetTop, duration);
       }

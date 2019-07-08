@@ -63,6 +63,7 @@
 
     <slider-demo />
     <control-mode-demo />
+    <size-demo />
 
   </div>
 </template>
@@ -86,6 +87,7 @@
   import SliderDemo from './slider.vue';
   import ControlModeDemo from './controlMode.vue';
   import PlacementDemo from './placement.vue';
+  import SizeDemo from './size.vue';
 
   export default {
     components: {
@@ -97,6 +99,7 @@
       SliderDemo,
       ControlModeDemo,
       PlacementDemo,
+      SizeDemo,
     },
     data() {
       return {

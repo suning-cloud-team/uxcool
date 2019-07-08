@@ -114,6 +114,13 @@
         type: Boolean,
         default: false,
       },
+      size: {
+        type: String,
+        default: 'default',
+        validator(value) {
+          return ['small', 'large', 'default'].indexOf(value) > -1;
+        },
+      },
     },
     data() {
       return {
@@ -122,19 +129,26 @@
     },
     computed: {
       pickerClasses() {
-        const { prefixCls, theme } = this;
+        const { prefixCls, theme, size } = this;
         return {
           [`${prefixCls}-picker`]: true,
           [`${prefixCls}-picker-${theme}`]: true,
+          [`${prefixCls}-picker-${size}`]: true,
         };
       },
       pickerInputClass() {
-        const { prefixCls, disabled } = this;
+        const { prefixCls, disabled, size } = this;
         const inputPrefix = 'ux-input';
+        const map = {
+          small: 'sm',
+          large: 'lg',
+        };
+
         return {
           [inputPrefix]: true,
           [`${prefixCls}-picker-input`]: true,
           [`${inputPrefix}-disabled`]: disabled,
+          [`${inputPrefix}-${map[size]}`]: size !== 'default',
         };
       },
       bindProps() {
