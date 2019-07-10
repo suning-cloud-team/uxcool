@@ -272,7 +272,7 @@
         </tr>
         <tr>
           <td>size</td>
-          <td>尺寸大小: <code>small</code>,<code>default</code>, <code>large</code></td>
+          <td>尺寸大小: <code>small</code>,<code>default</code>, <code>large</code>。<code>0.5.0-next.54</code>版本以后可用。</td>
           <td>String</td>
           <td>default</td>
         </tr>

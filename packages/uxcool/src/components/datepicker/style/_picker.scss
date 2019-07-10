@@ -38,7 +38,7 @@
   &-input {
     outline: none;
     display: block;
-    padding: 6px 11px;
+    // padding: 6px 11px;
   }
 
   &:hover &-input:not(.#{$ux-prefix}-input-disabled) {
