@@ -7,14 +7,12 @@
     <demo-basic />
     <demo-container />
     <demo-offset />
+    <demo-before-hash-change />
+    <demo-before-scroll />
 
     <hr>
     <ux-heading level="2"
                 id="api">API</ux-heading>
-
-    <blockquote>
-      <p>anchor 组件滚动时会触发路由切换，项目组对路由切换滚动行为有要求的需要注意在路由的 scrollBehavior 方法中加以区分。</p>
-    </blockquote>
 
     <table class="api-table">
       <caption>UxAnchor Props</caption>
@@ -27,6 +25,12 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td>show-ink</td>
+          <td>是否显示小圆点</td>
+          <td>Boolean</td>
+          <td>true</td>
+        </tr>
         <tr>
           <td>offsetTop</td>
           <td>距离顶部偏移量</td>
@@ -42,10 +46,22 @@
           <td>5</td>
         </tr>
         <tr>
-          <td>getContainer</td>
+          <td>get-container</td>
           <td>自定义容器</td>
           <td>Function=&gt;HTMLElement</td>
           <td>()=&gt;window</td>
+        </tr>
+        <tr>
+          <td>before-hash-change</td>
+          <td>路由改变前置动作(如果返回值为<code>false</code>则阻止默认路由行为)</td>
+          <td>(href)=&gt;Boolean</td>
+          <td>()=&gt;true</td>
+        </tr>
+        <tr>
+          <td>before-scroll</td>
+          <td>页面滚动前置动作(如果返回值为<code>false</code>则阻止默认滚动行为)</td>
+          <td>(href)=&gt;Boolean</td>
+          <td>()=&gt;true</td>
         </tr>
       </tbody>
     </table>
@@ -98,12 +114,16 @@
   import demoBasic from './basic.vue';
   import demoContainer from './container.vue';
   import demoOffset from './offset.vue';
+  import demoBeforeHashChange from './before-hash-change.vue';
+  import demoBeforeScroll from './before-scroll.vue';
 
   export default {
     components: {
       demoBasic,
       demoContainer,
       demoOffset,
+      demoBeforeHashChange,
+      demoBeforeScroll
     },
   };
 </script>

@@ -53,11 +53,19 @@
     },
     methods: {
       onClickAnchor() {
-        const isRoute = this.$router;
-        if (isRoute) {
-          this.$router.push(this.href);
+        if (this.anchor.beforeHashChange(this.href)) {
+          const isRoute = this.$router;
+          if (isRoute) {
+            this.$router.push(this.href);
+          } else {
+            window.location.href = this.href;
+          }
+          this.anchor.handleHashChange();
         } else {
-          window.location.href = this.href;
+          this.anchor.handleHashChange(this.href);
+        }
+        if (this.anchor.beforeScroll(this.href)) {
+          this.anchor.handleScrollTo();
         }
       },
     },

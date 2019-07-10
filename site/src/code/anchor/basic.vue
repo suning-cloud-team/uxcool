@@ -1,41 +1,26 @@
 <template>
   <div>
-    <div id="basicDemo"
-         class="demo">
-      basicDemo
-      <ux-anchor>
-        <ux-anchor-link href="#basicDemo"
-                        title="basic demo" />
-        <ux-anchor-link href="#secondDemo"
-                        title="second demo" />
-        <ux-anchor-link href="#ccc"
-                        title="ccc">
-          <span style="color:green">slot cccc</span>
-          <ux-anchor-link href="#t-d"
-                          title="t-d">
-            <ux-anchor-link href="#t-t-d"
-                            title="t-t-d" />
-
-          </ux-anchor-link>
-          <ux-anchor-link href="#c-d"
-                          title="c-d" />
-        </ux-anchor-link>
-      </ux-anchor>
-    </div>
-
-    <div id="secondDemo"
-         class="demo"
-         style="margin:100px 0">
-      second demo
-    </div>
-
-    <div id="t-d"
-         class="demo">
-      t-d
-    </div>
+    <ux-anchor>
+      <ux-anchor-link href="#基本用法"
+                      title="基本用法" />
+      <ux-anchor-link href="#自定义容器"
+                      title="自定义容器" />
+      <ux-anchor-link href="#顶端偏移"
+                      title="顶端偏移" />
+      <ux-anchor-link href="#自定义路由行为"
+                      title="自定义路由行为" />
+      <ux-anchor-link href="#自定义滚动行为"
+                      title="自定义滚动行为" />
+      <ux-anchor-link href="#api"
+                      title="api" />
+    </ux-anchor>
   </div>
 </template>
 
-<script>
-  export default {};
-</script>
+<style scoped>
+  .ux-anchor-wrapper {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+  }
+</style>

@@ -10,17 +10,17 @@ Vue.use(Router);
 
 const router = new Router({
   routes: store.getters.routes,
-  scrollBehavior({ path }, from) {
-    // anchor组件滚动时会触发路由变化，这边硬编码anchor组件页面不滚动到顶部
-    if (path.endsWith('anchor') && from.path === path) {
-      return false;
-    }
+  // scrollBehavior({ path }, from) {
+  //   // anchor组件滚动时会触发路由变化，这边硬编码anchor组件页面不滚动到顶部
+  //   if (path.endsWith('anchor') && from.path === path) {
+  //     return false;
+  //   }
 
-    return {
-      x: 0,
-      y: 0,
-    };
-  },
+  //   return {
+  //     x: 0,
+  //     y: 0,
+  //   };
+  // },
 });
 
 NProgress.configure({
@@ -45,9 +45,9 @@ router.afterEach(({ meta = {}, path }) => {
   NProgress.done();
 
   // anchor组件滚动页面时会触发路由切换，只能硬编码判断非锚点页面滚动至顶端了
-  if (!path.endsWith('anchor')) {
-    window.scrollTo(0, 0);
-  }
+  // if (!path.endsWith('anchor')) {
+  //   window.scrollTo(0, 0);
+  // }
 
   /* eslint-disable no-underscore-dangle */
   // 这边埋点函数会读取dom 所以要延迟一下
