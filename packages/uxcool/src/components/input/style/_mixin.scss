@@ -34,6 +34,7 @@ $input-affix-width: 19px;
   opacity: 1;
   cursor: not-allowed;
   color: $disabled-color;
+
   &:hover {
     @include hover($input-border-color);
   }
@@ -66,14 +67,18 @@ $input-affix-width: 19px;
 
   &-disabled {
     @include disabled();
-  } // Reset height for `textarea`s
+  }
+
+  // Reset height for `textarea`s
   @at-root textarea#{&} {
     max-width: 100%; // prevent textearea resize from coming out of its container
     height: auto;
     vertical-align: bottom;
     transition: all 0.3s, height 0s;
     min-height: $input-height-base;
-  } // Size
+  }
+
+  // Size
   &-lg {
     @include input-lg();
   }
@@ -90,14 +95,16 @@ $input-affix-width: 19px;
   border-collapse: separate;
   border-spacing: 0;
   width: 100%; // Undo padding and float of grid classes
+
   &[class*='col-'] {
     float: none;
     padding-left: 0;
     padding-right: 0;
   }
 
-  > [class*='col-'] {
+  >[class*='col-'] {
     padding-right: 8px;
+
     &:last-child {
       padding-right: 0;
     }
@@ -105,7 +112,7 @@ $input-affix-width: 19px;
 
   &-addon,
   &-wrap,
-  > .#{$inputClass} {
+  >.#{$inputClass} {
     display: table-cell;
 
     &:not(:first-child):not(:last-child) {
@@ -120,7 +127,7 @@ $input-affix-width: 19px;
     vertical-align: middle;
   }
 
-  &-wrap > * {
+  &-wrap>* {
     display: block !important;
   }
 
@@ -128,10 +135,12 @@ $input-affix-width: 19px;
     float: left;
     width: 100%;
     margin-bottom: 0;
+
     &:focus {
       z-index: 1; // Fix https://gw.alipayobjects.com/zos/rmsportal/DHNpoqfMXSfrSnlZvhsJ.png
       border-right-width: 1px;
     }
+
     &:hover {
       z-index: 1;
       border-right-width: 1px;
@@ -150,8 +159,10 @@ $input-affix-width: 19px;
     border-radius: $border-radius-base;
     position: relative;
     transition: all 0.3s; // Reset Select's style in addon
+
     .#{$ux-prefix}-select {
       margin: -($input-padding-vertical-base + 1px) (-$input-padding-horizontal-base); // lesshint spaceAroundOperator: false
+
       .#{$ux-prefix}-select-selection {
         background-color: inherit;
         margin: -1px;
@@ -165,9 +176,11 @@ $input-affix-width: 19px;
           color: $primary-color;
         }
       }
-    } // Expand addon icon click area
+    }
+
+    // Expand addon icon click area
     // https://github.com/ant-design/ant-design/issues/3714
-    > i:only-child:after {
+    >i:only-child:after {
       position: absolute;
       content: '';
       top: 0;
@@ -175,18 +188,21 @@ $input-affix-width: 19px;
       right: 0;
       bottom: 0;
     }
-  } // Reset rounded corners
-  > .#{$inputClass}:first-child,
+  }
+
+  // Reset rounded corners
+  >.#{$inputClass}:first-child,
   &-addon:first-child {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0; // Reset Select's style in addon
+
     .#{$ux-prefix}-select .#{$ux-prefix}-select-selection {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
     }
   }
 
-  > .#{$inputClass}-affix-wrapper {
+  >.#{$inputClass}-affix-wrapper {
     &:not(:first-child) .#{$inputClass} {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
@@ -201,28 +217,34 @@ $input-affix-width: 19px;
   &-addon:first-child {
     border-right: 0;
   }
+
   &-addon:last-child {
     border-left: 0;
   }
 
-  > .#{$inputClass}:last-child,
+  >.#{$inputClass}:last-child,
   &-addon:last-child {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0; // Reset Select's style in addon
+
     .#{$ux-prefix}-select .#{$ux-prefix}-select-selection {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
     }
-  } // Sizing options
+  }
+
+  // Sizing options
   &-lg .#{$inputClass},
-  &-lg > &-addon {
+  &-lg>&-addon {
     @include input-lg();
   }
 
   &-sm .#{$inputClass},
-  &-sm > &-addon {
+  &-sm>&-addon {
     @include input-sm();
-  } // Fix https://github.com/ant-design/ant-design/issues/5754
+  }
+
+  // Fix https://github.com/ant-design/ant-design/issues/5754
   &-lg .#{$ux-prefix}-select-selection--single {
     height: $input-height-lg;
   }
@@ -241,44 +263,48 @@ $input-affix-width: 19px;
     display: block;
     @include clearfix;
 
-    & > * {
+    &>* {
       border-radius: 0;
       border-right-width: 0;
       vertical-align: top; // https://github.com/ant-design/ant-design-pro/issues/139
       float: none;
       display: inline-block;
-    } // Undo float for .ant-input-group .ant-input
+    }
+
+    // Undo float for .ant-input-group .ant-input
     .#{$inputClass} {
       float: none;
-    } // reset border for Select, DatePicker, AutoComplete, Cascader, Mention, TimePicker
-    & > .#{$ux-prefix}-select .#{$ux-prefix}-select-selection,
-    & > .#{$ux-prefix}-calendar-picker .#{$ux-prefix}-input,
-    & > .#{$ux-prefix}-select-auto-complete .#{$ux-prefix}-input,
-    & > .#{$ux-prefix}-cascader-picker .#{$ux-prefix}-input,
-    & > .#{$ux-prefix}-mention-wrapper .#{$ux-prefix}-mention-editor,
-    & > .#{$ux-prefix}-time-picker .#{$ux-prefix}-time-picker-input {
+    }
+
+    // reset border for Select, DatePicker, AutoComplete, Cascader, Mention, TimePicker
+    &>.#{$ux-prefix}-select .#{$ux-prefix}-select-selection,
+    &>.#{$ux-prefix}-calendar-picker .#{$ux-prefix}-input,
+    &>.#{$ux-prefix}-select-auto-complete .#{$ux-prefix}-input,
+    &>.#{$ux-prefix}-cascader-picker .#{$ux-prefix}-input,
+    &>.#{$ux-prefix}-mention-wrapper .#{$ux-prefix}-mention-editor,
+    &>.#{$ux-prefix}-time-picker .#{$ux-prefix}-time-picker-input {
       border-radius: 0;
       border-right-width: 0;
     }
 
-    & > *:first-child,
-    & > .#{$ux-prefix}-select:first-child .#{$ux-prefix}-select-selection,
-    & > .#{$ux-prefix}-calendar-picker:first-child .#{$ux-prefix}-input,
-    & > .#{$ux-prefix}-select-auto-complete:first-child .#{$ux-prefix}-input,
-    & > .#{$ux-prefix}-cascader-picker:first-child .#{$ux-prefix}-input,
-    & > .#{$ux-prefix}-mention-wrapper:first-child .#{$ux-prefix}-mention-editor,
-    & > .#{$ux-prefix}-time-picker:first-child .#{$ux-prefix}-time-picker-input {
+    &>*:first-child,
+    &>.#{$ux-prefix}-select:first-child .#{$ux-prefix}-select-selection,
+    &>.#{$ux-prefix}-calendar-picker:first-child .#{$ux-prefix}-input,
+    &>.#{$ux-prefix}-select-auto-complete:first-child .#{$ux-prefix}-input,
+    &>.#{$ux-prefix}-cascader-picker:first-child .#{$ux-prefix}-input,
+    &>.#{$ux-prefix}-mention-wrapper:first-child .#{$ux-prefix}-mention-editor,
+    &>.#{$ux-prefix}-time-picker:first-child .#{$ux-prefix}-time-picker-input {
       border-top-left-radius: $border-radius-base;
       border-bottom-left-radius: $border-radius-base;
     }
 
-    & > *:last-child,
-    & > .#{$ux-prefix}-select:last-child .#{$ux-prefix}-select-selection,
-    & > .#{$ux-prefix}-calendar-picker:last-child .#{$ux-prefix}-input,
-    & > .#{$ux-prefix}-select-auto-complete:last-child .#{$ux-prefix}-input,
-    & > .#{$ux-prefix}-cascader-picker:last-child .#{$ux-prefix}-input,
-    & > .#{$ux-prefix}-mention-wrapper:last-child .#{$ux-prefix}-mention-editor,
-    & > .#{$ux-prefix}-time-picker:last-child .#{$ux-prefix}-time-picker-input {
+    &>*:last-child,
+    &>.#{$ux-prefix}-select:last-child .#{$ux-prefix}-select-selection,
+    &>.#{$ux-prefix}-calendar-picker:last-child .#{$ux-prefix}-input,
+    &>.#{$ux-prefix}-select-auto-complete:last-child .#{$ux-prefix}-input,
+    &>.#{$ux-prefix}-cascader-picker:last-child .#{$ux-prefix}-input,
+    &>.#{$ux-prefix}-mention-wrapper:last-child .#{$ux-prefix}-mention-editor,
+    &>.#{$ux-prefix}-time-picker:last-child .#{$ux-prefix}-time-picker-input {
       border-top-right-radius: $border-radius-base;
       border-bottom-right-radius: $border-radius-base;
       border-right-width: 1px;
@@ -306,6 +332,14 @@ $input-affix-width: 19px;
     transform: translateY(-50%);
     line-height: 0;
     color: $input-color;
+    display: inline-flex;
+    align-items: center;
+
+    .#{$inputClass}-limit-word {
+      font-size: 12px;
+      display: inline-block;
+      color: #909399;
+    }
   }
 
   .#{$inputClass}-prefix {

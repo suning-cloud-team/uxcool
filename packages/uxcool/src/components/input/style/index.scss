@@ -12,6 +12,7 @@ $input-prefix-cls: #{$ux-prefix}-input;
   &-group {
     @include reset-component;
     @include input-group('#{$input-prefix-cls}');
+
     &-wrapper {
       display: inline-block;
       vertical-align: top;
@@ -31,6 +32,19 @@ $input-prefix-cls: #{$ux-prefix}-input;
 
 textarea.#{$input-prefix-cls} {
   height: auto;
+}
+
+.#{$input-prefix-cls}-textarea-wrapper {
+  position: relative;
+
+  .#{$input-prefix-cls}-limit-word {
+    font-size: 12px;
+    display: inline-block;
+    color: #909399;
+    position: absolute;
+    bottom: 4px;
+    right: 12px;
+  }
 }
 
 @import 'search-input';

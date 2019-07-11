@@ -1,10 +1,15 @@
 <template>
-  <textarea ref="textarea"
-            :class="classes"
-            :style="textAreaStyle"
-            :value="innerValue"
-            :disabled="disabled"
-            v-on="bindListeners" />
+  <div :class="`${prefixCls}-textarea-wrapper`">
+    <textarea ref="textarea"
+              v-bind="$attrs"
+              :class="classes"
+              :style="textAreaStyle"
+              :value="innerValue"
+              :disabled="disabled"
+              v-on="bindListeners" />
+    <span v-if="limitWord"
+          :class="`${prefixCls}-limit-word`">{{ limitWord }}</span>
+  </div>
 </template>
 
 <script>
@@ -37,6 +42,10 @@
         type: String,
         default: 'light',
       },
+      showWordLimit: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -61,6 +70,14 @@
           input: onInput,
           keydown: onKeydown,
         };
+      },
+      length() {
+        return this.innerValue ? this.innerValue.length : 0;
+      },
+      limitWord() {
+        const { length, showWordLimit, $attrs } = this;
+        const { maxlength } = $attrs;
+        return maxlength && showWordLimit ? `${length}/${maxlength}` : null;
       },
     },
     watch: {

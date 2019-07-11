@@ -40,10 +40,15 @@ export default {
       type: String,
       default: '',
     },
+    showWordLimit: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       innerValue: '',
+      length: 0,
     };
   },
   computed: {
@@ -62,6 +67,11 @@ export default {
         disabled,
       };
     },
+    limitWord() {
+      const { length, showWordLimit, $attrs } = this;
+      const { maxlength } = $attrs;
+      return maxlength && showWordLimit ? `${length}/${maxlength}` : null;
+    },
   },
 
   watch: {
@@ -75,6 +85,7 @@ export default {
   methods: {
     setValue(val) {
       this.innerValue = val;
+      this.length = val ? val.length : 0;
     },
     getValue() {
       return this.innerValue;
@@ -91,13 +102,17 @@ export default {
       this.$emit('keydown', e);
     },
     focus() {
-      const { $refs: { inputRef } } = this;
+      const {
+        $refs: { inputRef },
+      } = this;
       if (inputRef) {
         inputRef.focus();
       }
     },
     blur() {
-      const { $refs: { inputRef } } = this;
+      const {
+        $refs: { inputRef },
+      } = this;
       if (inputRef) {
         inputRef.blur();
       }
@@ -132,6 +147,7 @@ export default {
         affixClass,
         size,
         getSlotOrAttrVal,
+        limitWord,
       } = this;
       const prefix = getSlotOrAttrVal('prefix');
       const suffix = getSlotOrAttrVal('suffix');
@@ -156,12 +172,21 @@ export default {
         />
       );
 
-      if (!prefix && !suffix) {
+      if (!prefix && !suffix && !limitWord) {
         return inputElement;
       }
 
       const prefixElement = prefix ? <span class={`${prefixCls}-prefix`}>{prefix}</span> : null;
-      const suffixElement = suffix ? <span class={`${prefixCls}-suffix`}>{suffix}</span> : null;
+      const limitWordElement = limitWord ? (
+        <span class={`${prefixCls}-limit-word`}>{limitWord}</span>
+      ) : null;
+      const suffixElement =
+        suffix || limitWordElement ? (
+          <span class={`${prefixCls}-suffix`}>
+            {suffix}
+            {limitWordElement}
+          </span>
+      ) : null;
       const affixCls = [
         affixClass,
         {
