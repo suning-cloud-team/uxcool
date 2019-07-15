@@ -20,6 +20,12 @@
                        @search="onSearch" />
     </div>
 
+    <h4>custom-search-icon</h4>
+    <div class="demo">
+      <ux-search-input :enter-button="customIcon"
+                       @search="onSearch" />
+    </div>
+
     <h4>disabled</h4>
     <div class="demo">
       <ux-search-input disabled
@@ -95,6 +101,9 @@
       };
     },
     methods: {
+      customIcon() {
+        return <Icon type="order-search-d" />;
+      },
       onClick(e) {
         console.log('click', e);
       },

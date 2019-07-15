@@ -18,7 +18,7 @@ export default {
       default: 'ux-input',
     },
     enterButton: {
-      type: [String, Boolean],
+      type: [String, Boolean, Function],
       default: false,
     },
   },
@@ -87,6 +87,15 @@ export default {
         return <Icon type="search" on-click={disabled ? () => {} : onSearch} />;
       }
 
+      let btnIcon = null;
+      if (enterButton === true) {
+        btnIcon = <Icon type="search" />;
+      } else if (typeof enterButton === 'function') {
+        btnIcon = enterButton(this.$createElement);
+      } else {
+        btnIcon = enterButton;
+      }
+
       return (
         <Button
           type="primary"
@@ -95,7 +104,8 @@ export default {
           size={size}
           on-click={onSearch}
         >
-          {enterButton === true ? <Icon type="search" /> : enterButton}
+          {btnIcon}
+          {/* {enterButton === true ? <Icon type="search" /> : enterButton} */}
         </Button>
       );
     },
