@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ux-anchor :offsetTop="60">
+    <ux-anchor :before-hash-change="beforeHashChange">
       <ux-anchor-link href="#基本用法"
                       title="基本用法" />
       <ux-anchor-link href="#自定义容器"
@@ -16,3 +16,13 @@
     </ux-anchor>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    beforeHashChange() {
+      return false;
+    },
+  },
+};
+</script>

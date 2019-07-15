@@ -44,6 +44,14 @@
         type: Number,
         default: 5,
       },
+      beforeHashChange: {
+        type: Function,
+        default: () => true,
+      },
+      beforeScroll: {
+        type: Function,
+        default: () => true,
+      },
     },
     data() {
       return {
@@ -62,12 +70,18 @@
         };
       },
       currentId() {
-        return this.currentLink.substring(1);
+        if (this.currentLink !== '') {
+          return this.currentLink.substring(1);
+        }
+        return '';
       },
       inkTop() {
         const initTop = 11;
         const stepHeight = 28;
         const { titles, currentLink } = this;
+        if (currentLink === '') {
+          return initTop;
+        }
         for (let i = 0; i < titles.length; i++) {
           if (titles[i] === currentLink) {
             return initTop + (i * stepHeight);
@@ -88,19 +102,12 @@
       },
     },
     watch: {
-      '$route'() {
-        this.handleHashChange();
-        this.$nextTick(() => {
-          this.handleScrollTo();
-        })
-      },
       getContainer() {
         this.init();
       }
     },
     created() {
       this.$nextTick(() => {
-        [this.currentLink] = this.titles;
         this.init();
       });
     },
@@ -108,16 +115,26 @@
       this.removeListener();
     },
     methods: {
-      handleHashChange() {
-        const url = window.location.href;
-        const sharpLinkMatch = anchorRegex.exec(url);
-        if (!sharpLinkMatch) return;
-        [ , this.currentLink] = sharpLinkMatch;
+      handleHashChange(href) {
+        if (!href) {
+          const url = decodeURI(window.location.href);
+          const sharpLinkMatch = anchorRegex.exec(url);
+          if (!sharpLinkMatch) return;
+          [, this.currentLink] = sharpLinkMatch;
+        } else {
+          this.currentLink = href;
+        }
       },
       handleScrollTo() {
         const anchor = document.getElementById(this.currentId);
         if (!anchor) return;
-        const offsetTop = anchor.offsetTop - this.wrapperTop - this.offsetTop;
+        let top = anchor.offsetTop;
+        let cur = anchor.offsetParent;
+        while (cur) {
+          top += cur.offsetTop;
+          cur = cur.offsetParent;
+        }
+        const offsetTop = top - this.wrapperTop - this.offsetTop;
         this.animating = true;
         scrollTop(this.scrollContainer, this.scrollElement.scrollTop, offsetTop, 600, () => {
           this.animating = false;
@@ -135,22 +152,27 @@
         titles.map(title => {
           const elm = document.getElementById(title.substring(1));
           if(elm) {
+            let top = elm.offsetTop;
+            let cur = elm.offsetParent;
+            while (cur) {
+              top += cur.offsetTop;
+              cur = cur.offsetParent;
+            }
             offsets.push({
               link: title,
-              offset: elm.offsetTop - scrollElement.offsetTop
+              offset: top - scrollElement.offsetTop
             })
           }
         })
         return offsets;
       },
       scrollListener() {
-        // 一切都由anchor组件监听，内层点击时只会改变路由，外层滚动页面，每次滚动判断当前top元素title，如果有的话，改变currentLink。
         const { updateTitlesOffset, bounds, scrollElement, offsetTop } =  this;
         const elmOffsets = updateTitlesOffset();
         let scrollTop = scrollElement.scrollTop + offsetTop;
         scrollTop += bounds;
         let i = -1;
-        while(++i < elmOffsets.length) {
+        while (++i < elmOffsets.length) {
           let currentEle = elmOffsets[i];
           let nextEle = elmOffsets[i + 1];
           if (scrollTop >= currentEle.offset && scrollTop < ((nextEle && nextEle.offset) || Infinity)) {
@@ -164,7 +186,9 @@
         this.$nextTick(() => {
           this.removeListener();
           this.addListener();
-          this.handleScrollTo();
+          if (this.beforeScroll(this.currentLink)) {
+            this.handleScrollTo();
+          }
         });
       }
     },

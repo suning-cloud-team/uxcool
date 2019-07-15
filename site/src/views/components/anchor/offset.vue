@@ -1,25 +1,24 @@
 <template>
-  <ux-demo title="顶部偏移"
+  <ux-demo title="顶端偏移"
            :height="200">
     <div slot="demo">
-      <div id="offsetDemo"
-           class="demo">
-        offsetDemo
-        <ux-anchor :offset-top="100">
-          <ux-anchor-link href="#offsetDemo"
-                          title="basic demo" />
-          <ux-anchor-link href="#targetDemo"
-                          title="target demo" />
-        </ux-anchor>
-      </div>
-      <div id="targetDemo"
-           class="demo"
-           style="margin:200px 0">
-        target demo
-      </div>
+      <h6>见右侧导航栏</h6>
+      <ux-anchor :offsetTop="60">
+        <ux-anchor-link href="#基本用法"
+                        title="基本用法" />
+        <ux-anchor-link href="#自定义容器"
+                        title="自定义容器" />
+        <ux-anchor-link href="#顶端偏移"
+                        title="顶端偏移" />
+        <ux-anchor-link href="#自定义路由行为"
+                        title="自定义路由行为" />
+        <ux-anchor-link href="#自定义滚动行为"
+                        title="自定义滚动行为" />
+        <ux-anchor-link href="#api"
+                        title="api" />
+      </ux-anchor>
     </div>
-    <div slot="desc">可以通过
-      <code>offsetTop</code>属性设置滚动后距离窗口顶部的偏移量。</div>
+    <div slot="desc"></div>
     <ux-code slot="code">
       {{ code }}
     </ux-code>
@@ -37,4 +36,3 @@
     },
   };
 </script>
-

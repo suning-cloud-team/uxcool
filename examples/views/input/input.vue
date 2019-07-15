@@ -81,6 +81,13 @@
                  type="regulation" />
       </ux-input>
     </div>
+
+    <h4>show word limit</h4>
+    <div class="demo">
+      <ux-input show-word-limit maxlength="20" v-model="inputVal1" />
+      <ux-textarea show-word-limit maxlength="20" v-model="inputVal1" />
+    </div>
+
   </div>
 </template>
 
@@ -95,6 +102,7 @@
       UxSelect: Select,
       UxOption: Select.Option,
       UxTooltip: Tooltip,
+      UxTextarea: Input.Textarea,
     },
     data() {
       return {

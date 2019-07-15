@@ -1,9 +1,8 @@
 <template>
-  <ux-demo title="基本用法"
+  <ux-demo title="自定义路由行为"
            :height="200">
     <div slot="demo">
-      <h6>见右侧导航栏</h6>
-      <ux-anchor>
+      <ux-anchor :before-hash-change="beforeHashChange">
         <ux-anchor-link href="#基本用法"
                         title="基本用法" />
         <ux-anchor-link href="#自定义容器"
@@ -26,7 +25,7 @@
 </template>
 
 <script>
-  import code from '@/code/anchor/basic.vue';
+  import code from '@/code/anchor/before-hash-change.vue';
 
   export default {
     data() {
@@ -34,14 +33,10 @@
         code,
       };
     },
+    methods: {
+      beforeHashChange() {
+        return false;
+      }
+    }
   };
 </script>
-
-<style scoped>
-  .ux-anchor-wrapper {
-    position: fixed;
-    top: 100px;
-    right: 20px;
-    z-index: 3000;
-  }
-</style>

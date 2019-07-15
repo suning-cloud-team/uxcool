@@ -1,8 +1,8 @@
 <template>
   <div>
     <normal-demo />
-    <!-- <offset-demo /> -->
-    <!-- <container-demo /> -->
+    <offset-demo />
+    <container-demo />
 
   </div>
 </template>
