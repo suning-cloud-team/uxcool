@@ -1,4 +1,5 @@
 import { buildComponentName } from '../utils';
+import Icon from '../icon';
 
 export default {
   $_veeValidate: {
@@ -41,6 +42,10 @@ export default {
       default: '',
     },
     showWordLimit: {
+      type: Boolean,
+      default: false,
+    },
+    allowClear: {
       type: Boolean,
       default: false,
     },
@@ -102,17 +107,13 @@ export default {
       this.$emit('keydown', e);
     },
     focus() {
-      const {
-        $refs: { inputRef },
-      } = this;
+      const { $refs: { inputRef } } = this;
       if (inputRef) {
         inputRef.focus();
       }
     },
     blur() {
-      const {
-        $refs: { inputRef },
-      } = this;
+      const { $refs: { inputRef } } = this;
       if (inputRef) {
         inputRef.blur();
       }
@@ -135,6 +136,29 @@ export default {
 
       return null;
     },
+    onClear(e) {
+      this.setValue('');
+      this.focus();
+      this.$emit('input', '', e);
+    },
+    renderClearIcon() {
+      const {
+        prefixCls, allowClear, innerValue, onClear
+      } = this;
+
+      if (!allowClear || innerValue === undefined || innerValue === null || innerValue === '') {
+        return null;
+      }
+
+      return (
+        <Icon
+          type="close_circle"
+          role="button"
+          class={`${prefixCls}-clear-icon`}
+          on-click={onClear}
+        />
+      );
+    },
     renderInput() {
       const {
         prefixCls,
@@ -148,6 +172,8 @@ export default {
         size,
         getSlotOrAttrVal,
         limitWord,
+        allowClear,
+        renderClearIcon,
       } = this;
       const prefix = getSlotOrAttrVal('prefix');
       const suffix = getSlotOrAttrVal('suffix');
@@ -172,7 +198,7 @@ export default {
         />
       );
 
-      if (!prefix && !suffix && !limitWord) {
+      if (!prefix && !suffix && !limitWord && !allowClear) {
         return inputElement;
       }
 
@@ -181,8 +207,9 @@ export default {
         <span class={`${prefixCls}-limit-word`}>{limitWord}</span>
       ) : null;
       const suffixElement =
-        suffix || limitWordElement ? (
+        suffix || limitWordElement || allowClear ? (
           <span class={`${prefixCls}-suffix`}>
+            {renderClearIcon()}
             {suffix}
             {limitWordElement}
           </span>

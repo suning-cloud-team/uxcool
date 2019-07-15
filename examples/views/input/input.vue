@@ -49,12 +49,14 @@
 
     <h4>addon</h4>
     <div class="demo">
-      <ux-input addon-before="http://"
+      <ux-input allow-clear
+                addon-before="http://"
                 addon-after=".com" />
     </div>
 
     <div class="demo">
-      <ux-input size="large">
+      <ux-input allow-clear
+                size="large">
         <ux-select slot="addonBefore"
                    value="http://"
                    style="width:90px">
@@ -84,10 +86,28 @@
 
     <h4>show word limit</h4>
     <div class="demo">
-      <ux-input show-word-limit maxlength="20" v-model="inputVal1" />
-      <ux-textarea show-word-limit maxlength="20" v-model="inputVal1" />
+      <ux-input allow-clear
+                show-word-limit
+                maxlength="20"
+                v-model="inputVal1" />
+      <ux-textarea show-word-limit
+                   maxlength="20"
+                   v-model="inputVal1" />
     </div>
 
+    <h4>clear value</h4>
+    <div class="demo">
+      <ux-input v-model="clearInput"
+                allow-clear />
+
+      <ux-input v-model="clearInput"
+                allow-clear>
+        <ux-icon slot="prefix"
+                 type="account_more" />
+        <ux-icon slot="suffix"
+                 type="close_circle" />
+      </ux-input>
+    </div>
   </div>
 </template>
 
@@ -110,6 +130,7 @@
         inputVal1: 'abc',
         inputVal2: null,
         input3: null,
+        clearInput: '',
         attrs: {
           spellcheck: false,
         },

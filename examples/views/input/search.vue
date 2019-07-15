@@ -2,11 +2,13 @@
   <div>
     <div class="demo">
       <ux-search-input v-model="inputVal"
+                       allow-clear
                        autofocus
                        @click="onClick"
                        @search="onSearch"
                        @change="onChange"
                        @pressenter="onPressenter" />
+      inputVal: {{inputVal}}
     </div>
     <h4>enter-button = true</h4>
     <div class="demo">
@@ -17,6 +19,12 @@
     <h4>enter-button = String</h4>
     <div class="demo">
       <ux-search-input enter-button="Search"
+                       @search="onSearch" />
+    </div>
+
+    <h4>custom-search-icon</h4>
+    <div class="demo">
+      <ux-search-input :enter-button="customIcon"
                        @search="onSearch" />
     </div>
 
@@ -95,6 +103,9 @@
       };
     },
     methods: {
+      customIcon() {
+        return <Icon type="order-search-d" />;
+      },
       onClick(e) {
         console.log('click', e);
       },

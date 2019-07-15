@@ -9,6 +9,7 @@
 | affix-class  | 自定义`ux-input` class                       | String\|Object\|Array |         |
 | value        | 值                                           | String                |         |
 | size         | 控件大小,可选值: `large`, `default`, `small` | String                | default |
+| allow-clear  | 是否显示移除图标                             | Boolean               | false   |
 | disabled     | 是否禁用                                     | Boolean               | false   |
 | addon-before | 前置标签                                     | String                |         |
 | addon-after  | 后置标签                                     | String                |         |
@@ -59,9 +60,9 @@
 
 #### Props
 
-| 参数名       | 描述                       | 类型            | 默认  |
-| ------------ | -------------------------- | --------------- | ----- |
-| enter-button | 是否有确认按钮, 可输入文字 | Boolean\|String | false |
+| 参数名       | 描述                       | 类型                               | 默认  |
+| ------------ | -------------------------- | ---------------------------------- | ----- |
+| enter-button | 是否有确认按钮, 可输入文字 | Boolean\|String\|Function(h):VNode | false |
 
 其余属性与 `UxInput`一致
 
