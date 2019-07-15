@@ -9,6 +9,7 @@
 | affix-class  | 自定义`ux-input` class                       | String\|Object\|Array |         |
 | value        | 值                                           | String                |         |
 | size         | 控件大小,可选值: `large`, `default`, `small` | String                | default |
+| allow-clear  | 是否显示移除图标                             | Boolean               | false   |
 | disabled     | 是否禁用                                     | Boolean               | false   |
 | addon-before | 前置标签                                     | String                |         |
 | addon-after  | 后置标签                                     | String                |         |

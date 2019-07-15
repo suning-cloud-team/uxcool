@@ -2,11 +2,13 @@
   <div>
     <div class="demo">
       <ux-search-input v-model="inputVal"
+                       allow-clear
                        autofocus
                        @click="onClick"
                        @search="onSearch"
                        @change="onChange"
                        @pressenter="onPressenter" />
+      inputVal: {{inputVal}}
     </div>
     <h4>enter-button = true</h4>
     <div class="demo">

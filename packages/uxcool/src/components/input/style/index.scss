@@ -47,5 +47,26 @@ textarea.#{$input-prefix-cls} {
   }
 }
 
+.#{$input-prefix-cls}-clear-icon {
+  color: $disabled-color;
+  font-size: $font-size-sm;
+  vertical-align: top;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $text-color-secondary;
+  }
+
+  &:active {
+    color: $text-color;
+  }
+
+  + i,
+  + .#{$input-prefix-cls}-limit-word {
+    margin-left: 6px;
+  }
+}
+
 @import 'search-input';
 @import 'dark';
