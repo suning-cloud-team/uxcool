@@ -2,12 +2,9 @@
   <ux-demo title="基本使用">
     <div slot="demo">
       <ux-input autofocus
-                id="a1"
                 placeholder="Normal Input" />
       <ux-input disabled
                 autofocus
-                id="a2"
-                style="color:red"
                 placeholder="Disabled Input" />
     </div>
     <div slot="desc">

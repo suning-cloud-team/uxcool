@@ -1,6 +1,6 @@
 <template>
-  <ux-demo title="搜索框"
-           :height="200">
+  <ux-demo :height="200"
+           title="搜索框">
     <div slot="demo">
       <ux-search-input autofocus
                        @click="onClick"
@@ -11,11 +11,13 @@
                        @search="onSearch" />
       <ux-search-input enter-button="Search"
                        @search="onSearch" />
+      <ux-search-input :enter-button="customIcon"
+                       @search="onSearch" />
 
       <ux-search-input disabled
                        @search="onSearch" />
-      <ux-search-input disabled
-                       :enter-button="true"
+      <ux-search-input :enter-button="true"
+                       disabled
                        @search="onSearch" />
     </div>
     <div slot="desc">
@@ -43,6 +45,9 @@
       },
     },
     methods: {
+      customIcon() {
+        return <ux-icon type="order-search-d" />;
+      },
       onClick(e) {
         console.log('click', e);
       },
