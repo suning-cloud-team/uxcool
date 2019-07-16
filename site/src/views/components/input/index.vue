@@ -4,6 +4,8 @@
       <span class="subtitle">输入框</span>
     </h1>
     <input-demo />
+    <clear-demo />
+
     <prefix-demo />
     <addon-demo />
     <size-demo />
@@ -11,7 +13,8 @@
     <group-demo />
     <tooltip-demo />
     <textarea-demo />
-    <textarea-autosize-demo/>
+    <textarea-autosize-demo />
+    <limit-demo />
     <hr>
     <ux-heading level="2"
                 id="api">API</ux-heading>
@@ -48,6 +51,18 @@
           </td>
           <td>String</td>
           <td>default</td>
+        </tr>
+        <tr>
+          <td>allow-clear</td>
+          <td>是否显示移除图标。<code>0.5.0-next.56</code>版本以后可用。</td>
+          <td>Boolean</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>show-word-limit</td>
+          <td>是否显示字数限制，需要配合`maxlength`特性使用。<code>0.5.0-next.56</code>版本以后可用。</td>
+          <td>Boolean</td>
+          <td>false</td>
         </tr>
         <tr>
           <td>disabled</td>
@@ -165,6 +180,12 @@
           <td>false</td>
         </tr>
         <tr>
+          <td>show-word-limit</td>
+          <td>是否显示字数限制，需要配合`maxlength`特性使用。<code>0.5.0-next.56</code>版本以后可用。</td>
+          <td>Boolean</td>
+          <td>false</td>
+        </tr>
+        <tr>
           <td>disabled</td>
           <td>是否禁用</td>
           <td>Boolean</td>
@@ -253,8 +274,8 @@
       <tbody>
         <tr>
           <td>enter-button</td>
-          <td>是否有确认按钮, 可输入文字</td>
-          <td>Boolean|String</td>
+          <td>是否有确认按钮, 可输入文字。<code>0.5.0-next.56</code>版本开始支持函数语法，可返回VNode用于自定义搜索按钮内容。</td>
+          <td>Boolean|String|Function(h):VNode</td>
           <td>false</td>
         </tr>
       </tbody>
@@ -332,6 +353,8 @@
   import SizeDemo from './size.vue';
   import TextareaDemo from './textarea.vue';
   import TextareaAutosizeDemo from './textareaAutosize.vue';
+  import ClearDemo from './clear.vue';
+  import LimitDemo from './limit.vue';
 
   export default {
     components: {
@@ -344,6 +367,8 @@
       SizeDemo,
       TextareaDemo,
       TextareaAutosizeDemo,
+      ClearDemo,
+      LimitDemo,
     },
   };
 </script>
