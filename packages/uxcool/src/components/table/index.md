@@ -27,6 +27,17 @@
 | loading             | 是否显示加载中(具体配置,参见 Spin 组件)             | Object\|Boolean                                |                    |
 | on-row              | 设置行属性                                          | Function(columns, rowIdx)                      |                    |
 | on-header-row       | 设置头部行属性                                      | Function (record, rowIdx)                      |                    |
+| virtual-sroll       | 配置虚拟滚动以支持大数据量渲染。                    | Boolean \| Object                              | false              |
+
+### virtual-scroll
+
+| 参数名      | 描述                                                                                                                                               | 类型   | 默认 |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ---- |
+| itemSize    | 每一行元素的高度。当指定非 0 数值时，即为固定高度模式，可以提高性能；否则为未知高度模式，需要指明`minItemSize`，该模式性能较差，但适合的场景更广。 | Number | 0    |
+| minItemSize | 每一行元素的最小高度。未知高度模式下必须指明该项数值，用于估算渲染的条目数。                                                                       | Number | 51   |
+| maxHeight   | 滚动区域最大高度。当表格指定了`scroll.y`时，以`scroll.y`为准。                                                                                     | Number | 500  |
+| buffer      | 滚动区域上下缓冲区像素大小，组件会根据滚动区域和上下缓冲区大小来渲染节点。                                                                         | Number | 200  |
+| prerender   | 预渲染条目数，一般用于服务端渲染。                                                                                                                 | Number | 0    |
 
 ### column
 

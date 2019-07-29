@@ -1,21 +1,29 @@
 <template>
-  <div class="demo">
-    <h4>海量数据</h4>
-    <ux-table :columns="columns"
-              v-model="data"
-              :virtual-scroll="{minItemSize: 40, maxHeight: 400}" />
-  </div>
+  <ux-demo :height="200"
+           title="大数据量"
+           vertical>
+    <div slot="demo">
+      <ux-table :columns="columns"
+                v-model="data"
+                :virtual-scroll="{itemSize: 40, maxHeight: 400}" />
+    </div>
+    <div slot="desc">
+      通过<code>virtual-scroll</code>属性配置虚拟滚动，可以支持大数据量表格渲染。(目前树形表格上下关联选择还未优化，数据量很大时复选框勾选还是有点卡顿)
+    </div>
+    <ux-code slot="code">
+      {{ code }}
+    </ux-code>
+  </ux-demo>
 </template>
 
 <script>
-  import { Table as UxTable, Checkbox as UxCheckbox } from '@suning/uxcool';
+  import code from '@/code/table/virtual.vue';
   import { TreeHandler } from '@suning/v-utils';
 
   function getCols() {
     const { onCheckboxChange } = this;
     return [
       {
-        fixed: 'left',
         width: 200,
         key: 'name',
         title: 'Name',
@@ -23,20 +31,18 @@
         cellRender(text, record) {
           return (
             <span>
-              <UxCheckbox
+              <ux-checkbox
                 control={true}
                 checked={record.isChecked}
                 indeterminate={record.isHalfChecked}
                 onInput={checked => onCheckboxChange(checked, record)}
               />
-              {String(record.isChecked)}
-              {text}
+              <span style="margin-left:5px">{text}</span>
             </span>
           );
         },
       },
       {
-        // fixed: true,
         width: 200,
         key: 'age',
         title: 'Age',
@@ -48,7 +54,6 @@
         dataIndex: 'sex',
       },
       {
-        fixed: 'right',
         width: 200,
         key: 'addr',
         title: 'Addr',
@@ -77,12 +82,9 @@
   }
 
   export default {
-    components: {
-      UxTable,
-      UxCheckbox,
-    },
     data() {
       return {
+        code,
         columns: [],
         data: [],
         treeHandler: null,
@@ -103,3 +105,4 @@
     },
   };
 </script>
+

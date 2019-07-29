@@ -1,21 +1,18 @@
 <template>
-  <div class="demo">
-    <h4>海量数据</h4>
+  <div>
     <ux-table :columns="columns"
               v-model="data"
-              :virtual-scroll="{minItemSize: 40, maxHeight: 400}" />
+              :virtual-scroll="{itemSize: 40, maxHeight: 400}" />
   </div>
 </template>
 
 <script>
-  import { Table as UxTable, Checkbox as UxCheckbox } from '@suning/uxcool';
   import { TreeHandler } from '@suning/v-utils';
 
   function getCols() {
     const { onCheckboxChange } = this;
     return [
       {
-        fixed: 'left',
         width: 200,
         key: 'name',
         title: 'Name',
@@ -23,20 +20,18 @@
         cellRender(text, record) {
           return (
             <span>
-              <UxCheckbox
+              <ux-checkbox
                 control={true}
                 checked={record.isChecked}
                 indeterminate={record.isHalfChecked}
                 onInput={checked => onCheckboxChange(checked, record)}
               />
-              {String(record.isChecked)}
-              {text}
+              <span style="margin-left:5px">{text}</span>
             </span>
           );
         },
       },
       {
-        // fixed: true,
         width: 200,
         key: 'age',
         title: 'Age',
@@ -48,7 +43,6 @@
         dataIndex: 'sex',
       },
       {
-        fixed: 'right',
         width: 200,
         key: 'addr',
         title: 'Addr',
@@ -73,14 +67,10 @@
           age: 10 + idx,
           address: `address ${i}-${idx}`,
         })),
-    }));
+      }));
   }
 
   export default {
-    components: {
-      UxTable,
-      UxCheckbox,
-    },
     data() {
       return {
         columns: [],
@@ -103,3 +93,4 @@
     },
   };
 </script>
+
