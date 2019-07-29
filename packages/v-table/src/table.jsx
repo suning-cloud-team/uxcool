@@ -10,6 +10,7 @@ export default {
   provide() {
     return {
       rootVM: this,
+      scrollData: this.scrollData,
     };
   },
   components: {
@@ -129,6 +130,11 @@ export default {
       type: Boolean,
       default: false,
     },
+    // virtualscroll
+    virtualScroll: {
+      type: [Boolean, Object],
+      default: false,
+    },
   },
   data() {
     return {
@@ -147,16 +153,25 @@ export default {
       prevScrollLeft: 0,
       prevScrollTop: 0,
       innerExpanderRowKeys: [],
+      // 虚拟滚动模式使用
+      scrollData: {
+        sizes: {},
+        validSizes: {},
+        startIndex: 0,
+        endIndex: 0,
+        top: 0,
+        bottom: 0,
+      },
     };
   },
   computed: {
     classes() {
       const {
-        prefixCls, useFixedHeader, scroll, scrollPosition
+        prefixCls, useFixedHeader, scroll, scrollPosition, virtualScroll
       } = this;
       return {
         [prefixCls]: true,
-        [`${prefixCls}-fixed-header`]: useFixedHeader || (scroll && scroll.y),
+        [`${prefixCls}-fixed-header`]: useFixedHeader || (scroll && scroll.y) || virtualScroll,
         [`${prefixCls}-scroll-position-left`]:
           scrollPosition === 'both' || scrollPosition === 'left',
         [`${prefixCls}-scroll-position-right`]:
@@ -173,6 +188,75 @@ export default {
         return v;
       });
     },
+
+    virtualConfig() {
+      const {
+        virtualScroll,
+        scroll,
+        $scopedSlots: { expand },
+        expandedRowRender,
+      } = this;
+      if (!virtualScroll) {
+        return null;
+      }
+
+      return {
+        buffer: 200,
+        minItemSize: 51,
+        prerender: 0,
+        ...virtualScroll,
+        // 有expand或expandedRowRender，则认为是未知高度
+        itemSize: (expand || expandedRowRender) ? null : virtualScroll.itemSize,
+        maxHeight: typeof scroll.y === 'string' || typeof scroll.y === 'number' ? scroll.y : virtualScroll.maxHeight,
+      };
+    },
+
+    // 将所有数据包含expanded-row-render和expand slot的记录拍平
+    flatVirtualScrollRecords() {
+      const { virtualScroll, flattenVirtualScrollRecords } = this;
+      if (!virtualScroll) {
+        return [];
+      }
+      
+      return flattenVirtualScrollRecords();
+    },
+
+    // 根据折叠展开过滤出显示的条目
+    visibleVirtualScrollRecords() {
+      const { innerExpanderRowKeys, flatVirtualScrollRecords } = this;
+
+      return flatVirtualScrollRecords.filter(({ ancestors }) => ancestors.length === 0 || ancestors.every(key => innerExpanderRowKeys.indexOf(key) > -1));
+    },
+
+    visibleVirtualScrollRecordsWithSize() {
+      const {
+        virtualConfig,
+        visibleVirtualScrollRecords,
+        scrollData: { sizes },
+      } = this;
+      // 非虚拟滚动或固定高度
+      if (!virtualConfig || virtualConfig.itemSize) {
+        return visibleVirtualScrollRecords;
+      }
+
+      // 未知高度,在子组件中动态修改sizes
+      return visibleVirtualScrollRecords.map((item) => {
+        const { key } = item;
+        let size = sizes[key];
+        if (typeof size === 'undefined' && !this.$_undefinedSizeMap[key]) {
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.$_undefinedSizeCount += 1;
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.$_undefinedSizeMap[key] = true;
+          size = 0;
+        }
+        return {
+          ...item,
+          size,
+        };
+      });
+    },
+
   },
   watch: {
     expandedRowKeys(nVal, oVal) {
@@ -190,8 +274,14 @@ export default {
         this.initExpanderRowKeys('flatRecords');
       }
     },
+    visibleVirtualScrollRecords() {
+      this.forceUpdate(true);
+    },
   },
   created() {
+    this.$_undefinedSizeCount = 0;
+    this.$_undefinedSizeMap = {};
+
     this.initExpanderRowKeys();
   },
   mounted() {
@@ -360,6 +450,82 @@ export default {
       );
       this.$emit('expand', expanded, record, rowIdx);
       this.innerExpanderRowKeys = nRowKeys;
+    },
+
+    // 给虚拟滚动使用
+    flattenVirtualScrollRecords() {
+      const {
+        value,
+        childColName,
+        rowKey,
+        $scopedSlots: { expand },
+        expandedRowRender,
+      } = this;
+      const result = [];
+      let rowIdx = 0;
+      const traverse = (records, level = 0, ancestors = []) => {
+        records.forEach((record) => {
+          const key = getRowKey(rowKey, record, rowIdx);
+
+          result.push({
+            rowIdx,
+            record,
+            level,
+            key,
+            ancestors,
+            type: 'row',
+          });
+          // 跟tableBody保持逻辑一致
+          rowIdx += 1;
+
+          const nextAncestors = [...ancestors, key];
+
+          if (expandedRowRender) {
+            result.push({
+              rowIdx,
+              record,
+              level: level + 1,
+              key: `${key}-expand-row`,
+              ancestors: nextAncestors,
+              renderFn: expandedRowRender,
+              type: 'expand-row',
+            });
+          }
+
+          if (expand) {
+            result.push({
+              rowIdx,
+              record,
+              level: level + 1,
+              key: `${key}-expand-slot-row`,
+              ancestors: nextAncestors,
+              renderFn: expand,
+              type: 'expand-slot-row',
+            });
+          }
+
+          const children = record[childColName];
+
+          if (children && children.length) {
+            traverse(children, level + 1, nextAncestors);
+          }
+        });
+      };
+      traverse(value);
+      return result;
+    },
+
+    clear() {
+      this.scrollData.validSizes = {};
+      this.$_undefinedSizeCount = 0;
+      this.$_undefinedSizeMap = {};
+    },
+
+    forceUpdate(clear) {
+      if (clear) {
+        this.clear();
+      }
+      this.$emit('scroll:forceUpdate');
     },
   },
   render() {

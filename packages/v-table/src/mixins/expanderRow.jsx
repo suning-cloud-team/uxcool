@@ -30,8 +30,10 @@ export default {
       return expanderRowKeys.indexOf(uid) > -1;
     },
     isCanExpandRow() {
-      const { record, expandedRowRender } = this;
-      return !!(record.children && record.children.length) || !!expandedRowRender;
+      const { record, expandedRowRender, childColName } = this;
+      // record.children -> record[childColName] 2019/7/25 by xql
+      // 这个判断条件感觉不够完整，少了slot="expand"这种场景
+      return !!(record[childColName] && record[childColName].length) || !!expandedRowRender;
     },
     visible() {
       const { expanderRowKeys, ancestorKeys } = this;

@@ -3,9 +3,14 @@
     <head-table v-if="isFixedHeader&&!hideHeader"
                 :fixed="fixed" />
 
-    <body-table :has-head="!isFixedHeader&&!hideHeader"
+    <body-table v-if="!virtualScrollMode"
+                :has-head="!isFixedHeader&&!hideHeader"
                 :fixed="fixed"
                 @body-scroll="onBodyScroll" />
+
+    <virtual-body-table v-else
+                        :fixed="fixed"
+                        @body-scroll="onBodyScroll" />
 
     <template v-if="!fixed">
       <div v-if="records.length === 0"
@@ -26,12 +31,14 @@
   import SubMixin from './mixins/sub';
   import HeadTable from './headTable.vue';
   import BodyTable from './bodyTable';
+  import VirtualBodyTable from './virtualBodyTable';
 
   export default {
     name: 'MainTable',
     components: {
       HeadTable,
       BodyTable,
+      VirtualBodyTable,
     },
     mixins: [SubMixin],
     computed: {
@@ -80,10 +87,12 @@
         }
       },
       onScrollY(e) {
-        const { fixedAndBodyTableRefs, prevScrollTop, scroll } = this;
+        const {
+          fixedAndBodyTableRefs, prevScrollTop, scroll, virtualScrollMode
+        } = this;
         const { target } = e;
         const { scrollTop } = target;
-        if (scrollTop !== prevScrollTop && scroll.y) {
+        if (scrollTop !== prevScrollTop && (scroll.y || virtualScrollMode)) {
           fixedAndBodyTableRefs.forEach((ref) => {
             const nRef = ref;
             if (nRef && nRef !== target) {
