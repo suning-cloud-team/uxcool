@@ -109,12 +109,6 @@
           <td>true</td>
         </tr>
         <tr>
-          <td>default-expand-parent</td>
-          <td>是否当子节点展开时,父节点也同时展开, 非响应属性</td>
-          <td>Boolean</td>
-          <td>true</td>
-        </tr>
-        <tr>
           <td>lazy</td>
           <td>是否异步加载</td>
           <td>Boolean</td>

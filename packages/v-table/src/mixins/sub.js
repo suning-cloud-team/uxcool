@@ -1,7 +1,7 @@
 import ColumnsMixin from './column';
 
 export default {
-  inject: ['rootVM'],
+  inject: ['rootVM', 'scrollData'],
   mixins: [ColumnsMixin],
   props: {
     fixed: String,
@@ -41,8 +41,8 @@ export default {
       return this.rootVM.onRow;
     },
     isFixedHeader() {
-      const { scroll, useFixedHeader } = this;
-      return useFixedHeader || scroll.y;
+      const { scroll, useFixedHeader, virtualScrollMode } = this;
+      return useFixedHeader || scroll.y || virtualScrollMode;
     },
     bodyStyle() {
       return this.rootVM.bodyStyle;
@@ -88,6 +88,9 @@ export default {
     },
     hideExpandTreeIcon() {
       return this.rootVM.hideExpandTreeIcon;
+    },
+    virtualScrollMode() {
+      return !!this.rootVM.virtualScroll;
     },
   },
   methods: {

@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-table",
-  "version": "1.0.34",
+  "version": "1.0.36",
   "description": "table基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",

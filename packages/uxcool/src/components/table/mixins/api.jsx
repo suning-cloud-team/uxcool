@@ -4,11 +4,18 @@
 export default {
   methods: {
     alignRowHeight() {
-      const { $refs: { tableRef } } = this;
+      const {
+        $refs: { tableRef },
+        virtualScroll,
+      } = this;
       if (tableRef) {
-        this.$nextTick(() => {
-          tableRef.handleWinResize();
-        });
+        if (!virtualScroll) {
+          this.$nextTick(() => {
+            tableRef.handleWinResize();
+          });
+        } else {
+          tableRef.forceUpdate();
+        }
       }
     },
   },

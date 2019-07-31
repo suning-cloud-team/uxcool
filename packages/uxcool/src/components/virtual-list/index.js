@@ -3,17 +3,24 @@ import { debounce } from '@suning/v-utils';
 /* eslint-disable */
 export default {
   props: {
+    // height of each item
     size: { type: Number, required: true },
+    // number of items should be shown
     remain: { type: Number, required: true },
+    //  the virtual-list root element tag name
     rtag: { type: [String, Object], default: 'div' },
+    // the virtual-list item wrapper element tag name,
     wtag: { type: [String, Object], default: 'div' },
     wclass: { type: String, default: '' },
     wstyle: { type: Object, default: undefined },
     wprops: { type: Object, default: undefined },
     wlisteners: { type: Object, default: undefined },
+    // the initial scroll start index
     start: { type: Number, default: 0 },
+    // the initial scroll offset
     offset: { type: Number, default: 0 },
     variable: [Function, Boolean],
+    // unreached items count, not shown in virtual-list
     bench: Number,
     debounce: Number,
     totop: Function,
@@ -200,7 +207,7 @@ export default {
       }
     },
 
-    // retun the variable all heights use to judge reach bottom.
+    // return the variable all heights use to judge reach bottom.
     getVarAllHeight: function() {
       var delta = this.delta;
       if (delta.total - delta.end <= delta.keeps || delta.varLastCalcIndex === delta.total - 1) {
@@ -319,10 +326,10 @@ export default {
           this.alter === 'offset'
             ? this.offset
             : this.variable
-              ? this.getVarOffset(zone.isLast ? delta.total : zone.start)
-              : zone.isLast && delta.total - calcstart <= this.remain
-                ? delta.total * this.size
-                : calcstart * this.size
+            ? this.getVarOffset(zone.isLast ? delta.total : zone.start)
+            : zone.isLast && delta.total - calcstart <= this.remain
+            ? delta.total * this.size
+            : calcstart * this.size
         )
       );
     }

@@ -31,6 +31,7 @@
     <tabs-demo />
     <node-pagination-demo />
     <fixed-columns-header-async-demo />
+    <virtual-demo />
 
   </div>
 </template>
@@ -69,6 +70,7 @@
   import ManualDemo from './manualResize.vue';
   import TreeRelationDemo from './tree-relation.vue';
   import HeaderCellDemo from './header-cell.vue';
+  import VirtualDemo from './virtual.vue';
 
   export default {
     components: {
@@ -104,6 +106,7 @@
       CollapseTableDemo,
       ManualDemo,
       HeaderCellDemo,
+      VirtualDemo,
     },
   };
 </script>

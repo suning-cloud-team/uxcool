@@ -35,6 +35,7 @@
     <nest-table-demo />
     <async-nest-table-demo />
     <custom-header-demo />
+    <virtual-demo />
     <hr>
 
     <ux-heading level="2"
@@ -184,6 +185,58 @@
           <td>设置头部行属性, 返回一个包含<code>className</code>、<code>style</code>、<code>attrs</code>属性的对象</td>
           <td>Function (record, rowIdx) => Object { className: String | Object, style: Object, attrs: Object }</td>
           <td></td>
+        </tr>
+        <tr>
+          <td>virtual-scroll</td>
+          <td>配置虚拟滚动以支持大数据量渲染。<code>0.5.0-next.57</code>版本以后支持</td>
+          <td>Boolean | Object</td>
+          <td>false</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="api-table">
+      <caption>
+        <code>UxTable/</code> virtual-scroll 属性</caption>
+      <thead>
+        <tr>
+          <th>参数名</th>
+          <th>描述</th>
+          <th>类型</th>
+          <th>默认</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>itemSize</td>
+          <td>每一行元素的高度。当指定非 0 数值时，即为固定高度模式，可以提高性能；否则为未知高度模式，需要指明<code>minItemSize</code>，该模式性能较差，但适合的场景更广。
+          </td>
+          <td>Number</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>minItemSize</td>
+          <td>每一行元素的最小高度。未知高度模式下必须指明该项数值，用于估算渲染的条目数。</td>
+          <td>Number</td>
+          <td>51</td>
+        </tr>
+        <tr>
+          <td>maxHeight</td>
+          <td>滚动区域最大高度。当表格指定了`scroll.y`时，以`scroll.y`为准。</td>
+          <td>Number</td>
+          <td>500</td>
+        </tr>
+        <tr>
+          <td>buffer</td>
+          <td>滚动区域上下缓冲区像素大小，组件会根据滚动区域和上下缓冲区大小来渲染节点。</td>
+          <td>Number</td>
+          <td>200</td>
+        </tr>
+        <tr>
+          <td>prerender</td>
+          <td>预渲染条目数，一般用于服务端渲染。</td>
+          <td>Number</td>
+          <td>0</td>
         </tr>
       </tbody>
     </table>
@@ -600,6 +653,7 @@
   import AsyncNestTableDemo from './asyncNestTable.vue';
   import TreeRelationDemo from './treeRelation.vue';
   import CustomHeaderDemo from './customHeader.vue';
+  import VirtualDemo from './virtual.vue';
 
   export default {
     components: {
@@ -629,6 +683,7 @@
       AsyncNestTableDemo,
       TreeRelationDemo,
       CustomHeaderDemo,
+      VirtualDemo,
     },
     data() {
       return {
