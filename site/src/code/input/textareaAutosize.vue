@@ -1,18 +1,16 @@
 <template>
   <div>
-    <ux-textarea novalidate
+    <ux-textarea :textarea-style="{resize:'none'}"
+                 :auto-size="true"
+                 novalidate
                  placeholder="测试用"
-                 class="custom-class"
-                 style="resize:none"
-                 :theme="theme"
-                 :auto-size="true">
+                 class="custom-class">
     </ux-textarea>
-    <ux-textarea novalidate
+    <ux-textarea :auto-size="{minRows:2, maxRows:6}"
+                 :textarea-style="{resize:'none'}"
+                 novalidate
                  placeholder="测试用"
-                 class="custom-class"
-                 style="resize:none"
-                 :theme="theme"
-                 :auto-size="{minRows:2, maxRows:6}">
+                 class="custom-class">
     </ux-textarea>
   </div>
 </template>

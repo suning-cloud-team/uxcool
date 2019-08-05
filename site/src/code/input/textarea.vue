@@ -1,6 +1,5 @@
 <template>
-  <ux-textarea row="4"
-               :theme="theme">
+  <ux-textarea row="4">
   </ux-textarea>
 </template>
 

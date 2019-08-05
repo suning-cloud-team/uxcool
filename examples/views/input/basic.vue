@@ -1,10 +1,10 @@
 <template>
   <div>
     <input-demo />
-    <search-demo/>
-    <size-demo/>
+    <search-demo />
+    <size-demo />
     <tooltip-demo />
-    <textarea-demo/>
+    <textarea-demo />
     <group-demo />
   </div>
 </template>
