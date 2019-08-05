@@ -12,6 +12,9 @@
 
   export default {
     name: 'ScrollInkTabBar',
+    components: {
+      InkTabBar,
+    },
     props: {
       prefixCls: String,
       tabs: Array,
@@ -36,40 +39,6 @@
         resizeEvent: null,
         debounceCalcMinOffset: null,
       };
-    },
-    created() {
-      this.oldHasArrow = this.hasArrow;
-      this.debounceCalcMinOffset = debounce(this.calcMinOffset, 200);
-    },
-    mounted() {
-      this.resizeEvent = addEventListener(
-        window,
-        'resize',
-        debounce(() => {
-          this.$nextTick(() => {
-            this.calcMinOffset();
-            // 当前hasArrow与上一次的hasArrow不一致时, 会触发next button的onTransitionend事件,由它进行重新计算
-            // if (this.hasArrow === this.oldHasArrow) {
-            this.scrollToActiveTab();
-            // }
-          });
-        }, 150)
-      );
-    },
-    updated() {
-      const { $refs } = this;
-      const { tabs } = $refs;
-      if (tabs) {
-        const [activeTab] = tabs.filter(v => !!v.getAttribute('data-active')) || [];
-        this.activeTab = activeTab;
-      }
-      // TODO:需优化, 有点难度
-      this.debounceCalcMinOffset();
-    },
-    beforeDestroy() {
-      if (this.resizeEvent) {
-        this.resizeEvent.remove();
-      }
     },
     computed: {
       navPrefixCls() {
@@ -135,89 +104,53 @@
         };
       },
     },
-    render() {
-      const {
-        tabs,
-        prefixCls,
-        rootNode,
-        tabBarPosition,
-        activeTab,
-        $refs,
-        itemClasses,
-        onTabClick,
-        navPrefixCls,
-        classes,
-        navClasses,
-        navStyle,
-        onPrev,
-        onNext,
-        isCanPrev,
-        isCanNext,
-        prevClasses,
-        nextClasses,
-        size,
-      } = this;
-      const wrapNode = $refs.navRef || rootNode;
-      const prevBtn = (
-        <span onClick={e => (isCanPrev ? onPrev(e) : null)} unselectable class={prevClasses}>
-          <span class={`${prefixCls}-tab-prev-icon`} />
-        </span>
-      );
-      const nextBtn = (
-        <span
-          ref="nextBtnRef"
-          onTransitionend={this.onTransitionEnd}
-          onClick={e => (isCanNext ? onNext(e) : null)}
-          unselectable
-          class={nextClasses}
-        >
-          <span class={`${prefixCls}-tab-next-icon`} />
-        </span>
-      );
-      const ink = (
-        <ink-tab-bar
-          prefixCls={prefixCls}
-          activeTab={activeTab}
-          wrapNode={wrapNode}
-          tabBarPosition={tabBarPosition}
-          size={size}
-        />
-      );
-      const items = tabs.map((item, i) => {
-        const event = {};
-        if (!item.disabled && !item.isActive) {
-          event.on = {
-            click: onTabClick.bind(this, item),
-          };
+    watch: {
+      activeTab(nVal, oVal) {
+        if (nVal && nVal !== oVal) {
+          this.scrollToActiveTab();
         }
-
-        return (
-          <div
-            ref="tabs"
-            refInFor
-            key={i}
-            role="tab"
-            data-active={item.isActive}
-            class={itemClasses(item)}
-            {...event}
-          >
-            {item.tab}
-          </div>
-        );
-      });
-      return (
-        <div role="navContainer" class={classes}>
-          {prevBtn}
-          {nextBtn}
-          <div ref="navWrapRef" role="navWrap" class={`${navPrefixCls}-wrap`}>
-            <div class={`${navPrefixCls}-scroll`}>
-              <div ref="navRef" role="nav" class={navClasses} style={navStyle}>
-                {[ink, items]}
-              </div>
-            </div>
-          </div>
-        </div>
+      },
+      tabBarPosition(nVal, oVal) {
+        if (nVal && nVal !== oVal) {
+          this.offset = 0;
+          this.minOffset = 0;
+          this.navWrapWH = 0;
+        }
+      },
+    },
+    created() {
+      this.oldHasArrow = this.hasArrow;
+      this.debounceCalcMinOffset = debounce(this.calcMinOffset, 200);
+    },
+    mounted() {
+      this.resizeEvent = addEventListener(
+        window,
+        'resize',
+        debounce(() => {
+          this.$nextTick(() => {
+            this.calcMinOffset();
+            // 当前hasArrow与上一次的hasArrow不一致时, 会触发next button的onTransitionend事件,由它进行重新计算
+            // if (this.hasArrow === this.oldHasArrow) {
+            this.scrollToActiveTab();
+            // }
+          });
+        }, 150)
       );
+    },
+    updated() {
+      const { $refs } = this;
+      const { tabs } = $refs;
+      if (tabs) {
+        const [activeTab] = tabs.filter(v => !!v.getAttribute('data-active')) || [];
+        this.activeTab = activeTab;
+      }
+      // TODO:需优化, 有点难度
+      this.debounceCalcMinOffset();
+    },
+    beforeDestroy() {
+      if (this.resizeEvent) {
+        this.resizeEvent.remove();
+      }
     },
     methods: {
       scrollToActiveTab() {
@@ -321,22 +254,90 @@
         }
       },
     },
-    components: {
-      InkTabBar,
-    },
-    watch: {
-      activeTab(nVal, oVal) {
-        if (nVal && nVal !== oVal) {
-          this.scrollToActiveTab();
+
+    render() {
+      const {
+        tabs,
+        prefixCls,
+        rootNode,
+        tabBarPosition,
+        activeTab,
+        $refs,
+        itemClasses,
+        onTabClick,
+        navPrefixCls,
+        classes,
+        navClasses,
+        navStyle,
+        onPrev,
+        onNext,
+        isCanPrev,
+        isCanNext,
+        prevClasses,
+        nextClasses,
+        size,
+      } = this;
+      const wrapNode = $refs.navRef || rootNode;
+      const prevBtn = (
+        <span onClick={e => (isCanPrev ? onPrev(e) : null)} unselectable class={prevClasses}>
+          <span class={`${prefixCls}-tab-prev-icon`} />
+        </span>
+      );
+      const nextBtn = (
+        <span
+          ref="nextBtnRef"
+          onTransitionend={this.onTransitionEnd}
+          onClick={e => (isCanNext ? onNext(e) : null)}
+          unselectable
+          class={nextClasses}
+        >
+          <span class={`${prefixCls}-tab-next-icon`} />
+        </span>
+      );
+      const ink = (
+        <ink-tab-bar
+          prefixCls={prefixCls}
+          activeTab={activeTab}
+          wrapNode={wrapNode}
+          tabBarPosition={tabBarPosition}
+          size={size}
+        />
+      );
+      const items = tabs.map((item, i) => {
+        const event = {};
+        if (!item.disabled && !item.isActive) {
+          event.on = {
+            click: onTabClick.bind(this, item),
+          };
         }
-      },
-      tabBarPosition(nVal, oVal) {
-        if (nVal && nVal !== oVal) {
-          this.offset = 0;
-          this.minOffset = 0;
-          this.navWrapWH = 0;
-        }
-      },
+
+        return (
+          <div
+            ref="tabs"
+            refInFor
+            key={i}
+            role="tab"
+            data-active={item.isActive}
+            class={itemClasses(item)}
+            {...event}
+          >
+            {item.tab}
+          </div>
+        );
+      });
+      return (
+        <div role="navContainer" class={classes}>
+          {prevBtn}
+          {nextBtn}
+          <div ref="navWrapRef" role="navWrap" class={`${navPrefixCls}-wrap`}>
+            <div class={`${navPrefixCls}-scroll`}>
+              <div ref="navRef" role="nav" class={navClasses} style={navStyle}>
+                {[ink, items]}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
     },
   };
 </script>
