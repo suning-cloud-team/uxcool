@@ -106,6 +106,10 @@ export default {
       }
       this.$emit('keydown', e);
     },
+    // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/230
+    onBlur(e) {
+      this.$emit('blur', e);
+    },
     focus() {
       const { $refs: { inputRef } } = this;
       if (inputRef) {
@@ -168,6 +172,7 @@ export default {
         innerValue,
         onInput,
         onKeydown,
+        onBlur,
         affixClass,
         size,
         getSlotOrAttrVal,
@@ -182,6 +187,8 @@ export default {
         ...$listeners,
         input: onInput,
         keydown: onKeydown,
+        // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/230
+        blur: onBlur,
       };
 
       const inputElement = (

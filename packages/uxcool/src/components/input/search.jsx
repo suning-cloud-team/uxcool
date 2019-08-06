@@ -38,10 +38,11 @@ export default {
       };
     },
     bindListeners() {
-      const { $listeners, onPressenter } = this;
+      const { $listeners, onPressenter, onBlur } = this;
       return {
         ...$listeners,
         pressenter: onPressenter,
+        blur: onBlur,
       };
     },
   },
@@ -64,6 +65,9 @@ export default {
       if (inputRef) {
         inputRef.blur();
       }
+    },
+    onBlur(e) {
+      this.$emit('blur', e);
     },
     onSearch(e) {
       const inputRef = this.getInputRef();

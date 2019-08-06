@@ -36,6 +36,9 @@ textarea.#{$input-prefix-cls} {
 
 .#{$input-prefix-cls}-textarea-wrapper {
   position: relative;
+  // for form validation
+  display: inline-block;
+  width: 100%;
 
   .#{$input-prefix-cls}-limit-word {
     font-size: 12px;

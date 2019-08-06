@@ -18,6 +18,9 @@
     <hr>
     <ux-heading level="2"
                 id="api">API</ux-heading>
+    <h3 class="mume-header"
+        id="uxinput">UxInput</h3>
+    <h4>Props</h4>
     <table class="api-table">
       <thead>
         <tr>
@@ -149,6 +152,11 @@
           <td>按下按键是触发</td>
           <td>Function(e)</td>
         </tr>
+        <tr>
+          <td>blur</td>
+          <td>失去焦点触发。<code>0.5.0-next.58</code>添加。</td>
+          <td>Function(e)</td>
+        </tr>
       </tbody>
     </table>
     <h3 class="mume-header"
@@ -191,6 +199,12 @@
           <td>Boolean</td>
           <td>false</td>
         </tr>
+        <tr>
+          <td>textarea-style</td>
+          <td>文本域样式。<code>0.5.0-next.58</code>添加。</td>
+          <td>Object</td>
+          <td></td>
+        </tr>
       </tbody>
     </table>
     <p>其余属性与原生
@@ -226,6 +240,13 @@
           <td>keydown</td>
           <td>按下按键时触发(包括
             <code>enter</code>键值)
+          </td>
+          <td>Function(e)</td>
+        </tr>
+        <tr>
+          <td>blur</td>
+          <td>失去焦点触发。
+            <code>0.5.0-next.58</code>添加。
           </td>
           <td>Function(e)</td>
         </tr>
@@ -301,6 +322,13 @@
             <code>enter</code>键时触发
           </td>
           <td>Function(val)</td>
+        </tr>
+        <tr>
+          <td>blur</td>
+          <td>失去焦点触发。
+            <code>0.5.0-next.58</code>添加
+          </td>
+          <td>Function(e)</td>
         </tr>
       </tbody>
     </table>

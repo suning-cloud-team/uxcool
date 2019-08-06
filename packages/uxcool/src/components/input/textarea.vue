@@ -3,7 +3,7 @@
     <textarea ref="textarea"
               v-bind="$attrs"
               :class="classes"
-              :style="textAreaStyle"
+              :style="styles"
               :value="innerValue"
               :disabled="disabled"
               v-on="bindListeners" />
@@ -19,6 +19,7 @@
 
   export default {
     name: buildComponentName('Textarea'),
+    inheritAttrs: false,
     props: {
       prefixCls: {
         type: String,
@@ -46,10 +47,15 @@
         type: Boolean,
         default: false,
       },
+
+      textareaStyle: {
+        type: Object,
+        default: null,
+      },
     },
     data() {
       return {
-        textAreaStyle: '',
+        calculatedStyle: '',
         nextFrameId: null,
         innerValue: null,
       };
@@ -63,12 +69,20 @@
           [`${prefixCls}-disabled`]: disabled,
         };
       },
+      styles() {
+        const { textareaStyle, calculatedStyle } = this;
+        return [textareaStyle, calculatedStyle];
+      },
       bindListeners() {
-        const { $listeners, onInput, onKeydown } = this;
+        const {
+          $listeners, onInput, onKeydown, onBlur
+        } = this;
         return {
           ...$listeners,
           input: onInput,
           keydown: onKeydown,
+          // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/230
+          blur: onBlur,
         };
       },
       length() {
@@ -102,7 +116,7 @@
           return;
         }
         const { minRows = null, maxRows = null } = autoSize;
-        this.textAreaStyle = calculateNodeHeight($refs.textarea, value, false, minRows, maxRows);
+        this.calculatedStyle = calculateNodeHeight($refs.textarea, value, false, minRows, maxRows);
       },
       resizeTextarea() {
         const { nextFrameId, calcTextAreaStyle, innerValue } = this;
@@ -132,6 +146,10 @@
         }
         this.$emit('on-key-down', e);
         this.$emit('keydown', e);
+      },
+      // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/230
+      onBlur(e) {
+        this.$emit('blur', e);
       },
     },
   };

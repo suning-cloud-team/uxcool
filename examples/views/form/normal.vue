@@ -127,7 +127,7 @@
         },
         formValidatorOptions: {},
         fieldOptions: {
-          events:'change'
+          events: 'blur',
         },
         rules: [
           'required|numeric',
@@ -154,7 +154,9 @@
     },
     methods: {
       changeLocale() {
-        const { $refs: { formRef } } = this;
+        const {
+          $refs: { formRef },
+        } = this;
         // formRef.setGlobalLocale('en');
       },
       showModal() {
@@ -164,7 +166,9 @@
         this.form.name = value;
       },
       onSubmit() {
-        const { $refs: { formRef } } = this;
+        const {
+          $refs: { formRef },
+        } = this;
         console.log(formRef.$validator);
         formRef.validate().then((err) => {
           console.log(err);

@@ -6,7 +6,7 @@
                    :theme="theme"
                    placeholder="测试用"
                    class="custom-class"
-                   style="resize:none"
+                   :textarea-style="{resize:'none'}"
                    :auto-size="{minRows:2, maxRows:6}" />
     </div>
 

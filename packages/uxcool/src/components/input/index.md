@@ -28,11 +28,12 @@
 
 #### Events
 
-| 事件名     | 描述                | 回调          |
-| ---------- | ------------------- | ------------- |
-| input      | 输入值变化时触发    | Function(val) |
-| pressenter | 按下`enter`键时触发 | Function(e)   |
-| keydown    | 按下按键是触发      | Function(e)   |
+| 事件名     | 描述                          | 回调          |
+| ---------- | ----------------------------- | ------------- |
+| input      | 输入值变化时触发              | Function(val) |
+| pressenter | 按下`enter`键时触发           | Function(e)   |
+| keydown    | 按下按键是触发                | Function(e)   |
+| blur       | 失去焦点触发。`0.5.0-next.58` | Function(e)   |
 
 ### UxTextarea
 
@@ -44,6 +45,7 @@
 | auto-size       | 自适应文本高度                                | Boolean \| Object{minRows, maxRows} | false |
 | show-word-limit | 是否显示字数限制，需要配合`maxlength`属性使用 | Boolean                             | false |
 | disabled        | 是否禁用                                      | Boolean                             | false |
+| textarea-style  | 文本域样式 `0.5.0-next.58`                    | Object                              |       |
 
 其余属性与原生 [textarea](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)一致
 
@@ -54,6 +56,7 @@
 | input                      | 输入值变化时触发                 | Function(val) |
 | pressenter                 | 按下`enter`键时触发              | Function(e)   |
 | keydown                    | 按下按键时触发(包括`enter`键值)  | Function(e)   |
+| blur                       | 失去焦点触发。`0.5.0-next.58`    | Function(e)   |
 | on-change(DEPRECATED)      | 值改变时触发                     | Function(val) |
 | on-press-enter(DEPRECATED) | 按下`enter`键时触发              | Function(e)   |
 | on-key-down(DEPRECATED)    | 按下按键时触发 (包括`enter`键值) | Function(e)   |
@@ -73,6 +76,7 @@
 | 事件名 | 描述                          | 回调          |
 | ------ | ----------------------------- | ------------- |
 | search | 点击搜索或按下`enter`键时触发 | Function(val) |
+| blur   | 失去焦点触发。`0.5.0-next.58` | Function(e)   |
 
 ### UxInputGroup
 

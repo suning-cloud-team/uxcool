@@ -1,7 +1,9 @@
 <template>
-  <v-tab-pane v-bind="{...$props, tab: $slots.tab || $props.tab }"
+  <v-tab-pane v-bind="$props"
               v-on="$listeners">
-    <slot name="tab" />
+    <template slot="tab">
+      <slot name="tab" />
+    </template>
     <slot />
   </v-tab-pane>
 </template>
