@@ -18,7 +18,7 @@
       </div>
     </div>
     <div slot="desc">
-      通过<code>showWordLimit</code>和<code>maxlength</code>属性指定是否可清除内容。
+      通过<code>showWordLimit</code>和<code>maxlength</code>属性指定是否显示字数限制。
     </div>
     <ux-code slot="code">
       {{ code }}

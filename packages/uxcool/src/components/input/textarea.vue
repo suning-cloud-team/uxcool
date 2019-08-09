@@ -1,5 +1,6 @@
 <template>
-  <div :class="`${prefixCls}-textarea-wrapper`">
+  <div v-if="showWordLimit"
+       :class="`${prefixCls}-textarea-wrapper`">
     <textarea ref="textarea"
               v-bind="$attrs"
               :class="classes"
@@ -10,6 +11,14 @@
     <span v-if="limitWord"
           :class="`${prefixCls}-limit-word`">{{ limitWord }}</span>
   </div>
+  <textarea v-else
+            ref="textarea"
+            v-bind="$attrs"
+            :class="classes"
+            :style="styles"
+            :value="innerValue"
+            :disabled="disabled"
+            v-on="bindListeners" />
 </template>
 
 <script>
