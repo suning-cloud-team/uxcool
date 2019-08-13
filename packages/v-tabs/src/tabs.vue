@@ -46,6 +46,7 @@
         init: false,
         descendants: [],
         activeName: '',
+        tabs: [],
       };
     },
     computed: {
@@ -81,11 +82,19 @@
     },
     created() {
       this.activeName = this.value;
+      const { getTabs } = this;
+      getTabs();
+
+      // slot不是响应式的，利用事件通知父组件重新调render函数渲染
+      // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/218
+      this.$on('tab-update', () => {
+        getTabs();
+      });
     },
     methods: {
       getTabs() {
         const { descendants } = this;
-        return descendants.map((v, i) => ({
+        this.tabs = descendants.map((v, i) => ({
           idx: i,
           isActive: v.isActive,
           disabled: v.disabled,
@@ -138,9 +147,9 @@
         onNextClick,
         animated,
         $slots,
-        getTabs,
+        tabs,
       } = this;
-      const tabs = getTabs();
+
       const tabBar = (
         <tab-bar
           prefixCls={prefixCls}
