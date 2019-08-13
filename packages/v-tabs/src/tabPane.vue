@@ -12,6 +12,7 @@
   export default {
     name: 'TabPane',
     inject: ['tabRoot'],
+    isTabPane: true,
     props: {
       name: { type: String, required: true },
       tab: String,
@@ -53,6 +54,9 @@
     },
     created() {
       this.addToRoot();
+    },
+    updated() {
+      this.tabRoot.$emit('tab-update');
     },
     beforeDestroy() {
       this.removeFromRoot();

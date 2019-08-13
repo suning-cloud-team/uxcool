@@ -2,19 +2,34 @@
   <div>
 
     <div class="demo">
-      <ux-textarea novalidate
-                   :theme="theme"
+      <ux-textarea :textarea-style="{resize:'none'}"
+                   :auto-size="{minRows:2, maxRows:6}"
+                   novalidate
                    placeholder="测试用"
-                   class="custom-class"
-                   :textarea-style="{resize:'none'}"
-                   :auto-size="{minRows:2, maxRows:6}" />
+                   class="custom-class" />
     </div>
 
     <div class="demo">
-      <ux-textarea spellcheck="false"
-                   :theme="theme"
+      <ux-textarea :auto-size="{minRows:2, maxRows:6}"
+                   novalidate
+                   placeholder="测试用"
+                   class="custom-class"
+                   style="resize: none" />
+    </div>
+    <div class="demo">
+      <ux-textarea :auto-size="{minRows:2, maxRows:6}"
+                   :textarea-style="{resize:'none'}"
+                   show-word-limit
+                   novalidate
+                   placeholder="测试用"
+                   class="custom-class" />
+    </div>
+
+    <div class="demo">
+      <ux-textarea :theme="theme"
                    v-model="value"
                    :auto-size="true"
+                   spellcheck="false"
                    @input="onInput"
                    @on-change="onChange"
                    @change="onChange"
