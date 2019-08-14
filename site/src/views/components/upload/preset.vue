@@ -4,7 +4,7 @@
     <div slot="demo">
       <ux-upload v-model="fileList"
                  :on-preview="onPreview"
-                 action="http://dip.cnsuning.com:80/service/2698/1.0.0/upload"
+                 action="http://dip.cnsuning.com/service/1554195600131/1.0/upload"
                  list-type="picture"
                  @change="onChange">
         <ux-button>Click to Upload</ux-button>

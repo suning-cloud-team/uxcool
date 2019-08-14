@@ -6,7 +6,7 @@
                  :before-ready="onBeforeReady"
                  :before-upload="onBeforeUpload"
                  class="avatar-upload"
-                 action="http://dip.cnsuning.com:80/service/2698/1.0.0/upload"
+                 action="http://dip.cnsuning.com/service/1554195600131/1.0/upload"
                  list-type="picture-card"
                  @change="onChange"
                  @progress="onProgress">
@@ -78,15 +78,11 @@
 
         return isJPEG && isLt2M;
       },
-      onChange({
-        file: {
-          error, status, originFile, response
-        }
-      }) {
+      onChange({ file: { error, status, originFile, response } }) {
         this.loading = status === 'uploading';
         if (status === 'success') {
           console.log('upload response', response);
-          previewIMG(originFile, (url) => {
+          previewIMG(originFile, url => {
             this.thumbUrl = url;
             // 控制是否只能上传一次
             // this.disabled = true;
