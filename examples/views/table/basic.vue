@@ -32,6 +32,7 @@
     <node-pagination-demo />
     <fixed-columns-header-async-demo />
     <virtual-demo />
+    <custom-title-demo />
 
   </div>
 </template>
@@ -71,6 +72,7 @@
   import TreeRelationDemo from './tree-relation.vue';
   import HeaderCellDemo from './header-cell.vue';
   import VirtualDemo from './virtual.vue';
+  import CustomTitleDemo from './title.vue';
 
   export default {
     components: {
@@ -107,6 +109,7 @@
       ManualDemo,
       HeaderCellDemo,
       VirtualDemo,
+      CustomTitleDemo,
     },
   };
 </script>

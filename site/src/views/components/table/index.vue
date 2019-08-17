@@ -272,8 +272,8 @@
         </tr>
         <tr>
           <td>title</td>
-          <td>header 列名</td>
-          <td>String</td>
+          <td>header 列名<code>0.5.0-next.60</code>版本以后支持函数类型，可用于自定义标题内容。</td>
+          <td>String | Function(h) => VNode</td>
           <td></td>
         </tr>
         <tr>

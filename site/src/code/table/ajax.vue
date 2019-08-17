@@ -109,14 +109,16 @@
           ...filterInfo,
         };
         this.loading = true;
-        return Axios.get('http://dippre.cnsuning.com:80/service/2698/1.0.0/table', { params }).then(({ data: { data } }) => {
+        return Axios.get('http://dip.cnsuning.com/service/1554195600131/1.0/table', { params }).then(
+          ({ data: { data } }) => {
             // loading effect
             setTimeout(() => {
               this.pagination = { ...pagination, total: data.total };
               this.data = data.data;
               this.loading = false;
             }, 1500);
-          });
+          }
+        );
       },
       onChange(pager, filterInfo, sort) {
         console.log('change', pager, filterInfo, sort);

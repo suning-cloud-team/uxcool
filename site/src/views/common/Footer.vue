@@ -1,7 +1,7 @@
 <template>
   <div class="app-footer">
     <div class="footer-links">
-      <a href="http://dippre.cnsuning.com"
+      <a href="http://dip.cnsuning.com"
          target="_blank">DIP • 数据接口平台</a>
       <a href="http://mmlos.cnsuning.com/mlos-web/roomReservation/imeetingBook.htm"
          target="_blank">会议室预定</a>

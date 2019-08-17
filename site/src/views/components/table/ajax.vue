@@ -127,7 +127,7 @@
           ...filterInfo,
         };
         this.loading = true;
-        return Axios.get('http://dip.cnsuning.com/service/2698/1.0.0/table', { params }).then(({ data: { data } }) => {
+        return Axios.get('http://dip.cnsuning.com/service/1554195600131/1.0/table', { params }).then(({ data: { data } }) => {
           // effect
           setTimeout(() => {
             this.pagination = { ...pagination, total: data.total };

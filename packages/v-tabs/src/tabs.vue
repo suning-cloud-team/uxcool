@@ -63,7 +63,14 @@
         this.setActiveName(nVal);
       },
       descendants() {
-        const { descendants, init, activeName } = this;
+        const {
+          descendants, init, activeName, getTabs
+        } = this;
+
+        // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/236
+        // trigger render
+        getTabs();
+
         if (descendants.length === 0) {
           return;
         }

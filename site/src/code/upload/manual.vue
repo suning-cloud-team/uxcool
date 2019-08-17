@@ -3,7 +3,7 @@
     <ux-upload ref="uploadRef"
                v-model="files"
                :auto-upload="false"
-               action="http://dip.cnsuning.com:80/service/2698/1.0.0/upload"
+               action="http://dip.cnsuning.com/service/1554195600131/1.0/upload"
                @change="onChange">
       <ux-button icon="upload">选择文件</ux-button>
     </ux-upload>

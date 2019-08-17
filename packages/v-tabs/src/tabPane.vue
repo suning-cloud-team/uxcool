@@ -1,9 +1,9 @@
 <template>
   <div :class="classes"
        role="tabpanel">
-    <div style="display:none">
+    <!-- <div style="display:none">
       <slot name="tab" />
-    </div>
+    </div> -->
     <slot />
   </div>
 </template>

@@ -58,7 +58,7 @@ Vue.use(UxCool);
       </ux-code>
       <p>引入样式:</p>
       <ux-code>
-        import &apos;@suning/uxcool/dist/uxcool.css&apos;;
+import &apos;@suning/uxcool/dist/uxcool.css&apos;;
       </ux-code>
       <h3 class="ux-heading">按需加载</h3>
       <ux-code>
@@ -67,7 +67,7 @@ import { UxSelect, UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/select
       </ux-code>
       <blockquote>
         <p>PS：附送前后端分离开发利器，
-          <a href="http://dippre.cnsuning.com"
+          <a href="http://dip.cnsuning.com"
              target="_blank">数据接口平台 DIP</a>
         </p>
       </blockquote>

@@ -3,7 +3,7 @@
     <ux-tabs>
       <ux-tab-pane name="tab1"
                    tab="tab1">
-        Tab1
+        Tab1 {{ count }}
       </ux-tab-pane>
       <ux-tab-pane name="tab2"
                    tab="tab2">
@@ -11,15 +11,29 @@
       </ux-tab-pane>
       <ux-tab-pane name="tab3">
         <template slot="tab">
-          <ux-button>
-            {{ tab3 }}
-          </ux-button>
+          count: {{ count }}
+        </template>
+        Tab3
+      </ux-tab-pane>
+    </ux-tabs>
+    <ux-tabs value="tab1">
+      <ux-tab-pane name="tab1"
+                   tab="tab1">
+        Tab1 {{ count }}
+      </ux-tab-pane>
+      <ux-tab-pane name="tab2"
+                   tab="tab2">
+        Tab2
+      </ux-tab-pane>
+      <ux-tab-pane name="tab3">
+        <template slot="tab">
+          count: {{ count }}
         </template>
         Tab3
       </ux-tab-pane>
     </ux-tabs>
     <br>
-    <ux-button @click="onClickChange">CHANGE!</ux-button>
+    <ux-button @click="onClickChange">{{ count }}</ux-button>
   </div>
 </template>
 
@@ -34,12 +48,12 @@
     },
     data() {
       return {
-        tab3: 'tab3 once'
+        count: 0,
       };
     },
     methods: {
       onClickChange() {
-        this.tab3 = 'tab3 twice';
+        this.count += 1;
       },
     },
   };

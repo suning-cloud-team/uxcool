@@ -1,5 +1,5 @@
 <template>
-  <ux-upload action="http://dip.cnsuning.com:80/service/2698/1.0.0/upload"
+  <ux-upload action="http://dip.cnsuning.com/service/1554195600131/1.0/upload"
              list-type="picture">
     <ux-button icon="upload">Click to Upload</ux-button>
   </ux-upload>

@@ -47,7 +47,7 @@ table columns 属性:
 | ----------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----- |
 | fixed                         | 是否固定，可选 `true`(等效于`left`) `left`,`right`                                                        | Boolean\|String                                       | false |
 | key                           | 唯一性标识(必须)                                                                                          | String                                                |       |
-| title                         | header 列名                                                                                               | String                                                |       |
+| title                         | header 列名。 `0.5.0-next.60` 支持函数类型                                                                | String \| Function(h) => VNode                        |       |
 | dataIndex                     | 列数据索引,对应数据中的键名                                                                               | String                                                |       |
 | colspan                       | 表头列合并, 值为 0 时,不渲染                                                                              | Number                                                |       |
 | className                     | 自定义 header class                                                                                       | String\|Object\|Array                                 |       |

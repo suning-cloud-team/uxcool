@@ -4,7 +4,7 @@
     <div slot="demo">
       <ux-upload v-model="fileList"
                  :before-ready="onBeforeReady"
-                 action="http://dip.cnsuning.com:80/service/2698/1.0.0/upload">
+                 action="http://dip.cnsuning.com/service/1554195600131/1.0/upload">
         <ux-button icon="upload">Click to Upload</ux-button>
       </ux-upload>
     </div>
@@ -35,9 +35,11 @@
         const total = selectFiles.length + fileList.length;
         const isLimit = total <= limit;
         if (!isLimit) {
-          UxMessage.warn(`当前限制选择 ${limit} 个文件，本次选择了 ${
-            selectFiles.length
-          } 个文件，共选择了 ${total} 个文件`);
+          UxMessage.warn(
+            `当前限制选择 ${limit} 个文件，本次选择了 ${
+              selectFiles.length
+            } 个文件，共选择了 ${total} 个文件`
+          );
         }
         return isLimit;
       },
