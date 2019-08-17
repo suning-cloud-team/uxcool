@@ -418,7 +418,7 @@ export default {
         cols,
         (col) => {
           const nv = col;
-          const { filters, sorter } = nv;
+          const { filters, sorter, title } = nv;
           let [sortButton, filterDropdown] = [null, null];
           const isCanFilter = (Array.isArray(filters) && filters.length > 0) || nv.filterDropdown;
           // 只支持最内层元素过滤
@@ -466,6 +466,11 @@ export default {
                 </span>
               </div>
             );
+          }
+
+          // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/237
+          if (isFunction(title)) {
+            nv.title = title(this.$createElement);
           }
 
           if (sortButton || filterDropdown) {
