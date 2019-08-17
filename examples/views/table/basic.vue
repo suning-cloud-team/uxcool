@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <normal-demo />
+    <normal-demo />
     <tree-relation-demo />
     <manual-demo />
     <header-cell-demo />
@@ -31,7 +31,7 @@
     <tabs-demo />
     <node-pagination-demo />
     <fixed-columns-header-async-demo />
-    <virtual-demo /> -->
+    <virtual-demo />
     <custom-title-demo />
 
   </div>
