@@ -17,7 +17,7 @@
       {
         key: 'name',
         // title: 'Name',
-        title() {
+        title(h) {
           return <a>Name</a>;
         },
         dataIndex: 'name',
