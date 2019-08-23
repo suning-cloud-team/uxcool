@@ -23,9 +23,10 @@ export default {
   computed: {
     isLeaf() {
       const {
-        isTreeLazy, node: {
+        isTreeLazy,
+        node: {
           isLeaf, isParent, isLoaded, children
-        }
+        },
       } = this;
       return (
         isLeaf ||
@@ -34,7 +35,10 @@ export default {
       );
     },
     isSelectable() {
-      const { isTreeSelectable, node: { selectable } } = this;
+      const {
+        isTreeSelectable,
+        node: { selectable },
+      } = this;
 
       if (selectable === false) {
         return false;
@@ -42,7 +46,10 @@ export default {
       return !!selectable || !!isTreeSelectable;
     },
     isDisabled() {
-      const { isTreeDisabled, node: { isDisabled } } = this;
+      const {
+        isTreeDisabled,
+        node: { isDisabled },
+      } = this;
 
       if (isDisabled === false) {
         return false;
@@ -108,7 +115,10 @@ export default {
       };
     },
     nodeState() {
-      const { isExpanded, node: { isParent } } = this;
+      const {
+        isExpanded,
+        node: { isParent },
+      } = this;
       let nodeState = '';
       if (isParent) {
         nodeState = isExpanded ? ICON_OPEN : ICON_CLOSE;
@@ -117,7 +127,11 @@ export default {
     },
     selectorClasses() {
       const {
-        prefixCls, isDisabled, nodeState, draggable, node: { isSelected }
+        prefixCls,
+        isDisabled,
+        nodeState,
+        draggable,
+        node: { isSelected },
       } = this;
       const wrapCls = `${prefixCls}-node-content-wrapper`;
 
@@ -311,8 +325,13 @@ export default {
         : selectorElement;
     },
     renderChildren() {
-      const { prefixCls, isExpanded, node: { children } } = this;
-      if (!children || children.length === 0) {
+      const {
+        prefixCls,
+        isExpanded,
+        node: { children },
+      } = this;
+      // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/235
+      if (!children || children.length === 0 || children.every(({ isVisible }) => !isVisible)) {
         return null;
       }
 
@@ -352,9 +371,12 @@ export default {
       dragover: onDragOver,
       drop: onDrop,
     };
-    return (
+    /**
+     *  http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/235
+     *  原来逻辑是使用v-show控制节点显示隐藏，show-line模式下可能导致last-child选择器无效
+     */
+    return isVisible ? (
       <li
-        v-show={isVisible}
         {...{
           class: classes,
           attrs: {
@@ -365,6 +387,6 @@ export default {
       >
         {[innerSwitcher, innerCheckbox, innerSelector, innerChildren]}
       </li>
-    );
+    ) : null;
   },
 };
