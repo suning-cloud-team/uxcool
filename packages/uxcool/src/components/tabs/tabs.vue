@@ -4,6 +4,9 @@
           :tab-bar-position="tabPosition"
           :animated="isAnimated"
           v-on="bindListeners">
+    <template slot="tabBarExtraContent">
+      <slot name="tabBarExtraContent" />
+    </template>
     <slot />
   </v-tabs>
 </template>

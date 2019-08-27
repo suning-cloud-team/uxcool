@@ -6,6 +6,7 @@
     <demo-basic></demo-basic>
     <demo-disabled></demo-disabled>
     <demo-custom-icon></demo-custom-icon>
+    <demo-extra />
     <demo-scroll></demo-scroll>
     <demo-size></demo-size>
     <demo-position></demo-position>
@@ -48,6 +49,22 @@
           <td>默认选中的 tab,与 tab-pane 的 name 属性对应</td>
           <td>String</td>
           <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="api-table">
+      <caption>UxTabs Slots</caption>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>描述</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>tabBarExtraContent</td>
+          <td>tabBar额外内容。<code>0.5.0-next.61</code>版本以上可用</td>
         </tr>
       </tbody>
     </table>
@@ -138,6 +155,7 @@
   import DemoSize from './size.vue';
   import DemoPosition from './position.vue';
   import DemoCard from './card.vue';
+  import DemoExtra from './extra.vue';
 
   export default {
     components: {
@@ -148,6 +166,7 @@
       DemoSize,
       DemoPosition,
       DemoCard,
+      DemoExtra,
     },
   };
 </script>

@@ -1,7 +1,8 @@
 <template>
   <div :class="classes">
     <head-table v-if="isFixedHeader&&!hideHeader"
-                :fixed="fixed" />
+                :fixed="fixed"
+                @head-scroll="onScrollX" />
 
     <body-table v-if="!virtualScrollMode"
                 :has-head="!isFixedHeader&&!hideHeader"
@@ -58,6 +59,9 @@
       headTableRef() {
         return this.elementRefs.headTableRef;
       },
+      bodyTableRef() {
+        return this.elementRefs.bodyTableRef;
+      },
       fixedAndBodyTableRefs() {
         const { elementRefs } = this;
         return [
@@ -75,12 +79,17 @@
         this.rootVM.updatePrevScrollTop(scrollTop);
       },
       onScrollX(e) {
-        const { scroll, prevScrollLeft, headTableRef } = this;
+        const {
+          scroll, prevScrollLeft, headTableRef, bodyTableRef
+        } = this;
         const { target } = e;
         const { scrollLeft } = target;
         if (scrollLeft !== prevScrollLeft && scroll.x) {
-          if (headTableRef && target !== headTableRef) {
+          // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/234
+          if (headTableRef && target === bodyTableRef) {
             headTableRef.scrollLeft = scrollLeft;
+          } else if (bodyTableRef && target === headTableRef) {
+            bodyTableRef.scrollLeft = scrollLeft;
           }
           this.updatePrevScrollLeft(scrollLeft);
           this.$emit('scroll-x', scrollLeft);

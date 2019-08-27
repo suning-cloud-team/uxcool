@@ -101,7 +101,7 @@
     },
     computed: mapState(['theme']),
     created() {
-      const { current, pageSize } = this;
+      const { current, pageSize } = this.pagination;
       this.queryData(current, pageSize);
       this.columns = this.getCols();
     },
@@ -112,7 +112,10 @@
         return `${record.name}-${record.age}`;
       },
       queryData(current, pageSize) {
-        const { filterInfo, sortInfo: { field: sortField, order: sortOrder } } = this;
+        const {
+          filterInfo,
+          sortInfo: { field: sortField, order: sortOrder },
+        } = this;
         const params = {
           current,
           pageSize,
@@ -121,14 +124,16 @@
           ...filterInfo,
         };
         this.loading = true;
-        return Axios.get('http://dip.cnsuning.com:80/service/2698/1.0.0/table', { params }).then(({ data }) => {
-          this.pagination.total = data.total;
-          this.data = data.data;
-          // effect
-          setTimeout(() => {
-            this.loading = false;
-          }, 1500);
-        });
+        return Axios.get('http://dip.cnsuning.com/service/1554195600131/1.0/table', { params }).then(
+          ({ data: { data } }) => {
+            this.pagination.total = data.total;
+            this.data = data.data;
+            // effect
+            setTimeout(() => {
+              this.loading = false;
+            }, 1500);
+          }
+        );
       },
       onChange(pager, filterInfo, sort) {
         console.log('change', pager, filterInfo, sort);

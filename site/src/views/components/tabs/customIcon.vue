@@ -2,8 +2,8 @@
   <ux-demo title="图标"
            vertical>
     <div slot="demo">
-      <ux-tabs @tab-click="onTabClick"
-               :theme="theme">
+      <ux-tabs :theme="theme"
+               @tab-click="onTabClick">
         <ux-tab-pane name="1">
           <span slot="tab">
             <i class="fu fu-account"></i> Tab 1
@@ -12,7 +12,7 @@
         </ux-tab-pane>
         <ux-tab-pane name="2">
           <span slot="tab">
-            <i class="fu fu-account"></i>Tab 2
+            <i class="fu fu-star"></i>Tab 2
           </span>
           Tab 2 Content
         </ux-tab-pane>
@@ -24,13 +24,13 @@
     </div>
     <div slot="desc">自定义图标</div>
     <ux-code slot="code">
-      {{code}}
+      {{ code }}
     </ux-code>
   </ux-demo>
 </template>
 
 <script>
-  import code from '@/code/tabs/customIcon';
+  import code from '@/code/tabs/customIcon.vue';
 
   export default {
     data() {

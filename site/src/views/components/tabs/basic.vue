@@ -19,13 +19,13 @@
     </div>
     <div slot="desc">默认选择第一个tab</div>
     <ux-code slot="code">
-      {{code}}
+      {{ code }}
     </ux-code>
   </ux-demo>
 </template>
 
 <script>
-  import code from '@/code/tabs/basic';
+  import code from '@/code/tabs/basic.vue';
 
   export default {
     data() {

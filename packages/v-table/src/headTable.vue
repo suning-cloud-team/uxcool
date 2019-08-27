@@ -1,9 +1,10 @@
 <template>
   <div :ref="refName"
        :class="`${prefixCls}-header`"
-       :style="style">
-    <base-table has-head
-                :fixed="fixed" />
+       :style="style"
+       @scroll="onScroll">
+    <base-table :fixed="fixed"
+                has-head />
   </div>
 </template>
 <script>
@@ -41,6 +42,14 @@
       if (!fixed) {
         this.saveRef(refName, $refs[refName]);
       }
+    },
+    methods: {
+      onScroll(e) {
+        e.stopPropagation();
+        if (!this.fixed) {
+          this.$emit('head-scroll', e);
+        }
+      },
     },
   };
 </script>
