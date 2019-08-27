@@ -1,6 +1,6 @@
 {
   "name": "@suning/uxcool",
-  "version": "0.5.0-next.60",
+  "version": "0.5.0-next.61",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -26,8 +26,8 @@
     "@suning/v-pagination": "^1.0.27",
     "@suning/v-slider": "^1.0.26",
     "@suning/v-steps": "^1.0.12",
-    "@suning/v-table": "^1.0.36",
-    "@suning/v-tabs": "^1.0.38",
+    "@suning/v-table": "^1.0.37",
+    "@suning/v-tabs": "^1.0.39",
     "@suning/v-tooltip": "^1.0.43",
     "@suning/v-trigger": "^1.0.57",
     "@suning/v-utils": "^1.0.26",
