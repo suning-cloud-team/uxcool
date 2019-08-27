@@ -157,11 +157,14 @@
         tabs,
       } = this;
 
+      const { default: defaultSlot, tabBarExtraContent } = $slots;
+
       const tabBar = (
         <tab-bar
           prefixCls={prefixCls}
           tabs={tabs}
           tabBarPosition={tabBarPosition}
+          extraContent={tabBarExtraContent}
           size={size}
           on-tab-click={onTabClick}
           on-prev-click={onPrevClick}
@@ -181,7 +184,7 @@
           tabBarPosition={tabBarPosition}
           activeIdx={activeIdx}
         >
-          {$slots.default}
+          {defaultSlot}
         </tab-content>
       );
       const childrens = tabBarPosition === 'bottom' ? [tabContent, tabBar] : [tabBar, tabContent];

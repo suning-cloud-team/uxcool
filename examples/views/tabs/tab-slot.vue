@@ -1,5 +1,6 @@
 <template>
   <div class="demo">
+    <h6>slot</h6>
     <ux-tabs>
       <ux-tab-pane name="tab1"
                    tab="tab1">

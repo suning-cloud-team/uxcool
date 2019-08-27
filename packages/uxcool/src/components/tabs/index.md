@@ -11,6 +11,12 @@
 | tab-position | tab 位置                                    | top \| left \| right \| bottom\| top |
 | value        | 默认选中的 tab,与 tab-pane 的 name 属性对应 | String                               |         |
 
+#### Slot
+
+| name               | 描述             |
+| ------------------ | ---------------- |
+| tabBarExtraContent | tab bar 额外内容 |
+
 #### Events
 
 | 事件名     | 描述                                 | 回调                          |

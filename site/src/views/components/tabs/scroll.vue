@@ -3,11 +3,11 @@
            vertical>
     <div slot="demo">
       <div class="ux-btn-group">
-        <button class="ux-btn ux-btn-default"
-                :class="{active: mode === 'top'}"
+        <button :class="{active: mode === 'top'}"
+                class="ux-btn ux-btn-default"
                 @click="changeMode('top')">horizontal</button>
-        <button class="ux-btn ux-btn-default"
-                :class="{active: mode === 'left'}"
+        <button :class="{active: mode === 'left'}"
+                class="ux-btn ux-btn-default"
                 @click="changeMode('left')">vertical</button>
       </div>
       <ux-tabs :tab-position="mode"
@@ -18,19 +18,19 @@
                      :disabled="pane.disabled"
                      :tab="pane.tab"
                      :name="pane.name">
-          {{pane.content}}
+          {{ pane.content }}
         </ux-tab-pane>
       </ux-tabs>
     </div>
     <div slot="desc">当标签超出容器宽度后,自动出现滑动按钮, 可左右,上下滑动</div>
     <ux-code slot="code">
-      {{code}}
+      {{ code }}
     </ux-code>
   </ux-demo>
 </template>
 
 <script>
-  import code from '@/code/tabs/scroll';
+  import code from '@/code/tabs/scroll.vue';
 
   export default {
     data() {
@@ -52,7 +52,7 @@
           tab: `Tab ${i}`,
           name: `name${i}`,
           content: `Tab ${i} Content`,
-        }));
+      }));
     },
     methods: {
       changeMode(mode) {
@@ -61,5 +61,4 @@
     },
   };
 </script>
-
 

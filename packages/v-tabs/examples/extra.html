@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <select v-model="position">
+      <option value="top">top</option>
+      <option value="left">left</option>
+      <option value="right">right</option>
+      <option value="bottom">bottom</option>
+    </select> {{position}}
+    <v-tabs :value="currentPane" :tab-bar-position="position">
+      <v-tab-pane v-for="(pane,i) in panes" :key="i" :disabled="pane.disabled" :tab="pane.tab"
+        :name="pane.name">{{pane.content}}</v-tab-pane>
+      <template slot="tabBarExtraContent">
+        <button class="v-button">button</button>
+      </template>
+    </v-tabs>
+  </div>
+</body>
+
+</html>

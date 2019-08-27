@@ -1,7 +1,7 @@
 <template>
   <div>
     <button class="ux-btn"
-            @click="changeTheme">{{theme}}</button>
+            @click="changeTheme">{{ theme }}</button>
     <div class="demo">
       <h6>basic</h6>
       <ux-tabs :theme="theme"
@@ -45,17 +45,17 @@
 
     <div class="demo">
       <h6>custom icon</h6>
-      <ux-tabs @tab-click="onTabClick"
-               :theme="theme">
+      <ux-tabs :theme="theme"
+               @tab-click="onTabClick">
         <ux-tab-pane name="1">
           <span slot="tab">
-            <i class="fu fu-account"></i> Tab 1
+            <i class="fu fu-account" /> Tab 1
           </span>
           Tab 1 Content
         </ux-tab-pane>
         <ux-tab-pane name="2">
           <span slot="tab">
-            <i class="fu fu-star"></i>Tab 2
+            <i class="fu fu-star" />Tab 2
           </span>
           Tab 2 Content
         </ux-tab-pane>
@@ -69,11 +69,11 @@
     <div class="demo">
       <h6>scroll</h6>
       <div class="ux-btn-group">
-        <button class="ux-btn ux-btn-default"
-                :class="{active: mode === 'top'}"
+        <button :class="{active: mode === 'top'}"
+                class="ux-btn ux-btn-default"
                 @click="changeMode('top')">horizontal</button>
-        <button class="ux-btn ux-btn-default"
-                :class="{active: mode === 'left'}"
+        <button :class="{active: mode === 'left'}"
+                class="ux-btn ux-btn-default"
                 @click="changeMode('left')">vertical</button>
       </div>
       <ux-tabs :tab-position="mode"
@@ -84,7 +84,7 @@
                      :disabled="pane.disabled"
                      :tab="pane.tab"
                      :name="pane.name">
-          {{pane.content}}
+          {{ pane.content }}
         </ux-tab-pane>
       </ux-tabs>
     </div>
@@ -92,14 +92,14 @@
     <div class="demo">
       <h6>size</h6>
       <div class="ux-btn-group">
-        <button class="ux-btn ux-btn-default"
-                :class="{active: size === 'small'}"
+        <button :class="{active: size === 'small'}"
+                class="ux-btn ux-btn-default"
                 @click="changeSize('small')">small</button>
-        <button class="ux-btn ux-btn-default"
-                :class="{active: size === 'default'}"
+        <button :class="{active: size === 'default'}"
+                class="ux-btn ux-btn-default"
                 @click="changeSize('default')">default</button>
-        <button class="ux-btn ux-btn-default"
-                :class="{active: size === 'large'}"
+        <button :class="{active: size === 'large'}"
+                class="ux-btn ux-btn-default"
                 @click="changeSize('large')">large</button>
       </div>
       <ux-tabs :size="size"
@@ -109,7 +109,7 @@
                      :disabled="pane.disabled"
                      :tab="pane.tab"
                      :name="pane.name">
-          {{pane.content}}
+          {{ pane.content }}
         </ux-tab-pane>
       </ux-tabs>
     </div>
@@ -155,6 +155,7 @@
     <control-demo />
     <color-demo />
     <tab-slot-demo />
+    <extra-demo />
   </div>
 </template>
 
@@ -168,6 +169,7 @@
   import ControlDemo from './control.vue';
   import ColorDemo from './color.vue';
   import TabSlotDemo from './tab-slot.vue';
+  import ExtraDemo from './extra.vue';
 
   export default {
     components: {
@@ -180,6 +182,7 @@
       ControlDemo,
       ColorDemo,
       TabSlotDemo,
+      ExtraDemo,
     },
     data() {
       return {
