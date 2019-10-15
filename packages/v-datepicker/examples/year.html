@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Month Year Decade Picker</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-month-year-decade-picker style="width:250px" :value="value" mode="year" @change="onChange"
+      @panel-change="onPanelChange" @open-change="onOpenChange">
+      <input type="text" slot="trigger" v-model="value">
+    </v-month-year-decade-picker>
+  </div>
+</body>
+
+</html>

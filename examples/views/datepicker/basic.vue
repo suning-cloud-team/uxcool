@@ -57,7 +57,7 @@
                             :theme="theme" />
     </div>
     <placement-demo />
-    <month-demo />
+
     <popup-container-demo />
     <ok-confirm-demo />
 
@@ -65,6 +65,9 @@
     <control-mode-demo />
     <size-demo />
 
+    <change-value-demo />
+    <month-demo />
+    <range-month-demo />
   </div>
 </template>
 
@@ -88,6 +91,8 @@
   import ControlModeDemo from './controlMode.vue';
   import PlacementDemo from './placement.vue';
   import SizeDemo from './size.vue';
+  import ChangeValueDemo from './changeSelectedValue.vue';
+  import RangeMonthDemo from './rangeMonth.vue';
 
   export default {
     components: {
@@ -100,6 +105,8 @@
       ControlModeDemo,
       PlacementDemo,
       SizeDemo,
+      ChangeValueDemo,
+      RangeMonthDemo,
     },
     data() {
       return {

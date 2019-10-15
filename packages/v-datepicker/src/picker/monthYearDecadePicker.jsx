@@ -1,9 +1,9 @@
 import Trigger from '@suning/v-trigger';
 import placements from './placements';
-import MonthCalendar from '../monthCalendar';
+import MonthYearDecadeCalendar from '../monthYearDecadeCalendar';
 
 export default {
-  name: 'MonthPicker',
+  name: 'MonthYearDecadePicker',
   props: {
     prefixCls: {
       type: String,
@@ -13,6 +13,13 @@ export default {
       type: String,
       default() {
         return `${this.prefixCls}-picker`;
+      },
+    },
+    mode: {
+      type: String,
+      default: 'month',
+      validator(v) {
+        return ['month', 'year', 'decade'].indexOf(v) > -1;
       },
     },
     visible: {
@@ -91,10 +98,14 @@ export default {
     },
     onPopupVisibleChange(visible) {
       this.setInnerVisible(visible);
+      this.$emit('open-change', visible);
     },
     onChange(val) {
       this.setInnerVisible(false);
-      this.$emit('input', val);
+      this.$emit('change', val);
+    },
+    onPanelChange(...args) {
+      this.$emit('panel-change', ...args);
     },
   },
   render() {
@@ -102,6 +113,7 @@ export default {
       $slots,
       prefixCls,
       pickerPrefixCls,
+      mode,
       value,
       locale,
       format,
@@ -116,6 +128,7 @@ export default {
       transitionName,
       onPopupVisibleChange,
       onChange,
+      onPanelChange,
     } = this;
     const triggerProps = {
       prefixCls: pickerPrefixCls,
@@ -134,18 +147,20 @@ export default {
     };
     const calendarProps = {
       prefixCls,
+      mode,
       value,
       locale,
       format,
       disabledMonth,
     };
     const calendarOn = {
+      'panel-change': onPanelChange,
       change: onChange,
     };
     return (
       <Trigger {...{ props: triggerProps, on }}>
         <template slot="trigger">{$slots.trigger}</template>
-        <MonthCalendar {...{ props: calendarProps, on: calendarOn, slot: 'popup' }} />
+        <MonthYearDecadeCalendar {...{ props: calendarProps, on: calendarOn, slot: 'popup' }} />
       </Trigger>
     );
   },

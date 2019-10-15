@@ -118,6 +118,10 @@
   }
 }
 
+.#{$prefixClass}-month-panel-selected-month .#{$prefixClass}-month-panel-month {
+  background: tint(#3fc7fa, 80%);
+}
+
 .#{$prefixClass}-month-panel-selected-cell .#{$prefixClass}-month-panel-month {
   background: #3fc7fa;
   color: #fff;

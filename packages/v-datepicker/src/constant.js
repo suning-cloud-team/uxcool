@@ -18,3 +18,4 @@ export const DATE_STYLE = {
   col: 7,
 };
 
+export const PICKER_MODES = ['time', 'date', 'month', 'year', 'decade'];

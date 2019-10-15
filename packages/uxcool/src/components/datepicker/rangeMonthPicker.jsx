@@ -1,9 +1,9 @@
 import { buildComponentName } from '../utils';
-import MonthYearMixin from './mixins/monthYear';
+import RangeMonthYearMixin from './mixins/rangeMonthYear';
 
 export default {
-  name: buildComponentName('MonthPicker'),
-  mixins: [MonthYearMixin],
+  name: buildComponentName('RangeMonthPicker'),
+  mixins: [RangeMonthYearMixin],
   props: {
     format: {
       type: String,
@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      mode: 'month',
+      mode: ['month', 'month'],
     };
   },
 };

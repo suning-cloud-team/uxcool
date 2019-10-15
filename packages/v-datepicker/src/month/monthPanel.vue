@@ -1,30 +1,31 @@
 <template>
   <div :class="classes">
     <div :class="`${prefixCls}-header`">
-      <a :class="`${prefixCls}-prev-year-btn`"
+      <a v-if="monthNav.prev"
+         :title="locale.previousYear"
+         :class="`${prefixCls}-prev-year-btn`"
          role="button"
-         @click="prevYear"
-         :title="locale.previousYear"></a>
-      <a :class="`${prefixCls}-year-select`"
+         @click="prevYear" />
+      <a :title="locale.yearSelect"
+         :class="`${prefixCls}-year-select`"
          role="button"
-         :title="locale.yearSelect"
          @click="showYearPanel">
         <span :class="`${prefixCls}-year-select-content`">
-          {{year}}
+          {{ year }}
         </span>
       </a>
-      <a :class="`${prefixCls}-next-year-btn`"
+      <a v-if="monthNav.next"
+         :title="locale.nextYear"
+         :class="`${prefixCls}-next-year-btn`"
          role="button"
-         @click="nextYear"
-         :title="locale.nextYear"></a>
+         @click="nextYear" />
     </div>
     <div :class="`${prefixCls}-body`">
       <month-table :prefix-cls="prefixCls"
                    :value="innerValue"
                    :disabled-month="disabledMonth"
                    :locale="locale"
-                   @on-select="onSelect">
-      </month-table>
+                   @on-select="onSelect" />
     </div>
   </div>
 </template>
@@ -41,6 +42,15 @@
       value: Date,
       disabledMonth: Function,
       locale: Object,
+      monthNav: {
+        type: Object,
+        default() {
+          return {
+            prev: true,
+            next: true,
+          };
+        },
+      },
     },
     data() {
       return {

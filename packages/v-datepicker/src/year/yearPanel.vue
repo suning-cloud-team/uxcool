@@ -2,19 +2,19 @@
   <div :class="classes">
     <div :class="`${prefixCls}-header`">
       <a :class="`${prefixCls}-prev-decade-btn`"
-         role="button"
          :title="locale.previousDecade"
-         @click="prevDecade"></a>
+         role="button"
+         @click="prevDecade" />
       <a :class="`${prefixCls}-decade-select`"
          @click="showDecadePanel">
         <span :class="`${prefixCls}-decade-select-content`">
-          {{startYear}}-{{endYear}}
+          {{ startYear }}-{{ endYear }}
         </span>
       </a>
       <a :class="`${prefixCls}-next-decade-btn`"
-         role="button"
          :title="locale.nextDecade"
-         @click="nextDecade"></a>
+         role="button"
+         @click="nextDecade" />
     </div>
     <div :class="`${prefixCls}-body`">
       <year-table :prefix-cls="prefixCls"
@@ -22,8 +22,8 @@
                   :start="startYear"
                   :end="endYear"
                   :locale="locale"
-                  @on-select="onSelect">
-      </year-table>
+                  :disabled-year="disabledYear"
+                  @on-select="onSelect" />
     </div>
   </div>
 </template>
@@ -35,10 +35,17 @@
 
   export default {
     name: 'YearPanel',
+    components: {
+      YearTable,
+    },
     props: {
       rootPrefixCls: String,
       locale: Object,
       value: Date,
+      disabledYear: {
+        type: Function,
+        default: undefined,
+      },
     },
     data() {
       return {
@@ -70,17 +77,20 @@
       },
     },
     watch: {
-      value(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.innerValue = nVal;
-        }
+      value(nVal) {
+        this.setInnerValue(nVal, false);
       },
     },
     methods: {
+      setInnerValue(value, trigger = true) {
+        this.innerValue = value;
+        if (trigger) {
+          this.$emit('on-change', value);
+        }
+      },
       goYear(direction) {
         const nYear = addYears(this.innerValue, direction);
-        this.innerValue = nYear;
-        this.$emit('on-change', nYear);
+        this.setInnerValue(nYear);
       },
       prevDecade() {
         this.goYear(-10);
@@ -92,18 +102,19 @@
         this.$emit('on-show-decade-panel');
       },
       onSelect(value) {
-        const { value: originVal, startYear, endYear } = this;
+        const {
+          value: originVal, startYear, endYear, setInnerValue
+        } = this;
         if (value < startYear) {
           this.prevDecade();
         } else if (value > endYear) {
           this.nextDecade();
         } else {
-          this.$emit('on-select', setYear(originVal, value));
+          const year = setYear(originVal, value);
+          setInnerValue(year);
+          this.$emit('on-select', year);
         }
       },
-    },
-    components: {
-      YearTable,
     },
   };
 </script>

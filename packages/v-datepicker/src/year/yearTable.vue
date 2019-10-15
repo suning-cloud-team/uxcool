@@ -32,10 +32,16 @@
       start: Number,
       end: Number,
       locale: Object,
+      disabledYear: {
+        type: Function,
+        default() {
+          return false;
+        },
+      },
     },
     computed: {
       years() {
-        const { start } = this;
+        const { start, disabledYear } = this;
         const years = [];
         const tStart = start - 1;
         let idx = 0;
@@ -43,11 +49,13 @@
           years[i] = [];
           for (let j = 0; j < YEAR_STYLE.col; j += 1) {
             const name = tStart + idx;
+            const disabled = disabledYear(new Date(name, 0, 1));
             years[i].push({
               id: idx,
               title: name,
               name,
               value: name,
+              disabled,
             });
             idx += 1;
           }
@@ -63,12 +71,16 @@
         const yVal = year.value;
         return {
           [`${prefixCls}-cell`]: true,
+          [`${prefixCls}-cell-disabled`]: year.disabled,
           [`${prefixCls}-selected-cell`]: yVal === value,
           [`${prefixCls}-last-decade-cell`]: yVal < start,
           [`${prefixCls}-next-decade-cell`]: yVal > end,
         };
       },
       onSelect(year) {
+        if (year.disabled) {
+          return;
+        }
         this.$emit('on-select', year.value);
       },
     },
