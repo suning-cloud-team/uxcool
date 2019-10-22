@@ -22,9 +22,11 @@
       <p>推荐使用 npm 或 yarn 方式进行开发.</p>
       <p>UXCool 以
         <code>@suning/uxcool</code>发布于 snpm 上,并且使用 sass 作为 css 开发环境,所以在安装之前需要对 npm 作一些设置.</p>
-      <ux-code>
-npm config set registry=http://snpm.cnsuning.com
-sass_binary_site = http://fedp.cnsuning.com/mirrors/node-sass
+      <ux-code lang="bash">
+npm set registry http://snpm.cnsuning.com
+
+npm set sass_binary_site http://fedp.cnsuning.com/mirrors/node-sass
+
 // 如果设置过代理，需要把代理也去掉，否则访问不了snpm
 npm config delete proxy
       </ux-code>
@@ -53,26 +55,18 @@ npm config delete proxy
       <h2 class="ux-heading">示例</h2>
 
       <ux-code>
-        import Vue from &apos;vue&apos;;
-        import UxCool from &apos;@suning/uxcool&apos;;
+import Vue from &apos;vue&apos;;
+import UxCool from &apos;@suning/uxcool&apos;;
 
-        Vue.use(UxCool);
+Vue.use(UxCool);
       </ux-code>
       <p>引入样式:</p>
-      <ux-code>
-        import &apos;@suning/uxcool/dist/uxcool.css&apos;;
-      </ux-code>
+      <ux-code>import &apos;@suning/uxcool/dist/uxcool.css&apos;;</ux-code>
       <h3 class="ux-heading">按需加载</h3>
       <ux-code>
-        import &apos;@suning/uxcool/es/select/style/css&apos;;
-        import { UxSelect, UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/select&apos;;
+import &apos;@suning/uxcool/es/select/style/css&apos;;
+import { UxSelect, UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/select&apos;;
       </ux-code>
-      <blockquote>
-        <p>PS：附送前后端分离开发利器，
-          <a href="http://dip.cnsuning.com"
-             target="_blank">数据接口平台 DIP</a>
-        </p>
-      </blockquote>
     </div>
   </article>
 </template>
