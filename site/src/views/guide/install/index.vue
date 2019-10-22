@@ -24,12 +24,14 @@
         <code>@suning/uxcool</code>发布于 snpm 上,并且使用 sass 作为 css 开发环境,所以在安装之前需要对 npm 作一些设置.</p>
       <ux-code>
 npm config set registry=http://snpm.cnsuning.com
-npm config set @suning:registry=http://snpm.cnsuning.com
-// 如未用到sass则无需此配置(需proxy配置)
-npm config set SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
+sass_binary_site = http://fedp.cnsuning.com/mirrors/node-sass
+// 如果设置过代理，需要把代理也去掉，否则访问不了snpm
+npm config delete proxy
       </ux-code>
       <blockquote>
-        <p>当使用snpm registry时, 若 npm 配置了 proxy 或 http-proxy, 则需先移除; 使用 tabao registry 时, 需要配置 proxy, 两者互斥。</p>
+        <p>也可以直接在项目根目录下创建一个<code>.npmrc</code>, 内容为</p>
+        <p>registry = http://snpm.cnsuning.com</p>
+        <p>sass_binary_site = http://fedp.cnsuning.com/mirrors/node-sass</p>
       </blockquote>
       <p>下面可以安装 UXCool 了</p>
       <ux-code>npm install @suning/uxcool --save</ux-code>
@@ -51,19 +53,19 @@ npm config set SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
       <h2 class="ux-heading">示例</h2>
 
       <ux-code>
-import Vue from &apos;vue&apos;;
-import UxCool from &apos;@suning/uxcool&apos;;
+        import Vue from &apos;vue&apos;;
+        import UxCool from &apos;@suning/uxcool&apos;;
 
-Vue.use(UxCool);
+        Vue.use(UxCool);
       </ux-code>
       <p>引入样式:</p>
       <ux-code>
-import &apos;@suning/uxcool/dist/uxcool.css&apos;;
+        import &apos;@suning/uxcool/dist/uxcool.css&apos;;
       </ux-code>
       <h3 class="ux-heading">按需加载</h3>
       <ux-code>
-import &apos;@suning/uxcool/es/select/style/css&apos;;
-import { UxSelect, UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/select&apos;;
+        import &apos;@suning/uxcool/es/select/style/css&apos;;
+        import { UxSelect, UxOption, UxOptionGroup } from &apos;@suning/uxcool/es/select&apos;;
       </ux-code>
       <blockquote>
         <p>PS：附送前后端分离开发利器，

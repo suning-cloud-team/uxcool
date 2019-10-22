@@ -43,6 +43,11 @@
       };
     },
     methods: {
+      getFormItemAttrs(i) {
+        return i === 0
+          ? { label: `Field${i}`, labelCol: { xs: 24, sm: 8 }, wrapperCol: { xs: 24, sm: 16 } }
+          : { wrapperCol: { span: 16, offset: 8 } };
+      },
       addItem() {
         this.items.push({
           value: '2',
