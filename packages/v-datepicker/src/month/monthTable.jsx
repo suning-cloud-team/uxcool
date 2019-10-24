@@ -1,10 +1,12 @@
-import { setMonth, isSameMonth } from 'date-fns';
-import { isFunction } from '@suning/v-utils';
+import { setMonth, isSameMonth, isAfter, isBefore, startOfMonth } from 'date-fns';
+import { isFunction, isArray } from '@suning/v-utils';
 import { MONTH_STYLE } from '../constant';
 import { formatDate } from '../utils';
+import MonthYearDecadeMixin from '../mixins/monthYearDecade';
 
 export default {
   name: 'MonthTable',
+  mixins: [MonthYearDecadeMixin],
   props: {
     prefixCls: {
       type: String,
@@ -58,6 +60,14 @@ export default {
     },
   },
   methods: {
+    onMouseEnter(month) {
+      if (month.disabled) {
+        return;
+      }
+
+      this.$emit('month-hover', month.value);
+      this.onMonthYearDecadeRootHover('month', month.value);
+    },
     onSelect(month) {
       if (month.disabled) {
         return;
@@ -65,18 +75,66 @@ export default {
       this.$emit('on-select', month.value);
       this.$emit('select', month.value);
     },
+    getRangeClasses(monthVal) {
+      const { prefixCls, isChildren } = this;
+      if (isChildren) {
+        let isInRange = false;
+        let isSelectedStartMonth = false;
+        let isSelectedEndMonth = false;
+        let isSelectedMonth = false;
+        const { monthYearHoverValue: hoverValue, monthYearSelectedValue: selectedValue } = this;
+        if (selectedValue && isArray(selectedValue)) {
+          const ranges = hoverValue.length > 0 ? hoverValue : selectedValue;
+          const [start, end] = ranges;
+          if (start) {
+            if (isSameMonth(monthVal, start)) {
+              isSelectedMonth = true;
+              isSelectedStartMonth = true;
+            }
+            if (end) {
+              if (isSameMonth(monthVal, end)) {
+                isSelectedMonth = true;
+                isSelectedEndMonth = true;
+              } else if (
+                isAfter(startOfMonth(monthVal), startOfMonth(start)) &&
+                isBefore(startOfMonth(monthVal), startOfMonth(end))
+              ) {
+                isInRange = true;
+              }
+            }
+          }
+        }
+        return {
+          [`${prefixCls}-selected-start-month`]: isSelectedStartMonth,
+          [`${prefixCls}-selected-end-month`]: isSelectedEndMonth,
+          [`${prefixCls}-in-range-cell`]: isInRange,
+          [`${prefixCls}-selected-month`]: isSelectedMonth,
+        };
+      }
+
+      return {};
+    },
     cellClasses(month) {
-      const { prefixCls, value } = this;
+      const { prefixCls, value, isChildren } = this;
+      const { value: monthVal } = month;
+      const rangeClasses = this.getRangeClasses(monthVal);
       return {
         [`${prefixCls}-cell`]: true,
         [`${prefixCls}-cell-disabled`]: month.disabled,
-        [`${prefixCls}-selected-cell`]: isSameMonth(value, month.value),
-        [`${prefixCls}-current-cell`]: isSameMonth(month.value, new Date()),
+        [`${prefixCls}-selected-cell`]: !isChildren && isSameMonth(value, monthVal),
+        [`${prefixCls}-current-cell`]: !isChildren && isSameMonth(monthVal, new Date()),
+        ...rangeClasses,
       };
     },
     renderCell(col) {
       const {
-        prefixCls, value, monthRender, contentRender, cellClasses, onSelect
+        prefixCls,
+        value,
+        monthRender,
+        contentRender,
+        cellClasses,
+        onMouseEnter,
+        onSelect,
       } = this;
       let content = null;
       if (isFunction(monthRender)) {
@@ -92,6 +150,7 @@ export default {
           role="gridcell"
           title={col.title}
           class={cellClasses(col)}
+          on-mouseenter={() => onMouseEnter(col)}
           on-click={() => onSelect(col)}
         >
           {content}

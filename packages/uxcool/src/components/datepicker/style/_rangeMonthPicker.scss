@@ -1,0 +1,127 @@
+$range-width: 552px;
+$quicker-selector-width: 150px;
+$input-box-height: 34px;
+
+.#{$calendar-prefix-cls}-month-range {
+  width: $range-width;
+
+  .#{$calendar-prefix-cls}-month-date-panel {
+    &::after {
+      content: '.';
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+  }
+  &-part {
+    width: 50%;
+    position: relative;
+  }
+
+  &-left {
+    float: left;
+  }
+
+  &-right {
+    float: right;
+  }
+
+  .#{$calendar-timepicker-prefix-cls}-icon {
+    display: none;
+  }
+
+  &.#{$calendar-prefix-cls}-week-number {
+    width: 574px;
+
+    .#{$calendar-prefix-cls}-range-part {
+      width: 286px;
+    }
+  }
+
+  .#{$calendar-prefix-cls}-month .#{$calendar-prefix-cls}-month-header-wrap {
+    height: 258px;
+  }
+
+  .#{$calendar-prefix-cls}-decade-panel-table,
+  .#{$calendar-prefix-cls}-year-panel-table,
+  .#{$calendar-prefix-cls}-month-panel-table {
+    height: 208px;
+  }
+
+  .#{$calendar-prefix-cls},
+  .#{$calendar-prefix-cls}-month-panel,
+  .#{$calendar-prefix-cls}-year-panel {
+    &-header {
+      border-bottom: 0;
+    }
+    &-body {
+      padding: 0 5px;
+      border-top: $border-width-base $border-style-base $border-color-split;
+    }
+  }
+
+  &#{&}-with-ranges {
+    width: $range-width + $quicker-selector-width;
+    .#{$calendar-prefix-cls}-date-panel {
+      padding-right: $quicker-selector-width;
+    }
+  }
+
+  &-quick-selector {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-left: $border-width-base $border-style-base $border-color-split;
+    width: $quicker-selector-width;
+    padding: 10px 0;
+    overflow-y: auto;
+    &-item {
+      line-height: 38px;
+      padding: 0 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+.#{$calendar-prefix-cls}-month-range .#{$calendar-prefix-cls}-month-panel {
+  &-month {
+    width: 50px;
+    height: 29px;
+  }
+  &-selected-month .#{$calendar-prefix-cls}-month-panel-month {
+    background: $primary-color;
+    color: #fff;
+    border: $border-width-base $border-style-base transparent;
+
+    &:hover {
+      color: #fff;
+      background: $primary-color;
+    }
+  }
+  &-in-range-cell {
+    border-radius: 0;
+    position: relative;
+    > a {
+      position: relative;
+      z-index: 1;
+    }
+    &:before {
+      content: '';
+      display: block;
+      background: $item-active-bg;
+      border-radius: 0;
+      border: 0;
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      right: 0;
+    }
+  }
+}

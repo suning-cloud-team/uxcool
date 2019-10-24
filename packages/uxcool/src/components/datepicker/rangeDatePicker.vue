@@ -42,7 +42,7 @@
   import locale from './locale/zh_CN';
 
   export default {
-    name: buildComponentName('DatePicker'),
+    name: buildComponentName('RangeDatePicker'),
     components: {
       VRangeDatePicker,
       Icon,
@@ -173,7 +173,9 @@
     },
     computed: {
       bindProps() {
-        const { prefixCls, innerValue, startPlaceholder, endPlaceholder, openValue } = this;
+        const {
+          prefixCls, innerValue, startPlaceholder, endPlaceholder, openValue
+        } = this;
         return {
           ...this.$props,
           selectedValue: innerValue,

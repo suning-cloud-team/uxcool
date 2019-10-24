@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>range month picker</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <v-range-month-year-decade-picker picker-prefix-cls="v-calendar-picker-container" :value="value"
+      @change="onChange">
+      <input type="text" slot="trigger" v-model="value">
+    </v-range-month-year-decade-picker>
+
+  </div>
+</body>
+
+</html>

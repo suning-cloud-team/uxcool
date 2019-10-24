@@ -5,22 +5,24 @@
                  :locale="locale"
                  :disabled-month="disabledMonth"
                  :value="value"
+                 :month-nav="monthNav"
                  @on-show-year-panel="onShowYearPanel"
-                 @on-select="onMonthSelect">
-    </month-panel>
+                 @on-change="onMonthValueChange"
+                 @on-select="onMonthSelect" />
     <year-panel v-if="isYear"
                 :root-prefix-cls="prefixCls"
                 :locale="locale"
                 :value="value"
+                :year-nav="yearNav"
+                :disabled-year="disabledYear"
                 @on-show-decade-panel="onShowDecadePanel"
-                @on-select="onYearSelect">
-    </year-panel>
+                @on-change="onYearValueChange"
+                @on-select="onYearSelect" />
     <decade-panel v-if="isDecade"
                   :root-prefix-cls="prefixCls"
                   :locale="locale"
                   :value="value"
-                  @on-select="onDecadeSelect">
-    </decade-panel>
+                  @on-select="onDecadeSelect" />
   </div>
 </template>
 
@@ -32,13 +34,44 @@
 
   export default {
     name: 'HeaderPanel',
+    components: {
+      MonthPanel,
+      YearPanel,
+      DecadePanel,
+    },
     props: {
       prefixCls: String,
       mode: String,
       value: Date,
-      disabledMonth: Function,
+
       locale: Object,
       yearFrom: String,
+      disabledMonth: {
+        type: Function,
+        default: undefined,
+      },
+      disabledYear: {
+        type: Function,
+        default: undefined,
+      },
+      monthNav: {
+        type: Object,
+        default() {
+          return {
+            prev: true,
+            next: true,
+          };
+        },
+      },
+      yearNav: {
+        type: Object,
+        default() {
+          return {
+            prev: true,
+            next: true,
+          };
+        },
+      },
     },
     computed: {
       isMonth() {
@@ -71,11 +104,12 @@
       onShowDecadePanel() {
         this.$emit('on-show-decade-panel');
       },
-    },
-    components: {
-      MonthPanel,
-      YearPanel,
-      DecadePanel,
+      onMonthValueChange(value) {
+        this.$emit('month-value-change', value);
+      },
+      onYearValueChange(value) {
+        this.$emit('year-value-change', value);
+      },
     },
   };
 </script>

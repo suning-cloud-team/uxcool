@@ -2,21 +2,21 @@ import { buildComponentName } from '../utils';
 import MonthYearMixin from './mixins/monthYear';
 
 export default {
-  name: buildComponentName('MonthPicker'),
+  name: buildComponentName('YearPicker'),
   mixins: [MonthYearMixin],
   props: {
     format: {
       type: String,
-      default: 'YYYY-MM',
+      default: 'YYYY',
     },
-    disabledMonth: {
+    disabledYear: {
       type: Function,
       default: undefined,
     },
   },
   data() {
     return {
-      mode: 'month',
+      mode: 'year',
     };
   },
 };

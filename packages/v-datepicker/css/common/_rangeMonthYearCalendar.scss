@@ -1,0 +1,57 @@
+$range-width: 502px;
+$input-box-height: 35px;
+$quicker-selector-width: 150px;
+
+.#{$prefixClass}-month-range {
+  width: $range-width;
+  &-part {
+    width: 250px;
+    position: relative;
+  }
+
+  &-left {
+    float: left;
+  }
+
+  &-right {
+    float: right;
+  }
+
+  &-middle {
+    position: absolute;
+    margin-left: -10px;
+    text-align: center;
+    height: $input-box-height;
+    line-height: $input-box-height;
+  }
+  .#{$prefixClass}-date-panel::after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .#{$prefixClass}-month-panel .#{$prefixClass}-year-panel {
+    top: 0;
+  }
+  .#{$prefixClass}-decade-panel-table,
+  .#{$prefixClass}-year-panel-table,
+  .#{$prefixClass}-month-panel-table {
+    height: 198px;
+  }
+
+  .#{$prefixClass}-month-panel-in-range-cell {
+    background: #ebf4f8;
+    border-radius: 0;
+  }
+
+  &-bottom {
+    text-align: right;
+  }
+  &#{&}-with-ranges {
+    width: $range-width + $quicker-selector-width;
+    .#{$prefixClass}-date-panel {
+      padding-right: $quicker-selector-width;
+    }
+  }
+}

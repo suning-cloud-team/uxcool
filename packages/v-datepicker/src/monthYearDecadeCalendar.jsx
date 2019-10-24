@@ -1,12 +1,20 @@
+import { PICKER_MODES } from './constant';
 import { getValidDate } from './utils';
 import CalendarHeader from './calendar/calendarHeader.vue';
 
 export default {
-  name: 'MonthCalendar',
+  name: 'MonthYearDecadeCalendar',
   props: {
     prefixCls: {
       type: String,
       default: 'v-calendar',
+    },
+    mode: {
+      type: String,
+      default: 'month',
+      validator(v) {
+        return ['month', 'year', 'decade'].indexOf(v) > -1;
+      },
     },
     value: {
       type: Date,
@@ -26,11 +34,33 @@ export default {
       type: Function,
       default: undefined,
     },
+    disabledYear: {
+      type: Function,
+      default: undefined,
+    },
+    monthNav: {
+      type: Object,
+      default() {
+        return {
+          prev: true,
+          next: true,
+        };
+      },
+    },
+    yearNav: {
+      type: Object,
+      default() {
+        return {
+          prev: true,
+          next: true,
+        };
+      },
+    },
   },
   data() {
     return {
       innerValue: null,
-      innerMode: 'month',
+      innerMode: this.mode,
     };
   },
   computed: {
@@ -41,6 +71,16 @@ export default {
         [`${prefixCls}-month`]: true,
         [`${prefixCls}-month-calendar`]: true,
       };
+    },
+    validMode() {
+      const { mode } = this;
+      const idx = PICKER_MODES.indexOf(mode);
+      const pickerValidModes = PICKER_MODES.slice(idx);
+      return pickerValidModes.reduce((r, v) => {
+        const nr = r;
+        nr[v] = 1;
+        return nr;
+      }, {});
     },
   },
   watch: {
@@ -63,16 +103,20 @@ export default {
       this.innerMode = mode;
     },
     onChange(value, originMode) {
-      this.setInnerValue(value, originMode === 'month', originMode);
+      const { mode } = this;
+      this.setInnerValue(value, originMode === mode, originMode);
     },
-    onPanelChange(_, mode) {
-      if (mode !== 'date') {
-        this.setInnerMode(mode);
+    onPanelChange(value, next, originMode) {
+      const { validMode } = this;
+      if (next in validMode) {
+        this.setInnerMode(next);
+        this.$emit('panel-change', value, next, originMode);
       }
     },
   },
   render() {
     const {
+      $listeners,
       prefixCls,
       classes,
       format,
@@ -80,6 +124,9 @@ export default {
       innerValue,
       locale,
       disabledMonth,
+      disabledYear,
+      monthNav,
+      yearNav,
       onChange,
       onPanelChange,
     } = this;
@@ -91,8 +138,12 @@ export default {
       value: innerValue,
       locale,
       disabledMonth,
+      disabledYear,
+      monthNav,
+      yearNav,
     };
     const on = {
+      ...$listeners,
       change: onChange,
       'panel-change': onPanelChange,
     };
