@@ -46,6 +46,15 @@
         type: Function,
         default: undefined,
       },
+      yearNav: {
+        type: Object,
+        default() {
+          return {
+            prev: true,
+            next: true,
+          };
+        },
+      },
     },
     data() {
       return {
@@ -102,9 +111,7 @@
         this.$emit('on-show-decade-panel');
       },
       onSelect(value) {
-        const {
-          value: originVal, startYear, endYear, setInnerValue
-        } = this;
+        const { value: originVal, startYear, endYear, setInnerValue } = this;
         if (value < startYear) {
           this.prevDecade();
         } else if (value > endYear) {

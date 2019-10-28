@@ -68,6 +68,7 @@
     <change-value-demo />
     <month-demo />
     <range-month-demo />
+    <year-demo />
   </div>
 </template>
 
@@ -93,6 +94,7 @@
   import SizeDemo from './size.vue';
   import ChangeValueDemo from './changeSelectedValue.vue';
   import RangeMonthDemo from './rangeMonth.vue';
+  import YearDemo from './year.vue';
 
   export default {
     components: {
@@ -107,6 +109,7 @@
       SizeDemo,
       ChangeValueDemo,
       RangeMonthDemo,
+      YearDemo,
     },
     data() {
       return {

@@ -48,6 +48,10 @@ export default {
       type: Function,
       default: undefined,
     },
+    disabledYear: {
+      type: Function,
+      default: undefined,
+    },
     getPopupContainer: {
       type: Function,
       default: null,
@@ -118,6 +122,7 @@ export default {
       locale,
       format,
       disabledMonth,
+      disabledYear,
       innerVisible,
       disabled,
       align,
@@ -152,6 +157,7 @@ export default {
       locale,
       format,
       disabledMonth,
+      disabledYear,
     };
     const calendarOn = {
       'panel-change': onPanelChange,

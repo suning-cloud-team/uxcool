@@ -72,7 +72,7 @@
 | ------------------- | -------------------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------- |
 | locale              | 国际化配置                                                           | Object                          | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |
 | value               | 选中值(v-model)                                                      | Date                            |                                                                |
-| disable             | 是否禁用                                                             | Boolean                         | false                                                          |
+| disabled            | 是否禁用                                                             | Boolean                         | false                                                          |
 | format              | 格式                                                                 | String                          | 'YYYY-MM'                                                      |
 | placement           | 弹出框位置,可选值:`bottomLeft`, `bottomRight`, `topRight`, `topLeft` | String                          | 'bottomLeft'                                                   |
 | get-popup-container | 自定义下拉面板包裹容器                                               | Function                        |                                                                |
@@ -97,7 +97,7 @@
 | ------------------- | -------------------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------- |
 | locale              | 国际化配置                                                           | Object                          | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |
 | visible             | 弹层是否展开                                                         | Boolean                         | false                                                          |
-| disable             | 是否禁用                                                             | Boolean                         | false                                                          |
+| disabled            | 是否禁用                                                             | Boolean                         | false                                                          |
 | selected-value      | 选中值(v-model)                                                      | Array<Date>                     |                                                                |
 | format              | 格式                                                                 | String                          | 'YYYY-MM'                                                      |
 | placement           | 弹出框位置,可选值:`bottomLeft`, `bottomRight`, `topRight`, `topLeft` | String                          | 'bottomLeft'                                                   |
@@ -114,3 +114,28 @@
 | open-change     | 弹窗关闭和打开时触发 | Function(visible)                                   |
 | change          | 用户选择时间后触发   | Function(values:Date[], formatDateStrings:String[]) |
 | calendar-change | 时间发生变化后触发   | Function(values:Date[])                             |
+
+### UxYearPicker
+
+#### Props
+
+| 参数名              | 描述                                                                 | 类型                            | 默认                                                           |
+| ------------------- | -------------------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------- |
+| locale              | 国际化配置                                                           | Object                          | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |
+| value               | 选中值(v-model)                                                      | Date                            |                                                                |
+| disabled            | 是否禁用                                                             | Boolean                         | false                                                          |
+| format              | 格式                                                                 | String                          | 'YYYY-MM'                                                      |
+| placement           | 弹出框位置,可选值:`bottomLeft`, `bottomRight`, `topRight`, `topLeft` | String                          | 'bottomLeft'                                                   |
+| get-popup-container | 自定义下拉面板包裹容器                                               | Function                        |                                                                |
+| disabled-year       | 不可选择日期                                                         | Function(current:Date)=>Boolean |                                                                |
+| placeholder         | 输入框提示文字                                                       | String                          |                                                                |
+| size                | 大小,可选值: `small`, `large` ,`default`                             | String                          | 'default'                                                      |
+|                     |
+| allow-clear         | 是否显示清除按钮                                                     | Boolean                         | true                                                           |
+
+#### Events
+
+| 事件名      | 描述                 | 回调                                           |
+| ----------- | -------------------- | ---------------------------------------------- |
+| open-change | 弹窗关闭和打开时触发 | Function(visible)                              |
+| change      | 用户选择时间后触发   | Function(values:Date, formatDateString:String) |
