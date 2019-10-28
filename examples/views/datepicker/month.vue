@@ -63,7 +63,6 @@
   export default {
     components: {
       UxMonthPicker: Datepicker.Month,
-      UxYearPicker: Datepicker.Year,
     },
     data() {
       return {
