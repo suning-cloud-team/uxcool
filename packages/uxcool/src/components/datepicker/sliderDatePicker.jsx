@@ -448,7 +448,7 @@ export default {
       };
     },
     normalizeValue(value) {
-      const { ranges, updateSelectValue } = this;
+      const { ranges, updateSelectValue,updateSelectHistoryValue } = this;
       const ret = value;
 
       if (isString(value) && ranges) {
@@ -466,6 +466,8 @@ export default {
         }
       } else if (isArray(value) && value.length >= 2) {
         updateSelectValue(value, 'normal', false);
+      } else  {
+        updateSelectHistoryValue(undefined);
       }
       return ret;
     },
@@ -539,6 +541,9 @@ export default {
       } else {
         this.updateSelectHistoryValue(value);
       }
+    },
+    onClear() {
+      this.updateSelectHistoryValue(undefined);
     },
     onBaseBtnClick(mode, type = 'left') {
       const {
@@ -644,6 +649,7 @@ export default {
         opDisabled,
         onSelect,
         onSelectChange,
+        onClear,
         onLeftBtnClick,
         onMidBtnClick,
         onRightBtnClick,
@@ -667,6 +673,7 @@ export default {
         // 点击 select item
         select: onSelect,
         change: onSelectChange,
+        clear: onClear,
       };
       const selectNode = <Select {...{ props, on, style: { width: '100%' } }} />;
 

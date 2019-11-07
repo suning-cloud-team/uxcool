@@ -44,7 +44,7 @@
       return {
         // selectedValue: '最近1小时',
         // selectedValue: [subDays(new Date(), 20), new Date()],
-        selectedValue: [],
+        selectedValue: ['a'],
         ranges: [
           {
             label: '最近15分钟',
