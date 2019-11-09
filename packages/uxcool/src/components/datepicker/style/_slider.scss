@@ -9,11 +9,27 @@
     }
   }
   &-setting {
+    color: $primary-6;
     .fu {
       transform: scale(1.2);
     }
     &-label {
       margin-left: 5px;
+    }
+  }
+  &-refresh {
+    &-input {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    &-label {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-weight: 600;
+      padding: 0 15px 0 5px;
+      background: #fff;
     }
   }
 }

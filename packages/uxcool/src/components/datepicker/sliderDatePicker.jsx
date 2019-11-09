@@ -16,7 +16,8 @@ import {
   setMinutes,
 } from 'date-fns';
 import HumanizeDuration from 'humanize-duration';
-import { isFunction, isArray, isString, isEqual } from '@suning/v-utils';
+import ms from 'ms';
+import { isFunction, isArray, isString, isEqual, warning } from '@suning/v-utils';
 import { VRangeDatePicker } from '@suning/v-datepicker';
 import localeCN from './locale/zh_CN';
 import Select from '../select';
@@ -255,6 +256,12 @@ const hours = getNumArr(24);
 const minutes = getNumArr(60);
 const seconds = getNumArr(60);
 
+const REFRESH_OFF = 'REFRESH_OFF';
+const DEFAULT_REFRESH_OPTIONS = {
+  value: REFRESH_OFF,
+  label: 'off',
+};
+
 export default {
   name: 'SliderRangeDatePicker',
   props: {
@@ -296,6 +303,16 @@ export default {
       type: Boolean,
       default: true,
     },
+    /**
+     * [{
+     *   title: '',
+     *   value: '',
+     *   label: '',
+     *   duration: '1h',
+     *   isRefresh: false,
+     *   dates(){ return [subHours(new Date(), 1), new Date()]; }
+     * }]
+     */
     ranges: {
       type: Array,
       default() {
@@ -342,6 +359,30 @@ export default {
         return localeCN.lang;
       },
     },
+    refreshTimes: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+    // 支持非自动刷新时间段,自动刷新
+    forceRefresh: {
+      type: Boolean,
+      default: false,
+    },
+    refreshValue: {
+      type: String,
+      default: REFRESH_OFF,
+    },
+    renderRefreshLabel: {
+      type: Function,
+      default: null,
+    },
+    // 手动刷新按钮
+    showRefreshBar: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -364,15 +405,68 @@ export default {
        * // ms
        * diffTime,
        * label: formatDateStrs,
+       * isRefresh: false,
        * dates: values,
        * }
        */
       dataSource: [...defaultOptions],
+
+      // refresh 实际的值
+      refreshRealValue: '',
+      refreshRealOption: null,
+      // refresh 当前的值, 当选择的时间不支持refresh时,此值修改
+      refreshCurrentValue: '',
+      refreshVisible: false,
     };
   },
   computed: {
     isCanSlide() {
       return !!this.innerSelectValue;
+    },
+    isNeedRefresh() {
+      const { refreshTimes } = this;
+      return isArray(refreshTimes) && refreshTimes.length > 0;
+    },
+    normalizeRefreshTimes() {
+      const { refreshTimes, isNeedRefresh } = this;
+
+      if (!isNeedRefresh) {
+        return [];
+      }
+
+      const times = refreshTimes
+        .filter(v => v.value)
+        .reduce((r, v) => {
+          const { value, label } = v;
+          const nr = r;
+          const val = String(value || '')
+            .trim()
+            .replace(/^[^\d]/, '');
+          const raw = ms(val);
+          if (raw) {
+            nr.push({
+              ...v,
+              value,
+              label: label || value,
+              ms: raw,
+              origin: { ...v },
+            });
+          } else if (process.env.NODE_ENV !== 'production') {
+            warning(false, `refresh-times invalid prop: ${value}`);
+          }
+          return nr;
+      }, []);
+      times.unshift({ ...DEFAULT_REFRESH_OPTIONS });
+      return times;
+    },
+    isRefreshDisabled() {
+      const {
+        isNeedRefresh, forceRefresh, refreshRealValue, refreshCurrentValue, disabled
+      } = this;
+      if (!isNeedRefresh) {
+        return true;
+      }
+      return (!forceRefresh && refreshRealValue !== refreshCurrentValue) || disabled;
     },
   },
   watch: {
@@ -382,15 +476,69 @@ export default {
         normalizeValue(nVal);
       }
     },
+    innerSelectOption() {
+      const { resetRefresh } = this;
+      resetRefresh();
+    },
+    isNeedRefresh(nVal) {
+      const { refreshRealValue, resetInnerRefreshValue, clearRefreshTimer } = this;
+      if (nVal) {
+        resetInnerRefreshValue(refreshRealValue);
+      } else {
+        clearRefreshTimer();
+      }
+    },
+    refreshValue(nVal) {
+      this.resetInnerRefreshValue(nVal);
+    },
+    disabled(nVal) {
+      const { clearRefreshTimer, resetRefresh } = this;
+      if (nVal === true) {
+        clearRefreshTimer();
+      } else {
+        resetRefresh();
+      }
+    },
   },
   created() {
-    const { normalizeValue, value } = this;
-    normalizeValue(value);
+    const {
+      normalizeValue, value, refreshValue, resetInnerRefreshValue
+    } = this;
     // no reactive
     this.originSlideOption = null;
+    this.refreshTimer = null;
     // no reactive
+    normalizeValue(value);
+    resetInnerRefreshValue(refreshValue);
+  },
+  beforeDestroy() {
+    this.clearRefreshTimer();
   },
   methods: {
+    resetInnerRefreshValue(value) {
+      const {
+        isNeedRefresh,
+        normalizeRefreshTimes,
+        setRefreshRealValue,
+        setRefreshCurrentValue,
+        resetRefresh,
+      } = this;
+
+      if (isNeedRefresh) {
+        let rVal = value;
+        let refreshOption = normalizeRefreshTimes.filter(v => v.value === rVal)[0];
+        if (!refreshOption) {
+          if (process.env.NODE_ENV !== 'production') {
+            warning(false, `refreshValue invalid: ${value}`);
+          }
+          rVal = REFRESH_OFF;
+          refreshOption = { ...DEFAULT_REFRESH_OPTIONS };
+        }
+        setRefreshRealValue(rVal, refreshOption);
+        setRefreshCurrentValue(rVal);
+        resetRefresh();
+      }
+    },
     getDisabledDateAndTime() {
       const { maxSliderDate, minSliderDate } = this;
       const minDate = getValidDate(minSliderDate);
@@ -448,7 +596,7 @@ export default {
       };
     },
     normalizeValue(value) {
-      const { ranges, updateSelectValue,updateSelectHistoryValue } = this;
+      const { ranges, updateSelectValue, updateSelectHistoryValue } = this;
       const ret = value;
 
       if (isString(value) && ranges) {
@@ -457,7 +605,7 @@ export default {
             if (v.value) {
               return v.value === value;
             }
-            return v.lable === value;
+            return v.label === value;
           })[0] || null;
         if (range) {
           const { dates } = range;
@@ -466,7 +614,7 @@ export default {
         }
       } else if (isArray(value) && value.length >= 2) {
         updateSelectValue(value, 'normal', false);
-      } else  {
+      } else {
         updateSelectHistoryValue(undefined);
       }
       return ret;
@@ -504,8 +652,31 @@ export default {
     setInnerDateVisible(visible) {
       this.innerDateVisible = visible;
     },
+    setRefreshRealValue(value, option) {
+      const { refreshRealValue } = this;
+      this.refreshRealValue = value;
+      this.refreshRealOption = option;
+      if (refreshRealValue !== value) {
+        this.$emit('refresh-value-change', value);
+      }
+    },
+    setRefreshCurrentValue(value) {
+      const { refreshCurrentValue } = this;
+      this.refreshCurrentValue = value;
+      if (refreshCurrentValue !== value) {
+        this.$emit('refresh-current-change', value);
+      }
+    },
     onDateOpenChange(visible) {
       this.setInnerDateVisible(visible);
+    },
+    onSelectVisibleChange(visible) {
+      if (!visible) {
+        this.refreshVisible = false;
+      }
+    },
+    onRefreshVisibleChange(visible) {
+      this.refreshVisible = visible;
     },
     updateSelectHistoryValue(val) {
       const { setInnerSelectValue, findOptionByValue, setInnerValue } = this;
@@ -624,6 +795,7 @@ export default {
       }
       onBaseBtnClick('run', 'right');
     },
+
     renderSelectLabel({ value, duration, label }) {
       const { prefixCls } = this;
       return value === 'setting' ? (
@@ -638,11 +810,156 @@ export default {
         </div>
       );
     },
+    onRefreshSelectInput(val, option) {
+      const { setRefreshRealValue, setRefreshCurrentValue, resetRefresh } = this;
+      setRefreshRealValue(val, option);
+      setRefreshCurrentValue(val);
+      resetRefresh();
+    },
+    renderRefreshSetting() {
+      const {
+        normalizeRefreshTimes,
+        isRefreshDisabled,
+        getPopupContainer,
+        refreshCurrentValue,
+        onRefreshSelectInput,
+        refreshVisible,
+        onRefreshVisibleChange,
+      } = this;
+      const props = {
+        value: refreshCurrentValue,
+        dataSource: normalizeRefreshTimes,
+        disabled: isRefreshDisabled,
+        getContainer: getPopupContainer,
+        size: 'small',
+        visible: refreshVisible,
+      };
+      const on = {
+        input: onRefreshSelectInput,
+        'popup-visible-change': onRefreshVisibleChange,
+      };
+      return (
+        <div>
+          <span>刷新频率: </span>
+          <Select {...{ style: { 'min-width': '80px' }, props, on }} />
+        </div>
+      );
+    },
+    onIntervalRefresh(calcDates, delay, refreshOption) {
+      const { innerValue } = this;
+      this.setInnerValue(calcDates, !isEqual(calcDates, innerValue));
+      this.$emit('interval-refresh', calcDates, delay, refreshOption);
+    },
+    onManualRefresh() {
+      const { innerValue, innerSelectOption, resetRefresh } = this;
+
+      if (innerSelectOption) {
+        const { dates } = innerSelectOption;
+        const values = getDates(dates);
+        this.setInnerValue(values, !isEqual(values, innerValue));
+        resetRefresh();
+        this.$emit('manual-refresh', values);
+      }
+    },
+    clearRefreshTimer() {
+      const { refreshTimer } = this;
+      if (refreshTimer) {
+        clearTimeout(refreshTimer);
+        this.refreshTimer = null;
+      }
+    },
+    setRefreshTimer(refreshRealOption, dates) {
+      const { clearRefreshTimer, onIntervalRefresh } = this;
+      clearRefreshTimer();
+      const { ms: delay, origin } = refreshRealOption;
+      const refreshFn = () => {
+        this.refreshTimer = setTimeout(() => {
+          const calcDates = getDates(dates);
+          onIntervalRefresh(calcDates, delay, origin);
+          refreshFn();
+        }, delay);
+      };
+      if (delay) {
+        refreshFn();
+      }
+    },
+    refreshDate(isRefresh = false, dates, force = false) {
+      const {
+        refreshRealValue,
+        refreshRealOption,
+        setRefreshTimer,
+        clearRefreshTimer,
+        setRefreshCurrentValue,
+      } = this;
+      clearRefreshTimer();
+      if (refreshRealValue !== REFRESH_OFF) {
+        if (isRefresh || force) {
+          if (dates) {
+            setRefreshTimer(refreshRealOption, dates);
+          }
+          setRefreshCurrentValue(refreshRealValue);
+        } else {
+          // 防止refreshCurrentValue原值是REFRESH_OFF,
+          // 被设置为新值后还未渲染,就被重新设置为REFRESH_OFF,导致设置无效
+          this.$nextTick(() => {
+            setRefreshCurrentValue(REFRESH_OFF);
+          });
+        }
+      }
+    },
+    resetRefresh() {
+      const {
+        disabled, isNeedRefresh, innerSelectOption, refreshDate, forceRefresh
+      } = this;
+      if (disabled) {
+        return;
+      }
+      if (isNeedRefresh) {
+        if (innerSelectOption) {
+          const { isRefresh, dates } = innerSelectOption;
+          refreshDate(isRefresh, dates, forceRefresh);
+        } else {
+          // 当未选中任何时间时, 仍需要保持refresh下拉框的值, 所以第一个参数传递true
+          refreshDate(true, null);
+        }
+      }
+    },
+    renderSelectionInput(triggerNode) {
+      const {
+        $scopedSlots,
+        prefixCls,
+        renderRefreshLabel,
+        refreshCurrentValue,
+        refreshRealOption,
+        disabled,
+      } = this;
+      const renderRefreshLabelFn = $scopedSlots.renderRefreshLabel || renderRefreshLabel;
+      return refreshCurrentValue !== REFRESH_OFF ? (
+        <div class={`${prefixCls}-slider-refresh-input`}>
+          {triggerNode}
+          {!disabled ? (
+            <span class={`${prefixCls}-slider-refresh-label`}>
+              {isFunction(renderRefreshLabelFn) ? (
+                renderRefreshLabelFn({ option: { ...refreshRealOption } })
+              ) : (
+                <span>
+                  <span>刷新频率: </span>
+                  <span>{refreshRealOption.value}</span>
+                </span>
+              )}
+            </span>
+          ) : null}
+        </div>
+        ) : (
+          triggerNode
+      );
+    },
     renderSelect() {
       const {
         prefixCls,
         innerSelectValue,
         showSliderBar,
+        showRefreshBar,
         dataSource,
         disabled,
         opMidMode,
@@ -656,6 +973,11 @@ export default {
         renderSelectLabel,
         getPopupContainer,
         allowClear,
+        isNeedRefresh,
+        renderRefreshSetting,
+        renderSelectionInput,
+        onSelectVisibleChange,
+        onManualRefresh,
       } = this;
       const props = {
         // 与上面的 onSelectChange 相配合, 防止value==='setting'时选中
@@ -669,33 +991,48 @@ export default {
         allowClear,
         popupClass: `${prefixCls}-slider-dropdown`,
       };
+
+      if (isNeedRefresh) {
+        props.extraTopContent = renderRefreshSetting;
+        props.renderSelectionInput = renderSelectionInput;
+      }
       const on = {
         // 点击 select item
         select: onSelect,
         change: onSelectChange,
         clear: onClear,
+        'popup-visible-change': onSelectVisibleChange,
       };
       const selectNode = <Select {...{ props, on, style: { width: '100%' } }} />;
 
-      return showSliderBar ? (
+      return showSliderBar || showRefreshBar ? (
         <Row gutter={8}>
-          <Row.Col span={18}>{selectNode}</Row.Col>
-          <Row.Col span={6}>
-            <Button.Group>
-              <Button disabled={disabled || opDisabled.left} on-click={onLeftBtnClick}>
-                <Icon type="left" />
-              </Button>
-              <Button disabled={disabled || opDisabled.mid} on-click={onMidBtnClick}>
-                {opMidMode === 'pause' ? (
-                  <Icon type="pause" style="transform: scale(1.5)" />
-                ) : (
-                  <Icon type="caret_right" />
-                )}
-              </Button>
-              <Button disabled={disabled || opDisabled.right} on-click={onRightBtnClick}>
-                <Icon type="right" />
-              </Button>
-            </Button.Group>
+          <Row.Col span={16}>{selectNode}</Row.Col>
+          <Row.Col span={8}>
+            {showSliderBar ? (
+              <Button.Group style="margin-right:10px">
+                <Button disabled={disabled || opDisabled.left} on-click={onLeftBtnClick}>
+                  <Icon type="left" />
+                </Button>
+                <Button disabled={disabled || opDisabled.mid} on-click={onMidBtnClick}>
+                  {opMidMode === 'pause' ? (
+                    <Icon type="pause" style="transform: scale(1.5)" />
+                  ) : (
+                    <Icon type="caret_right" />
+                  )}
+                </Button>
+                <Button disabled={disabled || opDisabled.right} on-click={onRightBtnClick}>
+                  <Icon type="right" />
+                </Button>
+              </Button.Group>
+            ) : null}
+            {showRefreshBar ? (
+              <Button.Group>
+                <Button disabled={disabled} on-click={onManualRefresh}>
+                  <Icon type="sync-m" />
+                </Button>
+              </Button.Group>
+            ) : null}
           </Row.Col>
         </Row>
         ) : (
@@ -725,18 +1062,22 @@ export default {
         .slice(defaultOptions.filter(v => !v.UNRENDER_OTPION).length);
       if (type === 'quick-select') {
         const {
-          title, label, value, duration: defDuration, dates
+          title, label, value, duration: defDuration, isRefresh = false, dates
         } = range;
+        // 明确为true , 才设置为true
+        const isRangeRefresh = isRefresh === true;
         const { diffTime, duration } = calcDuration(dates);
+
         option = {
           ...mixin,
-          title: title || label,
+          title: title || label || value,
           value: value || label,
           duration: defDuration || duration,
           diffTime,
-          label,
+          label: label || value,
           dates,
           dateType: type,
+          isRefresh: isRangeRefresh,
         };
       } else {
         const formatDateStrs = getFormatDateStr(values, format);
@@ -751,6 +1092,8 @@ export default {
           label: formatDateStrs,
           dates: values,
           dateType: type,
+          // 时间选择器无法选择出非固定范围的时间, 所以 isRefresh 固定是false
+          isRefresh: false,
         };
       }
       if (!findOptionByValue(option.value)) {

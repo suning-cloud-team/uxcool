@@ -1,4 +1,4 @@
-import { isArray } from '@suning/v-utils';
+import { isArray, isFunction } from '@suning/v-utils';
 import Selector from '../selector';
 import SearchInput from '../searchInput';
 
@@ -23,12 +23,14 @@ export default {
   },
   methods: {
     singleSearchInputFocus() {
-      const { $refs: { singleSearchInputRef } } = this;
+      const {
+        $refs: { singleSearchInputRef },
+      } = this;
       if (singleSearchInputRef) {
         singleSearchInputRef.focus();
       }
     },
-    renderSingleTrigger() {
+    renderSingleTrigger(renderSelectionInputFn) {
       const {
         prefixCls,
         showArrow,
@@ -51,6 +53,9 @@ export default {
             {selectionContent}
           </span>
         );
+        triggerNode = isFunction(renderSelectionInputFn)
+          ? renderSelectionInputFn(triggerNode)
+          : triggerNode;
       } else {
         triggerNode = placeholderNode;
       }

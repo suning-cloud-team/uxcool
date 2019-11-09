@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="demo">
       <h6>showTime</h6>
       <ux-date-picker :theme="theme"
@@ -61,7 +60,6 @@
     <popup-container-demo />
     <ok-confirm-demo />
 
-    <slider-demo />
     <control-mode-demo />
     <size-demo />
 
@@ -69,6 +67,7 @@
     <month-demo />
     <range-month-demo />
     <year-demo />
+    <slider-demo />
   </div>
 </template>
 
