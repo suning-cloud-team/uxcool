@@ -151,8 +151,26 @@ $table-prefix-cls: #{$ux-prefix}-table;
     border-radius: 0;
   }
 
+  &-tbody > tr[draggable='true'] {
+    cursor: move;
+  }
+
   &-tbody > tr.#{$table-prefix-cls}-row-selected td {
     background: $table-selected-row-bg;
+  }
+
+  &-tbody > tr.dragover-top td {
+    background: $table-drag-over-bg;
+    border-top: 2px dashed $table-drag-indicator-color;
+  }
+
+  &-tbody > tr.dragover-bottom td {
+    background: $table-drag-over-bg;
+    border-bottom: 2px dashed $table-drag-indicator-color;
+  }
+
+  &-tbody > tr.dragover-inner td {
+    background: $table-drag-inner-bg;
   }
 
   &-thead > tr > th.#{$table-prefix-cls}-column-sort {

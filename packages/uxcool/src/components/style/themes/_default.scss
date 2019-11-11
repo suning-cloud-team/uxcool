@@ -568,6 +568,10 @@ $table-padding-vertical-sm: 5px !default;
 $table-padding-horizontal-sm: 5px !default;
 $table-header-icon-color: $text-color-secondary !default;
 
+$table-drag-indicator-color: $primary-4 !default;
+$table-drag-over-bg: $primary-2 !default;
+$table-drag-inner-bg: $primary-3 !default;
+
 // Tag
 // --
 $tag-default-bg: $background-color-light !default;

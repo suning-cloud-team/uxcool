@@ -110,12 +110,19 @@ export default {
   },
   render() {
     const {
-      prefixCls, records, renderRows, childColName
+      prefixCls, renderRows, childColName, innerRecords
     } = this;
-    const needExpand = records.some(v => v[childColName] && v[childColName].length);
+    // 这边拿innverRecords渲染，因为涉及到拖拽，可能会修改数据排序
+    const needExpand = innerRecords.some(v => v[childColName] && v[childColName].length);
+    // const needExpand = records.some(v => v[childColName] && v[childColName].length);
     const rowProps = { idx: 0 };
     return (
-      <tbody class={`${prefixCls}-tbody`}>{renderRows(records, 0, rowProps, needExpand, [])}</tbody>
+      <tbody class={`${prefixCls}-tbody`}>
+        {renderRows(innerRecords, 0, rowProps, needExpand, [])}
+      </tbody>
     );
+  // return (
+  //   <tbody class={`${prefixCls}-tbody`}>{renderRows(records, 0, rowProps, needExpand, [])}</tbody>
+  // );
   },
 };

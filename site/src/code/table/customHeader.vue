@@ -18,11 +18,19 @@
           return <a href="#">{text}</a>;
         },
       },
-      {
+    {
         key: 'age',
-        title: 'Age',
-        dataIndex: 'age',
-      },
+        // 0.5.0-next.60版本开始支持jsx函数
+        title(h) {
+          return (
+            <span>
+              <span>Age</span>
+              <ux-tooltip content="自定义内容同时使用内置排序">
+                <ux-icon type="question-circle-t" class="ml-xs-2" />
+              </ux-tooltip>
+            </span>
+          );
+        },
       {
         key: 'addr',
         title: 'Addr',

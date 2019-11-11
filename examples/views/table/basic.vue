@@ -33,7 +33,7 @@
     <fixed-columns-header-async-demo />
     <virtual-demo />
     <custom-title-demo />
-
+    <draggable-demo />
   </div>
 </template>
 
@@ -73,6 +73,7 @@
   import HeaderCellDemo from './header-cell.vue';
   import VirtualDemo from './virtual.vue';
   import CustomTitleDemo from './title.vue';
+  import DraggableDemo from './draggable.vue';
 
   export default {
     components: {
@@ -110,6 +111,7 @@
       HeaderCellDemo,
       VirtualDemo,
       CustomTitleDemo,
+      DraggableDemo,
     },
   };
 </script>

@@ -36,6 +36,7 @@
     <async-nest-table-demo />
     <custom-header-demo />
     <virtual-demo />
+    <draggable-demo />
     <hr>
 
     <ux-heading level="2"
@@ -191,6 +192,24 @@
           <td>配置虚拟滚动以支持大数据量渲染。<code>0.5.0-next.57</code>版本以后支持</td>
           <td>Boolean | Object</td>
           <td>false</td>
+        </tr>
+        <tr>
+          <td>draggable</td>
+          <td>表格是否可拖拽排序</td>
+          <td>Boolean</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>allowDrag</td>
+          <td>当前行是否可拖拽</td>
+          <td>Function: (record) => Boolean </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>allowDrop</td>
+          <td>当前行是否可释放</td>
+          <td>Function: (record, dragRecord, dragPosition, isExpanded) =>Boolean</td>
+          <td></td>
         </tr>
       </tbody>
     </table>
@@ -621,6 +640,36 @@
           <td>分页,排序, 筛选变化时触发。<code>0.5.0-next.47</code>开始，表格分页支持分页大小改变。</td>
           <td>Function(pagination, filter, sorter)</td>
         </tr>
+        <tr>
+          <td>dragstart</td>
+          <td>拖拽开始时触发。<code>0.5.0-next.66</code>添加</td>
+          <td>Function({ event, dragKey, dragRecord }) </td>
+        </tr>
+        <tr>
+          <td>dragend</td>
+          <td>拖拽结束触发。<code>0.5.0-next.66</code>添加</td>
+          <td>Function({ event, dragKey, dragRecord }) </td>
+        </tr>
+        <tr>
+          <td>dragenter</td>
+          <td>拖拽进入时触发。<code>0.5.0-next.66</code>添加</td>
+          <td>Function({ event, isExpandRow, record, key, dragKey, dragRecord }) </td>
+        </tr>
+        <tr>
+          <td>dragleave</td>
+          <td>拖拽离开时触发。<code>0.5.0-next.66</code>添加</td>
+          <td>Function( event, isExpandRow, record, key, dragKey, dragRecord }) </td>
+        </tr>
+        <tr>
+          <td>dragover</td>
+          <td>拖拽悬浮时触发。position: <code>top</code>,<code>inner</code>,<code>bottom</code>。 <code>0.5.0-next.66</code>添加</td>
+          <td>Function({ event, position, isExpandRow, record, key, dragKey, dragRecord })</td>
+        </tr>
+        <tr>
+          <td>drop</td>
+          <td>拖拽释放时触发，用户可以通过 getValue 方法拿到释放后的表格数据。由于该方法位于底层，只能拿到底层数据，会比用户传入组件的原始数据多出一些额外字段，所以可能需要用户提交数据前自行处理额外字段，后续版本会考虑优化。<code>0.5.0-next.66</code>添加</td>
+          <td>Function({ event, getValue, record, key, dragKey, dragRecord, position, isExpandRow, isExpanded })</td>
+        </tr>
       </tbody>
     </table>
   </article>
@@ -654,6 +703,7 @@
   import TreeRelationDemo from './treeRelation.vue';
   import CustomHeaderDemo from './customHeader.vue';
   import VirtualDemo from './virtual.vue';
+  import DraggableDemo from './draggable.vue';
 
   export default {
     components: {
@@ -684,6 +734,7 @@
       TreeRelationDemo,
       CustomHeaderDemo,
       VirtualDemo,
+      DraggableDemo,
     },
     data() {
       return {
