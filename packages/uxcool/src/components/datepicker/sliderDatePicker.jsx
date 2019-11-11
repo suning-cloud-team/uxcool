@@ -499,6 +499,15 @@ export default {
         resetRefresh();
       }
     },
+    forceRefresh() {
+      const { innerSelectOption, resetRefresh } = this;
+      if (innerSelectOption) {
+        const { isRefresh } = innerSelectOption;
+        if (!isRefresh) {
+          resetRefresh();
+        }
+      }
+    },
   },
   created() {
     const {

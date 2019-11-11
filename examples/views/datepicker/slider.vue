@@ -127,6 +127,7 @@
                           @interval-refresh="onRefresh" />
     </div>
 
+    <slider-composite-demo />
   </div>
 </template>
 
@@ -134,12 +135,14 @@
 <script>
   import { subMinutes, subHours, format as formatDate, subSeconds } from 'date-fns';
   import { Datepicker, Button } from '@suning/uxcool';
+  import SliderCompositeDemo from './sliderComposite.vue';
 
   const minDate = subMinutes(new Date(), 1);
   export default {
     components: {
       SliderDatePicker: Datepicker.Slider,
       UxButton: Button,
+      SliderCompositeDemo,
     },
     data() {
       return {
