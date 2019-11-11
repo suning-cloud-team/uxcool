@@ -107,6 +107,28 @@ table {
     &.#{$tablePrefixCls}-row-hover {
       background: #eaf8fe;
     }
+
+    &[draggable='true'] {
+      cursor: move;
+    }
+
+    &.not-allow-drop {
+      cursor: not-allowed;
+    }
+
+    &.dragover-top td {
+      border-top: 2px dashed #2db7f5;
+      background: #afe4f3;
+    }
+
+    &.dragover-bottom td {
+      border-bottom: 2px dashed #2db7f5;
+      background: #afe4f3;
+    }
+
+    &.dragover-inner td {
+      background: #81d4f9;
+    }
   }
 
   th,

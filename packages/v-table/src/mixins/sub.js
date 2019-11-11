@@ -28,6 +28,10 @@ export default {
     records() {
       return this.rootVM.value;
     },
+    innerRecords() {
+      // added by xql 2019/11/7
+      return this.rootVM.innerValue;
+    },
     scroll() {
       return this.rootVM.scroll;
     },
@@ -92,6 +96,34 @@ export default {
     virtualScrollMode() {
       return !!this.rootVM.virtualScroll;
     },
+    draggable() {
+      return this.rootVM.draggable;
+    },
+    allowDrag() {
+      return this.rootVM.allowDrag;
+    },
+    allowDrop() {
+      return this.rootVM.allowDrop;
+    },
+    dragPosition() {
+      return this.rootVM.dragPosition;
+    },
+    dragRowId() {
+      return this.rootVM.dragRowId;
+    },
+    dragRow() {
+      return this.rootVM.dragRow;
+    },
+    dragOverRowId() {
+      return this.rootVM.dragOverRowId;
+    },
+    hasExpandRowRenderOrSlot() {
+      const {
+        rootScopedSlots: { expand },
+        expandedRowRender,
+      } = this;
+      return !!expand || !!expandedRowRender;
+    },
   },
   methods: {
     saveRef(refName, refElement) {
@@ -99,6 +131,24 @@ export default {
     },
     updateRowHeightAndScrollPosition() {
       this.rootVM.handleWinResize();
+    },
+    onTableRowDragStart(...args) {
+      this.rootVM.onTableRowDragStart(...args);
+    },
+    onTableRowDragEnter(...args) {
+      this.rootVM.onTableRowDragEnter(...args);
+    },
+    onTableRowDragLeave(...args) {
+      this.rootVM.onTableRowDragLeave(...args);
+    },
+    onTableRowDragOver(...args) {
+      this.rootVM.onTableRowDragOver(...args);
+    },
+    onTableRowDrop(...args) {
+      this.rootVM.onTableRowDrop(...args);
+    },
+    onTableRowDragEnd(...args) {
+      this.rootVM.onTableRowDragEnd(...args);
     },
   },
 };

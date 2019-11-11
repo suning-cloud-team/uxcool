@@ -195,3 +195,21 @@ export function getNormalizeContent(h, columnFixed, tableFixed, content) {
   }
   return ret;
 }
+
+const DRAG_MIN_GAP = 10;
+const DRAG_SIDE_RANGE = 0.25;
+
+export function calcDragPosition(event, el) {
+  const { clientY } = event;
+  const { top, bottom, height } = el.getBoundingClientRect();
+  const offset = Math.max(height * DRAG_SIDE_RANGE, DRAG_MIN_GAP);
+  let position = 'inner';
+
+  if (clientY <= top + offset) {
+    position = 'top';
+  } else if (clientY >= bottom - offset) {
+    position = 'bottom';
+  }
+
+  return position;
+}

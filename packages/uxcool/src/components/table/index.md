@@ -4,30 +4,33 @@
 
 #### Props
 
-| 参数名              | 描述                                                | 类型                                           | 默认               |
-| ------------------- | --------------------------------------------------- | ---------------------------------------------- | ------------------ |
-| title               | 表格标题                                            | String                                         |                    |
-| hide-header         | 是否隐藏表头                                        | Boolean                                        | false              |
-| footer              | 表格尾部                                            | String                                         |                    |
-| columns             | 表格列配置                                          | Array                                          |                    |
-| value               | 表格数据                                            | Array                                          |                    |
-| empty-text          | 空数据文案                                          | String                                         | 暂无数据           |
-| scroll              | 设置横向或纵向滚动, 可指定具体值`{x:'110%', y:250}` | Object{x,y}                                    | {x:false, y:false} |
-| row-key             | 表格数据行 key 的取值,可以是字符串或函数            | Function\|String                               | 'key'              |
-| indent-size         | 展示树形数据时,每层的缩进, 单位 `px`                | Number\|String                                 | 15                 |
-| row-class           | 设置数据行 class                                    | String\|Object\|Array\|Function(record,rowIdx) |                    |
-| expand-row-by-click | 通过点击行来展开数据                                | Boolean                                        | false              |
-| expanded-row-render | 额外展开行渲染函数                                  | Function(record, rowIdx)                       |                    |
-| expanded-row-keys   | 控制行展开, 值为相应行的 key                        | Array                                          |                    |
-| expand-all-rows     | 展开所有行                                          | Boolean                                        | false              |
-| row-selection       | 配置列表项选择                                      | Object                                         |                    |
-| size                | 表格大小,可选值为`default`,`middle`,`small`         | String                                         | default            |
-| bordered            | 是否展示边框                                        | Boolean                                        | false              |
-| pagination          | 分页(具体配置参见 Pagination 组件)                  | Object\|Boolean                                | false              |
-| loading             | 是否显示加载中(具体配置,参见 Spin 组件)             | Object\|Boolean                                |                    |
-| on-row              | 设置行属性                                          | Function(columns, rowIdx)                      |                    |
-| on-header-row       | 设置头部行属性                                      | Function (record, rowIdx)                      |                    |
-| virtual-sroll       | 配置虚拟滚动以支持大数据量渲染。                    | Boolean \| Object                              | false              |
+| 参数名              | 描述                                                | 类型                                                               | 默认               |
+| ------------------- | --------------------------------------------------- | ------------------------------------------------------------------ | ------------------ |
+| title               | 表格标题                                            | String                                                             |                    |
+| hide-header         | 是否隐藏表头                                        | Boolean                                                            | false              |
+| footer              | 表格尾部                                            | String                                                             |                    |
+| columns             | 表格列配置                                          | Array                                                              |                    |
+| value               | 表格数据                                            | Array                                                              |                    |
+| empty-text          | 空数据文案                                          | String                                                             | 暂无数据           |
+| scroll              | 设置横向或纵向滚动, 可指定具体值`{x:'110%', y:250}` | Object{x,y}                                                        | {x:false, y:false} |
+| row-key             | 表格数据行 key 的取值,可以是字符串或函数            | Function\|String                                                   | 'key'              |
+| indent-size         | 展示树形数据时,每层的缩进, 单位 `px`                | Number\|String                                                     | 15                 |
+| row-class           | 设置数据行 class                                    | String\|Object\|Array\|Function(record,rowIdx)                     |                    |
+| expand-row-by-click | 通过点击行来展开数据                                | Boolean                                                            | false              |
+| expanded-row-render | 额外展开行渲染函数                                  | Function(record, rowIdx)                                           |                    |
+| expanded-row-keys   | 控制行展开, 值为相应行的 key                        | Array                                                              |                    |
+| expand-all-rows     | 展开所有行                                          | Boolean                                                            | false              |
+| row-selection       | 配置列表项选择                                      | Object                                                             |                    |
+| size                | 表格大小,可选值为`default`,`middle`,`small`         | String                                                             | default            |
+| bordered            | 是否展示边框                                        | Boolean                                                            | false              |
+| pagination          | 分页(具体配置参见 Pagination 组件)                  | Object\|Boolean                                                    | false              |
+| loading             | 是否显示加载中(具体配置,参见 Spin 组件)             | Object\|Boolean                                                    |                    |
+| on-row              | 设置行属性                                          | Function(columns, rowIdx)                                          |                    |
+| on-header-row       | 设置头部行属性                                      | Function (record, rowIdx)                                          |                    |
+| virtual-sroll       | 配置虚拟滚动以支持大数据量渲染。                    | Boolean \| Object                                                  | false              |
+| draggable           | 表格是否可拖拽排序                                  | Boolean                                                            | false              |
+| allowDrag           | 当前行是否可拖拽                                    | Function: (record) => Boolean                                      | null               |
+| allowDrop           | 当前行是否可释放                                    | Function: (record, dragRecord, dragPosition, isExpanded) =>Boolean | null               |
 
 ### virtual-scroll
 
@@ -126,11 +129,17 @@ table pagination 属性:
 
 #### Events
 
-| 事件名              | 描述                      | 类型                                 |
-| ------------------- | ------------------------- | ------------------------------------ |
-| expanded-row-change | 展开/收缩行时触发         | Function(expandRows)                 |
-| expand              | 展开/收缩行时触发         | Function(expanded, record)           |
-| change              | 分页,排序, 筛选变化时触发 | Function(pagination, filter, sorter) |  |
+| 事件名              | 描述                                                           | 类型                                                                                               |
+| ------------------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| expanded-row-change | 展开/收缩行时触发                                              | Function(expandRows)                                                                               |
+| expand              | 展开/收缩行时触发                                              | Function(expanded, record)                                                                         |
+| change              | 分页,排序, 筛选变化时触发                                      | Function(pagination, filter, sorter)                                                               |
+| dragstart           | 拖拽开始时触发                                                 | Function({ event, dragKey, dragRecord })                                                           |
+| dragenter           | 拖拽进入时触发                                                 | Function({ event, isExpandRow, record, key, dragKey, dragRecord })                                 |
+| dragleave           | 拖拽离开时触发                                                 | Function( event, isExpandRow, record, key, dragKey, dragRecord })                                  |
+| dragend             | 拖拽结束触发                                                   | Function({ event, dragKey, dragRecord })                                                           |
+| dragover            | 拖拽悬浮时触发                                                 | Function({ event, position, isExpandRow, record, key, dragKey, dragRecord })                       |
+| drop                | 拖拽释放时触发，用户可以通过 getValue 方法拿到释放后的表格数据 | Function({ event, getValue, record, key, dragKey, dragRecord, position, isExpandRow, isExpanded }) |
 
 #### metnods
 
