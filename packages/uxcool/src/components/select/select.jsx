@@ -211,6 +211,10 @@ export default {
       type: Function,
       default: null,
     },
+    renderSelectionInput: {
+      type: Function,
+      default: null,
+    },
   },
   data() {
     return {
@@ -805,8 +809,18 @@ export default {
       return ret;
     },
     renderTrigger() {
-      const { isMultipleOrTagsOrCombobox, renderSingleTrigger, renderMultipleTrigger } = this;
-      return isMultipleOrTagsOrCombobox ? renderMultipleTrigger() : renderSingleTrigger();
+      const {
+        $scopedSlots,
+        renderSelectionInput,
+        isMultipleOrTagsOrCombobox,
+        renderSingleTrigger,
+        renderMultipleTrigger,
+      } = this;
+
+      const renderSelectionInputFn = $scopedSlots.renderSelectionInput || renderSelectionInput;
+      return isMultipleOrTagsOrCombobox
+        ? renderMultipleTrigger()
+        : renderSingleTrigger(renderSelectionInputFn);
     },
     renderPopup(options) {
       const {

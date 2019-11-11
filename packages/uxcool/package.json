@@ -1,6 +1,6 @@
 {
   "name": "@suning/uxcool",
-  "version": "0.5.0-next.63",
+  "version": "0.5.0-next.64",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -35,6 +35,7 @@
     "date-fns": "^1.29.0",
     "humanize-duration": "^3.15.3",
     "lodash": "^4.0.8",
+    "ms": "^2.1.2",
     "object.omit": "^3.0.0",
     "portal-vue": "^1.5.0",
     "vee-validate": "~2.0.9"

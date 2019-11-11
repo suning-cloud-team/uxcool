@@ -6735,6 +6735,11 @@ ms@^2.1.1:
   resolved "http://snpm.cnsuning.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha1-MKWGTrPrsKZvLr5tcnrwagnYbgo=
 
+ms@^2.1.2:
+  version "2.1.2"
+  resolved "http://snpm.cnsuning.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
+  integrity sha1-0J0fNXtEP0kzgqjrPM0YOHKuYAk=
+
 multicast-dns-service-types@^1.1.0:
   version "1.1.0"
   resolved "http://snpm.cnsuning.com/multicast-dns-service-types/-/multicast-dns-service-types-1.1.0.tgz#899f11d9686e5e05cb91b35d5f0e63b773cfc901"
@@ -10129,18 +10134,18 @@ vue-style-loader@^3.0.0, vue-style-loader@^3.0.3:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@2.5.15:
-  version "2.5.15"
-  resolved "http://snpm.cnsuning.com/vue-template-compiler/-/vue-template-compiler-2.5.15.tgz#cc004097e37167be8b85ea22ab2840d8e8cca1c0"
-  integrity sha1-zABAl+NxZ76LheoiqyhA2OjMocA=
-  dependencies:
-    de-indent "^1.0.2"
-    he "^1.1.0"
-
 vue-template-compiler@^2.*:
   version "2.6.9"
   resolved "http://snpm.cnsuning.com/vue-template-compiler/-/vue-template-compiler-2.6.9.tgz#26600415ff81a7a241aebc2d4e0abaa0f1a07915"
   integrity sha1-JmAEFf+Bp6JBrrwtTgq6oPGgeRU=
+  dependencies:
+    de-indent "^1.0.2"
+    he "^1.1.0"
+
+vue-template-compiler@^2.*.*:
+  version "2.6.10"
+  resolved "http://snpm.cnsuning.com/vue-template-compiler/-/vue-template-compiler-2.6.10.tgz#323b4f3495f04faa3503337a82f5d6507799c9cc"
+  integrity sha1-MjtPNJXwT6o1AzN6gvXWUHeZycw=
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
@@ -10150,15 +10155,15 @@ vue-template-es2015-compiler@^1.6.0, vue-template-es2015-compiler@^1.9.0:
   resolved "http://snpm.cnsuning.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@2.5.15:
-  version "2.5.15"
-  resolved "http://snpm.cnsuning.com/vue/-/vue-2.5.15.tgz#fdb67861dde967cd8d1b53116380f2f269b45202"
-  integrity sha1-/bZ4Yd3pZ82NG1MRY4Dy8mm0UgI=
-
 vue@^2.*:
   version "2.6.9"
   resolved "http://snpm.cnsuning.com/vue/-/vue-2.6.9.tgz#415c1cc1a5ed00c8f0acdd0a948139d12b7ea6b3"
   integrity sha1-QVwcwaXtAMjwrN0KlIE50St+prM=
+
+vue@^2.*.*:
+  version "2.6.10"
+  resolved "http://snpm.cnsuning.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
+  integrity sha1-pysaQqTYKnIepDjRtr9V5mGVxjc=
 
 vuex-router-sync@^5.0.0:
   version "5.0.0"
