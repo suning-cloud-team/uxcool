@@ -3,12 +3,12 @@
       :class="classes">
     <div :class="jumperClasses">
       {{ locale.jump_to }}
-      <input v-model="pageNo"
+      <input :value="pageNo"
              type="text"
+             @input="onInput"
              @keyup.enter="go"> {{ locale.page }}
       <button v-if="haveConfirmBtn"
-              @click="go"
-              @keyup.enter="go">
+              @click="go">
         {{ locale.confirm }}
       </button>
     </div>
@@ -38,29 +38,41 @@
         return `${this.rootPrefixCls}-options`;
       },
       classes() {
-        const componentClass = this.componentClass;
+        const { componentClass } = this;
         return {
           [componentClass]: true,
         };
       },
       jumperClasses() {
-        const componentClass = this.componentClass;
+        const { componentClass } = this;
         return {
           [`${componentClass}-quick-jumper`]: true,
         };
       },
     },
     methods: {
-      go() {
-        const { current, pageNo } = this;
-        if (pageNo.trim() === '') return;
+      // Q3需求直接不让输入非数字
+      // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/190
+      onInput(e) {
+        const { target } = e;
+        const { value } = target;
+        const trimmedVal = value ? value.trim() : '';
 
-        let no = Number(pageNo);
-        if (isNaN(no)) {
-          no = current;
+        if (trimmedVal === '' || /^\d+$/.test(trimmedVal)) {
+          this.pageNo = trimmedVal;
         }
+        target.value = this.pageNo;
+      },
+      go() {
+        const { pageNo } = this;
+
+        if (pageNo === '') {
+          return;
+        }
+
+        const page = Number(pageNo);
         this.pageNo = '';
-        this.$emit('on-quick-jumper', no);
+        this.$emit('on-quick-jumper', page);
       },
     },
   };
