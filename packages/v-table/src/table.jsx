@@ -430,6 +430,12 @@ export default {
     
           if (children && children.length > 0) {
             item[childColName] = traverse(children);
+            // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/271
+          } else if (childColName in origin) {
+            item[childColName] = [];
+          } else {
+            // 和原始数据保持一致
+            delete item[childColName];
           }
     
           result.push(item);
