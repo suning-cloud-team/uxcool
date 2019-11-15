@@ -67,13 +67,35 @@ function getCols2() {
 }
 
 function getData() {
-  return Array.from({ length: 5 }, (_, i) => ({
-    key: i,
-    name: `name ${i}`,
-    age: `name ${i}`,
-    address: `name ${i}`,
-    description: `description ${i}`,
-  }));
+  return Array.from({ length: 5 }, (_, i) => {
+    const item = {
+      key: i,
+      name: `name ${i}`,
+      age: `age ${i}`,
+      address: `address ${i}`,
+      description: `description ${i}`,
+    };
+
+    if (i > 2) {
+      item.children = [
+        {
+          key: `key-${i}-0`,
+          name: `name ${i} - 0`,
+          age: `age ${i} - 0`,
+          address: `address ${i} - 0`,
+          description: `description ${i} - 0`,
+        },
+        {
+          key: `key-${i}-1`,
+          name: `name ${i} - 1`,
+          age: `age ${i} - 1`,
+          address: `address ${i} - 1`,
+          description: `description ${i} - 1`,
+        },
+      ];
+    }
+    return item;
+  });
 }
 
 const vm = new Vue({
@@ -110,8 +132,8 @@ const vm = new Vue({
     onDragEnd(...args) {
       console.log('end', ...args);
     },
-    onDrop(...args) {
-      console.log('drop', ...args);
+    onDrop({ getValue }) {
+      console.log('drop', getValue());
     },
   },
 });
