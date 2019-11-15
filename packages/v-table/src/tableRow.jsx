@@ -285,6 +285,7 @@ export default {
         onClick,
         onMouseEnter,
         onMouseLeave,
+        draggable,
         onDragStart,
         onDragEnter,
         onDragLeave,
@@ -332,17 +333,19 @@ export default {
           fn = chainFns(originFn, !expandRow && isAnyColumnsFixed ? nFn : null);
         } else if (k === 'click') {
           fn = chainFns(originFn, expandRowByClick ? onClick : null);
-        } else if (k === 'dragstart') {
+          // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/270
+          // 拖拽事件加个draggable判断，否则浏览器默认的拖拽行为（如选中某一行的文字拖拽等）也会触发事件处理函数执行
+        } else if (k === 'dragstart' && draggable) {
           fn = chainFns(originFn, onDragStart);
-        } else if (k === 'dragover') {
+        } else if (k === 'dragover' && draggable) {
           fn = chainFns(originFn, onDragOver);
-        } else if (k === 'dragenter') {
+        } else if (k === 'dragenter' && draggable) {
           fn = chainFns(originFn, onDragEnter);
-        } else if (k === 'dragleave') {
+        } else if (k === 'dragleave' && draggable) {
           fn = chainFns(originFn, onDragLeave);
-        } else if (k === 'dragend') {
+        } else if (k === 'dragend' && draggable) {
           fn = chainFns(originFn, onDragEnd);
-        } else if (k === 'drop') {
+        } else if (k === 'drop' && draggable) {
           fn = chainFns(originFn, onDrop);
         } else {
           fn = chainFns(originFn);
