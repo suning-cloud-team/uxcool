@@ -5,21 +5,22 @@
     <date-thead :prefix-cls="prefixCls"
                 :value="value"
                 :selected-value="selectedValue"
-                :locale="locale"></date-thead>
+                :locale="normlizeLocale"
+                :show-week-number="showWeekNumber" />
 
     <date-tbody :prefix-cls="prefixCls"
                 :value="value"
                 :selected-value="selectedValue"
-                :locale="locale"
+                :locale="normlizeLocale"
                 :format="format"
                 :range-values="rangeValues"
                 :hover-values="hoverValues"
                 :disabled-date="disabledDate"
                 :date-render="dateRender"
                 :content-render="contentRender"
+                :show-week-number="showWeekNumber"
                 @on-day-hover="onDayHover"
-                @on-select="onSelect">
-    </date-tbody>
+                @on-select="onSelect" />
   </table>
 </template>
 
@@ -29,12 +30,35 @@
 
   export default {
     name: 'DateTable',
+    components: {
+      DateThead,
+      DateTbody,
+    },
     props: {
-      prefixCls: String,
-      value: Date,
-      selectedValue: [Date, Array],
-      locale: Object,
-      format: String,
+      prefixCls: {
+        type: String,
+        default: undefined,
+      },
+      value: {
+        type: Date,
+        default: undefined,
+      },
+      selectedValue: {
+        type: [Date, Array],
+        default: undefined,
+      },
+      locale: {
+        type: Object,
+        default: undefined,
+      },
+      format: {
+        type: String,
+        default: undefined,
+      },
+      showWeekNumber: {
+        type: Boolean,
+        default: false,
+      },
       rangeValues: {
         type: Array,
         default() {
@@ -62,6 +86,21 @@
         default: null,
       },
     },
+    computed: {
+      normlizeLocale() {
+        const { locale = {} } = this;
+
+        return {
+          WeekLocale: {
+            // default zh_CN
+            weekStartsOn: 1,
+            /* Monday */
+            firstWeekContainsDate: 4,
+          },
+          ...locale,
+        };
+      },
+    },
     methods: {
       onSelect(value) {
         this.$emit('on-select', value);
@@ -71,10 +110,6 @@
         this.$emit('on-day-hover', value);
         this.$emit('day-hover', value);
       },
-    },
-    components: {
-      DateThead,
-      DateTbody,
     },
   };
 </script>

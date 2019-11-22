@@ -1,13 +1,13 @@
 <template>
   <thead>
     <tr role="row">
-      <th role="columnheader"
-          v-for="(w,i) in weekDays"
+      <th v-for="(w,i) in weekDays"
           :key="i"
           :title="w.title"
-          :class="`${prefixCls}-column-header`">
+          :class="cellClasses(w)"
+          role="columnheader">
         <span :class="`${prefixCls}-column-header-inner`">
-          {{w.name}}
+          {{ w.name }}
         </span>
       </th>
     </tr>
@@ -22,23 +22,65 @@
   export default {
     name: 'DateTHead',
     props: {
-      prefixCls: String,
-      value: Date,
-      locale: Object,
+      prefixCls: {
+        type: String,
+        default: undefined,
+      },
+      value: {
+        type: Date,
+        default: undefined,
+      },
+      locale: {
+        type: Object,
+        default: undefined,
+      },
+      showWeekNumber: {
+        type: Boolean,
+        default: false,
+      },
     },
     computed: {
       weekDays() {
-        const { value, locale } = this;
+        const {
+          value,
+          locale: {
+            DateFnsLocale,
+            WeekLocale: { weekStartsOn },
+          },
+          showWeekNumber,
+        } = this;
+        const cols = DATE_STYLE.col;
         const weekDays = [];
-        for (let i = 0; i < DATE_STYLE.col; i += 1) {
-          const weekDay = setDay(value, i);
+
+        if (showWeekNumber) {
+          weekDays.push({
+            id: -1,
+            title: '周',
+            name: '',
+            isWeek: true,
+          });
+        }
+
+        for (let i = 0; i < cols; i += 1) {
+          const idx = (i + weekStartsOn) % cols;
+          const weekDay = setDay(value, idx);
           weekDays.push({
             id: i,
-            title: formatDate(weekDay, 'dddd', { locale: locale.DateFnsLocale }),
-            name: formatDate(weekDay, 'dd', { locale: locale.DateFnsLocale }),
+            title: formatDate(weekDay, 'dddd', { locale: DateFnsLocale }),
+            name: formatDate(weekDay, 'dd', { locale: DateFnsLocale }),
           });
         }
         return weekDays;
+      },
+    },
+    methods: {
+      cellClasses(cell) {
+        const { prefixCls } = this;
+        const { isWeek } = cell;
+        return {
+          [`${prefixCls}-column-header`]: true,
+          [`${prefixCls}-week-number-header`]: isWeek,
+        };
       },
     },
   };

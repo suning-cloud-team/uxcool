@@ -3,11 +3,17 @@ import DateFnsLocale from 'date-fns/locale/en';
 
 export default {
   lang: {
+    WeekLocale: {
+      weekStartsOn: 0,
+      /* Sunday */
+      firstWeekContainsDate: 1,
+    },
     DateFnsLocale,
     placeholder: 'Select date',
     rangePlaceholder: ['Start date', 'End date'],
     rangeMonthPlaceholder: ['Start Month', 'End Month'],
     rangeYearPlaceholder: ['Start Year', 'End Year'],
+    weekFormat: 'YYYY Wo',
     ...CalendarLocale,
   },
 };

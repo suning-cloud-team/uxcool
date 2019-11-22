@@ -30,10 +30,11 @@
         <div :class="`${prefixCls}-body`">
           <date-table :prefix-cls="prefixCls"
                       :value="innerValue"
-                      :selected-value="innerValue"
+                      :selected-value="selectedValue"
                       :format="format"
                       :locale="locale"
                       :disabled-date="disabledDate"
+                      :show-week-number="showWeekNumber"
                       @on-select="updateValue" />
         </div>
         <calendar-footer :prefix-cls="prefixCls"
@@ -71,10 +72,17 @@
       CalendarFooter,
     },
     props: {
-      locale: Object,
-      prefixCls: String,
+      prefixCls: {
+        type: String,
+        default: undefined,
+      },
+      locale: {
+        type: Object,
+        default: undefined,
+      },
       value: {
         type: Date,
+        default: undefined,
       },
       mode: {
         type: String,
@@ -83,7 +91,10 @@
           return ['time', 'date', 'month', 'year', 'decade'].indexOf(v) > -1;
         },
       },
-      format: String,
+      format: {
+        type: String,
+        default: undefined,
+      },
       visible: {
         type: Boolean,
         default: true,

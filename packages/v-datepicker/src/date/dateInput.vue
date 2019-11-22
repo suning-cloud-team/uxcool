@@ -6,13 +6,13 @@
              :disabled="disabled"
              :placeholder="placeholder"
              readonly
-             @change="onChange" />
+             @change="onChange">
     </div>
     <a v-if="showClear"
        :class="`${prefixCls}-clear-btn`"
        role="button"
        :title="locale.clear"
-       @click="onClear"></a>
+       @click="onClear" />
   </div>
 </template>
 
@@ -41,9 +41,6 @@
         invalid: false,
       };
     },
-    created() {
-      this.initInputVal();
-    },
     computed: {
       inputClasses() {
         const { prefixCls, invalid } = this;
@@ -52,6 +49,16 @@
           [`${prefixCls}-input-invalid`]: invalid,
         };
       },
+    },
+    watch: {
+      value(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.initInputVal();
+        }
+      },
+    },
+    created() {
+      this.initInputVal();
     },
     methods: {
       initInputVal() {
@@ -98,13 +105,6 @@
       onClear() {
         this.inputVal = '';
         this.$emit('on-clear', null);
-      },
-    },
-    watch: {
-      value(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.initInputVal();
-        }
       },
     },
   };

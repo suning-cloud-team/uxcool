@@ -213,7 +213,7 @@
   &-selected-day &-date {
     background: $primary-color;
     color: #fff;
-    border: $border-width-base $border-style-base transparent;
+    // border: $border-width-base $border-style-base transparent;
 
     &:hover {
       background: $primary-color;
@@ -326,10 +326,10 @@
     line-height: $btn-height-sm - 2px;
 
     &-disabled {
-      @include button-color($btn-disable-color,$btn-disable-bg, $btn-disable-border);
+      @include button-color($btn-disable-color, $btn-disable-bg, $btn-disable-border);
       cursor: not-allowed;
       &:hover {
-        @include button-color($btn-disable-color,$btn-disable-bg,$btn-disable-border);
+        @include button-color($btn-disable-color, $btn-disable-bg, $btn-disable-border);
       }
     }
   }
