@@ -28,7 +28,7 @@
         "devDependencies": true
       }
     ],
-    "indent": "off",
+
     "vue/script-indent": [
       "error",
       2,
@@ -47,5 +47,13 @@
         }
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.vue"],
+      "rules": {
+        "indent": "off"
+      }
+    }
+  ]
 }
