@@ -4,12 +4,14 @@ import Month from './monthPicker';
 import Slider from './sliderDatePicker';
 import Year from './yearPicker';
 import RangeMonth from './rangeMonthPicker';
+import Week from './weekPicker';
 
 DatePicker.Range = Range;
 DatePicker.Slider = Slider;
 DatePicker.Month = Month;
 DatePicker.Year = Year;
 DatePicker.RangeMonth = RangeMonth;
+DatePicker.Week = Week;
 
 export {
   DatePicker as UxDatePicker,
@@ -18,5 +20,6 @@ export {
   Slider as UxSliderDatePicker,
   Range as UxRangeDatePicker,
   RangeMonth as UxRangeMonthPicker,
+  Week as UxWeekPicker,
 };
 export default DatePicker;

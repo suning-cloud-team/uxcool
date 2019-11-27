@@ -68,6 +68,7 @@
     <range-month-demo />
     <year-demo />
     <slider-demo />
+    <week-demo />
   </div>
 </template>
 
@@ -94,6 +95,7 @@
   import ChangeValueDemo from './changeSelectedValue.vue';
   import RangeMonthDemo from './rangeMonth.vue';
   import YearDemo from './year.vue';
+  import WeekDemo from './week.vue';
 
   export default {
     components: {
@@ -109,6 +111,7 @@
       ChangeValueDemo,
       RangeMonthDemo,
       YearDemo,
+      WeekDemo,
     },
     data() {
       return {

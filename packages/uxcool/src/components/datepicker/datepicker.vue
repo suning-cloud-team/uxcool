@@ -152,7 +152,11 @@
         };
       },
       bindProps() {
-        return omit(this.$props, ['value', 'placeholder', 'allowClear']);
+        const { dateFormat } = this;
+        return {
+          ...omit(this.$props, ['value', 'format', 'placeholder', 'allowClear']),
+          format: dateFormat,
+        };
       },
       bindListeners() {
         return omit(this.$listeners, ['change']);

@@ -29,6 +29,8 @@
               :disabled-time="disabledTime"
               :date-input-placeholder="dateInputPlaceholder"
               :control-mode="controlMode"
+              :show-date-input="showDateInput"
+              :show-week-number="showWeekNumber"
               v-on="bindListeners">
       <template slot="timePicker"
                 slot-scope="props">
@@ -119,6 +121,10 @@
         default: false,
       },
       controlMode: {
+        type: Boolean,
+        default: false,
+      },
+      showWeekNumber: {
         type: Boolean,
         default: false,
       },
@@ -218,6 +224,9 @@
           this.inputValue = validDate;
         }
       },
+      isOpen(nVal) {
+        this.setOpen(nVal);
+      },
     },
     created() {
       const {
@@ -226,7 +235,7 @@
       const validDate = normalizeDate(value);
       this.innerValue = validDate;
       this.inputValue = validDate;
-      this.open = disabled ? false : isOpen;
+      this.setOpen(disabled ? false : isOpen);
       if (disabledTime) {
         const opts = disabledTime(validDate);
         this.disabledHours = opts.disabledHours;

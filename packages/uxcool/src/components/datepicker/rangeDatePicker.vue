@@ -174,14 +174,21 @@
     computed: {
       bindProps() {
         const {
-          prefixCls, innerValue, startPlaceholder, endPlaceholder, openValue
+          $props,
+          prefixCls,
+          innerValue,
+          startPlaceholder,
+          endPlaceholder,
+          openValue,
+          dateFormat,
         } = this;
         return {
-          ...this.$props,
+          ...omit($props, ['format']),
           selectedValue: innerValue,
           pickerPrefixCls: `${prefixCls}-picker-container`,
           dateInputPlaceholder: [startPlaceholder, endPlaceholder],
           value: openValue || undefined,
+          format: dateFormat,
         };
       },
       bindListeners() {

@@ -1,4 +1,4 @@
-## API
+ing## API
 
 ### UxDatePicker
 
@@ -139,3 +139,27 @@
 | ----------- | -------------------- | ---------------------------------------------- |
 | open-change | 弹窗关闭和打开时触发 | Function(visible)                              |
 | change      | 用户选择时间后触发   | Function(values:Date, formatDateString:String) |
+
+### UxWeekPicker
+
+#### Props
+
+| 参数名              | 描述                                                                 | 类型                            | 默认                                                           |
+| ------------------- | -------------------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------- |
+| locale              | 国际化配置                                                           | Object                          | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |
+| value               | 选中值(v-model)                                                      | Date                            |                                                                |
+| disabled            | 是否禁用                                                             | Boolean                         | false                                                          |
+| format              | 格式                                                                 | String                          | 'YYYY 第 WW 周'                                                |
+| visible             | 弹层是否展开                                                         | Boolean                         | false                                                          |
+| disabled-date       | 不可选择日期                                                         | Function(current:Date)=>Boolean |                                                                |
+| placement           | 弹出框位置,可选值:`bottomLeft`, `bottomRight`, `topRight`, `topLeft` | String                          | 'bottomLeft'                                                   |
+| get-popup-container | 自定义下拉面板包裹容器                                               | Function                        |                                                                |
+| placeholder         | 输入框提示文字                                                       | String                          |                                                                |
+| allow-clear         | 是否显示清除按钮                                                     | Boolean                         | true                                                           |
+
+#### Events
+
+| 事件名      | 描述                 | 回调                                       |
+| ----------- | -------------------- | ------------------------------------------ |
+| open-change | 弹窗关闭和打开时触发 | Function(visible)                          |
+| change      | 用户选择时间后触发   | Function(value:Date, formatDateStr:String) |

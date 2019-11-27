@@ -171,6 +171,7 @@ export default {
       startValue,
       endValue,
       disabled,
+      dateFormat,
       startPlaceholder,
       endPlaceholder,
       isCanClear,
@@ -179,9 +180,10 @@ export default {
     } = this;
 
     const props = {
-      ...$props,
+      ...omit($props, ['format']),
       selectedValue: innerValue,
       pickerPrefixCls: `${prefixCls}-picker-container`,
+      format: dateFormat,
     };
 
     const on = {
