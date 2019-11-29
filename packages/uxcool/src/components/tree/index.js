@@ -1,4 +1,5 @@
 import Tree from './tree';
+import VirtualTree from './virtualTree';
 import {
   getNodeStatus,
   getNodeChildCheckState,
@@ -15,6 +16,16 @@ Tree.staticMethod = {
   getNodeOriginParent,
 };
 
-export { Tree as UxTree };
+VirtualTree.staticMethod = {
+  getNodeStatus,
+  getNodeChildCheckState,
+  getParentChecked,
+  getOriginNodes,
+  getNodeOriginParent,
+};
+
+Tree.VirtualTree = VirtualTree;
+
+export { Tree as UxTree, VirtualTree, VirtualTree as UxVirtualTree };
 
 export default Tree;

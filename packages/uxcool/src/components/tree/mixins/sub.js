@@ -20,6 +20,12 @@ export default {
     isTreeLazy() {
       return !!this.treeRoot.lazy;
     },
+    isTreeShowLine() {
+      return !!this.treeRoot.showLine;
+    },
+    allTreeNodes() {
+      return this.treeRoot.nodes;
+    },
     treeRenderContentFn() {
       return this.treeRoot.renderContentFn;
     },

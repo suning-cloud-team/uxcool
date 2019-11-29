@@ -9,6 +9,9 @@
     <filter-demo />
     <render-demo />
     <huge-demo />
+    <virtual-tree-demo/>
+    <variable-tree-demo/>
+    <pagemode-tree-demo/>
     <hr>
     <ux-heading id="api"
                 level="2">API</ux-heading>
@@ -210,6 +213,53 @@
         </tr>
       </tbody>
     </table>
+
+    <h4 class="mume-header"
+        id="vitual-tree-api">UxVirtualTree API</h4>
+    <table class="api-table">
+      <caption>UxTree API均支持，同时新增以下几个API</caption>
+      <thead>
+      <tr>
+        <th>参数名</th>
+        <th>描述</th>
+        <th>类型</th>
+        <th>默认</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!--virtual tree own api-->
+      <tr>
+        <td>view-count</td>
+        <td>视窗显示条目的个数</td>
+        <td>Number</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>bench</td>
+        <td>已生成但在视窗外的条目个数，默认值与view-count一致</td>
+        <td>Number</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>pagemode</td>
+        <td>是否让虚拟列表随着窗口页面滚动</td>
+        <td>Boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>auto-height</td>
+        <td>是否自动计算每列高度，适用于行高不一致的情况</td>
+        <td>Boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>scrollelement</td>
+        <td>让列表滚动的父元素，即使用父元素的滚动条来控制树的滚动展示，如果pagemode设置为true，那么这个属性将无效</td>
+        <td>HTMLElement</td>
+        <td>false</td>
+      </tr>
+      </tbody>
+    </table>
   </article>
 </template>
 
@@ -220,6 +270,9 @@
   import FilterDemo from './filter.vue';
   import HugeDemo from './huge.vue';
   import RenderDemo from './render.vue';
+  import VirtualTreeDemo from './virtual-tree.vue';
+  import VariableTreeDemo from './variable-tree.vue';
+  import PagemodeTreeDemo from './pagemode-tree.vue';
 
   export default {
     components: {
@@ -229,6 +282,9 @@
       FilterDemo,
       HugeDemo,
       RenderDemo,
+      VirtualTreeDemo,
+      VariableTreeDemo,
+      PagemodeTreeDemo,
     },
   };
 </script>

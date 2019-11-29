@@ -244,10 +244,8 @@ export default {
         getStoreCheckedNodes,
       } = this;
       const { key, isChecked, isHalfChecked } = node;
-
       setStoreCheckedKeys(key, isChecked);
       setStoreHalfCheckedKeys(key, isHalfChecked);
-
       checkNodeRelation(node);
       this.$emit('check', getStoreCheckedKeys(), {
         checked: isChecked,
@@ -273,10 +271,10 @@ export default {
     },
     onNodeExpand(e, node, vm) {
       const {
-        canAsync, asyncNode, triggerExpand, triggerAsyncEvent
+        canAsync, asyncNode, triggerExpand, triggerAsyncEvent, callHook
       } = this;
       const { isExpanded } = node;
-
+      callHook('onNodeExpandBeforeHook', e, node, vm);
       if (canAsync(node)) {
         if (isExpanded) {
           asyncNode(node).then(() => {
@@ -303,9 +301,10 @@ export default {
       }
     },
     onNodeDragEnd(e, node) {
-      const { clearDragOverGap, dragOverNode } = this;
+      const { clearDragOverGap, dragOverNode, callHook } = this;
       clearDragOverGap(dragOverNode);
       this.$emit('dragend', { e, node: { ...node.originNode } });
+      callHook('onNodeDragEndHook', e, node);
     },
     clearDragEnterTimer() {
       if (this.dragEnterTimer) {
@@ -505,6 +504,12 @@ export default {
         ...e,
         nodes: getStoreCheckedNodes(),
       });
+    },
+    callHook(...args) {
+      const fnName = args.shift();
+      if (this[fnName]) {
+        this[fnName](...args);
+      }
     },
   },
   render() {
