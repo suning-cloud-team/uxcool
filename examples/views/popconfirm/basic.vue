@@ -13,6 +13,7 @@
     <custom-demo />
     <slot-demo />
     <container-demo />
+    <inner-popup-demo />
   </div>
 </template>
 
@@ -22,6 +23,7 @@
   import CustomDemo from './custom.vue';
   import SlotDemo from './slot.vue';
   import ContainerDemo from './container.vue';
+  import InnerPopupDemo from './innerPopup.vue';
 
   export default {
     components: {
@@ -29,6 +31,7 @@
       CustomDemo,
       SlotDemo,
       ContainerDemo,
+      InnerPopupDemo
     },
   };
 </script>
