@@ -10,6 +10,7 @@ export default {
     },
     DateFnsLocale,
     placeholder: 'Select date',
+    multiPlaceholder: 'Select one or more dates',
     rangePlaceholder: ['Start date', 'End date'],
     rangeMonthPlaceholder: ['Start Month', 'End Month'],
     rangeYearPlaceholder: ['Start Year', 'End Year'],

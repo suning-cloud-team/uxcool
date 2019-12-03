@@ -8,14 +8,17 @@ import {
   startOfWeek,
   differenceInCalendarDays,
   isWithinRange,
+  isDate,
 } from 'date-fns';
 import { isFunction, isArray } from '@suning/v-utils';
 import { DATE_STYLE } from '../constant';
 import { formatDate } from '../utils';
 import getWeek from '../week-utils';
+import MultiCalendarMixin from '../mixins/multiCalendar';
 
 export default {
   name: 'DateTBody',
+  mixins: [MultiCalendarMixin],
   props: {
     prefixCls: {
       type: String,
@@ -94,21 +97,52 @@ export default {
       return dates;
     },
     isRangeCalendar() {
-      const { selectedValue } = this;
+      const { isMultiCalendarChildren, selectedValue } = this;
 
-      return selectedValue && isArray(selectedValue);
+      return !isMultiCalendarChildren && selectedValue && isArray(selectedValue);
+    },
+    multiCalendarValueMap() {
+      const { isMultiCalendarChildren, selectedValue } = this;
+
+      if (isMultiCalendarChildren) {
+        if (selectedValue) {
+          const values = isArray(selectedValue) ? selectedValue : [selectedValue];
+          return values.reduce((r, v) => {
+            const nr = r;
+            if (isDate(v)) {
+              // 移除时分秒后,获取毫秒数
+              nr[startOfDay(v).getTime()] = 1;
+            }
+            return nr;
+          }, {});
+        }
+      }
+      return {};
     },
   },
   methods: {
     cellClasses(day, j, row) {
       const {
-        prefixCls, isRangeCalendar, value, selectedValue, hoverValues
+        prefixCls,
+        isMultiCalendarChildren,
+        multiCalendarValueMap,
+        isRangeCalendar,
+        value,
+        selectedValue,
+        hoverValues,
       } = this;
       let isSelectedDay = false;
       let isInRange = false;
       let isSelectedStartDay = false;
       let isSelectedEndDay = false;
-      if (isRangeCalendar) {
+      if (isMultiCalendarChildren) {
+        const nDay = day;
+        const dayTime = startOfDay(nDay.value).getTime();
+        if (dayTime in multiCalendarValueMap) {
+          isSelectedDay = true;
+          nDay.isSelected = true;
+        }
+      } else if (isRangeCalendar) {
         const ranges = hoverValues.length > 0 ? hoverValues : selectedValue;
         // 日历展示会包括部分上月与下月日期, 如果选中需要忽略渲染
         if (isSameMonth(day.value, value)) {
@@ -188,9 +222,20 @@ export default {
       this.$emit('day-hover', day.value);
     },
     onSelect(day) {
+      const { isMultiCalendarChildren } = this;
       if (day.disabled) {
         return;
       }
+      // 多选时包含取消操作, 单独处理
+      if (isMultiCalendarChildren) {
+        if (day.isSelected === true) {
+          this.onMultiCalendarUnSelect(day.value);
+        } else {
+          this.onMultiCalendarSelect(day.value);
+        }
+        return;
+      }
+
       this.$emit('on-select', day.value);
       this.$emit('select', day.value);
     },
