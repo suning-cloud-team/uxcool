@@ -123,6 +123,13 @@
     }
   }
 
+  // 虚拟列表下的check动画关闭
+  .#{$checkbox-prefix-cls}-virtual {
+    .#{$checkbox-inner-prefix-cls}, .#{$checkbox-inner-prefix-cls}:after{
+      transition: none;
+    }
+  }
+
   .#{$checkbox-prefix-cls}-disabled {
     cursor: not-allowed;
 

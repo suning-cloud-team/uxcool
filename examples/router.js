@@ -265,6 +265,11 @@ const routes = [
     path: '/drawer',
     component: () => import('./views/drawer/index'),
   },
+  {
+    name: 'TreeBigData',
+    path: '/treebigdata',
+    component: () => import('./views/tree-big-data/index'),
+  },
   // {
   //   name: 'Chart',
   //   path: '/chart',

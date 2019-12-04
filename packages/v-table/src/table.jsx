@@ -408,7 +408,13 @@ export default {
           count += 1;
 
           const children = item[childColName];
-          nItem[childColName] = children && children.length > 0 ? traverse(children, key) : [];
+          // 之前实现无论有没有childColName，都设置了该字段，让vue可以监听到变化
+          // 但是非拖拽场景下可能会对用户判断造成影响，所以还是和源数据保持一致,改用$set
+          // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/275
+          // nItem[childColName] = children && children.length > 0 ? traverse(children, key) : [];
+          if (children) {
+            nItem[childColName] = traverse(children, key);
+          }
 
           result.push(nItem);
         });
@@ -424,10 +430,10 @@ export default {
 
       const traverse = (list) => {
         const result = [];
-    
-        list.forEach(({ $$meta: { origin }, [`${childColName}`]: children }) => {
+
+        list.forEach(({ $$meta: { origin }, [childColName]: children }) => {
           const item = { ...origin };
-    
+
           if (children && children.length > 0) {
             item[childColName] = traverse(children);
             // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/271
@@ -437,12 +443,12 @@ export default {
             // 和原始数据保持一致
             delete item[childColName];
           }
-    
+
           result.push(item);
         });
         return result;
       };
-    
+
       return traverse(innerValue);
     },
     getTitle() {
@@ -816,12 +822,14 @@ export default {
         // 扩展行的id为`${parentKey}-expand-slot-row`或`${parentKey}-expand-row`
         const parentKey = rowId.slice(0, rowId.lastIndexOf('-expand'));
         const dest = recordMap[parentKey];
-        const { [`${childColName}`]: children = [] } = dest;
+        const { [childColName]: children = [] } = dest;
 
         children.unshift(source);
         source.$$meta.parent = dest;
         source.$$meta.isLast = children.length === 1;
-        dest[childColName] = children;
+        // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/275
+        // dest[childColName] = children;
+        this.$set(dest, childColName, children);
         // drag和drop是同一个元素，即把最后一个子节点拖到父节点后面
       } else if (dragRowId === rowId) {
         const dest = source.$$meta.parent;
@@ -852,11 +860,13 @@ export default {
           destSiblings.splice(destIndex + 1, 0, source);
         } else if (dragPosition === 'bottom' && isRowExpanded) {
           // 插入到目标元素子元素开头
-          const { [`${childColName}`]: children = [] } = dest;
+          const { [childColName]: children = [] } = dest;
           children.unshift(source);
           source.$$meta.parent = dest;
           source.$$meta.isLast = children.length === 1;
-          dest[childColName] = children;
+          // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/275
+          // dest[childColName] = children;
+          this.$set(dest, childColName, children);
         } else {
           // 插入到目标元素子元素末尾
           const { [`${childColName}`]: children = [] } = dest;
@@ -867,7 +877,9 @@ export default {
           source.$$meta.parent = dest;
           source.$$meta.isLast = true;
           children.push(source);
-          dest[childColName] = children;
+          // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/275
+          // dest[childColName] = children;
+          this.$set(dest, childColName, children);
           // 展开目标行
           handleExpandChange(event, true, { ...record.$$meta.origin }, rowIdx, rowId);
         }
@@ -915,7 +927,7 @@ export default {
       this.dragPosition = 'none';
       this.dragEnterTimers = {};
       this.dragLeaveTimers = {};
-    }
+    },
   },
   render() {
     const {

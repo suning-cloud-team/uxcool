@@ -14,6 +14,8 @@ export default {
         treeCheckStrict,
         normalizeFieldNames: { value: fieldValue },
         clearDisabled,
+        selectedNodes,
+        setSelectionNodes
       } = this;
       e.stopPropagation();
 
@@ -51,6 +53,8 @@ export default {
       }
 
       const values = innerValue.filter(v => !(v in removeValObj));
+      const nodes = selectedNodes.filter(item => values.indexOf(item.key) !== -1);
+      setSelectionNodes(nodes);
       setInnerValue(values);
     },
     renderSelections() {

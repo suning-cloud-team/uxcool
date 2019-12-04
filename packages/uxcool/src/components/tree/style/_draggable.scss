@@ -7,6 +7,9 @@
   .#{$tree-prefix-cls}-checkbox + .#{$tree-prefix-cls}-node-content-wrapper {
     width: calc(100% - 46px);
   }
+  .#{$tree-prefix-cls}-checkbox + .#{$tree-prefix-cls}-icon_loading +.#{$tree-prefix-cls}-node-content-wrapper {
+    width: calc(100% - 46px);
+  }
   .not-allow-drag .#{$tree-prefix-cls}-node-content-wrapper {
     cursor: not-allowed;
   }

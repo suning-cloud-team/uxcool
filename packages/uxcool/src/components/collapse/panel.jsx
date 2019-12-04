@@ -38,7 +38,8 @@ export default {
     },
     uid() {
       const { name, _uid } = this;
-      return name || `$$id_${_uid}`;
+      // opensource.cnsuning.com/uxcool/lerna-uxcool/issues/261
+      return name === 0 ? 0 : name || `$$id_${_uid}`;
     },
     isActive() {
       const { rootActiveKeys, uid } = this;
