@@ -105,6 +105,11 @@ export default {
       return !disabled && allowClear && innerValue;
     },
   },
+  watch: {
+    value(nVal) {
+      this.setInnerValue(nVal);
+    },
+  },
   created() {
     const { value, setInnerValue } = this;
     setInnerValue(value);

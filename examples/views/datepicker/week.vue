@@ -50,11 +50,20 @@
       <ux-button @click="changeLocale">change locale</ux-button>
       <ux-week-picker :locale="locale" />
     </div>
+    <div>
+      <h4>change value</h4>
+      <div>
+        <p>val2: {{ val2 }}</p>
+        <ux-button @click="changeValue">change value</ux-button>
+      </div>
+      <ux-week-picker v-model="val2" />
+    </div>
   </div>
 </template>
 
 <script>
   import { Datepicker, Button } from '@suning/uxcool';
+  import { addMonths } from 'date-fns';
   import localeEN from '@suning/uxcool/src/components/datepicker/locale/en_US.js';
   import localeCN from '@suning/uxcool/src/components/datepicker/locale/zh_CN.js';
 
@@ -66,6 +75,7 @@
     data() {
       return {
         val1: null,
+        val2: null,
         disabled: false,
         visible: true,
         locale: localeEN.lang,
@@ -100,6 +110,10 @@
         const { locale, originLocale } = this;
         this.originLocale = locale;
         this.locale = originLocale;
+      },
+      changeValue() {
+        const seed = Math.floor(Math.random() * 4);
+        this.val2 = seed === 0 ? null : addMonths(new Date(), seed);
       },
     },
   };
