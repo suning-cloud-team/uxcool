@@ -76,7 +76,7 @@ export default {
     },
     transitionName: {
       type: String,
-      default: '',
+      default: 'slide-up',
     },
     animation: {
       type: String,

@@ -29,10 +29,6 @@ export default {
         return localeCN.lang;
       },
     },
-    transitionName: {
-      type: String,
-      default: 'slide-up',
-    },
     size: {
       type: String,
       default: 'default',
@@ -81,8 +77,8 @@ export default {
       };
     },
     inputPlaceholder() {
-      const { placeholder, locale } = this;
-      return placeholder || locale.placeholder;
+      const { placeholder, locale, mode } = this;
+      return placeholder || locale[`${mode}Placeholder`] || locale.placeholder;
     },
   },
   watch: {

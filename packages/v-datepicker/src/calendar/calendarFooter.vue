@@ -70,12 +70,15 @@
     methods: {
       onOkClick() {
         this.$emit('on-ok');
+        this.$emit('ok');
       },
       onTodayClick() {
         this.$emit('on-today', new Date());
+        this.$emit('today', new Date());
       },
       onTimePickerClick() {
         this.$emit('on-time-picker');
+        this.$emit('time-picker');
       },
     },
   };

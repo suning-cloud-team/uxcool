@@ -48,6 +48,10 @@
       <h3>allow-clear=false</h3>
       <ux-year-picker :allow-clear="false" />
     </div>
+    <div>
+      <h3>locale</h3>
+      <ux-year-picker :locale="locale" />
+    </div>
   </div>
 </template>
 

@@ -55,6 +55,13 @@ export default {
       type: Boolean,
       default: true,
     },
+    size: {
+      type: String,
+      default: 'default',
+      validator(value) {
+        return ['small', 'large', 'default'].indexOf(value) > -1;
+      },
+    },
   },
   data() {
     return {
@@ -98,11 +105,16 @@ export default {
     },
     dateInputPlaceholder() {
       const { locale, placeholder } = this;
-      return placeholder || locale.placeholder;
+      return placeholder || locale.weekPlaceholder;
     },
     isCanClear() {
       const { disabled, allowClear, innerValue } = this;
       return !disabled && allowClear && innerValue;
+    },
+  },
+  watch: {
+    value(nVal) {
+      this.setInnerValue(nVal);
     },
   },
   created() {

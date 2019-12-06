@@ -46,6 +46,11 @@ const routes = [
     component: () => import('./views/datepicker/index'),
   },
   {
+    name: 'MultiDatePicker',
+    path: '/multi-date-picker',
+    component: () => import('./views/multi-date-picker/index'),
+  },
+  {
     name: 'Spin',
     path: '/spin',
     component: () => import('./views/spin/index'),

@@ -1,7 +1,7 @@
 import omit from 'object.omit';
 import { format as formatDate, isAfter } from 'date-fns';
 import { VRangeMonthYearDecadePicker as RangeMonthYearDecadePicker } from '@suning/v-datepicker';
-import locale from '../locale/zh_CN';
+import localeCN from '../locale/zh_CN';
 import Icon from '../../icon';
 
 export default {
@@ -17,7 +17,7 @@ export default {
     locale: {
       type: Object,
       default() {
-        return locale.lang;
+        return localeCN.lang;
       },
     },
     placeholder: {
@@ -78,9 +78,9 @@ export default {
       };
     },
     startPlaceholder() {
-      const { placeholder, mode } = this;
+      const { placeholder, locale, mode } = this;
       const [startMode] = mode;
-      const { rangeMonthPlaceholder, rangeYearPlaceholder } = locale.lang;
+      const { rangeMonthPlaceholder, rangeYearPlaceholder } = locale;
       let holder = (startMode === 'month' ? rangeMonthPlaceholder : rangeYearPlaceholder)[0];
       if (placeholder) {
         if (Array.isArray(placeholder)) {
@@ -94,9 +94,9 @@ export default {
       return holder;
     },
     endPlaceholder() {
-      const { placeholder, mode } = this;
+      const { placeholder, locale, mode } = this;
       const [, endMode] = mode;
-      const { rangeMonthPlaceholder, rangeYearPlaceholder } = locale.lang;
+      const { rangeMonthPlaceholder, rangeYearPlaceholder } = locale;
       let holder = (endMode === 'month' ? rangeMonthPlaceholder : rangeYearPlaceholder)[1];
       if (placeholder) {
         if (Array.isArray(placeholder)) {
