@@ -105,7 +105,7 @@ export default {
     },
     dateInputPlaceholder() {
       const { locale, placeholder } = this;
-      return placeholder || locale.placeholder;
+      return placeholder || locale.weekPlaceholder;
     },
     isCanClear() {
       const { disabled, allowClear, innerValue } = this;

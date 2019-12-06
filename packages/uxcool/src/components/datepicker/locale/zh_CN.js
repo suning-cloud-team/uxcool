@@ -13,10 +13,14 @@ export default {
     DateFnsLocale,
     placeholder: '请选择日期',
     multiPlaceholder: '请选择一个或多个日期',
+    monthPlaceholder: '请选择月份',
+    yearPlaceholder: '请选择年',
+    weekPlaceholder: '请选择周',
+    weekFormat: 'YYYY 第 WW 周',
     rangePlaceholder: ['开始日期', '结束日期'],
     rangeMonthPlaceholder: ['开始月份', '结束月份'],
     rangeYearPlaceholder: ['开始年份', '结束年份'],
-    weekFormat: 'YYYY 第 WW 周',
+
     ...CalendarLocale,
   },
 };
