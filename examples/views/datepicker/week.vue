@@ -58,6 +58,12 @@
       </div>
       <ux-week-picker v-model="val2" />
     </div>
+    <div>
+      <h4>size</h4>
+      <ux-week-picker size="large" />
+      <ux-week-picker size="default" />
+      <ux-week-picker size="small" />
+    </div>
   </div>
 </template>
 

@@ -55,6 +55,13 @@ export default {
       type: Boolean,
       default: true,
     },
+    size: {
+      type: String,
+      default: 'default',
+      validator(value) {
+        return ['small', 'large', 'default'].indexOf(value) > -1;
+      },
+    },
   },
   data() {
     return {
