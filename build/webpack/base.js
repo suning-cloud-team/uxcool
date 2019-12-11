@@ -1,61 +1,148 @@
-const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const { VueLoaderPlugin } = require('vue-loader');
+const readPkg = require('read-pkg');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const FriendErrorsPlugin = require('@soda/friendly-errors-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+const sass = require('sass');
 
-const { getRoot, getPackageJSON } = require('../utils');
+const { getRoot, getUxCoolPath, hasMultipleCores } = require('../utils');
 
-const postCssCfg = require('../postCss').getContext();
+function createCSSLoaders(extra = false, isModule = false, isPrd = false) {
+  const loaders = [];
 
-const root = getRoot();
-const { pkgName, uxcool = {}, vueCompileOpts = {} } = getPackageJSON(path.resolve(root, 'package.json'));
-const { version } = getPackageJSON(path.resolve(root, 'packages/uxcool', 'package.json'));
-const uxCoolSrcPath = uxcool.srcPath || '';
-const distPath = path.resolve(root, uxCoolSrcPath, 'dist');
+  loaders.push(
+    extra
+      ? {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          hmr: !isPrd,
+        },
+      }
+      : {
+        loader: 'vue-style-loader',
+      }
+  );
 
-function getConfig(env = {}) {
-  return {
+  const cssLoaderOpts = {
+    // stylePostLoader injected by vue-loader + posscss-loader,
+    // ignore sass-loader
+    // https://github.com/webpack-contrib/css-loader/issues/228#issuecomment-312885975
+    importLoaders: 2,
+  };
+
+  if (isModule) {
+    cssLoaderOpts.modules = {
+      localIdentName: '[name]_[local]_[hash:base64:5]',
+    };
+  }
+  loaders.push({
+    loader: 'css-loader',
+    options: cssLoaderOpts,
+  });
+
+  loaders.push({
+    loader: 'postcss-loader',
+  });
+
+  loaders.push({
+    loader: 'sass-loader',
+    options: {
+      implementation: sass,
+      // sass-loader < 8
+      // sassOptions: {
+      //   fiber: require('fibers'),
+      // }
+    },
+  });
+
+  return loaders;
+}
+const context = getRoot();
+const uxcoolPath = getUxCoolPath();
+const pkg = readPkg.sync({ cwd: context });
+const uxcoolPkg = readPkg.sync({ cwd: uxcoolPath });
+
+function getConfig() {
+  const isPrd = process.env.NODE_ENV === 'production';
+  const resolveModules = [
+    'node_modules',
+    path.resolve(context, 'node_modules'),
+    path.resolve(uxcoolPath, 'node_modules'),
+  ];
+  const isMultipleCores = !!hasMultipleCores();
+  const useThreads = isPrd && isMultipleCores;
+
+  const outputDir = path.resolve(uxcoolPath, 'dist');
+  // const shouldExtra = !!isPrd;
+  const shouldExtra = true;
+  const config = {
+    mode: 'development',
     output: {
+      path: outputDir,
       filename: '[name].js',
-      path: distPath,
-      library: pkgName,
+      library: pkg.pkgName,
       libraryTarget: 'umd',
     },
     resolve: {
       extensions: ['.js', '.json', '.jsx'],
+      modules: resolveModules,
+      alias: {
+        vue$: 'vue/dist/vue.runtime.esm.js',
+      },
+    },
+    resolveLoader: {
+      modules: resolveModules,
     },
     module: {
       rules: [
         {
-          test: /\.js(x)?$/,
-          loader: 'babel-loader',
-          exclude: /node_modules/,
+          test: /\.jsx?$/,
+          use: useThreads
+            ? [
+              'thread-loader',
+              {
+                loader: 'babel-loader',
+                options: {
+                  rootMode: 'upward',
+                },
+              },
+            ]
+            : [
+              {
+                loader: 'babel-loader',
+                options: {
+                  rootMode: 'upward',
+                },
+              },
+            ],
+          exclude(filePath) {
+            return /node_modules/.test(filePath);
+          },
         },
         {
           test: /\.vue$/,
           loader: 'vue-loader',
           options: {
-            preserveWhitespace: vueCompileOpts.preserveWhitespace !== false,
+            compilerOptions: {
+              whitespace: 'condense',
+            },
           },
-          exclude: /node_modules/,
         },
         {
-          test: /\.(s)?css$/,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  minimize: process.env.NODE_ENV === 'production',
-                },
-              },
-              {
-                loader: 'postcss-loader',
-                options: postCssCfg,
-              },
-              'sass-loader',
-            ],
-          }),
+          test: /\.s?css$/,
+          oneOf: [
+            {
+              use: createCSSLoaders(shouldExtra, false, isPrd),
+            },
+            {
+              test: /\.module\.\w+$/,
+              use: createCSSLoaders(shouldExtra, true, isPrd),
+            },
+          ],
         },
         {
           test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
@@ -68,9 +155,41 @@ function getConfig(env = {}) {
       ],
     },
     plugins: [
-      new ExtractTextPlugin('[name].css'),
-      new webpack.BannerPlugin(`${env.name ? env.name : pkgName}\nv${version}`),
+      new VueLoaderPlugin(),
+      new webpack.EnvironmentPlugin(['NODE_ENV']),
+      new CaseSensitivePathsPlugin(),
+      new FriendErrorsPlugin(),
+      new webpack.BannerPlugin({
+        banner: `[name]\n\nv${uxcoolPkg.version}`,
+      }),
     ],
+    optimization: {
+      minimizer: [
+        new TerserPlugin({
+          parallel: isMultipleCores,
+          cache: true,
+          extractComments: false,
+          terserOptions: {
+            compress: {
+              booleans: true,
+              if_return: true,
+              sequences: true,
+              unused: true,
+              conditionals: true,
+              dead_code: true,
+              evaluate: true,
+            },
+            mangle: {
+              safari10: true,
+            },
+          },
+        }),
+      ],
+    },
+    node: {
+      setImmediate: false,
+      Buffer: false,
+    },
     externals: {
       vue: {
         commonjs: 'vue',
@@ -78,11 +197,42 @@ function getConfig(env = {}) {
         amd: 'vue',
         root: 'Vue',
       },
+      // 'date-fns': {
+      //   commonjs: 'date-fns',
+      //   commonjs2: 'date-fns',
+      //   amd: 'date-fns',
+      //   root: 'dateFns',
+      // },
     },
-    node: {
-      Buffer: false,
+    stats: {
+      errors: false,
+      children: false,
+      entrypoints: true,
     },
   };
+
+  if (shouldExtra) {
+    config.plugins.push(
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[id].css',
+      })
+    );
+  }
+
+  if (isPrd) {
+    config.plugins.push(
+      new OptimizeCssnanoPlugin({
+        cssnanoOptions: {
+          preset: ['default', {}],
+        },
+      })
+    );
+  }
+
+  return config;
 }
 
-module.exports = env => Promise.resolve(getConfig(env));
+module.exports = getConfig;
+module.exports.pkgName = pkg.pkgName;
+module.exports.uxcoolPath = uxcoolPath;

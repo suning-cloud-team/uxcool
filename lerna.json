@@ -1,16 +1,21 @@
 {
-  "lerna": "2.8.0",
   "packages": ["packages/*"],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "commands": {
-    "publish": {
-      "allowBranch": ["release-*"],
-      "ignore": ["ignored-file", "*.md"]
-    },
+  "ignoreChanges": ["**/__fixtures__/**", "**/__tests__/**", "**/*.md"],
+  "command": {
     "run": {
       "stream": true
+    },
+    "version": {
+      "noPush": true,
+      "message": "chore(release): Publish"
+    },
+    "publish": {
+      "allowBranch": ["release-*"],
+      "ignoreChanges": ["ignored-file", "*.md"],
+      "includeMergedTags": true
     }
   }
 }

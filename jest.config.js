@@ -3,8 +3,16 @@ module.exports = {
   projects: ['<rootDir>'],
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue'],
   transform: {
-    '.+\\.vue$': '<rootDir>/node_modules/vue-jest',
-    '.+\\.js(x)?$': '<rootDir>/node_modules/babel-jest',
+    '.+\\.vue$': require.resolve('vue-jest'),
+    '\\.jsx?$': [require.resolve('babel-jest'), { rootMode: 'upward' }],
   },
+  transformIgnorePatterns: ['/node_modules/'],
+  testEnvironment: 'jest-environment-jsdom-fifteen',
   snapshotSerializers: ['jest-serializer-vue'],
+  testMatch: ['**/__tests__/**/*.spec.[jt]s?(x)'],
+  testURL: 'http://localhost',
+  watchPlugins: [
+    require.resolve('jest-watch-typeahead/filename'),
+    require.resolve('jest-watch-typeahead/testname'),
+  ],
 };

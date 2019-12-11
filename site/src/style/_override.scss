@@ -1,8 +1,0 @@
-/* override uxcool variables  */
-$body-background: #f8f8f8;
-
-$layout-header-height: 60px;
-$layout-sidebar-width: 230px;
-
-// sass不提供url rewriting功能，所有的链接资源都是相对输出文件而言，所以需要手动覆盖字体图标路径
-$icon-url: '~@suning/uxcool/dist/assets/fonts/uxcool';

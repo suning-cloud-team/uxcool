@@ -107,7 +107,7 @@
 </script>
 
 <style lang="scss" scoped>
-  /deep/ .ux-alert {
+  ::v-deep .ux-alert {
     margin-bottom: 10px;
   }
 </style>

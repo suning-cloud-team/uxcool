@@ -1,5 +1,7 @@
 import Vue from 'vue';
-import { warning, addEventListener, isEqual, eventBus } from '@suning/v-utils';
+import {
+  warning, addEventListener, isEqual, eventBus
+} from '@suning/v-utils';
 import { noop, getClassNameFromAlign } from './utils';
 import Popup from './popup';
 
@@ -217,7 +219,7 @@ export default {
         .sort((a, b) => {
           if (a < b) {
             return -1;
-          } else if (a > b) {
+          } if (a > b) {
             return 1;
           }
           return 0;
@@ -286,7 +288,7 @@ export default {
       element.$$bindEvents[uuid] = bindEvents;
     },
     buildNormalFuncByFuncName(eventNames = []) {
-      return eventNames.map(name => ({ name, fn: e => this.$emit(`on-${name}`, e) }));
+      return eventNames.map((name) => ({ name, fn: (e) => this.$emit(`on-${name}`, e) }));
     },
     onClick(e) {
       const {
@@ -585,7 +587,7 @@ export default {
   render(h) {
     const { $slots } = this;
     const { trigger = [] } = $slots;
-    const triggerSlot = trigger.filter(v => v.tag || (v.text || '').trim() !== '');
+    const triggerSlot = trigger.filter((v) => v.tag || (v.text || '').trim() !== '');
     if (triggerSlot.length === 0) {
       if (process.env.NODE_ENV !== 'production') {
         warning(false, 'No trigger node was found!');

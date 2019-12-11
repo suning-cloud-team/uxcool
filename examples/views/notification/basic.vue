@@ -42,7 +42,7 @@
   };
 </script>
 <style lang="scss" scoped>
-  /deep/ .ux-btn {
+  ::v-deep .ux-btn {
     margin: 10px 10px 0 0;
   }
 </style>

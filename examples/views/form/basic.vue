@@ -58,7 +58,7 @@
 </script>
 
 <style scoped>
-  /deep/ .demo {
+  ::v-deep .demo {
     width: 600px;
   }
 </style>

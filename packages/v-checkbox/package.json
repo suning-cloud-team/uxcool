@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-checkbox",
-  "version": "1.0.9",
+  "version": "1.1.0-alpha.0",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -16,9 +16,6 @@
     "start": "npm run server",
     "server": "v-tools run server",
     "compile": "v-tools run compile"
-  },
-  "peerDependencies": {
-    "vue": "^2.*.*"
   },
   "devDependencies": {
     "@suning/v-tools": "^1.0.31"

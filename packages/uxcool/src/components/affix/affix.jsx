@@ -1,4 +1,6 @@
-import { getScroll, offset, isNumber, addEventListener, debounce } from '@suning/v-utils';
+import {
+  getScroll, offset, isNumber, addEventListener, debounce
+} from '@suning/v-utils';
 import { buildComponentName } from '../utils';
 
 export default {
@@ -87,7 +89,7 @@ export default {
   },
   beforeDestroy() {
     const { events } = this;
-    events.forEach(v => v && v.remove());
+    events.forEach((v) => v && v.remove());
   },
   methods: {
     isWindow(target) {
