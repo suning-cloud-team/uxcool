@@ -117,6 +117,22 @@ export default {
       const { normalizeColumns } = this;
       return flatRows(normalizeColumns, 'children', false);
     },
+    // TODO: 目前的table实现都是通过计算属性渲染的，而拖拽等操作需要组件层面修改用于渲染的属性。
+    // 为了减少新增功能影响范围，新添加一个属性用于保存原始配置映射，直接修改原始数据，
+    // 后期需要在data中添加一个原始数据的深拷贝变量，所有的操作及数据渲染都基于这个变量，而不是原始数据
+    columnMap() {
+      const { columns, childColName } = this;
+      const originCols = normalizeCols(columns, null, childColName, false);
+      const flatCols = flatRows(originCols, childColName, false);
+      const map = flatCols.reduce((prev, cur, i) => {
+        const key = getColKey(cur, i);
+        const result = prev;
+        result[key] = cur;
+        return result;
+      }, {});
+
+      return map;
+    },
     /**
      * 设置checkbox的disabled和checked状态
      */
@@ -389,7 +405,11 @@ export default {
       return scopedSlots;
     },
     onPagerOrFiterOrSortChange() {
-      const { innerPager, innerFilters, sortInfo: { column: sortColumn, order: sortOrder } } = this;
+      const {
+        innerPager,
+        innerFilters,
+        sortInfo: { column: sortColumn, order: sortOrder },
+      } = this;
       const pager = { ...innerPager };
       delete pager.on;
       let sort = {};
@@ -402,6 +422,16 @@ export default {
         };
       }
       this.$emit('change', pager, { ...innerFilters }, sort);
+    },
+    onColWidthResize(newWidth, oldWidth, col, event) {
+      const { columnMap } = this;
+      const column = columnMap[col.$$_key];
+      if (column) {
+        // FIXME: 目前的实现只能直接修改原始数据才能实现宽度变化
+        column.width = newWidth;
+      }
+      // 将列副本传出去
+      this.$emit('column-width-resize', newWidth, oldWidth, column ? { ...column } : null, event);
     },
     renderSortAndFilter(cols) {
       const {
@@ -492,10 +522,18 @@ export default {
     },
     renderTable() {
       const {
-        $attrs, tableClasses, bindProps, $listeners, $slots, getScopedSlots
+        $attrs,
+        tableClasses,
+        bindProps,
+        $listeners,
+        $slots,
+        getScopedSlots,
+        onColWidthResize,
       } = this;
 
       const scopedSlots = getScopedSlots();
+      const on = { ...$listeners, 'column-width-resize': onColWidthResize };
+
       return (
         <v-table
           class={tableClasses}
@@ -503,7 +541,7 @@ export default {
             scopedSlots,
             attrs: $attrs,
             props: bindProps,
-            on: $listeners,
+            on,
             ref: 'tableRef',
           }}
         >

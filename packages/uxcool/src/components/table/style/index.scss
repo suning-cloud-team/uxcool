@@ -151,6 +151,17 @@ $table-prefix-cls: #{$ux-prefix}-table;
     border-radius: 0;
   }
 
+  .#{$table-prefix-cls}-resize-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    border-right: 1px dashed $border-color-split;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+
   &-tbody > tr[draggable='true'] {
     cursor: move;
   }
@@ -181,7 +192,23 @@ $table-prefix-cls: #{$ux-prefix}-table;
     padding: $table-padding-vertical $table-padding-horizontal;
     word-break: break-all;
     line-height: 1.6;
+
+    &.#{$table-prefix-cls}-resizable-th {
+      position: relative;
+      z-index: 1;
+    }
+
+    .#{$table-prefix-cls}-th-resizer {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      cursor: col-resize;
+      z-index: 10;
+    }
   }
+
   &-tbody > tr > td {
     padding: $table-padding-vertical $table-padding-horizontal;
     word-break: break-all;

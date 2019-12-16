@@ -31,6 +31,12 @@ export default {
       }
       return fixed ? style : null;
     },
+    tableWrapEl() {
+      return this.rootVM.$refs.tableWrapRef;
+    },
+    resizeLineEl() {
+      return this.rootVM.$refs.resizeLineRef;
+    },
   },
   mounted() {
     const { $refs, theadRefName } = this;
@@ -72,6 +78,29 @@ export default {
       if (typeof onHeaderCell === 'function') {
         p = { ...p, ...onHeaderCell(column, rowIdx, colIdx) };
       }
+
+      // 只有最底层单元格才允许拖拽改变列宽
+      if (column.resizable && (!column.children || column.children.length === 0)) {
+        const { onResizerMouseDown, prefixCls } = this;
+        const { className } = p;
+        p.className = className
+          ? [className, `${prefixCls}-resizable-th`]
+          : `${prefixCls}-resizable-th`;
+
+        const on = {
+          mousedown: (event) => {
+            // 有些列没有key字段，依赖上层table组件设置$$_key
+            onResizerMouseDown(column.key || column.$$_key, event);
+          },
+        };
+        const resizeHandler = <div class={`${prefixCls}-th-resizer`} {...{ on }} />;
+
+        if (Array.isArray(p.title)) {
+          p.title.push(resizeHandler);
+        } else {
+          p.title = [p.title, resizeHandler];
+        }
+      }
       delete p.key;
       return p;
     },
@@ -102,6 +131,45 @@ export default {
     renderCells(row = [], rowIdx) {
       const { renderCell } = this;
       return row.map((cell, i) => renderCell(cell, rowIdx, i));
+    },
+    onResizerMouseDown(key, e) {
+      e.preventDefault();
+      const { target, clientX } = e;
+      const th = target.parentNode;
+
+      const {
+        minResizeColWidth, tableWrapEl, resizeLineEl, rootVM
+      } = this;
+      const { left: tableLeft, width: tableWidth } = tableWrapEl.getBoundingClientRect();
+      const { left: thLeft, width: thWidth } = th.getBoundingClientRect();
+
+      const originX = clientX;
+      const offset = thLeft - tableLeft;
+      const minLeft = offset + minResizeColWidth;
+      const originLeft = offset + thWidth;
+      let left = originLeft;
+
+      resizeLineEl.style.left = `${originLeft}px`;
+      rootVM.$emit('toggle-resize-line-visible', true);
+
+      const onMouseMove = ({ clientX: currentX }) => {
+        const delta = currentX - originX;
+        left = Math.max(Math.min(tableWidth - 1, originLeft + delta), minLeft);
+        resizeLineEl.style.left = `${left}px`;
+      };
+
+      const onMouseUp = (evt) => {
+        const delta = left - originLeft;
+        const newWidth = thWidth + delta;
+
+        rootVM.$emit('toggle-resize-line-visible', false);
+        rootVM.$emit('resize-column-width', evt, newWidth, thWidth, key);
+        document.removeEventListener('mousemove', onMouseMove, false);
+        document.removeEventListener('mouseup', onMouseUp, false);
+      };
+
+      document.addEventListener('mousemove', onMouseMove, false);
+      document.addEventListener('mouseup', onMouseUp, false);
     },
   },
   render() {

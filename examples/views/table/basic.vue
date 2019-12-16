@@ -34,6 +34,7 @@
     <virtual-demo />
     <custom-title-demo />
     <draggable-demo />
+    <resizable-demo />
   </div>
 </template>
 
@@ -74,6 +75,7 @@
   import VirtualDemo from './virtual.vue';
   import CustomTitleDemo from './title.vue';
   import DraggableDemo from './draggable.vue';
+  import ResizableDemo from './resize.vue';
 
   export default {
     components: {
@@ -112,6 +114,7 @@
       VirtualDemo,
       CustomTitleDemo,
       DraggableDemo,
+      ResizableDemo,
     },
   };
 </script>

@@ -59,6 +59,17 @@ table {
     position: relative;
   }
 
+  .#{$tablePrefixCls}-resize-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    border-right: 1px dashed $table-border-color;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+
   .#{$tablePrefixCls}-footer {
     padding: $vertical-padding $horizontal-padding;
     border-bottom: 1px solid $table-border-color;
@@ -89,6 +100,21 @@ table {
     background: $table-head-background-color;
     font-weight: bold;
     transition: background 0.3s ease;
+
+    &.#{$tablePrefixCls}-resizable-th {
+      position: relative;
+      z-index: 1;
+    }
+
+    .#{$tablePrefixCls}-th-resizer {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      cursor: col-resize;
+      z-index: 10;
+    }
   }
 
   td {
