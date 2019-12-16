@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-timepicker",
-  "version": "1.0.26",
+  "version": "1.0.28",
   "description": "时分秒选择基础组件",
   "main": "index.js",
   "repository": "git@git.cnsuning.com:fedc/v-timepicker.git",
@@ -22,7 +22,7 @@
     "vue": "^2.*.*"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.26",
+    "@suning/v-utils": "^1.0.28",
     "date-fns": "^1.29.0",
     "raf": "^3.4.0"
   },
