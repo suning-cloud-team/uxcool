@@ -1,6 +1,6 @@
 import debounce from 'lodash/debounce';
 import { isEqual, isArray, resetParentVisible, getScrollBarWidth } from '@suning/v-utils';
-import { noop, getRowKey, addEventListener, flatRows, calcDragPosition } from './utils';
+import { noop, getRowKey, addEventListener, flatRows, calcDragPosition, flatCols } from './utils';
 import ColumnMixin from './mixins/column';
 
 import MainTable from './mainTable.vue';
@@ -149,6 +149,11 @@ export default {
       type: Function,
       default: null,
     },
+    // 拖拽时的最小宽度
+    minResizeColWidth: {
+      type: [String, Number],
+      default: 50,
+    },
   },
   data() {
     return {
@@ -194,6 +199,7 @@ export default {
       dragEnterTimers: {},
       // fixed有3个表格需要同步状态，只能通过外层属性去记录状态
       dragPosition: 'none',
+      showResizeLine: false,
     };
   },
   computed: {
@@ -292,6 +298,11 @@ export default {
         };
       });
     },
+
+    // 原始column叶子节点，用于方便查找元素列
+    flatOriginLeafColumn() {
+      return flatCols(this.columns);
+    },
   },
   watch: {
     value() {
@@ -328,6 +339,20 @@ export default {
     } = this;
     this.innerValue = createInnerValue(value, childColName, rowKey);
     this.initExpanderRowKeys();
+
+    // 在子组件中通过事件来修改属性，避免直接操作父组件属性
+    this.$on('toggle-resize-line-visible', (visible) => {
+      this.showResizeLine = visible;
+    });
+    this.$on('resize-column-width', (evt, newWidth, oldWidth, key) => {
+      // 底层table并没有给每一列添加唯一的key，依赖上层table传入的key/$$_key字段
+      const column = this.flatOriginLeafColumn.find(col => (col.key ? col.key === key : col.$$_key === key));
+      if (column) {
+        // FIXME: 目前的实现只能直接修改原始数据才能实现宽度变化
+        column.width = newWidth;
+      }
+      this.$emit('column-width-resize', newWidth, oldWidth, column, evt);
+    });
   },
   mounted() {
     const { handleWinResize, bindResizeEvent } = this;
@@ -941,6 +966,7 @@ export default {
       isAnyColumnsLeftFixed,
       isAnyColumnsRightFixed,
       onScrollX,
+      showResizeLine,
     } = this;
 
     const title = getTitle();
@@ -984,6 +1010,7 @@ export default {
           {leftElement}
           {rightElement}
         </div>
+        <div ref="resizeLineRef" v-show={showResizeLine} class={`${prefixCls}-resize-line`} />
       </div>
     );
   },

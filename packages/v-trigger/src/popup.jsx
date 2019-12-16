@@ -1,4 +1,4 @@
-import { HTMLElementType } from '@suning/v-utils';
+import { HTMLElementType, eventBus } from '@suning/v-utils';
 import Align from '@suning/v-align';
 
 export default {
@@ -146,7 +146,7 @@ export default {
         transitionName,
         renderTransitionAlign,
       } = this;
-
+      const self = this;
       const popupInnerAttrs = {
         class: [classes, className],
         style: styles,
@@ -155,6 +155,7 @@ export default {
         },
         on: {
           mousedown(e) {
+            eventBus.emit('triggerInnerClick', { e, popupInnerVNode: self});
             e.stopPropagation();
           },
         },

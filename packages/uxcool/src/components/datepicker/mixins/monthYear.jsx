@@ -87,7 +87,8 @@ export default {
     },
   },
   created() {
-    this.setInnerValue(this.innerValue, false);
+    // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/283
+    this.setInnerValue(this.value, false);
   },
   methods: {
     setInnerValue(value, trigger = true) {

@@ -31,6 +31,7 @@
 | draggable           | 表格是否可拖拽排序                                  | Boolean                                                            | false              |
 | allowDrag           | 当前行是否可拖拽                                    | Function: (record) => Boolean                                      | null               |
 | allowDrop           | 当前行是否可释放                                    | Function: (record, dragRecord, dragPosition, isExpanded) =>Boolean | null               |
+| minResizeColWidth   | 单元格拖拽时的最小宽度                              | Number \| String                                                   | 50                 |
 
 ### virtual-scroll
 
@@ -71,6 +72,7 @@ table columns 属性:
 | onFilterDropdownVisibleChange | 筛选菜单显示隐藏时回调                                                                                    | Function(visible)                                     |       |
 | sorter                        | 排序函数，本地排序使用一个函数(参考 Array.sort 的 `compareFunction`)，如需服务端排序可设为 true           | Function\|Boolean                                     |       |
 | sortOrder                     | 设置排序为受控属性,外部可用此属性控制列的排序,可选值:`ascend`,`descend`,`false`                           | Boolean\|String                                       |       |
+| resizable                     | 是否可拖拽调整宽度                                                                                        | Boolean                                               |       |
 
 ### row-selection
 
@@ -140,6 +142,7 @@ table pagination 属性:
 | dragend             | 拖拽结束触发                                                   | Function({ event, dragKey, dragRecord })                                                           |
 | dragover            | 拖拽悬浮时触发                                                 | Function({ event, position, isExpandRow, record, key, dragKey, dragRecord })                       |
 | drop                | 拖拽释放时触发，用户可以通过 getValue 方法拿到释放后的表格数据 | Function({ event, getValue, record, key, dragKey, dragRecord, position, isExpandRow, isExpanded }) |
+| column-width-resize | 单元格宽度调整时触发                                           | Function(newWidth, oldWidth, column, event)                                                        |
 
 #### metnods
 

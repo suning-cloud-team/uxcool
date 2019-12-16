@@ -24,3 +24,5 @@ export function warning(valid = true, message = '', ...args) {
     warned[message] = true;
   }
 }
+
+export { default as eventBus } from './eventbus';

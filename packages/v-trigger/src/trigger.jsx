@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { warning, addEventListener, isEqual } from '@suning/v-utils';
+import { warning, addEventListener, isEqual, eventBus } from '@suning/v-utils';
 import { noop, getClassNameFromAlign } from './utils';
 import Popup from './popup';
 
@@ -198,6 +198,7 @@ export default {
   mounted() {
     this.setPopupVisible(this.visible);
     this.mountPortal();
+    eventBus.on('triggerInnerClick', this.onInnerClick);
   },
   updated() {
     const { bindVNodeElementEvents } = this;
@@ -208,6 +209,7 @@ export default {
     this.clearDelayTimer();
     this.clearAllHandler();
     this.clearPortal();
+    eventBus.off('triggerInnerClick', this.onInnerClick);
   },
   methods: {
     normalizeActions(actions = []) {
@@ -338,6 +340,32 @@ export default {
         if (!$el.contains(target) && !portal.$el.contains(target)) {
           this.setPopupVisible(false);
         }
+      }
+    },
+    onInnerClick({ e, popupInnerVNode }) {
+      if (!e || !popupInnerVNode) {
+        return;
+      }
+      const { $el, portal } = this;
+      const { target } = e;
+      if (!$el || !portal.$el || !target) {
+        return;
+      }
+      // 当前点击区域为本节点包含的节点，所以不隐藏popup
+      if ($el.contains(target) || portal.$el.contains(target)) {
+        return;
+      }
+      let isInnerPopup = false;
+      let parentNode = popupInnerVNode.$parent;
+      while (parentNode && !isInnerPopup) {
+        if (parentNode === portal) {
+          isInnerPopup = true;
+        }
+        parentNode = parentNode.$parent;
+      }
+      // 点击事件发生的popup不是当前popup的内嵌popup
+      if (!isInnerPopup) {
+        this.setPopupVisible(false);
       }
     },
     setPopupVisible(popupVisible) {

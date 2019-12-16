@@ -37,6 +37,7 @@
     <custom-header-demo />
     <virtual-demo />
     <draggable-demo />
+    <resize-demo />
     <hr>
 
     <ux-heading level="2"
@@ -195,21 +196,27 @@
         </tr>
         <tr>
           <td>draggable</td>
-          <td>表格是否可拖拽排序</td>
+          <td>表格是否可拖拽排序, <code>0.5.0-next.66</code>添加。</td>
           <td>Boolean</td>
           <td>false</td>
         </tr>
         <tr>
           <td>allowDrag</td>
-          <td>当前行是否可拖拽</td>
+          <td>当前行是否可拖拽, <code>0.5.0-next.66</code>添加。</td>
           <td>Function: (record) => Boolean </td>
           <td></td>
         </tr>
         <tr>
-          <td>allowDrop</td>
+          <td>allowDrop, <code>0.5.0-next.66</code>添加。</td>
           <td>当前行是否可释放</td>
           <td>Function: (record, dragRecord, dragPosition, isExpanded) =>Boolean</td>
           <td></td>
+        </tr>
+        <tr>
+          <td>minResizeColWidth</td>
+          <td>拖拽调整宽度的最小宽度,<code>0.5.0-next.72</code>添加</td>
+          <td>String | Number</td>
+          <td>50</td>
         </tr>
       </tbody>
     </table>
@@ -420,6 +427,13 @@
             <code>false</code>
           </td>
           <td>Boolean|String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>resizable</td>
+          <td>是否可拖拽调整宽度，只有设置了<code>width</code>的情况下才会生效，<code>0.5.0-next.72</code>添加。
+          </td>
+          <td>Boolean</td>
           <td></td>
         </tr>
       </tbody>
@@ -670,6 +684,11 @@
           <td>拖拽释放时触发，用户可以通过 getValue 方法拿到释放后的表格数据。由于该方法位于底层，只能拿到底层数据，会比用户传入组件的原始数据多出一些额外字段，所以可能需要用户提交数据前自行处理额外字段，后续版本会考虑优化。<code>0.5.0-next.66</code>添加</td>
           <td>Function({ event, getValue, record, key, dragKey, dragRecord, position, isExpandRow, isExpanded })</td>
         </tr>
+        <tr>
+          <td>column-width-resize</td>
+          <td>列拖拽完成时触发。<code>0.5.0-next.72</code>添加。</td>
+          <td>Function(newWidth, oldWidth, column, event)</td>
+        </tr>
       </tbody>
     </table>
   </article>
@@ -704,6 +723,7 @@
   import CustomHeaderDemo from './customHeader.vue';
   import VirtualDemo from './virtual.vue';
   import DraggableDemo from './draggable.vue';
+  import ResizeDemo from './resize.vue';
 
   export default {
     components: {
@@ -735,6 +755,7 @@
       CustomHeaderDemo,
       VirtualDemo,
       DraggableDemo,
+      ResizeDemo,
     },
     data() {
       return {

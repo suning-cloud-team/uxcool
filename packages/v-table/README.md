@@ -64,6 +64,7 @@ import Pagination from '@suning/v-table';
 | draggable             | 表格是否可拖拽                                                          | Boolean                                                            | false                     |
 | allowDrag             | 当前行是否可拖拽                                                        | Function: (record) => Boolean                                      | null                      |
 | allowDrop             | 当前行是否可释放                                                        | Function: (record, dragRecord, dragPosition, isExpanded) =>Boolean | null                      |
+| minResizeColWidth     | 单元格拖拽时的最小宽度                                                  | Number \| String                                                   | 50                        |
 
 ## Column API
 
@@ -77,6 +78,7 @@ import Pagination from '@suning/v-table';
 | onHeaderCell | 自定义 渲染 header cell 属性 ,支持自定义事件{on:{click(){}}}             | Function(column, rowIdx,colIdx)=>Object               |      |
 | onCell       | 自定义渲染 cell 属性 ,支持自定义属性和事件                               | Function(record, rowIdx, column, colIdx)=>Object      |      |
 | cellRender   | 数据 cell 内容渲染,支持自定义属性和事件 ,class 字段名请用 className 代替 | Function(text, record, rowIdx,column, colIdx)=>Object |      |
+| resizable    | 是否可拖拽调整宽度                                                       | Boolean                                               |      |
 
 ## Slots
 
@@ -89,13 +91,14 @@ import Pagination from '@suning/v-table';
 
 ## Events
 
-| 事件名              | 描述              | 类型                                                                                               |
-| ------------------- | ----------------- | -------------------------------------------------------------------------------------------------- |
-| expanded-row-change | 展开/收缩行时触发 | Function(expandRows)                                                                               |
-| expand              | 展开/收缩行时触发 | Function(expanded, record)                                                                         |
-| dragstart           | 拖拽开始时触发    | Function({ event, dragKey, dragRecord })                                                           |
-| dragenter           | 拖拽进入时触发    | Function({ event, isExpandRow, record, key, dragKey, dragRecord })                                 |
-| dragleave           | 拖拽离开时触发    | Function( event, isExpandRow, record, key, dragKey, dragRecord })                                  |
-| dragend             | 拖拽结束触发      | Function({ event, dragKey, dragRecord })                                                           |
-| dragover            | 拖拽悬浮时触发    | Function({ event, position, isExpandRow, record, key, dragKey, dragRecord })                       |
-| drop                | 拖拽释放时触发    | Function({ event, getValue, record, key, dragKey, dragRecord, position, isExpandRow, isExpanded }) |
+| 事件名              | 描述                 | 类型                                                                                               |
+| ------------------- | -------------------- | -------------------------------------------------------------------------------------------------- |
+| expanded-row-change | 展开/收缩行时触发    | Function(expandRows)                                                                               |
+| expand              | 展开/收缩行时触发    | Function(expanded, record)                                                                         |
+| dragstart           | 拖拽开始时触发       | Function({ event, dragKey, dragRecord })                                                           |
+| dragenter           | 拖拽进入时触发       | Function({ event, isExpandRow, record, key, dragKey, dragRecord })                                 |
+| dragleave           | 拖拽离开时触发       | Function( event, isExpandRow, record, key, dragKey, dragRecord })                                  |
+| dragend             | 拖拽结束触发         | Function({ event, dragKey, dragRecord })                                                           |
+| dragover            | 拖拽悬浮时触发       | Function({ event, position, isExpandRow, record, key, dragKey, dragRecord })                       |
+| drop                | 拖拽释放时触发       | Function({ event, getValue, record, key, dragKey, dragRecord, position, isExpandRow, isExpanded }) |
+| column-width-resize | 单元格宽度调整时触发 | Function(newWidth, oldWidth, column, event)                                                        |

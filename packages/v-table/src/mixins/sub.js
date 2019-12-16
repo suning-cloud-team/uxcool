@@ -124,6 +124,9 @@ export default {
       } = this;
       return !!expand || !!expandedRowRender;
     },
+    minResizeColWidth() {
+      return this.rootVM.minResizeColWidth;
+    },
   },
   methods: {
     saveRef(refName, refElement) {
