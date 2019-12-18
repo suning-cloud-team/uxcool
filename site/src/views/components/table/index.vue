@@ -179,13 +179,13 @@
         <tr>
           <td>on-row</td>
           <td>设置行属性, 返回一个包含<code>className</code>, <code>style</code>, <code>attrs</code>, <code>on</code>属性的对象。</td>
-          <td>Function(columns, rowIdx) => Object { className: String | Object, style: Object, attrs: Object, on: Object }</td>
+          <td>Function(record, rowIdx) => Object { className: String | Object, style: Object, attrs: Object, on: Object }</td>
           <td></td>
         </tr>
         <tr>
           <td>on-header-row</td>
           <td>设置头部行属性, 返回一个包含<code>className</code>、<code>style</code>、<code>attrs</code>属性的对象</td>
-          <td>Function (record, rowIdx) => Object { className: String | Object, style: Object, attrs: Object }</td>
+          <td>Function (columns, rowIdx) => Object { className: String | Object, style: Object, attrs: Object }</td>
           <td></td>
         </tr>
         <tr>
