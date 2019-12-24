@@ -118,6 +118,11 @@ export default {
     },
     onNodeDragEndHook() {
     },
+    expandedKeysChanged(nVal) {
+      if (this.$refs.vtl) {
+        this.$refs.vtl.updateToOrigin();
+      }
+    },
     convertTreeToList(rootNode) {
       let stack = [];
       const childList = [];
