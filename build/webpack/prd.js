@@ -2,15 +2,17 @@ const path = require('path');
 const merge = require('webpack-merge');
 const getConfig = require('./base');
 
-const { uxcoolPath, pkgName } = getConfig;
-const srcPath = path.resolve(uxcoolPath, 'src');
+const { getUxCoolPath, getPkg, getRoot } = require('../utils');
+
+const pkg = getPkg(getRoot());
+const srcPath = path.join(getUxCoolPath(), 'src');
 
 module.exports = (env = {}) => {
   process.env.NODE_ENV = 'production';
   return merge(getConfig(env), {
     mode: 'production',
     entry: {
-      [`${pkgName}.min`]: path.resolve(srcPath, 'index.js'),
+      [`${pkg.pkgName}.min`]: path.resolve(srcPath, 'index.js'),
     },
   });
 };
