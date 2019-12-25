@@ -1,14 +1,14 @@
 {
   "name": "@suning/uxcool",
-  "version": "0.5.0-next.72",
+  "version": "1.0.0-alpha.0",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
   "scripts": {
-    "build:w": "webpack --config ../../build/webpack/dev.js",
-    "build": "gulp --gulpfile ../../build/gulpfile.js",
-    "build:dist": "gulp dist --gulpfile ../../build/gulpfile.js",
-    "compile": "gulp compile-js-style --gulpfile ../../build/gulpfile.js"
+    "build:dev": "webpack --config ../../build/webpack/dev.js ",
+    "build:prd": "webpack --config ../../build/webpack/prd.js ",
+    "build": "gulp --gulpfile ../../build/gulpfile.esm.js",
+    "compile:module": "gulp compileModule --gulpfile ../../build/gulpfile.esm.js"
   },
   "peerDependencies": {
     "dagre": "^0.7.*",
@@ -18,20 +18,20 @@
     "vue": "^2.5.*"
   },
   "dependencies": {
-    "@suning/v-checkbox": "^1.0.9",
-    "@suning/v-datepicker": "^1.0.75",
-    "@suning/v-dialog": "^1.0.23",
-    "@suning/v-menu": "^1.0.54",
-    "@suning/v-notification": "^1.0.10",
-    "@suning/v-pagination": "^1.0.28",
-    "@suning/v-slider": "^1.0.28",
-    "@suning/v-steps": "^1.0.12",
-    "@suning/v-table": "^1.0.42",
-    "@suning/v-tabs": "^1.0.40",
-    "@suning/v-tooltip": "^1.0.44",
-    "@suning/v-trigger": "^1.0.58",
+    "@suning/v-checkbox": "^1.1.0-alpha.0",
+    "@suning/v-datepicker": "^1.1.0-alpha.0",
+    "@suning/v-dialog": "^1.1.0-alpha.0",
+    "@suning/v-menu": "^1.1.0-alpha.0",
+    "@suning/v-notification": "^1.1.0-alpha.0",
+    "@suning/v-pagination": "^1.1.0-alpha.0",
+    "@suning/v-slider": "^1.1.0-alpha.0",
+    "@suning/v-steps": "^1.1.0-alpha.0",
+    "@suning/v-table": "^1.1.0-alpha.0",
+    "@suning/v-tabs": "^1.1.0-alpha.0",
+    "@suning/v-tooltip": "^1.1.0-alpha.0",
+    "@suning/v-trigger": "^1.1.0-alpha.0",
     "@suning/v-utils": "^1.0.28",
-    "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "date-fns": "^1.29.0",
     "humanize-duration": "^3.15.3",
     "lodash": "^4.0.8",
@@ -42,9 +42,6 @@
   },
   "devDependencies": {
     "@suning/v-test-utils": "^1.0.3"
-  },
-  "engines": {
-    "node": ">=6.11.0"
   },
   "publishConfig": {
     "registry": "http://snpm.cnsuning.com"

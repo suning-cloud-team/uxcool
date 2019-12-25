@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-notification",
-  "version": "1.0.10",
+  "version": "1.1.0-alpha.0",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository": "git@git.cnsuning.com:fedc/v-notification.git",
@@ -18,9 +18,6 @@
     "compile": "v-tools run compile",
     "server": "v-tools run server",
     "start": "npm run server"
-  },
-  "peerDependencies": {
-    "vue": "^2.*.*"
   },
   "devDependencies": {
     "@suning/v-tools": "^1.0.31"

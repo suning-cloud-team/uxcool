@@ -3,12 +3,12 @@
     $lightColor: getLevelColor($color, 1);
     $lightBorderColor: getLevelColor($color, 3);
     $darkColor: getLevelColor($color, 6);
-    &-#{$key} {
+    &-#{'' + $key} {
       color: $color;
       background: $lightColor;
       border-color: $lightBorderColor;
     }
-    &-#{$key}-inverse {
+    &-#{'' + $key}-inverse {
       color: #fff;
       background: $darkColor;
       border-color: $darkColor;

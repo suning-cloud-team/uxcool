@@ -6,108 +6,162 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "uxcool": {
     "srcPath": "packages/uxcool"
   },
   "vueCompileOpts": {
     "preserveWhitespace": false
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap",
-    "compile:uxcool": "lerna run compile --scope @suning/uxcool",
+    "compile:uxcool": "lerna run compile:module --scope @suning/uxcool",
     "build:uxcool": "lerna run build --scope @suning/uxcool",
     "build": "lerna run compile && yarn run build:uxcool",
-    "site": "webpack-dev-server --config build/site/webpack.server.js",
-    "build:site": "webpack --config build/site/prd.js",
-    "build:example": "webpack  --config build/example/dev.js",
-    "example": "webpack-dev-server --config build/example/server.js",
+    "build:example": "webpack  --config build/webpack/example.js",
+    "example": "webpack-dev-server --config build/webpack/example-server.js",
     "analyzer": "webpack --config  build/webpack/analyzer.js",
-    "analyzer:site": "webpack --config  build/site/analyzer.js",
-    "pub": "yarn run build && lerna publish",
     "jest": "node --inspect-brk ./node_modules/jest/bin/jest.js",
     "test-debug": "cross-env BABEL_ENV=test NODE_ENV=test yarn jest",
     "test": "cross-env BABEL_ENV=test NODE_ENV=test jest",
-    "server:upload": "node ./examples/server/server.js"
+    "server:upload": "node ./examples/server/server.js",
+    "release": "node scripts/release.js",
+    "release:nopublish": "npm run release -- --no-publish",
+    "changelog": "npm run release -- --changelog-only",
+    "commit": "git cz",
+    "lint": "npm run lint:jsx && npm run lint:vue",
+    "lint-fix": "npm run lint-fix:jsx && npm run lint-fix:vue",
+    "lint-fix:jsx": "npm run lint:jsx -- --fix",
+    "lint-fix:vue": "npm run lint:vue -- --fix",
+    "lint:jsx": "eslint \"packages/uxcool/src/!(extra)/**/*.js?(x)\"",
+    "lint:vue": "eslint \"packages/uxcool/src/!(extra)/**/*.vue\""
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "scope-case": [
+        2,
+        "always",
+        [
+          "pascal-case",
+          "kebab-case"
+        ]
+      ],
+      "subject-case": [
+        2,
+        "always",
+        [
+          "lower-case",
+          "pascal-case"
+        ]
+      ]
+    }
+  },
+  "lint-staged": {
+    "*.js?(x)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "devDependencies": {
-    "@types/jest": "^22.2.3",
-    "@vue/component-compiler": "^3.3.1",
-    "autoprefixer": "^7.1.6",
-    "axios": "^0.18.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
-    "babel-jest": "^23.0.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-import": "^1.6.6",
-    "babel-plugin-minify-dead-code-elimination": "^0.4.1",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-plugin-transform-vue-jsx": "^3.5.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-3": "^6.24.1",
-    "chalk": "^2.3.0",
-    "clipboard": "^1.7.1",
-    "cross-env": "^5.1.1",
-    "css-loader": "^0.28.7",
-    "dagre": "^0.8.1",
-    "debug": "^3.1.0",
-    "echarts": "^4.0.2",
-    "eslint": "^4.10.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-import-resolver-webpack": "^0.8.3",
-    "eslint-plugin-html": "^3.2.2",
-    "eslint-plugin-import": "^2.8.0",
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@intervolga/optimize-cssnano-plugin": "^1.0.6",
+    "@soda/friendly-errors-webpack-plugin": "^1.7.1",
+    "@types/jest": "^24.0.23",
+    "@vue/babel-preset-jsx": "^1.1.2",
+    "@vue/component-compiler": "^4.2.0",
+    "autoprefixer": "^9.7.3",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-import": "^1.13.0",
+    "case-sensitive-paths-webpack-plugin": "^2.2.0",
+    "chalk": "^3.0.0",
+    "commitizen": "^4.0.3",
+    "concat-stream": "^2.0.0",
+    "conventional-changelog": "^3.1.18",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.3.0",
+    "cz-conventional-changelog": "^3.0.2",
+    "debug": "^4.1.1",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-import-resolver-webpack": "^0.12.0",
+    "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-vue": "^6.0.1",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.5",
-    "glob": "^7.1.2",
-    "gulp": "^3.9.1",
+    "esm": "^3.2.25",
+    "execa": "^3.4.0",
+    "fibers": "^4.0.2",
+    "file-loader": "^5.0.2",
+    "fs-extra": "^8.1.0",
+    "globby": "^10.0.1",
+    "gulp": "^4.0.2",
     "gulp-file": "^0.4.0",
-    "highlightjs": "^9.10.0",
-    "html-webpack-plugin": "^2.30.1",
-    "jest": "^23.0.0",
-    "jest-serializer-vue": "^1.0.0",
-    "jquery": "^3.3.1",
-    "jsplumb": "^2.6.3",
-    "lerna": "^2.8.0",
-    "mathsass": "^0.10.1",
-    "node-sass": "=4.9.0",
-    "postcss": "^6.0.14",
-    "postcss-loader": "^2.0.8",
+    "html-webpack-plugin": "^4.0.0-beta.3",
+    "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "jest-environment-jsdom-fifteen": "^1.0.2",
+    "jest-serializer-vue": "^2.0.2",
+    "jest-watch-typeahead": "^0.4.2",
+    "lerna": "^3.19.0",
+    "lint-staged": "^9.5.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "postcss": "^7.0.24",
+    "postcss-load-config": "^2.1.0",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^1.19.1",
     "prettier-eslint": "^9.0.1",
-    "raw-loader": "^0.5.1",
-    "resolve-url-loader": "^2.2.1",
-    "rimraf": "^2.6.2",
-    "sass-loader": "^6.0.6",
-    "strip-json-comments": "^2.0.1",
-    "style-loader": "^0.19.0",
-    "through2": "^2.0.3",
-    "url-loader": "^0.6.2",
-    "vue": "^2.*.*",
-    "vue-jest": "^2.6.0",
-    "vue-loader": "^13.4.0",
-    "vue-router": "^3.0.1",
-    "vue-style-loader": "^3.0.3",
-    "vue-template-compiler": "^2.*.*",
-    "vuex": "^3.0.1",
-    "vuex-router-sync": "^5.0.0",
-    "webpack": "^3.8.1",
-    "webpack-bundle-analyzer": "^2.9.2",
-    "webpack-dev-server": "^2.11.1",
-    "webpack-merge": "^4.1.1"
+    "prettier-eslint-cli": "^5.0.0",
+    "pump": "^3.0.0",
+    "read-pkg": "^5.2.0",
+    "rimraf": "^3.0.0",
+    "sass": "^1.23.7",
+    "sass-loader": "^8.0.0",
+    "terser-webpack-plugin": "^2.2.3",
+    "thread-loader": "^2.1.3",
+    "through2": "^3.0.1",
+    "url-loader": "^3.0.0",
+    "vue": "^2.6.10",
+    "vue-jest": "^3.0.5",
+    "vue-loader": "^15.7.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.41.2",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2",
+    "yargs": "^15.0.2"
   },
-  "dependencies": {
-    "@suning/uxcool-table-search-form": "^1.0.5",
-    "humanize-duration": "^3.15.3",
-    "lodash.debounce": "^4.0.8",
-    "nprogress": "^0.2.0",
-    "vee-validate": "^2.0.9",
-    "vue-color": "^2.4.6"
+  "engines": {
+    "node": ">= 10"
+  },
+  "yargs": {
+    "boolean-negation": false
   }
 }

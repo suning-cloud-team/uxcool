@@ -479,6 +479,10 @@ input::-ms-clear,
 input::-ms-reveal {
   display: none; }
 
+::-moz-selection {
+  background: #108ee9;
+  color: #fff; }
+
 ::selection {
   background: #108ee9;
   color: #fff; }

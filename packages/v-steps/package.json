@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-steps",
-  "version": "1.0.12",
+  "version": "1.1.0-alpha.0",
   "description": "steps基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -19,9 +19,6 @@
     "compile": "v-tools run compile",
     "server": "v-tools run server",
     "start": "npm run server"
-  },
-  "peerDependencies": {
-    "vue": "^2.*.*"
   },
   "devDependencies": {
     "@suning/v-tools": "^1.0.31"

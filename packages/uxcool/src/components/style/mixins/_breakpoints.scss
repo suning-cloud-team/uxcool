@@ -13,11 +13,23 @@
 //    md
 //    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl, xxl))
 //    md
-@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+@function breakpoint-next(
+  $name,
+  $breakpoints: $grid-breakpoints,
+  $breakpoint-names: map-keys($breakpoints)
+) {
   $n: index($breakpoint-names, $name);
   @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
 
+@function breakpoint-previous(
+  $name,
+  $breakpoints: $grid-breakpoints,
+  $breakpoint-names: map-keys($breakpoints)
+) {
+  $n: index($breakpoint-names, $name);
+  @return if($n > 1, nth($breakpoint-names, $n - 1), null);
+}
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
 //
 //    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
@@ -45,7 +57,7 @@
 //    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
 //    "-sm"
 @function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
-  @return "-#{$name}";
+  @return '-#{$name}';
 }
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
@@ -56,8 +68,7 @@
     @media (min-width: $min) {
       @content;
     }
-  }
-  @else {
+  } @else {
     @content;
   }
 }
@@ -70,8 +81,7 @@
     @media (max-width: $max) {
       @content;
     }
-  }
-  @else {
+  } @else {
     @content;
   }
 }
@@ -86,13 +96,11 @@
     @media (min-width: $min) and (max-width: $max) {
       @content;
     }
-  }
-  @else if $max==null {
+  } @else if $max==null {
     @include media-breakpoint-up($lower) {
       @content;
     }
-  }
-  @else if $min==null {
+  } @else if $min==null {
     @include media-breakpoint-down($upper) {
       @content;
     }
@@ -110,13 +118,11 @@
     @media (min-width: $min) and (max-width: $max) {
       @content;
     }
-  }
-  @else if $max==null {
+  } @else if $max==null {
     @include media-breakpoint-up($name) {
       @content;
     }
-  }
-  @else if $min==null {
+  } @else if $min==null {
     @include media-breakpoint-down($name) {
       @content;
     }

@@ -11,7 +11,7 @@
     <div class="demo">
       <h6>autofocus</h6>
       <ux-radio label="label text"
-                autofocus/>
+                autofocus />
     </div>
     <div class="demo">
       <h6>disabled</h6>
@@ -207,9 +207,9 @@
 </script>
 
 <style lang="scss" scoped>
-  /* /deep/是 vue-loader使用的指令 https://vue-loader.vuejs.org/zh-cn/features/scoped-css.html */
+  /* ::v-deep或/deep/是 vue-loader使用的指令 https://vue-loader.vuejs.org/zh-cn/features/scoped-css.html */
   .radio-group-vertical {
-    /deep/ .ux-radio-wrapper {
+    ::v-deep .ux-radio-wrapper {
       display: block;
     }
   }
