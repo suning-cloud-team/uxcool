@@ -215,12 +215,12 @@ export default {
   },
   methods: {
     setListSelectedKeys() {
-      const { selectedKeys, targetKeys } = this;
+      const { selectedKeys, innerTargetKeys } = this;
       const leftSelectedKeys = [];
       const rightSelectedKeys = [];
       for (let i = 0, l = selectedKeys.length; i < l; i += 1) {
         const key = selectedKeys[i];
-        if (targetKeys.length > 0 && targetKeys.indexOf(key) > -1) {
+        if (innerTargetKeys.length > 0 && innerTargetKeys.indexOf(key) > -1) {
           rightSelectedKeys.push(key);
         } else {
           leftSelectedKeys.push(key);
@@ -263,7 +263,7 @@ export default {
       if (checked) {
         selectedKeys.push(...changedKeys);
       } else {
-        selectedKeys = [];
+        selectedKeys = selectedKeys.filter(key => changedKeys.indexOf(key) === -1);
       }
       this[`${direction}SelectedKeys`] = selectedKeys;
       this.handleSelectChange(direction, changedKeys, checked);
@@ -304,8 +304,8 @@ export default {
       }
       this.innerTargetKeys = nTargetKeys;
 
-      this[`${changeDirection}SelectedKeys`] = [];
-      handleSelectChange(changeDirection, selectKeys, false);
+      this[`${changeDirection}SelectedKeys`] = selectKeys.filter(k => k in disabledItemKeys);
+      handleSelectChange(changeDirection, moveKeys, false);
 
       handleChange(direction, moveKeys);
     },
@@ -325,7 +325,11 @@ export default {
         text,
       };
     },
-
+    getValidSelectedKeys(selectedKeys) {
+      const { dataSource } = this;
+      return selectedKeys.filter(key =>
+        dataSource.some(item => key === item.$$_key && !item.disabled));
+    },
     renderOperation() {
       const {
         prefixCls,
@@ -336,14 +340,18 @@ export default {
         moveTo,
         disabled,
         normalizeOperation,
+        getValidSelectedKeys,
       } = this;
 
       // fix issue #175
       const toLeftOp = normalizeOperation(operations[0]);
       const toRightOp = normalizeOperation(operations[1]);
 
-      const leftDisabled = disabled || toLeftOp.disabled || rightSelectedKeys.length === 0;
-      const rightDisabled = disabled || toRightOp.disabled || leftSelectedKeys.length === 0;
+      // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/292
+      const leftDisabled =
+        disabled || toLeftOp.disabled || getValidSelectedKeys(rightSelectedKeys).length === 0;
+      const rightDisabled =
+        disabled || toRightOp.disabled || getValidSelectedKeys(leftSelectedKeys).length === 0;
 
       const opBtns = [
         <Button
