@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
-const readPkg = require('read-pkg');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const FriendErrorsPlugin = require('@soda/friendly-errors-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -9,7 +8,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 const sass = require('sass');
 
-const { getRoot, getUxCoolPath, hasMultipleCores } = require('../utils');
+const {
+  getRoot, getUxCoolPath, hasMultipleCores, getPkg
+} = require('../utils');
 
 function createCSSLoaders(extra = false, isModule = false, isPrd = false) {
   const loaders = [];
@@ -63,8 +64,8 @@ function createCSSLoaders(extra = false, isModule = false, isPrd = false) {
 }
 const context = getRoot();
 const uxcoolPath = getUxCoolPath();
-const pkg = readPkg.sync({ cwd: context });
-const uxcoolPkg = readPkg.sync({ cwd: uxcoolPath });
+const pkg = getPkg(context);
+const uxcoolPkg = getPkg(uxcoolPath);
 
 function getConfig() {
   const isPrd = process.env.NODE_ENV === 'production';
@@ -234,5 +235,3 @@ function getConfig() {
 }
 
 module.exports = getConfig;
-module.exports.pkgName = pkg.pkgName;
-module.exports.uxcoolPath = uxcoolPath;

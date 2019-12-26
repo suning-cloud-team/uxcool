@@ -2,8 +2,9 @@ const path = require('path');
 const fs = require('fs');
 // const stripJSONComments = require('strip-json-comments');
 const os = require('os');
+const readPkg = require('read-pkg');
 
-const REG_SASS_COMPONENT_IMPORT = /^(\s*@import\s+['"](?:(?:\.+\/)+)?)(components\/)([^'"]+['"];)\s*$/gm;
+const REG_SASS_COMPONENT_IMPORT = /^(\s*(?:@?import\s+|require\()['"](?:(?:\.+\/)+)?)(components\/)([^'"]+['"](?:\))?;?)\s*$/gm;
 
 // 根目录
 function getRoot() {
@@ -15,6 +16,8 @@ exports.getUxCoolPath = () => {
   const root = getRoot();
   return path.join(root, 'packages/uxcool');
 };
+
+exports.getPkg = (cwd) => readPkg.sync({ cwd });
 
 function getFileContentByPath(filePath, transform = (content) => content) {
   return transform(fs.readFileSync(filePath));

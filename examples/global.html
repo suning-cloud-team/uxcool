@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>UXCool</title>
-  <link rel="stylesheet" href="../dist/uxcool.css">
-  <link rel="stylesheet" href="../dist/uxcool-extra.css">
+  <link rel="stylesheet" href="../packages/uxcool/dist/uxcool.css">
+  <link rel="stylesheet" href="../packages/uxcool/dist/uxcool-extra.css">
   <style>
     .item {
       position: absolute;
@@ -29,10 +29,12 @@
 
 <body>
   <div id="app">
-    <ux-textarea novalidate placeholder="测试用" class="custom-class" style="resize:none" :auto-size="{minRows:2, maxRows:6}">
+    <ux-textarea novalidate placeholder="测试用" class="custom-class" style="resize:none"
+      :auto-size="{minRows:2, maxRows:6}">
     </ux-textarea>
 
-    <ux-topo :links="links" node-clz="item" :js-plumb-option="jsPlumbOption" :graph-option="graphOption">
+    <ux-topo :links="links" node-clz="item" :js-plumb-option="jsPlumbOption"
+      :graph-option="graphOption">
       <div class="item" :key="item.id" v-for="item in list" :id="item.id">{{item.name}}</div>
     </ux-topo>
   </div>
@@ -42,8 +44,8 @@
   <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script>
   <script src="https://cdn.bootcss.com/jsPlumb/2.5.13/js/jsplumb.min.js"></script>
   <script src="https://cdn.bootcss.com/dagre/0.8.1/dagre.min.js"></script>
-  <script src="../dist/uxcool.js"></script>
-  <script src="../dist/uxcool-extra.js"></script>
+  <script src="../packages/uxcool/dist/uxcool.js"></script>
+  <script src="../packages/uxcool/dist/uxcool-extra.js"></script>
 
   <script>
     new Vue({
