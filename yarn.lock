@@ -5072,6 +5072,11 @@ dateformat@^3.0.0:
   resolved "http://snpm.cnsuning.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
   integrity sha1-puN0maTZqc+F71hyBE1ikByYia4=
 
+dayjs@^1.8.18:
+  version "1.8.18"
+  resolved "http://snpm.cnsuning.com/dayjs/-/dayjs-1.8.18.tgz#c9b3fcd5a8eca96ed20a907f4491516d6eda15c9"
+  integrity sha1-ybP81ajsqW7SCpB/RJFRbW7aFck=
+
 de-indent@^1.0.2:
   version "1.0.2"
   resolved "http://snpm.cnsuning.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
