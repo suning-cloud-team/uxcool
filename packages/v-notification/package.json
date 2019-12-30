@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-notification",
-  "version": "1.1.0-alpha.0",
+  "version": "1.0.12",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository": "git@git.cnsuning.com:fedc/v-notification.git",
@@ -20,6 +20,6 @@
     "start": "npm run server"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.31"
+    "@suning/v-tools": "^1.0.33"
   }
 }

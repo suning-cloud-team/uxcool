@@ -165,6 +165,7 @@ export default {
     expandedKeys(nVal, oVal) {
       if (!isArray(nVal) || isEqual(nVal, oVal)) return;
       this.updateStoreExpandedKeys(nVal, null, true);
+      this.callHook('expandedKeysChanged', nVal);
     },
   },
   created() {

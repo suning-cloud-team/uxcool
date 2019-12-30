@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-dialog",
-  "version": "1.1.0-alpha.0",
+  "version": "1.0.24",
   "description": "modal 基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -21,9 +21,9 @@
     "start": "npm run server"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.28"
+    "@suning/v-utils": "^1.0.29"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.31"
+    "@suning/v-tools": "^1.0.33"
   }
 }

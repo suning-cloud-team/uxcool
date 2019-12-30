@@ -69,8 +69,13 @@ export default {
       }
 
       if (isFunction(cellRender)) {
+        // FIXME: 为什么要修改this指向？
+        // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/295
         const rv = cellRender.call(
-          { $createElement: this.$createElement },
+          {
+            $createElement: this.$createElement,
+            $refs: this.$refs,
+          },
           val,
           record,
           rowIdx,

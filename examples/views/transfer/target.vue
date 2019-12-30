@@ -17,7 +17,7 @@
         title: `title-${i}`,
         label: `label-${i}`,
         // disabled: i % 3 === 0,
-    }));
+      }));
   }
   export default {
     components: {

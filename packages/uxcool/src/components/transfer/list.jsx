@@ -111,6 +111,12 @@ export default {
     filtedAndNoDisabledDataSource() {
       return this.filtedDataSource.filter(v => !v.disabled);
     },
+    validCheckedKeys() {
+      const { dataSource, checkedKeys } = this;
+      return dataSource
+        .filter(item => checkedKeys.indexOf(item.$$_key) > -1)
+        .map(item => item.$$_key);
+    },
     checkedKeysObj() {
       return this.checkedKeys.reduce((r, k) => {
         const nr = r;
@@ -123,7 +129,10 @@ export default {
       let status = 'none';
       if (checkedKeys.length === 0) {
         status = 'none';
-      } else if (filtedAndNoDisabledDataSource.every(v => v.$$_key in checkedKeysObj)) {
+      } else if (
+        filtedAndNoDisabledDataSource.length > 0 &&
+        filtedAndNoDisabledDataSource.every(v => v.$$_key in checkedKeysObj)
+      ) {
         status = 'all';
       } else if (filtedAndNoDisabledDataSource.some(v => v.$$_key in checkedKeysObj)) {
         status = 'part';
@@ -133,6 +142,10 @@ export default {
         checkAll: status === 'all',
         checkPart: status === 'part',
       };
+    },
+    isAllCheckDisabled() {
+      const { disabled, filtedAndNoDisabledDataSource } = this;
+      return disabled || filtedAndNoDisabledDataSource.length === 0;
     },
   },
   methods: {
@@ -289,7 +302,7 @@ export default {
         >
           {renderItems()}
         </VirtualList>
-        ) : (
+      ) : (
         <ul class={listCls} on-scroll={onScroll}>
           {renderItems()}
         </ul>
@@ -320,7 +333,6 @@ export default {
       prefixCls,
       classes,
       title,
-      disabled,
       filtedDataSource,
       checkedKeys,
       itemsUnit,
@@ -329,13 +341,15 @@ export default {
       getSlotVNodeByName,
       checkBoxAllStatus,
       onCheckAllChange,
+      validCheckedKeys,
+      isAllCheckDisabled,
     } = this;
     const unit = checkedKeys.length > 1 ? itemsUnit : itemUnit;
 
     const checkBoxAll = (
       <Checkbox
         control
-        disabled={disabled}
+        disabled={isAllCheckDisabled}
         checked={checkBoxAllStatus.checkAll}
         indeterminate={checkBoxAllStatus.checkPart}
         on-change={onCheckAllChange}
@@ -351,7 +365,7 @@ export default {
           {checkBoxAll}
           <span class={`${prefixCls}-header-selected`}>
             <span>
-              {checkedKeys.length > 0 ? `${checkedKeys.length}/` : ''}
+              {validCheckedKeys.length > 0 ? `${validCheckedKeys.length}/` : ''}
               {`${filtedDataSource.length} ${unit}`}
             </span>
             <span class={`${prefixCls}-header-title`}>{title}</span>

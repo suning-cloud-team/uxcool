@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-tools",
-  "version": "1.0.31",
+  "version": "1.0.33",
   "description": "v-components tools",
   "license": "MIT",
   "bin": {
@@ -45,7 +45,7 @@
     "glob": "^7.1.2",
     "gulp": "^3.9.1",
     "html-webpack-plugin": "^2.30.1",
-    "node-sass": "=4.9.0",
+    "node-sass": "^4.9.0",
     "postcss": "^6.0.14",
     "postcss-loader": "^2.0.8",
     "rimraf": "^2.6.2",

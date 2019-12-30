@@ -552,6 +552,12 @@ export default {
       }
     },
 
+    // public method
+    updateToOrigin() {
+      this.changeProp = 'start';
+      this.itemModeForceRender();
+    },
+
     // set manual scroll top.
     setScrollTop(scrollTop) {
       const { pagemode, scrollelement } = this;
@@ -665,6 +671,7 @@ export default {
     return h(rtag, {
       ref: 'vsl',
       style: styles,
+      class: { 'virtual-wrap': true },
       on: {
         '&scroll': debounce ? debounceFn(onScroll.bind(this), debounce) : onScroll,
       },

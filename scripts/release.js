@@ -25,6 +25,10 @@ function version() {
 function push() {
   execSync('git', ['push', '--follow-tags', 'origin', 'HEAD']);
 }
+function pushChanglog() {
+  execSync('git', ['commit', '-a', '-m', 'docs: generate changlog']);
+  execSync('git', ['push', 'origin', 'HEAD']);
+}
 
 function publish() {
   execSync('lerna', ['publish', 'from-git']);
@@ -36,6 +40,7 @@ function release() {
   version();
   push();
   genChangelog().then(() => {
+    pushChanglog();
     console.log('pre publish');
     if (!noPublish) {
       publish();
