@@ -1,17 +1,20 @@
 const path = require('path');
 const cc = require('conventional-changelog');
 const fs = require('fs-extra');
-const through2 = require('through2');
 const pump = require('pump');
 const concatStream = require('concat-stream');
 const prettier = require('prettier');
+const inquirer = require('inquirer');
+const semver = require('semver');
+
+const prompt = inquirer.createPromptModule();
 
 const pkgPath = path.join(__dirname, '../packages/uxcool');
 
 const file = path.join(__dirname, '../CHANGELOG.md');
 
 function makeBumpOnlyFilter(content) {
-  if (!content.split('\n').some((line) => line.startsWith('-'))) {
+  if (!content.split('\n').some((line) => /^[-*]\s/.test(line))) {
     const message = '**Note:** Version bump only for package @suning/uxcool';
 
     return [content, message].join('\n');
@@ -19,7 +22,7 @@ function makeBumpOnlyFilter(content) {
   return content;
 }
 
-function getConventionalStream() {
+function getConventionalStream(from, version) {
   return cc(
     {
       preset: 'angular',
@@ -35,10 +38,12 @@ function getConventionalStream() {
           return nPkg;
         },
       },
-      lernaPackage: '@suning/[^@]+',
+      lernaPackage: '@suning/uxcool',
     },
-    { linkCompare: false },
-    null,
+    { linkCompare: false, version },
+    {
+      from,
+    },
     null
     // {
     //   transform(...args) {
@@ -48,7 +53,7 @@ function getConventionalStream() {
   );
 }
 
-function buildChangeLog() {
+function buildChangeLog(type) {
   return concatStream((chunk) => {
     const enc = 'utf8';
     const options = { parser: 'markdown' };
@@ -59,25 +64,74 @@ function buildChangeLog() {
 
     // 简单的防止重复
     if (formatFileContent.indexOf(formatContent) === -1) {
-      fs.writeFileSync(
-        file,
-        prettier.format(
-          Buffer.concat([Buffer.from(formatContent), fileContent]).toString(enc),
-          options
-        )
+      const output = prettier.format(
+        Buffer.concat([Buffer.from(formatContent), fileContent]).toString(enc),
+        options
       );
+      if (type === 'test') {
+        process.stdout.write(output);
+      } else {
+        fs.writeFileSync(file, output);
+      }
     }
     // ;
   });
 }
-module.exports = function changelog() {
+function getQuestions(type, oldVer, newVer) {
+  return [
+    {
+      type: 'input',
+      name: 'changlogCommitFrom',
+      message: '输入Changlog起始点(Commit Hash 或 Tag Version)',
+      default: oldVer,
+      validate(value) {
+        if (!value) {
+          return '请输入 Commit Hash 或 Tag Version';
+        }
+        return true;
+      },
+      filter(value) {
+        if (/^@/.test(value)) {
+          return value;
+        }
+        if (semver.valid(value)) {
+          return `@suning/uxcool@${value}`;
+        }
+        return value;
+      },
+    },
+    {
+      type: 'input',
+      name: 'changlogVersion',
+      message: '请输入 Changlog 版本',
+      default: newVer,
+      validate(value) {
+        if (type === 'generate') {
+          if (!semver.valid(value)) {
+            return '请输入正确的版本';
+          }
+        }
+        return true;
+      },
+    },
+  ];
+}
+
+module.exports = function changelog(type = 'generate', oldVer, newVer) {
   return new Promise((resolve, reject) => {
-    pump(getConventionalStream(), buildChangeLog(), (err) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      resolve('finish');
+    prompt(getQuestions(type, oldVer, newVer)).then((answers) => {
+      const { changlogCommitFrom, changlogVersion } = answers;
+      pump(
+        getConventionalStream(changlogCommitFrom, changlogVersion),
+        buildChangeLog(type),
+        (err) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve('finish');
+        }
+      );
     });
   });
 };
