@@ -1,6 +1,8 @@
 /* eslint-disable */
+const path = require('path');
 const execa = require('execa');
 const yargs = require('yargs');
+const readPkg = require('read-pkg');
 const genChangelog = require('./changelog');
 yargs.parserConfiguration({
   'boolean-negation': false,
@@ -12,6 +14,11 @@ const { 'changelog-only': changelogOnly, 'no-publish': noPublish, 'no-build': no
 console.log('var', changelogOnly, noPublish, noBuild);
 function execSync(cmd, args = [], options) {
   execa.sync(cmd, args, { stdio: 'inherit', ...options });
+}
+
+function getUXCoolVersion() {
+  const { version } = readPkg.sync({ cwd: path.join(__dirname, '../packages/uxcool') });
+  return version;
 }
 
 function compile() {
@@ -34,12 +41,14 @@ function publish() {
   execSync('lerna', ['publish', 'from-git']);
 }
 function release() {
+  const oldVersion = getUXCoolVersion();
   if (!noBuild) {
     compile();
   }
   version();
   push();
-  genChangelog().then(() => {
+  const newVersion = getUXCoolVersion();
+  genChangelog('generate', oldVersion, newVersion).then(() => {
     pushChanglog();
     console.log('pre publish');
     if (!noPublish) {
@@ -49,7 +58,8 @@ function release() {
 }
 
 if (changelogOnly) {
-  genChangelog().then(() => {
+  const oldVersion = getUXCoolVersion();
+  genChangelog('test', oldVersion, 'This Changlog that will be generated').then(() => {
     console.log('generate changelog success!');
   });
 } else {
