@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-tooltip",
-  "version": "1.0.45",
+  "version": "1.0.46",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "repository": "git@git.cnsuning.com:fedc/v-tooltip.git",
@@ -20,10 +20,10 @@
     "start": "npm run server"
   },
   "dependencies": {
-    "@suning/v-trigger": "^1.0.59"
+    "@suning/v-trigger": "^1.0.60"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.33",
+    "@suning/v-tools": "^1.0.34",
     "debug": "^3.1.0"
   }
 }

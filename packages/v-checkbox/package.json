@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-checkbox",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -18,6 +18,6 @@
     "compile": "v-tools run compile"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.33"
+    "@suning/v-tools": "^1.0.34"
   }
 }
