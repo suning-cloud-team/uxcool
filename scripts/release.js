@@ -2,7 +2,6 @@
 const path = require('path');
 const execa = require('execa');
 const yargs = require('yargs');
-const readPkg = require('read-pkg');
 const genChangelog = require('./changelog');
 yargs.parserConfiguration({
   'boolean-negation': false,
@@ -16,11 +15,6 @@ function execSync(cmd, args = [], options) {
   execa.sync(cmd, args, { stdio: 'inherit', ...options });
 }
 
-function getUXCoolVersion() {
-  const { version } = readPkg.sync({ cwd: path.join(__dirname, '../packages/uxcool') });
-  return version;
-}
-
 function compile() {
   execSync('yarn', ['run', 'build']);
 }
@@ -32,24 +26,21 @@ function version() {
 function push() {
   execSync('git', ['push', '--follow-tags', 'origin', 'HEAD']);
 }
-function pushChanglog() {
-  execSync('git', ['commit', '-a', '-m', 'docs: generate changlog']);
-  execSync('git', ['push', 'origin', 'HEAD']);
+function pushChanglog(changlogVersion) {
+  execSync('git', ['commit', '-a', '-m', `docs: generate ${changlogVersion} changlog`]);
 }
 
 function publish() {
   execSync('lerna', ['publish', 'from-git']);
 }
 function release() {
-  const oldVersion = getUXCoolVersion();
   if (!noBuild) {
     compile();
   }
-  version();
-  push();
-  const newVersion = getUXCoolVersion();
-  genChangelog('generate', oldVersion, newVersion).then(() => {
-    pushChanglog();
+  genChangelog('generate').then((changlogVersion) => {
+    pushChanglog(changlogVersion);
+    version();
+    push();
     console.log('pre publish');
     if (!noPublish) {
       publish();
@@ -58,9 +49,8 @@ function release() {
 }
 
 if (changelogOnly) {
-  const oldVersion = getUXCoolVersion();
-  genChangelog('test', oldVersion, 'This Changlog that will be generated').then(() => {
-    console.log('generate changelog success!');
+  genChangelog('test').then((changlogVersion) => {
+    console.log(`generate ${changlogVersion} changelog success!`);
   });
 } else {
   release();

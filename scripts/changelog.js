@@ -6,12 +6,18 @@ const concatStream = require('concat-stream');
 const prettier = require('prettier');
 const inquirer = require('inquirer');
 const semver = require('semver');
+const readPkg = require('read-pkg');
 
 const prompt = inquirer.createPromptModule();
 
 const pkgPath = path.join(__dirname, '../packages/uxcool');
 
 const file = path.join(__dirname, '../CHANGELOG.md');
+
+function getUXCoolVersion() {
+  const { version } = readPkg.sync({ cwd: path.join(__dirname, '../packages/uxcool') });
+  return version;
+}
 
 function makeBumpOnlyFilter(content) {
   if (!content.split('\n').some((line) => /^[-*]\s/.test(line))) {
@@ -117,7 +123,9 @@ function getQuestions(type, oldVer, newVer) {
   ];
 }
 
-module.exports = function changelog(type = 'generate', oldVer, newVer) {
+module.exports = function changelog(type = 'generate') {
+  const oldVer = getUXCoolVersion();
+  const newVer = semver.inc(oldVer, 'prerelease');
   return new Promise((resolve, reject) => {
     prompt(getQuestions(type, oldVer, newVer)).then((answers) => {
       const { changlogCommitFrom, changlogVersion } = answers;
@@ -129,7 +137,7 @@ module.exports = function changelog(type = 'generate', oldVer, newVer) {
             reject(err);
             return;
           }
-          resolve('finish');
+          resolve(changlogVersion);
         }
       );
     });
