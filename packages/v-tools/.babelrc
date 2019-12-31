@@ -1,19 +1,16 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
-        // webpack2 有tree-shaking 特性, 如果直接转化为commonjs模块
-        // 则无法使用此特性
-        "modules": false,
-        "targets": {
-          "browsers": ["ie >= 9", "last 2 versions", ">= 5%"]
-        }
+        "modules": false
       }
     ],
-    "stage-3"
+    "@vue/babel-preset-jsx"
   ],
-  "plugins": ["transform-vue-jsx", "syntax-dynamic-import", "minify-dead-code-elimination"],
+  // "plugins": ["transform-vue-jsx", "syntax-dynamic-import", "minify-dead-code-elimination"],
+  "plugins": ["@babel/plugin-syntax-dynamic-import", "minify-dead-code-elimination"],
+
   // 只使用此babelrc配置, 不再向上寻找babelrc配置文件,防止由于多个babelrc文件,导致jsx的h被多次注入,
   // 出现Duplicate declaration "h" (This is an error on an internal node. Probably an internal error)错误
   "babelrc": false

@@ -16,7 +16,7 @@
     "packages/*"
   ],
   "scripts": {
-    "bootstrap": "yarn && lerna bootstrap && cd ./examples && yarn install",
+    "bootstrap": "lerna bootstrap && cd ./examples && yarn install",
     "compile:uxcool": "lerna run compile:module --scope @suning/uxcool",
     "build:uxcool": "lerna run build --scope @suning/uxcool",
     "build": "lerna run compile && yarn run build:uxcool",

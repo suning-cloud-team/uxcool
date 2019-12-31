@@ -20,6 +20,9 @@
     "server": "v-tools run server",
     "start": "npm run server"
   },
+  "peerDependencies": {
+    "vue": ">= 2.5.*"
+  },
   "dependencies": {
     "@suning/v-utils": "^1.0.29"
   },
