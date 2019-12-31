@@ -1,10 +1,11 @@
-import { HTMLElementType, eventBus } from '@suning/v-utils';
+import { HTMLElementType, emitter } from '@suning/v-utils';
 import Align from '@suning/v-align';
 
 export default {
   components: {
     Align,
   },
+  mixins: [emitter],
   props: {
     prefixCls: {
       type: String,
@@ -155,7 +156,7 @@ export default {
         },
         on: {
           mousedown(e) {
-            eventBus.emit('triggerInnerClick', { e, popupInnerVNode: self});
+            self.broadcast('UxTrigger', 'onNestedPopupClick', e);
             e.stopPropagation();
           },
         },
