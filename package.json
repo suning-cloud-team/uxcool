@@ -108,7 +108,6 @@
     "cross-env": "^6.0.3",
     "css-loader": "^3.3.0",
     "cz-conventional-changelog": "^3.0.2",
-    "dayjs": "^1.8.18",
     "debug": "^4.1.1",
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",

@@ -1,7 +1,5 @@
 import { mount, waitTime } from '@suning/v-test-utils';
-import {
-  format as formatDate, subDays, subMonths, addMonths, subYears, addDays
-} from 'date-fns';
+import dayjs from 'dayjs';
 import { selectDate, getPortal, triggerEvent } from './utils';
 import DatePicker from '../datepicker.vue';
 
@@ -54,11 +52,17 @@ describe('DatePicker', () => {
     await triggerEvent(wrapper, 'click');
     const portalWrapper = await getPortal(wrapper);
 
-    const prevDate = formatDate(subDays(new Date(), 1), format);
+    const prevDate = dayjs()
+      .subtract(1, 'date')
+      .format(format);
+    // const prevDate = formatDate(subDays(new Date(), 1), format);
     await selectDate(portalWrapper, prevDate);
     expect(inputWrapper.element.value).toBe(prevDate);
 
-    const prevMonth = formatDate(subMonths(new Date(), 1), format);
+    const prevMonth = dayjs()
+      .subtract(1, 'month')
+      .format(format);
+    //  formatDate(subMonths(new Date(), 1), format);
     await selectDate(portalWrapper, prevMonth);
     expect(inputWrapper.element.value).toBe(prevMonth);
   });
@@ -116,23 +120,30 @@ describe('DatePicker', () => {
     const portal = await getPortal(wrapper);
 
     await triggerEvent(portal.find('.ux-calendar-next-month-btn'), 'click');
-    const nextMonth = formatDate(addMonths(new Date(), 1), format);
+    const nextMonth = dayjs()
+      .add(1, 'month')
+      .format('format');
+    // const nextMonth = formatDate(addMonths(new Date(), 1), format);
     await selectDate(portal, nextMonth);
-    expect(formatDate(wrapper.vm.value, format)).toBe(nextMonth);
+    expect(dayjs(wrapper.vm.value).format(format)).toBe(nextMonth);
     expect(input.element.value).toBe(nextMonth);
 
     await triggerEvent(dp, 'click');
     const prevMonthBtn = portal.find('.ux-calendar-prev-month-btn');
     await triggerEvent(prevMonthBtn, 'click');
     await triggerEvent(prevMonthBtn, 'click');
-    const prevMonth = formatDate(subMonths(new Date(), 1), format);
+    const prevMonth = dayjs()
+      .subtract(1, 'month')
+      .format(format);
+    // formatDate(subMonths(new Date(), 1), format);
+    // const prevMonth = formatDate(subMonths(new Date(), 1), format);
     await selectDate(portal, prevMonth);
-    expect(formatDate(wrapper.vm.value, format)).toBe(prevMonth);
+    expect(dayjs(wrapper.vm.value).format(format)).toBe(prevMonth);
     expect(input.element.value).toBe(prevMonth);
 
     await triggerEvent(dp, 'click');
 
-    const nDate = subYears(new Date(), 1);
+    const nDate = dayjs().subtract(1, 'year');
     wrapper.setData({
       value: nDate,
     });
@@ -141,7 +152,7 @@ describe('DatePicker', () => {
     const selectedElement = portal.find('.ux-calendar-selected-date');
     expect(selectedElement.exists()).toBeTruthy();
 
-    expect(selectedElement.attributes('title')).toBe(formatDate(nDate, format));
+    expect(selectedElement.attributes('title')).toBe(dayjs(nDate).format(format));
   });
 
   it('disabled', async () => {
@@ -174,12 +185,15 @@ describe('DatePicker', () => {
     await waitTime(20);
 
     const input = wrapper.find('.ux-input');
-    expect(input.element.value).toBe(formatDate(today, format));
+    expect(input.element.value).toBe(dayjs(today).format(format));
 
     await triggerEvent(wrapper, 'click');
 
     const portal = await getPortal(wrapper);
-    const nDate = formatDate(addDays(new Date(), 2), format);
+    const nDate = dayjs()
+      .add(2, 'date')
+      .format(format);
+    // formatDate(addDays(new Date(), 2), format);
     await selectDate(portal, nDate);
     expect(input.element.value).toBe(nDate);
   });
