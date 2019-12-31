@@ -1,3 +1,10 @@
+# 0.5.0-next.74 (2019-12-31)
+
+### Bug Fixes
+
+- **Table:** 修复 cellRender 中无法获取内部\$refs 问题 ([f248d9e](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/f248d9e518859aae71f140d355e86dfaa1e38852)), closes [#295](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/295)
+- **Transfer:** 修复勾选项不正确 bug ([dfe25e1](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/dfe25e16f481d46d31585bf9b813ea5c282c574a)), closes [#280](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/280) [#281](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/281) [#292](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/292)
+
 # 0.5.0-next.73 (2019-12-30)
 
 **Note:** Version bump only for package @suning/uxcool
