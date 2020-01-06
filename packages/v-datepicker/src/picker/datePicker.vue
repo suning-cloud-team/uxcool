@@ -9,7 +9,8 @@
            :popup-animation="animation"
            :get-popup-container="getPopupContainer"
            destroy-popup-on-hide
-           @on-popup-visible-change="onPopupVisible">
+           @on-popup-visible-change="onPopupVisible"
+  >
     <template slot="trigger">
       <slot name="trigger" />
     </template>
@@ -31,12 +32,15 @@
               :control-mode="controlMode"
               :show-date-input="showDateInput"
               :show-week-number="showWeekNumber"
-              v-on="bindListeners">
+              v-on="bindListeners"
+    >
       <template slot="timePicker"
-                slot-scope="props">
+                slot-scope="props"
+      >
         <time-picker-panel v-if="isShowTime"
                            v-bind="timePickerPanelProps"
-                           @on-change="props.onChange" />
+                           @on-change="props.onChange"
+        />
       </template>
     </calendar>
   </trigger>
@@ -45,7 +49,7 @@
 
 <script>
   import Trigger from '@suning/v-trigger';
-  import TimePickerPanel from '@suning/v-timepicker/es/panel';
+  import { VTimePickerPanel } from '@suning/v-timepicker';
   import { formatDate, normalizeDate } from '../utils';
   import Calendar from '../calendar.vue';
   import localeEN from '../locale/en_US';
@@ -56,7 +60,7 @@
     components: {
       Calendar,
       Trigger,
-      TimePickerPanel,
+      TimePickerPanel: VTimePickerPanel,
     },
     props: {
       prefixCls: {

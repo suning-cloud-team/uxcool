@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePicker locale 1`] = `
+<div>
+  <div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" size="default"><input placeholder="Select date" type="text" readonly="readonly" class="ux-input ux-calendar-picker-input"> <i class="fu fu-close_circle ux-calendar-picker-clear"></i> <span class="ux-calendar-picker-icon"></span></div>
+  <div role="popup">
+    <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft " style="display: none;">
+      <div class="ux-calendar-picker-container-content">
+        <div class="ux-calendar ux-calendar-light">
+          <div role="panel" class="ux-calendar-panel">
+            <div class="ux-calendar-input-wrap">
+              <div class="ux-calendar-date-input-wrap"><input title="2019-10-22" placeholder="Select date" readonly="readonly" class="ux-calendar-input"></div>
+              <!---->
+            </div>
+            <div class="ux-calendar-date-panel">
+              <div class="ux-calendar-header">
+                <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">Oct</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2019</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                <div>
+                  <!---->
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+              <!---->
+              <div class="ux-calendar-body">
+                <table cellspacing="0" role="grid" class="ux-calendar-table">
+                  <thead selected-value="Tue Oct 22 2019 00:00:00 GMT+0800 (GMT+08:00)">
+                    <tr role="row">
+                      <th title="Sunday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Su
+      </span></th>
+                      <th title="Monday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Mo
+      </span></th>
+                      <th title="Tuesday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Tu
+      </span></th>
+                      <th title="Wednesday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        We
+      </span></th>
+                      <th title="Thursday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Th
+      </span></th>
+                      <th title="Friday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Fr
+      </span></th>
+                      <th title="Saturday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Sa
+      </span></th>
+                    </tr>
+                  </thead>
+                  <tbody class="ux-calendar-tbody" range-values="">
+                    <tr>
+                      <td role="gridcell" title="2019-09-29" class="ux-calendar-cell ux-calendar-last-month-cell">
+                        <div class="ux-calendar-date">29</div>
+                      </td>
+                      <td role="gridcell" title="2019-09-30" class="ux-calendar-cell ux-calendar-last-month-cell">
+                        <div class="ux-calendar-date">30</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-01" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">1</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-02" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">2</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-03" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">3</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-04" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">4</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-05" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">5</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" title="2019-10-06" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">6</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-07" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">7</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-08" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">8</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-09" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">9</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-10" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">10</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-11" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">11</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-12" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">12</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" title="2019-10-13" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">13</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-14" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">14</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-15" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">15</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-16" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">16</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-17" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">17</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-18" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">18</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-19" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">19</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" title="2019-10-20" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">20</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-21" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">21</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-22" class="ux-calendar-cell ux-calendar-selected-date ux-calendar-selected-day">
+                        <div class="ux-calendar-date">22</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-23" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">23</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-24" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">24</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-25" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">25</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-26" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">26</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" title="2019-10-27" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">27</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-28" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">28</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-29" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">29</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-30" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">30</div>
+                      </td>
+                      <td role="gridcell" title="2019-10-31" class="ux-calendar-cell">
+                        <div class="ux-calendar-date">31</div>
+                      </td>
+                      <td role="gridcell" title="2019-11-01" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <div class="ux-calendar-date">1</div>
+                      </td>
+                      <td role="gridcell" title="2019-11-02" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <div class="ux-calendar-date">2</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td role="gridcell" title="2019-11-03" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <div class="ux-calendar-date">3</div>
+                      </td>
+                      <td role="gridcell" title="2019-11-04" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <div class="ux-calendar-date">4</div>
+                      </td>
+                      <td role="gridcell" title="2019-11-05" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <div class="ux-calendar-date">5</div>
+                      </td>
+                      <td role="gridcell" title="2019-11-06" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <div class="ux-calendar-date">6</div>
+                      </td>
+                      <td role="gridcell" title="2019-11-07" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <div class="ux-calendar-date">7</div>
+                      </td>
+                      <td role="gridcell" title="2019-11-08" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <div class="ux-calendar-date">8</div>
+                      </td>
+                      <td role="gridcell" title="2019-11-09" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <div class="ux-calendar-date">9</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="ux-calendar-footer" style="display: none;"><span class="ux-calendar-footer-btn"><!----> <!----> <!----></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

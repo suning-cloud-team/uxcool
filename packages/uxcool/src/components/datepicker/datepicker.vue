@@ -4,19 +4,23 @@
                  :picker-prefix-cls="`${prefixCls}-picker-container`"
                  :date-input-placeholder="dateInputPlaceholder"
                  v-on="bindListeners"
-                 @change="onChange">
+                 @change="onChange"
+  >
     <div slot="trigger"
-         :class="pickerClasses">
+         :class="pickerClasses"
+    >
       <input :class="pickerInputClass"
              :value="formatValue"
              :placeholder="dateInputPlaceholder"
              :disabled="disabled"
              type="text"
-             readonly>
+             readonly
+      >
       <icon v-if="isCanClear"
             :class="`${prefixCls}-picker-clear`"
             type="close_circle"
-            @click.prevent.stop="onClearClick" />
+            @click.prevent.stop="onClearClick"
+      />
       <span :class="`${prefixCls}-picker-icon`" />
     </div>
   </v-date-picker>
@@ -26,7 +30,7 @@
   import omit from 'object.omit';
   import { format as formatDate } from 'date-fns';
   import VDatePicker from '@suning/v-datepicker';
-  import locale from './locale/zh_CN';
+  import localeCN from './locale/zh_CN';
   import Icon from '../icon';
   import { buildComponentName } from '../utils';
 
@@ -44,7 +48,7 @@
       locale: {
         type: Object,
         default() {
-          return locale.lang;
+          return localeCN.lang;
         },
       },
       theme: {
@@ -67,18 +71,32 @@
         type: Boolean,
         default: false,
       },
-      format: String,
-      showTime: [Boolean, Object],
+      format: { type: String, default: '' },
+      showTime: {
+        type: [Boolean, Object],
+        default: false,
+      },
       showOk: {
         type: Boolean,
+        default: undefined,
+      },
+      showDateInput: {
+        type: Boolean,
+        default: true,
+      },
+      showToday: Boolean,
+      disabledDate: {
+        type: Function,
         default() {
-          return !!this.showTime;
+          return false;
         },
       },
-      showDateInput: Boolean,
-      showToday: Boolean,
-      disabledDate: Function,
-      disabledTime: Function,
+      disabledTime: {
+        type: Function,
+        default() {
+          return false;
+        },
+      },
       allowClear: {
         type: Boolean,
         default: true,
@@ -151,19 +169,37 @@
           [`${inputPrefix}-${map[size]}`]: size !== 'default',
         };
       },
+      isShowTime() {
+        return !!this.showTime;
+      },
+      isShowOk() {
+        const { showOk, isShowTime } = this;
+        return showOk || (showOk !== false && isShowTime);
+      },
+      normlizeLocale() {
+        const { locale } = this;
+
+        if (!locale) {
+          return localeCN.lang;
+        }
+
+        return locale.lang ? locale.lang : locale;
+      },
       bindProps() {
-        const { dateFormat } = this;
+        const { dateFormat, isShowOk, normlizeLocale } = this;
         return {
           ...omit(this.$props, ['value', 'format', 'placeholder', 'allowClear']),
           format: dateFormat,
+          showOk: isShowOk,
+          locale: normlizeLocale,
         };
       },
       bindListeners() {
         return omit(this.$listeners, ['change']);
       },
       dateInputPlaceholder() {
-        const { placeholder } = this;
-        return placeholder || locale.lang.placeholder;
+        const { placeholder, normlizeLocale } = this;
+        return placeholder || normlizeLocale.placeholder;
       },
       isCanClear() {
         const { disabled, allowClear, innerValue } = this;
@@ -176,9 +212,7 @@
         }
         return formatDate(innerValue, dateFormat);
       },
-      isShowTime() {
-        return !!this.showTime;
-      },
+
       dateFormat() {
         const { format, isShowTime } = this;
         return format || (isShowTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD');

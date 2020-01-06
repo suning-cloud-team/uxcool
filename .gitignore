@@ -9,3 +9,4 @@ cjs
 dist
 assets
 .vscode
+coverage
