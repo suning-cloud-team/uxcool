@@ -3,7 +3,8 @@
     <v-checkbox ref="checkboxRef"
                 :class="indeterminateClasses"
                 v-bind="[$attrs, bindProps]"
-                v-on="bindListeners" />
+                v-on="bindListeners"
+    />
     <span v-if="label||$slots.default">
       <slot>{{ label }}</slot>
     </span>
@@ -44,7 +45,7 @@
         default: false,
       },
       value: {
-        type: String,
+        type: [String, Number],
         default: '',
       },
       disabled: {
@@ -113,13 +114,17 @@
         this.$emit('change', e);
       },
       focus() {
-        const { $refs: { checkboxRef } } = this;
+        const {
+          $refs: { checkboxRef },
+        } = this;
         if (checkboxRef) {
           checkboxRef.focus();
         }
       },
       blur() {
-        const { $refs: { checkboxRef } } = this;
+        const {
+          $refs: { checkboxRef },
+        } = this;
         if (checkboxRef) {
           checkboxRef.blur();
         }

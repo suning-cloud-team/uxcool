@@ -2,7 +2,8 @@
   <label :class="classes">
     <v-checkbox ref="radioRef"
                 v-bind="[$attrs, bindProps]"
-                v-on="bindListeners" />
+                v-on="bindListeners"
+    />
     <span v-if="label||$slots.default">
       <slot>{{ label }}</slot>
     </span>
@@ -42,7 +43,7 @@
         default: false,
       },
       value: {
-        type: String,
+        type: [String, Number],
         default: '',
       },
       disabled: {
