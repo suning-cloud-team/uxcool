@@ -25,7 +25,7 @@
     "analyzer": "webpack --config  build/webpack/analyzer.js",
     "jest": "node --inspect-brk ./node_modules/jest/bin/jest.js",
     "test-debug": "cross-env BABEL_ENV=test NODE_ENV=test yarn jest",
-    "test": "cross-env BABEL_ENV=test NODE_ENV=test jest",
+    "test": "cross-env BABEL_ENV=test NODE_ENV=test jest --config=jest.config.js",
     "server:upload": "node ./examples/server/server.js",
     "release": "node scripts/release.js",
     "release:nopublish": "npm run release -- --no-publish",

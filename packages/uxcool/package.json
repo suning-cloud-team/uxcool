@@ -41,7 +41,8 @@
     "vee-validate": "~2.0.9"
   },
   "devDependencies": {
-    "@suning/v-test-utils": "^1.0.6"
+    "@suning/v-test-utils": "^1.0.3",
+    "dayjs": "^1.8.18"
   },
   "publishConfig": {
     "registry": "http://snpm.cnsuning.com"

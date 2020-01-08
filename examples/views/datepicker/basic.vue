@@ -2,58 +2,68 @@
   <div>
     <div class="demo">
       <h6>showTime</h6>
-      <ux-date-picker :theme="theme"
-                      v-model="date"
+      <ux-date-picker v-model="date"
+                      :theme="theme"
                       :show-time="{hideDisabledOptions:true}"
                       format="YYYY/MM/DD HH:mm"
                       placeholder="Select Time"
                       @change="onChange"
-                      @ok="onOk" />
+                      @ok="onOk"
+      />
       <br>
-      <ux-range-date-picker :theme="theme"
-                            v-model="date1"
+      <ux-range-date-picker v-model="date1"
+                            :theme="theme"
                             :placeholder="['Start Time', ' End Time']"
                             :show-time="{showSecond: false}"
                             format="YYYY/MM/DD HH:mm"
                             @calendar-change="onCalendarChange"
                             @change="onChange"
-                            @ok="onOk" />
+                            @ok="onOk"
+      />
     </div>
     <div class="demo">
       <h6>不可选</h6>
       <ux-date-picker :theme="theme"
                       :show-time="{hideDisabledOptions:false}"
                       :disabled-date="disabledDate"
-                      :disabled-time="disabledTime" />
+                      :disabled-time="disabledTime"
+      />
       <br>
       <ux-range-date-picker :theme="theme"
                             :show-time="{hideDisabledOptions:true}"
                             :disabled-date="disabledDate"
-                            :disabled-time="disabledRangeTime" />
+                            :disabled-time="disabledRangeTime"
+      />
     </div>
     <div class="demo">
       <h6>禁用</h6>
       <ux-date-picker :theme="theme"
-                      disabled />
+                      disabled
+      />
       <br>
       <ux-range-date-picker :theme="theme"
-                            disabled />
+                            disabled
+      />
     </div>
     <div class="demo">
       <h6>v-model</h6>
       date: {{ date }} <br> rangeDate: {{ rangeDate }}
       <br>
       <ux-date-picker v-model="date"
-                      :theme="theme" />
+                      :theme="theme"
+      />
       <br>
       <ux-range-date-picker v-model="rangeDate"
-                            :theme="theme" />
+                            :theme="theme"
+      />
     </div>
     <div class="demo">
       <h6>默认时间</h6>
       <ux-date-picker :show-time="{defaultValue: new Date(2019, 3, 4, 12)}" />
-      <ux-range-date-picker :show-time="{defaultValue: [new Date(2019, 3, 4, 0), new Date(2019, 3, 4, 23, 59,59)]}"
-                            :theme="theme" />
+      <ux-range-date-picker :show-time="{defaultValue: [
+                              new Date(2019, 3, 4, 0), new Date(2019, 3, 4, 23, 59,59)]}"
+                            :theme="theme"
+      />
     </div>
     <placement-demo />
 
@@ -69,6 +79,7 @@
     <year-demo />
     <slider-demo />
     <week-demo />
+    <show-time-demo />
   </div>
 </template>
 
@@ -96,6 +107,7 @@
   import RangeMonthDemo from './rangeMonth.vue';
   import YearDemo from './year.vue';
   import WeekDemo from './week.vue';
+  import showTimeDemo from './showTime.vue';
 
   export default {
     components: {
@@ -112,6 +124,7 @@
       RangeMonthDemo,
       YearDemo,
       WeekDemo,
+      showTimeDemo,
     },
     data() {
       return {
