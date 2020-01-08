@@ -1,3 +1,14 @@
+# 0.5.0-next.75 (2020-01-08)
+
+### Bug Fixes
+
+- **menu:** 修复 menu 菜单嵌套 IE 显示不正常问题 ([1ac1faa](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/1ac1faa8d1b45b8a0a21ea91d0f86b8cad82fb76)), closes [#297](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/297)
+- **v-trigger:** 修复内嵌 v-trigger 不能响应问题 ([8eba2b1](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/8eba2b12d92be15334c652e7d92f50e021aaa6ae))
+
+### Features
+
+- **radio, checkbox:** value 添加 number 类型支持 ([a737c2f](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/a737c2fa6e459cfa1583ac89e0bf7376cac4e740)), closes [#299](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/299)
+
 # 0.5.0-next.74 (2019-12-31)
 
 ### Bug Fixes
