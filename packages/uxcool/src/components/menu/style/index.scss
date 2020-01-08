@@ -37,6 +37,8 @@ $menu-prefix-cls: #{$ux-prefix}-menu;
   &-item,
   &-submenu,
   &-submenu-title {
+    // fix http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/297
+    display: block;
     cursor: pointer;
   }
   &-submenu,
