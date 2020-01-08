@@ -16,7 +16,8 @@
     "packages/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap && cd ./examples && yarn install",
+    "bootstrap": "yarn && lerna bootstrap && cd ./examples && yarn install",
+    "bootstrap:ignore-optional": "yarn --ignore-optional && lerna bootstrap && cd ./examples && yarn install",
     "compile:uxcool": "lerna run compile:module --scope @suning/uxcool",
     "build:uxcool": "lerna run build --scope @suning/uxcool",
     "build": "lerna run compile && yarn run build:uxcool",
@@ -116,7 +117,6 @@
     "eslint-plugin-vue": "^6.0.1",
     "esm": "^3.2.25",
     "execa": "^3.4.0",
-    "fibers": "^4.0.2",
     "file-loader": "^5.0.2",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.1",
@@ -159,6 +159,9 @@
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2",
     "yargs": "^15.0.2"
+  },
+  "optionalDependencies": {
+    "fibers": "^4.0.2"
   },
   "engines": {
     "node": ">= 10"
