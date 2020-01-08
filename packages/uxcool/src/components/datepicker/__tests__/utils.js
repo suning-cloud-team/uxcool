@@ -22,7 +22,11 @@ export function mountPickerFactory(Component) {
  */
 export async function selectDate(wrapper, date, format = 'YYYY-MM-DD', delay = 20) {
   wrapper
-    .find(`[role="gridcell"][title="${isDate(date) ? dayjs(date).format(format) : date}"]`)
+    .find(
+      `[role="gridcell"][title="${
+        isDate(date) || dayjs.isDayjs(date) ? dayjs(date).format(format) : date
+      }"]`
+    )
     .trigger('click');
 
   await waitTime(delay);

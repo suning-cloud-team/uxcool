@@ -426,6 +426,9 @@
           this.innerValues = this.normalizeAnchor();
         }
       },
+      selectedValue() {
+        this.innerValues = this.normalizeAnchor();
+      },
       mode(nVal, oVal) {
         if (nVal !== oVal) {
           this.innerMode = nVal;

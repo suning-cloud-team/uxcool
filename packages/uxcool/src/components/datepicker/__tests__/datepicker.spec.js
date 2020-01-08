@@ -81,7 +81,6 @@ describe('DatePicker', () => {
         isOpen: true,
       },
     });
-    await waitTime();
 
     const portal = await getPortal(wrapper);
     expect(portal.find('.ux-calendar-picker-container').exists()).toBeTruthy();
@@ -207,7 +206,6 @@ describe('DatePicker', () => {
   });
 
   it('show-time', async () => {
-    jest.setTimeout(50000);
     const wrapper = await mountDatePicker({
       propsData: {
         showTime: true,

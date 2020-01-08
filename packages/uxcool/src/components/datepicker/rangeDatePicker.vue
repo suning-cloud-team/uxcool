@@ -1,7 +1,8 @@
 <template>
   <v-range-date-picker v-bind="bindProps"
                        v-on="bindListeners"
-                       @change="onChange">
+                       @change="onChange"
+  >
     <template slot="trigger">
       <div :class="pickerClasses">
         <div :class="pickerInputClass">
@@ -11,7 +12,8 @@
                  :disabled="disabled"
                  type="text"
                  readonly
-                 tabindex="-1">
+                 tabindex="-1"
+          >
           <span :class="`${prefixCls}-range-picker-separator`"> ~ </span>
           <input :class="`${prefixCls}-range-picker-input`"
                  :value="endValue"
@@ -19,18 +21,18 @@
                  :disabled="disabled"
                  type="text"
                  readonly
-                 tabindex="-1">
+                 tabindex="-1"
+          >
           <icon v-if="isCanClear"
                 :class="`${prefixCls}-picker-clear`"
                 type="close_circle"
-                @click.prevent.stop="onClearClick" />
+                @click.prevent.stop="onClearClick"
+          />
           <span :class="`${prefixCls}-picker-icon`" />
         </div>
-
       </div>
     </template>
   </v-range-date-picker>
-
 </template>
 
 <script>
@@ -74,7 +76,7 @@
       mode: {
         type: Array,
         validator(val) {
-          return val.every(v => ['time', 'date', 'month'].indexOf(v) > -1);
+          return val.every((v) => ['time', 'date', 'month'].indexOf(v) > -1);
         },
         default() {
           return ['date', 'date'];
@@ -104,11 +106,15 @@
       },
       disabledDate: {
         type: Function,
-        default: undefined,
+        default() {
+          return false;
+        },
       },
       disabledTime: {
         type: Function,
-        default: undefined,
+        default() {
+          return false;
+        },
       },
       placeholder: {
         type: [String, Array],
@@ -183,7 +189,7 @@
           dateFormat,
         } = this;
         return {
-          ...omit($props, ['format']),
+          ...omit($props, ['format', 'allowClear', 'size', 'placeholder']),
           selectedValue: innerValue,
           pickerPrefixCls: `${prefixCls}-picker-container`,
           dateInputPlaceholder: [startPlaceholder, endPlaceholder],
