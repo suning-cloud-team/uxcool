@@ -26,7 +26,7 @@ export default {
       default: '',
     },
     value: {
-      type: String,
+      type: [String, Number],
       default: null,
     },
     options: {
@@ -98,10 +98,9 @@ export default {
   render() {
     const { classes, type, normalizeOptions } = this;
     const Cmp = type === 'button' ? RadioButton : Radio;
-    const radios =
-      normalizeOptions.length > 0
-        ? normalizeOptions.map(v => <Cmp label={v.label} value={v.value} disabled={v.disabled} />)
-        : this.$slots.default;
+    const radios = normalizeOptions.length > 0
+      ? normalizeOptions.map((v) => <Cmp label={v.label} value={v.value} disabled={v.disabled} />)
+      : this.$slots.default;
     return <div class={classes}>{radios}</div>;
   },
 };

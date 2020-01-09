@@ -10,85 +10,109 @@
     </div>
     <div class="demo">
       <h6>slot content</h6>
-      <ux-checkbox v-model="checked">content</ux-checkbox>
+      <ux-checkbox v-model="checked">
+        content
+      </ux-checkbox>
     </div>
     <div class="demo">
       <h6>autofocus</h6>
       <ux-checkbox v-model="checked"
-                   autofocus>
+                   autofocus
+      >
         <span>autofocus</span>
       </ux-checkbox>
     </div>
     <div class="demo">
       <h6>onChange</h6>
       <ux-checkbox v-model="checked"
-                   @change="onChange">
+                   @change="onChange"
+      >
         <span>change</span>
       </ux-checkbox>
     </div>
     <div class="demo">
       <h6>disabled</h6>
       <ux-checkbox v-model="disabledChecked"
-                   disabled>disabled</ux-checkbox>
+                   disabled
+      >
+        disabled
+      </ux-checkbox>
     </div>
     <div class="demo">
       <h6>label</h6>
       <ux-checkbox v-model="disabledChecked"
-                   label="abc" />
+                   label="abc"
+      />
     </div>
 
     <div class="demo">
       <h6>change checked and disabled</h6>
       <ux-checkbox v-model="cChecked"
-                   :disabled="cDisabled">
-        <span style="color: red">{{ cChecked ? 'checked' : 'unChecked' }}-{{ cDisabled ? 'disabled' : 'unDisabled' }}</span>
+                   :disabled="cDisabled"
+      >
+        <span style="color: red">
+          {{ cChecked ? 'checked' : 'unChecked' }}-{{ cDisabled ? 'disabled' : 'unDisabled' }}
+        </span>
       </ux-checkbox>
 
       <button class="ux-btn"
-              @click="changeCChecked">{{ cChecked ? 'unChecked' : 'checked' }}</button>
+              @click="changeCChecked"
+      >
+        {{ cChecked ? 'unChecked' : 'checked' }}
+      </button>
       <button class="ux-btn"
-              @click="changeCDisabled">{{ cDisabled ? 'unDisabled' : 'disabled' }}</button>
+              @click="changeCDisabled"
+      >
+        {{ cDisabled ? 'unDisabled' : 'disabled' }}
+      </button>
     </div>
 
     <div class="demo">
       <h6>group custom content</h6>
       <ux-checkbox-group v-model="checkedList"
-                         @change="onGroupChange">
+                         @change="onGroupChange"
+      >
         <ux-checkbox label="123"
-                     value="1" />
+                     :value="1"
+        />
         <ux-checkbox label="321"
-                     value="2" />
+                     :value="2"
+        />
       </ux-checkbox-group>
     </div>
 
     <div class="demo">
       <h6>group checked values</h6>
       <ux-checkbox-group v-model="checkedOpts"
-                         :options="options" />
+                         :options="options"
+      />
     </div>
 
     <div class="demo">
       <h6>group disabled</h6>
       <ux-checkbox-group disabled
-                         :options="someDisabledOpts" />
-
+                         :options="someDisabledOpts"
+      />
     </div>
 
     <div class="demo">
       <h6>group on change</h6>
       <ux-checkbox-group :options="opts1"
-                         @change="onGroupChange" />
+                         @change="onGroupChange"
+      />
     </div>
 
     <div class="demo">
       <h6>indeterminate</h6>
       <ux-checkbox v-model="indeterminateChecked"
                    :indeterminate="indeterminate"
+                   label="checked All"
                    @change="onCheckedAll"
-                   label="checked All" />
+      />
       <ux-checkbox-group v-model="ieCheckedList"
                          :options="opts2"
-                         @change="onCheckedOpts2" />
+                         @change="onCheckedOpts2"
+      />
     </div>
 
     <div class="demo">
@@ -96,18 +120,22 @@
       <ux-checkbox ref="checkboxRef" />
       <br>
       <button class="ux-btn"
-              @click="onFocus">focus</button>
+              @click="onFocus"
+      >
+        focus
+      </button>
       <button class="ux-btn"
-              @click="onBlur">blur</button>
+              @click="onBlur"
+      >
+        blur
+      </button>
     </div>
-
   </div>
 </template>
 
 
 <script>
-  import '@suning/uxcool/src/components/checkbox/style/index.scss';
-  import { UxCheckbox, UxCheckboxGroup } from '@suning/uxcool/src/components/checkbox/index';
+  import { UxCheckbox, UxCheckboxGroup } from '@suning/uxcool';
 
   export default {
     components: {

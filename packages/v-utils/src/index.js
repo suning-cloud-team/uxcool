@@ -25,4 +25,4 @@ export function warning(valid = true, message = '', ...args) {
   }
 }
 
-export { default as eventBus } from './eventbus';
+export { default as emitter } from './mixins/emitter';

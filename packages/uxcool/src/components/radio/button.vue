@@ -1,6 +1,6 @@
 <template>
   <radio v-bind="[$attrs, $props]">
-    <slot/>
+    <slot />
   </radio>
 </template>
 
@@ -27,7 +27,7 @@
         default: false,
       },
       value: {
-        type: String,
+        type: [String, Number],
         required: true,
         default: '',
       },
