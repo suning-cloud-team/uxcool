@@ -179,18 +179,10 @@ describe('modal', () => {
         .catch(() => {
           cancelFn();
         });
-      await waitTime(100);
+      await waitTime(300);
 
       const wrapper = createWrapper(document.querySelector('.ux-modal-light'));
       expect(wrapper.html()).toMatchSnapshot();
-      // expect(wrapper.find('.ux-confirm-title').text()).toBe('this is title');
-      // expect(wrapper.find('.ux-confirm-content').html()).toBe('<p>content</p>');
-      // const btns = wrapper.findAll('.ux-btn');
-      // expect(btns.at(0).text()).toBe('CANCEL');
-      // expect(btns.at(1).text()).toBe('OK');
-      // expect($('.ux-btn-danger').length).toBe(1);
-      // expect($('.ux-confirm').css('width')).toBe('600px');
-      // expect($('.ux-modal-wrap').css('z-index')).toBe('999');
     });
   });
 });

@@ -41,7 +41,7 @@
   import { VRangeDatePicker } from '@suning/v-datepicker';
   import { buildComponentName } from '../utils';
   import Icon from '../icon';
-  import locale from './locale/zh_CN';
+  import localeCN from './locale/zh_CN';
 
   export default {
     name: buildComponentName('RangeDatePicker'),
@@ -60,7 +60,7 @@
       locale: {
         type: Object,
         default() {
-          return locale.lang;
+          return localeCN.lang;
         },
       },
       isOpen: {
@@ -100,9 +100,7 @@
       },
       showOk: {
         type: Boolean,
-        default() {
-          return !!this.showTime;
-        },
+        default: undefined,
       },
       disabledDate: {
         type: Function,
@@ -129,7 +127,7 @@
         default: true,
       },
       ranges: {
-        type: Object,
+        type: [Object, Array],
         default: undefined,
       },
       placement: {
@@ -178,6 +176,18 @@
       };
     },
     computed: {
+      isShowOk() {
+        const { showOk, showTime } = this;
+        return showOk === true || (showOk !== false && !!showTime);
+      },
+      normlizeLocale() {
+        const { locale } = this;
+        if (!locale) {
+          return localeCN.lang;
+        }
+
+        return locale.lang ? locale.lang : locale;
+      },
       bindProps() {
         const {
           $props,
@@ -187,6 +197,8 @@
           endPlaceholder,
           openValue,
           dateFormat,
+          isShowOk,
+          normlizeLocale,
         } = this;
         return {
           ...omit($props, ['format', 'allowClear', 'size', 'placeholder']),
@@ -195,14 +207,16 @@
           dateInputPlaceholder: [startPlaceholder, endPlaceholder],
           value: openValue || undefined,
           format: dateFormat,
+          showOk: isShowOk,
+          locale: normlizeLocale,
         };
       },
       bindListeners() {
         return omit(this.$listeners, ['change']);
       },
       startPlaceholder() {
-        const { placeholder } = this;
-        const { rangePlaceholder } = locale.lang;
+        const { placeholder, normlizeLocale } = this;
+        const { rangePlaceholder } = normlizeLocale;
         let holder = rangePlaceholder[0];
         if (placeholder) {
           if (Array.isArray(placeholder)) {
@@ -216,8 +230,8 @@
         return holder;
       },
       endPlaceholder() {
-        const { placeholder } = this;
-        const { rangePlaceholder } = locale.lang;
+        const { placeholder, normlizeLocale } = this;
+        const { rangePlaceholder } = normlizeLocale;
         let holder = rangePlaceholder[1];
         if (placeholder) {
           if (Array.isArray(placeholder)) {
