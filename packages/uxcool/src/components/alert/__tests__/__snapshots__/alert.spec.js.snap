@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`alert render with props or slots correctly 1`] = `<div class="ux-alert ux-alert-info ux-alert-no-icon ux-alert-with-description"><span class="ux-alert-message">this is message</span><span class="ux-alert-description">this is desc</span><a class="ux-alert-close-icon">close</a></div>`;
+
+exports[`alert render with props or slots correctly 2`] = `<div class="ux-alert ux-alert-info ux-alert-no-icon ux-alert-with-description"><span class="ux-alert-message">this is message</span><span class="ux-alert-description">this is desc</span><a class="ux-alert-close-icon">close</a></div>`;

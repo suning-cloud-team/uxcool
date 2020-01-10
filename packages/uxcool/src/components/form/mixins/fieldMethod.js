@@ -25,14 +25,14 @@ export default {
       }
     },
     removeFormField(field) {
-      this.fields = this.fields.filter(v => v !== field);
+      this.fields = this.fields.filter((v) => v !== field);
     },
     getFieldValue(name) {
       if (!name) {
         return undefined;
       }
       const { fields } = this;
-      const { field } = fields.filter(v => v.name === name)[0] || {};
+      const { field } = fields.filter((v) => v.name === name)[0] || {};
       return field ? field.getter() : undefined;
     },
     getFieldsValue(names) {
@@ -72,7 +72,10 @@ export default {
       return r;
     },
     clearErrors(scope) {
-      const { fields: { items }, errors } = this.$validator;
+      const {
+        fields: { items },
+        errors,
+      } = this.$validator;
       const errorsArr = [...errors];
       if (errorsArr.length === 0) {
         return;
@@ -97,14 +100,13 @@ export default {
       const { $validator } = this;
       const { fields, errors } = $validator;
       // 不用$validator.reset, 是由于其需要_vm属性, 但这里并没有
-      return this.$nextTick().then(() =>
-        this.$nextTick().then(() => {
-          fields.filter(matcher).forEach((field) => {
-            field.reset(); // reset field flags.
-            errors.remove(field.name, field.scope, field.id);
-            // 重新初始化验证
-            validateField(field, $validator);
-          });
+      return this.$nextTick().then(() => this.$nextTick().then(() => {
+        fields.filter(matcher).forEach((field) => {
+          field.reset(); // reset field flags.
+          errors.remove(field.name, field.scope, field.id);
+          // 重新初始化验证
+          validateField(field, $validator);
+        });
       }));
     },
     resetFields() {

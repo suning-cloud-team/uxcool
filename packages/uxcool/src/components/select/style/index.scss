@@ -427,20 +427,20 @@ $select-prefix-cls: #{$ux-prefix}-select;
 
   &.slide-up-enter.slide-up-enter-active#{&}-placement-bottomLeft,
   &.slide-up-appear.slide-up-appear-active#{&}-placement-bottomLeft {
-    animation-name: antSlideUpIn;
+    animation-name: uxSlideUpIn;
   }
 
   &.slide-up-enter.slide-up-enter-active#{&}-placement-topLeft,
   &.slide-up-appear.slide-up-appear-active#{&}-placement-topLeft {
-    animation-name: antSlideDownIn;
+    animation-name: uxSlideDownIn;
   }
 
   &.slide-up-leave.slide-up-leave-active#{&}-placement-bottomLeft {
-    animation-name: antSlideUpOut;
+    animation-name: uxSlideUpOut;
   }
 
   &.slide-up-leave.slide-up-leave-active#{&}-placement-topLeft {
-    animation-name: antSlideDownOut;
+    animation-name: uxSlideDownOut;
   }
 
   &-hidden {

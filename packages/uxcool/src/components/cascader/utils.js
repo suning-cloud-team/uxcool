@@ -1,4 +1,4 @@
-import { isFunction } from '@suning/v-utils/cjs/utils';
+import { isFunction } from '@suning/v-utils';
 
 export const SPLIT_STR = '\u0001';
 

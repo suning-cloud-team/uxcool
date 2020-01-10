@@ -24,7 +24,7 @@ exports[`DatePicker locale 1`] = `
               <!---->
               <div class="ux-calendar-body">
                 <table cellspacing="0" role="grid" class="ux-calendar-table">
-                  <thead selected-value="Tue Oct 22 2019 00:00:00 GMT+0800 (GMT+08:00)">
+                  <thead>
                     <tr role="row">
                       <th title="Sunday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
         Su

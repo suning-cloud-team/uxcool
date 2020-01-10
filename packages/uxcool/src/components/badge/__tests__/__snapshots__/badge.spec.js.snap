@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`badge render correctly 1`] = `
+<span
+  class="ux-badge ux-badge-light"
+>
+  <div
+    style="width: 60px; height: 60px;"
+  />
+  <sup
+    class="ux-scroll-number ux-badge-count ux-badge-zoom-enter ux-badge-zoom-enter-active"
+  >
+    <span
+      class="ux-scroll-number-only"
+    >
+      9
+    </span>
+  </sup>
+</span>
+`;
+
+exports[`badge render dot correctly 1`] = `
+<span
+  class="ux-badge ux-badge-light ux-badge-not-a-wrapper"
+>
+  <sup
+    class="ux-scroll-number ux-badge-dot"
+  >
+    <span
+      class="ux-scroll-number-only"
+    />
+  </sup>
+</span>
+`;
+
+exports[`badge render status correctly 1`] = `
+<span
+  class="ux-badge ux-badge-light ux-badge-status"
+>
+  <span
+    class="ux-badge-status-dot ux-badge-status-success"
+  />
+  <span
+    class="ux-badge-status-text"
+  />
+</span>
+`;
+
+exports[`badge render status correctly 2`] = `
+<span
+  class="ux-badge ux-badge-light ux-badge-status"
+>
+  <span
+    class="ux-badge-status-dot ux-badge-status-error"
+  />
+  <span
+    class="ux-badge-status-text"
+  />
+</span>
+`;
+
+exports[`badge render status correctly 3`] = `
+<span
+  class="ux-badge ux-badge-light ux-badge-status"
+>
+  <span
+    class="ux-badge-status-dot ux-badge-status-default"
+  />
+  <span
+    class="ux-badge-status-text"
+  />
+</span>
+`;
+
+exports[`badge render status correctly 4`] = `
+<span
+  class="ux-badge ux-badge-light ux-badge-status"
+>
+  <span
+    class="ux-badge-status-dot ux-badge-status-processing"
+  />
+  <span
+    class="ux-badge-status-text"
+  />
+</span>
+`;
+
+exports[`badge render status correctly 5`] = `
+<span
+  class="ux-badge ux-badge-light ux-badge-status"
+>
+  <span
+    class="ux-badge-status-dot ux-badge-status-warning"
+  />
+  <span
+    class="ux-badge-status-text"
+  />
+</span>
+`;

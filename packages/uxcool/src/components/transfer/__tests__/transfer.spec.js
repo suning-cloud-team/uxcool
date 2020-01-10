@@ -1,4 +1,4 @@
-import { shallowMount } from '@suning/v-test-utils';
+import { mountPickerFactory, waitTime } from '@suning/v-test-utils';
 import Transfer from '../transfer';
 
 function mockData(cnt = 10) {
@@ -16,9 +16,11 @@ function getKey(data) {
   return data.map((v) => v.$$_key);
 }
 
-describe.only('Transfer render', () => {
-  it('seleckedKeys', () => {
-    const wrapper = shallowMount(Transfer, {
+describe('transfer', () => {
+  const mountTransfer = mountPickerFactory(Transfer);
+
+  it('seleckedKeys', async () => {
+    const wrapper = await mountTransfer({
       propsData: {
         selectedKeys: [1, 2, 4, 5],
       },
@@ -30,6 +32,7 @@ describe.only('Transfer render', () => {
     wrapper.setProps({
       targetKeys: [4],
     });
+    await waitTime();
 
     expect(wrapper.vm.leftSelectedKeys).toEqual([1, 2, 5]);
     expect(wrapper.vm.rightSelectedKeys).toEqual([4]);
@@ -37,7 +40,7 @@ describe.only('Transfer render', () => {
     wrapper.setProps({
       selectedKeys: [4, 7, 10],
     });
-
+    await waitTime();
     expect(wrapper.vm.leftSelectedKeys).toEqual([7, 10]);
     expect(wrapper.vm.rightSelectedKeys).toEqual([4]);
 
@@ -45,13 +48,13 @@ describe.only('Transfer render', () => {
       selectedKeys: [4, 7, 10],
       targetKeys: [10],
     });
-
+    await waitTime();
     expect(wrapper.vm.leftSelectedKeys).toEqual([4, 7]);
     expect(wrapper.vm.rightSelectedKeys).toEqual([10]);
   });
 
-  it('targetKeys and leftDataSource, rightDataSource', () => {
-    const wrapper = shallowMount(Transfer, {
+  it('targetKeys and leftDataSource, rightDataSource', async () => {
+    const wrapper = await mountTransfer({
       propsData: {
         dataSource: mockData(5),
       },
@@ -64,15 +67,15 @@ describe.only('Transfer render', () => {
     wrapper.setProps({
       targetKeys: [1, 4],
     });
-
+    await waitTime();
     const { left: l1, right: r1 } = wrapper.vm.normalizeDataSource;
     expect(getKey(l1)).toEqual([0, 2, 3]);
     expect(getKey(r1)).toEqual([1, 4]);
   });
 
-  it('DataSource no key ,console.error', () => {
+  it('DataSource no key ,console.error', async () => {
     const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
-    shallowMount(Transfer, {
+    await mountTransfer({
       propsData: {
         dataSource: [
           {
@@ -94,9 +97,9 @@ describe.only('Transfer render', () => {
     );
   });
 
-  it.only('rowKey', () => {
+  it('rowKey', async () => {
     const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
-    const wrapper = shallowMount(Transfer, {
+    const wrapper = await mountTransfer({
       propsData: {
         dataSource: [
           {
@@ -124,6 +127,7 @@ describe.only('Transfer render', () => {
         return record.id;
       },
     });
+    await waitTime();
     const { left } = wrapper.vm.normalizeDataSource;
     expect(getKey(left)).toEqual(['a1', 'a2']);
   });

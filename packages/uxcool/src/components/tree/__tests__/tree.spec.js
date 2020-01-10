@@ -3,7 +3,7 @@ import Tree from '../tree';
 import VitrualTree from '../virtualTree';
 
 function createWrapper(Cmp, opts) {
-  return options => mount(Cmp, { ...opts, ...options });
+  return (options) => mount(Cmp, { ...opts, ...options });
 }
 
 const createTreeWrapper = createWrapper(Tree, { sync: false });
@@ -76,7 +76,7 @@ function getNodesCount(tree) {
       leafCount += 1;
     }
   }
-  return { total: count, leafCount, parentNodeCount: count - leafCount};
+  return { total: count, leafCount, parentNodeCount: count - leafCount };
 }
 
 function createNode(parentKey, key) {
@@ -89,9 +89,9 @@ function createNode(parentKey, key) {
 }
 
 function createBigDataSource(firstLevelCount = 100, secondLevelCount = 10, thirdLevelCount = 10) {
-  const dataSource = [];
+  const dataSrc = [];
   for (let firstlevel = 0; firstlevel < firstLevelCount; firstlevel += 1) {
-    const firstLevelNode = createNode('0', dataSource.length);
+    const firstLevelNode = createNode('0', dataSrc.length);
     firstLevelNode.children = [];
     for (let sndLevel = 0; sndLevel < secondLevelCount; sndLevel += 1) {
       const sndNode = createNode(firstLevelNode.key, firstLevelNode.children.length);
@@ -102,9 +102,9 @@ function createBigDataSource(firstLevelCount = 100, secondLevelCount = 10, third
       }
       firstLevelNode.children.push(sndNode);
     }
-    dataSource.push(firstLevelNode);
+    dataSrc.push(firstLevelNode);
   }
-  return dataSource;
+  return dataSrc;
 }
 
 function loadData(node) {
@@ -135,16 +135,17 @@ function loadData(node) {
     } else if (node.level === 3) {
       resolve([]);
     } else {
-      jest.setTimeout(1000);
       const { key } = node;
-      resolve(Array(3)
-        .fill(0)
-        .map((_, i) => ({
-          title: `child-${key}-${i}`,
-          key: `${key}-${i}`,
-          disabled: i === 2,
-          isLeaf: node.key === '0-0-0-0' && node.level === 2,
-        })));
+      resolve(
+        Array(3)
+          .fill(0)
+          .map((_, i) => ({
+            title: `child-${key}-${i}`,
+            key: `${key}-${i}`,
+            disabled: i === 2,
+            isLeaf: node.key === '0-0-0-0' && node.level === 2,
+          }))
+      );
     }
   });
 }
@@ -152,21 +153,22 @@ function loadData(node) {
 function loadBigData(node) {
   return new Promise((resolve) => {
     if (!node) {
-      const dataSource = createBigDataSource(500, 0, 0);
-      resolve(dataSource);
+      const dataSrc = createBigDataSource(500, 0, 0);
+      resolve(dataSrc);
     } else if (node.level === 3) {
       resolve([]);
     } else {
-      // jest.setTimeout(1000);
       const { key } = node;
-      resolve(Array(3)
-        .fill(0)
-        .map((_, i) => ({
-          title: `child-${key}-${i}`,
-          key: `${key}-${i}`,
-          disabled: i === 2,
-          isLeaf: node.key === '0-0-0-0' && node.level === 2,
-        })));
+      resolve(
+        Array(3)
+          .fill(0)
+          .map((_, i) => ({
+            title: `child-${key}-${i}`,
+            key: `${key}-${i}`,
+            disabled: i === 2,
+            isLeaf: node.key === '0-0-0-0' && node.level === 2,
+          }))
+      );
     }
   });
 }
@@ -176,28 +178,38 @@ describe('Tree Component Render', () => {
       it('render tree and tree node', () => {
         const wrapper = createTreeWrapper({
           propsData: {
-            dataSource
-          }
+            dataSource,
+          },
         });
         expect(wrapper.isVueInstance()).toBe(true);
         const nodeArray = wrapper.findAll('.ux-tree-node-content-wrapper');
         expect(nodeArray.length).toEqual(3);
-        expect(nodeArray.at(0).find('.ux-tree-title').html()).toContain('0-0');
-        expect(nodeArray.at(2).find('.ux-tree-title').html()).toContain('0-2');
+        expect(
+          nodeArray
+            .at(0)
+            .find('.ux-tree-title')
+            .html()
+        ).toContain('0-0');
+        expect(
+          nodeArray
+            .at(2)
+            .find('.ux-tree-title')
+            .html()
+        ).toContain('0-2');
         expect(wrapper.contains('.ux-tree-checkbox')).toBeFalsy();
         expect(wrapper.contains('.ux-tree-node-selected')).toBeFalsy();
 
         wrapper.destroy();
       });
 
-      it('expanded all nodes',() => {
+      it('expanded all nodes', () => {
         const wrapper = createTreeWrapper({
           propsData: {
             dataSource,
-            defaultExpandAll: true
-          }
+            defaultExpandAll: true,
+          },
         });
-        const { total, parentNodeCount} = getNodesCount(dataSource);
+        const { total, parentNodeCount } = getNodesCount(dataSource);
         const nodeArray = wrapper.findAll('.ux-tree-node-content-wrapper');
         expect(nodeArray.length).toEqual(total);
         expect(wrapper.findAll('.ux-tree-treenode-switcher-open').length).toEqual(parentNodeCount);
@@ -210,8 +222,8 @@ describe('Tree Component Render', () => {
           propsData: {
             dataSource,
             defaultExpandAll: true,
-            checkable: true
-          }
+            checkable: true,
+          },
         });
         const mockCheck = jest.fn();
         wrapper.vm.$on('check', mockCheck);
@@ -230,7 +242,11 @@ describe('Tree Component Render', () => {
 
         // 验证disabledCheckbox 节点是否生效
         const disabledCheckNodeTitle = wrapper.find('[title="0-0-0-0"]');
-        expect($(disabledCheckNodeTitle.element).prev().hasClass('ux-tree-checkbox-disabled')).toBeTruthy();
+        expect(
+          $(disabledCheckNodeTitle.element)
+            .prev()
+            .hasClass('ux-tree-checkbox-disabled')
+        ).toBeTruthy();
 
         expect(mockCheck).not.toHaveBeenCalled();
         expect(mockNodeClick).not.toHaveBeenCalled();
@@ -242,7 +258,17 @@ describe('Tree Component Render', () => {
         // 验证回调的返回参数
         expect(mockCheck).toHaveBeenCalled();
         expect(mockCheck.mock.calls[0].length).toBe(2);
-        const expecedArray = ['0-0', '0-0-0', '0-0-0-1', '0-0-0-2', '0-0-1', '0-0-1-1', '0-0-1-2', '0-0-2', '0-1-0-0'];
+        const expecedArray = [
+          '0-0',
+          '0-0-0',
+          '0-0-0-1',
+          '0-0-0-2',
+          '0-0-1',
+          '0-0-1-1',
+          '0-0-1-2',
+          '0-0-2',
+          '0-1-0-0',
+        ];
         expect(expecedArray).toEqual(expect.arrayContaining(mockCheck.mock.calls[0][0]));
 
         // 验证0-1-0-0勾选， 0-1,0-1-0半勾选
@@ -262,8 +288,8 @@ describe('Tree Component Render', () => {
             dataSource,
             defaultExpandAll: true,
             checkable: true,
-            selectedKeys
-          }
+            selectedKeys,
+          },
         });
         const mockSelect = jest.fn();
         wrapper.vm.$on('select', mockSelect);
@@ -276,7 +302,7 @@ describe('Tree Component Render', () => {
         // 验证select回调函数
         expect(mockSelect).toHaveBeenCalled();
         // 验证选中是否由'0-0-2' 切换到 '0-0-0-1'
-        wrapper.vm.$nextTick(_ => {
+        wrapper.vm.$nextTick(() => {
           const newSelectedNodes = wrapper.findAll('.ux-tree-node-selected');
           expect(newSelectedNodes.length).toBe(1);
           expect(newSelectedNodes.at(0).attributes().title).toBe('0-0-0-1');
@@ -291,14 +317,14 @@ describe('Tree Component Render', () => {
             defaultExpandAll: true,
             checkable: true,
             selectedKeys,
-            multiple: true
-          }
+            multiple: true,
+          },
         });
         const selectedNodes = wrapper.findAll('.ux-tree-node-selected');
         expect(selectedNodes.length).toBe(selectedKeys.length);
 
         wrapper.find('[title="0-1-0-2"]').trigger('click');
-        wrapper.vm.$nextTick(_ => {
+        wrapper.vm.$nextTick(() => {
           expect(wrapper.findAll('.ux-tree-node-selected').length).toBe(3);
         });
       });
@@ -319,14 +345,14 @@ describe('Tree Component Render', () => {
           propsData: {
             dataSource,
             draggable: true,
-            defaultExpandAll: true
-          }
+            defaultExpandAll: true,
+          },
         });
+        await waitTime();
         const mockDrag = jest.fn();
         wrapper.vm.$on('drop', mockDrag);
         // 将0-0-0-2拖到0-0-0-0之前
-        const targetChildTree = wrapper.find('.ux-tree-child-tree-open .ux-tree-child-tree-open');
-        const targetNodes = targetChildTree.findAll('ul li');
+        const targetNodes = wrapper.find('.ux-tree-child-tree-open .ux-tree-child-tree-open').findAll('ul li');
         const dragNode = targetNodes.at(2);
         const dropNode = targetNodes.at(0);
         // const { top, bottom, height } = dragNode.element.getBoundingClientRect();
@@ -337,21 +363,23 @@ describe('Tree Component Render', () => {
         dropNode.trigger('dragover', { clientY: 174 });
         dropNode.trigger('drop');
 
-        await waitTime(20);
+        await waitTime(200);
 
         expect(mockDrag).toHaveBeenCalledTimes(1);
-        const { dragOverGap, dragNode: { key } } = mockDrag.mock.calls[0][0];
+        const {
+          dragOverGap,
+          dragNode: { key },
+        } = mockDrag.mock.calls[0][0];
         expect(dragOverGap).toBe('top');
         expect(key).toBe('0-0-0-2');
 
-        const afterDraggedNodes = targetChildTree.findAll('ul li>.ux-tree-node-content-wrapper');
+        // tree的dom结构已重新生成,需重新查找 hw 2019-01-10 fixed
+        const afterDraggedNodes = wrapper.find('.ux-tree-child-tree-open .ux-tree-child-tree-open').findAll('ul li>.ux-tree-node-content-wrapper');
         expect(afterDraggedNodes.length).toBe(3);
         expect(afterDraggedNodes.at(0).text()).toBe('0-0-0-2');
         expect(afterDraggedNodes.at(1).text()).toBe('0-0-0-0');
         expect(afterDraggedNodes.at(2).text()).toBe('0-0-0-1');
-
       });
-
     });
     describe('Tree Async', () => {
       it('async load node', async () => {
@@ -361,8 +389,8 @@ describe('Tree Component Render', () => {
             loadData: mockLoadFn,
             showIcon: true,
             lazy: true,
-            checkable: true
-          }
+            checkable: true,
+          },
         });
         await waitTime(20);
 
@@ -374,7 +402,10 @@ describe('Tree Component Render', () => {
 
         // 触发 0-1 的展开
         const rootNode = wrapper.findAll('ul.ux-tree > li');
-        rootNode.at(1).find('.ux-tree-switcher').trigger('click');
+        rootNode
+          .at(1)
+          .find('.ux-tree-switcher')
+          .trigger('click');
         expect(mockLoadFn).toHaveBeenCalledTimes(2);
         await waitTime(1200);
         expect(mockExpand).toHaveBeenCalled();
@@ -388,16 +419,16 @@ describe('Tree Component Render', () => {
     });
 
     describe('Tree Slot', () => {
-      it('test render slot scope',() => {
+      it('test render slot scope', () => {
         const wrapper = createTreeWrapper({
           propsData: {
             dataSource,
             defaultExpandAll: true,
-            selectedKeys: ['0-0-0']
+            selectedKeys: ['0-0-0'],
           },
           scopedSlots: {
-            renderContent: '<span slot-scope="{node}">{{node.title}}-level-{{node.level}}</span>'
-          }
+            renderContent: '<span slot-scope="{node}">{{node.title}}-level-{{node.level}}</span>',
+          },
         });
         const { total } = getNodesCount(dataSource);
         const nodeArray = wrapper.findAll('.ux-tree-node-content-wrapper');
@@ -406,17 +437,15 @@ describe('Tree Component Render', () => {
         expect(selectedNode.text()).toBe('0-0-0-level-1');
       });
 
-      it('test render function',() => {
-        const mockRenderContentFn = jest.fn(({node}) => {
-          return `${node.title}-level-fn-${node.level}`;
-        });
+      it('test render function', () => {
+        const mockRenderContentFn = jest.fn(({ node }) => `${node.title}-level-fn-${node.level}`);
         const wrapper = createTreeWrapper({
           propsData: {
             dataSource,
             defaultExpandAll: true,
             selectedKeys: ['0-0-0'],
-            renderContent: mockRenderContentFn
-          }
+            renderContent: mockRenderContentFn,
+          },
         });
         const { total } = getNodesCount(dataSource);
         expect(mockRenderContentFn).toHaveBeenCalledTimes(total);
@@ -429,18 +458,18 @@ describe('Tree Component Render', () => {
   });
   describe('Vitural Tree Render', () => {
     describe('Virtual Tree Sync', () => {
-      it('render virtual tree node',async () => {
-        const dataSource = createBigDataSource();
+      it('render virtual tree node', async () => {
+        const dataSrc = createBigDataSource();
         const viewCount = 20;
         const wrapper = createVirtualTreeWrapper({
           propsData: {
-            dataSource,
+            dataSource: dataSrc,
             checkable: true,
             multiple: true,
             viewCount,
             checkedKeys: ['0-0-0', '0-0-1', '0-0-2'],
-            selectedKeys: ['0-0-2']
-          }
+            selectedKeys: ['0-0-2'],
+          },
         });
         const mockNodeClick = jest.fn();
         wrapper.vm.$on('node-click', mockNodeClick);
@@ -454,7 +483,11 @@ describe('Tree Component Render', () => {
         expect(nodeArray.at(nodeArray.length - 1).text()).toBe('0-39');
 
         // 0-0节点半选
-        expect(wrapper.find('.ux-tree-treenode-checkbox-indeterminate .ux-tree-node-content-wrapper').text()).toBe('0-0');
+        expect(
+          wrapper
+            .find('.ux-tree-treenode-checkbox-indeterminate .ux-tree-node-content-wrapper')
+            .text()
+        ).toBe('0-0');
         // 展开 0-0
         wrapper.find('ul li:first-child .ux-tree-switcher').trigger('click');
         expect(mockNodeClick).not.toHaveBeenCalled();
@@ -470,15 +503,15 @@ describe('Tree Component Render', () => {
       });
 
       it('test viewCount and beach', async () => {
-        const dataSource = createBigDataSource();
+        const dataSrc = createBigDataSource();
         const bench = 20;
         const wrapper = createVirtualTreeWrapper({
           propsData: {
-            dataSource,
+            dataSource: dataSrc,
             checkable: true,
             multiple: true,
-            bench
-          }
+            bench,
+          },
         });
         expect(wrapper.findAll('.ux-tree-node-content-wrapper').length).toBe(30 + bench);
       });
@@ -492,8 +525,8 @@ describe('Tree Component Render', () => {
             loadData: mockLoadFn,
             showIcon: true,
             lazy: true,
-            checkable: true
-          }
+            checkable: true,
+          },
         });
         await waitTime(20);
 
@@ -523,20 +556,20 @@ describe('Tree Component Render', () => {
     });
 
     describe('Virtual Tree Slot', () => {
-      it('test render virtual node slot scope',() => {
-        const dataSource = createBigDataSource(100, 10, 10);
+      it('test render virtual node slot scope', () => {
+        const dataSrc = createBigDataSource(100, 10, 10);
         const wrapper = createVirtualTreeWrapper({
           propsData: {
-            dataSource,
+            dataSource: dataSrc,
             defaultExpandAll: true,
             selectedKeys: ['0-0-0'],
-            viewCount: 20
+            viewCount: 20,
           },
           scopedSlots: {
-            renderContent: '<span slot-scope="{node}">{{node.title}}-level-{{node.level}}</span>'
-          }
+            renderContent: '<span slot-scope="{node}">{{node.title}}-level-{{node.level}}</span>',
+          },
         });
-        const { total } = getNodesCount(dataSource);
+        const { total } = getNodesCount(dataSrc);
 
         const nodeArray = wrapper.findAll('.ux-tree-node-content-wrapper');
         expect(nodeArray.length).toEqual(40);
@@ -548,17 +581,17 @@ describe('Tree Component Render', () => {
 
     describe('Virtual Tree Scroll', () => {
       it('virtual scroll ', async () => {
-        const dataSource = createBigDataSource(10, 10, 0);
+        const dataSrc = createBigDataSource(10, 10, 0);
         const wrapper = createVirtualTreeWrapper({
           propsData: {
-            dataSource,
+            dataSource: dataSrc,
             defaultExpandAll: true,
             selectedKeys: ['0-0-0'],
-            viewCount: 20
+            viewCount: 20,
           },
           scopedSlots: {
-            renderContent: '<span slot-scope="{node}">{{node.title}}-level-{{node.level}}</span>'
-          }
+            renderContent: '<span slot-scope="{node}">{{node.title}}-level-{{node.level}}</span>',
+          },
         });
         const vslRef = wrapper.find('.virtual-wrap');
         wrapper.vm.$refs.vtl.$refs.vsl.scrollTop = 1500;

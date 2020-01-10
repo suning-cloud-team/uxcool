@@ -5,7 +5,8 @@
           :key="i"
           :title="w.title"
           :class="cellClasses(w)"
-          role="columnheader">
+          role="columnheader"
+      >
         <span :class="`${prefixCls}-column-header-inner`">
           {{ w.name }}
         </span>
@@ -28,6 +29,10 @@
       },
       value: {
         type: Date,
+        default: undefined,
+      },
+      selectedValue: {
+        type: [Date, Array],
         default: undefined,
       },
       locale: {

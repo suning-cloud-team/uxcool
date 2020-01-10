@@ -4,6 +4,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue'],
   moduleNameMapper: {
     '@suning/v-datepicker/es/locale/([^/]+)': '<rootDir>/packages/v-datepicker/src/locale/$1',
+    '@suning/v-tooltip/es/placements$': '<rootDir>/packages/v-tooltip/src/placements.js',
     '@suning/(v-(?!test-utils)[^/]+)': '<rootDir>/packages/$1/src/',
   },
   transform: {

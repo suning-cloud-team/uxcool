@@ -1,0 +1,33 @@
+.job_branch_only: &ref_0
+  only:
+    - /^(unit-.+|master)$/
+variables:
+  bash_storage: /home/gitlab-multi-runner/bash
+  fedci_identify: 4bd04246b5ea9b7a8196866a9745da297dd5e6dd
+  dest_paths: coverage/
+stages:
+  - unittest
+  - fedci_deploy
+cache:
+  key: '$CI_COMMIT_REF_NAME'
+  paths:
+    - node_modules/
+unittest:
+  stage: unittest
+  '<<': *ref_0
+  before_script:
+    - npm run bootstrap:ignore-optional
+  script:
+    - echo 'unit test start',
+    - npm test -- --coverage
+    - echo 'unit test end'
+  coverage: /All files[^|]*\|[^|]*\s+(\d+\.\d+)/
+  artifacts:
+    name: '${CI_BUILD_REF_NAME}_${CI_BUILD_NAME}'
+    paths:
+      - $dest_paths
+fedci_deploy:
+  stage: fedci_deploy
+  '<<': *ref_0
+  script:
+    - $bash_storage/deploy.js

@@ -14,7 +14,8 @@
            :popup-class="tooltipClass"
            :popup-style="tooltipStyle"
            :get-popup-container="getPopupContainer"
-           @on-popup-visible-change="onPopupVisible">
+           @on-popup-visible-change="onPopupVisible"
+  >
     <template slot="trigger">
       <slot />
     </template>
@@ -73,7 +74,7 @@
           if (vals.length === 0) {
             return false;
           }
-          return vals.every(v => ['none', 'click', 'hover', 'focus'].indexOf(v) > -1);
+          return vals.every((v) => ['none', 'click', 'hover', 'focus'].indexOf(v) > -1);
         },
       },
       destroyTooltipOnHide: {
@@ -97,9 +98,10 @@
         type: Number,
         default: 0,
       },
+      // ms
       mouseLeaveDelay: {
         type: Number,
-        default: 0.1,
+        default: 100,
       },
       transitionName: {
         type: String,

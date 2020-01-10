@@ -110,13 +110,15 @@ export default {
       return !!this.pagination;
     },
     normalizeData() {
-      const { dataSource, hasPagination, innerPager: { current, pageSize } } = this;
+      const {
+        dataSource,
+        hasPagination,
+        innerPager: { current, pageSize },
+      } = this;
       let data = dataSource;
-
       if (hasPagination && data.length > pageSize) {
         data = data.slice((current - 1) * pageSize, current * pageSize);
       }
-
       return data;
     },
     pagerElement() {
@@ -129,6 +131,9 @@ export default {
         this.initPager();
       },
       deep: true,
+    },
+    dataSource() {
+      this.initPager();
     },
   },
   created() {
@@ -143,7 +148,11 @@ export default {
       return Math.max(Math.min(current, max), 1);
     },
     onPaginationChange(current, pageSize) {
-      const { pagination: { onChange }, innerPager, setInnerPager } = this;
+      const {
+        pagination: { onChange },
+        innerPager,
+        setInnerPager,
+      } = this;
 
       setInnerPager({ ...innerPager, current });
 
@@ -159,7 +168,7 @@ export default {
         size,
         hasPagination,
         pagination,
-        normalizeData,
+        dataSource,
         onPaginationChange,
         setInnerPager,
         resetPagerCurrent,
@@ -170,7 +179,6 @@ export default {
       let pager = {
         size: size === 'small' ? size : '',
         current: 1,
-        total: normalizeData.length,
         pageSize: 10,
         position: 'bottom',
       };
@@ -180,9 +188,9 @@ export default {
         pager = { ...pager, ...pagination };
       }
 
+      pager.total = dataSource.length;
       pager.current = resetPagerCurrent(pager.current, pager.total, pager.pageSize);
       pager.on = { change: onPaginationChange };
-
       setInnerPager(pager);
     },
     getGridPropVal(propName) {
@@ -194,7 +202,11 @@ export default {
       return Math.floor(24 / grid[propName]);
     },
     renderEmptyText() {
-      const { $slots: { emptyText: slotEmptyText }, prefixCls, emptyText } = this;
+      const {
+        $slots: { emptyText: slotEmptyText },
+        prefixCls,
+        emptyText,
+      } = this;
       return <div class={`${prefixCls}-empty-text`}>{slotEmptyText || emptyText}</div>;
     },
     renderPagination() {
@@ -280,7 +292,7 @@ export default {
 
     if (childrenElement) {
       childrenElement = grid ? <Row gutter={grid.gutter}>{childrenElement}</Row> : childrenElement;
-    } else if (!slotDefault && !isLoading) {
+    } else if (!isLoading) {
       childrenElement = renderEmptyText();
     }
 
@@ -291,9 +303,9 @@ export default {
             classes,
             {
               [`${prefixCls}-something-after-last-item`]: !!(
-                slotLoadMore ||
-                pagerElement.bottom ||
-                footerElement
+                slotLoadMore
+                || pagerElement.bottom
+                || footerElement
               ),
             },
           ],
