@@ -47,14 +47,16 @@ function modalConfrim(props) {
       },
       methods: {
         onModalEnter() {
-          const { $refs: { okBtnRef } } = this;
+          const {
+            $refs: { okBtnRef },
+          } = this;
           if (okBtnRef) {
             okBtnRef.focus();
           }
         },
       },
       render() {
-        const { attrs, listeners, onModalEnter } = this;
+        const { attrs, listeners } = this;
         if (!attrs) {
           return null;
         }
@@ -92,7 +94,7 @@ function modalConfrim(props) {
 
         const modalContent = dangerouslySetInnerHTML ? (
           <div class={`${prefixCls}-content`} {...{ domProps: { innerHTML: content } }} />
-          ) : (
+        ) : (
           <div class={`${prefixCls}-content`}>{content}</div>
         );
         return (

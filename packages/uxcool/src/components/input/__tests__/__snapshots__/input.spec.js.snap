@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test input group compact mode 1`] = `
+<span
+  class="ux-input-group ux-input-group-compact"
+>
+  <input
+    class="ux-input"
+    style="width: 50%;"
+  />
+  <input
+    class="ux-input"
+    style="width: 50%;"
+  />
+</span>
+`;
+
+exports[`test input group different size 1`] = `
+<span
+  class="ux-input-group ux-input-group-sm"
+>
+  <input
+    class="ux-input"
+  />
+</span>
+`;
+
+exports[`test input group different size 2`] = `
+<span
+  class="ux-input-group ux-input-group-sm"
+>
+  <input
+    class="ux-input"
+  />
+</span>
+`;

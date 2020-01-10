@@ -321,7 +321,6 @@ describe('Trigger Render', () => {
     });
 
     it('change trigger slot', async () => {
-      jest.setTimeout(200000);
       const mockClick = jest.fn();
       const wrapper = mount(SlotTrigger, {
         sync: false,

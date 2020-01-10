@@ -1,15 +1,15 @@
 import isNaN from 'lodash/isNaN';
-import { isDef } from '@suning/v-utils/cjs/utils';
+import { isDef } from '@suning/v-utils';
 
 export { isNaN };
 
 export function isNotCompleteNumber(v) {
   return (
-    isNaN(Number(v)) ||
-    v === '' ||
-    v === null ||
-    v === undefined ||
-    (v && v.toString().slice('.') === v.length - 1)
+    isNaN(Number(v))
+    || v === ''
+    || v === null
+    || v === undefined
+    || (v && v.toString().slice('.') === v.length - 1)
   );
 }
 

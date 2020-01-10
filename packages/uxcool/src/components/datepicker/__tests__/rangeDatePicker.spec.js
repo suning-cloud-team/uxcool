@@ -299,10 +299,10 @@ describe('rangeDatePicker', () => {
     ).toBeTruthy();
   });
 
-  describe('locale', () => {
+  describe.skip('locale', () => {
     const mockDate = dayjs('2019-11-03');
     const values = [mockDate.toDate(), mockDate.add(2, 'month').toDate()];
-    it.only('should work when use localeEN.lang', async () => {
+    it('should work when use localeEN.lang', async () => {
       const wrapper = await mountPicker({
         propsData: {
           locale: localeEN.lang,

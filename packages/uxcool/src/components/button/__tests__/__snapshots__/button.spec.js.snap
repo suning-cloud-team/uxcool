@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button render different buton types correctly 1`] = `
+<button
+  class="ux-btn ux-btn-primary"
+  type="button"
+/>
+`;
+
+exports[`button render different buton types correctly 2`] = `
+<button
+  class="ux-btn ux-btn-ghost"
+  type="button"
+/>
+`;
+
+exports[`button render different buton types correctly 3`] = `
+<button
+  class="ux-btn ux-btn-dashed"
+  type="button"
+/>
+`;
+
+exports[`button render different buton types correctly 4`] = `
+<button
+  class="ux-btn ux-btn-danger"
+  type="button"
+/>
+`;
+
+exports[`button render different buton types correctly 5`] = `
+<button
+  class="ux-btn"
+  type="button"
+/>
+`;
+
+exports[`button render different sizes correctly 1`] = `
+<button
+  class="ux-btn ux-btn-sm"
+  type="button"
+/>
+`;
+
+exports[`button render different sizes correctly 2`] = `
+<button
+  class="ux-btn"
+  type="button"
+/>
+`;
+
+exports[`button render different sizes correctly 3`] = `
+<button
+  class="ux-btn ux-btn-lg"
+  type="button"
+/>
+`;

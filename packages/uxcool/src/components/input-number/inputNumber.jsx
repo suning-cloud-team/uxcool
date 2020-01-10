@@ -1,6 +1,8 @@
 import { isDef } from '@suning/v-utils';
 import { buildComponentName } from '../utils';
-import { isNotCompleteNumber, getMaxPrecision, isNaN, getRatio, getValidateValue } from './utils';
+import {
+  isNotCompleteNumber, getMaxPrecision, isNaN, getRatio, getValidateValue
+} from './utils';
 import InputHandler from './inputHandler';
 
 // prettier-ignore
@@ -305,7 +307,7 @@ export default {
       return (((precisionFactor * val) - (precisionFactor * step * ratio)) / precisionFactor)
         .toFixed(precision);
     },
-    _step(e, type, ratio = 1, autoStep = true, recursive = false) {
+    pStep(e, type, ratio = 1, autoStep = true, recursive = false) {
       const {
         min,
         max,
@@ -341,18 +343,21 @@ export default {
       this.focused = true;
 
       if (autoStep && val > min && val < max) {
-        this.autoStepTimer = setTimeout(() => {
-          this[type](e, ratio, true, true);
-        }, recursive ? 200 : 600);
+        this.autoStepTimer = setTimeout(
+          () => {
+            this[type](e, ratio, true, true);
+          },
+          recursive ? 200 : 600
+        );
       }
     },
     up(e, ratio, autoStep, recursive) {
-      const { _step } = this;
-      _step(e, 'up', ratio, autoStep, recursive);
+      const { pStep } = this;
+      pStep(e, 'up', ratio, autoStep, recursive);
     },
     down(e, ratio, autoStep, recursive) {
-      const { _step } = this;
-      _step(e, 'down', ratio, autoStep, recursive);
+      const { pStep } = this;
+      pStep(e, 'down', ratio, autoStep, recursive);
     },
     onInput(e) {
       const { parser, onInputChange } = this;
@@ -391,13 +396,17 @@ export default {
       this.$emit('keyup', e);
     },
     focus() {
-      const { $refs: { inputRef } } = this;
+      const {
+        $refs: { inputRef },
+      } = this;
       if (inputRef) {
         inputRef.focus();
       }
     },
     blur() {
-      const { $refs: { inputRef } } = this;
+      const {
+        $refs: { inputRef },
+      } = this;
       if (inputRef) {
         inputRef.blur();
       }
@@ -426,7 +435,7 @@ export default {
         : {
           mousedown: up,
           ...baseOn,
-      };
+        };
       upOn = isCanEditable && !upDisabledClass ? upOn : null;
 
       let downOn = useTouch
@@ -437,7 +446,7 @@ export default {
         : {
           mousedown: down,
           ...baseOn,
-      };
+        };
       downOn = isCanEditable && !downDisabledClass ? downOn : null;
 
       return (

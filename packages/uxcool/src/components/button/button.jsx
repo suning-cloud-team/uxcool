@@ -211,8 +211,7 @@ export default {
 
     const on = getListeners();
     let slotDefault = $slots.default;
-    slotDefault =
-      slotDefault && (!iconType || iconType === 'loading') ? insertSpace(slotDefault) : slotDefault;
+    slotDefault = slotDefault && (!iconType || iconType === 'loading') ? insertSpace(slotDefault) : slotDefault;
 
     const slotClasses = {
       [`${prefixCls}-icon-only`]: !slotDefault && icon,
