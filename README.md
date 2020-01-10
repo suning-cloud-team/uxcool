@@ -1,4 +1,6 @@
 # UXCool
+[![build status](http://opensource.cnsuning.com/uxcool/lerna-uxcool/badges/master/build.svg)](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/master)
+[![coverage report](http://opensource.cnsuning.com/uxcool/lerna-uxcool/badges/master/coverage.svg)](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/master)
 
 [示例网站](http://uxcool.cnsuning.com/vue/index.html)
 
