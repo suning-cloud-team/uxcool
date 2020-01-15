@@ -180,7 +180,7 @@
         const { showOk, showTime } = this;
         return showOk === true || (showOk !== false && !!showTime);
       },
-      normlizeLocale() {
+      normalizeLocale() {
         const { locale } = this;
         if (!locale) {
           return localeCN.lang;
@@ -198,7 +198,7 @@
           openValue,
           dateFormat,
           isShowOk,
-          normlizeLocale,
+          normalizeLocale,
         } = this;
         return {
           ...omit($props, ['format', 'allowClear', 'size', 'placeholder']),
@@ -208,15 +208,15 @@
           value: openValue || undefined,
           format: dateFormat,
           showOk: isShowOk,
-          locale: normlizeLocale,
+          locale: normalizeLocale,
         };
       },
       bindListeners() {
         return omit(this.$listeners, ['change']);
       },
       startPlaceholder() {
-        const { placeholder, normlizeLocale } = this;
-        const { rangePlaceholder } = normlizeLocale;
+        const { placeholder, normalizeLocale } = this;
+        const { rangePlaceholder } = normalizeLocale;
         let holder = rangePlaceholder[0];
         if (placeholder) {
           if (Array.isArray(placeholder)) {
@@ -230,8 +230,8 @@
         return holder;
       },
       endPlaceholder() {
-        const { placeholder, normlizeLocale } = this;
-        const { rangePlaceholder } = normlizeLocale;
+        const { placeholder, normalizeLocale } = this;
+        const { rangePlaceholder } = normalizeLocale;
         let holder = rangePlaceholder[1];
         if (placeholder) {
           if (Array.isArray(placeholder)) {

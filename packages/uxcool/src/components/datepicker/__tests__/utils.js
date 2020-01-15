@@ -32,7 +32,16 @@ export async function selectDate(wrapper, date, format = 'YYYY-MM-DD', delay = 2
   await waitTime(delay);
 }
 
-export function noop() {}
+/**
+ * 选择月份
+ * @param {Wrapper} wrapper
+ * @param {string|Date} date
+ * @param {string} format
+ * @param {number} delay
+ */
+export async function selectMonth(wrapper, date, format = 'M月', delay = 20) {
+  await selectDate(wrapper, date, format, delay);
+}
 
 /**
  * 获取Trigger实例

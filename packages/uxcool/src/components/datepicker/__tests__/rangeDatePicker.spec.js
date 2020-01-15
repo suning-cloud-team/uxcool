@@ -13,7 +13,7 @@ import RangeDatePicker from '../rangeDatePicker.vue';
 import localeCN from '../locale/zh_CN';
 import localeEN from '../locale/en_US';
 
-describe('rangeDatePicker', () => {
+describe('RangeDatePicker', () => {
   const mountPicker = mountPickerFactory(RangeDatePicker);
   const currentMonthSelector = '.ux-calendar-cell:not(.ux-calendar-last-month-cell)';
   it('created', async () => {
