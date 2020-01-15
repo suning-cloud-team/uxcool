@@ -1,14 +1,13 @@
 <template>
-  <div :class="classes">
-
-  </div>
+  <div :class="classes" />
 </template>
 
 <script>
   export default {
     name: 'TimePickerHeader',
     props: {
-      prefixCls: String,
+      prefixCls: { type: String, default: '' },
+      value: { type: Date, default: undefined },
     },
     computed: {
       classes() {
