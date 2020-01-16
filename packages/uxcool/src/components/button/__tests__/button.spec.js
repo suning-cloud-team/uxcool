@@ -46,6 +46,21 @@ describe('button', () => {
     expect(wrapper.contains('.ux-btn-loading')).not.toBeTruthy();
     await waitTime(501);
     expect(wrapper.contains('.ux-btn-loading')).toBeTruthy();
+    wrapper.destroy();
+  });
+
+  it('render loading changed correctly', async () => {
+    const wrapper = await mountButton({
+      propsData: {
+        loading: { delay: 100 },
+      },
+      sync: false,
+    });
+    expect(wrapper.contains('.ux-btn-loading')).not.toBeTruthy();
+    wrapper.setProps({ loading: { delay: 200 } });
+    await waitTime(301);
+    expect(wrapper.contains('.ux-btn-loading')).toBeTruthy();
+    wrapper.destroy();
   });
 
   it.each(['submit', 'button', 'reset'])('render html type correctly', async (htmlType) => {
@@ -96,5 +111,24 @@ describe('button', () => {
     });
     wrapper.trigger('click');
     expect(clickFn).toHaveBeenCalledTimes(1);
+    wrapper.destroy();
+  });
+
+  it('render button text is TwoCNChar correctly', async () => {
+    const wrapper = await mountButton({
+      render() {
+        return (
+          <div>
+            <Button>中国</Button>
+            <Button>
+            <span>测试</span>
+            </Button>
+          <Button></Button>
+          </div>
+        );
+      },
+    });
+    expect(wrapper.find('.ux-btn').text()).toBe('中 国');
+    wrapper.destroy();
   });
 });
