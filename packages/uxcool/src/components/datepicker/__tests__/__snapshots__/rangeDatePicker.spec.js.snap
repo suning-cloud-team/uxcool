@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rangeDatePicker disabled-date should disabled 2019-05-03 ~ 2019-06-08 1`] = `
+exports[`RangeDatePicker disabled-date should disabled 2019-05-03 ~ 2019-06-08 1`] = `
 <div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" style="">
   <div class="ux-input ux-calendar-picker-input"><input placeholder="开始日期" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <span class="ux-calendar-range-picker-separator"> ~ </span> <input placeholder="结束日期" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <i class="fu fu-close_circle ux-calendar-picker-clear"></i> <span class="ux-calendar-picker-icon"></span></div>
 </div>
@@ -400,7 +400,7 @@ exports[`rangeDatePicker disabled-date should disabled 2019-05-03 ~ 2019-06-08 1
 </div>
 `;
 
-exports[`rangeDatePicker disabled-time should disabled hours [4,8,10] 1`] = `
+exports[`RangeDatePicker disabled-time should disabled hours [4,8,10] 1`] = `
 <div class="ux-calendar-time-picker">
   <div class="ux-calendar-time-picker-panel">
     <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
@@ -1309,7 +1309,7 @@ exports[`rangeDatePicker disabled-time should disabled hours [4,8,10] 1`] = `
 </div>
 `;
 
-exports[`rangeDatePicker disabled-time should disabled minute [2,7,9,24,59] when hour 14 1`] = `
+exports[`RangeDatePicker disabled-time should disabled minute [2,7,9,24,59] when hour 14 1`] = `
 <div class="ux-calendar-time-picker">
   <div class="ux-calendar-time-picker-panel">
     <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
@@ -2218,7 +2218,7 @@ exports[`rangeDatePicker disabled-time should disabled minute [2,7,9,24,59] when
 </div>
 `;
 
-exports[`rangeDatePicker disabled-time should disabled sencod [4, 7,10,22,35,48] when hour 14, minute 15 1`] = `
+exports[`RangeDatePicker disabled-time should disabled sencod [4, 7,10,22,35,48] when hour 14, minute 15 1`] = `
 <div class="ux-calendar-time-picker">
   <div class="ux-calendar-time-picker-panel">
     <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
@@ -3127,7 +3127,7 @@ exports[`rangeDatePicker disabled-time should disabled sencod [4, 7,10,22,35,48]
 </div>
 `;
 
-exports[`rangeDatePicker disabled-time should disabled start panel minute [30, 44] when hour 18 1`] = `
+exports[`RangeDatePicker disabled-time should disabled start panel minute [30, 44] when hour 18 1`] = `
 <div class="ux-calendar-time-picker">
   <div class="ux-calendar-time-picker-panel">
     <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
@@ -3583,7 +3583,7 @@ exports[`rangeDatePicker disabled-time should disabled start panel minute [30, 4
 </div>
 `;
 
-exports[`rangeDatePicker disabled-time should disabled start panel minute [30, 44] when hour 18 2`] = `
+exports[`RangeDatePicker disabled-time should disabled start panel minute [30, 44] when hour 18 2`] = `
 <div class="ux-calendar-time-picker">
   <div class="ux-calendar-time-picker-panel">
     <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
@@ -4039,7 +4039,7 @@ exports[`rangeDatePicker disabled-time should disabled start panel minute [30, 4
 </div>
 `;
 
-exports[`rangeDatePicker locale should work when use localeEN 1`] = `
+exports[`RangeDatePicker locale should work when use localeEN 1`] = `
 <div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" style="">
   <div class="ux-input ux-calendar-picker-input"><input placeholder="Start date" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <span class="ux-calendar-range-picker-separator"> ~ </span> <input placeholder="End date" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <i class="fu fu-close_circle ux-calendar-picker-clear"></i> <span class="ux-calendar-picker-icon"></span></div>
 </div>
@@ -4434,7 +4434,7 @@ exports[`rangeDatePicker locale should work when use localeEN 1`] = `
 </div>
 `;
 
-exports[`rangeDatePicker locale should work when use localeEN.lang 1`] = `
+exports[`RangeDatePicker locale should work when use localeEN.lang 1`] = `
 <div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" style="">
   <div class="ux-input ux-calendar-picker-input"><input placeholder="Start date" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <span class="ux-calendar-range-picker-separator"> ~ </span> <input placeholder="End date" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <i class="fu fu-close_circle ux-calendar-picker-clear"></i> <span class="ux-calendar-picker-icon"></span></div>
 </div>

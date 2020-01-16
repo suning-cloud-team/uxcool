@@ -76,9 +76,17 @@ export default {
         [`${inputPrefix}-${map[size]}`]: size !== 'default',
       };
     },
+    normalizeLocale() {
+      const { locale } = this;
+      if (!locale) {
+        return localeCN.lang;
+      }
+
+      return locale.lang ? locale.lang : locale;
+    },
     inputPlaceholder() {
-      const { placeholder, locale, mode } = this;
-      return placeholder || locale[`${mode}Placeholder`] || locale.placeholder;
+      const { placeholder, normalizeLocale, mode } = this;
+      return placeholder || normalizeLocale[`${mode}Placeholder`] || normalizeLocale.placeholder;
     },
   },
   watch: {
@@ -116,6 +124,7 @@ export default {
       pickerClasses,
       pickerInputClass,
       mode,
+      normalizeLocale,
       disabled,
       innerValue,
       formatValue,
@@ -129,6 +138,7 @@ export default {
       value: innerValue,
       pickerPrefixCls: `${prefixCls}-picker-container`,
       mode,
+      locale: normalizeLocale,
     };
     const pickerEvents = {
       ...$listeners,
