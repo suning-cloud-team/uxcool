@@ -84,4 +84,27 @@ describe('progress', () => {
     });
     expect(wrapper.element).toMatchSnapshot();
   });
+
+  it.each(['left', 'right', 'bottom'])('render circle on differe pos', async (pos) => {
+    const wrapper = await mountProgress({
+      propsData: {
+        type: 'circle',
+        percentage: 30,
+        gapPosition: pos,
+        status: 'active'
+      },
+    });
+    expect(wrapper.find('.ux-progress-inner').element.style.width).toBe('120px');
+  });
+
+  it.each([-10, 110])('render circle with  abnormal percentage', async (percentage) => {
+    const wrapper = await mountProgress({
+      propsData: {
+        type: 'circle',
+        percentage,
+        status: 'default'
+      },
+    });
+    expect(wrapper.element).toMatchSnapshot();
+  });
 });
