@@ -2,6 +2,7 @@ import {
   mount, waitTime, removePopup, $
 } from '@suning/v-test-utils';
 import { UxDropdown, UxDropdownButton } from '..';
+import Menu from '../../menu';
 
 const triggerDropdownWrapper = (
   trigger = 'hover',
@@ -95,4 +96,122 @@ it('render dropdown-button correctly', async () => {
   await waitTime(200);
   expect(clickFn).toBeCalled();
   removePopup();
+});
+
+it('render dropdown-button disable correctly', async () => {
+  const clickFn = jest.fn();
+  const wrapper = mount(UxDropdownButton, {
+    slots: {
+      overlay: 'popup content',
+    },
+    propsData: {
+      disabled: true,
+    },
+    listeners: {
+      click: clickFn,
+    },
+    attachToDocument: true,
+    sync: false,
+  });
+  await waitTime(20);
+  wrapper.find('button').trigger('click');
+  await waitTime(200);
+  expect(clickFn).not.toBeCalled();
+  removePopup();
+});
+
+it('render dropdown placement correctly', async () => {
+  Object.defineProperty(HTMLButtonElement.prototype, 'offsetWidth', {
+    get: () => 34
+  });
+  const wrapper = mount(UxDropdown, {
+    slots: {
+      trigger: '<button>testButton</button>',
+      overlay: 'popup content',
+    },
+    propsData: {
+      placement: 'topLeft',
+      trigger: 'click',
+      matchTriggerWidth: true
+    },
+    attachToDocument: true,
+    sync: false,
+  });
+  await waitTime(20);
+  wrapper.trigger('click');
+  await waitTime(200);
+  // console.log(wrapper.html());
+  expect($('[role=align-popup]')[0]).toBeDefined();
+  expect($('[role=align-popup]')[0].getAttribute('class')).toEqual(expect.stringContaining('ux-dropdown-placement-topLeft'));
+  // await waitTime(200);
+  removePopup();
+  wrapper.destroy();
+});
+
+it('render dropdown disable correctly', async () => {
+  const wrapper = mount(UxDropdown, {
+    slots: {
+      trigger: '<button>testButton</button>',
+      overlay: 'popup content',
+    },
+    propsData: {
+      disabled: true,
+      trigger: 'click'
+    },
+    attachToDocument: true,
+    sync: false,
+  });
+  await waitTime(20);
+  wrapper.trigger('click');
+  await waitTime(200);
+  // console.log(wrapper.html());
+  expect($('[role=align-popup]')[0]).not.toBeDefined();
+  wrapper.destroy();
+});
+
+it('render visible change correctly', async () => {
+  const wrapper = mount({
+    template: `
+    <div ref="containerRef" >
+      <ux-dropdown-button v-model="visible"
+                          :get-popup-container="getContainer"
+                          :trigger="trigger">
+        dropdown button
+        <ux-menu slot="overlay" class="overlay"
+                 multiple>
+          <ux-menu-item name="sub-menu-item-3-1">sub-menu-item-1</ux-menu-item>
+          <ux-menu-item name="sub-menu-item-3-2">sub-menu-item-2</ux-menu-item>
+        </ux-menu>
+      </ux-dropdown-button>
+    </div>
+    `,
+    data() {
+      return {
+        visible: false,
+        trigger: ['none', 'click']
+      };
+    },
+    components: {
+      UxDropdown,
+      UxDropdownButton,
+      UxMenuItem: Menu.MenuItem,
+      UxMenu: Menu,
+    },
+    methods: {
+      getContainer() {
+        return this.$refs.containerRef;
+      },
+    },
+  }, {
+    attachToDocument: true,
+    sync: false,
+  });
+  await waitTime(20);
+  wrapper.setData({ visible: true });
+  await waitTime(20);
+  expect(wrapper.find('.ux-dropdown').isVisible()).toBe(true);
+  wrapper.find('.ux-dropdown-menu-item').trigger('click');
+  await waitTime(200);
+  expect(wrapper.find('.ux-dropdown').isVisible()).toBe(false);
+  wrapper.destroy();
 });
