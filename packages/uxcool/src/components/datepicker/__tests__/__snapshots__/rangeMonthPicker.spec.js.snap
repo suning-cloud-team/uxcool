@@ -1,0 +1,470 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RangeMonthPicker disabled-month should disabled 2018-05 ~ 2019-08 1`] = `
+<div role="popup">
+  <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft " style="left: -999px; top: -1002px;">
+    <div class="ux-calendar-picker-container-content">
+      <div class="ux-calendar ux-calendar-month-range">
+        <div class="ux-calendar-month-panel">
+          <div class="ux-calendar-month-date-panel">
+            <div class="ux-calendar-month-range-part ux-calendar-month-range-left">
+              <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+                <div class="ux-calendar-month-calendar-content">
+                  <div class="ux-calendar-month-header-wrap">
+                    <div class="ux-calendar-header">
+                      <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2018年</a><a role="button" title="选择月份" class="ux-calendar-month-select">5月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                      <div>
+                        <div class="ux-calendar-month-panel">
+                          <div class="ux-calendar-month-panel-header"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-month-panel-prev-year-btn"></a> <a title="选择年份" role="button" class="ux-calendar-month-panel-year-select"><span class="ux-calendar-month-panel-year-select-content">
+        2018
+      </span></a>
+                            <!---->
+                          </div>
+                          <div class="ux-calendar-month-panel-body">
+                            <table role="monthgrid" cellspacing="0" class="ux-calendar-month-panel-table">
+                              <tbody class="ux-calendar-month-panel-tbody">
+                                <tr role="row">
+                                  <td role="gridcell" title="1月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">1月</a></td>
+                                  <td role="gridcell" title="2月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">2月</a></td>
+                                  <td role="gridcell" title="3月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">3月</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="4月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">4月</a></td>
+                                  <td role="gridcell" title="5月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-selected-start-month ux-calendar-month-panel-selected-month"><a class="ux-calendar-month-panel-month">5月</a></td>
+                                  <td role="gridcell" title="6月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">6月</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="7月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">7月</a></td>
+                                  <td role="gridcell" title="8月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">8月</a></td>
+                                  <td role="gridcell" title="9月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">9月</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="10月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">10月</a></td>
+                                  <td role="gridcell" title="11月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">11月</a></td>
+                                  <td role="gridcell" title="12月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">12月</a></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ux-calendar-month-range-part ux-calendar-month-range-right">
+              <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+                <div class="ux-calendar-month-calendar-content">
+                  <div class="ux-calendar-month-header-wrap">
+                    <div class="ux-calendar-header">
+                      <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2019年</a><a role="button" title="选择月份" class="ux-calendar-month-select">5月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                      <div>
+                        <div class="ux-calendar-month-panel">
+                          <div class="ux-calendar-month-panel-header">
+                            <!----> <a title="选择年份" role="button" class="ux-calendar-month-panel-year-select"><span class="ux-calendar-month-panel-year-select-content">
+        2019
+      </span></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-month-panel-next-year-btn"></a></div>
+                          <div class="ux-calendar-month-panel-body">
+                            <table role="monthgrid" cellspacing="0" class="ux-calendar-month-panel-table">
+                              <tbody class="ux-calendar-month-panel-tbody">
+                                <tr role="row">
+                                  <td role="gridcell" title="1月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">1月</a></td>
+                                  <td role="gridcell" title="2月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">2月</a></td>
+                                  <td role="gridcell" title="3月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">3月</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="4月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-in-range-cell"><a class="ux-calendar-month-panel-month">4月</a></td>
+                                  <td role="gridcell" title="5月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled ux-calendar-month-panel-selected-end-month ux-calendar-month-panel-selected-month"><a class="ux-calendar-month-panel-month">5月</a></td>
+                                  <td role="gridcell" title="6月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled"><a class="ux-calendar-month-panel-month">6月</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="7月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled"><a class="ux-calendar-month-panel-month">7月</a></td>
+                                  <td role="gridcell" title="8月" class="ux-calendar-month-panel-cell ux-calendar-month-panel-cell-disabled"><a class="ux-calendar-month-panel-month">8月</a></td>
+                                  <td role="gridcell" title="9月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">9月</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="10月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">10月</a></td>
+                                  <td role="gridcell" title="11月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">11月</a></td>
+                                  <td role="gridcell" title="12月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">12月</a></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeMonthPicker get-popup-container 1`] = `
+<div>
+  <div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" style="">
+    <div class="ux-input ux-calendar-picker-input"><input placeholder="开始月份" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-range-picker-separator"> ~ </span><input placeholder="结束月份" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-picker-icon"></span></div>
+  </div>
+  <div role="popup">
+    <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft slide-up-enter slide-up-enter-active" style="left: -999px; top: -1002px;">
+      <div class="ux-calendar-picker-container-content">
+        <div class="ux-calendar ux-calendar-month-range">
+          <div class="ux-calendar-month-panel">
+            <div class="ux-calendar-month-date-panel">
+              <div class="ux-calendar-month-range-part ux-calendar-month-range-left">
+                <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+                  <div class="ux-calendar-month-calendar-content">
+                    <div class="ux-calendar-month-header-wrap">
+                      <div class="ux-calendar-header">
+                        <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2020年</a><a role="button" title="选择月份" class="ux-calendar-month-select">1月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                        <div>
+                          <div class="ux-calendar-month-panel">
+                            <div class="ux-calendar-month-panel-header"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-month-panel-prev-year-btn"></a> <a title="选择年份" role="button" class="ux-calendar-month-panel-year-select"><span class="ux-calendar-month-panel-year-select-content">
+        2020
+      </span></a>
+                              <!---->
+                            </div>
+                            <div class="ux-calendar-month-panel-body">
+                              <table role="monthgrid" cellspacing="0" class="ux-calendar-month-panel-table">
+                                <tbody class="ux-calendar-month-panel-tbody">
+                                  <tr role="row">
+                                    <td role="gridcell" title="1月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">1月</a></td>
+                                    <td role="gridcell" title="2月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">2月</a></td>
+                                    <td role="gridcell" title="3月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">3月</a></td>
+                                  </tr>
+                                  <tr role="row">
+                                    <td role="gridcell" title="4月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">4月</a></td>
+                                    <td role="gridcell" title="5月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">5月</a></td>
+                                    <td role="gridcell" title="6月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">6月</a></td>
+                                  </tr>
+                                  <tr role="row">
+                                    <td role="gridcell" title="7月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">7月</a></td>
+                                    <td role="gridcell" title="8月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">8月</a></td>
+                                    <td role="gridcell" title="9月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">9月</a></td>
+                                  </tr>
+                                  <tr role="row">
+                                    <td role="gridcell" title="10月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">10月</a></td>
+                                    <td role="gridcell" title="11月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">11月</a></td>
+                                    <td role="gridcell" title="12月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">12月</a></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <!---->
+                          <!---->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ux-calendar-month-range-part ux-calendar-month-range-right">
+                <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+                  <div class="ux-calendar-month-calendar-content">
+                    <div class="ux-calendar-month-header-wrap">
+                      <div class="ux-calendar-header">
+                        <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2021年</a><a role="button" title="选择月份" class="ux-calendar-month-select">1月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                        <div>
+                          <div class="ux-calendar-month-panel">
+                            <div class="ux-calendar-month-panel-header">
+                              <!----> <a title="选择年份" role="button" class="ux-calendar-month-panel-year-select"><span class="ux-calendar-month-panel-year-select-content">
+        2021
+      </span></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-month-panel-next-year-btn"></a></div>
+                            <div class="ux-calendar-month-panel-body">
+                              <table role="monthgrid" cellspacing="0" class="ux-calendar-month-panel-table">
+                                <tbody class="ux-calendar-month-panel-tbody">
+                                  <tr role="row">
+                                    <td role="gridcell" title="1月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">1月</a></td>
+                                    <td role="gridcell" title="2月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">2月</a></td>
+                                    <td role="gridcell" title="3月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">3月</a></td>
+                                  </tr>
+                                  <tr role="row">
+                                    <td role="gridcell" title="4月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">4月</a></td>
+                                    <td role="gridcell" title="5月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">5月</a></td>
+                                    <td role="gridcell" title="6月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">6月</a></td>
+                                  </tr>
+                                  <tr role="row">
+                                    <td role="gridcell" title="7月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">7月</a></td>
+                                    <td role="gridcell" title="8月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">8月</a></td>
+                                    <td role="gridcell" title="9月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">9月</a></td>
+                                  </tr>
+                                  <tr role="row">
+                                    <td role="gridcell" title="10月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">10月</a></td>
+                                    <td role="gridcell" title="11月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">11月</a></td>
+                                    <td role="gridcell" title="12月" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">12月</a></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <!---->
+                          <!---->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeMonthPicker locale should work when use locale 1`] = `
+<div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" style="">
+  <div class="ux-input ux-calendar-picker-input"><input placeholder="Start month" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-range-picker-separator"> ~ </span><input placeholder="End month" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-picker-icon"></span></div>
+</div>
+<div role="popup">
+  <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft " style="left: -999px; top: -1002px;">
+    <div class="ux-calendar-picker-container-content">
+      <div class="ux-calendar ux-calendar-month-range">
+        <div class="ux-calendar-month-panel">
+          <div class="ux-calendar-month-date-panel">
+            <div class="ux-calendar-month-range-part ux-calendar-month-range-left">
+              <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+                <div class="ux-calendar-month-calendar-content">
+                  <div class="ux-calendar-month-header-wrap">
+                    <div class="ux-calendar-header">
+                      <div style="position: relative;"><a role="button" class="ux-calendar-prev-year-btn"></a> <a role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" class="ux-calendar-year-select">2019-05-03</a><a role="button" class="ux-calendar-month-select">May</a></span> <a role="button" class="ux-calendar-next-month-btn"></a> <a role="button" class="ux-calendar-next-year-btn"></a></div>
+                      <div>
+                        <div class="ux-calendar-month-panel">
+                          <div class="ux-calendar-month-panel-header"><a role="button" class="ux-calendar-month-panel-prev-year-btn"></a> <a role="button" class="ux-calendar-month-panel-year-select"><span class="ux-calendar-month-panel-year-select-content">
+        2019
+      </span></a>
+                            <!---->
+                          </div>
+                          <div class="ux-calendar-month-panel-body">
+                            <table role="monthgrid" cellspacing="0" class="ux-calendar-month-panel-table">
+                              <tbody class="ux-calendar-month-panel-tbody">
+                                <tr role="row">
+                                  <td role="gridcell" title="Jan" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jan</a></td>
+                                  <td role="gridcell" title="Feb" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Feb</a></td>
+                                  <td role="gridcell" title="Mar" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Mar</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Apr" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Apr</a></td>
+                                  <td role="gridcell" title="May" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">May</a></td>
+                                  <td role="gridcell" title="Jun" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jun</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Jul" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jul</a></td>
+                                  <td role="gridcell" title="Aug" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Aug</a></td>
+                                  <td role="gridcell" title="Sep" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Sep</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Oct" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Oct</a></td>
+                                  <td role="gridcell" title="Nov" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Nov</a></td>
+                                  <td role="gridcell" title="Dec" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Dec</a></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ux-calendar-month-range-part ux-calendar-month-range-right">
+              <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+                <div class="ux-calendar-month-calendar-content">
+                  <div class="ux-calendar-month-header-wrap">
+                    <div class="ux-calendar-header">
+                      <div style="position: relative;"><a role="button" class="ux-calendar-prev-year-btn"></a> <a role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" class="ux-calendar-year-select">2020-05-03</a><a role="button" class="ux-calendar-month-select">May</a></span> <a role="button" class="ux-calendar-next-month-btn"></a> <a role="button" class="ux-calendar-next-year-btn"></a></div>
+                      <div>
+                        <div class="ux-calendar-month-panel">
+                          <div class="ux-calendar-month-panel-header">
+                            <!----> <a role="button" class="ux-calendar-month-panel-year-select"><span class="ux-calendar-month-panel-year-select-content">
+        2020
+      </span></a> <a role="button" class="ux-calendar-month-panel-next-year-btn"></a></div>
+                          <div class="ux-calendar-month-panel-body">
+                            <table role="monthgrid" cellspacing="0" class="ux-calendar-month-panel-table">
+                              <tbody class="ux-calendar-month-panel-tbody">
+                                <tr role="row">
+                                  <td role="gridcell" title="Jan" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jan</a></td>
+                                  <td role="gridcell" title="Feb" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Feb</a></td>
+                                  <td role="gridcell" title="Mar" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Mar</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Apr" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Apr</a></td>
+                                  <td role="gridcell" title="May" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">May</a></td>
+                                  <td role="gridcell" title="Jun" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jun</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Jul" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jul</a></td>
+                                  <td role="gridcell" title="Aug" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Aug</a></td>
+                                  <td role="gridcell" title="Sep" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Sep</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Oct" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Oct</a></td>
+                                  <td role="gridcell" title="Nov" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Nov</a></td>
+                                  <td role="gridcell" title="Dec" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Dec</a></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeMonthPicker locale should work when use locale.lang 1`] = `
+<div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" style="">
+  <div class="ux-input ux-calendar-picker-input"><input placeholder="Start month" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-range-picker-separator"> ~ </span><input placeholder="End month" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-picker-icon"></span></div>
+</div>
+<div role="popup">
+  <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft " style="left: -999px; top: -1002px;">
+    <div class="ux-calendar-picker-container-content">
+      <div class="ux-calendar ux-calendar-month-range">
+        <div class="ux-calendar-month-panel">
+          <div class="ux-calendar-month-date-panel">
+            <div class="ux-calendar-month-range-part ux-calendar-month-range-left">
+              <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+                <div class="ux-calendar-month-calendar-content">
+                  <div class="ux-calendar-month-header-wrap">
+                    <div class="ux-calendar-header">
+                      <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">May</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2019</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                      <div>
+                        <div class="ux-calendar-month-panel">
+                          <div class="ux-calendar-month-panel-header"><a title="Last year (Control + left)" role="button" class="ux-calendar-month-panel-prev-year-btn"></a> <a title="Choose a year" role="button" class="ux-calendar-month-panel-year-select"><span class="ux-calendar-month-panel-year-select-content">
+        2019
+      </span></a>
+                            <!---->
+                          </div>
+                          <div class="ux-calendar-month-panel-body">
+                            <table role="monthgrid" cellspacing="0" class="ux-calendar-month-panel-table">
+                              <tbody class="ux-calendar-month-panel-tbody">
+                                <tr role="row">
+                                  <td role="gridcell" title="Jan" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jan</a></td>
+                                  <td role="gridcell" title="Feb" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Feb</a></td>
+                                  <td role="gridcell" title="Mar" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Mar</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Apr" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Apr</a></td>
+                                  <td role="gridcell" title="May" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">May</a></td>
+                                  <td role="gridcell" title="Jun" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jun</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Jul" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jul</a></td>
+                                  <td role="gridcell" title="Aug" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Aug</a></td>
+                                  <td role="gridcell" title="Sep" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Sep</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Oct" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Oct</a></td>
+                                  <td role="gridcell" title="Nov" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Nov</a></td>
+                                  <td role="gridcell" title="Dec" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Dec</a></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ux-calendar-month-range-part ux-calendar-month-range-right">
+              <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+                <div class="ux-calendar-month-calendar-content">
+                  <div class="ux-calendar-month-header-wrap">
+                    <div class="ux-calendar-header">
+                      <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">May</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2020</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                      <div>
+                        <div class="ux-calendar-month-panel">
+                          <div class="ux-calendar-month-panel-header">
+                            <!----> <a title="Choose a year" role="button" class="ux-calendar-month-panel-year-select"><span class="ux-calendar-month-panel-year-select-content">
+        2020
+      </span></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-month-panel-next-year-btn"></a></div>
+                          <div class="ux-calendar-month-panel-body">
+                            <table role="monthgrid" cellspacing="0" class="ux-calendar-month-panel-table">
+                              <tbody class="ux-calendar-month-panel-tbody">
+                                <tr role="row">
+                                  <td role="gridcell" title="Jan" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jan</a></td>
+                                  <td role="gridcell" title="Feb" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Feb</a></td>
+                                  <td role="gridcell" title="Mar" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Mar</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Apr" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Apr</a></td>
+                                  <td role="gridcell" title="May" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">May</a></td>
+                                  <td role="gridcell" title="Jun" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jun</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Jul" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Jul</a></td>
+                                  <td role="gridcell" title="Aug" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Aug</a></td>
+                                  <td role="gridcell" title="Sep" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Sep</a></td>
+                                </tr>
+                                <tr role="row">
+                                  <td role="gridcell" title="Oct" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Oct</a></td>
+                                  <td role="gridcell" title="Nov" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Nov</a></td>
+                                  <td role="gridcell" title="Dec" class="ux-calendar-month-panel-cell"><a class="ux-calendar-month-panel-month">Dec</a></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!---->
+                        <!---->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeMonthPicker size default 1`] = `
+<div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default">
+  <div class="ux-input ux-calendar-picker-input"><input placeholder="开始月份" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-range-picker-separator"> ~ </span><input placeholder="结束月份" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-picker-icon"></span></div>
+</div>
+`;
+
+exports[`RangeMonthPicker size large 1`] = `
+<div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-large">
+  <div class="ux-input ux-calendar-picker-input ux-input-lg"><input placeholder="开始月份" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-range-picker-separator"> ~ </span><input placeholder="结束月份" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-picker-icon"></span></div>
+</div>
+`;
+
+exports[`RangeMonthPicker size small 1`] = `
+<div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-small">
+  <div class="ux-input ux-calendar-picker-input ux-input-sm"><input placeholder="开始月份" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-range-picker-separator"> ~ </span><input placeholder="结束月份" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"><span class="ux-calendar-picker-icon"></span></div>
+</div>
+`;
