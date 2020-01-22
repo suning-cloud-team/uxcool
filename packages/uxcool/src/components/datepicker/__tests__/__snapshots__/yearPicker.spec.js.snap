@@ -1,0 +1,311 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YearPicker disabledYear init and disabled 2013, 2015,2019 1`] = `
+<div role="popup">
+  <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft " style="left: -999px; top: -1002px;">
+    <div class="ux-calendar-picker-container-content">
+      <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+        <div class="ux-calendar-month-calendar-content">
+          <div class="ux-calendar-month-header-wrap">
+            <div class="ux-calendar-header">
+              <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2010年</a><a role="button" title="选择月份" class="ux-calendar-month-select">5月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
+              <div>
+                <!---->
+                <div class="ux-calendar-year-panel">
+                  <div class="ux-calendar-year-panel-header"><a title="上一年代" role="button" class="ux-calendar-year-panel-prev-decade-btn"></a> <a class="ux-calendar-year-panel-decade-select"><span class="ux-calendar-year-panel-decade-select-content">
+        2010-2019
+      </span></a> <a title="下一年代" role="button" class="ux-calendar-year-panel-next-decade-btn"></a></div>
+                  <div class="ux-calendar-year-panel-body">
+                    <table cellspacing="0" role="grid" class="ux-calendar-year-panel-table">
+                      <tbody class="ux-calendar-year-panel-tbody">
+                        <tr role="row">
+                          <td role="gridcell" title="2009" class="ux-calendar-year-panel-cell ux-calendar-year-panel-last-decade-cell"><a class="ux-calendar-year-panel-year">
+                              2009
+                            </a></td>
+                          <td role="gridcell" title="2010" class="ux-calendar-year-panel-cell ux-calendar-year-panel-selected-cell"><a class="ux-calendar-year-panel-year">
+                              2010
+                            </a></td>
+                          <td role="gridcell" title="2011" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2011
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2012" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2012
+                            </a></td>
+                          <td role="gridcell" title="2013" class="ux-calendar-year-panel-cell ux-calendar-year-panel-cell-disabled"><a class="ux-calendar-year-panel-year">
+                              2013
+                            </a></td>
+                          <td role="gridcell" title="2014" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2014
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2015" class="ux-calendar-year-panel-cell ux-calendar-year-panel-cell-disabled"><a class="ux-calendar-year-panel-year">
+                              2015
+                            </a></td>
+                          <td role="gridcell" title="2016" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2016
+                            </a></td>
+                          <td role="gridcell" title="2017" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2017
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2018" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2018
+                            </a></td>
+                          <td role="gridcell" title="2019" class="ux-calendar-year-panel-cell ux-calendar-year-panel-cell-disabled"><a class="ux-calendar-year-panel-year">
+                              2019
+                            </a></td>
+                          <td role="gridcell" title="2020" class="ux-calendar-year-panel-cell ux-calendar-year-panel-next-decade-cell"><a class="ux-calendar-year-panel-year">
+                              2020
+                            </a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!---->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`YearPicker disabledYear update and disabled 2012, 2014, 2018 1`] = `
+<div role="popup">
+  <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft " style="left: -999px; top: -1002px;">
+    <div class="ux-calendar-picker-container-content">
+      <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+        <div class="ux-calendar-month-calendar-content">
+          <div class="ux-calendar-month-header-wrap">
+            <div class="ux-calendar-header">
+              <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2010年</a><a role="button" title="选择月份" class="ux-calendar-month-select">5月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
+              <div>
+                <!---->
+                <div class="ux-calendar-year-panel">
+                  <div class="ux-calendar-year-panel-header"><a title="上一年代" role="button" class="ux-calendar-year-panel-prev-decade-btn"></a> <a class="ux-calendar-year-panel-decade-select"><span class="ux-calendar-year-panel-decade-select-content">
+        2010-2019
+      </span></a> <a title="下一年代" role="button" class="ux-calendar-year-panel-next-decade-btn"></a></div>
+                  <div class="ux-calendar-year-panel-body">
+                    <table cellspacing="0" role="grid" class="ux-calendar-year-panel-table">
+                      <tbody class="ux-calendar-year-panel-tbody">
+                        <tr role="row">
+                          <td role="gridcell" title="2009" class="ux-calendar-year-panel-cell ux-calendar-year-panel-last-decade-cell"><a class="ux-calendar-year-panel-year">
+                              2009
+                            </a></td>
+                          <td role="gridcell" title="2010" class="ux-calendar-year-panel-cell ux-calendar-year-panel-selected-cell"><a class="ux-calendar-year-panel-year">
+                              2010
+                            </a></td>
+                          <td role="gridcell" title="2011" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2011
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2012" class="ux-calendar-year-panel-cell ux-calendar-year-panel-cell-disabled"><a class="ux-calendar-year-panel-year">
+                              2012
+                            </a></td>
+                          <td role="gridcell" title="2013" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2013
+                            </a></td>
+                          <td role="gridcell" title="2014" class="ux-calendar-year-panel-cell ux-calendar-year-panel-cell-disabled"><a class="ux-calendar-year-panel-year">
+                              2014
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2015" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2015
+                            </a></td>
+                          <td role="gridcell" title="2016" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2016
+                            </a></td>
+                          <td role="gridcell" title="2017" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2017
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2018" class="ux-calendar-year-panel-cell ux-calendar-year-panel-cell-disabled"><a class="ux-calendar-year-panel-year">
+                              2018
+                            </a></td>
+                          <td role="gridcell" title="2019" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2019
+                            </a></td>
+                          <td role="gridcell" title="2020" class="ux-calendar-year-panel-cell ux-calendar-year-panel-next-decade-cell"><a class="ux-calendar-year-panel-year">
+                              2020
+                            </a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!---->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`YearPicker locale should work when use locale 1`] = `
+<div class="ux-calendar-picker ux-calendar-picker-default" style=""><input type="text" readonly="readonly" placeholder="Select year" class="ux-input ux-calendar-picker-input"><span class="ux-calendar-picker-icon"></span></div>
+<div role="popup">
+  <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft " style="left: -999px; top: -1002px;">
+    <div class="ux-calendar-picker-container-content">
+      <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+        <div class="ux-calendar-month-calendar-content">
+          <div class="ux-calendar-month-header-wrap">
+            <div class="ux-calendar-header">
+              <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">Jan</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2020</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
+              <div>
+                <!---->
+                <div class="ux-calendar-year-panel">
+                  <div class="ux-calendar-year-panel-header"><a title="Last decade" role="button" class="ux-calendar-year-panel-prev-decade-btn"></a> <a class="ux-calendar-year-panel-decade-select"><span class="ux-calendar-year-panel-decade-select-content">
+        2020-2029
+      </span></a> <a title="Next decade" role="button" class="ux-calendar-year-panel-next-decade-btn"></a></div>
+                  <div class="ux-calendar-year-panel-body">
+                    <table cellspacing="0" role="grid" class="ux-calendar-year-panel-table">
+                      <tbody class="ux-calendar-year-panel-tbody">
+                        <tr role="row">
+                          <td role="gridcell" title="2019" class="ux-calendar-year-panel-cell ux-calendar-year-panel-last-decade-cell"><a class="ux-calendar-year-panel-year">
+                              2019
+                            </a></td>
+                          <td role="gridcell" title="2020" class="ux-calendar-year-panel-cell ux-calendar-year-panel-selected-cell"><a class="ux-calendar-year-panel-year">
+                              2020
+                            </a></td>
+                          <td role="gridcell" title="2021" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2021
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2022" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2022
+                            </a></td>
+                          <td role="gridcell" title="2023" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2023
+                            </a></td>
+                          <td role="gridcell" title="2024" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2024
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2025" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2025
+                            </a></td>
+                          <td role="gridcell" title="2026" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2026
+                            </a></td>
+                          <td role="gridcell" title="2027" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2027
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2028" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2028
+                            </a></td>
+                          <td role="gridcell" title="2029" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2029
+                            </a></td>
+                          <td role="gridcell" title="2030" class="ux-calendar-year-panel-cell ux-calendar-year-panel-next-decade-cell"><a class="ux-calendar-year-panel-year">
+                              2030
+                            </a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!---->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`YearPicker locale should work when use locale.lang 1`] = `
+<div class="ux-calendar-picker ux-calendar-picker-default" style=""><input type="text" readonly="readonly" placeholder="Select year" class="ux-input ux-calendar-picker-input"><span class="ux-calendar-picker-icon"></span></div>
+<div role="popup">
+  <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft " style="left: -999px; top: -1002px;">
+    <div class="ux-calendar-picker-container-content">
+      <div class="ux-calendar ux-calendar-month ux-calendar-month-calendar">
+        <div class="ux-calendar-month-calendar-content">
+          <div class="ux-calendar-month-header-wrap">
+            <div class="ux-calendar-header">
+              <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">Jan</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2020</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
+              <div>
+                <!---->
+                <div class="ux-calendar-year-panel">
+                  <div class="ux-calendar-year-panel-header"><a title="Last decade" role="button" class="ux-calendar-year-panel-prev-decade-btn"></a> <a class="ux-calendar-year-panel-decade-select"><span class="ux-calendar-year-panel-decade-select-content">
+        2020-2029
+      </span></a> <a title="Next decade" role="button" class="ux-calendar-year-panel-next-decade-btn"></a></div>
+                  <div class="ux-calendar-year-panel-body">
+                    <table cellspacing="0" role="grid" class="ux-calendar-year-panel-table">
+                      <tbody class="ux-calendar-year-panel-tbody">
+                        <tr role="row">
+                          <td role="gridcell" title="2019" class="ux-calendar-year-panel-cell ux-calendar-year-panel-last-decade-cell"><a class="ux-calendar-year-panel-year">
+                              2019
+                            </a></td>
+                          <td role="gridcell" title="2020" class="ux-calendar-year-panel-cell ux-calendar-year-panel-selected-cell"><a class="ux-calendar-year-panel-year">
+                              2020
+                            </a></td>
+                          <td role="gridcell" title="2021" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2021
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2022" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2022
+                            </a></td>
+                          <td role="gridcell" title="2023" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2023
+                            </a></td>
+                          <td role="gridcell" title="2024" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2024
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2025" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2025
+                            </a></td>
+                          <td role="gridcell" title="2026" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2026
+                            </a></td>
+                          <td role="gridcell" title="2027" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2027
+                            </a></td>
+                        </tr>
+                        <tr role="row">
+                          <td role="gridcell" title="2028" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2028
+                            </a></td>
+                          <td role="gridcell" title="2029" class="ux-calendar-year-panel-cell"><a class="ux-calendar-year-panel-year">
+                              2029
+                            </a></td>
+                          <td role="gridcell" title="2030" class="ux-calendar-year-panel-cell ux-calendar-year-panel-next-decade-cell"><a class="ux-calendar-year-panel-year">
+                              2030
+                            </a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!---->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
