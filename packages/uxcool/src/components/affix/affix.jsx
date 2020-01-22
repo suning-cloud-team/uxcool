@@ -131,14 +131,11 @@ export default {
         isWindow,
       } = this;
       const targetRect = getTargetRect();
-      console.log(targetRect);
       const elemOffset = offset($el);
       const scrollTop = getScroll(target);
       const affixHeight = affixRef.offsetHeight;
       let top = elemOffset.top - targetRect.top;
       top = isWindow(target) ? top : top - scrollTop;
-      console.log(affixRef.offsetHeight);
-      console.log(scrollTop);
       let style = null;
       // eslint-disable-next-line
       const elemPosH = top + affixHeight + (offsetBottom || 0) - targetRect.ch;
