@@ -58,7 +58,7 @@ export default {
     target() {
       return this.getTarget();
     },
-    targetRect() {
+    /* targetRect() {
       const { target } = this;
       if (target.window !== window) {
         const rect = target.getBoundingClientRect();
@@ -79,7 +79,7 @@ export default {
         cw: target.innerWidth,
         ch: target.innerHeight,
       };
-    },
+    }, */
   },
   mounted() {
     const { target, updatePosition, events } = this;
@@ -136,7 +136,6 @@ export default {
       const affixHeight = affixRef.offsetHeight;
       let top = elemOffset.top - targetRect.top;
       top = isWindow(target) ? top : top - scrollTop;
-
       let style = null;
       // eslint-disable-next-line
       const elemPosH = top + affixHeight + (offsetBottom || 0) - targetRect.ch;
