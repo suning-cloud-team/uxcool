@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`avatar render different sizes correctly 1`] = `
+<span
+  class="ux-avatar ux-avatar-sm ux-avatar-circle ux-avatar-icon"
+>
+  <i
+    class="fu fu-account"
+  />
+</span>
+`;
+
+exports[`avatar render different sizes correctly 2`] = `
+<span
+  class="ux-avatar ux-avatar-circle ux-avatar-icon"
+>
+  <i
+    class="fu fu-account"
+  />
+</span>
+`;
+
+exports[`avatar render different sizes correctly 3`] = `
+<span
+  class="ux-avatar ux-avatar-lg ux-avatar-circle ux-avatar-icon"
+>
+  <i
+    class="fu fu-account"
+  />
+</span>
+`;
+
+exports[`avatar render scale correctly 1`] = `
+<span
+  class="ux-avatar ux-avatar-circle"
+>
+  <span
+    style="position: absolute; display: inline-block; transform: scale(0.9411764705882353);"
+  >
+    Abcde
+  </span>
+</span>
+`;
