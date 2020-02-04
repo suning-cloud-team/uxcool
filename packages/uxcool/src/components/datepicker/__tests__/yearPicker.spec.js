@@ -156,6 +156,7 @@ describe('YearPicker', () => {
     ])('should work when use %s', async (_, locale) => {
       const wrapper = await mountPicker({
         propsData: {
+          value: mockDate.toDate(),
           locale,
           transitionName: '',
         },

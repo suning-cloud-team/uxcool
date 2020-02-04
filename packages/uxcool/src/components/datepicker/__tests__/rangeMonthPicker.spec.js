@@ -95,6 +95,7 @@ describe('RangeMonthPicker', () => {
         const { getPopupContainer } = this;
 
         const props = {
+          pickerValue: [mockDate.toDate(), mockDate.toDate()],
           getPopupContainer,
         };
         return (

@@ -70,6 +70,7 @@ describe('MonthPicker', () => {
       render() {
         const { $refs } = this;
         const props = {
+          value: mockDate.toDate(),
           getPopupContainer() {
             return $refs.wrapRef;
           },
