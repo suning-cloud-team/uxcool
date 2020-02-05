@@ -13,7 +13,7 @@ const resolveModules = [
   path.join(root, 'node_modules'),
   path.join(srcPath, 'node_modules'),
 ];
-module.exports = (env) => {
+module.exports = (env = {}) => {
   process.env.NODE_ENV = 'development';
   if (!env.server) {
     rimraf.sync(distPath);

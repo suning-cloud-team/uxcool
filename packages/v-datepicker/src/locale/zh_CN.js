@@ -9,6 +9,7 @@ export default {
   clear: '清除',
   month: '月',
   year: '年',
+  week: '周',
   previousMonth: '上个月 (翻页上键)',
   nextMonth: '下个月 (翻页下键)',
   monthSelect: '选择月份',
