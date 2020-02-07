@@ -104,7 +104,7 @@ export default {
       this.innerValue = value;
       if (trigger) {
         this.$emit('input', value);
-        this.$emit('change', value, value ? formatDate(value, format) : undefined);
+        this.$emit('change', value, value ? formatDate(value, format) : '');
       }
     },
     onChange(value) {

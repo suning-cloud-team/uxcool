@@ -92,9 +92,18 @@ export default {
         [`${inputPrefix}-${map[size]}`]: size !== 'default',
       };
     },
+    normalizeLocale() {
+      const { locale } = this;
+
+      if (!locale) {
+        return localeCN.lang;
+      }
+
+      return locale.lang ? locale.lang : locale;
+    },
     dateFormat() {
-      const { locale, format } = this;
-      return format || (locale || {}).weekFormat || 'YYYY 第 WW 周';
+      const { normalizeLocale, format } = this;
+      return format || normalizeLocale.weekFormat || 'YYYY 第 WW 周';
     },
     formatValue() {
       const { innerValue, dateFormat } = this;
@@ -104,8 +113,8 @@ export default {
       return formatDate(innerValue, dateFormat);
     },
     dateInputPlaceholder() {
-      const { locale, placeholder } = this;
-      return placeholder || locale.weekPlaceholder;
+      const { normalizeLocale, placeholder } = this;
+      return placeholder || normalizeLocale.weekPlaceholder;
     },
     isCanClear() {
       const { disabled, allowClear, innerValue } = this;
@@ -114,21 +123,21 @@ export default {
   },
   watch: {
     value(nVal) {
-      this.setInnerValue(nVal);
+      this.setInnerValue(nVal, false);
     },
   },
   created() {
     const { value, setInnerValue } = this;
-    setInnerValue(value);
+    setInnerValue(value, false);
   },
   methods: {
-    setInnerValue(value, formatDateStr = '') {
-      const { innerValue } = this;
+    setInnerValue(value, trigger = true) {
+      const { innerValue, dateFormat } = this;
       this.innerValue = value;
 
-      if (!isEqual(innerValue, value)) {
+      if (trigger && !isEqual(innerValue, value)) {
         this.$emit('input', value);
-        this.$emit('change', value, formatDateStr);
+        this.$emit('change', value, value ? formatDate(value, dateFormat) : '');
       }
     },
     onClearClick(e) {
@@ -136,8 +145,8 @@ export default {
       e.preventDefault();
       this.setInnerValue(null);
     },
-    onChange(value, formatDateStr) {
-      this.setInnerValue(value, formatDateStr);
+    onChange(value) {
+      this.setInnerValue(value);
     },
   },
   render() {
@@ -154,6 +163,7 @@ export default {
       disabled,
       isCanClear,
       visible,
+      normalizeLocale,
       onClearClick,
       onChange,
     } = this;
@@ -168,6 +178,7 @@ export default {
       showTime: false,
       showToday: false,
       showDateInput: false,
+      locale: normalizeLocale,
     };
     const on = {
       ...omit($listeners, ['change']),

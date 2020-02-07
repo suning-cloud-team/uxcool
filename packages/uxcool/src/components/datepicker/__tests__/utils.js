@@ -16,9 +16,9 @@ export function mountPickerFactory(Component) {
 /**
  * 选择 时间
  * @param {Wrapper} wrapper
- * @param {string|Date} date
+ * @param {string|Date|dayjs} date
  * @param {string} format
- * @param {number} delay
+ * @param {number} delay - default 20ms
  */
 export async function selectDate(wrapper, date, format = 'YYYY-MM-DD', delay = 20) {
   wrapper
@@ -35,11 +35,22 @@ export async function selectDate(wrapper, date, format = 'YYYY-MM-DD', delay = 2
 /**
  * 选择月份
  * @param {Wrapper} wrapper
- * @param {string|Date} date
+ * @param {string|Date|dayjs} date
  * @param {string} format
- * @param {number} delay
+ * @param {number} delay - default 20ms
  */
 export async function selectMonth(wrapper, date, format = 'M月', delay = 20) {
+  await selectDate(wrapper, date, format, delay);
+}
+
+/**
+ *
+ * @param {Wrapper} wrapper
+ * @param {stirng|Date|dayjs} date
+ * @param {string} format
+ * @param {number} delay - default 20ms
+ */
+export async function selectWeek(wrapper, date, format = 'YYYY 第 ww 周', delay = 20) {
   await selectDate(wrapper, date, format, delay);
 }
 

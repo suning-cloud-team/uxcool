@@ -126,11 +126,11 @@ exports[`RangeMonthPicker get-popup-container 1`] = `
                   <div class="ux-calendar-month-calendar-content">
                     <div class="ux-calendar-month-header-wrap">
                       <div class="ux-calendar-header">
-                        <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2020年</a><a role="button" title="选择月份" class="ux-calendar-month-select">1月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                        <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2019年</a><a role="button" title="选择月份" class="ux-calendar-month-select">5月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
                         <div>
                           <div class="ux-calendar-month-panel">
                             <div class="ux-calendar-month-panel-header"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-month-panel-prev-year-btn"></a> <a title="选择年份" role="button" class="ux-calendar-month-panel-year-select"><span class="ux-calendar-month-panel-year-select-content">
-        2020
+        2019
       </span></a>
                               <!---->
                             </div>
@@ -174,12 +174,12 @@ exports[`RangeMonthPicker get-popup-container 1`] = `
                   <div class="ux-calendar-month-calendar-content">
                     <div class="ux-calendar-month-header-wrap">
                       <div class="ux-calendar-header">
-                        <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2021年</a><a role="button" title="选择月份" class="ux-calendar-month-select">1月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                        <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2020年</a><a role="button" title="选择月份" class="ux-calendar-month-select">5月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
                         <div>
                           <div class="ux-calendar-month-panel">
                             <div class="ux-calendar-month-panel-header">
                               <!----> <a title="选择年份" role="button" class="ux-calendar-month-panel-year-select"><span class="ux-calendar-month-panel-year-select-content">
-        2021
+        2020
       </span></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-month-panel-next-year-btn"></a></div>
                             <div class="ux-calendar-month-panel-body">
                               <table role="monthgrid" cellspacing="0" class="ux-calendar-month-panel-table">
