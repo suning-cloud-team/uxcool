@@ -1,4 +1,4 @@
-import { mount } from '@suning/v-test-utils';
+import { mount, triggerEvent } from '@suning/v-test-utils';
 import Vue from 'vue';
 import UxSwitch from '..';
 
@@ -39,7 +39,11 @@ describe('UxSwitch', () => {
   });
 
   it('events', async () => {
-    const switchWrapper = mount(UxSwitch);
+    const switchWrapper = mount(UxSwitch, {
+      propsData: {
+        autofocus: true
+      }
+    });
     switchWrapper.trigger('click');
     const { click, change } = switchWrapper.emitted();
 
@@ -49,5 +53,8 @@ describe('UxSwitch', () => {
     switchWrapper.setProps({ disabled: true });
     switchWrapper.trigger('click');
     expect(switchWrapper.vm.innerChecked).toBe(true);
+
+    await triggerEvent(switchWrapper, 'mouseup');
+    expect(switchWrapper.emitted('mouseup').length).toBe(1);
   });
 });
