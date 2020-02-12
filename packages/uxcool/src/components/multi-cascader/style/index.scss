@@ -1,0 +1,298 @@
+@import '../../style/themes/default';
+@import '../../style/mixins/index';
+@import '../../input/style/mixin';
+@import '../../checkbox/style/mixin';
+
+$multi-cascader-prefix-cls: #{$ux-prefix}-multi-cascader;
+
+@include uxCheckboxFn(#{$multi-cascader-prefix-cls}-checkbox);
+
+.#{$multi-cascader-prefix-cls} {
+  @include reset-component;
+  position: relative;
+  display: inline-block;
+  min-height: $input-height-base;
+  padding-right: $control-padding-horizontal + 12px;
+  background-color: $component-background;
+  border: $border-width-base $border-style-base $border-color-base;
+  border-radius: $border-radius-base;
+  outline: 0;
+  transition: all 0.3s $ease-in-out;
+  vertical-align: top;
+
+  &:hover {
+    @include hover;
+  }
+
+  &:focus,
+  &-focused {
+    @include active;
+  }
+
+  &-placeholder {
+    position: absolute;
+    left: $input-padding-horizontal-base;
+    right: $control-padding-horizontal + 12px;
+    top: 50%;
+    height: 20px;
+    margin-top: -10px;
+    line-height: 20px;
+    color: $input-placeholder-color;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &-clear,
+  &-arrow {
+    position: absolute;
+    top: 50%;
+    right: $control-padding-horizontal;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    line-height: 12px;
+    color: $disabled-color;
+    font-size: 12px;
+  }
+
+  &-clear {
+    will-change: color, opacity;
+    opacity: 0;
+    z-index: 2;
+    transition: color 0.3s ease, opacity 0.15s ease;
+
+    &:hover {
+      color: $text-color-secondary;
+    }
+  }
+
+  &:hover &-clear {
+    opacity: 1;
+  }
+
+  &-arrow {
+    z-index: 1;
+    transition: transform 0.2s;
+
+    &#{&}-expand {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-tag {
+    float: left;
+    position: relative;
+    max-width: 100%;
+    margin: 3px 4px 0 0;
+    padding: 0 20px 0 7px;
+    border: 1px solid $border-color-split;
+    background: $tag-default-bg;
+    line-height: $input-height-base - 10;
+    border-radius: $border-radius-sm;
+    cursor: default;
+
+    &-disabled {
+      padding-right: 7px;
+    }
+
+    &-wrapper {
+      margin: 0 0 3px 4px;
+      padding: 0;
+      list-style: none;
+      @include clearfix;
+    }
+
+    &-content {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &-remove {
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      margin-top: -6px;
+      font-size: 12px;
+      color: $text-color-secondary;
+      cursor: pointer;
+
+      &:hover {
+        color: #404040;
+      }
+    }
+  }
+
+  // disabled
+  &-disabled {
+    background: $input-disabled-bg;
+    color: $disabled-color;
+    cursor: not-allowed;
+
+    &:hover,
+    &:focus {
+      border-color: $border-color-base;
+      box-shadow: none;
+    }
+  }
+
+  &-disabled &-tag {
+    padding-right: 7px;
+  }
+
+  // large size
+  &-lg {
+    min-height: $input-height-lg;
+    font-size: $font-size-lg;
+  }
+
+  &-lg &-placeholder {
+    left: $input-padding-horizontal-lg;
+  }
+
+  &-lg &-tag {
+    line-height: $input-height-lg - 10;
+  }
+
+  // small size
+  &-sm {
+    min-height: $input-height-sm;
+    padding-right: $control-padding-horizontal-sm + 12px;
+    font-size: $font-size-sm;
+  }
+
+  &-sm &-placeholder {
+    left: $input-padding-horizontal-sm;
+    right: $control-padding-horizontal-sm + 12px;
+  }
+
+  &-sm &-clear,
+  &-sm &-arrow {
+    right: $control-padding-horizontal-sm;
+  }
+
+  &-sm &-tag {
+    line-height: $input-height-sm - 10;
+  }
+
+  &-panel {
+    position: absolute;
+    background: $component-background;
+    font-size: $font-size-base;
+    white-space: nowrap;
+    border-radius: $border-radius-base;
+    box-shadow: $box-shadow-base;
+    z-index: $zindex-dropdown;
+
+    ul,
+    ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &-empty,
+    &-hidden {
+      display: none;
+    }
+
+    &.slide-up-enter-active#{&}-placement-bottomLeft,
+    &.slide-up-appear-active#{&}-placement-bottomLeft {
+      animation-name: uxSlideUpIn;
+    }
+
+    &.slide-up-enter-active#{&}-placement-topLeft,
+    &.slide-up-appear-active#{&}-placement-topLeft {
+      animation-name: uxSlideDownIn;
+    }
+
+    &.slide-up-leave-active#{&}-placement-bottomLeft {
+      animation-name: uxSlideUpOut;
+    }
+
+    &.slide-up-leave-active#{&}-placement-topLeft {
+      animation-name: uxSlideDownOut;
+    }
+  }
+
+  &-menu {
+    display: inline-block;
+    min-width: 111px;
+    height: 180px;
+    margin: 0;
+    padding: 0;
+    border-right: $border-width-base $border-style-base $border-color-split;
+    overflow: auto;
+    list-style: none;
+
+    &:first-child {
+      border-radius: $border-radius-base 0 0 $border-radius-base;
+    }
+
+    &:last-child {
+      margin-right: -1px;
+      border-right-color: transparent;
+      border-radius: 0 $border-radius-base $border-radius-base 0;
+    }
+
+    &:only-child {
+      border-radius: $border-radius-base;
+    }
+
+    &-item {
+      position: relative;
+      padding: 5px $control-padding-horizontal;
+      line-height: 22px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background: $item-hover-bg;
+      }
+
+      &-disabled {
+        color: $disabled-color;
+        cursor: not-allowed;
+
+        &:hover {
+          background: transparent;
+        }
+      }
+
+      &-active:not(&-disabled) {
+        &,
+        &:hover {
+          background: $background-color-base;
+          font-weight: 600;
+        }
+      }
+
+      &-expand {
+        padding-right: 24px;
+      }
+
+      &-content {
+        display: inline-block;
+        margin-left: 10px;
+      }
+
+      &-expand-icon,
+      &-loading-icon {
+        position: absolute;
+        top: 50%;
+        right: $control-padding-horizontal-sm;
+        margin-top: -6px;
+        color: $text-color-secondary;
+        font-size: $font-size-base;
+        // @include iconfont-size-under-12px(8px);
+      }
+
+      &-loading-icon {
+        animation: loadingCircle 1s infinite linear;
+      }
+    }
+  }
+}
