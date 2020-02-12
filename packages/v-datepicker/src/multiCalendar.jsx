@@ -41,7 +41,7 @@ export default {
       type: String,
       default: ', ',
     },
-    dateInputPlaceholder: {
+    placeholder: {
       type: String,
       default: '',
     },
@@ -107,7 +107,7 @@ export default {
     },
     setInnerSelectedValue(value) {
       const val = isArray(value) ? value : [value];
-      this.innerSelectedValue = val.filter(v => isDate(v));
+      this.innerSelectedValue = val.filter((v) => isDate(v));
     },
     setInnerMode(mode) {
       this.innerMode = mode;
@@ -122,7 +122,9 @@ export default {
     },
     onUnSelect(value) {
       const { innerSelectedValue, setInnerPickerValue, setInnerSelectedValue } = this;
-      const vals = innerSelectedValue.filter(v => startOfDay(v).getTime() !== startOfDay(value).getTime());
+      const vals = innerSelectedValue.filter(
+        (v) => startOfDay(v).getTime() !== startOfDay(value).getTime()
+      );
       setInnerSelectedValue(vals);
       setInnerPickerValue(value);
       this.$emit('unselect', value, vals);
@@ -147,12 +149,12 @@ export default {
     },
     renderDateInput() {
       const {
-        prefixCls, locale, dateInputPlaceholder, innerSelectedValue, dateFormat
+        prefixCls, locale, placeholder, innerSelectedValue, dateFormat
       } = this;
       const props = {
         prefixCls,
         locale,
-        placeholder: dateInputPlaceholder,
+        placeholder,
         value: innerSelectedValue,
         format: dateFormat,
       };
@@ -257,13 +259,13 @@ export default {
   },
   render() {
     const {
-      prefixCls, classes, renderDateInput, renderDatePanel
+      prefixCls, classes, showDateInput, renderDateInput, renderDatePanel
     } = this;
 
     return (
       <div class={classes}>
         <div class={`${prefixCls}-panel`} role="panel">
-          {renderDateInput()}
+          {showDateInput ? renderDateInput() : null}
           {renderDatePanel()}
         </div>
       </div>
