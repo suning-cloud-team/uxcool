@@ -1,3 +1,10 @@
+# 0.5.0-next.76 (2020-02-13)
+
+### Bug Fixes
+
+- **tree-select:** 修复单选模式无法清空 bug ([94cd4c8](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/94cd4c87322bb97d3cd401ab801f398f059590da)), closes [#304](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/304)
+- **tree-select:** 修复多选模式 placeholder 不显示 bug ([f79ed47](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/f79ed47e0589f8a93bf32772089c858aa51bbaac)), closes [#303](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/303)
+
 # 0.5.0-next.75 (2020-01-08)
 
 ### Bug Fixes

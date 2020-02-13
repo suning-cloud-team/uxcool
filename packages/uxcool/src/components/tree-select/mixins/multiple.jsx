@@ -1,5 +1,7 @@
 import { isFunction, isEqual } from '@suning/v-utils';
-import { normalizeContent, getChildNodeKeys, isDisabledNode, getNodeParentKeys } from '../utils';
+import {
+  normalizeContent, getChildNodeKeys, isDisabledNode, getNodeParentKeys
+} from '../utils';
 import Selector from '../selector';
 import SearchInput from '../searchInput';
 
@@ -15,7 +17,7 @@ export default {
         normalizeFieldNames: { value: fieldValue },
         clearDisabled,
         selectedNodes,
-        setSelectionNodes
+        setSelectionNodes,
       } = this;
       e.stopPropagation();
 
@@ -52,8 +54,8 @@ export default {
         };
       }
 
-      const values = innerValue.filter(v => !(v in removeValObj));
-      const nodes = selectedNodes.filter(item => values.indexOf(item.key) !== -1);
+      const values = innerValue.filter((v) => !(v in removeValObj));
+      const nodes = selectedNodes.filter((item) => values.indexOf(item.key) !== -1);
       setSelectionNodes(nodes);
       setInnerValue(values);
     },
@@ -70,6 +72,8 @@ export default {
         treeCheckable,
         onRemove,
         forceUpdateTriggerAlign,
+        placeholder,
+        searchInputValue,
       } = this;
 
       const selectionValue = getSelectionValue();
@@ -91,7 +95,7 @@ export default {
             {isCanRemove ? (
               <span
                 class={`${prefixCls}-selection__choice__remove`}
-                on-click={$event => onRemove($event, v)}
+                on-click={($event) => onRemove($event, v)}
               />
             ) : null}
             <span class={`${prefixCls}-selection__choice__content`}>
@@ -107,25 +111,36 @@ export default {
           const extraSelections = selectionValue.slice(maxCnt);
           // eslint-disable-next-line
           tagTxt = maxTagPlaceholder(
-            labelInValue ? extraSelections : extraSelections.map(v => v.value));
+            labelInValue ? extraSelections : extraSelections.map((v) => v.value)
+          );
         } else if (typeof maxTagPlaceholder === 'string') {
           tagTxt = maxTagPlaceholder;
         }
         tagTxt = normalizeContent(maxTagTextLength, tagTxt);
-        selectionNodes.push(<li class={`${prefixCls}-selection__choice`}>
+        selectionNodes.push(
+          <li class={`${prefixCls}-selection__choice`}>
             <span class={`${prefixCls}-selection__choice__content`}>{tagTxt}</span>
-          </li>);
+          </li>
+        );
       }
 
-      selectionNodes.push(<li class={`${prefixCls}-search ${prefixCls}-search--inline`}>
+      selectionNodes.push(
+        <li class={`${prefixCls}-search ${prefixCls}-search--inline`}>
           <SearchInput align />
-        </li>);
+        </li>
+      );
       if (!isEqual(prevSelectionValue, selectionValue)) {
         forceUpdateTriggerAlign();
       }
+
+      const placeholderNode = selectionValue.length === 0 && !searchInputValue ? (
+          <span class={`${prefixCls}-selection__placeholder`}>{placeholder}</span>
+      ) : null;
+
       return (
         <Selector slot="trigger" selections={selectionValue}>
           <ul class={`${prefixCls}-selection__rendered`}>{selectionNodes}</ul>
+          {placeholderNode}
         </Selector>
       );
     },
