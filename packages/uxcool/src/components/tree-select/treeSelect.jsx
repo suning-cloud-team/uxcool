@@ -1,8 +1,10 @@
 import Trigger from '@suning/v-trigger';
-import { isArray, isFunction, isEqual } from '@suning/v-utils';
+import { isArray, isEqual } from '@suning/v-utils';
 import Tree from '../tree';
 import { buildComponentName } from '../utils';
-import { DEFAULT_FIELD_NAMES, checkNodeForShowParent, isDisabledNode, isValidValue } from './utils';
+import {
+  DEFAULT_FIELD_NAMES, checkNodeForShowParent, isDisabledNode, isValidValue
+} from './utils';
 import SingleMixin from './mixins/single';
 import MultipleMixin from './mixins/multiple';
 import SearchMixin from './mixins/search';
@@ -230,7 +232,9 @@ export default {
     this.prevSelectionValue = null;
   },
   mounted() {
-    const { $refs: { triggerRef } } = this;
+    const {
+      $refs: { triggerRef },
+    } = this;
     if (triggerRef) {
       this.triggerRef = triggerRef;
     }
@@ -257,7 +261,7 @@ export default {
         this.treeValue = val;
         if (trigger) {
           const nVal = [...val];
-          const nodes = selectedNodes.map(node => ({ ...node.originNode }));
+          const nodes = selectedNodes.map((node) => ({ ...node.originNode }));
           this.$emit('input', nVal, nodes);
           this.$emit('change', nVal, nodes);
         }
@@ -273,7 +277,10 @@ export default {
       this.selectedNodes = nodes;
     },
     forceUpdateTriggerAlign() {
-      const { $refs: { triggerRef }, innerVisible } = this;
+      const {
+        $refs: { triggerRef },
+        innerVisible,
+      } = this;
       if (triggerRef && innerVisible) {
         this.$nextTick(() => {
           triggerRef.forcePopupAlign();
@@ -309,21 +316,21 @@ export default {
       }, {});
 
       const missNodes = innerValue
-        .filter(k => !(k in nodeKeyObj))
-        .map(k => ({ label: '', value: k }));
+        .filter((k) => !(k in nodeKeyObj))
+        .map((k) => ({ label: '', value: k }));
 
       if (treeCheckable && !treeCheckStrict) {
         if (showCheckedStrategy === 'SHOW_PARENT') {
           // TODO: 当直接上级是disabled,且上级是选中的,但上上级未被选中, 这种情况是否汇总, 现在是没有汇总在父级中的
           // eslint-disable-next-line
-          nNodes = nNodes.filter(node => checkNodeForShowParent(node, nodeKeyObj, fieldValue));
+          nNodes = nNodes.filter((node) => checkNodeForShowParent(node, nodeKeyObj, fieldValue));
         } else if (showCheckedStrategy === 'SHOW_CHILD') {
-          nNodes = nNodes.filter(node => !node[fieldChildren]);
+          nNodes = nNodes.filter((node) => !node[fieldChildren]);
         }
       }
       return [
         ...missNodes,
-        ...nNodes.map(node => ({
+        ...nNodes.map((node) => ({
           ...node,
           label: node[fieldLabel],
           value: node[fieldValue],
@@ -346,6 +353,11 @@ export default {
     },
     onPopupVisibleChange(visible) {
       this.setInnerVisible(visible);
+      // 关闭弹窗时清空搜索输入
+      const { searchInputValue, setSearchInputValue } = this;
+      if (!visible && searchInputValue) {
+        setSearchInputValue('', false, false);
+      }
     },
     onTreeValueChange(keys, nodes, checkAutoClear, isTriggerInputEvent = true) {
       const { setInnerValue, setSelectionNodes, clearSearchInputValue } = this;
@@ -368,8 +380,8 @@ export default {
       let keys = [];
       let disabledNodes = [];
       if (isMultiple && !clearDisabled) {
-        disabledNodes = selectedNodes.filter(node => isDisabledNode(node, treeCheckable));
-        keys = disabledNodes.map(node => node[filedValue]);
+        disabledNodes = selectedNodes.filter((node) => isDisabledNode(node, treeCheckable));
+        keys = disabledNodes.map((node) => node[filedValue]);
       }
 
       onTreeValueChange(keys, disabledNodes, false);
