@@ -1,8 +1,8 @@
 import omit from 'object.omit';
 import { isDate, format as formatDate } from 'date-fns';
 import { isEqual, isArray } from '@suning/v-utils';
-import Picker from '@suning/v-datepicker/es/picker';
-import MultiCalendar from '@suning/v-datepicker/es/multiCalendar';
+import { VMultiCalendar, VPicker } from '@suning/v-datepicker';
+import { buildComponentName } from '../utils';
 import localeCN from './locale/zh_CN';
 import Icon from '../icon';
 
@@ -13,12 +13,12 @@ const DEFAULT_SIZE_MAP = {
 const MULTI_FORMAT_SEPARATOR = ', ';
 
 function getFormatValue(value, format) {
-  return value.map(v => formatDate(v, format));
+  return value.map((v) => formatDate(v, format));
 }
 export default {
-  name: '',
+  name: buildComponentName('MultiDateicker'),
   props: {
-    ...omit(Picker.props, ['destroyPopupOnHide']),
+    ...omit(VPicker.props, ['destroyPopupOnHide', 'showOk', 'showToday']),
     prefixCls: {
       type: String,
       default: 'ux-calendar',
@@ -103,9 +103,17 @@ export default {
         [`${inputPrefix}-${DEFAULT_SIZE_MAP[size]}`]: size !== 'default',
       };
     },
+    normalizeLocale() {
+      const { locale } = this;
+      if (!locale) {
+        return localeCN.lang;
+      }
+
+      return locale.lang ? locale.lang : locale;
+    },
     dateInputPlaceholder() {
-      const { placeholder, locale } = this;
-      return placeholder || (locale && locale.multiPlaceholder);
+      const { placeholder, normalizeLocale } = this;
+      return placeholder || (normalizeLocale && normalizeLocale.multiPlaceholder);
     },
     isCanClear() {
       const { disabled, allowClear, innerValue } = this;
@@ -122,7 +130,7 @@ export default {
   },
   watch: {
     value(nVal) {
-      this.setInnerValue(nVal);
+      this.setInnerValue(nVal, false);
     },
     visible(nVal) {
       this.setInnerVisible(nVal);
@@ -132,17 +140,17 @@ export default {
     const {
       value, setInnerValue, visible, setInnerVisible
     } = this;
-    setInnerValue(value);
+    setInnerValue(value, false);
     setInnerVisible(visible);
   },
   methods: {
-    setInnerValue(value) {
+    setInnerValue(value, trigger = true) {
       const { innerValue, format } = this;
       let val = isArray(value) ? value : [value];
-      val = val.filter(v => isDate(v));
+      val = val.filter((v) => isDate(v));
       this.innerValue = val;
-      if (!isEqual(innerValue, val)) {
-        const formatValue = getFormatValue(val, format);
+      if (trigger && !isEqual(innerValue, val)) {
+        const formatValue = getFormatValue(val, format).join(MULTI_FORMAT_SEPARATOR);
         this.$emit('input', val);
         this.$emit('change', val, formatValue);
       }
@@ -196,6 +204,7 @@ export default {
       const attrs = {
         type: 'text',
         readonly: true,
+        disabled,
         placeholder: dateInputPlaceholder,
       };
       return (
@@ -217,7 +226,7 @@ export default {
     renderPopupSlot() {
       const {
         prefixCls,
-        locale,
+        normalizeLocale,
         currentPickerValue,
         innerValue,
         format,
@@ -232,12 +241,12 @@ export default {
 
       const props = {
         prefixCls,
-        locale,
+        locale: normalizeLocale,
         pickerValue: currentPickerValue,
         selectedValue: innerValue,
         format,
         formatSeparator: MULTI_FORMAT_SEPARATOR,
-        dateInputPlaceholder,
+        placeholder: dateInputPlaceholder,
         showDateInput,
         disabledDate,
       };
@@ -247,7 +256,7 @@ export default {
         'panel-change': onPanelChange,
         ok: onOk,
       };
-      return <MultiCalendar {...{ class: `${prefixCls}-multi`, props, on }} />;
+      return <VMultiCalendar {...{ class: `${prefixCls}-multi`, props, on }} />;
     },
   },
   render() {
@@ -285,6 +294,6 @@ export default {
       'visible-change': onVisibleChange,
     };
 
-    return <Picker {...{ props, scopedSlots, on }} />;
+    return <VPicker {...{ props, scopedSlots, on }} />;
   },
 };

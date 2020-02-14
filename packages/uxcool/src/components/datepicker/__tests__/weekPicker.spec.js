@@ -15,7 +15,6 @@ dayjs.extend(advancedFormat);
 dayjs.extend(weekOfYear);
 
 describe('WeekPicker', () => {
-  jest.setTimeout(500000);
   const mountPicker = mountPickerFactory(WeekPicker);
   const mockDate = dayjs('2019-05-03');
   const format = 'YYYY 第 WW 周';
