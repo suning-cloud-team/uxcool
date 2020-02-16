@@ -1,3 +1,9 @@
+# 0.5.0-next.77 (2020-02-16)
+
+### Features
+
+- **multi-cascader:** 添加级联多选组件 ([7524003](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/752400354c2ee6cde748f7e88703a5b23d5a417b))
+
 # 0.5.0-next.76 (2020-02-13)
 
 ### Bug Fixes
