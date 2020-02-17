@@ -1,3 +1,9 @@
+# 0.5.0-next.78 (2020-02-17)
+
+### Bug Fixes
+
+- **multi-date-picker:** 修复导出组件名称拼写错误 ([b98989a](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/b98989a2d3472582d6982d28c0871e909f758558))
+
 # 0.5.0-next.77 (2020-02-16)
 
 ### Features
