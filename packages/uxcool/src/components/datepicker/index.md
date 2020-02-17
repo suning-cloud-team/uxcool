@@ -8,7 +8,7 @@
 - UxRangeMonthPicker `>= 0.5.0-next.62`
 - UxYearPicker `>= 0.5.0-next.63`
 - UxWeekPicker `>= 0.5.0-next.69`
-- UxMutliDatePicker `>= 0.5.0-next.71`
+- UxMultiDatePicker `>= 0.5.0-next.71`
 
 ### UxDatePicker
 
