@@ -82,7 +82,6 @@ describe('rate', () => {
     expect(wrapper.findAll('.ux-rate-star-zero').length).toBe(2);
     expect(wrapper.findAll('li').at(2).classes('ux-rate-star-half')).toBe(true);
     await triggerEvent(wrapper.findAll('li').at(2), 'click');
-    console.log(wrapper.html());
   });
 
   it('event correctly', async () => {
