@@ -22,6 +22,8 @@ module.exports = {
     '!**/__tests__/**',
     '!**/style/index.js',
     '!**/locale/*.js',
+    '!**/virtual-list/**',
+    '!**/mixins/**',
   ],
   testURL: 'http://localhost',
   watchPlugins: [

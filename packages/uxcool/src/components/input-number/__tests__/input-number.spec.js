@@ -101,7 +101,6 @@ describe('input-number', () => {
     wrapper.vm.$on('input-change', inputChangeFn);
     wrapper.vm.focus();
     const inputWrapper = wrapper.find('input');
-    console.log(inputWrapper.html());
     inputWrapper.setValue(4);
     inputWrapper.trigger('keydown.up');
     await waitTime();
