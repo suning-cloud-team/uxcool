@@ -65,7 +65,7 @@ export default {
           isIndeterminate: false,
         };
 
-        const children = nodeClone[childrenField];
+        const { children } = nodeClone;
 
         if (isArray(children) && children.length > 0) {
           nodeClone.children = createNodes(children, nodeClone, level + 1);
