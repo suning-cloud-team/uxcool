@@ -1,3 +1,10 @@
+# 0.5.0-next.79 (2020-02-20)
+
+### Bug Fixes
+
+- **cascader:** 修复 value 重复时节点渲染不正确 bug ([07639e3](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/07639e3642a7a13bbf5a6372bb0d712f20caf5d4)), closes [#300](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/300)
+- **multi-cascader:** 修复 children 字段可能获取不到 bug ([d625a97](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/d625a97d3b96254e9b9a018f435ceb9d816d464f))
+
 # 0.5.0-next.78 (2020-02-17)
 
 ### Bug Fixes
