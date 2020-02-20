@@ -8,8 +8,8 @@ export const DEFAULT_FIELD_NAMES = {
   children: 'children',
 };
 
-export function getCascaderKey(value, level) {
-  return `${level}${SPLIT_STR}${value}`;
+export function genCascaderKey(valuePath) {
+  return valuePath.join(SPLIT_STR);
 }
 
 export function delay(fn, wait) {
