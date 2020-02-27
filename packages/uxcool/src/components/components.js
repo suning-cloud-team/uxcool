@@ -99,3 +99,5 @@ export * from './card';
 export { default as UxLayout } from './layout';
 
 export { default as UxDrawer } from './drawer';
+
+export { default as UxMultiCascader } from './multi-cascader';

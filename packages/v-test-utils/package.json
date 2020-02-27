@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-test-utils",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
@@ -13,13 +13,13 @@
     "vue": ">= 2.5.*"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.34",
+    "@suning/v-tools": "^1.0.35",
     "@vue/test-utils": "^1.0.0-beta.16"
   },
   "dependencies": {
+    "@suning/v-trigger": "^1.0.62",
     "@vue/server-test-utils": "^1.0.0-beta.30",
     "jquery": "^3.3.1",
-    "vue-server-renderer": "^2.6.11",
-    "@suning/v-trigger": "^1.0.60"
+    "vue-server-renderer": "^2.6.11"
   }
 }

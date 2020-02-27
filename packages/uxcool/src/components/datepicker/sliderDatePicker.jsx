@@ -14,11 +14,15 @@ import {
   getMinutes,
   getSeconds,
   setMinutes,
+  setSeconds,
 } from 'date-fns';
 import HumanizeDuration from 'humanize-duration';
 import ms from 'ms';
-import { isFunction, isArray, isString, isEqual, warning } from '@suning/v-utils';
+import {
+  isFunction, isArray, isString, isEqual, warning
+} from '@suning/v-utils';
 import { VRangeDatePicker } from '@suning/v-datepicker';
+import omit from 'object.omit';
 import localeCN from './locale/zh_CN';
 import Select from '../select';
 import Button from '../button';
@@ -63,7 +67,7 @@ function calcDuration(values = []) {
 }
 
 function getFormatDateStr(values = [], format) {
-  return values.map(v => formatDate(v, format)).join('~');
+  return values.map((v) => formatDate(v, format)).join('~');
 }
 
 function isUnSelectOption(value) {
@@ -209,11 +213,24 @@ function getDisabledMinutes(selectedDate, minDate, maxDate, minutes) {
       disabledMinutes = minutes.slice(0, getMinutes(minDate));
     } else if (isSameHour(selectedDate, maxDate)) {
       disabledMinutes = minutes.slice(getMinutes(maxDate) + 1);
+    } else if (
+      isBefore(selectedDate, setSeconds(setMinutes(minDate, 0), 0))
+      || isAfter(selectedDate, setSeconds(setMinutes(maxDate, 0), 0))
+    ) {
+      disabledMinutes = [...minutes];
     }
-  } else if (minDate && isSameHour(selectedDate, minDate)) {
-    disabledMinutes = minutes.slice(0, getMinutes(minDate));
-  } else if (maxDate && isSameHour(selectedDate, maxDate)) {
-    disabledMinutes = minutes.slice(getMinutes(maxDate) + 1);
+  } else if (minDate) {
+    if (isSameHour(selectedDate, minDate)) {
+      disabledMinutes = minutes.slice(0, getMinutes(minDate));
+    } else if (isBefore(selectedDate, setSeconds(setMinutes(minDate, 0), 0))) {
+      disabledMinutes = [...minutes];
+    }
+  } else if (maxDate) {
+    if (isSameHour(selectedDate, maxDate)) {
+      disabledMinutes = minutes.slice(getMinutes(maxDate) + 1);
+    } else if (isAfter(selectedDate, setSeconds(setMinutes(maxDate, 0), 0))) {
+      disabledMinutes = [...minutes];
+    }
   }
 
   return disabledMinutes;
@@ -231,11 +248,24 @@ function getDisabledSeconds(selectedDate, minDate, maxDate, seconds) {
       disabledSeconds = seconds.slice(0, getSeconds(minDate));
     } else if (isSameMinute(selectedDate, maxDate)) {
       disabledSeconds = seconds.slice(getSeconds(maxDate) + 1);
+    } else if (
+      isBefore(selectedDate, setSeconds(minDate, 0))
+      || isAfter(selectedDate, setSeconds(maxDate, 0))
+    ) {
+      disabledSeconds = [...seconds];
     }
-  } else if (minDate && isSameMinute(selectedDate, minDate)) {
-    disabledSeconds = seconds.slice(0, getSeconds(minDate));
-  } else if (maxDate && isSameMinute(selectedDate, maxDate)) {
-    disabledSeconds = seconds.slice(getSeconds(maxDate) + 1);
+  } else if (minDate) {
+    if (isSameMinute(selectedDate, minDate)) {
+      disabledSeconds = seconds.slice(0, getSeconds(minDate));
+    } else if (isBefore(selectedDate, setSeconds(minDate, 0))) {
+      disabledSeconds = [...seconds];
+    }
+  } else if (maxDate) {
+    if (isSameMinute(selectedDate, maxDate)) {
+      disabledSeconds = seconds.slice(getSeconds(maxDate) + 1);
+    } else if (isAfter(selectedDate, setSeconds(maxDate, 0))) {
+      disabledSeconds = [...seconds];
+    }
   }
 
   return disabledSeconds;
@@ -435,7 +465,7 @@ export default {
       }
 
       const times = refreshTimes
-        .filter(v => v.value)
+        .filter((v) => v.value)
         .reduce((r, v) => {
           const { value, label } = v;
           const nr = r;
@@ -455,7 +485,7 @@ export default {
             warning(false, `refresh-times invalid prop: ${value}`);
           }
           return nr;
-      }, []);
+        }, []);
       times.unshift({ ...DEFAULT_REFRESH_OPTIONS });
       return times;
     },
@@ -535,7 +565,7 @@ export default {
 
       if (isNeedRefresh) {
         let rVal = value;
-        let refreshOption = normalizeRefreshTimes.filter(v => v.value === rVal)[0];
+        let refreshOption = normalizeRefreshTimes.filter((v) => v.value === rVal)[0];
         if (!refreshOption) {
           if (process.env.NODE_ENV !== 'production') {
             warning(false, `refreshValue invalid: ${value}`);
@@ -557,9 +587,11 @@ export default {
         disabledDate(current) {
           if (minDate && maxDate) {
             return current && (isBefore(current, minDate) || isAfter(current, maxDate));
-          } else if (minDate) {
+          }
+          if (minDate) {
             return current && isBefore(current, minDate);
-          } else if (maxDate) {
+          }
+          if (maxDate) {
             return current && isAfter(current, maxDate);
           }
           return false;
@@ -609,13 +641,12 @@ export default {
       const ret = value;
 
       if (isString(value) && ranges) {
-        const range =
-          ranges.filter((v) => {
-            if (v.value) {
-              return v.value === value;
-            }
-            return v.label === value;
-          })[0] || null;
+        const range = ranges.filter((v) => {
+          if (v.value) {
+            return v.value === value;
+          }
+          return v.label === value;
+        })[0] || null;
         if (range) {
           const { dates } = range;
           const nDates = getDates(dates);
@@ -636,7 +667,7 @@ export default {
       }
     },
     findOptionByValue(value) {
-      return this.dataSource.filter(v => v.value === value)[0] || null;
+      return this.dataSource.filter((v) => v.value === value)[0] || null;
     },
     setInnerSelectValue(value, from = 'normal') {
       const { findOptionByValue } = this;
@@ -749,10 +780,9 @@ export default {
         const minDate = getValidDate(minSliderDate);
         const maxDate = getValidDate(maxSliderDate);
 
-        const [sliderStartDate, sliderEndDate] =
-          type === 'left'
-            ? [subMilliseconds(startDate, diffTime), startDate]
-            : [endDate, addMilliseconds(endDate, diffTime)];
+        const [sliderStartDate, sliderEndDate] = type === 'left'
+          ? [subMilliseconds(startDate, diffTime), startDate]
+          : [endDate, addMilliseconds(endDate, diffTime)];
 
         const dates = getSliderDate(
           sliderStartDate,
@@ -812,10 +842,10 @@ export default {
           <Icon type="calendar" />
           <span class={`${prefixCls}-slider-setting-label`}>{label}</span>
         </div>
-        ) : (
+      ) : (
         <div>
           {duration ? <Tag>{duration}</Tag> : ''}
-          {label}
+          <span class={`${prefixCls}-slider-select-label`}>{label}</span>
         </div>
       );
     },
@@ -959,8 +989,8 @@ export default {
             </span>
           ) : null}
         </div>
-        ) : (
-          triggerNode
+      ) : (
+        triggerNode
       );
     },
     renderSelect() {
@@ -991,7 +1021,8 @@ export default {
       const props = {
         // 与上面的 onSelectChange 相配合, 防止value==='setting'时选中
         value: [innerSelectValue],
-        dataSource,
+        // 移除dates attr, 否则linux 环境下单元测试过不了
+        dataSource: dataSource.map((v) => omit(v, ['dates'])),
         renderLabel: renderSelectLabel,
         optionLabelProp: 'children',
         control: true,
@@ -1020,32 +1051,44 @@ export default {
           <Row.Col span={8}>
             {showSliderBar ? (
               <Button.Group style="margin-right:10px">
-                <Button disabled={disabled || opDisabled.left} on-click={onLeftBtnClick}>
+                <Button
+                  role="slider-bar-left"
+                  disabled={disabled || opDisabled.left}
+                  on-click={onLeftBtnClick}
+                >
                   <Icon type="left" />
                 </Button>
-                <Button disabled={disabled || opDisabled.mid} on-click={onMidBtnClick}>
+                <Button
+                  role="slider-bar-pause"
+                  disabled={disabled || opDisabled.mid}
+                  on-click={onMidBtnClick}
+                >
                   {opMidMode === 'pause' ? (
                     <Icon type="pause" style="transform: scale(1.5)" />
                   ) : (
                     <Icon type="caret_right" />
                   )}
                 </Button>
-                <Button disabled={disabled || opDisabled.right} on-click={onRightBtnClick}>
+                <Button
+                  role="slider-bar-right"
+                  disabled={disabled || opDisabled.right}
+                  on-click={onRightBtnClick}
+                >
                   <Icon type="right" />
                 </Button>
               </Button.Group>
             ) : null}
             {showRefreshBar ? (
               <Button.Group>
-                <Button disabled={disabled} on-click={onManualRefresh}>
+                <Button role="slider-bar-refresh" disabled={disabled} on-click={onManualRefresh}>
                   <Icon type="sync-m" />
                 </Button>
               </Button.Group>
             ) : null}
           </Row.Col>
         </Row>
-        ) : (
-          selectNode
+      ) : (
+        selectNode
       );
     },
     updateSelectValue(
@@ -1067,8 +1110,8 @@ export default {
       } = this;
       let option = null;
       let options = dataSource
-        .filter(v => !v.UNRENDER_OTPION)
-        .slice(defaultOptions.filter(v => !v.UNRENDER_OTPION).length);
+        .filter((v) => !v.UNRENDER_OTPION)
+        .slice(defaultOptions.filter((v) => !v.UNRENDER_OTPION).length);
       if (type === 'quick-select') {
         const {
           title, label, value, duration: defDuration, isRefresh = false, dates
@@ -1095,7 +1138,7 @@ export default {
         option = {
           ...mixin,
           title: formatDateStrs,
-          value: values.map(v => v.getTime()).join('-'),
+          value: values.map((v) => v.getTime()).join('-'),
           duration,
           diffTime,
           label: formatDateStrs,

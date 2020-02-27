@@ -23,6 +23,9 @@ export {
   Range as UxRangeDatePicker,
   RangeMonth as UxRangeMonthPicker,
   Week as UxWeekPicker,
+  // 0.5.0-next.71版本拼写错误，为了向下兼容保留该错误名称
   Multi as UxMutliDatePicker,
+  // 0.5.0-next.78版本修复
+  Multi as UxMultiDatePicker,
 };
 export default DatePicker;

@@ -1,7 +1,5 @@
 import { isArray, isFunction } from '@suning/v-utils';
-import { DEFAULT_FIELD_NAMES, getCascaderKey } from '../utils';
-
-const { value: DefaultValue, children: DefaultChildren } = DEFAULT_FIELD_NAMES;
+import { genCascaderKey } from '../utils';
 
 export default {
   created() {
@@ -13,7 +11,7 @@ export default {
   methods: {
     createNodes(nodes = [], parent = null, level = 0) {
       const {
-        normalizeFieldNames, createNodes, registerNode, loadData
+        createNodes, registerNode, loadData, valueField, labelField, childrenField
       } = this;
 
       const ret = [];
@@ -24,28 +22,28 @@ export default {
       for (let i = 0; i < l; i += 1) {
         const node = nodes[i];
         if (node) {
+          const value = node[valueField];
+          const valuePath = parent ? [...parent.valuePath, value] : [value];
+
           const nNode = {
             ...node,
             originNode: { ...node },
             parent,
             level,
+            valuePath,
+            value,
+            label: node[labelField],
+            children: node[childrenField],
             isLoading: false,
             isLoaded: false,
             isParent: isFunction(loadData) ? node.isParent !== false : false,
           };
 
-          // 节点属性重置为默认属性名
-          Object.keys(normalizeFieldNames).forEach((k) => {
-            const fieldName = normalizeFieldNames[k];
-            const val = nNode[fieldName];
-            delete nNode[fieldName];
-            nNode[DEFAULT_FIELD_NAMES[k]] = val;
-          });
-
-          const children = nNode[DefaultChildren];
+          const { children } = nNode;
           if (isArray(children) && children.length > 0) {
-            nNode[DefaultChildren] = createNodes(children, nNode, level + 1);
+            nNode.children = createNodes(children, nNode, level + 1);
             nNode.isParent = true;
+            nNode.isLoaded = true;
           }
           registerNode(nNode);
           ret.push(nNode);
@@ -59,15 +57,19 @@ export default {
       cascaderStore.nodesMap = {};
     },
     registerNode(node) {
-      const { cascaderStore: { nodesMap } } = this;
-      nodesMap[getCascaderKey(node[DefaultValue], node.level)] = node;
+      const {
+        cascaderStore: { nodesMap },
+      } = this;
+      nodesMap[genCascaderKey(node.valuePath)] = node;
     },
-    getNode(value, level) {
-      const { cascaderStore: { nodesMap } } = this;
-      return nodesMap[getCascaderKey(value, level)];
+    getNode(valuePath) {
+      const {
+        cascaderStore: { nodesMap },
+      } = this;
+      return nodesMap[genCascaderKey(valuePath)];
     },
     addNodes(nodes = [], parent) {
-      const { createNodes } = this;
+      const { createNodes, childrenField } = this;
 
       let nNodes = nodes;
       if (!isArray(nNodes)) {
@@ -78,7 +80,8 @@ export default {
       if (np) {
         ret = createNodes(nNodes, np, np.level + 1);
         np.isParent = ret.length > 0;
-        np[DefaultChildren] = ret;
+        np.children = ret;
+        np.originNode[childrenField] = ret.map((node) => node.originNode);
       } else {
         ret = createNodes(nNodes, null, 0);
       }

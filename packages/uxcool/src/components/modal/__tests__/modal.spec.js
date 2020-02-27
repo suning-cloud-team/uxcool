@@ -6,10 +6,13 @@ import {
   mountPickerFactory,
   createWrapper,
   destroyWrapper,
+  removePopup
 } from '@suning/v-test-utils';
 import Modal from '../index';
+import { getPortal } from '../../../../../v-test-utils/src';
 
 const mountModal = mountPickerFactory(Modal);
+
 describe('modal', () => {
   it('render correctly', async () => {
     const wrapper = await mountModal({
@@ -58,7 +61,7 @@ describe('modal', () => {
     expect($('.ux-modal-footer').find('.ux-btn-danger').length).toBe(1);
     expect($('.ux-modal-wrap').css('z-index')).toBe('999');
     wrapper.setProps({
-      hideFooter: true,
+      hideFooter: true
     });
     await waitTime(50);
     expect($('.ux-modal-footer').length).toBe(0);
@@ -157,10 +160,11 @@ describe('modal', () => {
   });
 
   describe('methods', () => {
-    it('render correctly', async () => {
+    it('render confirm correctly', async () => {
+      removePopup();
       const okFn = jest.fn();
       const cancelFn = jest.fn();
-      Modal.info({
+      Modal.confirm({
         title: 'this is info title',
         content: '<p>info content</p>',
         dangerouslySetInnerHTML: true,
@@ -175,22 +179,97 @@ describe('modal', () => {
       })
         .then(() => {
           okFn();
-        })
-        .catch(() => {
+        },() => {
           cancelFn();
         });
-      await waitTime(100);
+      await waitTime(300);
 
       const wrapper = createWrapper(document.querySelector('.ux-modal-light'));
-      expect(wrapper.html()).toMatchSnapshot();
-      // expect(wrapper.find('.ux-confirm-title').text()).toBe('this is title');
-      // expect(wrapper.find('.ux-confirm-content').html()).toBe('<p>content</p>');
-      // const btns = wrapper.findAll('.ux-btn');
-      // expect(btns.at(0).text()).toBe('CANCEL');
-      // expect(btns.at(1).text()).toBe('OK');
-      // expect($('.ux-btn-danger').length).toBe(1);
-      // expect($('.ux-confirm').css('width')).toBe('600px');
-      // expect($('.ux-modal-wrap').css('z-index')).toBe('999');
+      await triggerEvent(wrapper.find('.ux-btn-danger'), 'click');
+      expect(okFn).toHaveBeenCalled();
+      Modal.confirm({
+        title: 'this is confirm title',
+        content: '<p>confirm content</p>',
+        dangerouslySetInnerHTML: true,
+        okCancel: true,
+        cancelText: 'CANCEL',
+        okText: 'OK',
+        okType: 'danger',
+      })
+        .then(() => {
+          okFn();
+        },() => {
+          cancelFn();
+        });
+      await waitTime();
+      const buttonsWrapper = createWrapper(document.querySelector('.ux-modal-light')).findAll('.ux-btn');
+      await triggerEvent(buttonsWrapper.at(0), 'click', 150);
+      // expect(cancelFn).toHaveBeenCalled();
+      removePopup();
+    });
+    it('render modal correctly', async () => {
+      const okFn = jest.fn();
+      const cancelFn = jest.fn();
+      const inputFn = jest.fn();
+      removePopup();
+      await mountModal({
+        propsData: {
+          value: true,
+        },
+        slots: {
+          title: 'this is title',
+        },
+        listeners: {
+          input: inputFn,
+          cancel: cancelFn,
+          ok: okFn
+        }
+      });
+
+      const modalwrapper = createWrapper(document.querySelector('.ux-modal-light'));
+      await waitTime();
+      const buttonWrapper = modalwrapper.findAll('.ux-btn');
+      await triggerEvent(buttonWrapper.at(1), 'click');
+      await triggerEvent(buttonWrapper.at(0), 'click');
+      expect(okFn).toHaveBeenCalled();
+      expect(inputFn).toHaveBeenCalled();
+      removePopup();
+    });
+  });
+
+  describe('render message notice correctly', () => {
+    it.each([
+      'success',
+      'info',
+      'error',
+      'warning',
+      'warn',
+      'confirm',
+    ])('render %s correctly', async (message) => {
+      if (message === 'info') {
+        Modal.info();
+      } else {
+        Modal[message]({
+          title: `This is ${message} Message Title`,
+          content: 'content'
+        });
+      }
+      await waitTime();
+      const wrapper = createWrapper(document.body);
+      expect(wrapper.find(`.ux-confirm-${message}`).exists()).toBeTruthy();
+    });
+
+    it('config is correctly', async () => {
+      removePopup();
+      Modal.config({ theme: 'dark' });
+      Modal.confirm({
+        title: 'Do you Want to delete these items?',
+        content: 'Some Descriptions',
+      });
+      await waitTime();
+      const wrapper = createWrapper(document.body);
+      expect(wrapper.find('.ux-modal-dark').exists()).toBeTruthy();
+      Modal.destroy();
     });
   });
 });

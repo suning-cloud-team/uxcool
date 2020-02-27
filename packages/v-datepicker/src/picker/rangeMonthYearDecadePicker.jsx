@@ -15,7 +15,7 @@ export default {
       type: String,
       default: 'v-calendar-picker',
     },
-    defaultPickerValue: {
+    pickerValue: {
       type: Array,
       default() {
         return [];
@@ -129,7 +129,7 @@ export default {
       getPopupContainer,
       onPopupVisible,
       prefixCls,
-      defaultPickerValue,
+      pickerValue,
       mode,
       selectedValue,
       locale,
@@ -161,7 +161,7 @@ export default {
 
     const calendarProps = {
       prefixCls,
-      defaultPickerValue,
+      pickerValue,
       selectedValue,
       mode,
       locale,

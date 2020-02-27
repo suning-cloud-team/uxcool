@@ -102,19 +102,21 @@
       <ux-radio-group v-model="opts6Checked"
                       class="radio-group-vertical"
       >
-        <ux-radio v-for="(v,k) in opts6"
-                  :key="k"
-                  :label="v"
-                  :value="v"
-                  style="height:34px;line-height:34px"
+        <ux-radio
+          v-for="(v, k) in opts6"
+          :key="k"
+          :label="v"
+          :value="v"
+          style="height:34px;line-height:34px"
         />
         <ux-radio value="more"
                   style="height:34px;line-height:34px"
         >
           <span>more</span>
-          <input v-if="opts6Checked === 'more'"
-                 class="ux-input"
-                 style="width:100px;margin-left:10px"
+          <input
+            v-if="opts6Checked === 'more'"
+            class="ux-input"
+            style="width:100px;margin-left:10px"
           >
         </ux-radio>
       </ux-radio-group>
@@ -141,7 +143,7 @@
       />
     </div>
     <div class="demo">
-      <h6>option group option disabled </h6>
+      <h6>option group option disabled</h6>
       <ux-radio-group type="button"
                       :options="opts3"
       />
@@ -183,15 +185,14 @@
   </div>
 </template>
 
-
 <script>
-  import { UxRadio, UxRadioGroup, UxRadioButton } from '@suning/uxcool';
+  import { UxRadio } from '@suning/uxcool';
 
   export default {
     components: {
       UxRadio,
-      UxRadioGroup,
-      UxRadioButton,
+      UxRadioGroup: UxRadio.Group,
+      UxRadioButton: UxRadio.Button,
     },
     data() {
       return {
@@ -210,7 +211,7 @@
         opts5: ['aa', 'bb', 'cc'],
         opts6: ['1', '2', '3'],
         opts6Checked: '',
-        defaultValue: 1
+        defaultValue: 1,
       };
     },
     created() {
@@ -229,23 +230,26 @@
         this.checked1 = !this.checked1;
       },
       onChangeChecked1(e) {
+        // eslint-disable-next-line no-console
         console.log('onChangeChecked1', e);
       },
       onOpts1Change(e, prevVal) {
+        // eslint-disable-next-line no-console
         console.log('onOpts1Change1', e, prevVal);
       },
       valueChanged(selectedRadio, preSelectedRadio) {
+        // eslint-disable-next-line no-console
         console.log(selectedRadio, preSelectedRadio);
-      }
+      },
     },
   };
 </script>
 
 <style lang="scss" scoped>
-  /* ::v-deep或/deep/是 vue-loader使用的指令 https://vue-loader.vuejs.org/zh-cn/features/scoped-css.html */
-  .radio-group-vertical {
-    ::v-deep .ux-radio-wrapper {
-      display: block;
-    }
+/* ::v-deep或/deep/是 vue-loader使用的指令 https://vue-loader.vuejs.org/zh-cn/features/scoped-css.html */
+.radio-group-vertical {
+  ::v-deep .ux-radio-wrapper {
+    display: block;
   }
+}
 </style>

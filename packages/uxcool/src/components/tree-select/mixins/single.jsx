@@ -15,7 +15,7 @@ export default {
         triggerNode = <span class={`${prefixCls}-selection__placeholder`}>{placeholder}</span>;
       }
       return (
-        <Selector slot="trigger" show-arrow>
+        <Selector slot="trigger" show-arrow selections={selectionValue}>
           <div class={`${prefixCls}-selection__rendered`}>{triggerNode}</div>
         </Selector>
       );

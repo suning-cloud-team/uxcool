@@ -1,4 +1,6 @@
-import { isArray, isEqual, isVueComponent, cloneVNode, extractVNodeData } from '@suning/v-utils';
+import {
+  isArray, isEqual, isVueComponent, cloneVNode, extractVNodeData
+} from '@suning/v-utils';
 import Trigger from '@suning/v-trigger';
 import Input from '../input';
 import Icon from '../icon';
@@ -8,8 +10,6 @@ import { DEFAULT_FIELD_NAMES } from './utils';
 import placements from './placements';
 import StoreMixin from './mixins/store';
 import AsyncMixin from './mixins/async';
-
-const { label: DefaultLabel, value: DefaultValue, children: DefaultChildren } = DEFAULT_FIELD_NAMES;
 
 export default {
   name: buildComponentName('Cascader'),
@@ -144,6 +144,15 @@ export default {
         ...fieldNames,
       };
     },
+    valueField() {
+      return this.normalizeFieldNames.value;
+    },
+    labelField() {
+      return this.normalizeFieldNames.label;
+    },
+    childrenField() {
+      return this.normalizeFieldNames.children;
+    },
     activeNodes() {
       const { selectedValue, getNodesByValues } = this;
       return getNodesByValues(selectedValue);
@@ -153,8 +162,8 @@ export default {
       const nodes = activeNodes.reduce(
         (r, node) => {
           // 每一层级获取下一级 节点列表
-          const children = node[DefaultChildren];
-          if (isArray(children)&&children.length>0) {
+          const { children } = node;
+          if (isArray(children) && children.length > 0) {
             r.push(children);
           }
           return r;
@@ -178,7 +187,7 @@ export default {
           size === 'large' || size === 'small',
       };
     },
-    displayLabel() {},
+    // displayLabel() {},
   },
   watch: {
     dataSource(nVal) {
@@ -212,12 +221,15 @@ export default {
       const { innerValue, getNodesByValues, displayRender } = this;
       const nodes = getNodesByValues(innerValue);
       return displayRender(
-        nodes.map(node => node[DefaultLabel]),
-        nodes.map(node => ({ ...node.originNode }))
+        nodes.map((node) => node.label),
+        nodes.map((node) => ({ ...node.originNode }))
       );
     },
     forceUpdateTriggerAlign() {
-      const { $refs: { triggerRef }, innerVisible } = this;
+      const {
+        $refs: { triggerRef },
+        innerVisible,
+      } = this;
       if (triggerRef && innerVisible) {
         this.$nextTick(() => {
           triggerRef.forcePopupAlign();
@@ -225,13 +237,17 @@ export default {
       }
     },
     focus() {
-      const { $refs: { triggerNodeRef } } = this;
+      const {
+        $refs: { triggerNodeRef },
+      } = this;
       if (triggerNodeRef) {
         triggerNodeRef.focus();
       }
     },
     blur() {
-      const { $refs: { triggerNodeRef } } = this;
+      const {
+        $refs: { triggerNodeRef },
+      } = this;
       if (triggerNodeRef) {
         triggerNodeRef.blur();
       }
@@ -258,7 +274,12 @@ export default {
       const { getNode } = this;
       const nodes = !isArray(value)
         ? []
-        : value.map((k, i) => getNode(k, i)).filter(node => !!node);
+        : value
+          .map((val, i) => {
+            const valuePath = value.slice(0, i + 1);
+            return getNode(valuePath);
+          })
+          .filter((node) => !!node);
       return nodes;
     },
 
@@ -270,7 +291,7 @@ export default {
       this.innerValue = value;
       // 初始化时不触发
       if (trigger) {
-        const nodes = getNodesByValues(value).map(node => ({ ...node.originNode }));
+        const nodes = getNodesByValues(value).map((node) => ({ ...node.originNode }));
         const out = [...value];
         this.$emit('input', out, nodes);
         this.$emit('change', out, nodes);
@@ -296,14 +317,14 @@ export default {
     },
     getActiveValue(node, async = false) {
       const { selectedValue } = this;
-      const nodeValue = node[DefaultValue];
+      const nodeValue = node.value;
       let activeValue;
       if (async && nodeValue === selectedValue[node.level]) {
         activeValue = selectedValue;
       } else {
         // 选中层级之后的原有的层级数据都无效
         activeValue = selectedValue.slice(0, node.level);
-        activeValue.push(node[DefaultValue]);
+        activeValue.push(node.value);
       }
       return activeValue;
     },
@@ -387,7 +408,10 @@ export default {
       this.searchValue = val;
     },
     getSlotDefaultTriggerNode() {
-      const { $slots: { default: slotDefault }, disabled } = this;
+      const {
+        $slots: { default: slotDefault },
+        disabled,
+      } = this;
       const triggerNode = null;
       if (!slotDefault || !slotDefault[0]) {
         return triggerNode;
@@ -452,8 +476,8 @@ export default {
           inputOn.blur = onSearchInputBlur;
         }
 
-        const clearElement =
-          (allowClear && !disabled && innerValue.length > 0) || (!disabled && !!searchValue) ? (
+        // eslint-disable-next-line max-len
+        const clearElement = (allowClear && !disabled && innerValue.length > 0) || (!disabled && !!searchValue) ? (
             <Icon
               key="clear"
               type="close_circle"

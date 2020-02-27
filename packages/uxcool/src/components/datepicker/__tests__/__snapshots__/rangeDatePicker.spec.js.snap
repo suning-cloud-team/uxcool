@@ -1,8 +1,4047 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rangeDatePicker locale should work when use localeEN.lang 1`] = `
+exports[`RangeDatePicker disabled-date should disabled 2019-05-03 ~ 2019-06-08 1`] = `
 <div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" style="">
   <div class="ux-input ux-calendar-picker-input"><input placeholder="开始日期" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <span class="ux-calendar-range-picker-separator"> ~ </span> <input placeholder="结束日期" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <i class="fu fu-close_circle ux-calendar-picker-clear"></i> <span class="ux-calendar-picker-icon"></span></div>
+</div>
+<div role="popup">
+  <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft " style="left: -999px; top: -1002px;">
+    <div class="ux-calendar-picker-container-content">
+      <div class="ux-calendar ux-calendar-range ux-calendar-light">
+        <div class="ux-calendar-panel">
+          <!---->
+          <div class="ux-calendar-date-panel">
+            <div class="ux-calendar-range-part ux-calendar-range-left">
+              <div class="ux-calendar-input-wrap">
+                <div class="ux-calendar-date-input-wrap"><input title="2019-05-01" placeholder="开始日期" readonly="readonly" class="ux-calendar-input"></div>
+                <!---->
+              </div>
+              <div>
+                <div class="ux-calendar-header">
+                  <div style="position: relative;"><a title="上一年 (Control键加左方向键)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="上个月 (翻页上键)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2019年</a><a role="button" title="选择月份" class="ux-calendar-month-select">5月</a></span>
+                    <!---->
+                    <!---->
+                  </div>
+                  <div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </div>
+                <!---->
+                <div class="ux-calendar-body">
+                  <table cellspacing="0" role="grid" class="ux-calendar-table">
+                    <thead>
+                      <tr role="row">
+                        <th title="星期一" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        一
+      </span></th>
+                        <th title="星期二" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        二
+      </span></th>
+                        <th title="星期三" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        三
+      </span></th>
+                        <th title="星期四" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        四
+      </span></th>
+                        <th title="星期五" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        五
+      </span></th>
+                        <th title="星期六" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        六
+      </span></th>
+                        <th title="星期日" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        日
+      </span></th>
+                      </tr>
+                    </thead>
+                    <tbody class="ux-calendar-tbody" range-values="">
+                      <tr>
+                        <td role="gridcell" title="2019-04-29" class="ux-calendar-cell ux-calendar-last-month-cell">
+                          <div class="ux-calendar-date">29</div>
+                        </td>
+                        <td role="gridcell" title="2019-04-30" class="ux-calendar-cell ux-calendar-last-month-cell">
+                          <div class="ux-calendar-date">30</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-01" class="ux-calendar-cell ux-calendar-selected-start-date ux-calendar-selected-day">
+                          <div class="ux-calendar-date">1</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-02" class="ux-calendar-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">2</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-03" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell ux-calendar-disabled-cell-first-of-row">
+                          <div class="ux-calendar-date">3</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-04" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">4</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-05" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell ux-calendar-disabled-cell-last-of-row">
+                          <div class="ux-calendar-date">5</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-05-06" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell ux-calendar-disabled-cell-first-of-row">
+                          <div class="ux-calendar-date">6</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-07" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">7</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-08" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">8</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-09" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">9</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-10" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">10</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-11" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">11</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-12" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell ux-calendar-disabled-cell-last-of-row">
+                          <div class="ux-calendar-date">12</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-05-13" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell ux-calendar-disabled-cell-first-of-row">
+                          <div class="ux-calendar-date">13</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-14" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">14</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-15" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">15</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-16" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">16</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-17" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">17</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-18" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">18</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-19" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell ux-calendar-disabled-cell-last-of-row">
+                          <div class="ux-calendar-date">19</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-05-20" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell ux-calendar-disabled-cell-first-of-row">
+                          <div class="ux-calendar-date">20</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-21" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">21</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-22" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">22</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-23" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">23</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-24" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">24</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-25" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">25</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-26" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell ux-calendar-disabled-cell-last-of-row">
+                          <div class="ux-calendar-date">26</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-05-27" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell ux-calendar-disabled-cell-first-of-row">
+                          <div class="ux-calendar-date">27</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-28" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">28</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-29" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">29</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-30" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">30</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-31" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">31</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-01" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">1</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-02" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-next-month-btn-day ux-calendar-disabled-cell-last-of-row">
+                          <div class="ux-calendar-date">2</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-06-03" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-next-month-btn-day ux-calendar-disabled-cell-first-of-row">
+                          <div class="ux-calendar-date">3</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-04" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">4</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-05" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">5</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-06" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">6</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-07" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">7</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-08" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-next-month-btn-day ux-calendar-disabled-cell-last-of-row">
+                          <div class="ux-calendar-date">8</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-09" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">9</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div> <span class="ux-calendar-range-middle">~</span>
+            <div class="ux-calendar-range-part ux-calendar-range-right">
+              <div class="ux-calendar-input-wrap">
+                <div class="ux-calendar-date-input-wrap"><input title="2019-06-01" placeholder="结束日期" readonly="readonly" class="ux-calendar-input"></div>
+                <!---->
+              </div>
+              <div>
+                <div class="ux-calendar-header">
+                  <div style="position: relative;">
+                    <!---->
+                    <!----> <span class="ux-calendar-ym-select"><a role="button" title="选择年份" class="ux-calendar-year-select">2019年</a><a role="button" title="选择月份" class="ux-calendar-month-select">6月</a></span> <a title="下个月 (翻页下键)" role="button" class="ux-calendar-next-month-btn"></a> <a title="下一年 (Control键加右方向键)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                  <div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </div>
+                <!---->
+                <div class="ux-calendar-body">
+                  <table cellspacing="0" role="grid" class="ux-calendar-table">
+                    <thead>
+                      <tr role="row">
+                        <th title="星期一" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        一
+      </span></th>
+                        <th title="星期二" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        二
+      </span></th>
+                        <th title="星期三" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        三
+      </span></th>
+                        <th title="星期四" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        四
+      </span></th>
+                        <th title="星期五" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        五
+      </span></th>
+                        <th title="星期六" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        六
+      </span></th>
+                        <th title="星期日" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        日
+      </span></th>
+                      </tr>
+                    </thead>
+                    <tbody class="ux-calendar-tbody" range-values="">
+                      <tr>
+                        <td role="gridcell" title="2019-05-27" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-last-month-cell ux-calendar-disabled-cell-first-of-row">
+                          <div class="ux-calendar-date">27</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-28" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-last-month-cell">
+                          <div class="ux-calendar-date">28</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-29" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-last-month-cell">
+                          <div class="ux-calendar-date">29</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-30" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-last-month-cell">
+                          <div class="ux-calendar-date">30</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-31" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-last-month-cell">
+                          <div class="ux-calendar-date">31</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-01" class="ux-calendar-cell ux-calendar-selected-end-date ux-calendar-selected-day ux-calendar-disabled-cell">
+                          <div class="ux-calendar-date">1</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-02" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-disabled-cell-last-of-row">
+                          <div class="ux-calendar-date">2</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-06-03" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-disabled-cell-first-of-row">
+                          <div class="ux-calendar-date">3</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-04" class="ux-calendar-cell ux-calendar-disabled-cell">
+                          <div class="ux-calendar-date">4</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-05" class="ux-calendar-cell ux-calendar-disabled-cell">
+                          <div class="ux-calendar-date">5</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-06" class="ux-calendar-cell ux-calendar-disabled-cell">
+                          <div class="ux-calendar-date">6</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-07" class="ux-calendar-cell ux-calendar-disabled-cell">
+                          <div class="ux-calendar-date">7</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-08" class="ux-calendar-cell ux-calendar-disabled-cell ux-calendar-disabled-cell-last-of-row">
+                          <div class="ux-calendar-date">8</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-09" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">9</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-06-10" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">10</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-11" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">11</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-12" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">12</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-13" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">13</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-14" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">14</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-15" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">15</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-16" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">16</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-06-17" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">17</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-18" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">18</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-19" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">19</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-20" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">20</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-21" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">21</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-22" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">22</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-23" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">23</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-06-24" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">24</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-25" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">25</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-26" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">26</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-27" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">27</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-28" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">28</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-29" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">29</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-30" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">30</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-07-01" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">1</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-02" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">2</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-03" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">3</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-04" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">4</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-05" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">5</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-06" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">6</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-07" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">7</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!---->
+          </div>
+          <div class="ux-calendar-footer ux-calendar-range-bottom">
+            <!---->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeDatePicker disabled-time should disabled hours [4,8,10] 1`] = `
+<div class="ux-calendar-time-picker">
+  <div class="ux-calendar-time-picker-panel">
+    <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
+      <div class="ux-calendar-time-picker-input-wrap"></div>
+      <div class="ux-calendar-time-picker-combobox">
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li disabled="disabled" class="ux-calendar-time-picker-select-option-disabled">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li disabled="disabled" class="ux-calendar-time-picker-select-option-disabled">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li disabled="disabled" class="ux-calendar-time-picker-select-option-disabled">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ux-calendar-time-picker">
+  <div class="ux-calendar-time-picker-panel">
+    <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
+      <div class="ux-calendar-time-picker-input-wrap"></div>
+      <div class="ux-calendar-time-picker-combobox">
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li disabled="disabled" class="ux-calendar-time-picker-select-option-disabled">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li disabled="disabled" class="ux-calendar-time-picker-select-option-disabled">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li disabled="disabled" class="ux-calendar-time-picker-select-option-disabled">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeDatePicker disabled-time should disabled minute [2,7,9,24,59] when hour 14 1`] = `
+<div class="ux-calendar-time-picker">
+  <div class="ux-calendar-time-picker-panel">
+    <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
+      <div class="ux-calendar-time-picker-input-wrap"></div>
+      <div class="ux-calendar-time-picker-combobox">
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              59
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ux-calendar-time-picker">
+  <div class="ux-calendar-time-picker-panel">
+    <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
+      <div class="ux-calendar-time-picker-input-wrap"></div>
+      <div class="ux-calendar-time-picker-combobox">
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              00
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              01
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              02
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              03
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              04
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              05
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              06
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              07
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              08
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              09
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              10
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              11
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              12
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              13
+            </li>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              59
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeDatePicker disabled-time should disabled sencod [4, 7,10,22,35,48] when hour 14, minute 15 1`] = `
+<div class="ux-calendar-time-picker">
+  <div class="ux-calendar-time-picker-panel">
+    <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
+      <div class="ux-calendar-time-picker-input-wrap"></div>
+      <div class="ux-calendar-time-picker-combobox">
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ux-calendar-time-picker">
+  <div class="ux-calendar-time-picker-panel">
+    <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
+      <div class="ux-calendar-time-picker-input-wrap"></div>
+      <div class="ux-calendar-time-picker-combobox">
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              00
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              01
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              02
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              03
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              04
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              05
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              06
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              07
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              08
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              09
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              10
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              11
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              12
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              13
+            </li>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              00
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              01
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              02
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              03
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              04
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              05
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              06
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              07
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              08
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              09
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              10
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              11
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              12
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              13
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              14
+            </li>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeDatePicker disabled-time should disabled start panel minute [30, 44] when hour 18 1`] = `
+<div class="ux-calendar-time-picker">
+  <div class="ux-calendar-time-picker-panel">
+    <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
+      <div class="ux-calendar-time-picker-input-wrap"></div>
+      <div class="ux-calendar-time-picker-combobox">
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeDatePicker disabled-time should disabled start panel minute [30, 44] when hour 18 2`] = `
+<div class="ux-calendar-time-picker">
+  <div class="ux-calendar-time-picker-panel">
+    <div class="ux-calendar-time-picker-inner ux-calendar-time-picker-column-3">
+      <div class="ux-calendar-time-picker-input-wrap"></div>
+      <div class="ux-calendar-time-picker-combobox">
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              00
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              01
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              02
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              03
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              04
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              05
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              06
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              07
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              08
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              09
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              10
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              11
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              12
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              13
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              14
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              15
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              16
+            </li>
+            <li class="ux-calendar-time-picker-select-option-disabled" disabled="disabled">
+              17
+            </li>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+        <div class="ux-calendar-time-picker-select">
+          <ul>
+            <li class="ux-calendar-time-picker-select-option-selected">
+              00
+            </li>
+            <li class="">
+              01
+            </li>
+            <li class="">
+              02
+            </li>
+            <li class="">
+              03
+            </li>
+            <li class="">
+              04
+            </li>
+            <li class="">
+              05
+            </li>
+            <li class="">
+              06
+            </li>
+            <li class="">
+              07
+            </li>
+            <li class="">
+              08
+            </li>
+            <li class="">
+              09
+            </li>
+            <li class="">
+              10
+            </li>
+            <li class="">
+              11
+            </li>
+            <li class="">
+              12
+            </li>
+            <li class="">
+              13
+            </li>
+            <li class="">
+              14
+            </li>
+            <li class="">
+              15
+            </li>
+            <li class="">
+              16
+            </li>
+            <li class="">
+              17
+            </li>
+            <li class="">
+              18
+            </li>
+            <li class="">
+              19
+            </li>
+            <li class="">
+              20
+            </li>
+            <li class="">
+              21
+            </li>
+            <li class="">
+              22
+            </li>
+            <li class="">
+              23
+            </li>
+            <li class="">
+              24
+            </li>
+            <li class="">
+              25
+            </li>
+            <li class="">
+              26
+            </li>
+            <li class="">
+              27
+            </li>
+            <li class="">
+              28
+            </li>
+            <li class="">
+              29
+            </li>
+            <li class="">
+              30
+            </li>
+            <li class="">
+              31
+            </li>
+            <li class="">
+              32
+            </li>
+            <li class="">
+              33
+            </li>
+            <li class="">
+              34
+            </li>
+            <li class="">
+              35
+            </li>
+            <li class="">
+              36
+            </li>
+            <li class="">
+              37
+            </li>
+            <li class="">
+              38
+            </li>
+            <li class="">
+              39
+            </li>
+            <li class="">
+              40
+            </li>
+            <li class="">
+              41
+            </li>
+            <li class="">
+              42
+            </li>
+            <li class="">
+              43
+            </li>
+            <li class="">
+              44
+            </li>
+            <li class="">
+              45
+            </li>
+            <li class="">
+              46
+            </li>
+            <li class="">
+              47
+            </li>
+            <li class="">
+              48
+            </li>
+            <li class="">
+              49
+            </li>
+            <li class="">
+              50
+            </li>
+            <li class="">
+              51
+            </li>
+            <li class="">
+              52
+            </li>
+            <li class="">
+              53
+            </li>
+            <li class="">
+              54
+            </li>
+            <li class="">
+              55
+            </li>
+            <li class="">
+              56
+            </li>
+            <li class="">
+              57
+            </li>
+            <li class="">
+              58
+            </li>
+            <li class="">
+              59
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeDatePicker locale should work when use localeEN 1`] = `
+<div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" style="">
+  <div class="ux-input ux-calendar-picker-input"><input placeholder="Start date" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <span class="ux-calendar-range-picker-separator"> ~ </span> <input placeholder="End date" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <i class="fu fu-close_circle ux-calendar-picker-clear"></i> <span class="ux-calendar-picker-icon"></span></div>
 </div>
 <div role="popup">
   <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft slide-up-enter slide-up-enter-active" style="left: -999px; top: -1002px;">
@@ -13,12 +4052,12 @@ exports[`rangeDatePicker locale should work when use localeEN.lang 1`] = `
           <div class="ux-calendar-date-panel">
             <div class="ux-calendar-range-part ux-calendar-range-left">
               <div class="ux-calendar-input-wrap">
-                <div class="ux-calendar-date-input-wrap"><input title="2019-11-03" placeholder="开始日期" readonly="readonly" class="ux-calendar-input"></div>
+                <div class="ux-calendar-date-input-wrap"><input title="2019-05-03" placeholder="Start date" readonly="readonly" class="ux-calendar-input"></div>
                 <!---->
               </div>
               <div>
                 <div class="ux-calendar-header">
-                  <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">Nov</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2019</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                  <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">May</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2019</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
                   <div>
                     <!---->
                     <!---->
@@ -28,7 +4067,7 @@ exports[`rangeDatePicker locale should work when use localeEN.lang 1`] = `
                 <!---->
                 <div class="ux-calendar-body">
                   <table cellspacing="0" role="grid" class="ux-calendar-table">
-                    <thead selected-value="Sun Nov 03 2019 00:00:00 GMT+0800 (GMT+08:00),Fri Jan 03 2020 00:00:00 GMT+0800 (GMT+08:00)">
+                    <thead>
                       <tr role="row">
                         <th title="Sunday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
         Su
@@ -55,141 +4094,141 @@ exports[`rangeDatePicker locale should work when use localeEN.lang 1`] = `
                     </thead>
                     <tbody class="ux-calendar-tbody" range-values="">
                       <tr>
-                        <td role="gridcell" title="2019-10-27" class="ux-calendar-cell ux-calendar-last-month-cell">
-                          <div class="ux-calendar-date">27</div>
-                        </td>
-                        <td role="gridcell" title="2019-10-28" class="ux-calendar-cell ux-calendar-last-month-cell">
+                        <td role="gridcell" title="2019-04-28" class="ux-calendar-cell ux-calendar-last-month-cell">
                           <div class="ux-calendar-date">28</div>
                         </td>
-                        <td role="gridcell" title="2019-10-29" class="ux-calendar-cell ux-calendar-last-month-cell">
+                        <td role="gridcell" title="2019-04-29" class="ux-calendar-cell ux-calendar-last-month-cell">
                           <div class="ux-calendar-date">29</div>
                         </td>
-                        <td role="gridcell" title="2019-10-30" class="ux-calendar-cell ux-calendar-last-month-cell">
+                        <td role="gridcell" title="2019-04-30" class="ux-calendar-cell ux-calendar-last-month-cell">
                           <div class="ux-calendar-date">30</div>
                         </td>
-                        <td role="gridcell" title="2019-10-31" class="ux-calendar-cell ux-calendar-last-month-cell">
-                          <div class="ux-calendar-date">31</div>
-                        </td>
-                        <td role="gridcell" title="2019-11-01" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-01" class="ux-calendar-cell">
                           <div class="ux-calendar-date">1</div>
                         </td>
-                        <td role="gridcell" title="2019-11-02" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-02" class="ux-calendar-cell">
                           <div class="ux-calendar-date">2</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-03" class="ux-calendar-cell ux-calendar-selected-start-date ux-calendar-selected-day">
+                          <div class="ux-calendar-date">3</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-04" class="ux-calendar-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">4</div>
                         </td>
                       </tr>
                       <tr>
-                        <td role="gridcell" title="2019-11-03" class="ux-calendar-cell ux-calendar-selected-start-date ux-calendar-selected-day">
-                          <div class="ux-calendar-date">3</div>
-                        </td>
-                        <td role="gridcell" title="2019-11-04" class="ux-calendar-cell ux-calendar-in-range-cell">
-                          <div class="ux-calendar-date">4</div>
-                        </td>
-                        <td role="gridcell" title="2019-11-05" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-05" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">5</div>
                         </td>
-                        <td role="gridcell" title="2019-11-06" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-06" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">6</div>
                         </td>
-                        <td role="gridcell" title="2019-11-07" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-07" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">7</div>
                         </td>
-                        <td role="gridcell" title="2019-11-08" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-08" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">8</div>
                         </td>
-                        <td role="gridcell" title="2019-11-09" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-09" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">9</div>
                         </td>
-                      </tr>
-                      <tr>
-                        <td role="gridcell" title="2019-11-10" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-10" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">10</div>
                         </td>
-                        <td role="gridcell" title="2019-11-11" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-11" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">11</div>
                         </td>
-                        <td role="gridcell" title="2019-11-12" class="ux-calendar-cell ux-calendar-in-range-cell">
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-05-12" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">12</div>
                         </td>
-                        <td role="gridcell" title="2019-11-13" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-13" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">13</div>
                         </td>
-                        <td role="gridcell" title="2019-11-14" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-14" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">14</div>
                         </td>
-                        <td role="gridcell" title="2019-11-15" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-15" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">15</div>
                         </td>
-                        <td role="gridcell" title="2019-11-16" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-16" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">16</div>
                         </td>
-                      </tr>
-                      <tr>
-                        <td role="gridcell" title="2019-11-17" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-17" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">17</div>
                         </td>
-                        <td role="gridcell" title="2019-11-18" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-18" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">18</div>
                         </td>
-                        <td role="gridcell" title="2019-11-19" class="ux-calendar-cell ux-calendar-in-range-cell">
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-05-19" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">19</div>
                         </td>
-                        <td role="gridcell" title="2019-11-20" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-20" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">20</div>
                         </td>
-                        <td role="gridcell" title="2019-11-21" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-21" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">21</div>
                         </td>
-                        <td role="gridcell" title="2019-11-22" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-22" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">22</div>
                         </td>
-                        <td role="gridcell" title="2019-11-23" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-23" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">23</div>
                         </td>
-                      </tr>
-                      <tr>
-                        <td role="gridcell" title="2019-11-24" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-24" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">24</div>
                         </td>
-                        <td role="gridcell" title="2019-11-25" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-05-25" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">25</div>
-                        </td>
-                        <td role="gridcell" title="2019-11-26" class="ux-calendar-cell ux-calendar-in-range-cell">
-                          <div class="ux-calendar-date">26</div>
-                        </td>
-                        <td role="gridcell" title="2019-11-27" class="ux-calendar-cell ux-calendar-in-range-cell">
-                          <div class="ux-calendar-date">27</div>
-                        </td>
-                        <td role="gridcell" title="2019-11-28" class="ux-calendar-cell ux-calendar-in-range-cell">
-                          <div class="ux-calendar-date">28</div>
-                        </td>
-                        <td role="gridcell" title="2019-11-29" class="ux-calendar-cell ux-calendar-in-range-cell">
-                          <div class="ux-calendar-date">29</div>
-                        </td>
-                        <td role="gridcell" title="2019-11-30" class="ux-calendar-cell ux-calendar-in-range-cell">
-                          <div class="ux-calendar-date">30</div>
                         </td>
                       </tr>
                       <tr>
-                        <td role="gridcell" title="2019-12-01" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-05-26" class="ux-calendar-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">26</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-27" class="ux-calendar-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">27</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-28" class="ux-calendar-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">28</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-29" class="ux-calendar-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">29</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-30" class="ux-calendar-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">30</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-31" class="ux-calendar-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">31</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-01" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">1</div>
                         </td>
-                        <td role="gridcell" title="2019-12-02" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-06-02" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">2</div>
                         </td>
-                        <td role="gridcell" title="2019-12-03" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-03" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">3</div>
                         </td>
-                        <td role="gridcell" title="2019-12-04" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-04" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">4</div>
                         </td>
-                        <td role="gridcell" title="2019-12-05" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-05" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">5</div>
                         </td>
-                        <td role="gridcell" title="2019-12-06" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-06" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">6</div>
                         </td>
-                        <td role="gridcell" title="2019-12-07" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-07" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">7</div>
+                        </td>
+                        <td role="gridcell" title="2019-06-08" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">8</div>
                         </td>
                       </tr>
                     </tbody>
@@ -199,12 +4238,12 @@ exports[`rangeDatePicker locale should work when use localeEN.lang 1`] = `
             </div> <span class="ux-calendar-range-middle">~</span>
             <div class="ux-calendar-range-part ux-calendar-range-right">
               <div class="ux-calendar-input-wrap">
-                <div class="ux-calendar-date-input-wrap"><input title="2020-01-03" placeholder="结束日期" readonly="readonly" class="ux-calendar-input"></div>
+                <div class="ux-calendar-date-input-wrap"><input title="2019-07-03" placeholder="End date" readonly="readonly" class="ux-calendar-input"></div>
                 <!---->
               </div>
               <div>
                 <div class="ux-calendar-header">
-                  <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">Jan</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2020</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                  <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">Jul</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2019</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
                   <div>
                     <!---->
                     <!---->
@@ -214,7 +4253,7 @@ exports[`rangeDatePicker locale should work when use localeEN.lang 1`] = `
                 <!---->
                 <div class="ux-calendar-body">
                   <table cellspacing="0" role="grid" class="ux-calendar-table">
-                    <thead selected-value="Sun Nov 03 2019 00:00:00 GMT+0800 (GMT+08:00),Fri Jan 03 2020 00:00:00 GMT+0800 (GMT+08:00)">
+                    <thead>
                       <tr role="row">
                         <th title="Sunday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
         Su
@@ -241,141 +4280,536 @@ exports[`rangeDatePicker locale should work when use localeEN.lang 1`] = `
                     </thead>
                     <tbody class="ux-calendar-tbody" range-values="">
                       <tr>
-                        <td role="gridcell" title="2019-12-29" class="ux-calendar-cell ux-calendar-last-month-cell">
-                          <div class="ux-calendar-date">29</div>
-                        </td>
-                        <td role="gridcell" title="2019-12-30" class="ux-calendar-cell ux-calendar-last-month-cell">
+                        <td role="gridcell" title="2019-06-30" class="ux-calendar-cell ux-calendar-last-month-cell">
                           <div class="ux-calendar-date">30</div>
                         </td>
-                        <td role="gridcell" title="2019-12-31" class="ux-calendar-cell ux-calendar-last-month-cell">
-                          <div class="ux-calendar-date">31</div>
-                        </td>
-                        <td role="gridcell" title="2020-01-01" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-07-01" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">1</div>
                         </td>
-                        <td role="gridcell" title="2020-01-02" class="ux-calendar-cell ux-calendar-in-range-cell">
+                        <td role="gridcell" title="2019-07-02" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">2</div>
                         </td>
-                        <td role="gridcell" title="2020-01-03" class="ux-calendar-cell ux-calendar-selected-end-date ux-calendar-selected-day">
+                        <td role="gridcell" title="2019-07-03" class="ux-calendar-cell ux-calendar-selected-end-date ux-calendar-selected-day">
                           <div class="ux-calendar-date">3</div>
                         </td>
-                        <td role="gridcell" title="2020-01-04" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-07-04" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">4</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-05" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">5</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-06" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">6</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-07-07" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">7</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-08" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">8</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-09" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">9</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-10" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">10</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-11" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">11</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-12" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">12</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-13" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">13</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-07-14" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">14</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-15" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">15</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-16" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">16</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-17" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">17</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-18" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">18</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-19" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">19</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-20" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">20</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-07-21" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">21</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-22" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">22</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-23" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">23</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-24" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">24</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-25" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">25</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-26" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">26</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-27" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">27</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-07-28" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">28</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-29" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">29</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-30" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">30</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-31" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">31</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-01" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">1</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-02" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">2</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-03" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">3</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-08-04" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">4</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-05" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">5</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-06" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">6</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-07" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">7</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-08" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">8</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-09" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">9</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-10" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">10</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!---->
+          </div>
+          <div class="ux-calendar-footer ux-calendar-range-bottom">
+            <!---->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeDatePicker locale should work when use localeEN.lang 1`] = `
+<div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" style="">
+  <div class="ux-input ux-calendar-picker-input"><input placeholder="Start date" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <span class="ux-calendar-range-picker-separator"> ~ </span> <input placeholder="End date" type="text" readonly="readonly" tabindex="-1" class="ux-calendar-range-picker-input"> <i class="fu fu-close_circle ux-calendar-picker-clear"></i> <span class="ux-calendar-picker-icon"></span></div>
+</div>
+<div role="popup">
+  <div role="align-popup" class="ux-calendar-picker-container ux-calendar-picker-container-placement-bottomLeft slide-up-enter slide-up-enter-active" style="left: -999px; top: -1002px;">
+    <div class="ux-calendar-picker-container-content">
+      <div class="ux-calendar ux-calendar-range ux-calendar-light">
+        <div class="ux-calendar-panel">
+          <!---->
+          <div class="ux-calendar-date-panel">
+            <div class="ux-calendar-range-part ux-calendar-range-left">
+              <div class="ux-calendar-input-wrap">
+                <div class="ux-calendar-date-input-wrap"><input title="2019-05-03" placeholder="Start date" readonly="readonly" class="ux-calendar-input"></div>
+                <!---->
+              </div>
+              <div>
+                <div class="ux-calendar-header">
+                  <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">May</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2019</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                  <div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </div>
+                <!---->
+                <div class="ux-calendar-body">
+                  <table cellspacing="0" role="grid" class="ux-calendar-table">
+                    <thead>
+                      <tr role="row">
+                        <th title="Sunday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Su
+      </span></th>
+                        <th title="Monday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Mo
+      </span></th>
+                        <th title="Tuesday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Tu
+      </span></th>
+                        <th title="Wednesday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        We
+      </span></th>
+                        <th title="Thursday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Th
+      </span></th>
+                        <th title="Friday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Fr
+      </span></th>
+                        <th title="Saturday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Sa
+      </span></th>
+                      </tr>
+                    </thead>
+                    <tbody class="ux-calendar-tbody" range-values="">
+                      <tr>
+                        <td role="gridcell" title="2019-04-28" class="ux-calendar-cell ux-calendar-last-month-cell">
+                          <div class="ux-calendar-date">28</div>
+                        </td>
+                        <td role="gridcell" title="2019-04-29" class="ux-calendar-cell ux-calendar-last-month-cell">
+                          <div class="ux-calendar-date">29</div>
+                        </td>
+                        <td role="gridcell" title="2019-04-30" class="ux-calendar-cell ux-calendar-last-month-cell">
+                          <div class="ux-calendar-date">30</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-01" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">1</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-02" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">2</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-03" class="ux-calendar-cell ux-calendar-selected-start-date ux-calendar-selected-day">
+                          <div class="ux-calendar-date">3</div>
+                        </td>
+                        <td role="gridcell" title="2019-05-04" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">4</div>
                         </td>
                       </tr>
                       <tr>
-                        <td role="gridcell" title="2020-01-05" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-05" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">5</div>
                         </td>
-                        <td role="gridcell" title="2020-01-06" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-06" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">6</div>
                         </td>
-                        <td role="gridcell" title="2020-01-07" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-07" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">7</div>
                         </td>
-                        <td role="gridcell" title="2020-01-08" class="ux-calendar-cell ux-calendar-today">
+                        <td role="gridcell" title="2019-05-08" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">8</div>
                         </td>
-                        <td role="gridcell" title="2020-01-09" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-09" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">9</div>
                         </td>
-                        <td role="gridcell" title="2020-01-10" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-10" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">10</div>
                         </td>
-                        <td role="gridcell" title="2020-01-11" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-11" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">11</div>
                         </td>
                       </tr>
                       <tr>
-                        <td role="gridcell" title="2020-01-12" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-12" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">12</div>
                         </td>
-                        <td role="gridcell" title="2020-01-13" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-13" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">13</div>
                         </td>
-                        <td role="gridcell" title="2020-01-14" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-14" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">14</div>
                         </td>
-                        <td role="gridcell" title="2020-01-15" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-15" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">15</div>
                         </td>
-                        <td role="gridcell" title="2020-01-16" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-16" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">16</div>
                         </td>
-                        <td role="gridcell" title="2020-01-17" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-17" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">17</div>
                         </td>
-                        <td role="gridcell" title="2020-01-18" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-18" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">18</div>
                         </td>
                       </tr>
                       <tr>
-                        <td role="gridcell" title="2020-01-19" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-19" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">19</div>
                         </td>
-                        <td role="gridcell" title="2020-01-20" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-20" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">20</div>
                         </td>
-                        <td role="gridcell" title="2020-01-21" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-21" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">21</div>
                         </td>
-                        <td role="gridcell" title="2020-01-22" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-22" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">22</div>
                         </td>
-                        <td role="gridcell" title="2020-01-23" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-23" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">23</div>
                         </td>
-                        <td role="gridcell" title="2020-01-24" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-24" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">24</div>
                         </td>
-                        <td role="gridcell" title="2020-01-25" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-25" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">25</div>
                         </td>
                       </tr>
                       <tr>
-                        <td role="gridcell" title="2020-01-26" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-26" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">26</div>
                         </td>
-                        <td role="gridcell" title="2020-01-27" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-27" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">27</div>
                         </td>
-                        <td role="gridcell" title="2020-01-28" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-28" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">28</div>
                         </td>
-                        <td role="gridcell" title="2020-01-29" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-29" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">29</div>
                         </td>
-                        <td role="gridcell" title="2020-01-30" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-30" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">30</div>
                         </td>
-                        <td role="gridcell" title="2020-01-31" class="ux-calendar-cell">
+                        <td role="gridcell" title="2019-05-31" class="ux-calendar-cell ux-calendar-in-range-cell">
                           <div class="ux-calendar-date">31</div>
                         </td>
-                        <td role="gridcell" title="2020-02-01" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-01" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">1</div>
                         </td>
                       </tr>
                       <tr>
-                        <td role="gridcell" title="2020-02-02" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-02" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">2</div>
                         </td>
-                        <td role="gridcell" title="2020-02-03" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-03" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">3</div>
                         </td>
-                        <td role="gridcell" title="2020-02-04" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-04" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">4</div>
                         </td>
-                        <td role="gridcell" title="2020-02-05" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-05" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">5</div>
                         </td>
-                        <td role="gridcell" title="2020-02-06" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-06" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">6</div>
                         </td>
-                        <td role="gridcell" title="2020-02-07" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-07" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">7</div>
                         </td>
-                        <td role="gridcell" title="2020-02-08" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                        <td role="gridcell" title="2019-06-08" class="ux-calendar-cell ux-calendar-next-month-btn-day">
                           <div class="ux-calendar-date">8</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div> <span class="ux-calendar-range-middle">~</span>
+            <div class="ux-calendar-range-part ux-calendar-range-right">
+              <div class="ux-calendar-input-wrap">
+                <div class="ux-calendar-date-input-wrap"><input title="2019-07-03" placeholder="End date" readonly="readonly" class="ux-calendar-input"></div>
+                <!---->
+              </div>
+              <div>
+                <div class="ux-calendar-header">
+                  <div style="position: relative;"><a title="Last year (Control + left)" role="button" class="ux-calendar-prev-year-btn"></a> <a title="Previous month (PageUp)" role="button" class="ux-calendar-prev-month-btn"></a> <span class="ux-calendar-my-select"><a role="button" title="Choose a month" class="ux-calendar-month-select">Jul</a><a role="button" title="Choose a year" class="ux-calendar-year-select">2019</a></span> <a title="Next month (PageDown)" role="button" class="ux-calendar-next-month-btn"></a> <a title="Next year (Control + right)" role="button" class="ux-calendar-next-year-btn"></a></div>
+                  <div>
+                    <!---->
+                    <!---->
+                    <!---->
+                  </div>
+                </div>
+                <!---->
+                <div class="ux-calendar-body">
+                  <table cellspacing="0" role="grid" class="ux-calendar-table">
+                    <thead>
+                      <tr role="row">
+                        <th title="Sunday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Su
+      </span></th>
+                        <th title="Monday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Mo
+      </span></th>
+                        <th title="Tuesday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Tu
+      </span></th>
+                        <th title="Wednesday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        We
+      </span></th>
+                        <th title="Thursday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Th
+      </span></th>
+                        <th title="Friday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Fr
+      </span></th>
+                        <th title="Saturday" role="columnheader" class="ux-calendar-column-header"><span class="ux-calendar-column-header-inner">
+        Sa
+      </span></th>
+                      </tr>
+                    </thead>
+                    <tbody class="ux-calendar-tbody" range-values="">
+                      <tr>
+                        <td role="gridcell" title="2019-06-30" class="ux-calendar-cell ux-calendar-last-month-cell">
+                          <div class="ux-calendar-date">30</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-01" class="ux-calendar-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">1</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-02" class="ux-calendar-cell ux-calendar-in-range-cell">
+                          <div class="ux-calendar-date">2</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-03" class="ux-calendar-cell ux-calendar-selected-end-date ux-calendar-selected-day">
+                          <div class="ux-calendar-date">3</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-04" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">4</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-05" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">5</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-06" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">6</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-07-07" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">7</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-08" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">8</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-09" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">9</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-10" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">10</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-11" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">11</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-12" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">12</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-13" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">13</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-07-14" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">14</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-15" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">15</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-16" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">16</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-17" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">17</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-18" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">18</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-19" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">19</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-20" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">20</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-07-21" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">21</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-22" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">22</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-23" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">23</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-24" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">24</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-25" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">25</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-26" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">26</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-27" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">27</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-07-28" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">28</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-29" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">29</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-30" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">30</div>
+                        </td>
+                        <td role="gridcell" title="2019-07-31" class="ux-calendar-cell">
+                          <div class="ux-calendar-date">31</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-01" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">1</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-02" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">2</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-03" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">3</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td role="gridcell" title="2019-08-04" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">4</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-05" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">5</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-06" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">6</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-07" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">7</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-08" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">8</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-09" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">9</div>
+                        </td>
+                        <td role="gridcell" title="2019-08-10" class="ux-calendar-cell ux-calendar-next-month-btn-day">
+                          <div class="ux-calendar-date">10</div>
                         </td>
                       </tr>
                     </tbody>

@@ -43,9 +43,15 @@ export async function getPortal(wrapper) {
  * @param {string} eventName
  * @param {number} delay
  */
-export async function triggerEvent(wrapper, eventName, delay = 20) {
-  wrapper.trigger(eventName);
-  await waitTime(delay);
+export async function triggerEvent(wrapper, eventName, event = {}, delay = 20) {
+  let evt = event;
+  let d = delay;
+  if (typeof evt === 'number') {
+    d = evt;
+    evt = {};
+  }
+  wrapper.trigger(eventName, evt);
+  await waitTime(d);
 }
 
 export function mountPickerFactory(Component) {

@@ -1,8 +1,8 @@
 <template>
   <div :class="classes">
     <time-header :prefix-cls="prefixCls"
-                 :value="innerValue">
-    </time-header>
+                 :value="innerValue"
+    />
     <combobox :prefix-cls="prefixCls"
               :value="innerValue"
               :format="format"
@@ -16,17 +16,22 @@
               :disabled-minutes="disabledMinutes"
               :disabled-seconds="disabledSeconds"
               :use12-hours="use12Hours"
-              @on-change="onChange">
-    </combobox>
+              @on-change="onChange"
+    />
   </div>
 </template>
 
 <script>
+  import { getHours, getMinutes } from 'date-fns';
   import TimeHeader from './header.vue';
   import Combobox from './combobox.vue';
 
   export default {
     name: 'TimePickerPanel',
+    components: {
+      TimeHeader,
+      Combobox,
+    },
     props: {
       prefixCls: { type: String, default: 'v-time-picker-panel' },
       value: {
@@ -54,13 +59,10 @@
         innerValue: null,
       };
     },
-    created() {
-      this.innerValue = this.value;
-    },
     computed: {
       columns() {
         const { showHour, showMinute, showSecond } = this;
-        return [showHour, showMinute, showSecond].filter(v => !!v).length;
+        return [showHour, showMinute, showSecond].filter((v) => !!v).length;
       },
       classes() {
         const { prefixCls, columns } = this;
@@ -78,18 +80,31 @@
       },
       minuteOptions() {
         const {
-          disabledMinutes, minuteStep, hideDisabledOptions, genOptions
+          innerValue, disabledMinutes, minuteStep, hideDisabledOptions, genOptions
         } = this;
-        const disabledOpts = disabledMinutes && disabledMinutes();
+        const hour = getHours(innerValue);
+        const disabledOpts = disabledMinutes && disabledMinutes(hour);
         return genOptions(60, disabledOpts, hideDisabledOptions, minuteStep);
       },
       secondOptions() {
         const {
-          disabledSeconds, secondStep, hideDisabledOptions, genOptions
+          innerValue, disabledSeconds, secondStep, hideDisabledOptions, genOptions
         } = this;
-        const disabledOpts = disabledSeconds && disabledSeconds();
+        const hour = getHours(innerValue);
+        const minute = getMinutes(innerValue);
+        const disabledOpts = disabledSeconds && disabledSeconds(hour, minute);
         return genOptions(60, disabledOpts, hideDisabledOptions, secondStep);
       },
+    },
+    watch: {
+      value(nVal, oVal) {
+        if (nVal !== oVal) {
+          this.innerValue = nVal;
+        }
+      },
+    },
+    created() {
+      this.innerValue = this.value;
     },
     methods: {
       genOptions(len, disabledOpts, hideDisabledOptions, step = 1) {
@@ -104,17 +119,6 @@
       onChange(val) {
         this.innerValue = val;
         this.$emit('on-change', val);
-      },
-    },
-    components: {
-      TimeHeader,
-      Combobox,
-    },
-    watch: {
-      value(nVal, oVal) {
-        if (nVal !== oVal) {
-          this.innerValue = nVal;
-        }
       },
     },
   };

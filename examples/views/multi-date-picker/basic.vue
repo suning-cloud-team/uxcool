@@ -14,6 +14,7 @@
     <size-demo />
     <value-demo />
     <visible-demo />
+    <show-date-input-demo />
   </div>
 </template>
 
@@ -31,6 +32,7 @@
   import SizeDemo from './size.vue';
   import ValueDemo from './value.vue';
   import VisibleDemo from './visible.vue';
+  import ShowDateInputDemo from './show-date-input.vue';
 
   export default {
     components: {
@@ -47,6 +49,7 @@
       SizeDemo,
       ValueDemo,
       VisibleDemo,
+      ShowDateInputDemo,
     },
   };
 </script>

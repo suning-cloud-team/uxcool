@@ -176,7 +176,7 @@
         const { showOk, isShowTime } = this;
         return showOk || (showOk !== false && isShowTime);
       },
-      normlizeLocale() {
+      normalizeLocale() {
         const { locale } = this;
 
         if (!locale) {
@@ -186,20 +186,20 @@
         return locale.lang ? locale.lang : locale;
       },
       bindProps() {
-        const { dateFormat, isShowOk, normlizeLocale } = this;
+        const { dateFormat, isShowOk, normalizeLocale } = this;
         return {
           ...omit(this.$props, ['value', 'format', 'placeholder', 'allowClear']),
           format: dateFormat,
           showOk: isShowOk,
-          locale: normlizeLocale,
+          locale: normalizeLocale,
         };
       },
       bindListeners() {
         return omit(this.$listeners, ['change']);
       },
       dateInputPlaceholder() {
-        const { placeholder, normlizeLocale } = this;
-        return placeholder || normlizeLocale.placeholder;
+        const { placeholder, normalizeLocale } = this;
+        return placeholder || normalizeLocale.placeholder;
       },
       isCanClear() {
         const { disabled, allowClear, innerValue } = this;

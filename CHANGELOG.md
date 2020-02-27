@@ -1,3 +1,29 @@
+# 0.5.0-next.79 (2020-02-20)
+
+### Bug Fixes
+
+- **cascader:** 修复 value 重复时节点渲染不正确 bug ([07639e3](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/07639e3642a7a13bbf5a6372bb0d712f20caf5d4)), closes [#300](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/300)
+- **multi-cascader:** 修复 children 字段可能获取不到 bug ([d625a97](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/d625a97d3b96254e9b9a018f435ceb9d816d464f))
+
+# 0.5.0-next.78 (2020-02-17)
+
+### Bug Fixes
+
+- **multi-date-picker:** 修复导出组件名称拼写错误 ([b98989a](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/b98989a2d3472582d6982d28c0871e909f758558))
+
+# 0.5.0-next.77 (2020-02-16)
+
+### Features
+
+- **multi-cascader:** 添加级联多选组件 ([7524003](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/752400354c2ee6cde748f7e88703a5b23d5a417b))
+
+# 0.5.0-next.76 (2020-02-13)
+
+### Bug Fixes
+
+- **tree-select:** 修复单选模式无法清空 bug ([94cd4c8](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/94cd4c87322bb97d3cd401ab801f398f059590da)), closes [#304](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/304)
+- **tree-select:** 修复多选模式 placeholder 不显示 bug ([f79ed47](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/f79ed47e0589f8a93bf32772089c858aa51bbaac)), closes [#303](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/303)
+
 # 0.5.0-next.75 (2020-01-08)
 
 ### Bug Fixes

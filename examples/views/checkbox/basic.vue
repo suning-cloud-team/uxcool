@@ -104,10 +104,11 @@
 
     <div class="demo">
       <h6>indeterminate</h6>
-      <ux-checkbox v-model="indeterminateChecked"
-                   :indeterminate="indeterminate"
-                   label="checked All"
-                   @change="onCheckedAll"
+      <ux-checkbox
+        v-model="indeterminateChecked"
+        :indeterminate="indeterminate"
+        label="checked All"
+        @change="onCheckedAll"
       />
       <ux-checkbox-group v-model="ieCheckedList"
                          :options="opts2"
@@ -133,14 +134,13 @@
   </div>
 </template>
 
-
 <script>
-  import { UxCheckbox, UxCheckboxGroup } from '@suning/uxcool';
+  import { UxCheckbox } from '@suning/uxcool';
 
   export default {
     components: {
       UxCheckbox,
-      UxCheckboxGroup,
+      UxCheckboxGroup: UxCheckbox.Group,
     },
     data() {
       return {
@@ -182,9 +182,11 @@
         this.cDisabled = !this.cDisabled;
       },
       onChange(e) {
+        // eslint-disable-next-line no-console
         console.log('on change', e);
       },
       onGroupChange(e, prevCheckedList) {
+        // eslint-disable-next-line no-console
         console.log('onGroupChange', e, prevCheckedList);
       },
       onCheckedAll(e) {
@@ -197,13 +199,17 @@
         this.indeterminateChecked = checkedList.length === this.opts2.length;
       },
       onFocus() {
-        const { $refs: { checkboxRef } } = this;
+        const {
+          $refs: { checkboxRef },
+        } = this;
         if (checkboxRef) {
           checkboxRef.focus();
         }
       },
       onBlur() {
-        const { $refs: { checkboxRef } } = this;
+        const {
+          $refs: { checkboxRef },
+        } = this;
         if (checkboxRef) {
           checkboxRef.blur();
         }

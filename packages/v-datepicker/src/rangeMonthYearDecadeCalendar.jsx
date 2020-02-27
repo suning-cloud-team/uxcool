@@ -1,5 +1,7 @@
 import { cloneDeep } from '@suning/v-utils';
-import { isSameYear, isBefore, addYears, startOfYear, isAfter, isEqual } from 'date-fns';
+import {
+  isSameYear, isBefore, addYears, startOfYear, isAfter, isEqual
+} from 'date-fns';
 import { isValidArray } from './utils';
 import MonthYearDecadeCalendar from './monthYearDecadeCalendar';
 
@@ -15,11 +17,11 @@ export default {
       type: String,
       default: '',
     },
-    defaultPickerValue: {
+    pickerValue: {
       type: Array,
       required: true,
       validator(val) {
-        return val.every(v => v instanceof Date);
+        return val.every((v) => v instanceof Date);
       },
     },
     selectedValue: {
@@ -28,7 +30,7 @@ export default {
         return [];
       },
       validator(val) {
-        return val.every(v => v instanceof Date);
+        return val.every((v) => v instanceof Date);
       },
     },
     mode: {
@@ -38,7 +40,7 @@ export default {
       },
       validator(val) {
         const modes = val || [];
-        return modes.every(v => ['month', 'year', 'decade'].indexOf(v) > -1);
+        return modes.every((v) => ['month', 'year', 'decade'].indexOf(v) > -1);
       },
     },
     locale: {
@@ -64,7 +66,7 @@ export default {
   },
   data() {
     return {
-      pickerValue: [],
+      innerPickerValue: [],
       hoverValue: [],
       innerValue: [],
     };
@@ -89,13 +91,13 @@ export default {
       return end;
     },
     startValue() {
-      const { pickerValue } = this;
-      const [start] = pickerValue;
+      const { innerPickerValue } = this;
+      const [start] = innerPickerValue;
       return start;
     },
     endValue() {
-      const { pickerValue } = this;
-      const [, end] = pickerValue;
+      const { innerPickerValue } = this;
+      const [, end] = innerPickerValue;
       return end;
     },
     enableMonthNav() {
@@ -111,6 +113,10 @@ export default {
   watch: {
     selectedValue(nVal) {
       this.setInnerValue(nVal, false);
+      this.setPickerValue(this.normalizeAnchor());
+    },
+    pickerValue() {
+      this.setPickerValue(this.normalizeAnchor());
     },
   },
   created() {
@@ -135,7 +141,7 @@ export default {
       }
     },
     setPickerValue(value) {
-      this.pickerValue = value || [];
+      this.innerPickerValue = value || [];
     },
     getValueFromSelectedValue(selectedValue) {
       const [start, end] = selectedValue;
@@ -143,13 +149,13 @@ export default {
       return [start, newEnd];
     },
     normalizeAnchor() {
-      const { selectedValue, defaultPickerValue, getValueFromSelectedValue } = this;
+      const { selectedValue, pickerValue, getValueFromSelectedValue } = this;
       let normalizedValue = getValueFromSelectedValue(selectedValue);
 
       if (isValidArray(normalizedValue)) {
         return normalizedValue;
       }
-      normalizedValue = getValueFromSelectedValue(defaultPickerValue);
+      normalizedValue = getValueFromSelectedValue(pickerValue);
 
       if (isValidArray(normalizedValue)) {
         return normalizedValue;
@@ -221,8 +227,10 @@ export default {
       }
     },
     onMonthYearValueChange(direction, value) {
-      const { pickerValue, setPickerValue } = this;
-      setPickerValue(direction === 'left' ? [value, pickerValue[1]] : [pickerValue[0], value]);
+      const { innerPickerValue, setPickerValue } = this;
+      setPickerValue(
+        direction === 'left' ? [value, innerPickerValue[1]] : [innerPickerValue[0], value]
+      );
     },
     onPanelChange(direction, value, next) {
       const { startMode, endMode, innerValue } = this;
@@ -291,14 +299,14 @@ export default {
 
     const startOn = {
       ...on,
-      'month-value-change': value => onMonthYearValueChange('left', value),
-      'year-value-change': value => onMonthYearValueChange('left', value),
+      'month-value-change': (value) => onMonthYearValueChange('left', value),
+      'year-value-change': (value) => onMonthYearValueChange('left', value),
       'panel-change': (...args) => onPanelChange('left', ...args),
     };
     const endOn = {
       ...on,
-      'month-value-change': value => onMonthYearValueChange('right', value),
-      'year-value-change': value => onMonthYearValueChange('right', value),
+      'month-value-change': (value) => onMonthYearValueChange('right', value),
+      'year-value-change': (value) => onMonthYearValueChange('right', value),
       'panel-change': (...args) => onPanelChange('right', ...args),
     };
     return (

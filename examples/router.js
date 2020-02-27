@@ -280,12 +280,18 @@ const routes = [
   //   path: '/chart',
   //   component: () => import('./views/chart/index'),
   // },
+  {
+    name: 'MultiCascader',
+    path: '/multicascader',
+    component: () => import('./views/multicascader/index.vue'),
+  },
 ];
 
 function compare(a, b) {
   if (a.name > b.name) {
     return 1;
-  } else if (a.name < b.name) {
+  }
+  if (a.name < b.name) {
     return -1;
   }
   return 0;

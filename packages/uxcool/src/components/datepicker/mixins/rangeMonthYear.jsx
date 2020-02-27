@@ -30,7 +30,7 @@ export default {
         return [];
       },
       validator(val) {
-        return val.every(v => v instanceof Date);
+        return val.every((v) => v instanceof Date);
       },
     },
     size: {
@@ -77,10 +77,19 @@ export default {
         [`${inputPrefix}-${map[size]}`]: size !== 'default',
       };
     },
+    normalizeLocale() {
+      const { locale } = this;
+
+      if (!locale) {
+        return localeCN.lang;
+      }
+
+      return locale.lang ? locale.lang : locale;
+    },
     startPlaceholder() {
-      const { placeholder, locale, mode } = this;
+      const { placeholder, normalizeLocale, mode } = this;
       const [startMode] = mode;
-      const { rangeMonthPlaceholder, rangeYearPlaceholder } = locale;
+      const { rangeMonthPlaceholder, rangeYearPlaceholder } = normalizeLocale;
       let holder = (startMode === 'month' ? rangeMonthPlaceholder : rangeYearPlaceholder)[0];
       if (placeholder) {
         if (Array.isArray(placeholder)) {
@@ -94,9 +103,9 @@ export default {
       return holder;
     },
     endPlaceholder() {
-      const { placeholder, locale, mode } = this;
+      const { placeholder, normalizeLocale, mode } = this;
       const [, endMode] = mode;
-      const { rangeMonthPlaceholder, rangeYearPlaceholder } = locale;
+      const { rangeMonthPlaceholder, rangeYearPlaceholder } = normalizeLocale;
       let holder = (endMode === 'month' ? rangeMonthPlaceholder : rangeYearPlaceholder)[1];
       if (placeholder) {
         if (Array.isArray(placeholder)) {

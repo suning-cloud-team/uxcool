@@ -51,6 +51,7 @@
           locale: {
             DateFnsLocale,
             WeekLocale: { weekStartsOn },
+            week: localeWeek,
           },
           showWeekNumber,
         } = this;
@@ -60,7 +61,7 @@
         if (showWeekNumber) {
           weekDays.push({
             id: -1,
-            title: '周',
+            title: localeWeek,
             name: '',
             isWeek: true,
           });
