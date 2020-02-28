@@ -8,7 +8,9 @@ import PaginationMixin from './mixins/pagination';
 import SortMixin from './mixins/sortable';
 import FilterMixin from './mixins/filter';
 import ApiMixin from './mixins/api';
-import { getColKey, getRowKey, normalizeCols, normalizeRows, flatRows, isFunction } from './utils';
+import {
+  getColKey, getRowKey, normalizeCols, normalizeRows, flatRows, isFunction
+} from './utils';
 
 export default {
   name: buildComponentName('Table'),
@@ -167,7 +169,7 @@ export default {
     },
     isAnyColumnsLeftFixed() {
       const { normalizeColumns } = this;
-      const leftColumns = normalizeColumns.filter(v => v.fixed === 'left' || v.fixed === true);
+      const leftColumns = normalizeColumns.filter((v) => v.fixed === 'left' || v.fixed === true);
       return leftColumns.length > 0;
     },
     flatData() {
@@ -186,12 +188,12 @@ export default {
       // 筛选
       const filterKeys = Object.keys(innerFilters);
       if (filterKeys.length > 0) {
-        const filterCols = flatColumns.filter(col => filterKeys.indexOf(col.$$_key) > -1);
+        const filterCols = flatColumns.filter((col) => filterKeys.indexOf(col.$$_key) > -1);
         filterData = filterCols.reduce((r, col) => {
           const { onFilter } = col;
           const filteredVal = innerFilters[col.$$_key] || [];
           return isFunction(onFilter) && filteredVal.length
-            ? r.filter(record => filteredVal.some(v => onFilter(v, record, col)))
+            ? r.filter((record) => filteredVal.some((v) => onFilter(v, record, col)))
             : r;
         }, filterData);
       }
@@ -233,7 +235,7 @@ export default {
       return flatRows(pagerNormalizeData, childColName, false);
     },
     changeablePagerFlatData() {
-      return this.pagerFlatData.filter(v => !v.$$_checkboxDisabled);
+      return this.pagerFlatData.filter((v) => !v.$$_checkboxDisabled);
     },
     tableClasses() {
       const {
@@ -260,16 +262,15 @@ export default {
       } = this;
       let cols = renderRowSelection();
 
-      const iconColIdx =
-        cols.length > 0
-          ? Math.max(
-            Math.min(
-              cols[0].key === 'selection-column' ? expandIconColIndex + 1 : expandIconColIndex,
-              cols.length - 1
-            ),
-            0
-          )
-          : expandIconColIndex;
+      const iconColIdx = cols.length > 0
+        ? Math.max(
+          Math.min(
+            cols[0].key === 'selection-column' ? expandIconColIndex + 1 : expandIconColIndex,
+            cols.length - 1
+          ),
+          0
+        )
+        : expandIconColIndex;
 
       cols = renderSortAndFilter(cols);
       return {
@@ -283,7 +284,7 @@ export default {
     },
     defaultSelectedRowKeys() {
       const { flatData } = this;
-      return flatData.filter(v => v.$$_checkboxChecked).map(v => v.$$_key);
+      return flatData.filter((v) => v.$$_checkboxChecked).map((v) => v.$$_key);
     },
     spinLoading() {
       const { loading } = this;
@@ -299,10 +300,9 @@ export default {
       const {
         prefixCls, spinLoading, hasPagination, normalizeData
       } = this;
-      const spinPagerClass =
-        hasPagination && normalizeData.length > 0
-          ? `${prefixCls}-with-pagination`
-          : `${prefixCls}-without-pagination`;
+      const spinPagerClass = hasPagination && normalizeData.length > 0
+        ? `${prefixCls}-with-pagination`
+        : `${prefixCls}-without-pagination`;
 
       return spinLoading.spinning
         ? {
@@ -369,7 +369,7 @@ export default {
         defaultSelectedRowKeys,
       } = this;
       const { selectedRowKeys = [], type } = rowSelection;
-      let keys = selectedRowKeys.map(v => String(v));
+      let keys = selectedRowKeys.map((v) => String(v));
       if (init) {
         keys = addSelectedRowKeys(keys, defaultSelectedRowKeys);
       }
@@ -393,13 +393,13 @@ export default {
     getScopedSlots() {
       const { $scopedSlots } = this;
 
-      const scopedSlots = {};
+      const scopedSlots = { ...$scopedSlots };
       if ($scopedSlots.title) {
-        scopedSlots.title = props => $scopedSlots.title(props);
+        scopedSlots.title = (props) => $scopedSlots.title(props);
       }
 
       if ($scopedSlots.footer) {
-        scopedSlots.footer = props => $scopedSlots.footer(props);
+        scopedSlots.footer = (props) => $scopedSlots.footer(props);
       }
 
       return scopedSlots;

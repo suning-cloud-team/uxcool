@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table.rowSelection fixed fixed selection on the left 1`] = `
+<div class="ux-table-wrapper ux-table-light">
+  <div class="ux-spin-nested-loading">
+    <div class="ux-spin"><svg viewBox="25 25 50 50" class="ux-spin-circle">
+        <circle cx="50" cy="50" r="20" fill="none"></circle>
+      </svg> </div>
+    <div class="ux-spin-container">
+      <div class="ux-table ux-table-scroll-position-left ux-table-scroll-position-right ux-table-default">
+        <div class="ux-table-content">
+          <div class="ux-table-main-table ux-table-scroll">
+            <!---->
+            <div class="ux-table-body">
+              <table class="">
+                <colgroup>
+                  <col>
+                  <col>
+                  <col>
+                  <col>
+                </colgroup>
+                <thead class="ux-table-thead">
+                  <tr>
+                    <th class="ux-table-selection-column">
+                      <div class="ux-table-selection"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                          <!----></label>
+                        <!---->
+                      </div>
+                    </th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Addr</th>
+                  </tr>
+                </thead>
+                <tbody class="ux-table-tbody">
+                  <tr class="ux-table-row">
+                    <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                        <!----></label></td>
+                    <td>John Brown</td>
+                    <td>32</td>
+                    <td>New York No. 1 Lake Park</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                        <!----></label></td>
+                    <td>Jim Green</td>
+                    <td>42</td>
+                    <td>London No. 1 Lake Park</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                        <!----></label></td>
+                    <td>Joe Black</td>
+                    <td>32</td>
+                    <td>Sidney No. 1 Lake Park</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class="ux-table-fixed-left">
+            <div class="ux-table-main-table">
+              <!---->
+              <div class="ux-table-body-outer">
+                <div class="ux-table-body-inner">
+                  <table class="ux-table-fixed">
+                    <colgroup>
+                      <col>
+                      <col>
+                    </colgroup>
+                    <thead class="ux-table-thead">
+                      <tr>
+                        <th class="ux-table-selection-column">
+                          <div class="ux-table-selection"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                              <!----></label>
+                            <!---->
+                          </div>
+                        </th>
+                        <th>Name</th>
+                      </tr>
+                    </thead>
+                    <tbody class="ux-table-tbody">
+                      <tr class="ux-table-row">
+                        <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                            <!----></label></td>
+                        <td>John Brown</td>
+                      </tr>
+                      <tr class="ux-table-row">
+                        <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                            <!----></label></td>
+                        <td>Jim Green</td>
+                      </tr>
+                      <tr class="ux-table-row">
+                        <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                            <!----></label></td>
+                        <td>Joe Black</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!---->
+            </div>
+          </div>
+        </div>
+        <div class="ux-table-resize-line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Table.rowSelection fixed fixed selection when other column fixed 1`] = `
+<div class="ux-table-wrapper ux-table-light">
+  <div class="ux-spin-nested-loading">
+    <div class="ux-spin"><svg viewBox="25 25 50 50" class="ux-spin-circle">
+        <circle cx="50" cy="50" r="20" fill="none"></circle>
+      </svg> </div>
+    <div class="ux-spin-container">
+      <div class="ux-table ux-table-scroll-position-left ux-table-scroll-position-right ux-table-default">
+        <div class="ux-table-content">
+          <div class="ux-table-main-table ux-table-scroll">
+            <!---->
+            <div class="ux-table-body">
+              <table class="">
+                <colgroup>
+                  <col>
+                  <col>
+                </colgroup>
+                <thead class="ux-table-thead">
+                  <tr>
+                    <th class="ux-table-selection-column">
+                      <div class="ux-table-selection"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                          <!----></label>
+                        <!---->
+                      </div>
+                    </th>
+                    <th>Name</th>
+                  </tr>
+                </thead>
+                <tbody class="ux-table-tbody">
+                  <tr class="ux-table-row">
+                    <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                        <!----></label></td>
+                    <td>John Brown</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                        <!----></label></td>
+                    <td>Jim Green</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                        <!----></label></td>
+                    <td>Joe Black</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div class="ux-table-fixed-left">
+            <div class="ux-table-main-table">
+              <!---->
+              <div class="ux-table-body-outer">
+                <div class="ux-table-body-inner">
+                  <table class="ux-table-fixed">
+                    <colgroup>
+                      <col>
+                      <col>
+                    </colgroup>
+                    <thead class="ux-table-thead">
+                      <tr>
+                        <th class="ux-table-selection-column">
+                          <div class="ux-table-selection"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                              <!----></label>
+                            <!---->
+                          </div>
+                        </th>
+                        <th>Name</th>
+                      </tr>
+                    </thead>
+                    <tbody class="ux-table-tbody">
+                      <tr class="ux-table-row">
+                        <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                            <!----></label></td>
+                        <td>John Brown</td>
+                      </tr>
+                      <tr class="ux-table-row">
+                        <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                            <!----></label></td>
+                        <td>Jim Green</td>
+                      </tr>
+                      <tr class="ux-table-row">
+                        <td class="ux-table-selection-column"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+                            <!----></label></td>
+                        <td>Joe Black</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!---->
+            </div>
+          </div>
+        </div>
+        <div class="ux-table-resize-line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
