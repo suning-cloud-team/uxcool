@@ -188,11 +188,13 @@ export default {
     onMaskClick(e) {
       this.close(e);
     },
-    onContentTransitionEnd(op) {
+    onContentTransitionEnd(op, e) {
       const { destroyOnClose } = this;
       if (op === 'close' && destroyOnClose) {
         this.destroyDrawer = true;
       }
+      // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/305
+      this.$emit('transitionend', op, e);
     },
     onClose(e) {
       this.close(e);
