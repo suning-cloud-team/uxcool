@@ -1,3 +1,9 @@
+# 0.5.0-next.80 (2020-03-12)
+
+### Features
+
+- **drawer:** 添加过渡结束事件 ([c32b713](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/c32b7136bed2aa3aa912a00e28a0585eb5c72b5b)), closes [#305](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/305)
+
 # 0.5.0-next.79 (2020-02-20)
 
 ### Bug Fixes
