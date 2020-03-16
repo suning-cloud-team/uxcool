@@ -58,7 +58,7 @@ export default {
     target() {
       return this.getTarget();
     },
-    /* targetRect() {
+    targetRect() {
       const { target } = this;
       if (target.window !== window) {
         const rect = target.getBoundingClientRect();
@@ -79,7 +79,7 @@ export default {
         cw: target.innerWidth,
         ch: target.innerHeight,
       };
-    }, */
+    },
   },
   mounted() {
     const { target, updatePosition, events } = this;
