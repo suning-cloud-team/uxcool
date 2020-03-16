@@ -41,6 +41,88 @@ exports[`progress render circle progress correctly 1`] = `
 </div>
 `;
 
+exports[`progress render circle with  abnormal percentage 1`] = `
+<div
+  class="ux-progress ux-progress-circle ux-progress-show-info ux-progress-status-normal ux-progress-default"
+>
+  <div
+    class="ux-progress-inner"
+    style="width: 120px; height: 120px; font-size: 24px;"
+  >
+    <svg
+      class="ux-progress-circle"
+      viewBox="0 0 100 100"
+    >
+      <path
+        class="ux-progress-circle-trail"
+        d="M 50 50 m 0,-47
+          a 47,47 0 1 1 0,94
+          a 47,47 0 1 1 0,-94"
+        fill="none"
+        stroke-width="6"
+        style="stroke: #f3f3f3; stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s;"
+      />
+      <path
+        class="ux-progress-circle-path"
+        d="M 50 50 m 0,-47
+          a 47,47 0 1 1 0,94
+          a 47,47 0 1 1 0,-94"
+        fill="none"
+        stroke-linecap="round"
+        stroke-width="0"
+        style="stroke-dasharray: 0px 295.3097094374406px; stroke-dashoffset: -0px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s;"
+      />
+    </svg>
+    <span
+      class="ux-progress-text"
+    >
+      0%
+    </span>
+  </div>
+</div>
+`;
+
+exports[`progress render circle with  abnormal percentage 2`] = `
+<div
+  class="ux-progress ux-progress-circle ux-progress-show-info ux-progress-status-normal ux-progress-default"
+>
+  <div
+    class="ux-progress-inner"
+    style="width: 120px; height: 120px; font-size: 24px;"
+  >
+    <svg
+      class="ux-progress-circle"
+      viewBox="0 0 100 100"
+    >
+      <path
+        class="ux-progress-circle-trail"
+        d="M 50 50 m 0,-47
+          a 47,47 0 1 1 0,94
+          a 47,47 0 1 1 0,-94"
+        fill="none"
+        stroke-width="6"
+        style="stroke: #f3f3f3; stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s;"
+      />
+      <path
+        class="ux-progress-circle-path"
+        d="M 50 50 m 0,-47
+          a 47,47 0 1 1 0,94
+          a 47,47 0 1 1 0,-94"
+        fill="none"
+        stroke-linecap="round"
+        stroke-width="6"
+        style="stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s;"
+      />
+    </svg>
+    <span
+      class="ux-progress-text"
+    >
+      100%
+    </span>
+  </div>
+</div>
+`;
+
 exports[`progress render custom progress correctly 1`] = `
 <div class="ux-progress ux-progress-line ux-progress-show-info ux-progress-status-normal ux-progress-default">
   <div>

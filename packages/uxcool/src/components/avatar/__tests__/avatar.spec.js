@@ -36,4 +36,47 @@ describe('avatar', () => {
     expect(wrapper.element.children[0].tagName).toBe('SPAN');
     expect(wrapper.element.children[0].innerHTML).toBe(TEST_STRING);
   });
+
+  it.each(['small', 'default', 'large'])('render different sizes correctly', async (size) => {
+    const wrapper = await mountAvatar({
+      propsData: {
+        size,
+        icon: 'account'
+      },
+    });
+    expect(wrapper.element).toMatchSnapshot();
+  });
+
+  it('render scale correctly', async () => {
+    Element.prototype.getBoundingClientRect = jest.fn(() => ({
+      x: 260,
+      y: 106,
+      width: 40,
+      height: 40,
+      top: 106,
+      right: 300,
+      bottom: 146,
+      left: 260,
+    }));
+
+    Object.defineProperty(HTMLSpanElement.prototype, 'offsetWidth', {
+      get: () => 34
+    });
+
+    const wrapper = await mountAvatar({
+      data() {
+        return {
+          name: 'Abcde'
+        };
+      },
+      render() {
+        const { name } = this;
+        return <Avatar>{name}</Avatar>;
+      },
+    });
+    wrapper.setData({ name: 'Abcde' });
+    expect(wrapper.element).toMatchSnapshot();
+    // wrapper.vm.$children[0].$refs.avatarTextRef
+    //  wrapper.vm.$children[0].$refs.avatarWrapref
+  });
 });

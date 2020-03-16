@@ -136,7 +136,6 @@ export default {
       const affixHeight = affixRef.offsetHeight;
       let top = elemOffset.top - targetRect.top;
       top = isWindow(target) ? top : top - scrollTop;
-
       let style = null;
       // eslint-disable-next-line
       const elemPosH = top + affixHeight + (offsetBottom || 0) - targetRect.ch;

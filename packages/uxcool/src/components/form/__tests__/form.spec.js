@@ -1,6 +1,10 @@
-import { mount, waitTime } from '@suning/v-test-utils';
+import {
+  mount, waitTime, triggerEvent, createWrapper
+} from '@suning/v-test-utils';
 import { UxForm, UxFormItem, UxFieldDecorator } from '..';
 import { UxInput } from '../../input/index';
+import { UxButton } from '../../button';
+import { UxSelect, UxOption } from '../../select';
 
 describe('form', () => {
   describe('validator work correctly', () => {
@@ -300,12 +304,154 @@ describe('form', () => {
       inputEle.vm.$emit('blur');
       await waitTime();
       expect(wrapper.find('.ux-form-explain').element.innerHTML).toBe('field1 必须等于 Name');
-
       inputEle.setProps({ value: 'Name' });
       await waitTime();
       inputEle.vm.$emit('blur');
       await waitTime(100);
       expect(wrapper.contains('.ux-form-explain')).not.toBeTruthy();
+      wrapper.destroy();
+    });
+
+    it('submit works correctly', async () => {
+      const submitFn = jest.fn();
+      const props = {
+        messages: { required: 'this is requreid data!' },
+        layout: 'vertical'
+      };
+      const wrapper = mount({
+        data() {
+          return {
+            rules: 'required'
+          };
+        },
+        render() {
+          const { rules } = this;
+          return (
+            <UxForm ref="formRef" { ...{ props, on: { submit: submitFn } }}>
+              <UxFormItem label="field1" colon>
+                <UxFieldDecorator name="field1" rules={rules}>
+                  <UxInput ref="inputRef" />
+                </UxFieldDecorator>
+              </UxFormItem>
+              <UxFormItem>
+                <UxButton type='primary' html-type="submit">submit</UxButton>
+              </UxFormItem>
+            </UxForm>
+          );
+        },
+      });
+      const inputEle = wrapper.find({ ref: 'inputRef' });
+      await triggerEvent(inputEle, 'blur');
+      expect(wrapper.find('.ux-form-explain').text()).toBe('this is requreid data!');
+      inputEle.find('input').element.value = 'testvalue';
+      await triggerEvent(inputEle.find('input'), 'input');
+      wrapper.find('.ux-form').trigger('submit');
+      await waitTime(100);
+      expect(createWrapper(wrapper.vm.$children[0]).emitted().submit.length).toBe(1);
+      expect(submitFn).toHaveBeenCalled();
+      wrapper.setData({
+        rules: [
+          'required|numeric',
+          {
+            min: 3,
+            message() {
+              return '3个字符';
+            },
+          },
+          { max: 5, message: '最大5个字符' },
+        ],
+      });
+      await waitTime(50);
+      await triggerEvent(inputEle, 'blur');
+      expect(wrapper.find('.ux-form-explain').text()).toBe('field1 只能包含数字字符.');
+      wrapper.destroy();
+    });
+
+    it('confirm validator correctly', async () => {
+      const wrapper = mount({
+        template: `
+          <ux-form
+            ref="formRef"
+            @submit="onSubmit"
+          >
+            <ux-form-item label="E-mail">
+              <ux-field-decorator name="email" rules="required|email|initial" :valuePath="'form.email'">
+                <ux-input />
+              </ux-field-decorator>
+            </ux-form-item>
+            <ux-form-item label="Password">
+              <ux-field-decorator
+                name="password"
+                :rules="{ required: true, regex: /^\\d{6,}$/i }"
+                :validator="{ alias: 'Password' }"
+              >
+                <ux-input type="password" v-model="form.password" />
+              </ux-field-decorator>
+            </ux-form-item>
+            <ux-form-item label="Confirm Password">
+              <ux-field-decorator
+                name="confirm"
+                rules="required|confirmed:@password"
+                :validator="{ alias: 'Confirm Password' }"
+              >
+                <ux-input type="password" v-model="form.confirm" />
+              </ux-field-decorator>
+            </ux-form-item>
+            <ux-form-item label="Phone Number">
+              <ux-field-decorator name="phone" rules="required">
+                <ux-input v-model="form.phone">
+                  <ux-field-decorator slot="addonBefore" name="phoneSelect">
+                    <ux-select v-model="form.phoneSelect" style="width:80px">
+                      <ux-option value="86" label="+86" />
+                      <ux-option value="87" label="+87" />
+                    </ux-select>
+                  </ux-field-decorator>
+                </ux-input>
+              </ux-field-decorator>
+            </ux-form-item>
+            <ux-form-item :wrapper-col="{ offset: 8 }">
+              <ux-button type="primary" html-type="submit">Register</ux-button>
+            </ux-form-item>
+          </ux-form>        
+        `,
+        components: {
+          UxForm,
+          UxFormItem,
+          UxFieldDecorator,
+          UxInput,
+          UxSelect,
+          UxOption,
+          UxButton
+        },
+        data() {
+          return {
+            form: {
+              email: '',
+              userName: '',
+              password: '',
+              confirm: '',
+              phone: '',
+              phoneSelect: '87'
+            },
+          };
+        },
+        methods: {
+          onSubmit() {
+            const {
+              $refs: { formRef },
+            } = this;
+            if (formRef) {
+              formRef.validate();
+            }
+          },
+        },
+      });
+      await waitTime();
+      wrapper.findAll('[type="password"]').at(0).setValue('123456');
+      wrapper.findAll('[type="password"]').at(1).setValue('1234567');
+      await waitTime(50);
+      const confirmPassword = wrapper.findAll('.ux-form-item').at(2);
+      expect(confirmPassword.find('.ux-form-explain').text()).toBe('Confirm Password 不能和password匹配.');
     });
   });
 });

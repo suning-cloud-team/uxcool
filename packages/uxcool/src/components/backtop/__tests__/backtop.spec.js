@@ -35,4 +35,34 @@ it('render and backtop correctly', async () => {
   backtopElement.trigger('click');
   await waitTime(500);
   expect(Math.abs(Math.round(outerContainer.element.scrollTop))).toBe(0);
+  wrapper.destroy();
+});
+
+it('target is window and render correctly', async () => {
+  const wrapper = mount(
+    {
+      template: `
+        <div class="demo"
+             style="height:1500px">
+          <ux-backtop ref="backtopRef"/>
+        </div>
+      `,
+      components: {
+        UxBacktop,
+      },
+    },
+    {
+      attachToDocument: true,
+      sync: false,
+    }
+  );
+  const backtopElement = wrapper.find({ ref: 'backtopRef' });
+  expect(backtopElement.element.style.display).toBe('none');
+  window.pageYOffset = 800;
+  backtopElement.vm.handleScroll();
+  await waitTime(500);
+  expect(backtopElement.element.style.display).toBe('');
+  backtopElement.trigger('click');
+  await waitTime(500);
+  wrapper.destroy();
 });

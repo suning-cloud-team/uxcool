@@ -43,3 +43,46 @@ it('global config works correctly', async () => {
   expect($('.ux-message').parent()[0].tagName).toBe('SECTION');
   expect($('.ux-message').css('top')).toBe('200px');
 });
+
+it('global config top to null correctly', async () => {
+  UxMessage.config({ top: null, duration: 0 });
+  UxMessage.info('hello world');
+  await waitTime(50);
+  expect($('.ux-message').css('top')).toBe('');
+});
+
+it('global config top to empty correctly', async () => {
+  UxMessage.config({ top: '' });
+  UxMessage.info('hello world');
+  await waitTime(50);
+  expect($('.ux-message').css('top')).toBe('');
+});
+
+it('global config top to number correctly', async () => {
+  UxMessage.config({ top: 10, duration: 0 });
+  UxMessage.info('hello world');
+  await waitTime(50);
+  expect($('.ux-message').css('top')).toBe('10px');
+});
+
+it('notice callback to destroy correctly', async () => {
+  UxMessage.config({ top: 10, duration: 0 });
+  const hanlde = UxMessage.info('hello world');
+  hanlde();
+  await waitTime(20);
+  expect($('.ux-message').html().indexOf('hello world')).toBe(-1);
+});
+
+it('config theme correctly', async () => {
+  UxMessage.config({ theme: 'dark', duration: 0 });
+  UxMessage.info('hello world');
+  await waitTime(20);
+  expect($('.ux-message').attr('class')).toEqual(expect.stringContaining('ux-message-dark'));
+});
+
+it('config prefixCls correctly', async () => {
+  UxMessage.config({ prefixCls: 'custom', duration: 0 });
+  UxMessage.info('hello world');
+  await waitTime(20);
+  expect($('.custom-message')).toBeDefined();
+});

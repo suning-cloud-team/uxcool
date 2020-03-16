@@ -94,6 +94,7 @@ it('render common correctly', async () => {
 
   expect(changeFn).toBeCalled();
   document.body.innerHTML = '';
+
 });
 
 it('render custom item dom correctly', () => {
@@ -143,3 +144,29 @@ it('render custom item dom correctly', () => {
       .find('span').element.innerHTML
   ).toBe('第3页');
 });
+
+it('watch props correctly', async () => {
+  const wrapper = mount(UxPagination, {
+    propsData: {
+      current: 5,
+      total: 500
+    },
+  });
+  await waitTime();
+  expect(wrapper.findAll('.ux-pagination-item').length).toBe(7);
+
+  wrapper.setProps({pageSize: 20});
+  wrapper.setProps({current: 10});
+  await waitTime();
+  expect(wrapper.find('li[title="25"]')).toBeDefined();
+  await triggerEvent(wrapper.find('.ux-pagination-jump-prev'), 'click');
+  expect(wrapper.find('li[title="3"]')).toBeDefined();
+  await triggerEvent(wrapper.find('.ux-pagination-jump-next'), 'click');
+  expect(wrapper.find('li[title="8"]')).toBeDefined();
+  await triggerEvent(wrapper.find('li[title="25"]'), 'click');
+  expect(wrapper.find('.ux-pagination-jump-next').exists()).toBeFalsy();
+  await triggerEvent(wrapper.find('li[title="1"]'), 'click', 100);
+  expect(wrapper.find('.ux-pagination-jump-prev').exists()).toBeFalsy();
+
+});
+

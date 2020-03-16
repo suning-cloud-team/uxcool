@@ -79,22 +79,28 @@ function getNodesCount(tree) {
   return { total: count, leafCount, parentNodeCount: count - leafCount };
 }
 
-function createNode(parentKey, key) {
+function createNode(parentKey, key, longTitle) {
+  const longMsg = 'Zinedine Yazid Zidane O.L.H., A.O.M.N. (French pronunciation: [zinedin zidan],' +
+    ' born 23 June 1972), nicknamed "Zizou", is a French retired professional footballer and current ' +
+    'manager of Real Madrid. He played as an attacking midfielder for the France national team, Cannes, ' +
+    'Bordeaux, Juventus and Real Madrid.[3][4] An elite playmaker, renowned for his elegance, vision, ball ' +
+    'control and technique, Zidane was named the best European footballer of the past 50 years in the UEFA ' +
+    'Golden Jubilee Poll in 2004.[5] He is widely regarded as one of the greatest players of all time';
   const node = {
-    title: `${parentKey}-${key}`,
+    title: longTitle ? `${parentKey}-${key}-${longMsg}` : `${parentKey}-${key}`,
     key: `${parentKey}-${key}`,
     dataValue: '',
   };
   return node;
 }
 
-function createBigDataSource(firstLevelCount = 100, secondLevelCount = 10, thirdLevelCount = 10) {
+function createBigDataSource(firstLevelCount = 100, secondLevelCount = 10, thirdLevelCount = 10, longTitle = false) {
   const dataSrc = [];
   for (let firstlevel = 0; firstlevel < firstLevelCount; firstlevel += 1) {
     const firstLevelNode = createNode('0', dataSrc.length);
     firstLevelNode.children = [];
     for (let sndLevel = 0; sndLevel < secondLevelCount; sndLevel += 1) {
-      const sndNode = createNode(firstLevelNode.key, firstLevelNode.children.length);
+      const sndNode = createNode(firstLevelNode.key, firstLevelNode.children.length, longTitle ? sndLevel % 2 : false);
       sndNode.children = [];
       for (let trdLevel = 0; trdLevel < thirdLevelCount; trdLevel += 1) {
         const trdNode = createNode(sndNode.key, sndNode.children.length);
@@ -202,7 +208,7 @@ describe('Tree Component Render', () => {
         wrapper.destroy();
       });
 
-      it('expanded all nodes', () => {
+      it('expanded all nodes', async () => {
         const wrapper = createTreeWrapper({
           propsData: {
             dataSource,
@@ -213,7 +219,9 @@ describe('Tree Component Render', () => {
         const nodeArray = wrapper.findAll('.ux-tree-node-content-wrapper');
         expect(nodeArray.length).toEqual(total);
         expect(wrapper.findAll('.ux-tree-treenode-switcher-open').length).toEqual(parentNodeCount);
-
+        wrapper.find('.ux-tree-switcher').trigger('click');
+        await waitTime();
+        expect(wrapper.find('.ux-tree-switcher_close')).toBeDefined();
         wrapper.destroy();
       });
 
@@ -306,6 +314,7 @@ describe('Tree Component Render', () => {
           const newSelectedNodes = wrapper.findAll('.ux-tree-node-selected');
           expect(newSelectedNodes.length).toBe(1);
           expect(newSelectedNodes.at(0).attributes().title).toBe('0-0-0-1');
+          target.trigger('click');
         });
       });
 
@@ -340,10 +349,10 @@ describe('Tree Component Render', () => {
           bottom: 193,
           right: 0,
         }));
-
+        const dataSrc = JSON.parse(JSON.stringify(dataSource));
         const wrapper = createTreeWrapper({
           propsData: {
-            dataSource,
+            dataSource: dataSrc,
             draggable: true,
             defaultExpandAll: true,
           },
@@ -355,15 +364,17 @@ describe('Tree Component Render', () => {
         const targetNodes = wrapper.find('.ux-tree-child-tree-open .ux-tree-child-tree-open').findAll('ul li');
         const dragNode = targetNodes.at(2);
         const dropNode = targetNodes.at(0);
-        // const { top, bottom, height } = dragNode.element.getBoundingClientRect();
-        // console.log(top, bottom, height);
         dragNode.find('.draggable').trigger('dragstart');
-
+        dragNode.trigger('dragenter');
+        await waitTime();
         dropNode.trigger('dragenter');
+        dragNode.trigger('dragleave');
         dropNode.trigger('dragover', { clientY: 174 });
+        await waitTime(510);
         dropNode.trigger('drop');
-
-        await waitTime(200);
+        dropNode.trigger('dragleave');
+        dragNode.find('.draggable').trigger('dragend');
+        await waitTime(100);
 
         expect(mockDrag).toHaveBeenCalledTimes(1);
         const {
@@ -379,6 +390,92 @@ describe('Tree Component Render', () => {
         expect(afterDraggedNodes.at(0).text()).toBe('0-0-0-2');
         expect(afterDraggedNodes.at(1).text()).toBe('0-0-0-0');
         expect(afterDraggedNodes.at(2).text()).toBe('0-0-0-1');
+        wrapper.destroy();
+      });
+
+      it('test drop position', async () => {
+        // 构造drop元素0-0-0-0的视图坐标为(169, 0),宽高为(120, 64), drapover事件的y坐标值为174
+        // [175, 187] 为中间区域
+        // 执行该拖拽后，drap元素0-0-0-2将在0-0-0-0之上
+        Element.prototype.getBoundingClientRect = jest.fn(() => ({
+          width: 120,
+          height: 24,
+          top: 169,
+          left: 0,
+          bottom: 193,
+          right: 0,
+        }));
+        const dataSrc = JSON.parse(JSON.stringify(dataSource));
+        const wrapper = createTreeWrapper({
+          propsData: {
+            dataSource: dataSrc,
+            draggable: true,
+            defaultExpandAll: true,
+          },
+        });
+
+        const mockDrag = jest.fn();
+        wrapper.vm.$on('drop', mockDrag);
+        // 将0-0-0-2拖到0-0的mid,使其变为0-0的子节点，0-0-0-1拖到0-0的mid位置，使其为子节点
+        const targetNodes = wrapper.find('.ux-tree-child-tree-open .ux-tree-child-tree-open').findAll('ul li');
+        const dragNode = targetNodes.at(2);
+        dragNode.find('.draggable').trigger('dragstart');
+        dragNode.trigger('dragover', { clientY: 174 });
+        dragNode.trigger('drop');
+        dragNode.find('.draggable').trigger('dragend');
+        await waitTime();
+        const nodes = wrapper.find('.ux-tree-child-tree-open .ux-tree-child-tree-open').findAll('ul li');
+        expect(nodes.at(2).find('.ux-tree-title').text()).toBe('0-0-0-2');
+        // 拖0-0-0-2 到 0-0
+        const dropNode = wrapper.find('ul li');
+        dragNode.find('.draggable').trigger('dragstart');
+        dropNode.trigger('dragenter');
+        dragNode.trigger('dragleave');
+        dropNode.trigger('dragover', { clientY: 180 }); // mid
+        dropNode.trigger('drop');
+        dropNode.trigger('dragleave');
+        dragNode.find('.draggable').trigger('dragend');
+        await waitTime(50);
+        const childrenNodes = dropNode.findAll('ul li');
+        expect(childrenNodes.at(childrenNodes.length - 1).find('.ux-tree-title').text()).toBe('0-0-0-2');
+        // 拖0-0-0-1 到 0-0 bottom
+        const dragToBottomNode = wrapper.find('.ux-tree-child-tree-open .ux-tree-child-tree-open').findAll('ul li').at(1);
+        dragToBottomNode.find('.draggable').trigger('dragstart');
+        dropNode.trigger('dragenter');
+        dragToBottomNode.trigger('dragleave');
+        dropNode.trigger('dragover', { clientY: 189 }); // bottom
+        dropNode.trigger('drop');
+        dropNode.trigger('dragleave');
+        dragToBottomNode.find('.draggable').trigger('dragend');
+        await waitTime(50);
+        expect(wrapper.find('.ux-tree-treenode-switcher-open').find('.ux-tree-child-tree .ux-tree-title').text()).toBe('0-0-0-1');
+      });
+
+      it('test watch func', async () => {
+        const selectedKeys = ['0-0-2'];
+        const expandedKeys = ['0-0'];
+        const wrapper = createTreeWrapper({
+          propsData: {
+            checkable: true,
+            selectedKeys,
+            expandedKeys
+          },
+        });
+        const newDataSource = [...dataSource, { title: '0-3', key: '0-3' }];
+        wrapper.setProps({dataSource: { title: '0-3', key: '0-3' }});
+        await waitTime();
+        wrapper.setProps({dataSource: newDataSource});
+        await waitTime();
+        expect(wrapper.find('span[title="0-3"]')).toBeDefined();
+        wrapper.setProps({expandedKeys: ['0-0', '0-1']});
+        await waitTime();
+        expect(wrapper.find('span[title="0-1-0"]')).toBeDefined();
+        wrapper.setProps({selectedKeys: ['0-0-2']});
+        await waitTime();
+        expect(wrapper.find('.ux-tree-node-selected').attributes('title')).toBe('0-0-2');
+        wrapper.setProps({selectedKeys: ['0-1-0']});
+        await waitTime();
+        expect(wrapper.find('span[title="0-1-0"]').classes()).toContain('ux-tree-node-selected');
       });
     });
     describe('Tree Async', () => {
@@ -500,6 +597,14 @@ describe('Tree Component Render', () => {
         // click是否响应
         wrapper.find('ul li:first-child .ux-tree-node-content-wrapper').trigger('click');
         expect(mockNodeClick).toHaveBeenCalled();
+
+        // check
+        const nodes = wrapper.findAll('ul li');
+        nodes.at(1).find('.ux-tree-switcher').trigger('click');
+        await waitTime();
+        nodes.at(0).find('.ux-tree-checkbox').trigger('click');
+        await waitTime();
+        expect(wrapper.findAll('ul li').at(0).find('.ux-tree-checkbox-checked')).toBeDefined();
       });
 
       it('test viewCount and beach', async () => {
@@ -577,6 +682,30 @@ describe('Tree Component Render', () => {
         expect(nodeArray.at(nodeArray.length - 1).text()).toBe('0-0-3-4-level-2');
         expect(nodeArray.length).toBeLessThanOrEqual(total);
       });
+
+      it('test render virtual node auto height',async () => {
+        const dataSrc = createBigDataSource(10, 10, 0, true);
+        const expandedKeys = ['0-0'];
+        const wrapper = createVirtualTreeWrapper({
+          propsData: {
+            dataSource: dataSrc,
+            defaultExpandAll: false,
+            selectedKeys: ['0-0-0'],
+            expandedKeys,
+            showLine: true,
+            autoHeight: true,
+            viewCount: 20,
+          },
+        });
+        const nodeArray = wrapper.findAll('li');
+        expect(nodeArray.length).toBe(20);
+        wrapper.setProps({expandedKeys: ['0-1']});
+        await waitTime();
+        expect(wrapper.findAll('li').length).toBe(20);
+        wrapper.findAll('li').at(0).find('.ux-tree-switcher').trigger('click');
+        await waitTime();
+        expect(wrapper.findAll('li').length).toBe(30);
+      });
     });
 
     describe('Virtual Tree Scroll', () => {
@@ -598,7 +727,6 @@ describe('Tree Component Render', () => {
         vslRef.trigger('scroll');
         await waitTime(500);
         wrapper.vm.$nextTick(() => {
-          // console.log(wrapper.html());
           const nodeArray = wrapper.findAll('.ux-tree-node-content-wrapper');
           expect(nodeArray.length).toEqual(40);
           expect(nodeArray.at(0).text()).not.toBe('0-0-level-0');
