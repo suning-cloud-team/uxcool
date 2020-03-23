@@ -394,7 +394,7 @@ export default {
           nVal = isMultipleOrTags ? nVal : nVal[0];
 
           const valObj = isMultipleOrTags
-            ? nVal.map(v => buildOptionOriginNode(v, optionMap))
+            ? nVal.map((v) => buildOptionOriginNode(v, optionMap))
             : buildOptionOriginNode(nVal, optionMap);
 
           if (pass) {
@@ -512,7 +512,7 @@ export default {
       if (disabled || (!!item.disabled && !clearDisabled)) {
         return;
       }
-      const values = innerValue.filter(v => String(v) !== String(name));
+      const values = innerValue.filter((v) => String(v) !== String(name));
 
       if (isMultipleOrTags) {
         this.$emit('deselect', name, buildOptionOriginNode(name, optionMap));
@@ -547,8 +547,8 @@ export default {
       let values = [];
       if (isMultipleOrTags && !clearDisabled) {
         values = getSelectionValue()
-          .filter(v => !!v.disabled)
-          .map(v => v.value);
+          .filter((v) => !!v.disabled)
+          .map((v) => v.value);
       }
       setInnerValue(values);
       setInnerVisible(false);
@@ -646,16 +646,14 @@ export default {
           if (isEqual(option.labelNode, {}) || isEqual(option.labelNode, [])) {
             nOption.labelNode = undefined;
           }
-          const labelNode =
-            nOption.labelNode || (isFunction(renderLabel) ? renderLabel(option) : undefined);
+          const labelNode = nOption.labelNode || (isFunction(renderLabel) ? renderLabel(option) : undefined);
           nOption.content = labelNode || option.label || option.value;
           let selectionContent = option.label || option.value;
           if (normalizeOptionLabelProp) {
             // vue 同一渲染树中,同一vnode有且只能出现一次,所以clone一个节点用于页面显示
-            selectionContent =
-              normalizeOptionLabelProp === 'children'
-                ? cloneLabelNodes(labelNode)
-                : option[normalizeOptionLabelProp] || '';
+            selectionContent = normalizeOptionLabelProp === 'children'
+              ? cloneLabelNodes(labelNode)
+              : option[normalizeOptionLabelProp] || '';
           }
           nOption.selectionContent = selectionContent;
           nOptionMap[nOption.value] = nOption;
@@ -802,9 +800,11 @@ export default {
       }
       if (shouldNotFound && ret.length === 0 && normalizeNotFountContent) {
         nExtraParam.line += 1;
-        ret.push(<VMenuItem key="NOT_FOUND" name="NOT_FOUND" disabled>
+        ret.push(
+          <VMenuItem key="NOT_FOUND" name="NOT_FOUND" disabled>
             {normalizeNotFountContent}
-          </VMenuItem>);
+          </VMenuItem>
+        );
       }
       return ret;
     },
@@ -854,7 +854,7 @@ export default {
         }
         : {
           click: onMenuSelect,
-      };
+        };
       let filtedOptions = searchFilterOptions(options);
       if (isTags) {
         filtedOptions = getTagsFilterOptions(filtedOptions);
@@ -888,7 +888,9 @@ export default {
         variable: (index) => {
           const node = rootLineMapping[index];
           if (!node) {
-            return 0;
+            // return 0;
+            // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/306
+            return nLazy.height;
           }
           return node.nodeCnt * nLazy.height;
         },
