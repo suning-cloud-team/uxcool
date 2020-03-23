@@ -1,3 +1,9 @@
+# 0.5.0-next.81 (2020-03-23)
+
+### Bug Fixes
+
+- **select:** 修复滚动后第一个选项消失问题 ([77869b8](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/77869b8c17bdf8857d797a3444ca9d370eb8a878)), closes [#306](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/306)
+
 # 0.5.0-next.80 (2020-03-12)
 
 ### Features
