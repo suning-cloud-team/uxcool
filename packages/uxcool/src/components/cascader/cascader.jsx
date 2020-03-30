@@ -208,10 +208,12 @@ export default {
     },
   },
   created() {
-    const {
-      value, setInnerValue, setInnerVisible, popupVisible, loadRootNodes
-    } = this;
-    loadRootNodes().then(() => {
+    // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/307
+    this.loadRootNodes().then(() => {
+      const {
+        value, setInnerValue, setInnerVisible, popupVisible,
+      } = this;
+
       setInnerValue(value, false);
       setInnerVisible(popupVisible, false);
     });
