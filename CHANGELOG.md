@@ -1,3 +1,9 @@
+# 0.5.0-next.82 (2020-03-30)
+
+### Bug Fixes
+
+- **cascader:** 修复 value 不显示 bug ([7bba5f2](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/7bba5f29cc0e81d643b630d2faf4f0548565e8e8)), closes [#307](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/307)
+
 # 0.5.0-next.81 (2020-03-23)
 
 ### Bug Fixes
