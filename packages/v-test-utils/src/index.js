@@ -1,7 +1,5 @@
-import Vue from 'vue';
-
 import $ from 'jquery';
-import { mount, createWrapper } from '@vue/test-utils';
+import { mount, createWrapper, createLocalVue } from '@vue/test-utils';
 import Trigger from '@suning/v-trigger';
 
 export * from '@vue/test-utils';
@@ -22,9 +20,10 @@ export function removePopup() {
   document.body.innerHTML = '';
 }
 
-const vueInst = new Vue();
+const LocalVue = createLocalVue();
+const localVueInst = new LocalVue();
 export function getVueCreateElement() {
-  return vueInst.$createElement;
+  return localVueInst.$createElement;
 }
 
 /**

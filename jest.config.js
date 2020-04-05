@@ -23,7 +23,7 @@ module.exports = {
     '!**/style/index.js',
     '!**/locale/*.js',
     '!**/virtual-list/**',
-    '!**/mixins/**',
+    // '!**/mixins/**',
   ],
   testURL: 'http://localhost',
   watchPlugins: [

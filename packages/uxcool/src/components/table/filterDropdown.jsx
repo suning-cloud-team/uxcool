@@ -1,4 +1,4 @@
-import { isFunction, closest } from '@suning/v-utils';
+import { isFunction, closest, isEqual } from '@suning/v-utils';
 import { VMenu as Menu, VSubMenu as SubMenu, VMenuItem as MenuItem } from '@suning/v-menu';
 
 import Dropdown from '../dropdown';
@@ -59,8 +59,10 @@ export default {
       return this.renderFilterIcon();
     },
     hasSubMenu() {
-      const { column: { filters = [] } } = this;
-      return filters.filter(v => Array.isArray(v.children) && v.children.length > 0).length > 0;
+      const {
+        column: { filters = [] },
+      } = this;
+      return filters.filter((v) => Array.isArray(v.children) && v.children.length > 0).length > 0;
     },
     filterMenu() {
       const {
@@ -145,7 +147,8 @@ export default {
     },
     confirmFilter() {
       const { column, innerSelectedKeys, selectedKeys } = this;
-      if (innerSelectedKeys !== selectedKeys) {
+      if (!isEqual(innerSelectedKeys, selectedKeys)) {
+        // if (innerSelectedKeys !== selectedKeys) {
         this.$emit('confirm-filter', column, innerSelectedKeys);
       }
     },
@@ -225,7 +228,7 @@ export default {
 
     const menus = filterDropdown ? (
       <div>{filterDropdown}</div>
-      ) : (
+    ) : (
       <div class={`${filterPrefixCls}-dropdown`}>
         {filterMenu}
         <div class={`${filterPrefixCls}-dropdown-btns`}>

@@ -1,6 +1,10 @@
 import debounce from 'lodash/debounce';
-import { isEqual, isArray, resetParentVisible, getScrollBarWidth } from '@suning/v-utils';
-import { noop, getRowKey, addEventListener, flatRows, calcDragPosition, flatCols } from './utils';
+import {
+  isEqual, isArray, resetParentVisible, getScrollBarWidth
+} from '@suning/v-utils';
+import {
+  noop, getRowKey, addEventListener, flatRows, calcDragPosition, flatCols
+} from './utils';
 import ColumnMixin from './mixins/column';
 
 import MainTable from './mainTable.vue';
@@ -266,8 +270,11 @@ export default {
     visibleVirtualScrollRecords() {
       const { innerExpanderRowKeys, flatVirtualScrollRecords } = this;
 
-      return flatVirtualScrollRecords.filter(({ ancestors }) =>
-        ancestors.length === 0 || ancestors.every(key => innerExpanderRowKeys.indexOf(key) > -1));
+      return flatVirtualScrollRecords.filter(
+        /* eslint-disable max-len */
+        ({ ancestors }) => ancestors.length === 0 || ancestors.every((key) => innerExpanderRowKeys.indexOf(key) > -1)
+        /* eslint-enable max-len */
+      );
     },
 
     visibleVirtualScrollRecordsWithSize() {
@@ -313,7 +320,7 @@ export default {
     },
     expandedRowKeys(nVal, oVal) {
       if (isArray(nVal) && !isEqual(nVal, oVal)) {
-        this.innerExpanderRowKeys = nVal.map(v => String(v));
+        this.innerExpanderRowKeys = nVal.map((v) => String(v));
       }
     },
     expandAllRows(nVal, oVal) {
@@ -346,7 +353,9 @@ export default {
     });
     this.$on('resize-column-width', (evt, newWidth, oldWidth, key) => {
       // 底层table并没有给每一列添加唯一的key，依赖上层table传入的key/$$_key字段
-      const column = this.flatOriginLeafColumn.find(col => (col.key ? col.key === key : col.$$_key === key));
+      /* eslint-disable max-len */
+      const column = this.flatOriginLeafColumn.find((col) => (col.key ? col.key === key : col.$$_key === key));
+      /* eslint-enable max-len */
       if (column) {
         // FIXME: 目前的实现只能直接修改原始数据才能实现宽度变化
         column.width = newWidth;
@@ -395,7 +404,7 @@ export default {
       } else if (from === 'flatRecords') {
         rowKeys = innerExpanderRowKeys;
       } else if (isArray(expandedRowKeys)) {
-        rowKeys = expandedRowKeys.map(v => String(v));
+        rowKeys = expandedRowKeys.map((v) => String(v));
       }
       this.innerExpanderRowKeys = rowKeys;
     },
@@ -508,6 +517,8 @@ export default {
         const { scrollWidth, scrollLeft } = bodyTableRef;
         const bodyWdith = bodyTableRef.getBoundingClientRect().width;
 
+        // jsdom 无法模拟具体数值
+        /* istanbul ignore next */
         if (bodyWdith >= scrollWidth) {
           scrollPosition = 'both';
         } else if (scrollLeft === 0) {
@@ -588,12 +599,12 @@ export default {
       if (expanded) {
         nRowKeys = [...innerExpanderRowKeys, rowKey];
       } else {
-        nRowKeys = innerExpanderRowKeys.filter(v => v !== rowKey);
+        nRowKeys = innerExpanderRowKeys.filter((v) => v !== rowKey);
       }
       this.$emit(
         'expanded-row-change',
         nRowKeys,
-        flatRecords.filter(v => nRowKeys.indexOf(v.$$_key) > -1)
+        flatRecords.filter((v) => nRowKeys.indexOf(v.$$_key) > -1)
       );
       this.$emit('expand', expanded, record, rowIdx);
       this.innerExpanderRowKeys = nRowKeys;
@@ -822,8 +833,8 @@ export default {
 
       // drag和drop的同一个元素，只有最后一个子节点拖到自身底部（即把子节点拖出来）才是允许的
       if (
-        dragRowId === rowId &&
-        !(dragPosition === 'bottom' && dragRow.$$meta.parent && dragRow.$$meta.isLast)
+        dragRowId === rowId
+        && !(dragPosition === 'bottom' && dragRow.$$meta.parent && dragRow.$$meta.isLast)
       ) {
         return;
       }

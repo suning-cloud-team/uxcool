@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table.filter custom filter icon 1`] = `
+<div class="ux-table-wrapper ux-table-light">
+  <div class="ux-spin-nested-loading">
+    <div class="ux-spin" style="display: none;"><svg viewBox="25 25 50 50" class="ux-spin-circle">
+        <circle cx="50" cy="50" r="20" fill="none"></circle>
+      </svg> </div>
+    <div class="ux-spin-container">
+      <div class="ux-table ux-table-scroll-position-left ux-table-default">
+        <div class="ux-table-content">
+          <div class="ux-table-main-table">
+            <!---->
+            <div class="ux-table-body">
+              <table class="">
+                <colgroup>
+                  <col>
+                </colgroup>
+                <thead class="ux-table-thead">
+                  <tr>
+                    <th class="ux-table-column-has-filters"><span>Name<span title="筛选" class="ux-table-filter-icon ux-dropdown-trigger"><span>filter</span></span></span></th>
+                  </tr>
+                </thead>
+                <tbody class="ux-table-tbody">
+                  <tr class="ux-table-row">
+                    <td class="ux-table-column-has-filters">John Brown</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td class="ux-table-column-has-filters">Jim Green</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td class="ux-table-column-has-filters">Joe Black</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+        <div class="ux-table-resize-line" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+  <!---->
+</div>
+`;
+
+exports[`Table.filter render custom dropdown 1`] = `
+<div class="ux-dropdown-content">
+  <div>
+    <div class="custom-filter"> this is custome filter </div>
+  </div>
+</div>
+`;
+
+exports[`Table.filter render filter 1`] = `
+<div class="ux-table-wrapper ux-table-light">
+  <div class="ux-spin-nested-loading">
+    <div class="ux-spin" style="display: none;"><svg viewBox="25 25 50 50" class="ux-spin-circle">
+        <circle cx="50" cy="50" r="20" fill="none"></circle>
+      </svg> </div>
+    <div class="ux-spin-container">
+      <div class="ux-table ux-table-scroll-position-left ux-table-default">
+        <div class="ux-table-content">
+          <div class="ux-table-main-table">
+            <!---->
+            <div class="ux-table-body">
+              <table class="">
+                <colgroup>
+                  <col>
+                </colgroup>
+                <thead class="ux-table-thead">
+                  <tr>
+                    <th class="ux-table-column-has-filters"><span>Name<span title="筛选" class="ux-table-filter-icon ux-dropdown-trigger"><i class="fu fu-filter"></i></span></span></th>
+                  </tr>
+                </thead>
+                <tbody class="ux-table-tbody">
+                  <tr class="ux-table-row">
+                    <td class="ux-table-column-has-filters">John Brown</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td class="ux-table-column-has-filters">Jim Green</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td class="ux-table-column-has-filters">Joe Black</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+        <div class="ux-table-resize-line" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+  <!---->
+</div>
+`;
+
+exports[`Table.filter render filter dropdown 1`] = `
+<div class="ux-dropdown-content">
+  <div class="ux-table-filter-dropdown">
+    <ul role="menu" class="ux-dropdown-menu ux-dropdown-menu-root ux-dropdown-menu-light ux-dropdown-menu-vertical">
+      <li title="" class="ux-dropdown-menu-item"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+          <!----></label><span>A1</span></li>
+      <li title="" class="ux-dropdown-menu-item"><label class="ux-checkbox-wrapper"><span class="ux-checkbox"><input type="checkbox" class="ux-checkbox-input" value=""> <span class="ux-checkbox-inner"></span></span>
+          <!----></label><span>B1</span></li>
+      <li class="ux-dropdown-menu-submenu ux-dropdown-menu-submenu-vertical">
+        <div title="" class="ux-dropdown-menu-submenu-title"><span>C1</span></div>
+      </li>
+    </ul>
+    <div class="ux-table-filter-dropdown-btns"><a class="ux-table-filter-dropdown-link confirm">确定</a><a class="ux-table-filter-dropdown-link clear">重置</a></div>
+  </div>
+</div>
+`;
+
+exports[`Table.filter render radio filter  1`] = `
+<div class="ux-dropdown-content">
+  <div class="ux-table-filter-dropdown">
+    <ul role="menu" class="ux-dropdown-menu ux-dropdown-menu-root ux-dropdown-menu-light ux-dropdown-menu-vertical">
+      <li title="" class="ux-dropdown-menu-item"><label class="ux-radio-wrapper"><span class="ux-radio"><input type="radio" name="" class="ux-radio-input" value=""> <span class="ux-radio-inner"></span></span>
+          <!----></label><span>A1</span></li>
+      <li title="" class="ux-dropdown-menu-item"><label class="ux-radio-wrapper"><span class="ux-radio"><input type="radio" name="" class="ux-radio-input" value=""> <span class="ux-radio-inner"></span></span>
+          <!----></label><span>B1</span></li>
+      <li class="ux-dropdown-menu-submenu ux-dropdown-menu-submenu-vertical">
+        <div title="" class="ux-dropdown-menu-submenu-title"><span>C1</span></div>
+      </li>
+    </ul>
+    <div class="ux-table-filter-dropdown-btns"><a class="ux-table-filter-dropdown-link confirm">确定</a><a class="ux-table-filter-dropdown-link clear">重置</a></div>
+  </div>
+</div>
+`;

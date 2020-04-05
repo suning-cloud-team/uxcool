@@ -69,6 +69,11 @@ export default {
       style = { ...style, ...bodyStyle };
 
       // header fixed
+      /**
+       * jsdom 无法正确获取 scrollWidth
+       * https://github.com/jsdom/jsdom/issues/1192
+       */
+      /* istanbul ignore if */
       if (isFixedHeader && fixed && scrollBarW > 0) {
         style.marginBottom = `-${scrollBarW}px`;
         style.paddingBottom = 0;
@@ -98,7 +103,8 @@ export default {
       const { fixed, isAnyColumnsLeftFixed, isAnyColumnsRightFixed } = this;
       if (fixed === 'left') {
         return isAnyColumnsLeftFixed;
-      } else if (fixed === 'right') {
+      }
+      if (fixed === 'right') {
         return isAnyColumnsRightFixed;
       }
       return false;
@@ -111,8 +117,11 @@ export default {
     // 给内层row判断使用，与原table逻辑保持一致
     needExpand() {
       const { childColName, virtualRecords } = this;
-      return virtualRecords.some(({ record, level }) =>
-        level === 0 && record[childColName] && record[childColName].length > 0);
+
+      return virtualRecords.some(
+        // eslint-disable-next-line
+        ({ record, level }) => level === 0 && record[childColName] && record[childColName].length > 0
+      );
     },
 
     // 用来存储每个元素的尺寸，用于判断渲染范围
@@ -350,6 +359,11 @@ export default {
       return scrollState;
     },
 
+    /**
+     * 暂未使用
+     * @param {Number} index
+     */
+    /* istanbul ignore next */
     scrollToItem(index) {
       const {
         virtualConfig: { itemSize },
@@ -365,11 +379,19 @@ export default {
       }
       scrollToPosition(scroll);
     },
-
+    /**
+     * 暂未使用
+     * @param {Number} index
+     */
+    /* istanbul ignore next */
     scrollToPosition(position) {
       this.$refs[this.refName].scrollTop = position;
     },
-
+    /**
+     * 暂未使用
+     * @param {Number} index
+     */
+    /* istanbul ignore next */
     scrollToBottom() {
       if (this.$_scrollingToBottom) {
         return;
@@ -431,7 +453,7 @@ export default {
     }
     return (
       <div ref={refName} class={`${prefixCls}-body`} style={style} on-scroll={onScroll}>
-        <div style={containerStyle}>{table}</div>
+        <div role="virtual" style={containerStyle}>{table}</div>
       </div>
     );
   },

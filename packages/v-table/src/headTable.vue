@@ -2,9 +2,11 @@
   <div :ref="refName"
        :class="`${prefixCls}-header`"
        :style="style"
-       @scroll="onScroll">
+       @scroll="onScroll"
+  >
     <base-table :fixed="fixed"
-                has-head />
+                has-head
+    />
   </div>
 </template>
 <script>
@@ -27,6 +29,11 @@
           isFixedHeader, fixed, scrollBarW, scroll, useFixedHeader
         } = this;
         const style = {};
+        /**
+         * jsdom 无法正确获取 scrollWidth
+         * https://github.com/jsdom/jsdom/issues/1192
+         */
+        /* istanbul ignore if */
         if (isFixedHeader && !fixed && scrollBarW > 0) {
           style.marginBottom = `-${scrollBarW}px`;
           style.paddingBottom = 0;

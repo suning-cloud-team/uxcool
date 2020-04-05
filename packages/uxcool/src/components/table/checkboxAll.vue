@@ -4,12 +4,15 @@
               :checked="checked"
               :disabled="disabled"
               :indeterminate="indeterminate"
-              @change="onChange" />
+              @change="onChange"
+    />
     <dropdown v-if="normalizeSelections.length > 0"
               :theme="theme"
-              :get-popup-container="getPopupContainer">
+              :get-popup-container="getPopupContainer"
+    >
       <div slot="trigger"
-           :class="`${boxPrefixCls}-down`">
+           :class="`${boxPrefixCls}-down`"
+      >
         <icon type="down" />
       </div>
       <!-- <ux-menu :class="`${boxPrefixCls}-dropdown`"
@@ -24,13 +27,16 @@
         </menu-item>
       </ux-menu> -->
       <div slot="overlay"
-           :class="`${boxPrefixCls}-dropdown`">
+           :class="`${boxPrefixCls}-dropdown`"
+      >
         <ux-menu :prefix-cls="`${dropdownPrefixCls}-menu`"
                  :selected-keys="[]"
-                 mode="vertical">
+                 mode="vertical"
+        >
           <menu-item v-for="(selection, i) in normalizeSelections"
                      :key="i"
-                     :name="selection.key||i">
+                     :name="selection.key||i"
+          >
             <div @click="onMenuItemClick(selection)">
               {{ selection.text }}
             </div>
@@ -133,12 +139,12 @@
       },
       checked() {
         const { data, selectedRowKeys } = this;
-        return data.length > 0 && data.every(v => selectedRowKeys.indexOf(v.$$_key) > -1);
+        return data.length > 0 && data.every((v) => selectedRowKeys.indexOf(v.$$_key) > -1);
       },
       indeterminate() {
         const { selectedRowKeys, data } = this;
-        const some = data.some(v => selectedRowKeys.indexOf(v.$$_key) > -1);
-        const every = data.every(v => selectedRowKeys.indexOf(v.$$_key) > -1);
+        const some = data.some((v) => selectedRowKeys.indexOf(v.$$_key) > -1);
+        const every = data.every((v) => selectedRowKeys.indexOf(v.$$_key) > -1);
         return !every && some;
       },
     },
@@ -154,4 +160,3 @@
     },
   };
 </script>
-
