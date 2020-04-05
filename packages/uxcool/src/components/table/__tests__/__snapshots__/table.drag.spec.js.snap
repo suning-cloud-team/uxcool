@@ -1,255 +1,179 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Table.drag expand row keys 1`] = `
-<div class="ux-table-wrapper ux-table-light">
-  <div class="ux-spin-nested-loading">
-    <div class="ux-spin" style="display: none;"><svg viewBox="25 25 50 50" class="ux-spin-circle">
-        <circle cx="50" cy="50" r="20" fill="none"></circle>
-      </svg> </div>
-    <div class="ux-spin-container">
-      <div class="ux-table ux-table-scroll-position-left ux-table-default">
-        <div class="ux-table-content">
-          <div class="ux-table-main-table">
-            <!---->
-            <div class="ux-table-body">
-              <table class="">
-                <colgroup>
-                  <col>
-                  <col>
-                  <col>
-                  <col>
-                </colgroup>
-                <thead class="ux-table-thead">
-                  <tr>
-                    <th rowspan="1" class="ux-table-expand-icon-th"></th>
-                    <th style="text-align: center;">Name</th>
-                    <th>Age</th>
-                    <th>Addr</th>
-                  </tr>
-                </thead>
-                <tbody class="ux-table-tbody">
-                  <tr draggable="true" class="ux-table-row">
-                    <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-expanded"></span></td>
-                    <td style="text-align: center;">Jim Green</td>
-                    <td>42</td>
-                    <td>London No. 1 Lake Park</td>
-                  </tr>
-                  <tr class="ux-table-expanded-row">
-                    <td></td>
-                    <td colspan="3">test expand row Jim Green</td>
-                  </tr>
-                  <tr draggable="true" class="ux-table-row">
-                    <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-collapsed"></span></td>
-                    <td style="text-align: center;">John Brown</td>
-                    <td>32</td>
-                    <td>New York No. 1 Lake Park</td>
-                  </tr>
-                  <tr class="ux-table-expanded-row" style="display: none;">
-                    <td></td>
-                    <td colspan="3">test expand row John Brown</td>
-                  </tr>
-                  <tr draggable="true" class="ux-table-row">
-                    <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-collapsed"></span></td>
-                    <td style="text-align: center;">Joe Black</td>
-                    <td>32</td>
-                    <td>Sidney No. 1 Lake Park</td>
-                  </tr>
-                  <tr class="ux-table-expanded-row" style="display: none;">
-                    <td></td>
-                    <td colspan="3">test expand row Joe Black</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!---->
-            <!---->
-          </div>
-        </div>
-        <div class="ux-table-resize-line" style="display: none;"></div>
-      </div>
-    </div>
-  </div>
+<div class="ux-table-body">
+  <table class="">
+    <colgroup>
+      <col>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead class="ux-table-thead">
+      <tr>
+        <th rowspan="1" class="ux-table-expand-icon-th"></th>
+        <th style="text-align: center;">Name</th>
+        <th>Age</th>
+        <th>Addr</th>
+      </tr>
+    </thead>
+    <tbody class="ux-table-tbody">
+      <tr draggable="true" class="ux-table-row">
+        <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-expanded"></span></td>
+        <td style="text-align: center;">Jim Green</td>
+        <td>42</td>
+        <td>London No. 1 Lake Park</td>
+      </tr>
+      <tr class="ux-table-expanded-row">
+        <td></td>
+        <td colspan="3">test expand row Jim Green</td>
+      </tr>
+      <tr draggable="true" class="ux-table-row">
+        <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-collapsed"></span></td>
+        <td style="text-align: center;">John Brown</td>
+        <td>32</td>
+        <td>New York No. 1 Lake Park</td>
+      </tr>
+      <tr class="ux-table-expanded-row" style="display: none;">
+        <td></td>
+        <td colspan="3">test expand row John Brown</td>
+      </tr>
+      <tr draggable="true" class="ux-table-row">
+        <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-collapsed"></span></td>
+        <td style="text-align: center;">Joe Black</td>
+        <td>32</td>
+        <td>Sidney No. 1 Lake Park</td>
+      </tr>
+      <tr class="ux-table-expanded-row" style="display: none;">
+        <td></td>
+        <td colspan="3">test expand row Joe Black</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
 exports[`Table.drag expandrow 1`] = `
-<div class="ux-table-wrapper ux-table-light">
-  <div class="ux-spin-nested-loading">
-    <div class="ux-spin" style="display: none;"><svg viewBox="25 25 50 50" class="ux-spin-circle">
-        <circle cx="50" cy="50" r="20" fill="none"></circle>
-      </svg> </div>
-    <div class="ux-spin-container">
-      <div class="ux-table ux-table-scroll-position-left ux-table-default">
-        <div class="ux-table-content">
-          <div class="ux-table-main-table">
-            <!---->
-            <div class="ux-table-body">
-              <table class="">
-                <colgroup>
-                  <col>
-                  <col>
-                  <col>
-                  <col>
-                </colgroup>
-                <thead class="ux-table-thead">
-                  <tr>
-                    <th rowspan="1" class="ux-table-expand-icon-th"></th>
-                    <th style="text-align: center;">Name</th>
-                    <th>Age</th>
-                    <th>Addr</th>
-                  </tr>
-                </thead>
-                <tbody class="ux-table-tbody">
-                  <tr draggable="true" class="ux-table-row">
-                    <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-collapsed"></span></td>
-                    <td style="text-align: center;">Jim Green</td>
-                    <td>42</td>
-                    <td>London No. 1 Lake Park</td>
-                  </tr>
-                  <tr class="ux-table-expanded-row" style="display: none;">
-                    <td></td>
-                    <td colspan="3">test expand row Jim Green</td>
-                  </tr>
-                  <tr draggable="true" class="ux-table-row" style="display: none;">
-                    <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-collapsed"></span></td>
-                    <td style="text-align: center;">John Brown</td>
-                    <td>32</td>
-                    <td>New York No. 1 Lake Park</td>
-                  </tr>
-                  <tr class="ux-table-expanded-row" style="display: none;">
-                    <td></td>
-                    <td colspan="3">test expand row John Brown</td>
-                  </tr>
-                  <tr draggable="true" class="ux-table-row">
-                    <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-collapsed"></span></td>
-                    <td style="text-align: center;">Joe Black</td>
-                    <td>32</td>
-                    <td>Sidney No. 1 Lake Park</td>
-                  </tr>
-                  <tr class="ux-table-expanded-row" style="display: none;">
-                    <td></td>
-                    <td colspan="3">test expand row Joe Black</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!---->
-            <!---->
-          </div>
-        </div>
-        <div class="ux-table-resize-line" style="display: none;"></div>
-      </div>
-    </div>
-  </div>
+<div class="ux-table-body">
+  <table class="">
+    <colgroup>
+      <col>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead class="ux-table-thead">
+      <tr>
+        <th rowspan="1" class="ux-table-expand-icon-th"></th>
+        <th style="text-align: center;">Name</th>
+        <th>Age</th>
+        <th>Addr</th>
+      </tr>
+    </thead>
+    <tbody class="ux-table-tbody">
+      <tr draggable="true" class="ux-table-row">
+        <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-collapsed"></span></td>
+        <td style="text-align: center;">Jim Green</td>
+        <td>42</td>
+        <td>London No. 1 Lake Park</td>
+      </tr>
+      <tr class="ux-table-expanded-row" style="display: none;">
+        <td></td>
+        <td colspan="3">test expand row Jim Green</td>
+      </tr>
+      <tr draggable="true" class="ux-table-row" style="display: none;">
+        <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-collapsed"></span></td>
+        <td style="text-align: center;">John Brown</td>
+        <td>32</td>
+        <td>New York No. 1 Lake Park</td>
+      </tr>
+      <tr class="ux-table-expanded-row" style="display: none;">
+        <td></td>
+        <td colspan="3">test expand row John Brown</td>
+      </tr>
+      <tr draggable="true" class="ux-table-row">
+        <td class="ux-table-row-expand-icon-cell"><span class="ux-table-row-expand-icon ux-table-row-collapsed"></span></td>
+        <td style="text-align: center;">Joe Black</td>
+        <td>32</td>
+        <td>Sidney No. 1 Lake Park</td>
+      </tr>
+      <tr class="ux-table-expanded-row" style="display: none;">
+        <td></td>
+        <td colspan="3">test expand row Joe Black</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
 exports[`Table.drag render draggable 1`] = `
-<div class="ux-table-wrapper ux-table-light">
-  <div class="ux-spin-nested-loading">
-    <div class="ux-spin" style="display: none;"><svg viewBox="25 25 50 50" class="ux-spin-circle">
-        <circle cx="50" cy="50" r="20" fill="none"></circle>
-      </svg> </div>
-    <div class="ux-spin-container">
-      <div class="ux-table ux-table-scroll-position-left ux-table-default">
-        <div class="ux-table-content">
-          <div class="ux-table-main-table">
-            <!---->
-            <div class="ux-table-body">
-              <table class="">
-                <colgroup>
-                  <col>
-                  <col>
-                  <col>
-                </colgroup>
-                <thead class="ux-table-thead">
-                  <tr>
-                    <th style="text-align: center;">Name</th>
-                    <th>Age</th>
-                    <th>Addr</th>
-                  </tr>
-                </thead>
-                <tbody class="ux-table-tbody">
-                  <tr draggable="true" class="ux-table-row">
-                    <td style="text-align: center;">Jim Green</td>
-                    <td>42</td>
-                    <td>London No. 1 Lake Park</td>
-                  </tr>
-                  <tr draggable="true" class="ux-table-row">
-                    <td style="text-align: center;">John Brown</td>
-                    <td>32</td>
-                    <td>New York No. 1 Lake Park</td>
-                  </tr>
-                  <tr draggable="true" class="ux-table-row">
-                    <td style="text-align: center;">Joe Black</td>
-                    <td>32</td>
-                    <td>Sidney No. 1 Lake Park</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!---->
-            <!---->
-          </div>
-        </div>
-        <div class="ux-table-resize-line" style="display: none;"></div>
-      </div>
-    </div>
-  </div>
+<div class="ux-table-body">
+  <table class="">
+    <colgroup>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead class="ux-table-thead">
+      <tr>
+        <th style="text-align: center;">Name</th>
+        <th>Age</th>
+        <th>Addr</th>
+      </tr>
+    </thead>
+    <tbody class="ux-table-tbody">
+      <tr draggable="true" class="ux-table-row">
+        <td style="text-align: center;">Jim Green</td>
+        <td>42</td>
+        <td>London No. 1 Lake Park</td>
+      </tr>
+      <tr draggable="true" class="ux-table-row">
+        <td style="text-align: center;">John Brown</td>
+        <td>32</td>
+        <td>New York No. 1 Lake Park</td>
+      </tr>
+      <tr draggable="true" class="ux-table-row">
+        <td style="text-align: center;">Joe Black</td>
+        <td>32</td>
+        <td>Sidney No. 1 Lake Park</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
 
 exports[`Table.drag render draggable to bottom 1`] = `
-<div class="ux-table-wrapper ux-table-light">
-  <div class="ux-spin-nested-loading">
-    <div class="ux-spin" style="display: none;"><svg viewBox="25 25 50 50" class="ux-spin-circle">
-        <circle cx="50" cy="50" r="20" fill="none"></circle>
-      </svg> </div>
-    <div class="ux-spin-container">
-      <div class="ux-table ux-table-scroll-position-left ux-table-default">
-        <div class="ux-table-content">
-          <div class="ux-table-main-table">
-            <!---->
-            <div class="ux-table-body">
-              <table class="">
-                <colgroup>
-                  <col>
-                  <col>
-                  <col>
-                </colgroup>
-                <thead class="ux-table-thead">
-                  <tr>
-                    <th style="text-align: center;">Name</th>
-                    <th>Age</th>
-                    <th>Addr</th>
-                  </tr>
-                </thead>
-                <tbody class="ux-table-tbody">
-                  <tr draggable="true" class="ux-table-row">
-                    <td style="text-align: center;">Jim Green</td>
-                    <td>42</td>
-                    <td>London No. 1 Lake Park</td>
-                  </tr>
-                  <tr draggable="true" class="ux-table-row">
-                    <td style="text-align: center;">Joe Black</td>
-                    <td>32</td>
-                    <td>Sidney No. 1 Lake Park</td>
-                  </tr>
-                  <tr draggable="true" class="ux-table-row">
-                    <td style="text-align: center;">John Brown</td>
-                    <td>32</td>
-                    <td>New York No. 1 Lake Park</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!---->
-            <!---->
-          </div>
-        </div>
-        <div class="ux-table-resize-line" style="display: none;"></div>
-      </div>
-    </div>
-  </div>
+<div class="ux-table-body">
+  <table class="">
+    <colgroup>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead class="ux-table-thead">
+      <tr>
+        <th style="text-align: center;">Name</th>
+        <th>Age</th>
+        <th>Addr</th>
+      </tr>
+    </thead>
+    <tbody class="ux-table-tbody">
+      <tr draggable="true" class="ux-table-row">
+        <td style="text-align: center;">Jim Green</td>
+        <td>42</td>
+        <td>London No. 1 Lake Park</td>
+      </tr>
+      <tr draggable="true" class="ux-table-row">
+        <td style="text-align: center;">Joe Black</td>
+        <td>32</td>
+        <td>Sidney No. 1 Lake Park</td>
+      </tr>
+      <tr draggable="true" class="ux-table-row">
+        <td style="text-align: center;">John Brown</td>
+        <td>32</td>
+        <td>New York No. 1 Lake Park</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;
