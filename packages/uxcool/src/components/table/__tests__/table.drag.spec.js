@@ -1,4 +1,4 @@
-import { mountPickerFactory, triggerEvent, waitTime } from '@suning/v-test-utils';
+import { mountPickerFactory, triggerEvent } from '@suning/v-test-utils';
 import Table from '../table';
 import { getData, getCols } from './utils';
 
@@ -53,8 +53,7 @@ describe('Table.drag', () => {
     await triggerEvent(trs.at(2), 'dragover', { clientX: 0, clientY: 1 });
     await triggerEvent(trs.at(2), 'drop');
 
-    await waitTime(200);
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.find('.ux-table-body').html()).toMatchSnapshot();
   });
   it('render draggable to bottom', async () => {
     const wrapper = await mountPicker({
@@ -72,10 +71,10 @@ describe('Table.drag', () => {
       clientY: 0,
       dataTransfer: getDataTransfer(),
     });
-    await triggerEvent(trs.at(2), 'dragover', { clientX: 0, clientY: 11 });
+    await triggerEvent(trs.at(2), 'dragover', { clientX: 0, clientY: 20 });
     await triggerEvent(trs.at(2), 'drop');
-    await waitTime(200);
-    expect(wrapper.html()).toMatchSnapshot();
+
+    expect(wrapper.find('.ux-table-body').html()).toMatchSnapshot();
   });
 
   it('expandrow', async () => {
@@ -97,11 +96,9 @@ describe('Table.drag', () => {
       dataTransfer: getDataTransfer(),
     });
     await triggerEvent(trs.at(3), 'dragenter');
-    await triggerEvent(trs.at(3), 'dragover', { clientX: 0, clientY: 11 });
+    await triggerEvent(trs.at(3), 'dragover', { clientX: 0, clientY: 20 });
     await triggerEvent(trs.at(3), 'drop');
-
-    await waitTime(200);
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.find('.ux-table-body').html()).toMatchSnapshot();
   });
 
   it('expand row keys', async () => {
@@ -124,10 +121,9 @@ describe('Table.drag', () => {
       dataTransfer: getDataTransfer(),
     });
     await triggerEvent(trs.at(3), 'dragenter');
-    await triggerEvent(trs.at(3), 'dragover', { clientX: 0, clientY: 11 });
+    await triggerEvent(trs.at(3), 'dragover', { clientX: 0, clientY: 20 });
     await triggerEvent(trs.at(3), 'drop');
-    await waitTime(200);
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.find('.ux-table-body').html()).toMatchSnapshot();
   });
 
   describe('drag and drop events', () => {
