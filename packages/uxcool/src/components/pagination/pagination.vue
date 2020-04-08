@@ -6,7 +6,7 @@
     <li v-if="showBeforeTotal !== noop"
         :class="beforeTotalClasses"
         v-html="beforeTotalLiteral" />
-    <li :title="genTitle(locale.prev_page)"
+    <li :title="genTitle(mergedLocale.prev_page)"
         :class="prevClasses"
         tabindex="0"
         @click="prev"
@@ -14,7 +14,7 @@
       <v-nodes :vnodes="itemRender(prevPageNo, 'prev' ,prevIcon)" />
     </li>
     <li :class="simpleSepClasses" />
-    <li :title="genTitle(locale.next_page)"
+    <li :title="genTitle(mergedLocale.next_page)"
         :class="nextClasses"
         tabindex="0"
         @click="next"
@@ -39,13 +39,13 @@
       <ux-select v-model="usedPageSize"
                  @change="pageSizeChange">
         <ux-option v-for="item in pageSizeOptions"
+                   :key="item"
                    :value="item"
-                   :label="`${item} ${locale.items_per_page}`"
-                   :key="item">{{ item }} {{ locale.items_per_page }}</ux-option>
+                   :label="`${item} ${mergedLocale.items_per_page}`" />
       </ux-select>
     </li>
 
-    <li :title="genTitle(locale.prev_page)"
+    <li :title="genTitle(mergedLocale.prev_page)"
         :class="prevClasses"
         tabindex="0"
         @click="prev"
@@ -54,27 +54,27 @@
     </li>
     <template v-for="(item) in pagers">
       <li v-if="item.type === 'jump'"
+          :key="item.key"
           :title="item.title"
           :class="item.classes"
-          :key="item.key"
           tabindex="0"
           @click="item.onClick"
           @keypress="item.onKeyPress">
         <v-nodes :vnodes="itemRender(item.getPage(), `jump-${item.key}`, item.jumpIcon())" />
       </li>
       <pager v-if="item.type==='pager'"
+             :key="item.key"
              :page="item.page"
              :active="item.active"
              :show-title="item.showTitle"
              :root-prefix-cls="item.prefixCls"
              :class-name="item.classes"
-             :key="item.key"
              @click.native="item.onClick"
              @keypress.native.enter="item.onKeyPress">
         <v-nodes :vnodes="itemRender(item.page, 'page', getPageItem(item))" />
       </pager>
     </template>
-    <li :title="genTitle(locale.next_page)"
+    <li :title="genTitle(mergedLocale.next_page)"
         :class="nextClasses"
         tabindex="0"
         @click="next"
@@ -87,7 +87,7 @@
 
     <options :root-prefix-cls="prefixCls"
              :have-quick-jumper="showQuickJumper"
-             :locale="locale"
+             :locale="mergedLocale"
              :current="pageNo"
              :have-confirm-btn="showQuickJumperConfirmBtn"
              @on-quick-jumper="handleChange" />
@@ -103,7 +103,7 @@
   import Icon from '../icon';
   import Select from '../select';
 
-  const locale = {
+  const DEFAULT_LOCALE = {
     items_per_page: '条/页',
     jump_to: '跳至',
     page: '页',
@@ -237,22 +237,32 @@
         type: Number,
         default: undefined,
       },
+      locale: {
+        type: Object,
+        default() {
+          return {};
+        },
+      },
     },
     data() {
-      const { prefixCls, showLessItems, genTitle } = this;
+      const { prefixCls, showLessItems, genTitle, locale } = this;
+      const mergedLocale = {
+        ...DEFAULT_LOCALE,
+        ...locale,
+      };
       return {
         noop,
         pageNo: +this.current,
         prevPageNo: 0,
         nextPageNo: 0,
         usedPageSize: this.pageSize,
-        locale,
+        mergedLocale,
         prevDisabled: false,
         nextDisabled: false,
         pagers: [],
         jumpPrevObj: {
           type: 'jump',
-          title: genTitle(showLessItems ? locale.prev_3 : locale.prev_5),
+          title: genTitle(showLessItems ? mergedLocale.prev_3 : mergedLocale.prev_5),
           key: 'prev',
           classes: `${prefixCls}-jump-prev`,
           onClick: this.jumpPrev,
@@ -262,7 +272,7 @@
         },
         jumpNextObj: {
           type: 'jump',
-          title: genTitle(showLessItems ? locale.next_3 : locale.next_5),
+          title: genTitle(showLessItems ? mergedLocale.next_3 : mergedLocale.next_5),
           key: 'next',
           classes: `${prefixCls}-jump-next`,
           onClick: this.jumpNext,
@@ -383,9 +393,7 @@
         return isFunction(fn) ? fn({ ...$props }) : <a class={`${prefixCls}-item-link`} />;
       },
       genTotalLiteral(cb) {
-        const {
-          total, pageNo, usedPageSize: pageSize, totalPage
-        } = this;
+        const { total, pageNo, usedPageSize: pageSize, totalPage } = this;
         // 当前页对应的条目范围
         const range = [
           pageNo > 0 ? (pageNo - 1) * pageSize + 1 : 0,
