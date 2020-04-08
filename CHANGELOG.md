@@ -1,3 +1,9 @@
+# 0.5.0-next.83 (2020-04-08)
+
+### Features
+
+- **pagination:** 添加 locale 配置功能 ([0ac3c75](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/0ac3c75274e61c9a781bcc81fed2186bb28df33b)), closes [#308](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/308)
+
 # 0.5.0-next.82 (2020-03-30)
 
 ### Bug Fixes
