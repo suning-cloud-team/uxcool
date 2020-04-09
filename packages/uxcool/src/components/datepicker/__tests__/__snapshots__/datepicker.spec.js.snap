@@ -1,5 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DatePicker decade nextCentury 1`] = `
+<div class="ux-calendar-decade-panel">
+  <div class="ux-calendar-decade-panel-header"><a role="button" title="上一世纪" class="ux-calendar-decade-panel-prev-century-btn"></a> <span class="ux-calendar-decade-panel-century">
+      2200-2299
+    </span> <a role="button" title="下一世纪" class="ux-calendar-decade-panel-next-century-btn"></a></div>
+  <div class="ux-calendar-decade-panel-body">
+    <table role="grid" cellspacing="0" class="ux-calendar-decade-panel-table">
+      <tbody class="ux-calendar-decade-panel-tbody">
+        <tr role="row">
+          <td role="gridcell" class="ux-calendar-decade-panel-cell ux-calendar-decade-panel-last-century-cell"><a class="ux-calendar-decade-panel-decade">
+              2190-2199
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              2200-2209
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              2210-2219
+            </a></td>
+        </tr>
+        <tr role="row">
+          <td role="gridcell" class="ux-calendar-decade-panel-cell ux-calendar-decade-panel-selected-cell"><a class="ux-calendar-decade-panel-decade">
+              2220-2229
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              2230-2239
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              2240-2249
+            </a></td>
+        </tr>
+        <tr role="row">
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              2250-2259
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              2260-2269
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              2270-2279
+            </a></td>
+        </tr>
+        <tr role="row">
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              2280-2289
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              2290-2299
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell ux-calendar-decade-panel-next-century-cell"><a class="ux-calendar-decade-panel-decade">
+              2300-2309
+            </a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`DatePicker decade prevCentury 1`] = `
+<div class="ux-calendar-decade-panel">
+  <div class="ux-calendar-decade-panel-header"><a role="button" title="上一世纪" class="ux-calendar-decade-panel-prev-century-btn"></a> <span class="ux-calendar-decade-panel-century">
+      1800-1899
+    </span> <a role="button" title="下一世纪" class="ux-calendar-decade-panel-next-century-btn"></a></div>
+  <div class="ux-calendar-decade-panel-body">
+    <table role="grid" cellspacing="0" class="ux-calendar-decade-panel-table">
+      <tbody class="ux-calendar-decade-panel-tbody">
+        <tr role="row">
+          <td role="gridcell" class="ux-calendar-decade-panel-cell ux-calendar-decade-panel-last-century-cell"><a class="ux-calendar-decade-panel-decade">
+              1790-1799
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              1800-1809
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              1810-1819
+            </a></td>
+        </tr>
+        <tr role="row">
+          <td role="gridcell" class="ux-calendar-decade-panel-cell ux-calendar-decade-panel-selected-cell"><a class="ux-calendar-decade-panel-decade">
+              1820-1829
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              1830-1839
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              1840-1849
+            </a></td>
+        </tr>
+        <tr role="row">
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              1850-1859
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              1860-1869
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              1870-1879
+            </a></td>
+        </tr>
+        <tr role="row">
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              1880-1889
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell"><a class="ux-calendar-decade-panel-decade">
+              1890-1899
+            </a></td>
+          <td role="gridcell" class="ux-calendar-decade-panel-cell ux-calendar-decade-panel-next-century-cell"><a class="ux-calendar-decade-panel-decade">
+              1900-1909
+            </a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
 exports[`DatePicker locale 1`] = `
 <div>
   <div class="ux-calendar-picker ux-calendar-picker-light ux-calendar-picker-default" size="default"><input placeholder="Select date" type="text" readonly="readonly" class="ux-input ux-calendar-picker-input"> <i class="fu fu-close_circle ux-calendar-picker-clear"></i> <span class="ux-calendar-picker-icon"></span></div>

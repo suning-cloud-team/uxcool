@@ -549,6 +549,29 @@ describe('DatePicker', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
+  describe('decade', () => {
+    const mockDate = dayjs('2019-05-03');
+    it.each([
+      ['prevCentury', '.ux-calendar-decade-panel-prev-century-btn'],
+      ['nextCentury', '.ux-calendar-decade-panel-next-century-btn'],
+    ])('%s', async (_, selector) => {
+      const wrapper = await mountDatePicker({
+        props: {
+          value: mockDate.toDate(),
+        },
+      });
+
+      await triggerEvent(wrapper, 'click');
+      const portal = await getPortal(wrapper);
+
+      await triggerEvent(portal.find('.ux-calendar-year-select'), 'click');
+      await triggerEvent(portal.find('.ux-calendar-year-panel-decade-select'), 'click');
+      await triggerEvent(portal.find(selector), 'click');
+      await triggerEvent(portal.find(selector), 'click');
+
+      expect(portal.find('.ux-calendar-decade-panel').html()).toMatchSnapshot();
+    });
+  });
   describe('event', () => {
     const format = 'YYYY-MM-DD';
     it('change event', async () => {

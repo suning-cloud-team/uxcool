@@ -7,19 +7,23 @@
              :value="innerValue"
              :disabled="disabled"
              readonly
-             @change="onChange">
+             @change="onChange"
+      >
     </div>
     <a v-if="showClear"
        :class="`${prefixCls}-clear-btn`"
        role="button"
        :title="locale.clear"
-       @click="onClear" />
+       @click="onClear"
+    />
   </div>
 </template>
 
 
 <script>
-  import { format as formatFn, isValid, parse as parseFn, isSameSecond, isSameDay } from 'date-fns';
+  import {
+    format as formatFn, isValid, parse as parseFn, isSameSecond, isSameDay
+  } from 'date-fns';
   import { isArray } from '@suning/v-utils';
   import MultiCalendarMixin from '../mixins/multiCalendar';
 
@@ -102,7 +106,7 @@
 
         if (isMultiCalendarChildren) {
           if (isArray(value)) {
-            this.innerValue = value.map(v => formatFn(v, format)).join(mutliFormatSeparator);
+            this.innerValue = value.map((v) => formatFn(v, format)).join(mutliFormatSeparator);
           } else {
             this.innerValue = '';
           }
@@ -121,6 +125,10 @@
         const { hasTimePicker } = this;
         return hasTimePicker ? isSameSecond(originVal, val) : isSameDay(originVal, val);
       },
+      /**
+       * input readonly属性为true, 用户无法触发change事件,单测暂时忽略
+       */
+      /* istanbul ignore next */
       onChange(e) {
         const { value } = e.target;
         const { prevVal, isSameFn, format } = this;
