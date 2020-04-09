@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-trigger",
-  "version": "1.0.62",
+  "version": "1.0.63",
   "description": "trigger ",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@suning/v-style": "^1.0.21",
-    "@suning/v-test-utils": "^1.0.8",
+    "@suning/v-test-utils": "^1.0.9",
     "@suning/v-tools": "^1.0.35"
   }
 }

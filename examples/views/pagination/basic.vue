@@ -70,6 +70,13 @@
 
     <stream-demo />
     <tab-demo />
+
+    <div class="demo">
+      <h3>locale</h3>
+      <ux-pagination :total="50"
+                     :locale="{confirm: '跳转'}"
+                     show-quick-jumper />
+    </div>
   </div>
 </template>
 
@@ -105,9 +112,7 @@
         console.log('pageSizeChange', current, size);
       },
       showBeforeTotal(total, pageSize, totalPage, pageNo, range) {
-        return `共${total}条, 每页显示${pageSize}条, ${range[0]}-${
-          range[1]
-        } / ${total}条, 共${pageNo}/${totalPage}页`;
+        return `共${total}条, 每页显示${pageSize}条, ${range[0]}-${range[1]} / ${total}条, 共${pageNo}/${totalPage}页`;
       },
     },
   };
