@@ -1428,5 +1428,36 @@ describe('RangeDatePicker', () => {
       expect(onOk.mock.calls.length).toBe(1);
       expect(onOk.mock.calls[0][0]).toEqual([mockDate.toDate(), mockDate.toDate()]);
     });
+
+    it('on-hover-change', async () => {
+      const onHoverChange = jest.fn();
+      const wrapper = await mountPicker({
+        propsData: {
+          openValue: [mockDate.toDate(), mockDate.add(1, 'month').toDate()],
+          format,
+          transitionName: '',
+        },
+        listeners: {
+          'on-hover-change': onHoverChange,
+        },
+      });
+
+      await triggerEvent(wrapper, 'click');
+      const portal = await getPortal(wrapper);
+      const dates = portal.findAll('td[role=gridcell]');
+
+      await triggerEvent(dates.at(5), 'click');
+      await triggerEvent(dates.at(10), 'mouseenter');
+      expect(onHoverChange.mock.calls.length).toBe(2);
+      expect(onHoverChange.mock.calls[0][0].length).toBe(1);
+      expect(onHoverChange.mock.calls[0][0].map((v) => dayjs(v).format(format))).toEqual([
+        dates.at(5).attributes('title'),
+      ]);
+      expect(onHoverChange.mock.calls[1][0].length).toBe(2);
+      expect(onHoverChange.mock.calls[1][0].map((v) => dayjs(v).format(format))).toEqual([
+        dates.at(5).attributes('title'),
+        dates.at(10).attributes('title'),
+      ]);
+    });
   });
 });
