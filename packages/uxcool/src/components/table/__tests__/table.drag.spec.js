@@ -71,10 +71,11 @@ describe('Table.drag', () => {
       clientY: 0,
       dataTransfer: getDataTransfer(),
     });
-    await triggerEvent(trs.at(2), 'dragover', { clientX: 0, clientY: 20 });
+    await triggerEvent(trs.at(2), 'dragover', { clientX: 0, clientY: 200 });
     await triggerEvent(trs.at(2), 'drop');
 
     expect(wrapper.find('.ux-table-body').html()).toMatchSnapshot();
+    wrapper.destroy();
   });
 
   it('expandrow', async () => {
@@ -96,7 +97,7 @@ describe('Table.drag', () => {
       dataTransfer: getDataTransfer(),
     });
     await triggerEvent(trs.at(3), 'dragenter');
-    await triggerEvent(trs.at(3), 'dragover', { clientX: 0, clientY: 20 });
+    await triggerEvent(trs.at(3), 'dragover', { clientX: 0, clientY: 200 });
     await triggerEvent(trs.at(3), 'drop');
     expect(wrapper.find('.ux-table-body').html()).toMatchSnapshot();
   });
@@ -121,9 +122,10 @@ describe('Table.drag', () => {
       dataTransfer: getDataTransfer(),
     });
     await triggerEvent(trs.at(3), 'dragenter');
-    await triggerEvent(trs.at(3), 'dragover', { clientX: 0, clientY: 20 });
+    await triggerEvent(trs.at(3), 'dragover', { clientX: 0, clientY: 200 });
     await triggerEvent(trs.at(3), 'drop');
     expect(wrapper.find('.ux-table-body').html()).toMatchSnapshot();
+    wrapper.destroy();
   });
 
   describe('drag and drop events', () => {
