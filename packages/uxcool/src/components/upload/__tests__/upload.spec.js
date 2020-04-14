@@ -1,99 +1,75 @@
 import { mount, waitTime } from '@suning/v-test-utils';
-import { actionUrl } from "./mock";
+import { actionUrl, setup, teardown } from "./mock";
 import Vue from 'vue';
 import createFile from './util/file';
 import UxUpload from '../index';
 import List from '../list';
 import { errorRequest, successRequest, progressRequest } from './requests';
 
-const mockXHR = {
-  open: jest.fn(),
-  send: jest.fn(),
-  readyState: 4,
-  upload:{
-  },
-  setRequestHeader:jest.fn(),
-  withCredentials: true,
-  responseText: JSON.stringify(
-    [
-      {
-        title: 'test post'
-      },
-      {
-        tile: 'second test post'
-      }
-    ]
-  ),
-  getResponseHeader:jest.fn()
-};
-const oldXMLHttpRequest = window.XMLHttpRequest;
-window.XMLHttpRequest = jest.fn(() => mockXHR);
-
-
-
 
 describe('Upload', () => {
+  beforeEach(() => setup());
+  afterEach(() => teardown());
   describe("List", () => {
-    it('should  render correctly,缩略图可点击', async () => {
-      const type = ["select", "drag"];
-      type.forEach(async type => {
-        const APP = {
-          template: `
+
+    it('should  Render thumbnails correctly', async () => {
+      const APP = {
+        template: `
         <UxUpload
           v-model="fileList"
-          type=${type}
+          type="select"
           action=${actionUrl}
           list-type="picture">
           <button icon="upload">Click to Upload</button>
         </UxUpload>
       `,
-          components: {
-            UxUpload,
-          },
-          data() {
-            return {
-              fileList: [
-                {
-                  uid: Math.random().toString(16),
-                  name: 'demo.png',
-                  status: 'ready',
-                  response: {},
-                  error: {},
-                  linkProps: { download: 'http://www.suning.com' },
-                  url: "http://www.suning.com"
-                },
-                {
-                  uid: Math.random().toString(16),
-                  name: 'demo.png',
-                  status: 'uploading',
-                  response: {},
-                  error: {},
-                  linkProps: { download: 'http://www.suning.com' },
-                  url: "http://www.suning.com"
-                },
-                {
-                  uid: Math.random().toString(16),
-                  name: 'demo.png',
-                  status: 'success',
-                  response: {},
-                  error: {},
-                  linkProps: { download: 'http://www.suning.com' },
-                  url: "http://www.suning.com"
-                }
-              ],
-            };
-          },
-        };
-        const wrapper = mount(APP);
-        await waitTime();
-        wrapper.find(".ux-upload-list-item-thumbnail").trigger("click");
-        wrapper.find("span.ux-upload-list-item-ops > i").trigger("click");
-        await Vue.nextTick();
-        expect(wrapper.findAll(".ux-upload-list-item-thumbnail").length).toBe(2);
-      })
-
+        components: {
+          UxUpload,
+        },
+        data() {
+          return {
+            fileList: [
+              {
+                uid: Math.random().toString(16),
+                name: 'demo.png',
+                status: 'ready',
+                response: {},
+                error: {},
+                linkProps: { download: 'http://www.suning.com' },
+                url: "http://www.suning.com"
+              },
+              {
+                uid: Math.random().toString(16),
+                name: 'demo2.png',
+                status: 'uploading',
+                response: {},
+                error: {},
+                linkProps: { download: 'http://www.suning.com' },
+                url: "http://www.suning.com"
+              },
+              {
+                uid: Math.random().toString(16),
+                name: 'demo3.png',
+                status: 'success',
+                response: {},
+                error: {},
+                linkProps: { download: 'http://www.suning.com' },
+                url: "http://www.suning.com"
+              }
+            ],
+          };
+        },
+      };
+      const wrapper = mount(APP);
+      await waitTime();
+      wrapper.find(".ux-upload-list-item-thumbnail").trigger("click");
+      wrapper.find("span.ux-upload-list-item-ops > i").trigger("click");
+      await Vue.nextTick();
+      expect(wrapper.findAll(".ux-upload-list-item-thumbnail").length).toBe(2);
+      wrapper.destroy();
     });
-    it('should  render correctly,list点击继续上传', async () => {
+
+    it('should  continue to upload while click continue button', async () => {
       const APP = {
         template: `
             <UxUpload
@@ -143,9 +119,10 @@ describe('Upload', () => {
       await Vue.nextTick();
       expect(wrapper.findAll(".fu-play_circle_o").length).toBe(1);
       expect(wrapper.findAll(".fu-pause_circle_o").length).toBe(1);
-
+      wrapper.destroy();
     });
-    it('should  render correctly,picture-card uploading状态', async () => {
+
+    it('should  render correctly with type picture-card ', async () => {
       const APP = {
         template: `
             <UxUpload
@@ -178,10 +155,11 @@ describe('Upload', () => {
       const wrapper = mount(APP);
       await waitTime();
       await Vue.nextTick();
-      expect(wrapper.findAll(".ux-upload-list-item-thumbnail").length).toBe(0);
-
+      expect(wrapper.findAll(".ux-upload-list-picture-card").length).toBe(1);
+      wrapper.destroy();
     });
-    it("属性含有默认值", async () => {
+
+    it("props should has deault value", async () => {
       const App = {
         template: `<List/>`,
         components: { List }
@@ -190,9 +168,11 @@ describe('Upload', () => {
       await waitTime();
       expect(Array.isArray(wrapper.vm.$children[0].$props.list)).toBe(true);
       expect(typeof wrapper.vm.$children[0].$props.locale).toBe("object");
+      wrapper.destroy();
     })
   })
-  it('should  render correctly', async () => {
+
+  it('should  render correctly with listType', async () => {
     const listType = ["text", "picture", "picture-card"];
     listType.forEach(async type => {
       const APP = {
@@ -219,20 +199,24 @@ describe('Upload', () => {
     })
 
   });
-  it('测试submit', async () => {
+
+  it('Self-controlled upload', async () => {
     const file = new Blob([JSON.stringify({}, null, 2)], {
       type: 'application/json'
     });
-    file.name = 'demo.png';
-    const files = [file, {
-      uid: Math.random().toString(16),
-      name: 'demo.png',
-      status: 'ready',
-      response: {},
-      originFile: "string",
-      error: {},
-      linkProps: { download: 'http://www.suning.com' },
-    }, {
+    file.name = 'demo-self.png';
+    const files = [
+      file,
+      {
+        uid: Math.random().toString(16),
+        name: 'demo.png',
+        status: 'ready',
+        response: {},
+        originFile: "string",
+        error: {},
+        linkProps: { download: 'http://www.suning.com' },
+      },
+      {
         uid: Math.random().toString(16),
         name: 'demo.png',
         status: 'ready',
@@ -240,7 +224,7 @@ describe('Upload', () => {
         originFile: new File([], "demo.png"),
         error: {},
         linkProps: { download: 'http://www.suning.com' },
-      }]
+      }];
     const APP = {
       template: `
          <div>
@@ -280,7 +264,8 @@ describe('Upload', () => {
     wrapper.find("button").trigger("click");
     await waitTime();
     wrapper.vm.$children[0].submit();
-    // expect(wrapper.vm.$children[0].submit).toHaveBeenCalled();
+    expect(files[0].status).not.toBe("ready");
+    wrapper.destroy();
   })
 
 
@@ -290,7 +275,6 @@ describe('Upload', () => {
       {
         uid: Math.random().toString(16),
         name: 'demo.png',
-        status: 'ready',
         response: {},
         error: {},
         linkProps: { download: 'http://www.suning.com' },
@@ -320,11 +304,12 @@ describe('Upload', () => {
       const wrapper = mount(APP);
       await waitTime();
       expect(wrapper.findAll('ux-upload-list-item-name').length).toBe(0);
+      wrapper.destroy();
     })
 
   });
 
-  it('渲染文件列表', async () => {
+  it('should render file list correctly', async () => {
     let fileList = [createFile('js')];
     const APP = {
       render() {
@@ -347,10 +332,11 @@ describe('Upload', () => {
     const wrapper = mount(APP);
     await waitTime();
     expect(wrapper.contains('.ux-upload-list-item-name')).toBe(true);
+    wrapper.destroy();
   });
 
 
-  it('删除文件', async () => {
+  it('When the delete button is clicked, the file should be deleted', async () => {
     let fileList = [createFile('js')];
     const APP = {
       render() {
@@ -382,11 +368,11 @@ describe('Upload', () => {
     deleteBtn.find('i').trigger('click');
     await Vue.nextTick();
     expect(wrapper.contains('.ux-upload-list-item-name')).toBe(false);
+    wrapper.destroy();
   });
 
 
-
-  it('should  render correctly,测试type', async () => {
+  it('should  render correctly with type select or drag', async () => {
     const type = ["select", "drag"];
     type.forEach(async type => {
       const APP = {
@@ -413,13 +399,14 @@ describe('Upload', () => {
       const wrapper = mount(APP);
       await waitTime();
       expect(wrapper.contains('input')).toBe(true);
+      wrapper.destroy();
     })
 
   });
 
 
 
-  it('render components with fileList ', async () => {
+  it('render render correctly while this fileList was changed ', async () => {
     const wrapper = mount({
       template: `
                 <div>
@@ -476,12 +463,13 @@ describe('Upload', () => {
     });
     await waitTime();
     await Vue.nextTick();
-    expect(wrapper.findAll('.ux-upload-list-item-name').length).toBe(4);
     const inputBtn = wrapper.find("input");
     inputBtn.trigger("ready");
+    expect(wrapper.findAll('.ux-upload-list-item-name').length).toBe(4);
+    wrapper.destroy()
   });
 
-  it('moutiple select', async () => {
+  it('show support moutiple select', async () => {
     const wrapper = mount({
       template: `
               <div>
@@ -497,92 +485,27 @@ describe('Upload', () => {
         UxUpload,
       },
     });
-    await waitTime();
-    expect(wrapper.contains('input')).toBe(true);
-  });
-  it('手动上传', async () => {
-    const wrapper = mount({
-      template: `
-        <div>
-                <ux-upload
-                  ref="uploadRef"
-                  v-model="files"
-                :auto-upload="false"
-                action=${actionUrl}
-              >
-             <button
-             "class="select">选择文件</button>
-           </ux-upload>
-            <button class="mt-xs-2 uploadBtn" @click="upload">开始上传</button>
-        </div > `,
-      components: {
-        UxUpload,
-      },
-      data() {
-        return {
-          files: [
-            {
-              name: 'yyy.png',
-              status: 'success',
-              url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-              thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-            },
-          ],
-        };
-      },
-      methods: {
-        upload() {
-          const {
-            $refs: { uploadRef },
-          } = this;
-
-          if (uploadRef) {
-            uploadRef.submit();
-          }
-        },
-      },
-    });
-
-    wrapper.find('.uploadBtn').trigger('click');
-
-  });
-
-
-  it('测试change', async () => {
-    const wrapper = mount({
-      template: `
-              <div>
-                <UxUpload
-                  action=${actionUrl}
-                  list-type="picture"
-                  @Change=${"onChange"}
-                  multiple
-                  >
-                  <button icon="upload">Click to Upload</button>
-                </UxUpload>
-              </div>`,
-      components: {
-        UxUpload,
-      },
-      methods: {
-        onChange() {
-        }
-      }
-    });
-    await Vue.nextTick();
     const file = new Blob([JSON.stringify({}, null, 2)], {
       type: 'application/json'
     });
     file.name = 'demo.png';
-    const files = [file];
-    const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef.onChange({ target: { files } });
-    expect(wrapper.contains('input')).toBe(true);
+    const files = [file,file];
+    await waitTime();
+    const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef;
+    uploader.onChange({ target: { files } });
+    await Vue.nextTick();
+    expect(wrapper.findAll('.ux-upload-list-item-name').length).toBe(2);
   });
 
 
-
-  it('测试before', async () => {
+  it('beforeUpload should be called before upload', async () => {
     const fileName = "demo.png";
+    const beforeUpload = jest.fn().mockReturnThis(new Promise((resolve, reject) => {
+      resolve(true)
+    }));
+    const beforeReady = jest.fn().mockReturnThis(new Promise((resolve, reject) => {
+      resolve(true)
+    }));
     const wrapper = mount({
       template: `
               <div>
@@ -600,17 +523,8 @@ describe('Upload', () => {
         UxUpload,
       },
       methods: {
-        onBeforeUpload(file) {
-          expect(file.name).toBe(fileName);
-          return new Promise((resolve, reject) => {
-            resolve(true)
-          })
-        },
-        onBeforeReady(selectedFiles) {
-          return new Promise((resolve, reject) => {
-            resolve(true)
-          })
-        }
+        onBeforeUpload: beforeUpload,
+        onBeforeReady:beforeReady,
       }
     });
     await Vue.nextTick();
@@ -621,9 +535,12 @@ describe('Upload', () => {
     const files = [file];
     const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef;
     uploader.onChange({ target: { files } });
+    await Vue.nextTick();
+    expect(beforeUpload).toBeCalled();
+    expect(beforeReady).toBeCalled();
   });
 
-  it('测试before false', async () => {
+  it('The upload should be stopped when false is returned', async () => {
     const fileName = "demo.png";
     const wrapper = mount({
       template: `
@@ -644,7 +561,7 @@ describe('Upload', () => {
       methods: {
         onBeforeUpload(file) {
           expect(file.name).toBe(fileName);
-         return false;
+          return false;
         },
         onBeforeReady(selectedFiles) {
           return false;
@@ -660,7 +577,8 @@ describe('Upload', () => {
     const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef;
     uploader.onChange({ target: { files } });
   });
-  it('测试before true', async () => {
+
+  it('The upload should continue when true is returned', async () => {
     const fileName = "demo.png";
     const wrapper = mount({
       template: `
@@ -697,7 +615,46 @@ describe('Upload', () => {
     const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef;
     uploader.onChange({ target: { files } });
   });
-  it('测试自定义底层成功请求', async () => {
+
+  it('The upload should continue when true is returned', async () => {
+    const fileName = "demo.png";
+    const wrapper = mount({
+      template: `
+              <div>
+                <UxUpload
+                  action=${actionUrl}
+                  list-type="picture"
+                  :before-upload="onBeforeUpload"
+                  :before-ready="onBeforeReady"
+                  multiple
+                  >
+                  <button icon="upload">Click to Upload</button>
+                </UxUpload>
+              </div>`,
+      components: {
+        UxUpload,
+      },
+      methods: {
+        onBeforeUpload(file) {
+          expect(file.name).toBe(fileName);
+          return Promise.resolve(true);
+        },
+        onBeforeReady(selectedFiles) {
+          return Promise.resolve(true);
+        }
+      }
+    });
+    await Vue.nextTick();
+    const file = new Blob([JSON.stringify({}, null, 2)], {
+      type: 'application/json'
+    });
+    file.name = fileName;
+    const files = [file];
+    const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef;
+    uploader.onChange({ target: { files } });
+  });
+
+  it('Test the custom request', async () => {
     const wrapper = mount({
       template: `
               <div>
@@ -735,7 +692,8 @@ describe('Upload', () => {
     const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef;
     uploader.onChange({ target: { files } });
   });
-  it('测试自定义底层progress请求', async () => {
+
+  it('Test the custom request', async () => {
     const wrapper = mount({
       template: `
               <div>
@@ -773,7 +731,8 @@ describe('Upload', () => {
     const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef;
     uploader.onChange({ target: { files } });
   });
-  it('测试自定义底层失败请求', async () => {
+
+  it('Test the custom request', async () => {
     const wrapper = mount({
       template: `
               <div>
@@ -813,7 +772,8 @@ describe('Upload', () => {
     const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef;
     uploader.onChange({ target: { files } });
   });
-  it('测试上传进度改变时触发progress', async () => {
+
+  it('onProgress should be called while the upload progress changing', async () => {
     const wrapper = mount({
       template: `
               <div>
@@ -840,7 +800,7 @@ describe('Upload', () => {
       }
     });
     await Vue.nextTick();
-    const file = new Blob([JSON.stringify({}, null, 200)], {
+    const file = new Blob([JSON.stringify({}, null, 2)], {
       type: 'application/json'
     });
     file.name = 'demo.png';
