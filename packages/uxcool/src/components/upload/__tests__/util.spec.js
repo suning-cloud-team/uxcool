@@ -71,7 +71,7 @@ describe('Upload-Utils', () => {
 
   it("test traverseFileTree", () => {
     const isAccept = () => true;
-    const callback = () => true;
+    const callback = jest.fn();
     const files = [
       {
         webkitGetAsEntry() {
@@ -101,6 +101,7 @@ describe('Upload-Utils', () => {
       }
     ]
     traverseFileTree(files, callback, isAccept)
+    expect(callback).toBeCalledTimes(2)
   })
 
 

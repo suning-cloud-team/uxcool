@@ -28,6 +28,7 @@ window.XMLHttpRequest = jest.fn(() => mockXHR);
 
 
 describe('Uploader', () => {
+
   const file = new Blob([JSON.stringify({}, null, 2)], {
     type: 'application/json'
   });
@@ -36,9 +37,9 @@ describe('Uploader', () => {
   file.status = "ready";
   file.response = {};
   file.url = "http://www.suning.com";
-
   const files = [file];
-  it("拖拽上传", async () => {
+
+  it("should support drop file", async () => {
     const App = {
       template: `<div>
         <UxUpload
@@ -55,7 +56,7 @@ describe('Uploader', () => {
       data() {
         return {
           customRequest: successRequest,
-          list: files,
+          list: [],
           maxChunkSize: 1,
         };
       }
@@ -63,6 +64,7 @@ describe('Uploader', () => {
     const wrapper = mount(App);
     const onClick = jest.fn();
     wrapper.find("input").trigger("keydown.enter", { onClick })
+    file.uid = Math.random().toString(16);
     wrapper.find("input").trigger("drop", { dataTransfer: { files } })
     await waitTime();
     await Vue.nextTick();
@@ -70,7 +72,8 @@ describe('Uploader', () => {
     expect(onClick).toBeCalled();
 
   })
-  it("拖拽上传-progress", async () => {
+
+  it("should support keydown.enter", async () => {
     const App = {
       template: `<div>
         <UxUpload
@@ -87,7 +90,7 @@ describe('Uploader', () => {
       data() {
         return {
           customRequest: progressRequest,
-          list: files,
+          list: [],
           maxChunkSize: 1,
         };
       }
@@ -102,7 +105,8 @@ describe('Uploader', () => {
     expect(onClick).toBeCalled();
 
   })
-  it("拖拽上传-error", async () => {
+
+  it("should support chunk", async () => {
     const App = {
       template: `<div>
         <UxUpload
@@ -119,7 +123,7 @@ describe('Uploader', () => {
       data() {
         return {
           customRequest: errorRequest,
-          list: files,
+          list: [],
           maxChunkSize: 1,
         };
       }
@@ -134,7 +138,8 @@ describe('Uploader', () => {
     expect(onClick).toBeCalled();
 
   })
-  it("拖拽上传-一次上传", async () => {
+
+  it("should support chunk", async () => {
     const App = {
       template: `<div>
         <UxUpload
@@ -151,7 +156,7 @@ describe('Uploader', () => {
       data() {
         return {
           customRequest: errorRequest,
-          list: files,
+          list: [],
           maxChunkSize: 1024,
         };
       }
@@ -166,4 +171,7 @@ describe('Uploader', () => {
     expect(onClick).toBeCalled();
 
   })
+
+
+  window.XMLHttpRequest = oldXMLHttpRequest;
 })
