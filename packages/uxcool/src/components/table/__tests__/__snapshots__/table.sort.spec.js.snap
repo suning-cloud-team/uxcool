@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table.sort render sorter 1`] = `
+<thead class="ux-table-thead">
+  <tr>
+    <th class="ux-table-column-has-filters"><span>Name<div class="ux-table-column-sorter"><span title="↑" class="ux-table-column-sorter-up off"><i class="fu fu-caret_up"></i></span><span title="↓" class="ux-table-column-sorter-down off"><i class="fu fu-caret_down"></i></span></div></span></th>
+  </tr>
+</thead>
+`;
