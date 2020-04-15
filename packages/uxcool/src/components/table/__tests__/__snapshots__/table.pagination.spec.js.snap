@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table.pagination render pagination = true 1`] = `
+<div class="ux-table-wrapper ux-table-light">
+  <div class="ux-spin-nested-loading">
+    <div class="ux-spin" style="display: none;"><svg viewBox="25 25 50 50" class="ux-spin-circle">
+        <circle cx="50" cy="50" r="20" fill="none"></circle>
+      </svg> </div>
+    <div class="ux-spin-container">
+      <div class="ux-table ux-table-scroll-position-left ux-table-default">
+        <div class="ux-table-content">
+          <div class="ux-table-main-table">
+            <!---->
+            <div class="ux-table-body">
+              <table class="">
+                <colgroup>
+                  <col>
+                  <col>
+                  <col>
+                </colgroup>
+                <thead class="ux-table-thead">
+                  <tr>
+                    <th style="text-align: center;">Name</th>
+                    <th>Age</th>
+                    <th>Addr</th>
+                  </tr>
+                </thead>
+                <tbody class="ux-table-tbody">
+                  <tr class="ux-table-row">
+                    <td style="text-align: center;">John Brown</td>
+                    <td>32</td>
+                    <td>New York No. 1 Lake Park</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td style="text-align: center;">Jim Green</td>
+                    <td>42</td>
+                    <td>London No. 1 Lake Park</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td style="text-align: center;">Joe Black</td>
+                    <td>32</td>
+                    <td>Sidney No. 1 Lake Park</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+        <div class="ux-table-resize-line" style="display: none;"></div>
+      </div>
+      <ul unselectable="unselectable" class="ux-pagination ux-table-pagination">
+        <!---->
+        <!---->
+        <li title="上一页" tabindex="0" class="ux-pagination-prev ux-pagination-disabled"><a class="ux-pagination-item-link"><i class="fu fu-left"></i></a></li>
+        <!---->
+        <li title="1" class="ux-pagination-item ux-pagination-item-1 ux-pagination-item-active"><a>1</a></li>
+        <li title="下一页" tabindex="0" class="ux-pagination-next ux-pagination-disabled"><a class="ux-pagination-item-link"><i class="fu fu-right"></i></a></li>
+        <!---->
+        <!---->
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Table.pagination render pagination 1`] = `
+<div class="ux-table-wrapper ux-table-light">
+  <div class="ux-spin-nested-loading">
+    <div class="ux-spin" style="display: none;"><svg viewBox="25 25 50 50" class="ux-spin-circle">
+        <circle cx="50" cy="50" r="20" fill="none"></circle>
+      </svg> </div>
+    <div class="ux-spin-container">
+      <div class="ux-table ux-table-scroll-position-left ux-table-default">
+        <div class="ux-table-content">
+          <div class="ux-table-main-table">
+            <!---->
+            <div class="ux-table-body">
+              <table class="">
+                <colgroup>
+                  <col>
+                  <col>
+                  <col>
+                </colgroup>
+                <thead class="ux-table-thead">
+                  <tr>
+                    <th style="text-align: center;">Name</th>
+                    <th>Age</th>
+                    <th>Addr</th>
+                  </tr>
+                </thead>
+                <tbody class="ux-table-tbody">
+                  <tr class="ux-table-row">
+                    <td style="text-align: center;">John Brown</td>
+                    <td>32</td>
+                    <td>New York No. 1 Lake Park</td>
+                  </tr>
+                  <tr class="ux-table-row">
+                    <td style="text-align: center;">Jim Green</td>
+                    <td>42</td>
+                    <td>London No. 1 Lake Park</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+        <div class="ux-table-resize-line" style="display: none;"></div>
+      </div>
+      <ul unselectable="unselectable" class="ux-pagination ux-table-pagination">
+        <!---->
+        <!---->
+        <li title="上一页" tabindex="0" class="ux-pagination-prev ux-pagination-disabled"><a class="ux-pagination-item-link"><i class="fu fu-left"></i></a></li>
+        <!---->
+        <li title="1" class="ux-pagination-item ux-pagination-item-1 ux-pagination-item-active"><a>1</a></li>
+        <!---->
+        <li title="2" class="ux-pagination-item ux-pagination-item-2"><a>2</a></li>
+        <li title="下一页" tabindex="0" class="ux-pagination-next"><a class="ux-pagination-item-link"><i class="fu fu-right"></i></a></li>
+        <!---->
+        <!---->
+      </ul>
+    </div>
+  </div>
+</div>
+`;

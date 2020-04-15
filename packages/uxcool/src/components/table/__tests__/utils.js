@@ -88,3 +88,8 @@ export function getScrollData(l = 30) {
   }
   return d;
 }
+
+export function getSortRowName(wrapper) {
+  const rows = wrapper.findAll('.ux-table-row td:nth-child(1)');
+  return (rows.wrappers || []).map((row) => row.text());
+}
