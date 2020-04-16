@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`subMenu mouseenter , mouseleave 1`] = `
+<ul role="menu" class="v-menu v-menu-root v-menu-light v-menu-horizontal">
+  <li class="v-menu-submenu v-menu-submenu-horizontal vsubmenu4">
+    <div title="" class="v-menu-submenu-title">测试4</div>
+  </li>
+</ul>
+`;
