@@ -6,36 +6,24 @@ exports[`steps render VSteps correctly 1`] = `
     <div class="v-steps-item-tail"></div>
     <div class="v-steps-item-icon"><span class="v-steps-icon vicon vicon-ok"><!----></span></div>
     <div class="v-steps-item-content">
-      <div class="v-steps-item-title">
-        已完成
-      </div>
-      <div class="v-steps-item-description">
-        这是描述1
-      </div>
+      <div class="v-steps-item-title">已完成</div>
+      <div class="v-steps-item-description">这是描述1</div>
     </div>
   </div>
   <div class="v-steps-item v-steps-item-finish v-steps-next-error">
     <div class="v-steps-item-tail"></div>
     <div class="v-steps-item-icon"><span class="v-steps-icon vicon vicon-ok"><!----></span></div>
     <div class="v-steps-item-content">
-      <div class="v-steps-item-title">
-        进行中
-      </div>
-      <div class="v-steps-item-description">
-        这是描述2
-      </div>
+      <div class="v-steps-item-title">进行中</div>
+      <div class="v-steps-item-description">这是描述2</div>
     </div>
   </div>
   <div class="v-steps-item v-steps-item-error">
     <div class="v-steps-item-tail"></div>
     <div class="v-steps-item-icon"><span class="v-steps-icon vicon vicon-close"><!----></span></div>
     <div class="v-steps-item-content">
-      <div class="v-steps-item-title">
-        待运行
-      </div>
-      <div class="v-steps-item-description">
-        这是描述3
-      </div>
+      <div class="v-steps-item-title">待运行</div>
+      <div class="v-steps-item-description">这是描述3</div>
     </div>
   </div>
   <div class="v-steps-item v-steps-item-wait">
@@ -44,12 +32,8 @@ exports[`steps render VSteps correctly 1`] = `
           4
         </span></span></div>
     <div class="v-steps-item-content">
-      <div class="v-steps-item-title">
-        待运行
-      </div>
-      <div class="v-steps-item-description">
-        这是描述4
-      </div>
+      <div class="v-steps-item-title">待运行</div>
+      <div class="v-steps-item-description">这是描述4</div>
     </div>
   </div>
 </div>

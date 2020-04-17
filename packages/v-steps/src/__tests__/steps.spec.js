@@ -5,15 +5,15 @@ const stepsWrapper = {
   props: {
     current: {
       type: [Number, String],
-      default: 1
+      default: 1,
     },
     direction: {
       type: String,
-      default: 'horizontal'
+      default: 'horizontal',
     },
     status: {
       type: String,
-      default: 'process'
+      default: 'process',
     },
   },
   render() {
@@ -26,16 +26,16 @@ const stepsWrapper = {
         <VStep title="待运行" desc="这是描述4"></VStep>
       </VSteps>
     );
-  }
+  },
 };
 
 describe('steps', () => {
   it('render VSteps correctly', async () => {
     Object.defineProperty(HTMLDivElement.prototype, 'offsetWidth', {
-      set: () => 400
+      set: () => 400,
     });
     Object.defineProperty(window.document, 'documentElement', {
-      set: () => {}
+      set: () => {},
     });
     const wrapper = mount(stepsWrapper);
     const steps = wrapper.findAll(VStep);
@@ -44,12 +44,22 @@ describe('steps', () => {
     expect(wrapper.is('.v-steps')).toBe(true);
     expect(steps.length).toBe(4);
     expect(steps.at(0).is('.v-steps-item-finish')).toBe(true);
-    expect(steps.at(0).find('.v-steps-item-title').text()).toBe('已完成');
-    expect(steps.at(0).find('.v-steps-item-description').text()).toBe('这是描述1');
+    expect(
+      steps
+        .at(0)
+        .find('.v-steps-item-title')
+        .text()
+    ).toBe('已完成');
+    expect(
+      steps
+        .at(0)
+        .find('.v-steps-item-description')
+        .text()
+    ).toBe('这是描述1');
 
     wrapper.setProps({
       current: 2,
-      status: 'error'
+      status: 'error',
     });
     await waitTime();
     expect(wrapper.html()).toMatchSnapshot();
