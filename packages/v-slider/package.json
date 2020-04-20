@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-slider",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "author": "'hw' <17061765@cnsuning.com>",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@suning/v-tools": "^1.0.35",
-    "@suning/v-utils": "^1.0.32"
+    "@suning/v-utils": "^1.0.33"
   },
   "dependencies": {
     "warning": "^3.0.0"

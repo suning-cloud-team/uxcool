@@ -69,7 +69,9 @@ export default {
   },
   methods: {
     toggleCheckbox(optVal) {
-      if (!optVal) {
+      // fix http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/309
+      // 理论上应该全面放开，但是原作者认为有场景需要限制，暂时先放开0
+      if (!optVal && optVal !== 0) {
         return;
       }
       const { innerValue } = this;
@@ -89,17 +91,16 @@ export default {
   render() {
     const { prefixCls, classes, normalizeOptions } = this;
     const opts = normalizeOptions;
-    const checkboxs =
-      opts.length > 0
-        ? opts.map(v => (
+    const checkboxs = opts.length > 0
+      ? opts.map((v) => (
             <checkbox
               class={`${prefixCls}-item`}
               value={v.value}
               disabled={v.disabled}
               label={v.label}
             />
-        ))
-        : this.$slots.default;
+      ))
+      : this.$slots.default;
     return <div class={classes}>{checkboxs}</div>;
   },
 };

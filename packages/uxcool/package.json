@@ -1,6 +1,6 @@
 {
   "name": "@suning/uxcool",
-  "version": "0.5.0-next.83",
+  "version": "0.5.0-next.84",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -19,18 +19,18 @@
   },
   "dependencies": {
     "@suning/v-checkbox": "^1.0.13",
-    "@suning/v-datepicker": "^1.0.80",
-    "@suning/v-dialog": "^1.0.27",
-    "@suning/v-menu": "^1.0.58",
+    "@suning/v-datepicker": "^1.0.81",
+    "@suning/v-dialog": "^1.0.28",
+    "@suning/v-menu": "^1.0.59",
     "@suning/v-notification": "^1.0.14",
-    "@suning/v-pagination": "^1.0.32",
-    "@suning/v-slider": "^1.0.32",
-    "@suning/v-steps": "^1.0.16",
-    "@suning/v-table": "^1.0.47",
-    "@suning/v-tabs": "^1.0.44",
-    "@suning/v-tooltip": "^1.0.48",
-    "@suning/v-trigger": "^1.0.63",
-    "@suning/v-utils": "^1.0.32",
+    "@suning/v-pagination": "^1.0.33",
+    "@suning/v-slider": "^1.0.33",
+    "@suning/v-steps": "^1.0.17",
+    "@suning/v-table": "^1.0.48",
+    "@suning/v-tabs": "^1.0.45",
+    "@suning/v-tooltip": "^1.0.49",
+    "@suning/v-trigger": "^1.0.64",
+    "@suning/v-utils": "^1.0.33",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "date-fns": "^1.29.0",
     "humanize-duration": "^3.15.3",
@@ -41,7 +41,7 @@
     "vee-validate": "~2.0.9"
   },
   "devDependencies": {
-    "@suning/v-test-utils": "^1.0.9",
+    "@suning/v-test-utils": "^1.0.10",
     "dayjs": "^1.8.18"
   },
   "publishConfig": {

@@ -1,3 +1,9 @@
+# 0.5.0-next.84 (2020-04-20)
+
+### Bug Fixes
+
+- **radio-group, checkbox-group:** 修复数值 0 时不触发事件 bug ([d392fe7](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/d392fe743855525448a9e1204a614bd6ca1084bd)), closes [#309](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/309)
+
 # 0.5.0-next.83 (2020-04-08)
 
 ### Features
