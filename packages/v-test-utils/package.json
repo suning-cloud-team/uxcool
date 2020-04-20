@@ -1,6 +1,6 @@
 {
   "name": "@suning/v-test-utils",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "@vue/test-utils": "^1.0.0-beta.16"
   },
   "dependencies": {
-    "@suning/v-trigger": "^1.0.63",
+    "@suning/v-trigger": "^1.0.64",
     "@vue/server-test-utils": "^1.0.0-beta.30",
     "jquery": "^3.3.1",
     "vue-server-renderer": "^2.6.11"
