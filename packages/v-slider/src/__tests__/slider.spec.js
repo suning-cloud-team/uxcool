@@ -210,7 +210,9 @@ describe('VSlider', () => {
     });
     await wrapper.vm.$nextTick();
     wrapper.vm.onStart(wrapper.vm.$event, 100);
+    await wrapper.vm.$nextTick();
     wrapper.vm.onMove(new MouseEvent(100), 100);
+    await wrapper.vm.$nextTick();
     wrapper.vm.onEnd(wrapper.vm.$event, 100);
     await wrapper.vm.$nextTick();
     expect(wrapper.find('.v-slider-handle-2').attributes('aria-valuenow')).toBe('100');
