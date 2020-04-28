@@ -2,4 +2,4 @@ import '../../style/index.scss';
 import './index.scss';
 
 // style dependencies
-import '../../tooltip/style';
+import '../../tooltip/style/index.scss';

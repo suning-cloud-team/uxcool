@@ -1,4 +1,4 @@
 import '../../style/index.scss';
 
-import '../../popover/style';
-import '../../button/style';
+import '../../popover/style/index.scss';
+import '../../button/style/index.scss';
