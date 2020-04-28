@@ -2,4 +2,4 @@ import '../../style/index.scss';
 import './index.scss';
 
 // style dependencies
-import '../../grid/style';
+import '../../grid/style/index.scss';

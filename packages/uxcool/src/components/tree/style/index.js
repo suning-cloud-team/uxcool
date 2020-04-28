@@ -2,4 +2,4 @@ import '../../style/index.scss';
 import './index.scss';
 
 // style dependencies
-import '../../checkbox/style';
+import '../../checkbox/style/index.scss';

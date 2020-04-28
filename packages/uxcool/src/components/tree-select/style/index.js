@@ -2,5 +2,5 @@ import '../../style/index.scss';
 import './index.scss';
 
 // style dependencies
-import '../../select/style';
-import '../../checkbox/style';
+import '../../select/style/index.scss';
+import '../../checkbox/style/index.scss';
