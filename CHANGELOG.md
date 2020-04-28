@@ -1,3 +1,9 @@
+# 0.5.0-next.85 (2020-04-28)
+
+### Bug Fixes
+
+- **style:** 修复按需加载样式重复导入 bug ([79e47dd](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/79e47ddfbd532ae3c2bd51d991f2e70ab35b152a)), closes [#310](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/310)
+
 # 0.5.0-next.84 (2020-04-20)
 
 ### Bug Fixes
