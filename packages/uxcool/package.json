@@ -45,7 +45,7 @@
     "dayjs": "^1.8.18"
   },
   "publishConfig": {
-    "registry": "http://snpm.cnsuning.com"
+    "access": "public"
   },
   "files": [
     "es/*",

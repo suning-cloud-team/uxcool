@@ -8,10 +8,6 @@
     "compile": "v-tools run compile",
     "cleanCss": "v-tools run cleanCSSCompile"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@git.cnsuning.com:fedc/v-style.git"
-  },
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -21,6 +17,6 @@
     "assets"
   ],
   "publishConfig": {
-    "registry": "http://snpm.cnsuning.com"
+    "access": "public"
   }
 }

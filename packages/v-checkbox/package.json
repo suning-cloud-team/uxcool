@@ -5,7 +5,7 @@
   "module": "es/index.js",
   "license": "MIT",
   "publishConfig": {
-    "registry": "http://snpm.cnsuning.com"
+    "access": "public"
   },
   "files": [
     "assets/*.css",

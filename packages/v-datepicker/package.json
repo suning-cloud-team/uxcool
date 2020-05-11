@@ -4,11 +4,9 @@
   "description": "datepicker 基础组件",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "repositorye": "git@git.cnsuning.com:fedc/v-datepicker.git",
-  "author": "17061765@cnsuning.com",
   "license": "MIT",
   "publishConfig": {
-    "registry": "http://snpm.cnsuning.com"
+    "access": "public"
   },
   "files": [
     "assets/*.css",

@@ -4,11 +4,9 @@
   "description": "uxcool menu 基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "repository": "git@git.cnsuning.com:fedc/v-menu.git",
-  "author": "'hw' <17061765@163.com>",
   "license": "MIT",
   "publishConfig": {
-    "registry": "http://snpm.cnsuning.com"
+    "access": "public"
   },
   "files": [
     "assets/*css",

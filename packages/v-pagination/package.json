@@ -3,8 +3,6 @@
   "version": "1.0.34",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "repository": "git@git.cnsuning.com:fedc/v-pagination.git",
-  "author": "'hw' <17061765@cnsuning.com>",
   "license": "MIT",
   "files": [
     "assets/*.css",
@@ -12,7 +10,7 @@
     "es"
   ],
   "publishConfig": {
-    "registry": "http://snpm.cnsuning.com"
+    "access": "public"
   },
   "scripts": {
     "compile": "v-tools run compile",
