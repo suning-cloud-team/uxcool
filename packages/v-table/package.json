@@ -4,8 +4,6 @@
   "description": "table基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "repository": "git@git.cnsuning.com:fedc/v-table.git",
-  "author": "'hw' <17061765@cnsuning.com>",
   "license": "MIT",
   "devDependencies": {
     "@suning/v-tools": "^1.0.35"
@@ -15,7 +13,7 @@
     "lodash": "^4.17.4"
   },
   "publishConfig": {
-    "registry": "http://snpm.cnsuning.com"
+    "access": "public"
   },
   "files": [
     "assets/*.css",

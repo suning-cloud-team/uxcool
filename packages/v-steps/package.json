@@ -4,11 +4,9 @@
   "description": "steps基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "repository": "git@git.cnsuning.com:fedc/v-steps.git",
-  "author": "'hw' <17061765@cnsuning.com>",
   "license": "MIT",
   "publishConfig": {
-    "registry": "http://snpm.cnsuning.com/"
+    "access": "public"
   },
   "files": [
     "assets/*.css",

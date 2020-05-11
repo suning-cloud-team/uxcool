@@ -1,20 +1,16 @@
-/* eslint-disable */
-const path = require('path');
-const execa = require('execa');
 const yargs = require('yargs');
 const genChangelog = require('./changelog');
+const { execSync, NPM_REGISTRY, SNPM_REGISTRY } = require('./utils');
+const prompt = require('./prompt');
+
 yargs.parserConfiguration({
   'boolean-negation': false,
 });
-const argv = yargs.boolean(['changelog-only', 'no-publish', 'no-build']).argv;
+const { argv } = yargs.boolean(['changelog-only', 'no-publish', 'no-build']);
 
 const { 'changelog-only': changelogOnly, 'no-publish': noPublish, 'no-build': noBuild } = argv;
 
-console.log('var', changelogOnly, noPublish, noBuild);
-function execSync(cmd, args = [], options) {
-  execa.sync(cmd, args, { stdio: 'inherit', ...options });
-}
-
+/* eslint-disable no-console */
 function compile() {
   execSync('yarn', ['run', 'build']);
 }
@@ -30,20 +26,36 @@ function pushChanglog(changlogVersion) {
   execSync('git', ['commit', '-a', '-m', `docs: generate ${changlogVersion} changlog`]);
 }
 
-function publish() {
-  execSync('lerna', ['publish', 'from-git']);
+function publishToSNpm() {
+  console.log('-----------------publish to SNPM--------------------');
+  execSync('lerna', ['publish', 'from-git', '--registry', SNPM_REGISTRY]);
 }
-function release() {
+
+function publishToNpm() {
+  console.log('-----------------publish to NPM--------------------');
+  process.env['npm_config_@suning:registry'] = NPM_REGISTRY;
+  execSync('lerna', ['publish', 'from-package', '--registry', NPM_REGISTRY]);
+}
+
+function release(type) {
   if (!noBuild) {
     compile();
   }
-  genChangelog('generate').then((changlogVersion) => {
+  return genChangelog('generate').then((changlogVersion) => {
     pushChanglog(changlogVersion);
     version();
     push();
     console.log('pre publish');
     if (!noPublish) {
-      publish();
+      const publishFns = [];
+      if (type === 'all') {
+        publishFns.push(publishToSNpm, publishToNpm);
+      } else if (type === 'snpm') {
+        publishFns.push(publishToSNpm);
+      } else if (type === 'npm') {
+        publishFns.push(publishToNpm);
+      }
+      publishFns.forEach((fn) => fn());
     }
   });
 }
@@ -53,7 +65,24 @@ if (changelogOnly) {
     console.log(`generate ${changlogVersion} changelog success!`);
   });
 } else {
-  release();
+  prompt()
+    .then(({ publishTarget, registryType }) => {
+      switch (publishTarget) {
+        case 'release':
+          release(registryType);
+          break;
+        case 'only-publish-to-npm':
+          publishToNpm();
+          break;
+        case 'only-publish-to-snpm':
+          publishToSNpm();
+          break;
+        default:
+          break;
+      }
+    })
+    .catch((e) => {
+      console.error('Publish Error: %s', e.message);
+    });
 }
-// release();
-/* eslint-enable */
+/* eslint-enable no-console */

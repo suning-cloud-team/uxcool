@@ -4,15 +4,13 @@
   "description": "时分秒选择基础组件",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "repository": "git@git.cnsuning.com:fedc/v-timepicker.git",
-  "author": "'hw' <17061765@cnsuning.com>",
   "license": "MIT",
   "scripts": {
     "compile": "v-tools run compile",
     "server": "v-tools run server"
   },
   "publishConfig": {
-    "registry": "http://snpm.cnsuning.com"
+    "access": "public"
   },
   "files": [
     "assets/*css",

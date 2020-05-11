@@ -1,3 +1,7 @@
+# 0.5.0-next.87 (2020-05-11)
+
+**Note:** Version bump only for package @suning/uxcool
+
 # 0.5.0-next.86 (2020-05-11)
 
 ### Bug Fixes

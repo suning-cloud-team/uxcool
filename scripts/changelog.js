@@ -39,6 +39,7 @@ function getConventionalStream(from, version) {
           if (!nPkg || !nPkg.repository || !nPkg.repository.url) {
             nPkg.repository = {
               url: 'http://opensource.cnsuning.com/uxcool/lerna-uxcool.git',
+              // url: 'https://github.com/cloud-SN1/uxcool.git',
             };
           }
           return nPkg;
