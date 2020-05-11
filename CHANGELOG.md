@@ -1,3 +1,9 @@
+# 0.5.0-next.86 (2020-05-11)
+
+### Bug Fixes
+
+- **icon:** 修复复制图标在不同操作系统下不一致问题 ([0a2168a](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/0a2168a4284cd1871ea4f9cbe1c769d52fdfa498)), closes [#312](http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/312)
+
 # 0.5.0-next.85 (2020-04-28)
 
 ### Bug Fixes
