@@ -61,7 +61,9 @@ function getResolve() {
   resolve.extensions = ['.js', '.json', '.jsx'];
   return resolve;
 }
-
+function normalizeLoader(loaderName) {
+  return path.resolve(__dirname, '../../node_modules', loaderName);
+}
 exports.getConfig = function getConfig() {
   const { entry, tpls } = getEntyAndTemplates(path.resolve(root, exampleDir, '*.js'));
   const webpackResolve = getResolve();
@@ -95,20 +97,20 @@ exports.getConfig = function getConfig() {
             fallback: 'style-loader',
             use: [
               {
-                loader: 'css-loader',
+                loader: normalizeLoader('css-loader'),
                 options: {},
               },
               {
-                loader: 'postcss-loader',
+                loader: normalizeLoader('postcss-loader'),
                 options: postCssCfg,
               },
-              'sass-loader',
+              normalizeLoader('sass-loader'),
             ],
           }),
         },
         {
           test: /\.(woff2?|ttf|eot|svg)/,
-          loader: 'url-loader',
+          loader: normalizeLoader('url-loader'),
           options: {
             limit: 8192,
             name: '/fonts/[name].[hash:7].[ext]',
@@ -121,12 +123,11 @@ exports.getConfig = function getConfig() {
         babel: babelOptions,
       }),
       new ExtractTextPlugin('[name].css'),
-      ...tpls.map(tpl =>
-        new HtmlWebpackPlugin({
-          filename: tpl.name,
-          template: tpl.template,
-          chunks: [tpl.entryName],
-        })),
+      ...tpls.map((tpl) => new HtmlWebpackPlugin({
+        filename: tpl.name,
+        template: tpl.template,
+        chunks: [tpl.entryName],
+      })),
     ],
   };
 };
