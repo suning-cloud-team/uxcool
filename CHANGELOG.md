@@ -1,3 +1,7 @@
+# 0.6.0-beta.1 (2020-05-18)
+
+**Note:** Version bump only for package @cloud-sn/uxcool
+
 # 0.5.0-next.87 (2020-05-11)
 
 **Note:** Version bump only for package @cloud-sn/uxcool
