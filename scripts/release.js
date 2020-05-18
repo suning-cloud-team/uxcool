@@ -28,6 +28,7 @@ function pushChanglog(changlogVersion) {
 
 function publishToSNpm() {
   console.log('-----------------publish to SNPM--------------------');
+  process.env['npm_config_@cloud-sn:registry'] = SNPM_REGISTRY;
   execSync('lerna', ['publish', 'from-git', '--registry', SNPM_REGISTRY]);
 }
 
