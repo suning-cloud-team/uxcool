@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-notification",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "author": "'hw' <17061765@cnsuning.com>",
@@ -22,6 +22,6 @@
     "vue": ">= 2.5.*"
   },
   "devDependencies": {
-    "@cloud-sn/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.36"
   }
 }

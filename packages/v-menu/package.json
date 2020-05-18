@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-menu",
-  "version": "1.0.59",
+  "version": "1.0.60",
   "description": "uxcool menu 基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -19,11 +19,11 @@
     "example": "v-tools run dist"
   },
   "dependencies": {
-    "@cloud-sn/v-trigger": "^1.0.64",
-    "@cloud-sn/v-utils": "^1.0.33"
+    "@cloud-sn/v-trigger": "^1.0.65",
+    "@cloud-sn/v-utils": "^1.0.34"
   },
   "devDependencies": {
-    "@cloud-sn/v-style": "^1.0.21",
-    "@cloud-sn/v-tools": "^1.0.35"
+    "@cloud-sn/v-style": "^1.0.22",
+    "@cloud-sn/v-tools": "^1.0.36"
   }
 }

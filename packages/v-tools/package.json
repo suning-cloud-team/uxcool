@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-tools",
-  "version": "1.0.35",
+  "version": "1.0.36",
   "description": "v-components tools",
   "license": "MIT",
   "bin": {

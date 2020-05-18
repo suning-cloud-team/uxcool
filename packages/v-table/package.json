@@ -1,15 +1,15 @@
 {
   "name": "@cloud-sn/v-table",
-  "version": "1.0.48",
+  "version": "1.0.49",
   "description": "table基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
   "devDependencies": {
-    "@cloud-sn/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.36"
   },
   "dependencies": {
-    "@cloud-sn/v-utils": "^1.0.33",
+    "@cloud-sn/v-utils": "^1.0.34",
     "lodash": "^4.17.4"
   },
   "publishConfig": {

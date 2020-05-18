@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-style",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "基础样式库,包括fonts, theme等",
   "main": "assets/index.scss",
   "scripts": {
@@ -11,7 +11,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@cloud-sn/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.36"
   },
   "files": [
     "assets"

@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-steps",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "steps基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -19,6 +19,6 @@
     "start": "npm run server"
   },
   "devDependencies": {
-    "@cloud-sn/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.36"
   }
 }

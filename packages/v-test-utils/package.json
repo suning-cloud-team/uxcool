@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-test-utils",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
@@ -16,11 +16,11 @@
     "vue": ">= 2.5.*"
   },
   "devDependencies": {
-    "@cloud-sn/v-tools": "^1.0.35",
+    "@cloud-sn/v-tools": "^1.0.36",
     "@vue/test-utils": "^1.0.0-beta.16"
   },
   "dependencies": {
-    "@cloud-sn/v-trigger": "^1.0.64",
+    "@cloud-sn/v-trigger": "^1.0.65",
     "@vue/server-test-utils": "^1.0.0-beta.30",
     "jquery": "^3.3.1",
     "vue-server-renderer": "^2.6.11"

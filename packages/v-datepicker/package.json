@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-datepicker",
-  "version": "1.0.81",
+  "version": "1.0.82",
   "description": "datepicker 基础组件",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -19,13 +19,13 @@
     "compile": "v-tools run compile"
   },
   "devDependencies": {
-    "@cloud-sn/v-style": "^1.0.21",
-    "@cloud-sn/v-tools": "^1.0.35"
+    "@cloud-sn/v-style": "^1.0.22",
+    "@cloud-sn/v-tools": "^1.0.36"
   },
   "dependencies": {
-    "@cloud-sn/v-timepicker": "^1.0.33",
-    "@cloud-sn/v-trigger": "^1.0.64",
-    "@cloud-sn/v-utils": "^1.0.33",
+    "@cloud-sn/v-timepicker": "^1.0.34",
+    "@cloud-sn/v-trigger": "^1.0.65",
+    "@cloud-sn/v-utils": "^1.0.34",
     "date-fns": "^1.29.0"
   }
 }
