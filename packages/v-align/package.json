@@ -21,6 +21,7 @@
     "dom-align": "^1.8.3"
   },
   "devDependencies": {
-    "@cloud-sn/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.35",
+    "@cloud-sn/v-test-utils": "^1.0.10"
   }
 }
