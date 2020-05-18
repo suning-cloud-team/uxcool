@@ -1,4 +1,4 @@
-import { isArray } from '@suning/v-utils';
+import { isArray } from '@cloud-sn/v-utils';
 import Selector from '../selector';
 import SearchInput from '../searchInput';
 

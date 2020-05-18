@@ -5,7 +5,7 @@ import {
   triggerEvent,
   mountPickerFactory,
   createWrapper,
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import dayjs from 'dayjs';
 import { selectMonth } from './utils';
 import RangeMonthPicker from '../rangeMonthPicker';

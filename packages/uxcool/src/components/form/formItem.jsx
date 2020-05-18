@@ -93,7 +93,7 @@ export default {
       if (required !== null) {
         return required;
       }
-      return fields.some(v => v.field && v.field.isRequired);
+      return fields.some((v) => v.field && v.field.isRequired);
     },
   },
   methods: {
@@ -107,7 +107,7 @@ export default {
     },
     removeItemField(field) {
       const { fields, removeFormField } = this;
-      this.fields = fields.filter(v => v !== field);
+      this.fields = fields.filter((v) => v !== field);
       removeFormField(field);
     },
     setHasError(isError) {
@@ -124,10 +124,10 @@ export default {
       let labelElement = getSlotOrValue('label', this);
 
       if (
-        colon &&
-        isVerticalForm &&
-        typeof labelElement === 'string' &&
-        labelElement.trim() !== ''
+        colon
+        && isVerticalForm
+        && typeof labelElement === 'string'
+        && labelElement.trim() !== ''
       ) {
         labelElement = labelElement.replace(/[：|:]\s*$/, '');
       }

@@ -1,6 +1,6 @@
 import {
   mountPickerFactory, waitTime, triggerEvent, getPortal, mount
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import dayjs from 'dayjs';
 import zhCN from 'dayjs/locale/zh-cn';
 import advancedFormat from 'dayjs/plugin/advancedFormat';

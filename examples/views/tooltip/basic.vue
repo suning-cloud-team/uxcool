@@ -106,8 +106,8 @@
 
 
 <script>
-  import '@suning/uxcool/src/components/button/style/index.scss';
-  import { Tooltip as UxTooltip } from '@suning/uxcool';
+  import '@cloud-sn/uxcool/src/components/button/style/index.scss';
+  import { Tooltip as UxTooltip } from '@cloud-sn/uxcool';
   import ContainerDemo from './container.vue';
 
   export default {

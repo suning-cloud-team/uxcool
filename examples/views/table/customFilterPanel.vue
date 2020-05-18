@@ -11,7 +11,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Divider, Table as UxTable, Icon } from '@suning/uxcool';
+  import { Divider, Table as UxTable, Icon } from '@cloud-sn/uxcool';
 
   function getCols() {
     // eslint-disable-next-line

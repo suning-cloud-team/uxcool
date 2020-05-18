@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-  import { Tag } from '@suning/uxcool';
+  import { Tag } from '@cloud-sn/uxcool';
 
   export default {
     components: {

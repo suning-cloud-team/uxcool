@@ -15,7 +15,7 @@
 </template>
 <script>
   import { mapState } from 'vuex';
-  import { Tag } from '@suning/uxcool';
+  import { Tag } from '@cloud-sn/uxcool';
 
   export default {
     components: {

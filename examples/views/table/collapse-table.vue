@@ -26,7 +26,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Divider, Table as UxTable, Collapse } from '@suning/uxcool';
+  import { Divider, Table as UxTable, Collapse } from '@cloud-sn/uxcool';
 
   function getCols() {
     return [

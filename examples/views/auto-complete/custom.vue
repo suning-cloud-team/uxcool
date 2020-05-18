@@ -19,7 +19,7 @@
 
 
 <script>
-  import { AutoComplete, Input, Icon } from '@suning/uxcool';
+  import { AutoComplete, Input, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {
@@ -37,7 +37,8 @@
       getNotFoundContent() {
         return this.isLoading ? (
           <span>
-            <ux-icon type="loading" />加载中
+            <ux-icon type="loading" />
+            加载中
           </span>
         ) : null;
       },
@@ -46,7 +47,7 @@
         this.dataSource = [];
         setTimeout(() => {
           this.dataSource = searchValue
-            ? [1, 2, 3].map(v => ({
+            ? [1, 2, 3].map((v) => ({
               value: `${searchValue}`.repeat(v),
             }))
             : [];

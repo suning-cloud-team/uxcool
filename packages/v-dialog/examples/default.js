@@ -1,8 +1,8 @@
 import Vue from 'vue';
 
-import '@suning/v-dialog/css/index.scss';
+import '@cloud-sn/v-dialog/css/index.scss';
 
-import VDialog from '@suning/v-dialog';
+import VDialog from '@cloud-sn/v-dialog';
 
 const vm = new Vue({
   el: '#app',

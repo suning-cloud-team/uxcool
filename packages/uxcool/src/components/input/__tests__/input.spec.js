@@ -1,4 +1,4 @@
-import { mount, waitTime } from '@suning/v-test-utils';
+import { mount, waitTime } from '@cloud-sn/v-test-utils';
 import {
   UxInput, UxSearchInput, UxTextarea, UxInputGroup
 } from '..';
@@ -76,7 +76,7 @@ describe('ux-input', () => {
     expect(pressenterFn).toHaveBeenCalledTimes(1);
     wrapper.trigger('blur');
     expect(blurFn).toHaveBeenCalledTimes(1);
-    wrapper.setProps({value: 'initValue'});
+    wrapper.setProps({ value: 'initValue' });
     await waitTime();
     expect(wrapper.element.value).toBe('initValue');
     wrapper.setValue('inputChangeValue');
@@ -103,7 +103,7 @@ describe('ux-search-input', () => {
     expect(wrapper.find('button').element.innerHTML).toBe('<span>search</span>');
     wrapper.find('button').trigger('click');
     expect(searchFn).toHaveBeenCalledTimes(1);
-    wrapper.setProps({enterButton: ''});
+    wrapper.setProps({ enterButton: '' });
     await waitTime();
     expect(wrapper.find('button').exists()).toBeFalsy();
   });
@@ -167,13 +167,13 @@ describe('ux-textarea', () => {
         maxlength: 100
       }
     });
-    const textareaWrapper = wrapper.find({ref: 'textarea'});
+    const textareaWrapper = wrapper.find({ ref: 'textarea' });
     expect(textareaWrapper.element.value).toBe(initTextValue);
     expect(wrapper.find('.ux-input-limit-word').text()).toBe('11/100');
-    wrapper.setProps({value: changeText});
+    wrapper.setProps({ value: changeText });
     await waitTime();
     expect(textareaWrapper.element.value).toBe(changeText);
-    wrapper.find({ref: 'textarea'}).setValue(mulitRowsText);
+    wrapper.find({ ref: 'textarea' }).setValue(mulitRowsText);
     await waitTime();
     expect(textareaWrapper.element.value).toBe(mulitRowsText);
     expect(textareaWrapper.attributes('style')).toEqual(expect.stringContaining('overflow-y: hidden'));
@@ -197,7 +197,7 @@ describe('ux-textarea', () => {
         blur: blurFn
       }
     });
-    const textareaWrapper = wrapper.find({ref: 'textarea'});
+    const textareaWrapper = wrapper.find({ ref: 'textarea' });
     textareaWrapper.setValue('inputValue');
     await waitTime();
     expect(inputFn).toHaveBeenCalled();

@@ -40,7 +40,7 @@
 
 
 <script>
-  import { List, Avatar, Icon } from '@suning/uxcool';
+  import { List, Avatar, Icon } from '@cloud-sn/uxcool';
 
   function mockData(cnt = 10) {
     return Array(cnt)

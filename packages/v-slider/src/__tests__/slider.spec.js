@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { mountPickerFactory, triggerEvent } from '@suning/v-test-utils';
+import { mountPickerFactory, triggerEvent } from '@cloud-sn/v-test-utils';
 import { VSlider, VSliderRange } from '../index';
 
 describe('slider', () => {

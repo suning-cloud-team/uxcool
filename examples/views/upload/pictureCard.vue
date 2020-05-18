@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import { Upload, Icon } from '@suning/uxcool';
+  import { Upload, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {

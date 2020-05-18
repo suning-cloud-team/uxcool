@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import '@suning/v-datepicker/css/index.scss';
-import MultiCalendar from '@suning/v-datepicker/src/multiCalendar';
-import localeCN from '@suning/v-datepicker/src/locale/zh_CN';
+import '@cloud-sn/v-datepicker/css/index.scss';
+import MultiCalendar from '@cloud-sn/v-datepicker/src/multiCalendar';
+import localeCN from '@cloud-sn/v-datepicker/src/locale/zh_CN';
 
 const vm = new Vue({
   components: {

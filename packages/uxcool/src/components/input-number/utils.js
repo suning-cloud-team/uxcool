@@ -1,5 +1,5 @@
 import isNaN from 'lodash/isNaN';
-import { isDef } from '@suning/v-utils';
+import { isDef } from '@cloud-sn/v-utils';
 
 export { isNaN };
 

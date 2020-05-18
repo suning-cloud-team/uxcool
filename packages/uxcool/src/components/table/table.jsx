@@ -1,4 +1,4 @@
-import VTable from '@suning/v-table';
+import VTable from '@cloud-sn/v-table';
 import Icon from '../icon';
 import Spin from '../spin';
 import FilterDropdown from './filterDropdown';

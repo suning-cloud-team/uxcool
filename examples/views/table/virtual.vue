@@ -8,8 +8,8 @@
 </template>
 
 <script>
-  import { Table as UxTable, Checkbox as UxCheckbox } from '@suning/uxcool';
-  import { TreeHandler } from '@suning/v-utils';
+  import { Table as UxTable, Checkbox as UxCheckbox } from '@cloud-sn/uxcool';
+  import { TreeHandler } from '@cloud-sn/v-utils';
 
   function getCols() {
     const { onCheckboxChange } = this;

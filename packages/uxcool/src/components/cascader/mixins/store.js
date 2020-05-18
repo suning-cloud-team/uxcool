@@ -1,4 +1,4 @@
-import { isArray, isFunction } from '@suning/v-utils';
+import { isArray, isFunction } from '@cloud-sn/v-utils';
 import { genCascaderKey } from '../utils';
 
 export default {

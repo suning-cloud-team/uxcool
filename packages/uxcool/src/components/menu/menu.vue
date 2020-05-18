@@ -8,8 +8,8 @@
 
 
 <script>
-  import VMenu from '@suning/v-menu';
-  import { isEqual } from '@suning/v-utils';
+  import VMenu from '@cloud-sn/v-menu';
+  import { isEqual } from '@cloud-sn/v-utils';
   import { buildComponentName } from '../utils';
 
   export default {

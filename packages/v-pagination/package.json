@@ -1,5 +1,5 @@
 {
-  "name": "@suning/v-pagination",
+  "name": "@cloud-sn/v-pagination",
   "version": "1.0.34",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -20,11 +20,11 @@
     "dist": "v-tools run dist"
   },
   "devDependencies": {
-    "@suning/v-style": "^1.0.21",
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-style": "^1.0.21",
+    "@cloud-sn/v-tools": "^1.0.35"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.33"
+    "@cloud-sn/v-utils": "^1.0.33"
   },
   "vueCompileOpts": {
     "preserveWhitespace": false

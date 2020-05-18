@@ -1,4 +1,4 @@
-import { mount } from '@suning/v-test-utils';
+import { mount } from '@cloud-sn/v-test-utils';
 import { UxCheckbox, UxCheckboxGroup } from '..';
 
 it('render checkbox correctly', () => {

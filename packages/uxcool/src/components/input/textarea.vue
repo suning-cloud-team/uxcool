@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import { raf } from '@suning/v-utils';
+  import { raf } from '@cloud-sn/v-utils';
   import { buildComponentName } from '../utils';
   import calculateNodeHeight from './calculateNodeHeight';
 

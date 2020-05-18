@@ -18,7 +18,7 @@
 
 
 <script>
-  import { Popconfirm } from '@suning/uxcool';
+  import { Popconfirm } from '@cloud-sn/uxcool';
   import CustomDemo from './custom.vue';
 
   export default {

@@ -39,7 +39,7 @@
   </div>
 </template>
 <script>
-  import { Icon, Dropdown, Menu, Button } from '@suning/uxcool';
+  import { Icon, Dropdown, Menu, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

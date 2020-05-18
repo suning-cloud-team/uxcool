@@ -1,4 +1,4 @@
-import { isDef } from '@suning/v-utils';
+import { isDef } from '@cloud-sn/v-utils';
 import { getNeedMovePoint, preventEvent, ensureValueInRange, ensureValuePrecision } from './utils';
 import CommonMixin from './mixins/common';
 

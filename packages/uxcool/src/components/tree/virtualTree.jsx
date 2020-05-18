@@ -66,7 +66,7 @@ export default {
       let stack = [];
       if (children) {
         stack = [...children];
-        if (children.every(item => item.isDisabled || item.disableCheckbox)) {
+        if (children.every((item) => item.isDisabled || item.disableCheckbox)) {
           nNode.childCheckState = 0;
         } else {
           nNode.childCheckState = checked ? 2 : 0;
@@ -93,7 +93,7 @@ export default {
         }
         if (childNode.children) {
           stack = [...stack, ...childNode.children];
-          if (childNode.children.every(item => item.isDisabled || item.disableCheckbox)) {
+          if (childNode.children.every((item) => item.isDisabled || item.disableCheckbox)) {
             childNode.childCheckState = 0; // 子节点全部不能选择
           } else {
             childNode.childCheckState = checked ? 2 : 0;
@@ -186,7 +186,7 @@ export default {
                   }}
                 />
               </AutoSizer>
-              ) : (
+            ) : (
               <TreeNode
                 {...{
                   props: {

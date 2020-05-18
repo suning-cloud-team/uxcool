@@ -1,4 +1,4 @@
-import Trigger from '@suning/v-trigger';
+import Trigger from '@cloud-sn/v-trigger';
 import { formatDate } from '../utils';
 import placements from './placements';
 import RangeMonthYearDecadeCalendar from '../rangeMonthYearDecadeCalendar';

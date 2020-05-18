@@ -101,7 +101,7 @@
 </template>
 
 <script>
-  import { Grid, Form } from '@suning/uxcool';
+  import { Grid, Form } from '@cloud-sn/uxcool';
 
   export default {
     components: {

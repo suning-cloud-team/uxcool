@@ -1,4 +1,4 @@
-import { mount, waitTime, $ } from '@suning/v-test-utils';
+import { mount, waitTime, $ } from '@cloud-sn/v-test-utils';
 import UxPopconfirm from '..';
 
 it('render correctly', async () => {

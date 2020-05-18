@@ -9,7 +9,7 @@
 
 <script>
   import omit from 'object.omit';
-  import { VSteps } from '@suning/v-steps';
+  import { VSteps } from '@cloud-sn/v-steps';
   import { buildComponentName } from '../utils';
 
   export default {

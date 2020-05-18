@@ -6,11 +6,10 @@ export default function scrollTop(
   endCallback
 ) {
   if (!window.requestAnimationFrame) {
-    window.requestAnimationFrame =
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      function(callback) {
+    window.requestAnimationFrame = window.webkitRequestAnimationFrame
+      || window.mozRequestAnimationFrame
+      || window.msRequestAnimationFrame
+      || function (callback) {
         return window.setTimeout(callback, 1000 / 60);
       };
   }

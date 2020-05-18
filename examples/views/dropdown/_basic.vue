@@ -37,7 +37,7 @@
   </div>
 </template>
 <script>
-  import { Icon, Dropdown, Menu, Button } from '@suning/uxcool';
+  import { Icon, Dropdown, Menu, Button } from '@cloud-sn/uxcool';
   import ContainerDemo from './container.vue';
   import ButtonDemo from './button.vue';
 

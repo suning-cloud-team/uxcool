@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import '@suning/v-table/css/index.scss';
-import VTable from '@suning/v-table';
+import '@cloud-sn/v-table/css/index.scss';
+import VTable from '@cloud-sn/v-table';
 
 // @vue/component
 const VTodo = {

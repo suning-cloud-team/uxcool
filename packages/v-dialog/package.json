@@ -1,5 +1,5 @@
 {
-  "name": "@suning/v-dialog",
+  "name": "@cloud-sn/v-dialog",
   "version": "1.0.28",
   "description": "modal 基础库",
   "main": "cjs/index.js",
@@ -22,9 +22,9 @@
     "vue": ">= 2.5.*"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.33"
+    "@cloud-sn/v-utils": "^1.0.33"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.35"
   }
 }

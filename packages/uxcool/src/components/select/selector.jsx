@@ -74,7 +74,7 @@ export default {
       }
 
       if (!rootClearDisabled) {
-        if (rootIsMultiple && selections.every(v => !!v.disabled)) {
+        if (rootIsMultiple && selections.every((v) => !!v.disabled)) {
           return null;
         }
       } else if (selections.length === 0) {
@@ -87,7 +87,7 @@ export default {
           unselectable="on"
           style="user-select:none"
           on-click={onSelectorClear}
-          on-mousedown={e => e.preventDefault()}
+          on-mousedown={(e) => e.preventDefault()}
         />
       );
     },

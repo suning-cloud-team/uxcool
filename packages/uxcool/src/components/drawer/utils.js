@@ -1,4 +1,4 @@
-import { isNaN, isNumber } from '@suning/v-utils';
+import { isNaN, isNumber } from '@cloud-sn/v-utils';
 
 export function genUid() {
   let dt = new Date().getTime();
@@ -22,7 +22,7 @@ export function hasScrollBar() {
 }
 
 export function getVisibleDrawerCnt(drawers = {}) {
-  return Object.keys(drawers).filter(k => drawers[k]).length;
+  return Object.keys(drawers).filter((k) => drawers[k]).length;
 }
 
 export function hasVisibleDrawer(drawers = {}) {

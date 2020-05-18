@@ -41,7 +41,7 @@ export default {
       <span role="link" class={`${prefixCls}-action`} on-click={onClear}>
         <Icon type="close_circle" />
       </span>
-      ) : (
+    ) : (
       <span class={`${prefixCls}-action`}>
         <Icon type="search" />
       </span>

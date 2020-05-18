@@ -1,5 +1,5 @@
 {
-  "name": "@suning/v-utils",
+  "name": "@cloud-sn/v-utils",
   "version": "1.0.33",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -18,7 +18,7 @@
     "server": "v-tools run server"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.35"
   },
   "dependencies": {
     "dom-closest": "^0.2.0",

@@ -10,7 +10,7 @@
 
 
 <script>
-  import { Timepicker } from '@suning/uxcool';
+  import { Timepicker } from '@cloud-sn/uxcool';
 
   export default {
     components: {

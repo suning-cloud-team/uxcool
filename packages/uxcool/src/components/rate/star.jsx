@@ -1,4 +1,4 @@
-import { offset } from '@suning/v-utils';
+import { offset } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 
 export default {

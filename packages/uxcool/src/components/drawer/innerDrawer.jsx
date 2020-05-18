@@ -1,5 +1,7 @@
 import Vue from 'vue';
-import { isFunction, raf, addClass, removeClass, getScrollBarWidth } from '@suning/v-utils';
+import {
+  isFunction, raf, addClass, removeClass, getScrollBarWidth
+} from '@cloud-sn/v-utils';
 import { Portal, PortalTarget } from 'portal-vue';
 import { buildComponentName } from '../utils';
 import {

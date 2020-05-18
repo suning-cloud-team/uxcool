@@ -1,4 +1,4 @@
-import { isEqual } from '@suning/v-utils';
+import { isEqual } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import {
   makeVM,
@@ -145,7 +145,7 @@ export default {
       } = this;
       let vnode = null;
       if (slotDefault) {
-        [vnode] = slotDefault.filter(v => v.context && v.data);
+        [vnode] = slotDefault.filter((v) => v.context && v.data);
       }
 
       let options = null;

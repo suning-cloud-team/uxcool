@@ -5,10 +5,10 @@ import {
   getPortal,
   mount,
   createWrapper,
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import dayjs from 'dayjs';
-import { VRangeDatePicker } from '@suning/v-datepicker';
-import Trigger from '@suning/v-trigger';
+import { VRangeDatePicker } from '@cloud-sn/v-datepicker';
+import Trigger from '@cloud-sn/v-trigger';
 import SliderDatePicker from '../sliderDatePicker';
 import Select from '../../select';
 import localeCN from '../locale/zh_CN';

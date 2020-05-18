@@ -28,4 +28,4 @@ export function teardown() {
   window.XMLHttpRequest = oldXMLHttpRequest;
 }
 
-export const actionUrl = "http://www.mocky.io/v2/5e93d62f3000009100156c5f";
+export const actionUrl = 'http://www.mocky.io/v2/5e93d62f3000009100156c5f';

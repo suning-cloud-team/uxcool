@@ -25,16 +25,16 @@ http://localhost:8000/example/default.html
 ## Install
 
 ```
-npm config set @suning:registry http://snpm.cnsuning.com
+npm config set @cloud-sn:registry http://snpm.cnsuning.com
 
-yarn add @suning/v-pagination
+yarn add @cloud-sn/v-pagination
 ```
 
 ## Usage
 
 ```
 import Vue from 'vue';
-import {VTextarea} from '@suning/v-input';
+import {VTextarea} from '@cloud-sn/v-input';
 ```
 
 ## API

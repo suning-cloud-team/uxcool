@@ -1,9 +1,9 @@
 import Vue from 'vue';
 
-import Trigger from '@suning/v-trigger';
-import '@suning/v-trigger/css/index.scss';
-import '@suning/uxcool/es/input/style/index.js';
-import Input from '@suning/uxcool/es/input';
+import Trigger from '@cloud-sn/v-trigger';
+import '@cloud-sn/v-trigger/css/index.scss';
+import '@cloud-sn/uxcool/es/input/style/index.js';
+import Input from '@cloud-sn/uxcool/es/input';
 
 Vue.component('AB', {
   mounted() {

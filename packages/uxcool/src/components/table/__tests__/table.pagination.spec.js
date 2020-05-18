@@ -1,4 +1,4 @@
-import { mountPickerFactory, triggerEvent, waitTime } from '@suning/v-test-utils';
+import { mountPickerFactory, triggerEvent, waitTime } from '@cloud-sn/v-test-utils';
 import Table from '../table';
 import { getCols, getData, getSortRowName } from './utils';
 

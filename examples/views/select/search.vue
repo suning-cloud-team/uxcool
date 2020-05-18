@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import { Select, Icon } from '@suning/uxcool';
+  import { Select, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {

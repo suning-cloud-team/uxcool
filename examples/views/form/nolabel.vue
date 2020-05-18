@@ -134,8 +134,8 @@
     InputNumber,
     AutoComplete,
     Timepicker,
-  } from '@suning/uxcool';
-  import TableSearchForm from '@suning/uxcool-table-search-form';
+  } from '@cloud-sn/uxcool';
+  import TableSearchForm from '@cloud-sn/uxcool-table-search-form';
 
   Form.extendValidator('fileRequired', {
     validate(value) {

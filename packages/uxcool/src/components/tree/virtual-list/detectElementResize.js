@@ -1,4 +1,4 @@
- /**
+/**
  * Detect Element Resize.
  * https://github.com/sdecima/javascript-detect-element-resize
  * Sebastian Decima
@@ -10,7 +10,7 @@
  * 4) Add nonce for style element.
  * 5) Added support for injecting custom window object
  * */
- /* eslint-disable */
+/* eslint-disable */
 export default function createDetectElementResize(nonce, hostWindow) {
   // Check `document` and `window` in case of server-side rendering
   var _window;

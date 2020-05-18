@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { Cascader } from '@suning/uxcool';
+  import { Cascader } from '@cloud-sn/uxcool';
 
   export default {
     components: {
@@ -83,8 +83,8 @@
             <i class="fu fu-hot_o" />
             <span style="color: red">{label}</span>
           </span>
-          ) : (
-            label
+        ) : (
+          label
         );
       },
     },

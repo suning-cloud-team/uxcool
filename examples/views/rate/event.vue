@@ -12,7 +12,7 @@
 
 
 <script>
-  import { Rate } from '@suning/uxcool';
+  import { Rate } from '@cloud-sn/uxcool';
 
   export default {
     components: {

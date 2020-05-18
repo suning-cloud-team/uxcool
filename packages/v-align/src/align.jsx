@@ -1,5 +1,5 @@
 import alignFn from 'dom-align';
-import { warning, isEqual, addEventListener, isAsyncPlaceholder } from '@suning/v-utils';
+import { warning, isEqual, addEventListener, isAsyncPlaceholder } from '@cloud-sn/v-utils';
 
 function timerFn(fn, ms) {
   let timer;

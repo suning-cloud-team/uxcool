@@ -1,4 +1,4 @@
-import { isArray, isSameTypeVNode } from '@suning/v-utils';
+import { isArray, isSameTypeVNode } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 
 export default {

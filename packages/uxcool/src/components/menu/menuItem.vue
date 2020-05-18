@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { VMenuItem } from '@suning/v-menu';
+  import { VMenuItem } from '@cloud-sn/v-menu';
   import { buildComponentName } from '../utils';
 
   export default {

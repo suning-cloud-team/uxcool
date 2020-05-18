@@ -16,7 +16,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Table as UxTable } from '@suning/uxcool';
+  import { Table as UxTable } from '@cloud-sn/uxcool';
 
   function getData() {
     return [

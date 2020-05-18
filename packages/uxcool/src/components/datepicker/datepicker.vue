@@ -29,7 +29,7 @@
 <script>
   import omit from 'object.omit';
   import { format as formatDate } from 'date-fns';
-  import VDatePicker from '@suning/v-datepicker';
+  import VDatePicker from '@cloud-sn/v-datepicker';
   import localeCN from './locale/zh_CN';
   import Icon from '../icon';
   import { buildComponentName } from '../utils';

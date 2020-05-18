@@ -24,7 +24,7 @@
 </template>
 <script>
   import { mapState } from 'vuex';
-  import { Tag, Button } from '@suning/uxcool';
+  import { Tag, Button } from '@cloud-sn/uxcool';
 
   let seed = 0;
   export default {

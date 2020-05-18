@@ -1,6 +1,7 @@
-import { mountPickerFactory, mount, waitTime , getPortal, triggerEvent} from '@suning/v-test-utils';
-import Timepicker from '../';
-
+import {
+  mountPickerFactory, mount, waitTime, getPortal, triggerEvent
+} from '@cloud-sn/v-test-utils';
+import Timepicker from '..';
 
 
 const mountTimepicker = mountPickerFactory(Timepicker);
@@ -26,10 +27,9 @@ describe('timepicker', () => {
     expect(timepickerPanels.at(2).findAll('li').length).toBe(60);
     expect(timepickerPanels.at(2).find('.ux-time-picker-panel-select-option-selected').text()).toBe('25');
 
-    wrapper.setProps({value: newvValue});
+    wrapper.setProps({ value: newvValue });
     await waitTime();
     expect(timepickerPanels.at(0).find('.ux-time-picker-panel-select-option-selected').text()).toBe('01');
-
   });
 
   it('rend open-value correctly', async () => {
@@ -42,7 +42,7 @@ describe('timepicker', () => {
     });
     expect(wrapper.find('input').element.value).toBe('');
     expect(wrapper.vm.$data.innerOpenValue).toBe(openValue);
-    wrapper.setProps({openValue: changedOpenValue});
+    wrapper.setProps({ openValue: changedOpenValue });
     await waitTime();
     expect(wrapper.vm.$data.innerOpenValue).toBe(changedOpenValue);
   });
@@ -126,12 +126,10 @@ describe('timepicker', () => {
     expect(portal.find('.ux-time-picker-panel-input').element.value).toBe('');
 
 
-    wrapper.setProps({format: 'HH:MM:SS A'});
+    wrapper.setProps({ format: 'HH:MM:SS A' });
     await waitTime();
     portal.find('.ux-time-picker-panel-input').setValue('01:01:01 AM');
     await waitTime(10);
     expect(portal.find('.ux-time-picker-panel-input-wrap').classes('ux-time-picker-panel-input-wrap-invalid')).toBe(true);
-    
   });
-
 });

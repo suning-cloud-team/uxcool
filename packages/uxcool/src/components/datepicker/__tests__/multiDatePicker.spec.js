@@ -1,6 +1,6 @@
 import {
   mountPickerFactory, triggerEvent, getPortal, waitTime, mount
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import dayjs from 'dayjs';
 import MultiDatePicker from '../multiDatePicker';
 import localeCN from '../locale/zh_CN';

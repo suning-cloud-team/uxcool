@@ -37,7 +37,7 @@
 
 <script>
   // import { addMonths } from 'date-fns';
-  import Trigger from '@suning/v-trigger';
+  import Trigger from '@cloud-sn/v-trigger';
   import { formatDate, isValidArray } from '../utils';
   import RangeCalendar from '../rangeCalendar.vue';
   import localeEN from '../locale/en_US';

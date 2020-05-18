@@ -11,7 +11,7 @@
   </div>
 </template>
 <script >
-  import { Card } from '@suning/uxcool';
+  import { Card } from '@cloud-sn/uxcool';
 
   export default {
     components: {

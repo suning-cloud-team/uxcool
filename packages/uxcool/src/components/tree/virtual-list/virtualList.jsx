@@ -8,7 +8,7 @@
  *  3) 修改了获取变化的元素高度的逻辑，将默认值由0改为预设置的大小size,增加了通过data-auto-height来获取高度的方法
  *  4)增加了几个公共方法，比如清除偏移缓存、更新某个序号的缓存
  */
-import { debounce as debounceFn } from '@suning/v-utils';
+import { debounce as debounceFn } from '@cloud-sn/v-utils';
 
 export default {
   name: 'VirtualList',
@@ -290,18 +290,18 @@ export default {
       // and if overs is going to reach last item, we should render next zone immediately.
       const shouldRenderNextZone = Math.abs(overs - delta.start - bench) === 1;
       if (
-        !shouldRenderNextZone &&
-        (overs - delta.start <= bench) &&
-        !zone.isLast && (overs > delta.start)
+        !shouldRenderNextZone
+        && (overs - delta.start <= bench)
+        && !zone.isLast && (overs > delta.start)
       ) {
         return;
       }
 
       // we'd better make sure forceRender calls as less as possible.
       if (
-        shouldRenderNextZone ||
-        zone.start !== delta.start ||
-        zone.end !== delta.end
+        shouldRenderNextZone
+        || zone.start !== delta.start
+        || zone.end !== delta.end
       ) {
         delta.end = zone.end;
         delta.start = zone.start;
@@ -364,7 +364,7 @@ export default {
 
         if (middleOffset === offset) {
           return middle;
-        } else if (middleOffset < offset) {
+        } if (middleOffset < offset) {
           low = middle + 1;
         } else if (middleOffset > offset) {
           high = middle - 1;
@@ -529,7 +529,7 @@ export default {
     updateAfterCache(index) {
       const { delta } = this;
       delta.varLastCalcIndex = index;
-      Object.keys(delta.varCache).forEach( (key) => {
+      Object.keys(delta.varCache).forEach((key) => {
         if (key - 0 > index) {
           delta.varCache[key] = null;
         }

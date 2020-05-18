@@ -73,7 +73,7 @@ export default {
 
       if (!rootClearDisabled) {
         // only multiple
-        if (rootIsMultiple && selections.every(node => isDisabledNode(node, rootTreeCheckable))) {
+        if (rootIsMultiple && selections.every((node) => isDisabledNode(node, rootTreeCheckable))) {
           return null;
         }
       } else if (selections.length === 0) {

@@ -15,7 +15,7 @@
 
 
 <script>
-  import { VStep } from '@suning/v-steps';
+  import { VStep } from '@cloud-sn/v-steps';
   import { buildComponentName } from '../utils';
 
   export default {

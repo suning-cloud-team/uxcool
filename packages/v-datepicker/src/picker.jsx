@@ -1,4 +1,4 @@
-import Trigger from '@suning/v-trigger';
+import Trigger from '@cloud-sn/v-trigger';
 import placements from './picker/placements';
 
 export default {

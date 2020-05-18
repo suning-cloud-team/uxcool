@@ -7,8 +7,8 @@
 </template>
 
 <script>
-  import { Datepicker } from '@suning/uxcool';
-  import localeEN from '@suning/uxcool/es/datepicker/locale/en_US';
+  import { Datepicker } from '@cloud-sn/uxcool';
+  import localeEN from '@cloud-sn/uxcool/es/datepicker/locale/en_US';
 
   export default {
     components: {

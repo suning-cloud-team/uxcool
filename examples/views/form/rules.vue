@@ -30,7 +30,7 @@
 
 
 <script>
-  import { Form, Input, Grid, Button, Icon, Checkbox, Tooltip, Select } from '@suning/uxcool';
+  import { Form, Input, Grid, Button, Icon, Checkbox, Tooltip, Select } from '@cloud-sn/uxcool';
 
   export default {
     components: {

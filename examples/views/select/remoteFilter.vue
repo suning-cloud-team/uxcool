@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import { Select } from '@suning/uxcool';
+  import { Select } from '@cloud-sn/uxcool';
 
   function mockData(cnt) {
     return Array(cnt)

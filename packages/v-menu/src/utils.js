@@ -1,4 +1,4 @@
-import { isSameTypeVNode, getVNodeText } from '@suning/v-utils';
+import { isSameTypeVNode, getVNodeText } from '@cloud-sn/v-utils';
 
 let uidSeed = 0;
 

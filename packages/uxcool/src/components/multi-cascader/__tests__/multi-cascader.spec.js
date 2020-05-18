@@ -1,4 +1,4 @@
-import { mount, waitTime, getPortal } from '@suning/v-test-utils';
+import { mount, waitTime, getPortal } from '@cloud-sn/v-test-utils';
 import MultiCascader from '../index';
 
 const dataSource = [

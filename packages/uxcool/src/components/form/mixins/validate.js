@@ -88,7 +88,7 @@ export default {
       const { $validator, getFieldsValue } = this;
       const validate = $validator.validate.bind($validator);
       const result = fieldName ? validate(fieldName) : validate();
-      return result.then(valid => ({ valid, values: getFieldsValue() }));
+      return result.then((valid) => ({ valid, values: getFieldsValue() }));
     },
   },
 };

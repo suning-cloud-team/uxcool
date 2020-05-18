@@ -1,5 +1,5 @@
 {
-  "name": "@suning/v-tooltip",
+  "name": "@cloud-sn/v-tooltip",
   "version": "1.0.49",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -18,10 +18,10 @@
     "start": "npm run server"
   },
   "dependencies": {
-    "@suning/v-trigger": "^1.0.64"
+    "@cloud-sn/v-trigger": "^1.0.64"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35",
+    "@cloud-sn/v-tools": "^1.0.35",
     "debug": "^3.1.0"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@suning/v-style",
+  "name": "@cloud-sn/v-style",
   "version": "1.0.21",
   "description": "基础样式库,包括fonts, theme等",
   "main": "assets/index.scss",
@@ -11,7 +11,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.35"
   },
   "files": [
     "assets"

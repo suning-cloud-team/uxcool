@@ -79,14 +79,16 @@
   // import 'echarts';
 
   import UxChart from '@suning/uxcool/src/extra/chart/Chart.vue';
-  import UxButton from '@suning/uxcool/src/components/button/index';
-  import UxMessage from '@suning/uxcool/src/components/message/index';
+  import UxButton from '@cloud-sn/uxcool/src/components/button/index';
+  import UxMessage from '@cloud-sn/uxcool/src/components/message/index';
 
-  import '@suning/uxcool/src/components/button/style/index.scss';
-  import '@suning/uxcool/src/components/message/style/index.scss';
+  import '@cloud-sn/uxcool/src/components/button/style/index.scss';
+  import '@cloud-sn/uxcool/src/components/message/style/index.scss';
   import '@suning/uxcool/src/extra/chart/style/index.scss';
 
-  import { getPieOption, getBarOption, getLineOption, getAreaOption, getMapOption } from './data';
+  import {
+    getPieOption, getBarOption, getLineOption, getAreaOption, getMapOption
+  } from './data';
   import chinaGeo from './chinaGeo';
 
   import theme from './theme.json';

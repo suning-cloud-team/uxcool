@@ -8,7 +8,7 @@ import {
   setValueByPath,
   getValueByPath,
   isDef,
-} from '@suning/v-utils';
+} from '@cloud-sn/v-utils';
 
 import { Validator } from 'vee-validate';
 
@@ -73,7 +73,7 @@ export function find(arrayLike, predicate) {
 
 export function getModel(vnode) {
   return vnode.data
-    ? vnode.data.model || find(vnode.data.directives, d => d.name === 'model')
+    ? vnode.data.model || find(vnode.data.directives, (d) => d.name === 'model')
     : null;
 }
 
@@ -156,7 +156,7 @@ export function resolveSetter(name, el, vnode) {
     }
 
     if (model.expression && hasPath(vnode.context, model.expression)) {
-      return val => setValueByPath(vnode.context, model.expression, val);
+      return (val) => setValueByPath(vnode.context, model.expression, val);
     }
   }
 
@@ -164,7 +164,7 @@ export function resolveSetter(name, el, vnode) {
   const eventName = options.model.event || 'input';
   const listener = options.listeners[eventName];
   if (listener) {
-    return val => vnode.componentInstance.$emit(eventName, val);
+    return (val) => vnode.componentInstance.$emit(eventName, val);
   }
 
   return () => {
@@ -199,25 +199,24 @@ export function resolveGetter(el, vnode, model, valuePath) {
       return () => {
         let els = document.querySelectorAll(`input[name="${el.name}"]`);
 
-        els = toArray(els).filter(v => v.checked);
+        els = toArray(els).filter((v) => v.checked);
         if (!els.length) return undefined;
 
-        return els.map(checkbox => checkbox.value);
+        return els.map((checkbox) => checkbox.value);
       };
     case 'radio':
       return () => {
         const els = document.querySelectorAll(`input[name="${el.name}"]`);
-        const elm = find(els, v => v.checked);
+        const elm = find(els, (v) => v.checked);
 
         return elm && elm.value;
       };
     case 'file':
       return () => toArray(el.files);
     case 'select-multiple':
-      return () =>
-        toArray(el.options)
-          .filter(opt => opt.selected)
-          .map(opt => opt.value);
+      return () => toArray(el.options)
+        .filter((opt) => opt.selected)
+        .map((opt) => opt.value);
     default:
       return () => el && el.value;
   }

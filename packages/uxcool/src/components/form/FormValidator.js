@@ -1,5 +1,5 @@
 import { Validator } from 'vee-validate';
-import { isFunction } from '@suning/v-utils';
+import { isFunction } from '@cloud-sn/v-utils';
 
 export default class FormValidator extends Validator {
   constructor(...args) {
@@ -12,9 +12,11 @@ export default class FormValidator extends Validator {
   get locale() {
     return this.formLocale || this.dictionary.locale;
   }
+
   set locale(value) {
     this.formLocale = value;
   }
+
   getMessage(fieldName, ruleName, data) {
     const { validateMessages } = this;
     let message = null;
@@ -28,6 +30,7 @@ export default class FormValidator extends Validator {
 
     return isFunction(message) ? message(...data) : message;
   }
+
   _formatErrorMessage(field, rule, data = {}, targetName = null) {
     let formatName = targetName;
     /* eslint-disable no-underscore-dangle */

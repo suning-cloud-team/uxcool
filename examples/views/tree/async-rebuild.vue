@@ -13,7 +13,7 @@
 
 
 <script>
-  import { Tree, Input } from '@suning/uxcool';
+  import { Tree, Input } from '@cloud-sn/uxcool';
 
   export default {
     components: {

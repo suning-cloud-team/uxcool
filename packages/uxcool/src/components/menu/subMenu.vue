@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { VSubMenu } from '@suning/v-menu';
+  import { VSubMenu } from '@cloud-sn/v-menu';
   import { buildComponentName } from '../utils';
 
   export default {

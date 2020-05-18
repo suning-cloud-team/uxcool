@@ -1,7 +1,7 @@
 import omit from 'object.omit';
 import { format as formatDate } from 'date-fns';
-import VDatePicker from '@suning/v-datepicker';
-import { isEqual } from '@suning/v-utils';
+import VDatePicker from '@cloud-sn/v-datepicker';
+import { isEqual } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import localeCN from './locale/zh_CN';
 import Icon from '../icon';

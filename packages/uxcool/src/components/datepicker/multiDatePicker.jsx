@@ -1,7 +1,7 @@
 import omit from 'object.omit';
 import { isDate, format as formatDate } from 'date-fns';
-import { isEqual, isArray } from '@suning/v-utils';
-import { VMultiCalendar, VPicker } from '@suning/v-datepicker';
+import { isEqual, isArray } from '@cloud-sn/v-utils';
+import { VMultiCalendar, VPicker } from '@cloud-sn/v-datepicker';
 import { buildComponentName } from '../utils';
 import localeCN from './locale/zh_CN';
 import Icon from '../icon';

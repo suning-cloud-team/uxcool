@@ -1,11 +1,11 @@
 import Vue from 'vue';
 
-import '@suning/v-datepicker/css/index.scss';
-import '@suning/v-timepicker/assets/index.css';
-import VDatePicker from '@suning/v-datepicker';
+import '@cloud-sn/v-datepicker/css/index.scss';
+import '@cloud-sn/v-timepicker/assets/index.css';
+import VDatePicker from '@cloud-sn/v-datepicker';
 import { isBefore } from 'date-fns';
-import localeEN from '@suning/v-datepicker/es/locale/en_US';
-import localeCN from '@suning/v-datepicker/es/locale/zh_CN';
+import localeEN from '@cloud-sn/v-datepicker/es/locale/en_US';
+import localeCN from '@cloud-sn/v-datepicker/es/locale/zh_CN';
 import DateFnsLocaleEN from 'date-fns/locale/en';
 import DateFnsLocaleCN from 'date-fns/locale/zh_cn';
 

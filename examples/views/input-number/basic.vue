@@ -56,7 +56,7 @@
 
 
 <script>
-  import { InputNumber } from '@suning/uxcool';
+  import { InputNumber } from '@cloud-sn/uxcool';
   import DisabledDemo from './disabled.vue';
   import EventDemo from './event.vue';
   import FocusDemo from './focus.vue';

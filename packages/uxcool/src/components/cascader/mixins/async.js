@@ -1,4 +1,4 @@
-import { isArray, isFunction } from '@suning/v-utils';
+import { isArray, isFunction } from '@cloud-sn/v-utils';
 import { DEFAULT_FIELD_NAMES } from '../utils';
 
 const { children: DefaultChildren } = DEFAULT_FIELD_NAMES;

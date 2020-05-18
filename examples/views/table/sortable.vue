@@ -15,8 +15,8 @@
 
 <script>
   import { mapState } from 'vuex';
-  import '@suning/uxcool/src/components/table/style/index.scss';
-  import UxTable from '@suning/uxcool/src/components/table';
+  import '@cloud-sn/uxcool/src/components/table/style/index.scss';
+  import UxTable from '@cloud-sn/uxcool/src/components/table';
   import { getData } from './data';
 
   export default {

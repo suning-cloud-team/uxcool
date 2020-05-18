@@ -1,6 +1,6 @@
 import {
   mount, waitTime, triggerEvent
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import { UxCollapse, UxCollapsePanel } from '../index';
 
 /* keycode 类型

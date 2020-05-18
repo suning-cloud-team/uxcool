@@ -13,7 +13,7 @@
 
 
 <script>
-  import { Button, Message } from '@suning/uxcool';
+  import { Button, Message } from '@cloud-sn/uxcool';
 
   export default {
     components: {

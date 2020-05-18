@@ -21,7 +21,7 @@
 
 
 <script>
-  import { Datepicker, Radio } from '@suning/uxcool';
+  import { Datepicker, Radio } from '@cloud-sn/uxcool';
 
   export default {
     components: {

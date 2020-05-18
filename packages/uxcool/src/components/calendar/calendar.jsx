@@ -8,8 +8,8 @@ import {
   startOfDay,
   startOfMonth,
 } from 'date-fns';
-import { isFunction, isArray } from '@suning/v-utils';
-import { VFullCaleadar as FullCalendar } from '@suning/v-datepicker';
+import { isFunction, isArray } from '@cloud-sn/v-utils';
+import { VFullCaleadar as FullCalendar } from '@cloud-sn/v-datepicker';
 import { buildComponentName } from '../utils';
 import Header from './header';
 import CN from '../datepicker/locale/zh_CN';
@@ -88,7 +88,7 @@ export default {
     range() {
       const { validRange } = this;
       const isInValid = !isArray(validRange) || validRange.length < 2;
-      if (isInValid || !validRange.every(v => isDate(v) && isValid(v))) {
+      if (isInValid || !validRange.every((v) => isDate(v) && isValid(v))) {
         return null;
       }
       const [start, end] = validRange;
@@ -99,10 +99,9 @@ export default {
       let ret = disabledDate;
       if (range) {
         const [start, end] = range;
-        const [startDate, endDate] =
-          type === 'month'
-            ? [startOfMonth(start), startOfMonth(end)]
-            : [startOfDay(start), startOfDay(end)];
+        const [startDate, endDate] = type === 'month'
+          ? [startOfMonth(start), startOfMonth(end)]
+          : [startOfDay(start), startOfDay(end)];
 
         ret = (current) => {
           if (!current) {

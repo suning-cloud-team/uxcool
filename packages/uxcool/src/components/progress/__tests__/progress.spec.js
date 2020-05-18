@@ -1,4 +1,4 @@
-import { mountPickerFactory, waitTime, getVueCreateElement } from '@suning/v-test-utils';
+import { mountPickerFactory, waitTime, getVueCreateElement } from '@cloud-sn/v-test-utils';
 import Progress from '..';
 
 const mountProgress = mountPickerFactory(Progress);

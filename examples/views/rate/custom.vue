@@ -27,7 +27,7 @@
 
 
 <script>
-  import { Rate, Icon } from '@suning/uxcool';
+  import { Rate, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {

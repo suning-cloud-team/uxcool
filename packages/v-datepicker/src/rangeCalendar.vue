@@ -5,8 +5,7 @@
          :title="locale.clear"
          :class="`${prefixCls}-clear-btn`"
          role="button"
-         @click="clear"
-      />
+         @click="clear" />
       <div :class="`${prefixCls}-date-panel`">
         <calendar-part :prefix-cls="prefixCls"
                        :value="startValue"
@@ -27,13 +26,11 @@
                        @on-value-change="onValueChange('left', $event)"
                        @on-panel-change="onStartPanelChange"
                        @on-day-hover="onDayHover"
-                       @on-select="onSelect"
-        >
+                       @on-select="onSelect">
           <time-picker-panel v-if="hasTimePicker"
                              slot="timePicker"
                              v-bind="timeStartPickerProps"
-                             @on-change="onTimePickerChange('left',$event)"
-          />
+                             @on-change="onTimePickerChange('left',$event)" />
         </calendar-part>
         <span :class="`${prefixCls}-range-middle`">~</span>
         <calendar-part :prefix-cls="prefixCls"
@@ -55,25 +52,21 @@
                        @on-value-change="onValueChange('right', $event)"
                        @on-panel-change="onEndPanelChange"
                        @on-day-hover="onDayHover"
-                       @on-select="onSelect"
-        >
+                       @on-select="onSelect">
           <time-picker-panel v-if="hasTimePicker"
                              slot="timePicker"
                              v-bind="timeEndPickerProps"
-                             @on-change="onTimePickerChange('right',$event)"
-          />
+                             @on-change="onTimePickerChange('right',$event)" />
         </calendar-part>
         <div v-if="isRanges"
-             :class="`${prefixCls}-range-quick-selector`"
-        >
+             :class="`${prefixCls}-range-quick-selector`">
           <template v-if="rangesIsArr">
             <div v-for="(v,k) in ranges"
                  :key="k"
                  :class="`${prefixCls}-range-quick-selector-item`"
                  @mouseenter="onRangeMouseEnter(v.dates)"
                  @mouseleave="onRangeMouseLeave"
-                 @click.stop="onRangeClick(v.dates, v)"
-            >
+                 @click.stop="onRangeClick(v.dates, v)">
               <a role="button">{{ v.label }}</a>
             </div>
           </template>
@@ -83,8 +76,7 @@
                  :class="`${prefixCls}-range-quick-selector-item`"
                  @mouseenter="onRangeMouseEnter(v)"
                  @mouseleave="onRangeMouseLeave"
-                 @click.stop="onRangeClick(v)"
-            >
+                 @click.stop="onRangeClick(v)">
               <a role="button">{{ k }}</a>
             </div>
           </template>
@@ -92,8 +84,7 @@
       </div>
       <div :class="footerClasses">
         <div v-if="showToday || isShowOk"
-             :class="`${prefixCls}-footer-btn`"
-        >
+             :class="`${prefixCls}-footer-btn`">
           <today-button v-if="showToday"
                         :prefix-cls="prefixCls"
                         :locale="locale"
@@ -103,21 +94,18 @@
                         :has-time-picker="hasTimePicker"
                         :is-show-ok="isShowOk"
                         :format="format"
-                        @on-click="onTodayClick"
-          />
+                        @on-click="onTodayClick" />
           <time-picker-button v-if="hasTimePicker"
                               :prefix-cls="prefixCls"
                               :locale="locale"
                               :disabled="isTimePickerDisabled"
                               :is-time-picker="isTimePicker"
-                              @on-click="onTimePickerClick"
-          />
+                              @on-click="onTimePickerClick" />
           <ok-button v-if="isShowOk"
                      :prefix-cls="prefixCls"
                      :locale="locale"
                      :disabled="isOkDisabled"
-                     @on-click="onOkClick"
-          />
+                     @on-click="onOkClick" />
         </div>
       </div>
     </div>
@@ -125,7 +113,7 @@
 </template>
 
 <script>
-  import { cloneDeep, isPlainObject } from '@suning/v-utils';
+  import { cloneDeep, isPlainObject } from '@cloud-sn/v-utils';
   import {
     addMonths,
     isSameMonth,
@@ -139,7 +127,7 @@
     getMinutes,
     getSeconds,
   } from 'date-fns';
-  import { VTimePickerPanel } from '@suning/v-timepicker';
+  import { VTimePickerPanel } from '@cloud-sn/v-timepicker';
   import {
     noop, isValidArray, formatDate, isAllowedDate, getTimeConfig, syncTime
   } from './utils';

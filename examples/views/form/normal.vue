@@ -97,7 +97,7 @@
 <script>
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import { Form, Input, Datepicker, Modal, Button, Checkbox, Radio } from '@suning/uxcool';
+  import { Form, Input, Datepicker, Modal, Button, Checkbox, Radio } from '@cloud-sn/uxcool';
 
   Vue.use(VeeValidate);
   export default {

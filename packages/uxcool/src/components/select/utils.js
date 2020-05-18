@@ -7,7 +7,7 @@ import {
   warning,
   extractVNodeData,
   isVueComponent,
-} from '@suning/v-utils';
+} from '@cloud-sn/v-utils';
 
 export function isValidValue(value) {
   return isDef(value) && value !== '';
@@ -62,7 +62,7 @@ export function isOptionGroup(option) {
 }
 
 export function cloneLabelNodes(vnodes) {
-  return isArray(vnodes) ? vnodes.map(node => cloneVNode(node)) : cloneVNode(vnodes);
+  return isArray(vnodes) ? vnodes.map((node) => cloneVNode(node)) : cloneVNode(vnodes);
 }
 
 export function normalizeContent(maxLen, content) {
@@ -155,7 +155,7 @@ export function getOptionLabelMap(optionMap = {}) {
 
 export function splitValueBySeparator(value = '', tokens = []) {
   const splitReg = new RegExp(`[${tokens.join('')}]`);
-  return value.split(splitReg).filter(v => !!v);
+  return value.split(splitReg).filter((v) => !!v);
 }
 
 export function getComboboxValue(value = '', optionMap = {}, optionLabelProp = 'value') {

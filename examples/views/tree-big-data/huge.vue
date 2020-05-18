@@ -41,7 +41,7 @@
 
 
 <script>
-  import { Tree, Form, InputNumber, Button, Input } from '@suning/uxcool';
+  import { Tree, Form, InputNumber, Button, Input } from '@cloud-sn/uxcool';
 
   function generateData(x = 3, y = 2, z = 1) {
     // x：每一级下的父节点总数。y：每级节点里有y个叶子节点、存在子节点。z：树的level层级数（0表示一级）

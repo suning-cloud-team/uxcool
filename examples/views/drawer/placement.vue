@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import { Drawer, Button, Radio } from '@suning/uxcool';
+  import { Drawer, Button, Radio } from '@cloud-sn/uxcool';
 
   export default {
     components: {

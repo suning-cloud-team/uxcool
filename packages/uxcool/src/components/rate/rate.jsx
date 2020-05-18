@@ -1,4 +1,4 @@
-import { isNumber, isDef } from '@suning/v-utils';
+import { isNumber, isDef } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import Icon from '../icon';
 import Star from './star';
@@ -150,8 +150,7 @@ export default {
         onClick,
       } = this;
 
-      const characterFn =
-        $scopedSlots.character || (character && (() => character)) || (() => <Icon type="star" />);
+      const characterFn = $scopedSlots.character || (character && (() => character)) || (() => <Icon type="star" />);
 
       const stars = [];
 

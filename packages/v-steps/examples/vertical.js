@@ -1,9 +1,9 @@
 import Vue from 'vue';
 
-import '@suning/v-steps/css/index.scss';
-import '@suning/v-steps/css/iconfont.scss';
+import '@cloud-sn/v-steps/css/index.scss';
+import '@cloud-sn/v-steps/css/iconfont.scss';
 
-import { VSteps, VStep } from '@suning/v-steps';
+import { VSteps, VStep } from '@cloud-sn/v-steps';
 
 function mock(label, cnt = 10) {
   return Array(cnt)

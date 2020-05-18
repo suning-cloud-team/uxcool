@@ -4,7 +4,7 @@ import {
   getVueCreateElement,
   triggerEvent,
   getPortal,
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import VPagination from '../index';
 // import Select from '../../../uxcool/src/select/index';
 
@@ -168,8 +168,8 @@ it('watch props correctly', async () => {
   expect(wrapper.find('.ux-pagination-jump-prev').exists()).toBeFalsy();
 });
 
-// import { isFunction } from '@suning/v-utils';
-// import { mount, waitTime, destroyWrapper } from '@suning/v-test-utils';
+// import { isFunction } from '@cloud-sn/v-utils';
+// import { mount, waitTime, destroyWrapper } from '@cloud-sn/v-test-utils';
 
 // import { VPagination } from '../index';
 

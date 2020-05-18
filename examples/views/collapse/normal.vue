@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import { Collapse } from '@suning/uxcool';
+  import { Collapse } from '@cloud-sn/uxcool';
 
   export default {
     components: {

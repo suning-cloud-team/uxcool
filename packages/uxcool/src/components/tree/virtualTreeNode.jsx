@@ -1,4 +1,4 @@
-import { CollapseTransition } from '@suning/v-utils';
+import { CollapseTransition } from '@cloud-sn/v-utils';
 import InnerNode from './innerNode';
 
 export default {

@@ -186,7 +186,7 @@
 </template>
 
 <script>
-  import { UxRadio } from '@suning/uxcool';
+  import { UxRadio } from '@cloud-sn/uxcool';
 
   export default {
     components: {

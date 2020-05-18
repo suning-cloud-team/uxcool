@@ -1,4 +1,4 @@
-import { mount, waitTime, createWrapper } from '@suning/v-test-utils';
+import { mount, waitTime, createWrapper } from '@cloud-sn/v-test-utils';
 import dayjs from 'dayjs';
 import {
   selectDate, getPortal, triggerEvent, mountPickerFactory

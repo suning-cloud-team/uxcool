@@ -23,7 +23,7 @@
 
 
 <script>
-  import { List, Avatar } from '@suning/uxcool';
+  import { List, Avatar } from '@cloud-sn/uxcool';
 
   function mockData(cnt = 10, start = 0) {
     return Array(cnt)

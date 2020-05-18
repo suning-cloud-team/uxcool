@@ -1,4 +1,4 @@
-import { addEventListener, warning } from '@suning/v-utils';
+import { addEventListener, warning } from '@cloud-sn/v-utils';
 import {
   preventEvent,
   isTargetEvent,

@@ -1,15 +1,15 @@
 {
-  "name": "@suning/v-table",
+  "name": "@cloud-sn/v-table",
   "version": "1.0.48",
   "description": "table基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.35"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.33",
+    "@cloud-sn/v-utils": "^1.0.33",
     "lodash": "^4.17.4"
   },
   "publishConfig": {

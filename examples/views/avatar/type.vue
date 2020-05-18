@@ -15,7 +15,7 @@
 
 
 <script>
-  import { Avatar } from '@suning/uxcool';
+  import { Avatar } from '@cloud-sn/uxcool';
 
   export default {
     components: {
@@ -24,7 +24,7 @@
     data() {
       return {
         imgSrc:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmavfO0SftVjdMIyXTZH1o2I4w-FP5ETIQlKMA8hG7Z_f2UYQugw',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmavfO0SftVjdMIyXTZH1o2I4w-FP5ETIQlKMA8hG7Z_f2UYQugw',
       };
     },
   };

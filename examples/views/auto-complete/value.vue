@@ -13,7 +13,7 @@
 
 
 <script>
-  import { AutoComplete } from '@suning/uxcool';
+  import { AutoComplete } from '@cloud-sn/uxcool';
 
   export default {
     components: {
@@ -33,7 +33,7 @@
     methods: {
       onSearch(searchValue) {
         this.dataSource = searchValue
-          ? [1, 2, 3].map(v => ({
+          ? [1, 2, 3].map((v) => ({
             value: `${searchValue}`.repeat(v),
             label: `${searchValue.repeat(v)}-label`,
           }))

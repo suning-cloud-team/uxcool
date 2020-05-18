@@ -13,7 +13,7 @@
   </div>
 </template>
 <script >
-  import { Card, Avatar } from '@suning/uxcool';
+  import { Card, Avatar } from '@cloud-sn/uxcool';
 
   export default {
     components: {

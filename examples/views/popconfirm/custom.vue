@@ -17,7 +17,7 @@
 
 
 <script>
-  import { Popconfirm, Switch } from '@suning/uxcool';
+  import { Popconfirm, Switch } from '@cloud-sn/uxcool';
 
   export default {
     components: {

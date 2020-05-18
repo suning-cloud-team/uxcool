@@ -3,12 +3,12 @@
     <h4>hover trigger</h4>
     <ux-cascader :data-source="data"
                  expand-trigger="hover"
-                 change-on-select/>
+                 change-on-select />
   </div>
 </template>
 
 <script>
-  import { Cascader } from '@suning/uxcool';
+  import { Cascader } from '@cloud-sn/uxcool';
 
   export default {
     components: {

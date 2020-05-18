@@ -1,4 +1,4 @@
-import { mount, triggerEvent, waitTime } from '@suning/v-test-utils';
+import { mount, triggerEvent, waitTime } from '@cloud-sn/v-test-utils';
 import { UxTag } from '..';
 
 describe.skip('UxTag', () => {
@@ -34,12 +34,12 @@ describe.skip('UxTag', () => {
 
 describe('tag', () => {
   it('render tag correctly', async () => {
-      const wrapper = mount(UxTag);
-      expect(wrapper.classes()).toContain('ux-tag-light');
-      wrapper.setProps({color:'red', closable: true});
-      await waitTime();
-      expect(wrapper.classes()).toContain('ux-tag-red');
-      expect(wrapper.find('.fu-close').exists()).toBeTruthy();
+    const wrapper = mount(UxTag);
+    expect(wrapper.classes()).toContain('ux-tag-light');
+    wrapper.setProps({ color: 'red', closable: true });
+    await waitTime();
+    expect(wrapper.classes()).toContain('ux-tag-red');
+    expect(wrapper.find('.fu-close').exists()).toBeTruthy();
   });
 
   it('close event correctly', async () => {
@@ -88,7 +88,7 @@ describe('tag', () => {
         },
         onChange(checked, tag) {
           const { checkedTags } = this;
-          this.checkedTags = checked ? [...checkedTags, tag] : checkedTags.filter(v => v !== tag);
+          this.checkedTags = checked ? [...checkedTags, tag] : checkedTags.filter((v) => v !== tag);
         },
       },
     });
@@ -97,5 +97,4 @@ describe('tag', () => {
     await triggerEvent(wrapper.find('.ux-tag-checkable-checked'), 'click');
     expect(wrapper.find('.ux-tag-checkable-checked').exists()).toBe(false);
   });
-
 });

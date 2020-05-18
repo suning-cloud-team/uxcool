@@ -1,4 +1,4 @@
-import { isNumber } from '@suning/v-utils';
+import { isNumber } from '@cloud-sn/v-utils';
 import { isValueOutOfRange, isMarkActive } from './utils';
 import SubMixin from './mixins/sub';
 

@@ -10,7 +10,7 @@ import {
   isWithinRange,
   isDate,
 } from 'date-fns';
-import { isFunction, isArray } from '@suning/v-utils';
+import { isFunction, isArray } from '@cloud-sn/v-utils';
 import { DATE_STYLE } from '../constant';
 import { formatDate } from '../utils';
 import getWeek from '../week-utils';

@@ -18,9 +18,11 @@
   </div>
 </template>
 <script >
-  import { subYears, addYears, setMonth, format as formatFn } from 'date-fns';
-  import { Calendar } from '@suning/uxcool';
-  import CN from '@suning/uxcool/es/datepicker/locale/zh_CN';
+  import {
+    subYears, addYears, setMonth, format as formatFn
+  } from 'date-fns';
+  import { Calendar } from '@cloud-sn/uxcool';
+  import CN from '@cloud-sn/uxcool/es/datepicker/locale/zh_CN';
 
   const validRange2 = [subYears(new Date(), 1), setMonth(new Date(), 2)];
   export default {

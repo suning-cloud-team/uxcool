@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-  import { Timeline, Icon, Popconfirm } from '@suning/uxcool';
+  import { Timeline, Icon, Popconfirm } from '@cloud-sn/uxcool';
 
   console.log(Object.keys(Popconfirm.props).map(k => ({ name: k, type: Popconfirm.props[k].type })));
 

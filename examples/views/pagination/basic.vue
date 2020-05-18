@@ -82,7 +82,7 @@
 
 
 <script>
-  import { Pagination } from '@suning/uxcool';
+  import { Pagination } from '@cloud-sn/uxcool';
   import Stream from './stream.vue';
   import TabDemo from './tab.vue';
 

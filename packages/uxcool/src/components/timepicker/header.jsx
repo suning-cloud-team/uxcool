@@ -1,5 +1,7 @@
-import { format as formatFn, isEqual as isDateEqual, getYear, getMonth, getDate } from 'date-fns';
-import { leftPad } from '@suning/v-utils';
+import {
+  format as formatFn, isEqual as isDateEqual, getYear, getMonth, getDate
+} from 'date-fns';
+import { leftPad } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import { updatePortalElement, parseDate } from './utils';
 import SubMixin from './mixins/sub';
@@ -129,10 +131,9 @@ export default {
       const minuteList = getMinuteList(hour, minute, true);
       const secondList = getSecondList(hour, minute, second, true);
 
-      const isValid =
-        hourList.some(v => v.value === leftPad(hour)) &&
-        minuteList.some(v => v.value === leftPad(minute)) &&
-        secondList.some(v => v.value === leftPad(second));
+      const isValid = hourList.some((v) => v.value === leftPad(hour))
+        && minuteList.some((v) => v.value === leftPad(minute))
+        && secondList.some((v) => v.value === leftPad(second));
       if (!isValid) {
         this.inputValue = value;
         this.invalid = true;

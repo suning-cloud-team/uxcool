@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import { Upload, Icon, Message } from '@suning/uxcool';
+  import { Upload, Icon, Message } from '@cloud-sn/uxcool';
 
   function previewIMG(file, cb) {
     const reader = new FileReader();

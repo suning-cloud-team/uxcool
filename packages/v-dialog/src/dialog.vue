@@ -56,7 +56,7 @@
 
 
 <script>
-  import { addClass, removeClass, getScrollBarWidth } from '@suning/v-utils';
+  import { addClass, removeClass, getScrollBarWidth } from '@cloud-sn/v-utils';
   import Mixin from './mixin';
 
   const $doc = document.body;

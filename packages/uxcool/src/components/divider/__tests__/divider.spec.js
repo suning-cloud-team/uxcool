@@ -1,6 +1,6 @@
 // 因为divider是一个纯样式组件，只会改变class去匹配外部样式文件中样式，而jest无法检测外部样式，所以只能判断class是否正确
 
-import { mountPickerFactory, waitTime } from '@suning/v-test-utils';
+import { mountPickerFactory, waitTime } from '@cloud-sn/v-test-utils';
 import Divider from '../index';
 
 const mountDivider = mountPickerFactory(Divider);

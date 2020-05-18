@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 // eslint-disable-next-line
-import UxModal from '@suning/uxcool/src/components/modal';
+import UxModal from '@cloud-sn/uxcool/src/components/modal';
 
 Vue.use(Router);
 const routes = [

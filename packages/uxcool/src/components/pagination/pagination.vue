@@ -96,7 +96,7 @@
 </template>
 
 <script>
-  import { isFunction } from '@suning/v-utils';
+  import { isFunction } from '@cloud-sn/v-utils';
   import Pager from './pager.vue';
   import Options from './options.vue';
   import { buildComponentName } from '../utils';

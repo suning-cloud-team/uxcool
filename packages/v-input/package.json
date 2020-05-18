@@ -1,5 +1,5 @@
 {
-  "name": "@suning/v-input",
+  "name": "@cloud-sn/v-input",
   "version": "1.0.14",
   "description": "vue input components",
   "main": "cjs/index.js",
@@ -19,7 +19,7 @@
     "server": "v-tools run server"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.35"
   },
   "dependencies": {
     "raf": "^3.4.0"

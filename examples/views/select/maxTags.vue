@@ -39,8 +39,8 @@
 </template>
 
 <script>
-  import { Select } from '@suning/uxcool';
-  // import { SelectLegacy } from '@suning/uxcool';
+  import { Select } from '@cloud-sn/uxcool';
+  // import { SelectLegacy } from '@cloud-sn/uxcool';
 
   function mockData(cnt) {
     return Array(cnt)
@@ -48,7 +48,7 @@
       .map((_, i) => ({
         value: i,
         label: `a-${i}`,
-    }));
+      }));
   }
   export default {
     components: {

@@ -26,7 +26,7 @@
 
 
 <script>
-  import { Tree, Icon, Input } from '@suning/uxcool';
+  import { Tree, Icon, Input } from '@cloud-sn/uxcool';
   import DataMixin from './tree-data';
 
   export default {

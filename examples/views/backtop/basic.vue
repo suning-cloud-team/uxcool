@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { Backtop } from '@suning/uxcool';
+  import { Backtop } from '@cloud-sn/uxcool';
   import CustomDemo from './custom.vue';
 
   export default {

@@ -1,4 +1,4 @@
-import { updatePortalElement } from '@suning/v-utils';
+import { updatePortalElement } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import { calcMultipleSearchInputWidth } from './utils';
 import SubMixin from './mixins/sub';

@@ -213,8 +213,7 @@ export default {
       const limitWordElement = limitWord ? (
         <span class={`${prefixCls}-limit-word`}>{limitWord}</span>
       ) : null;
-      const suffixElement =
-        suffix || limitWordElement || allowClear ? (
+      const suffixElement = suffix || limitWordElement || allowClear ? (
           <span class={`${prefixCls}-suffix`}>
             {renderClearIcon()}
             {suffix}

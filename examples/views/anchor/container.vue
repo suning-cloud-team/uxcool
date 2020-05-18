@@ -24,7 +24,7 @@
 
 
 <script>
-  import { Anchor } from '@suning/uxcool';
+  import { Anchor } from '@cloud-sn/uxcool';
 
   export default {
     components: {

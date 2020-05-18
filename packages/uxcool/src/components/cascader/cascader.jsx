@@ -1,7 +1,7 @@
 import {
   isArray, isEqual, isVueComponent, cloneVNode, extractVNodeData
-} from '@suning/v-utils';
-import Trigger from '@suning/v-trigger';
+} from '@cloud-sn/v-utils';
+import Trigger from '@cloud-sn/v-trigger';
 import Input from '../input';
 import Icon from '../icon';
 import Menu from './menu';

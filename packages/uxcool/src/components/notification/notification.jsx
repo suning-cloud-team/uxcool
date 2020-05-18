@@ -1,6 +1,8 @@
 import Vue from 'vue';
-import { isVNode, isFunction, isNumber, isPlainObject } from '@suning/v-utils';
-import Notification from '@suning/v-notification';
+import {
+  isVNode, isFunction, isNumber, isPlainObject
+} from '@cloud-sn/v-utils';
+import Notification from '@cloud-sn/v-notification';
 import Icon from '../icon';
 
 const defaultProps = {

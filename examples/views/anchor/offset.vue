@@ -1,6 +1,7 @@
 <template>
   <div>
-    <ux-anchor :offsetTop="60" style="position: fixed; right: 0px; top: 20%;">
+    <ux-anchor :offsetTop="60"
+               style="position: fixed; right: 0px; top: 20%;">
       <ux-anchor-link href="#basicDemo"
                       title="basic demo" />
       <ux-anchor-link href="#secondDemo"
@@ -22,7 +23,7 @@
 
 
 <script>
-  import { Anchor } from '@suning/uxcool';
+  import { Anchor } from '@cloud-sn/uxcool';
 
   export default {
     components: {

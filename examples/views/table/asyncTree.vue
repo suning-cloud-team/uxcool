@@ -11,7 +11,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Divider, Table as UxTable } from '@suning/uxcool';
+  import { Divider, Table as UxTable } from '@cloud-sn/uxcool';
 
   function getCols() {
     return [
@@ -96,7 +96,7 @@
         name: 'Joe Black',
         age: 32,
         address: 'Sidney No. 1 Lake Park',
-        children:[]
+        children: [],
       },
     ];
   }

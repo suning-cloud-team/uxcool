@@ -1,5 +1,5 @@
 {
-  "name": "@suning/v-slider",
+  "name": "@cloud-sn/v-slider",
   "version": "1.0.34",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -18,8 +18,8 @@
     "server": "v-tools run server"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35",
-    "@suning/v-utils": "^1.0.33"
+    "@cloud-sn/v-tools": "^1.0.35",
+    "@cloud-sn/v-utils": "^1.0.33"
   },
   "dependencies": {
     "warning": "^3.0.0"

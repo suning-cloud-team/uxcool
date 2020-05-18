@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { Transfer, Switch } from '@suning/uxcool';
+  import { Transfer, Switch } from '@cloud-sn/uxcool';
 
   function mockData(cnt = 10) {
     return Array(cnt)

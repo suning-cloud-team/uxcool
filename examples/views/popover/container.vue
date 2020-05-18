@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import { Popover } from '@suning/uxcool';
+  import { Popover } from '@cloud-sn/uxcool';
 
   export default {
     components: {

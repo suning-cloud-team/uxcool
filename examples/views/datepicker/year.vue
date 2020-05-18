@@ -58,8 +58,8 @@
 
 <script>
   import { isBefore, isAfter } from 'date-fns';
-  import { Datepicker } from '@suning/uxcool';
-  import localeEN from '@suning/uxcool/src/components/datepicker/locale/en_US.js';
+  import { Datepicker } from '@cloud-sn/uxcool';
+  import localeEN from '@cloud-sn/uxcool/src/components/datepicker/locale/en_US.js';
 
   export default {
     components: {

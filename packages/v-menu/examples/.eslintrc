@@ -1,5 +1,5 @@
 {
   "settings": {
-    "import/core-modules": ["@suning/v-menu"]
+    "import/core-modules": ["@cloud-sn/v-menu"]
   }
 }

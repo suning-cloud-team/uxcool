@@ -22,7 +22,7 @@
 
 
 <script>
-  import { Tabs, Pagination } from '@suning/uxcool';
+  import { Tabs, Pagination } from '@cloud-sn/uxcool';
 
   export default {
     components: {

@@ -1,4 +1,4 @@
-import { isFunction, isEqual } from '@suning/v-utils';
+import { isFunction, isEqual } from '@cloud-sn/v-utils';
 import {
   normalizeContent, getChildNodeKeys, isDisabledNode, getNodeParentKeys
 } from '../utils';

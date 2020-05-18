@@ -1,6 +1,6 @@
 import {
   getScroll, offset, isNumber, addEventListener, debounce
-} from '@suning/v-utils';
+} from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 
 export default {

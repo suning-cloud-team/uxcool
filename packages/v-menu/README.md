@@ -25,16 +25,16 @@ http://localhost:8000/example/default.html
 ## Install
 
 ```
-npm config set @suning:registry http://snpm.cnsuning.com
+npm config set @cloud-sn:registry http://snpm.cnsuning.com
 
-yarn add @suning/v-menu
+yarn add @cloud-sn/v-menu
 ```
 
 ## Usage
 
 ```
 import Vue from 'vue';
-import VMenu, { VMenuItem, VMenuItemGroup, VSubMenu } from '@suning/v-menu';
+import VMenu, { VMenuItem, VMenuItemGroup, VSubMenu } from '@cloud-sn/v-menu';
 ```
 
 ## API

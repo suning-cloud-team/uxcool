@@ -1,4 +1,4 @@
-import { mountPickerFactory, triggerEvent, getVueCreateElement } from '@suning/v-test-utils';
+import { mountPickerFactory, triggerEvent, getVueCreateElement } from '@cloud-sn/v-test-utils';
 import { getScrollCols, getScrollData } from './utils';
 import Table from '../table';
 

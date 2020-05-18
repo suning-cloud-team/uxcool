@@ -18,8 +18,8 @@
 <script>
   import { mapState } from 'vuex';
   import Vue from 'vue';
-  import Icon from '@suning/uxcool/src/components/icon';
-  import { UxTable, Button } from '@suning/uxcool';
+  import Icon from '@cloud-sn/uxcool/src/components/icon';
+  import { UxTable, Button } from '@cloud-sn/uxcool';
   import { getData as originGetData } from './data';
 
   Vue.component('AB', {

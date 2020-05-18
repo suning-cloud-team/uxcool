@@ -11,7 +11,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Divider, Table as UxTable, Badge, Tooltip } from '@suning/uxcool';
+  import { Divider, Table as UxTable, Badge, Tooltip } from '@cloud-sn/uxcool';
 
   function getCols() {
     return [

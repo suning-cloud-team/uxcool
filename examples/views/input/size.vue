@@ -11,7 +11,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Input, Icon, Select, Tooltip } from '@suning/uxcool';
+  import { Input, Icon, Select, Tooltip } from '@cloud-sn/uxcool';
 
   export default {
     components: {

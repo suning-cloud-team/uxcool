@@ -1,4 +1,4 @@
-import { mount, triggerEvent } from '@suning/v-test-utils';
+import { mount, triggerEvent } from '@cloud-sn/v-test-utils';
 import Vue from 'vue';
 import UxSwitch from '..';
 

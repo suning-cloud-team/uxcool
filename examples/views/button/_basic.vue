@@ -33,8 +33,8 @@
 
 
 <script>
-  import '@suning/uxcool/src/components/button/style/index.scss';
-  import UxButton from '@suning/uxcool/src/components/button/index';
+  import '@cloud-sn/uxcool/src/components/button/style/index.scss';
+  import UxButton from '@cloud-sn/uxcool/src/components/button/index';
 
   export default {
     components: {
@@ -57,5 +57,4 @@
 </script>
 
 <style lang="scss">
-
 </style>

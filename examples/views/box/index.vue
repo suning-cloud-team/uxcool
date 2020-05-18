@@ -116,8 +116,8 @@
 </template>
 
 <script>
-  import { UxRow, UxCol } from '@suning/uxcool/src/components/grid';
-  import { UxBox, UxIcon } from '@suning/uxcool';
+  import { UxRow, UxCol } from '@cloud-sn/uxcool/src/components/grid';
+  import { UxBox, UxIcon } from '@cloud-sn/uxcool';
 
   export default {
     components: {

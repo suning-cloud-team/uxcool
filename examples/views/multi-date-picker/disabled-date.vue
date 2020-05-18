@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import { Datepicker, Button } from '@suning/uxcool';
+  import { Datepicker, Button } from '@cloud-sn/uxcool';
   import { isSameDay, subDays, isBefore } from 'date-fns';
 
   export default {

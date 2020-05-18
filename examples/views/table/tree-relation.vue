@@ -12,8 +12,8 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { TreeHandler } from '@suning/v-utils';
-  import { Divider, Table as UxTable, Checkbox, Button } from '@suning/uxcool';
+  import { TreeHandler } from '@cloud-sn/v-utils';
+  import { Divider, Table as UxTable, Checkbox, Button } from '@cloud-sn/uxcool';
 
   function getCols() {
     const { onCheckboxChange } = this;

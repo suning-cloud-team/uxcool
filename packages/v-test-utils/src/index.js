@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import { mount, createWrapper, createLocalVue } from '@vue/test-utils';
-import Trigger from '@suning/v-trigger';
+import Trigger from '@cloud-sn/v-trigger';
 
 export * from '@vue/test-utils';
 

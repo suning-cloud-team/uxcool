@@ -10,13 +10,12 @@
     <ux-multi-cascader ref="cascader"
                        :value="value"
                        :data-source="dataSource"
-                       style="width: 300px;"
-    />
+                       style="width: 300px;" />
   </div>
 </template>
 
 <script>
-  import { UxMultiCascader, UxButton } from '@suning/uxcool';
+  import { UxMultiCascader, UxButton } from '@cloud-sn/uxcool';
 
   export default {
     components: {

@@ -32,7 +32,7 @@
 
 
 <script>
-  import { List } from '@suning/uxcool';
+  import { List } from '@cloud-sn/uxcool';
 
   export default {
     components: {

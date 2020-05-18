@@ -27,7 +27,7 @@
 
 <script>
   import { getHours, getMinutes, getSeconds, setHours, setMinutes, setSeconds } from 'date-fns';
-  import { leftPad } from '@suning/v-utils';
+  import { leftPad } from '@cloud-sn/v-utils';
   import VSelect from './select.vue';
 
   export default {

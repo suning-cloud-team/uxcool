@@ -1,5 +1,5 @@
-import { VMenuItem } from '@suning/v-menu';
-import { isSameTypeVNode, getVNodeText } from '@suning/v-utils';
+import { VMenuItem } from '@cloud-sn/v-menu';
+import { isSameTypeVNode, getVNodeText } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import Tooltip from '../tooltip';
 
@@ -62,8 +62,8 @@ export default {
         <template slot="content">{getVNodeText(slotDefault).join(' ')}</template>
         {item}
       </Tooltip>
-      ) : (
-        item
+    ) : (
+      item
     );
   },
 };

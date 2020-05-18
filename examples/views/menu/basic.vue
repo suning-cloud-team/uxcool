@@ -153,7 +153,7 @@
 </template>
 
 <script>
-  import { UxMenu } from '@suning/uxcool';
+  import { UxMenu } from '@cloud-sn/uxcool';
   import SelectedDemo from './selected.vue';
   import CollapsedDemo from './collapsed.vue';
   import UniqueDemo from './unique.vue';

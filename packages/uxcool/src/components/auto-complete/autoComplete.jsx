@@ -1,4 +1,4 @@
-import { isArray, isPlainObject } from '@suning/v-utils';
+import { isArray, isPlainObject } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import Select from '../select';
 

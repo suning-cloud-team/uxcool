@@ -9,7 +9,7 @@
 
 
 <script>
-  import { Notification, Button } from '@suning/uxcool';
+  import { Notification, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

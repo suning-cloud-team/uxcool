@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import { Upload, Button, Icon } from '@suning/uxcool';
+  import { Upload, Button, Icon } from '@cloud-sn/uxcool';
 
   function addEventListener(element, eventName, fn, useCapture = false) {
     element.addEventListener(eventName, fn, useCapture);

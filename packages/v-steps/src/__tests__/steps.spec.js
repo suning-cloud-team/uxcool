@@ -1,4 +1,4 @@
-import { mount, waitTime, destroyWrapper } from '@suning/v-test-utils';
+import { mount, waitTime, destroyWrapper } from '@cloud-sn/v-test-utils';
 import { VSteps, VStep } from '../index';
 
 const stepsWrapper = {

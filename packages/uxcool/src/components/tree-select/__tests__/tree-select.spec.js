@@ -1,6 +1,6 @@
 import {
   mountPickerFactory, waitTime, getPortal, triggerEvent
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import TreeSelect from '../index';
 
 const mountTreeSelect = mountPickerFactory(TreeSelect);

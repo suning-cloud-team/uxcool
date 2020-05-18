@@ -38,7 +38,7 @@
 
 
 <script>
-  import { Tree, Icon } from '@suning/uxcool';
+  import { Tree, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {
@@ -112,7 +112,7 @@
           <span>
             <ux-icon type="blub" /> {node.title}-level-2222-{node.level}
           </span>
-          ) : (
+        ) : (
           <span style="color: green">
             {node.title}-level-333-{node.level}
           </span>

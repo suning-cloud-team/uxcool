@@ -1,6 +1,6 @@
-import { mount, waitTime } from '@suning/v-test-utils';
-import { actionUrl, setup, teardown } from "./mock";
+import { mount, waitTime } from '@cloud-sn/v-test-utils';
 import Vue from 'vue';
+import { actionUrl, setup, teardown } from './mock';
 import createFile from './util/file';
 import UxUpload from '../index';
 import List from '../list';
@@ -10,8 +10,7 @@ import { errorRequest, successRequest, progressRequest } from './requests';
 describe('Upload', () => {
   beforeEach(() => setup());
   afterEach(() => teardown());
-  describe("List", () => {
-
+  describe('List', () => {
     it('should  Render thumbnails correctly', async () => {
       const APP = {
         template: `
@@ -36,7 +35,7 @@ describe('Upload', () => {
                 response: {},
                 error: {},
                 linkProps: { download: 'http://www.suning.com' },
-                url: "http://www.suning.com"
+                url: 'http://www.suning.com'
               },
               {
                 uid: Math.random().toString(16),
@@ -45,7 +44,7 @@ describe('Upload', () => {
                 response: {},
                 error: {},
                 linkProps: { download: 'http://www.suning.com' },
-                url: "http://www.suning.com"
+                url: 'http://www.suning.com'
               },
               {
                 uid: Math.random().toString(16),
@@ -54,7 +53,7 @@ describe('Upload', () => {
                 response: {},
                 error: {},
                 linkProps: { download: 'http://www.suning.com' },
-                url: "http://www.suning.com"
+                url: 'http://www.suning.com'
               }
             ],
           };
@@ -62,10 +61,10 @@ describe('Upload', () => {
       };
       const wrapper = mount(APP);
       await waitTime();
-      wrapper.find(".ux-upload-list-item-thumbnail").trigger("click");
-      wrapper.find("span.ux-upload-list-item-ops > i").trigger("click");
+      wrapper.find('.ux-upload-list-item-thumbnail').trigger('click');
+      wrapper.find('span.ux-upload-list-item-ops > i').trigger('click');
       await Vue.nextTick();
-      expect(wrapper.findAll(".ux-upload-list-item-thumbnail").length).toBe(2);
+      expect(wrapper.findAll('.ux-upload-list-item-thumbnail').length).toBe(2);
       wrapper.destroy();
     });
 
@@ -96,7 +95,7 @@ describe('Upload', () => {
                 response: {},
                 error: {},
                 linkProps: { download: 'http://www.suning.com' },
-                url: "http://www.suning.com"
+                url: 'http://www.suning.com'
               },
               {
                 uid: Math.random().toString(16),
@@ -105,7 +104,7 @@ describe('Upload', () => {
                 response: {},
                 error: {},
                 linkProps: { download: 'http://www.suning.com' },
-                url: "http://www.suning.com"
+                url: 'http://www.suning.com'
               }
             ],
           };
@@ -113,12 +112,12 @@ describe('Upload', () => {
       };
       const wrapper = mount(APP);
       await waitTime();
-      wrapper.find(".ux-upload-list-item-thumbnail").trigger("click");
-      wrapper.find(".ux-upload-list-item-ops > i").trigger("click");
-      wrapper.find(".fu-play_circle_o").trigger("click");
+      wrapper.find('.ux-upload-list-item-thumbnail').trigger('click');
+      wrapper.find('.ux-upload-list-item-ops > i').trigger('click');
+      wrapper.find('.fu-play_circle_o').trigger('click');
       await Vue.nextTick();
-      expect(wrapper.findAll(".fu-play_circle_o").length).toBe(1);
-      expect(wrapper.findAll(".fu-pause_circle_o").length).toBe(1);
+      expect(wrapper.findAll('.fu-play_circle_o').length).toBe(1);
+      expect(wrapper.findAll('.fu-pause_circle_o').length).toBe(1);
       wrapper.destroy();
     });
 
@@ -146,7 +145,7 @@ describe('Upload', () => {
                 response: {},
                 error: {},
                 linkProps: { download: 'http://www.suning.com' },
-                url: "http://www.suning.com"
+                url: 'http://www.suning.com'
               }
             ],
           };
@@ -155,26 +154,26 @@ describe('Upload', () => {
       const wrapper = mount(APP);
       await waitTime();
       await Vue.nextTick();
-      expect(wrapper.findAll(".ux-upload-list-picture-card").length).toBe(1);
+      expect(wrapper.findAll('.ux-upload-list-picture-card').length).toBe(1);
       wrapper.destroy();
     });
 
-    it("props should has deault value", async () => {
+    it('props should has deault value', async () => {
       const App = {
-        template: `<List/>`,
+        template: '<List/>',
         components: { List }
-      }
+      };
       const wrapper = mount(App);
       await waitTime();
       expect(Array.isArray(wrapper.vm.$children[0].$props.list)).toBe(true);
-      expect(typeof wrapper.vm.$children[0].$props.locale).toBe("object");
+      expect(typeof wrapper.vm.$children[0].$props.locale).toBe('object');
       wrapper.destroy();
-    })
-  })
+    });
+  });
 
   it('should  render correctly with listType', async () => {
-    const listType = ["text", "picture", "picture-card"];
-    listType.forEach(async type => {
+    const listType = ['text', 'picture', 'picture-card'];
+    listType.forEach(async (type) => {
       const APP = {
         render() {
           return (
@@ -190,14 +189,13 @@ describe('Upload', () => {
                   style='margin-left:8px' > this is upload tip </span>
               </UxUpload >
             </div>
-          )
+          );
         },
       };
       const wrapper = mount(APP);
       await waitTime();
       expect(wrapper.contains('input')).toBe(true);
-    })
-
+    });
   });
 
   it('Self-controlled upload', async () => {
@@ -212,7 +210,7 @@ describe('Upload', () => {
         name: 'demo.png',
         status: 'ready',
         response: {},
-        originFile: "string",
+        originFile: 'string',
         error: {},
         linkProps: { download: 'http://www.suning.com' },
       },
@@ -221,7 +219,7 @@ describe('Upload', () => {
         name: 'demo.png',
         status: 'ready',
         response: {},
-        originFile: new File([], "demo.png"),
+        originFile: new File([], 'demo.png'),
         error: {},
         linkProps: { download: 'http://www.suning.com' },
       }];
@@ -244,7 +242,7 @@ describe('Upload', () => {
       },
       data() {
         return {
-          files: files,
+          files,
         };
       },
       methods: {
@@ -258,15 +256,15 @@ describe('Upload', () => {
           }
         },
       },
-    }
+    };
     const wrapper = mount(APP);
     await Vue.nextTick();
-    wrapper.find("button").trigger("click");
+    wrapper.find('button').trigger('click');
     await waitTime();
     wrapper.vm.$children[0].submit();
-    expect(files[0].status).not.toBe("ready");
+    expect(files[0].status).not.toBe('ready');
     wrapper.destroy();
-  })
+  });
 
 
   it('should  render correctly with props show-upload-list', async () => {
@@ -280,7 +278,7 @@ describe('Upload', () => {
         linkProps: { download: 'http://www.suning.com' },
       }
     ];
-    showUploadList.forEach(async showUpload => {
+    showUploadList.forEach(async (showUpload) => {
       const APP = {
         render() {
           return (
@@ -297,7 +295,7 @@ describe('Upload', () => {
                   style='margin-left:8px' > this is upload tip </span>
               </UxUpload >
             </div>
-          )
+          );
         },
       };
 
@@ -305,12 +303,11 @@ describe('Upload', () => {
       await waitTime();
       expect(wrapper.findAll('ux-upload-list-item-name').length).toBe(0);
       wrapper.destroy();
-    })
-
+    });
   });
 
   it('should render file list correctly', async () => {
-    let fileList = [createFile('js')];
+    const fileList = [createFile('js')];
     const APP = {
       render() {
         return (
@@ -326,7 +323,7 @@ describe('Upload', () => {
                 style='margin-left:8px' > this is upload tip </span>
             </UxUpload >
           </div>
-        )
+        );
       },
     };
     const wrapper = mount(APP);
@@ -337,7 +334,7 @@ describe('Upload', () => {
 
 
   it('When the delete button is clicked, the file should be deleted', async () => {
-    let fileList = [createFile('js')];
+    const fileList = [createFile('js')];
     const APP = {
       render() {
         return (
@@ -358,8 +355,7 @@ describe('Upload', () => {
                         tip </span>
             </UxUpload >
           </div>
-        )
-
+        );
       },
     };
     const wrapper = mount(APP);
@@ -373,8 +369,8 @@ describe('Upload', () => {
 
 
   it('should  render correctly with type select or drag', async () => {
-    const type = ["select", "drag"];
-    type.forEach(async type => {
+    const type = ['select', 'drag'];
+    type.forEach(async (type) => {
       const APP = {
         template: `
         <UxUpload
@@ -400,10 +396,8 @@ describe('Upload', () => {
       await waitTime();
       expect(wrapper.contains('input')).toBe(true);
       wrapper.destroy();
-    })
-
+    });
   });
-
 
 
   it('render render correctly while this fileList was changed ', async () => {
@@ -456,17 +450,17 @@ describe('Upload', () => {
         },
       },
     });
-    const vm = wrapper.vm;
+    const { vm } = wrapper;
     vm.fileList.push({
       name: 'xxx.png',
       status: 'success',
     });
     await waitTime();
     await Vue.nextTick();
-    const inputBtn = wrapper.find("input");
-    inputBtn.trigger("ready");
+    const inputBtn = wrapper.find('input');
+    inputBtn.trigger('ready');
     expect(wrapper.findAll('.ux-upload-list-item-name').length).toBe(4);
-    wrapper.destroy()
+    wrapper.destroy();
   });
 
   it('show support moutiple select', async () => {
@@ -489,7 +483,7 @@ describe('Upload', () => {
       type: 'application/json'
     });
     file.name = 'demo.png';
-    const files = [file,file];
+    const files = [file, file];
     await waitTime();
     const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef;
     uploader.onChange({ target: { files } });
@@ -499,12 +493,12 @@ describe('Upload', () => {
 
 
   it('beforeUpload should be called before upload', async () => {
-    const fileName = "demo.png";
+    const fileName = 'demo.png';
     const beforeUpload = jest.fn().mockReturnThis(new Promise((resolve, reject) => {
-      resolve(true)
+      resolve(true);
     }));
     const beforeReady = jest.fn().mockReturnThis(new Promise((resolve, reject) => {
-      resolve(true)
+      resolve(true);
     }));
     const wrapper = mount({
       template: `
@@ -524,7 +518,7 @@ describe('Upload', () => {
       },
       methods: {
         onBeforeUpload: beforeUpload,
-        onBeforeReady:beforeReady,
+        onBeforeReady: beforeReady,
       }
     });
     await Vue.nextTick();
@@ -541,7 +535,7 @@ describe('Upload', () => {
   });
 
   it('The upload should be stopped when false is returned', async () => {
-    const fileName = "demo.png";
+    const fileName = 'demo.png';
     const wrapper = mount({
       template: `
               <div>
@@ -579,7 +573,7 @@ describe('Upload', () => {
   });
 
   it('The upload should continue when true is returned', async () => {
-    const fileName = "demo.png";
+    const fileName = 'demo.png';
     const wrapper = mount({
       template: `
               <div>
@@ -617,7 +611,7 @@ describe('Upload', () => {
   });
 
   it('The upload should continue when true is returned', async () => {
-    const fileName = "demo.png";
+    const fileName = 'demo.png';
     const wrapper = mount({
       template: `
               <div>
@@ -674,12 +668,11 @@ describe('Upload', () => {
       data() {
         return {
           customRequest: successRequest
-        }
+        };
       },
       methods: {
         change(uploadedFile) {
-          expect(uploadedFile.file.name).toBe("demo.png")
-
+          expect(uploadedFile.file.name).toBe('demo.png');
         }
       }
     });
@@ -713,12 +706,11 @@ describe('Upload', () => {
       data() {
         return {
           customRequest: progressRequest
-        }
+        };
       },
       methods: {
         change(uploadedFile) {
-          expect(uploadedFile.file.name).toBe("demo.png")
-
+          expect(uploadedFile.file.name).toBe('demo.png');
         }
       }
     });
@@ -752,14 +744,13 @@ describe('Upload', () => {
       data() {
         return {
           customRequest: errorRequest
-        }
+        };
       },
       methods: {
         change(uploadedFile) {
-          if (uploadedFile.file.status === "uploading") {
-            expect(uploadedFile.file.error).toBe("error")
+          if (uploadedFile.file.status === 'uploading') {
+            expect(uploadedFile.file.error).toBe('error');
           }
-
         }
       }
     });
@@ -792,7 +783,7 @@ describe('Upload', () => {
       data() {
         return {
           customRequest: successRequest
-        }
+        };
       },
       methods: {
         onProgress(e, file, fileList) {
@@ -807,6 +798,6 @@ describe('Upload', () => {
     const files = [file];
     const uploader = wrapper.vm.$children[0].$refs.uploaderRef.$refs.uploaderRef;
     uploader.onChange({ target: { files } });
-    wrapper.find("button").trigger("click");
+    wrapper.find('button').trigger('click');
   });
 });

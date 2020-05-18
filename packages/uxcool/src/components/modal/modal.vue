@@ -29,7 +29,7 @@
 
 <script>
   import omit from 'object.omit';
-  import VDialog from '@suning/v-dialog';
+  import VDialog from '@cloud-sn/v-dialog';
   import { buildComponentName } from '../utils';
 
   export default {

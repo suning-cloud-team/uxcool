@@ -1,4 +1,4 @@
-import { mount } from '@suning/v-test-utils';
+import { mount } from '@cloud-sn/v-test-utils';
 import { UxCardAdvance, UxCardMeta, UxCardGrid } from '../index';
 
 it('render correctly with props', () => {

@@ -13,7 +13,7 @@
 
 <script>
   import omit from 'object.omit';
-  import VCheckbox from '@suning/v-checkbox';
+  import VCheckbox from '@cloud-sn/v-checkbox';
   import { buildComponentName } from '../utils';
   import Mixin from './mixin';
 

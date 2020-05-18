@@ -1,7 +1,7 @@
-import { createWrapper, waitTime, mount } from '@suning/v-test-utils';
+import { createWrapper, waitTime, mount } from '@cloud-sn/v-test-utils';
 import dayjs from 'dayjs';
 // import { format as formatDate, isDate } from 'date-fns';
-import Trigger from '@suning/v-trigger';
+import Trigger from '@cloud-sn/v-trigger';
 import { isDate } from 'lodash';
 
 export function mountPickerFactory(Component) {

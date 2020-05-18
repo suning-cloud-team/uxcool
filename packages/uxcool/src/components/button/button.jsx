@@ -1,4 +1,4 @@
-import { isTextNode } from '@suning/v-utils';
+import { isTextNode } from '@cloud-sn/v-utils';
 import Icon from '../icon';
 import { buildComponentName } from '../utils';
 

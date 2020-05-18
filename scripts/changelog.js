@@ -21,7 +21,7 @@ function getUXCoolVersion() {
 
 function makeBumpOnlyFilter(content) {
   if (!content.split('\n').some((line) => /^[-*]\s/.test(line))) {
-    const message = '**Note:** Version bump only for package @suning/uxcool';
+    const message = '**Note:** Version bump only for package @cloud-sn/uxcool';
 
     return [content, message].join('\n');
   }
@@ -45,7 +45,7 @@ function getConventionalStream(from, version) {
           return nPkg;
         },
       },
-      lernaPackage: '@suning/uxcool',
+      lernaPackage: '@cloud-sn/uxcool',
     },
     { linkCompare: false, version },
     {
@@ -102,7 +102,7 @@ function getQuestions(type, oldVer, newVer) {
           return value;
         }
         if (semver.valid(value)) {
-          return `@suning/uxcool@${value}`;
+          return `@cloud-sn/uxcool@${value}`;
         }
         return value;
       },

@@ -1,5 +1,5 @@
 {
-  "name": "@suning/v-tabs",
+  "name": "@cloud-sn/v-tabs",
   "version": "1.0.45",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -18,10 +18,10 @@
     "start": "npm run server"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.35"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.33",
+    "@cloud-sn/v-utils": "^1.0.33",
     "lodash": "^4.17.4"
   }
 }

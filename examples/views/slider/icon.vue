@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import { Slider, Icon } from '@suning/uxcool';
+  import { Slider, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {

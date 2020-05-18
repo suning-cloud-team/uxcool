@@ -23,7 +23,7 @@
 
 
 <script>
-  import { Avatar } from '@suning/uxcool';
+  import { Avatar } from '@cloud-sn/uxcool';
 
   export default {
     components: {

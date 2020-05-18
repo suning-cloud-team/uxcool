@@ -25,7 +25,7 @@
 
 
 <script>
-  import { Progress } from '@suning/uxcool';
+  import { Progress } from '@cloud-sn/uxcool';
 
   export default {
     components: {

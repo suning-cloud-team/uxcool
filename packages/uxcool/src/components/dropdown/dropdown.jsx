@@ -1,5 +1,7 @@
-import Trigger from '@suning/v-trigger';
-import { isArray, warning, isVueComponent, extractVNodeData, cloneVNode } from '@suning/v-utils';
+import Trigger from '@cloud-sn/v-trigger';
+import {
+  isArray, warning, isVueComponent, extractVNodeData, cloneVNode
+} from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import placements from './placements';
 

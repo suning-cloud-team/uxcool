@@ -1,6 +1,6 @@
-@import '~@suning/v-style/assets/themes/default';
-@import '~@suning/v-style/assets/mixins/index';
-@import '~@suning/v-style/assets/core/index';
+@import '~@cloud-sn/v-style/assets/themes/default';
+@import '~@cloud-sn/v-style/assets/mixins/index';
+@import '~@cloud-sn/v-style/assets/core/index';
 
 $menu-prefix-cls: v-menu; // default theme
 .#{$menu-prefix-cls} {

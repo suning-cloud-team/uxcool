@@ -1,4 +1,4 @@
-import { extractVNodeData, cloneVNode } from '@suning/v-utils';
+import { extractVNodeData, cloneVNode } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import Icon from '../icon';
 import Item from './item';

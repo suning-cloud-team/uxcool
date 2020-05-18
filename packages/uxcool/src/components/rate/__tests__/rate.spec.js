@@ -1,4 +1,6 @@
-import { mountPickerFactory, createWrapper, triggerEvent, mount, waitTime } from '@suning/v-test-utils';
+import {
+  mountPickerFactory, createWrapper, triggerEvent, mount, waitTime
+} from '@cloud-sn/v-test-utils';
 import Rate from '../rate';
 
 describe.skip('rate', () => {
@@ -68,14 +70,14 @@ describe('rate', () => {
     const wrapper = mount(Rate);
     expect(wrapper.findAll('.ux-rate-star').length).toBe(5);
     expect(wrapper.findAll('.ux-rate-star-zero').length).toBe(5);
-    wrapper.setProps({value: 3});
+    wrapper.setProps({ value: 3 });
     await waitTime();
     expect(wrapper.findAll('.ux-rate-star-full').length).toBe(3);
     expect(wrapper.findAll('.ux-rate-star-zero').length).toBe(2);
     expect(wrapper.findAll('li').at(2).classes('ux-rate-star-full')).toBe(true);
     expect(wrapper.findAll('li').at(3).classes('ux-rate-star-zero')).toBe(true);
-    wrapper.setProps({allowHalf: true});
-    wrapper.setProps({value: 2.5});
+    wrapper.setProps({ allowHalf: true });
+    wrapper.setProps({ value: 2.5 });
     await waitTime();
     expect(wrapper.findAll('.ux-rate-star-full').length).toBe(2);
     expect(wrapper.findAll('.ux-rate-star-half').length).toBe(1);
@@ -146,7 +148,7 @@ describe('rate', () => {
     expect(wrapper.emitted('hover-change')).toBeFalsy();
     await triggerEvent(wrapper.findAll('li').at(3), 'click');
     expect(wrapper.findAll('.ux-rate-star-full').length).toBe(3);
-    wrapper.setProps({disabled: false});
+    wrapper.setProps({ disabled: false });
     await waitTime();
     await triggerEvent(wrapper.findAll('li').at(3), 'click');
     expect(wrapper.findAll('.ux-rate-star-full').length).toBe(4);

@@ -1,5 +1,5 @@
 {
-  "name": "@suning/v-trigger",
+  "name": "@cloud-sn/v-trigger",
   "version": "1.0.64",
   "description": "trigger ",
   "main": "cjs/index.js",
@@ -22,12 +22,12 @@
     "vue": "^2.5.*"
   },
   "dependencies": {
-    "@suning/v-align": "^1.0.35",
-    "@suning/v-utils": "^1.0.33"
+    "@cloud-sn/v-align": "^1.0.35",
+    "@cloud-sn/v-utils": "^1.0.33"
   },
   "devDependencies": {
-    "@suning/v-style": "^1.0.21",
-    "@suning/v-test-utils": "^1.0.10",
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-style": "^1.0.21",
+    "@cloud-sn/v-test-utils": "^1.0.10",
+    "@cloud-sn/v-tools": "^1.0.35"
   }
 }

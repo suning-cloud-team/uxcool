@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-  import { Timeline, Icon } from '@suning/uxcool';
+  import { Timeline, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {

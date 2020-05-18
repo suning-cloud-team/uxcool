@@ -1,6 +1,6 @@
 import omit from 'object.omit';
 import { format as formatDate, isAfter } from 'date-fns';
-import { VRangeMonthYearDecadePicker as RangeMonthYearDecadePicker } from '@suning/v-datepicker';
+import { VRangeMonthYearDecadePicker as RangeMonthYearDecadePicker } from '@cloud-sn/v-datepicker';
 import localeCN from '../locale/zh_CN';
 import Icon from '../../icon';
 

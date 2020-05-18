@@ -1,5 +1,5 @@
 {
-  "name": "@suning/v-steps",
+  "name": "@cloud-sn/v-steps",
   "version": "1.0.17",
   "description": "steps基础库",
   "main": "cjs/index.js",
@@ -19,6 +19,6 @@
     "start": "npm run server"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.35"
   }
 }

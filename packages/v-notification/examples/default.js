@@ -1,8 +1,8 @@
 import Vue from 'vue';
 
-import '@suning/v-notification/css/index.scss';
+import '@cloud-sn/v-notification/css/index.scss';
 
-import Notification from '@suning/v-notification';
+import Notification from '@cloud-sn/v-notification';
 
 let seed = 0;
 

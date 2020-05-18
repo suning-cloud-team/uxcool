@@ -5,8 +5,8 @@
   </div>
 </template>
 <script >
-  import { Calendar } from '@suning/uxcool';
-  import CN from '@suning/uxcool/es/datepicker/locale/zh_CN';
+  import { Calendar } from '@cloud-sn/uxcool';
+  import CN from '@cloud-sn/uxcool/es/datepicker/locale/zh_CN';
 
   export default {
     components: {

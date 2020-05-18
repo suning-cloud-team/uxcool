@@ -4,7 +4,7 @@ import {
   getVueCreateElement,
   triggerEvent,
   getPortal,
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import UxPagination from '../index';
 import Select from '../../select';
 
@@ -94,7 +94,6 @@ it('render common correctly', async () => {
 
   expect(changeFn).toBeCalled();
   document.body.innerHTML = '';
-
 });
 
 it('render custom item dom correctly', () => {
@@ -155,8 +154,8 @@ it('watch props correctly', async () => {
   await waitTime();
   expect(wrapper.findAll('.ux-pagination-item').length).toBe(7);
 
-  wrapper.setProps({pageSize: 20});
-  wrapper.setProps({current: 10});
+  wrapper.setProps({ pageSize: 20 });
+  wrapper.setProps({ current: 10 });
   await waitTime();
   expect(wrapper.find('li[title="25"]')).toBeDefined();
   await triggerEvent(wrapper.find('.ux-pagination-jump-prev'), 'click');
@@ -167,6 +166,4 @@ it('watch props correctly', async () => {
   expect(wrapper.find('.ux-pagination-jump-next').exists()).toBeFalsy();
   await triggerEvent(wrapper.find('li[title="1"]'), 'click', 100);
   expect(wrapper.find('.ux-pagination-jump-prev').exists()).toBeFalsy();
-
 });
-

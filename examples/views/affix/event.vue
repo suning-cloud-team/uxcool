@@ -11,7 +11,7 @@
 
 
 <script>
-  import { Affix, Button } from '@suning/uxcool';
+  import { Affix, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {
@@ -20,6 +20,7 @@
     },
     methods: {
       onChange(flag) {
+        // eslint-disable-next-line no-console
         console.log('是否浮动', flag);
       },
     },

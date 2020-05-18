@@ -1,5 +1,5 @@
 import omit from 'object.omit';
-import { isDef, browser } from '@suning/v-utils';
+import { isDef, browser } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import Icon from '../icon';
 import InnerDrawer from './innerDrawer';
@@ -81,12 +81,11 @@ export default {
     },
     wrapperStyle() {
       const { zIndex, placement, chidrenIsVisible } = this;
-      const style =
-        isDef(zIndex) && zIndex !== ''
-          ? {
-            zIndex,
-          }
-          : {};
+      const style = isDef(zIndex) && zIndex !== ''
+        ? {
+          zIndex,
+        }
+        : {};
       if (chidrenIsVisible) {
         let transform = 'translateX(-180px)';
         switch (placement) {

@@ -7,6 +7,8 @@ Input.Search = Search;
 Input.Group = Group;
 Input.Textarea = Textarea;
 
-export { Input as UxInput, Search as UxSearchInput, Group as UxInputGroup, Textarea as UxTextarea };
+export {
+  Input as UxInput, Search as UxSearchInput, Group as UxInputGroup, Textarea as UxTextarea
+};
 
 export default Input;

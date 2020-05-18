@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-  import { Button } from '@suning/uxcool';
+  import { Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

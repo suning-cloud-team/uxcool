@@ -8,7 +8,7 @@
 
 
 <script>
-  import { Pagination } from '@suning/uxcool';
+  import { Pagination } from '@cloud-sn/uxcool';
 
   export default {
     components: {

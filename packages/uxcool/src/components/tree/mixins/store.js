@@ -1,4 +1,4 @@
-import { isArray, isFunction } from '@suning/v-utils';
+import { isArray, isFunction } from '@cloud-sn/v-utils';
 import {
   getNodeKey,
   normalizeNode,
@@ -66,8 +66,8 @@ export default {
           isDisabled: typeof disabled === 'boolean' ? disabled : undefined,
           // 初始创建时不直接设置false, 防止后面与全局状态冲突
           isExpanded:
-            getNodeStatus(expandedKeys, key, undefined, false, disabled) ||
-            (lazy ? undefined : !!expandAll),
+            getNodeStatus(expandedKeys, key, undefined, false, disabled)
+            || (lazy ? undefined : !!expandAll),
           isSelected: getNodeStatus(selectedKeys, key, undefined, false, disabled),
           isChecked: getNodeStatus(
             checkedKeys,
@@ -204,7 +204,7 @@ export default {
         // np.isLeaf = np.isLeaf || !isParent;
         np.isLeaf = !isParent;
         np.children = children;
-        np.originNode.children = children.map(v => v.originNode);
+        np.originNode.children = children.map((v) => v.originNode);
       } else {
         this.clearNodesMap();
         ret = createNodes(nNodes, null, 0, deepClone);
@@ -217,8 +217,8 @@ export default {
     getSortNodes(keys = []) {
       const { getStoreNode } = this;
       return keys
-        .map(k => getStoreNode(k))
-        .filter(node => !!node)
+        .map((k) => getStoreNode(k))
+        .filter((node) => !!node)
         .sort((a, b) => a.pos - b.pos);
     },
     setChildren(data, childNode, cb, idx = -1) {
@@ -247,7 +247,7 @@ export default {
       const nData = data;
       const { children } = nData;
       if (isArray(children)) {
-        nData.children = children.filter(v => v !== originNode);
+        nData.children = children.filter((v) => v !== originNode);
         // nNode.children = nChildren;
         // if (!isVirtualParent) {
         //   if (nNode.parent === null) {

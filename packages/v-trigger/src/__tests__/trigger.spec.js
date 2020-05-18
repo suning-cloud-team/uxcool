@@ -1,6 +1,6 @@
 import {
   waitTime, mount, shallowMount, $
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import Trigger from '../index';
 
 const TestNestTrigger = {

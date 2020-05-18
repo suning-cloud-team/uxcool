@@ -1,4 +1,4 @@
-import { warning } from '@suning/v-utils';
+import { warning } from '@cloud-sn/v-utils';
 import { COMPONENT_NAME_PREFIX } from './constants';
 
 export function buildComponentName(name) {
@@ -14,7 +14,7 @@ export function noop() {}
 export function isFlexSupported() {
   if (window && window.document && window.document.documentElement) {
     const { documentElement } = window.document;
-    return ['flex', 'webkitFlex', 'Flex', 'msFlex'].some(v => v in documentElement.style);
+    return ['flex', 'webkitFlex', 'Flex', 'msFlex'].some((v) => v in documentElement.style);
   }
   return false;
 }

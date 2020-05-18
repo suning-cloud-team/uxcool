@@ -9,7 +9,7 @@
 
 
 <script>
-  import { List, Avatar } from '@suning/uxcool';
+  import { List, Avatar } from '@cloud-sn/uxcool';
 
   export default {
     components: {

@@ -49,7 +49,7 @@
     Datepicker,
     Tooltip,
     Select,
-  } from '@suning/uxcool';
+  } from '@cloud-sn/uxcool';
 
   function getDeviceWidth() {
     if (typeof window.innerWidth === 'number') {

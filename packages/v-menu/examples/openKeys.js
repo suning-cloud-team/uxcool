@@ -1,8 +1,8 @@
 import Vue from 'vue';
 
-import VMenu, { VMenuItem, VSubMenu } from '@suning/v-menu';
+import VMenu, { VMenuItem, VSubMenu } from '@cloud-sn/v-menu';
 
-import '@suning/v-menu/css/index.scss';
+import '@cloud-sn/v-menu/css/index.scss';
 
 const vm = new Vue({
   el: '#app',

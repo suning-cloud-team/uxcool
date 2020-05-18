@@ -20,8 +20,8 @@ import HumanizeDuration from 'humanize-duration';
 import ms from 'ms';
 import {
   isFunction, isArray, isString, isEqual, warning
-} from '@suning/v-utils';
-import { VRangeDatePicker } from '@suning/v-datepicker';
+} from '@cloud-sn/v-utils';
+import { VRangeDatePicker } from '@cloud-sn/v-datepicker';
 import omit from 'object.omit';
 import localeCN from './locale/zh_CN';
 import Select from '../select';

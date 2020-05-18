@@ -10,7 +10,7 @@
 
 
 <script>
-  import { VTabPane } from '@suning/v-tabs';
+  import { VTabPane } from '@cloud-sn/v-tabs';
   import { buildComponentName } from '../utils';
 
   export default {

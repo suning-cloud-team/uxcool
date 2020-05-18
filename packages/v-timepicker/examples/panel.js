@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import '@suning/v-timepicker/css/index.scss';
+import '@cloud-sn/v-timepicker/css/index.scss';
 
-import Panel from '@suning/v-timepicker/src/panel.vue';
+import Panel from '@cloud-sn/v-timepicker/src/panel.vue';
 
 const vm = new Vue({
   el: '#app',

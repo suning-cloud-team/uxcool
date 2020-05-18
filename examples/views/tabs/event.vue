@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { Tabs } from '@suning/uxcool';
+  import { Tabs } from '@cloud-sn/uxcool';
 
   export default {
     components: {

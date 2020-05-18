@@ -33,7 +33,7 @@ function publishToSNpm() {
 
 function publishToNpm() {
   console.log('-----------------publish to NPM--------------------');
-  process.env['npm_config_@suning:registry'] = NPM_REGISTRY;
+  process.env['npm_config_@cloud-sn:registry'] = NPM_REGISTRY;
   execSync('lerna', ['publish', 'from-package', '--registry', NPM_REGISTRY]);
 }
 

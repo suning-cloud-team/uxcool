@@ -14,7 +14,7 @@
 
 
 <script>
-  import { Tree } from '@suning/uxcool';
+  import { Tree } from '@cloud-sn/uxcool';
 
   export default {
     components: {

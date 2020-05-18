@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import { Transfer } from '@suning/uxcool';
+  import { Transfer } from '@cloud-sn/uxcool';
 
   function mockData(cnt = 10) {
     return Array(cnt)
@@ -35,7 +35,7 @@
         label: `label-${i}`,
         description: `description content ${i}`,
         // disabled: i % 3 === 0,
-    }));
+      }));
   }
   export default {
     components: {
@@ -51,8 +51,8 @@
       renderContent(item) {
         return item.key % 3 === 0 ? (
           <span style="color:red">{`${item.label}-${item.description}`}</span>
-          ) : (
-            `${item.label}-${item.description}`
+        ) : (
+          `${item.label}-${item.description}`
         );
       },
     },

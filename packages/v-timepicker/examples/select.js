@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
-import '@suning/v-timepicker/css/index.scss';
-import VSelect from '@suning/v-timepicker/src/select.vue';
+import '@cloud-sn/v-timepicker/css/index.scss';
+import VSelect from '@cloud-sn/v-timepicker/src/select.vue';
 
 Vue.config.productionTip = false;
 

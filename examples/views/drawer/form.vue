@@ -51,7 +51,9 @@
 </template>
 
 <script>
-  import { Drawer, Button, Form, Input, Icon } from '@suning/uxcool';
+  import {
+    Drawer, Button, Form, Input, Icon
+  } from '@cloud-sn/uxcool';
 
   const defaultForm = {
     email: '',

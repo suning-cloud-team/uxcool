@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import { Upload, Button, Modal } from '@suning/uxcool';
+  import { Upload, Button, Modal } from '@cloud-sn/uxcool';
 
   export default {
     components: {

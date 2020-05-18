@@ -14,7 +14,7 @@
 
 <script>
   import omit from 'object.omit';
-  import { VTabs } from '@suning/v-tabs';
+  import { VTabs } from '@cloud-sn/v-tabs';
   import { buildComponentName, isFlexSupported } from '../utils';
 
   export default {

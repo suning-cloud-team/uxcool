@@ -39,7 +39,7 @@
 </template>
 
 <script>
-  import { Tabs, Button } from '@suning/uxcool';
+  import { Tabs, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

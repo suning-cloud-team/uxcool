@@ -18,8 +18,8 @@
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap && cd ./examples && yarn install",
     "bootstrap:ignore-optional": "yarn --ignore-optional && lerna bootstrap && cd ./examples && yarn install",
-    "compile:uxcool": "lerna run compile:module --scope @suning/uxcool",
-    "build:uxcool": "lerna run build --scope @suning/uxcool",
+    "compile:uxcool": "lerna run compile:module --scope @cloud-sn/uxcool",
+    "build:uxcool": "lerna run build --scope @cloud-sn/uxcool",
     "build": "lerna run compile && yarn run build:uxcool",
     "build:example": "webpack  --config build/webpack/example.js",
     "example": "webpack-dev-server --config build/webpack/example-server.js",

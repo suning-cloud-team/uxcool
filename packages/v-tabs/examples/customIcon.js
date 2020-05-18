@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import '@suning/v-tabs/css/index.scss';
+import '@cloud-sn/v-tabs/css/index.scss';
 
-import { VTabs, VTabPane } from '@suning/v-tabs';
+import { VTabs, VTabPane } from '@cloud-sn/v-tabs';
 
 Vue.config.productionTip = false;
 const vm = new Vue({

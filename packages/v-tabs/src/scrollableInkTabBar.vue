@@ -1,5 +1,5 @@
 <script>
-  import { HTMLElementType } from '@suning/v-utils';
+  import { HTMLElementType } from '@cloud-sn/v-utils';
   import debounce from 'lodash/debounce';
   import InkTabBar from './inkTabBar.vue';
   import {

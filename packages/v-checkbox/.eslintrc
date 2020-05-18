@@ -1,5 +1,5 @@
 {
   "settings": {
-    "import/core-modules": ["@suning/v-checkbox"]
+    "import/core-modules": ["@cloud-sn/v-checkbox"]
   }
 }

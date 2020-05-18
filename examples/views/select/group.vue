@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import { Select, Icon } from '@suning/uxcool';
+  import { Select, Icon } from '@cloud-sn/uxcool';
 
   function mockData(cnt) {
     return Array(cnt)
