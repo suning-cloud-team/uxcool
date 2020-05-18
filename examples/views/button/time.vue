@@ -1,12 +1,16 @@
 <template>
   <div class="demo">
-    <button @click="resetCountDown">reset countdown</button>
-    <ux-button loading>中文{{ timer ? timer : '' }}</ux-button>
+    <button @click="resetCountDown">
+      reset countdown
+    </button>
+    <ux-button loading>
+      中文{{ timer ? timer : '' }}
+    </ux-button>
   </div>
 </template>
 
 <script>
-  import { Button } from '@suning/uxcool';
+  import { Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

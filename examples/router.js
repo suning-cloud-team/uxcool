@@ -106,11 +106,6 @@ const routes = [
     component: () => import('./views/progress/index'),
   },
   {
-    name: 'Card',
-    path: '/card',
-    component: () => import('./views/card/index'),
-  },
-  {
     name: 'Checkbox',
     path: '/checkbox',
     component: () => import('./views/checkbox/index'),
@@ -275,11 +270,6 @@ const routes = [
     path: '/treebigdata',
     component: () => import('./views/tree-big-data/index'),
   },
-  // {
-  //   name: 'Chart',
-  //   path: '/chart',
-  //   component: () => import('./views/chart/index'),
-  // },
   {
     name: 'MultiCascader',
     path: '/multicascader',

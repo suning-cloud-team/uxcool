@@ -11,10 +11,6 @@
     "compile:module": "gulp compileModule --gulpfile ../../build/gulpfile.esm.js"
   },
   "peerDependencies": {
-    "dagre": "^0.7.*",
-    "echarts": "^3.*",
-    "jquery": "^*",
-    "jsplumb": "^2.5.*",
     "vue": "^2.5.*"
   },
   "dependencies": {

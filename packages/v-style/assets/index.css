@@ -545,9 +545,9 @@ samp {
 
 @font-face {
   font-family: 'uxfont';
-  src: url("~@suning/v-style/assets/fonts/uxcool.eot");
+  src: url("~@cloud-sn/v-style/assets/fonts/uxcool.eot");
   /* IE9*/
-  src: url("~@suning/v-style/assets/fonts/uxcool.eot?#iefix") format("embedded-opentype"), url("~@suning/v-style/assets/fonts/uxcool.woff") format("woff"), url("~@suning/v-style/assets/fonts/uxcool.ttf") format("truetype"), url("~@suning/v-style/assets/fonts/uxcool.svg#iconfont") format("svg"); }
+  src: url("~@cloud-sn/v-style/assets/fonts/uxcool.eot?#iefix") format("embedded-opentype"), url("~@cloud-sn/v-style/assets/fonts/uxcool.woff") format("woff"), url("~@cloud-sn/v-style/assets/fonts/uxcool.ttf") format("truetype"), url("~@cloud-sn/v-style/assets/fonts/uxcool.svg#iconfont") format("svg"); }
 
 .fu {
   display: inline-block;

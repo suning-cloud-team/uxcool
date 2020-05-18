@@ -6,7 +6,6 @@
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {
-    "@suning/uxcool-table-search-form": "^1.0.5",
     "axios": "^0.19.0",
     "vue": "^2.6.10",
     "vue-router": "^3.1.3",
