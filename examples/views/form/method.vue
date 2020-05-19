@@ -75,7 +75,7 @@
 
 
 <script>
-  import { Form, Input, Datepicker, Modal, Button, Checkbox, Radio, Select } from '@suning/uxcool';
+  import { Form, Input, Datepicker, Modal, Button, Checkbox, Radio, Select } from '@cloud-sn/uxcool';
 
   export default {
     components: {

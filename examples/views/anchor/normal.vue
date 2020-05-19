@@ -35,7 +35,7 @@
 
 
 <script>
-  import { Anchor } from '@suning/uxcool';
+  import { Anchor } from '@cloud-sn/uxcool';
 
   export default {
     components: {
@@ -46,7 +46,7 @@
 </script>
 
 <style scoped>
-.demo {
-  height: 600px;
-}
+  .demo {
+    height: 600px;
+  }
 </style>

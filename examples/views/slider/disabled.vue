@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import { Slider, Switch } from '@suning/uxcool';
+  import { Slider, Switch } from '@cloud-sn/uxcool';
 
   export default {
     components: {

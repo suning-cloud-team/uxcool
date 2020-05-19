@@ -1,4 +1,4 @@
-import { isEqual, isFunction } from '@suning/v-utils';
+import { isEqual, isFunction } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import { normalizeFile, handleFileList, getFile } from './utils';
 import Locale from '../locale/lang/default';
@@ -92,7 +92,7 @@ export default {
         [`${prefixCls}-disabled`]: disabled,
         [dragCls]: true,
         [`${dragCls}-hover`]: dragState === 'dragover',
-        [`${dragCls}-uploading`]: innerFileList.some(file => file.status === 'uploading'),
+        [`${dragCls}-uploading`]: innerFileList.some((file) => file.status === 'uploading'),
       };
     },
   },
@@ -108,7 +108,7 @@ export default {
   methods: {
     getWaitUploadOriginFiles() {
       const { innerFileList } = this;
-      return innerFileList.filter(file => file.status === 'ready').map(file => file.originFile);
+      return innerFileList.filter((file) => file.status === 'ready').map((file) => file.originFile);
     },
     uploadFile(file) {
       const { $refs: { uploaderRef }, innerFileList, getWaitUploadOriginFiles } = this;
@@ -117,7 +117,7 @@ export default {
         let originFile = file;
 
         if (typeof originFile === 'string') {
-          const filterFiles = innerFileList.filter(v => v.uid === originFile);
+          const filterFiles = innerFileList.filter((v) => v.uid === originFile);
           originFile = filterFiles.length > 0 ? filterFiles[0].originFile : null;
         }
 
@@ -237,7 +237,7 @@ export default {
           }
           uploaderRef.abort(nFile);
           nFile.status = 'removed';
-          const fileList = innerFileList.filter(v => v.uid !== uid);
+          const fileList = innerFileList.filter((v) => v.uid !== uid);
           setInnerFileList(fileList);
           const changedFile = { ...nFile };
           onChange({
@@ -342,8 +342,7 @@ export default {
       if (showUploadList === false) {
         return null;
       }
-      const { showPreviewIcon, showRemoveIcon } =
-        typeof showUploadList === 'boolean' ? {} : showUploadList || {};
+      const { showPreviewIcon, showRemoveIcon } = typeof showUploadList === 'boolean' ? {} : showUploadList || {};
 
       const props = {
         prefixCls,
@@ -453,7 +452,7 @@ export default {
             <div class={`${prefixCls}-drag-container`}>{slotDefault}</div>
           </Uploader>
         </div>
-        ) : (
+      ) : (
         <span v-show={!!slotDefault} {...{ class: uploadBtnClasses }}>
           <Uploader {...{ props, on, ref: 'uploaderRef' }}>{slotDefault}</Uploader>
         </span>

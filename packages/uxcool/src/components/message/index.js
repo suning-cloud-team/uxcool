@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import { isNaN, isNumber } from '@suning/v-utils';
-import Notification from '@suning/v-notification';
+import { isNaN, isNumber } from '@cloud-sn/v-utils';
+import Notification from '@cloud-sn/v-notification';
 import Icon from '../icon';
 
 const defaultProps = {
@@ -125,10 +125,10 @@ UxMessage.config = ({
   prefixCls, getContainer, top, duration, theme
 }) => {
   if (
-    prefixCls ||
-    typeof getContainer === 'function' ||
-    typeof top !== 'undefined' ||
-    theme !== customProps.theme
+    prefixCls
+    || typeof getContainer === 'function'
+    || typeof top !== 'undefined'
+    || theme !== customProps.theme
   ) {
     UxMessage.destroy();
   }

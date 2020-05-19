@@ -1,4 +1,4 @@
-import { isFunction, isVNode, isPlainObject } from '@suning/v-utils';
+import { isFunction, isVNode, isPlainObject } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import VirtualList from '../virtual-list';
 import Search from './search';
@@ -103,19 +103,18 @@ export default {
       const { dataSource, searchVal = '', searchFilter } = this;
       const trimSearchVal = searchVal.trim();
       if (trimSearchVal) {
-        return dataSource.filter(v =>
-          searchFilter(trimSearchVal, String(v.label || v.title || v.key), v));
+        return dataSource.filter((v) => searchFilter(trimSearchVal, String(v.label || v.title || v.key), v));
       }
       return dataSource;
     },
     filtedAndNoDisabledDataSource() {
-      return this.filtedDataSource.filter(v => !v.disabled);
+      return this.filtedDataSource.filter((v) => !v.disabled);
     },
     validCheckedKeys() {
       const { dataSource, checkedKeys } = this;
       return dataSource
-        .filter(item => checkedKeys.indexOf(item.$$_key) > -1)
-        .map(item => item.$$_key);
+        .filter((item) => checkedKeys.indexOf(item.$$_key) > -1)
+        .map((item) => item.$$_key);
     },
     checkedKeysObj() {
       return this.checkedKeys.reduce((r, k) => {
@@ -130,11 +129,11 @@ export default {
       if (checkedKeys.length === 0) {
         status = 'none';
       } else if (
-        filtedAndNoDisabledDataSource.length > 0 &&
-        filtedAndNoDisabledDataSource.every(v => v.$$_key in checkedKeysObj)
+        filtedAndNoDisabledDataSource.length > 0
+        && filtedAndNoDisabledDataSource.every((v) => v.$$_key in checkedKeysObj)
       ) {
         status = 'all';
-      } else if (filtedAndNoDisabledDataSource.some(v => v.$$_key in checkedKeysObj)) {
+      } else if (filtedAndNoDisabledDataSource.some((v) => v.$$_key in checkedKeysObj)) {
         status = 'part';
       }
 
@@ -208,12 +207,13 @@ export default {
         checked = true;
         // eslint-disable-next-line
         changedDataSource = filtedAndNoDisabledDataSource.filter(
-          v => !(v.$$_key in checkedKeysObj));
+          (v) => !(v.$$_key in checkedKeysObj)
+        );
       } else {
         checked = true;
         changedDataSource = filtedAndNoDisabledDataSource;
       }
-      this.$emit('select-all', direction, changedDataSource.map(v => v.$$_key), checked);
+      this.$emit('select-all', direction, changedDataSource.map((v) => v.$$_key), checked);
     },
     normalizeItem(item) {
       const { renderContent, direction } = this;

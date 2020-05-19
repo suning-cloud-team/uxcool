@@ -133,7 +133,7 @@ export default {
       <a on-click={onClose} class={`${prefixCls}-close-icon`}>
         {closeIcon || <Icon type="close" />}
       </a>
-      ) : null;
+    ) : null;
 
     return (
       <transition name={`${prefixCls}-slide-up`} on-after-leave={onAfterClose}>

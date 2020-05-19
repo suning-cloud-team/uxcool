@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import { Select } from '@suning/uxcool';
+  import { Select } from '@cloud-sn/uxcool';
 
   export default {
     components: {

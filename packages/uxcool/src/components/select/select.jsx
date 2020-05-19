@@ -1,6 +1,6 @@
 import omit from 'object.omit';
-import VMenu, { VMenuItem, VMenuItemGroup } from '@suning/v-menu';
-import Trigger from '@suning/v-trigger';
+import VMenu, { VMenuItem, VMenuItemGroup } from '@cloud-sn/v-menu';
+import Trigger from '@cloud-sn/v-trigger';
 import {
   isArray,
   isFunction,
@@ -8,7 +8,7 @@ import {
   isPlainObject,
   updatePortalElement,
   cloneDeepWith,
-} from '@suning/v-utils';
+} from '@cloud-sn/v-utils';
 import VirtualList from '../virtual-list';
 import { buildComponentName } from '../utils';
 import {

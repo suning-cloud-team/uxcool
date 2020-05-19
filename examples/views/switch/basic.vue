@@ -67,7 +67,7 @@
 </template>
 
 <script>
-  import { Switch, Icon, Button } from '@suning/uxcool';
+  import { Switch, Icon, Button } from '@cloud-sn/uxcool';
   import ControlDemo from './control.vue';
 
   export default {

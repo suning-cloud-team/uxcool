@@ -1,5 +1,5 @@
-import Trigger from '@suning/v-trigger';
-import { isArray, isEqual } from '@suning/v-utils';
+import Trigger from '@cloud-sn/v-trigger';
+import { isArray, isEqual } from '@cloud-sn/v-utils';
 import Tree from '../tree';
 import { buildComponentName } from '../utils';
 import {

@@ -1,6 +1,6 @@
 import {
   mount, waitTime, removePopup, $
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import { UxDropdown, UxDropdownButton } from '..';
 import Menu from '../../menu';
 

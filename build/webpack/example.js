@@ -53,13 +53,13 @@ module.exports = (env = {}) => {
                       [
                         'babel-plugin-import',
                         {
-                          libraryName: '@suning/uxcool',
+                          libraryName: '@cloud-sn/uxcool',
                           customName(methodName) {
                             const name = /^ux-/.test(methodName)
                               ? methodName.replace(/^ux-/, '')
                               : methodName;
-                            return path.join('@suning/uxcool', 'src/components', name);
-                            // return path.join('@suning/uxcool', 'es', name);
+                            return path.join('@cloud-sn/uxcool', 'src/components', name);
+                            // return path.join('@cloud-sn/uxcool', 'es', name);
                           },
                           style: true,
                         },

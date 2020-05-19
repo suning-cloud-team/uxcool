@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { warning, addEventListener, isEqual } from '@suning/v-utils';
+import { warning, addEventListener, isEqual } from '@cloud-sn/v-utils';
 import { noop, getClassNameFromAlign } from './utils';
 import Popup from './popup';
 

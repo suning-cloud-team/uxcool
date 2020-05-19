@@ -34,8 +34,8 @@
 </template>
 
 <script>
-  import { UxTabs, UxTabPane } from '@suning/uxcool/src/components/tabs';
-  import { UxSelect, UxOption } from '@suning/uxcool/src/components/select';
+  import { UxTabs, UxTabPane } from '@cloud-sn/uxcool/src/components/tabs';
+  import { UxSelect, UxOption } from '@cloud-sn/uxcool/src/components/select';
 
   export default {
     components: {

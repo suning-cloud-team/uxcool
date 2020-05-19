@@ -1,4 +1,4 @@
-import { debounce } from '@suning/v-utils';
+import { debounce } from '@cloud-sn/v-utils';
 
 /* eslint-disable */
 export default {

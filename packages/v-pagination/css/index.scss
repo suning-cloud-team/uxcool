@@ -1,5 +1,5 @@
-@import '~@suning/v-style/assets/themes/default';
-@import '~@suning/v-style/assets/core/index';
+@import '~@cloud-sn/v-style/assets/themes/default';
+@import '~@cloud-sn/v-style/assets/core/index';
 
 $pagination-prefix-cls: #{$ux-prefix}-pagination;
 @mixin iconfont-size-under-12px($size, $rotate: 0deg) {

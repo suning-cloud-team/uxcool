@@ -1,4 +1,6 @@
-import { isVNode, isDef, isFunction, isArray, warning } from '@suning/v-utils';
+import {
+  isVNode, isDef, isFunction, isArray, warning
+} from '@cloud-sn/v-utils';
 
 export const ICON_OPEN = 'open';
 
@@ -56,7 +58,7 @@ export function setStoreKeysByName(store, keyName, value, op, replace, replaceCb
         }
       });
     } else if (op === 'del') {
-      nStore[keyName] = list.filter(k => !(k in nKeyObj));
+      nStore[keyName] = list.filter((k) => !(k in nKeyObj));
     }
   }
   if (isFunction(storeKeysCb)) {
@@ -97,7 +99,7 @@ export function getNodeChildCheckState(childrens = []) {
     return -1;
   }
 
-  const childrensNoDisabled = childrens.filter(v => v.isParent || (!v.isDisabled && !v.disableCheckbox));
+  const childrensNoDisabled = childrens.filter((v) => v.isParent || (!v.isDisabled && !v.disableCheckbox));
 
   if (childrensNoDisabled.length === 0) {
     return 0;
@@ -136,7 +138,7 @@ export function isTreeNode(node = {}) {
   return componentOptions && componentOptions.options && componentOptions.options.isTreeNode;
 }
 export function filterChildrens(childrens = []) {
-  return childrens.filter(node => isTreeNode(node));
+  return childrens.filter((node) => isTreeNode(node));
 }
 
 export function getParentChecked(parent) {
@@ -177,7 +179,7 @@ export function getOriginNodes(nodesMap = {}, keys = []) {
         }
         : null;
     })
-    .filter(node => !!node);
+    .filter((node) => !!node);
 }
 
 export function setNodeOriginExpand(node) {

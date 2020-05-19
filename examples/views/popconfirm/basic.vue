@@ -19,7 +19,7 @@
 
 
 <script>
-  import { Popconfirm } from '@suning/uxcool';
+  import { Popconfirm } from '@cloud-sn/uxcool';
   import CustomDemo from './custom.vue';
   import SlotDemo from './slot.vue';
   import ContainerDemo from './container.vue';

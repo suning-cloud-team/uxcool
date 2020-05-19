@@ -1,6 +1,8 @@
-import { mount, waitTime } from '@suning/v-test-utils';
-import { UxMenu, UxMenuItem, UxSubMenu, UxMenuItemGroup } from '..';
-import { UxButton} from '../../button';
+import { mount, waitTime } from '@cloud-sn/v-test-utils';
+import {
+  UxMenu, UxMenuItem, UxSubMenu, UxMenuItemGroup
+} from '..';
+import { UxButton } from '../../button';
 import { UxIcon } from '../../components';
 
 describe('menu', () => {
@@ -116,7 +118,7 @@ describe('menu', () => {
       },
       created() {
         setTimeout(() => {
-         this.openKeys = ['sub-menu-2'];
+          this.openKeys = ['sub-menu-2'];
         }, 100);
       },
       methods: {

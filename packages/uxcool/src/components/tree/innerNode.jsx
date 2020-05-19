@@ -1,4 +1,4 @@
-import { isFunction, CollapseTransition } from '@suning/v-utils';
+import { isFunction, CollapseTransition } from '@cloud-sn/v-utils';
 import { ICON_OPEN, ICON_CLOSE } from './utils';
 import SubMixin from './mixins/sub';
 
@@ -29,9 +29,9 @@ export default {
         },
       } = this;
       return (
-        isLeaf ||
-        (!isParent && !isTreeLazy) ||
-        (isTreeLazy && isLoaded && (!children || children.length === 0))
+        isLeaf
+        || (!isParent && !isTreeLazy)
+        || (isTreeLazy && isLoaded && (!children || children.length === 0))
       );
     },
     isSelectable() {
@@ -309,14 +309,14 @@ export default {
         >
           {isFunction(treeRenderContentFn)
             ? treeRenderContentFn({
-                node: {
-                  ...node,
-                  isDisabled,
-                  isSelectable,
-                  isLeaf,
-                  isExpanded,
-                },
-              })
+              node: {
+                ...node,
+                isDisabled,
+                isSelectable,
+                isLeaf,
+                isExpanded,
+              },
+            })
             : titleElement}
         </span>
       );
@@ -343,7 +343,7 @@ export default {
         };
         nodes = (
           <ul class={childTreeCls} data-expanded={isExpanded}>
-            {children.map(childNode => (
+            {children.map((childNode) => (
               <inner-node {...{ props: { prefixCls, node: childNode } }} />
             ))}
           </ul>

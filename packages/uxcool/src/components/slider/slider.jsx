@@ -1,5 +1,5 @@
-import { isFunction, isDef } from '@suning/v-utils';
-import { VSlider, VSliderRange } from '@suning/v-slider';
+import { isFunction, isDef } from '@cloud-sn/v-utils';
+import { VSlider, VSliderRange } from '@cloud-sn/v-slider';
 import { buildComponentName } from '../utils';
 import Tooltip from '../tooltip';
 

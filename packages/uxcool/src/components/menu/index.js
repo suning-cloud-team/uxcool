@@ -10,6 +10,8 @@ UxMenu.ItemGroup = MenuItemGroup;
 UxMenu.MenuItem = MenuItem;
 UxMenu.Item = MenuItem;
 
-export { UxMenu, SubMenu as UxSubMenu, MenuItemGroup as UxMenuItemGroup, MenuItem as UxMenuItem };
+export {
+  UxMenu, SubMenu as UxSubMenu, MenuItemGroup as UxMenuItemGroup, MenuItem as UxMenuItem
+};
 
 export default UxMenu;

@@ -33,7 +33,7 @@ export default {
           np = np.parent;
         }
       }
-      return filterNodes.map(node => ({
+      return filterNodes.map((node) => ({
         ...node.originNode,
         pos: node.pos,
         parentNode: getNodeOriginParent(node),
@@ -45,14 +45,14 @@ export default {
     },
     getTreeNodesByKeys(keys = []) {
       const { getStoreNode } = this;
-      return keys.map(key => getStoreNode(key)).filter(node => !!node);
+      return keys.map((key) => getStoreNode(key)).filter((node) => !!node);
     },
     getCheckedKeys() {
       return this.getStoreCheckedKeys();
     },
 
     getTreeOriginNodes() {
-      return this.nodes.map(v => v.originNode);
+      return this.nodes.map((v) => v.originNode);
     },
     rebuildAsyncTree(nodes) {
       const {

@@ -48,8 +48,8 @@
 
 
 <script>
-  import Trigger from '@suning/v-trigger';
-  import { VTimePickerPanel } from '@suning/v-timepicker';
+  import Trigger from '@cloud-sn/v-trigger';
+  import { VTimePickerPanel } from '@cloud-sn/v-timepicker';
   import { formatDate, normalizeDate } from '../utils';
   import Calendar from '../calendar.vue';
   import localeEN from '../locale/en_US';

@@ -1,4 +1,4 @@
-import { isFunction } from '@suning/v-utils';
+import { isFunction } from '@cloud-sn/v-utils';
 
 export default {
   methods: {
@@ -8,7 +8,7 @@ export default {
         return lazy && isFunction(loadData);
       }
       const { isLoaded, isLoading, children } = parent;
-      const hasChildren = children && children.filter(v => !v.isDragNode).length !== 0;
+      const hasChildren = children && children.filter((v) => !v.isDragNode).length !== 0;
       return lazy && !isLoaded && !isLoading && !hasChildren;
     },
     asyncNode(parent) {

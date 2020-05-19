@@ -15,8 +15,8 @@
 
 
 <script>
-import UxProgress from '@suning/uxcool/src/components/progress';
-import '@suning/uxcool/src/components/progress/style/index.scss';
+import UxProgress from '@cloud-sn/uxcool/src/components/progress';
+import '@cloud-sn/uxcool/src/components/progress/style/index.scss';
 
 export default {
   components: { UxProgress },

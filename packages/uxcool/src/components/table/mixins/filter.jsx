@@ -1,11 +1,11 @@
-import { isFunction } from '@suning/v-utils';
+import { isFunction } from '@cloud-sn/v-utils';
 
 export default {
   computed: {
     filteredValueColumns() {
       const { flatColumns } = this;
       // 只支持最下层的列,及没有下级且有filterValue的列
-      return flatColumns.filter(v => !v.children && 'filteredValue' in v);
+      return flatColumns.filter((v) => !v.children && 'filteredValue' in v);
     },
   },
   methods: {

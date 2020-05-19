@@ -1,4 +1,4 @@
-import { mountPickerFactory, waitTime, triggerEvent } from '@suning/v-test-utils';
+import { mountPickerFactory, waitTime, triggerEvent } from '@cloud-sn/v-test-utils';
 import InputNumber from '../index';
 import { UxInput } from '../../input';
 import { mount } from '../../../../../v-test-utils/src';

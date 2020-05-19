@@ -1,4 +1,4 @@
-import { warning, isDef, castArray } from '@suning/v-utils';
+import { warning, isDef, castArray } from '@cloud-sn/v-utils';
 import { validateField } from '../utils';
 
 export default {

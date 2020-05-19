@@ -1,4 +1,4 @@
-import { isPlainObject, isFunction } from '@suning/v-utils';
+import { isPlainObject, isFunction } from '@cloud-sn/v-utils';
 
 function getError(option, xhr) {
   const msg = `cannot post ${option.action} ${xhr.status}'`;

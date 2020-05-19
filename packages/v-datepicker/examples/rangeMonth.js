@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import '@suning/v-datepicker/css/index.scss';
-import '@suning/v-timepicker/assets/index.css';
-import { VRangeMonthYearDecadePicker } from '@suning/v-datepicker';
+import '@cloud-sn/v-datepicker/css/index.scss';
+import '@cloud-sn/v-timepicker/assets/index.css';
+import { VRangeMonthYearDecadePicker } from '@cloud-sn/v-datepicker';
 
 const vm = new Vue({
   components: {

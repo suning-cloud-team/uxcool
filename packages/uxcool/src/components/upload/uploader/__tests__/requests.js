@@ -1,5 +1,5 @@
 export const successRequest = ({ onSuccess, file }) => {
-  onSuccess("success", new XMLHttpRequest());
+  onSuccess('success', new XMLHttpRequest());
 };
 
 export const errorRequest = ({ onError }) => {

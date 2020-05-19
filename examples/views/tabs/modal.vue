@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import { Tabs, Button, Modal } from '@suning/uxcool';
+  import { Tabs, Button, Modal } from '@cloud-sn/uxcool';
 
   export default {
     components: {

@@ -1,5 +1,5 @@
 <script>
-  import { isSameTypeVNode } from '@suning/v-utils';
+  import { isSameTypeVNode } from '@cloud-sn/v-utils';
   import TabBar from './tabBar.vue';
   import TabContent from './tabContent.vue';
 

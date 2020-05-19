@@ -1,8 +1,8 @@
 import Vue from 'vue';
 
-import '@suning/v-tooltip/css/bootstrap.scss';
+import '@cloud-sn/v-tooltip/css/bootstrap.scss';
 
-import Tooltip from '@suning/v-tooltip';
+import Tooltip from '@cloud-sn/v-tooltip';
 
 function mock(label, cnt = 10) {
   return Array(cnt)

@@ -1,5 +1,5 @@
 import get from 'lodash/get';
-import { isVNode, isFunction, isPlainObject } from '@suning/v-utils';
+import { isVNode, isFunction, isPlainObject } from '@cloud-sn/v-utils';
 import { getNormalizeContent } from './utils';
 import SubMixin from './mixins/sub';
 

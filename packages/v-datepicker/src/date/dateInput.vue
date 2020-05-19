@@ -24,7 +24,7 @@
   import {
     format as formatFn, isValid, parse as parseFn, isSameSecond, isSameDay
   } from 'date-fns';
-  import { isArray } from '@suning/v-utils';
+  import { isArray } from '@cloud-sn/v-utils';
   import MultiCalendarMixin from '../mixins/multiCalendar';
 
   export default {

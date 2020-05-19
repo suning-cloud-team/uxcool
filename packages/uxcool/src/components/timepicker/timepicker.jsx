@@ -1,5 +1,7 @@
-import Trigger from '@suning/v-trigger';
-import { format as formatFn, setHours, setMinutes, setSeconds } from 'date-fns';
+import Trigger from '@cloud-sn/v-trigger';
+import {
+  format as formatFn, setHours, setMinutes, setSeconds
+} from 'date-fns';
 import { buildComponentName } from '../utils';
 import commonProps from './props';
 import placements from './placements';
@@ -97,7 +99,7 @@ export default {
     isShowHour() {
       const { showHour, format } = this;
       if (format) {
-        return ['H', 'h'].some(k => format.indexOf(k) > -1);
+        return ['H', 'h'].some((k) => format.indexOf(k) > -1);
       }
       return showHour;
     },
@@ -184,7 +186,7 @@ export default {
       const {
         prefixCls, isShowHour, isShowMinute, isShowSecond, use12Hours
       } = this;
-      const cnt = [isShowHour, isShowMinute, isShowSecond, use12Hours].filter(v => !!v).length;
+      const cnt = [isShowHour, isShowMinute, isShowSecond, use12Hours].filter((v) => !!v).length;
 
       return {
         [`${prefixCls}-panel`]: true,

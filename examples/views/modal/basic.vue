@@ -205,7 +205,7 @@
 
 <script>
   import Vue from 'vue';
-  import { Button, Modal } from '@suning/uxcool';
+  import { Button, Modal } from '@cloud-sn/uxcool';
   import ZIndexDemo from './z-index.vue';
 
   Vue.component('StoreCmp', {

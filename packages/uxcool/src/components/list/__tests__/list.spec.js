@@ -1,4 +1,4 @@
-import { mount, waitTime } from '@suning/v-test-utils';
+import { mount, waitTime } from '@cloud-sn/v-test-utils';
 import { UxList, UxListItem, UxListItemMeta } from '..';
 import UxAvatar from '../../avatar';
 

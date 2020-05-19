@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import VCheckbox from '@suning/v-checkbox';
-import '@suning/v-checkbox/css/normalize.css';
-import '@suning/v-checkbox/css/index.scss';
+import VCheckbox from '@cloud-sn/v-checkbox';
+import '@cloud-sn/v-checkbox/css/normalize.css';
+import '@cloud-sn/v-checkbox/css/index.scss';
 
 const vm = new Vue({
   el: '#app',

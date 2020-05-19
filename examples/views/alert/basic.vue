@@ -9,7 +9,7 @@
       <h6>closable</h6>
       <alert message="Success Tip"
              type="success"
-             closable/>
+             closable />
     </div>
 
     <div class="demo">
@@ -27,16 +27,15 @@
              closable
              @close="onClose"
              @after-close="onAfterClose" />
-
     </div>
     <div class="demo">
       <h6>success, warning, info, error</h6>
       <alert type="success"
              message="Success Tip"
-             show-icon/>
+             show-icon />
       <alert type="info"
              message="Info Tip"
-             show-icon/>
+             show-icon />
       <alert type="error"
              message="Error Tip"
              show-icon />
@@ -50,11 +49,11 @@
       <alert type="success"
              message="Success Tip"
              description="This is a success description"
-             show-icon/>
+             show-icon />
       <alert type="info"
              message="Info Tip"
              description="This is an info description"
-             show-icon/>
+             show-icon />
       <alert type="error"
              message="Error Tip"
              description="This is an error description"
@@ -76,19 +75,17 @@
       <alert>
         <Icon slot="closeText"
               type="delete_o" />
-        <span style="color:red;"
-              slot="message">This is slot message</span>
-        <span style="color:green;"
-              slot="description">This is slot description</span>
+        <span slot="message"
+              style="color:red;">This is slot message</span>
+        <span slot="description"
+              style="color:green;">This is slot description</span>
       </alert>
-
     </div>
-
   </div>
 </template>
 
 <script>
-  import { Alert, Icon } from '@suning/uxcool';
+  import { Alert, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {
@@ -96,12 +93,14 @@
       Icon,
     },
     methods: {
+      /* eslint-disable  no-console */
       onClose() {
         console.log('on close');
       },
       onAfterClose() {
         console.log('on after close');
       },
+      /* eslint-enable  no-console */
     },
   };
 </script>

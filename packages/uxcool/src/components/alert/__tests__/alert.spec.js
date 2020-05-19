@@ -1,4 +1,4 @@
-import { mountPickerFactory, waitTime, triggerEvent } from '@suning/v-test-utils';
+import { mountPickerFactory, waitTime, triggerEvent } from '@cloud-sn/v-test-utils';
 import Alert from '../index';
 
 describe('alert', () => {

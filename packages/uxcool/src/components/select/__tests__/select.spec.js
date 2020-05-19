@@ -1,6 +1,6 @@
 import {
   mount, createWrapper, waitTime, $, removePopup
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import { UxSelect } from '..';
 import { UxInput } from '../../input';
 

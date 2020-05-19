@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { UxMultiCascader } from '@suning/uxcool';
+  import { UxMultiCascader } from '@cloud-sn/uxcool';
 
   const mockData = (count) => Array.from({ length: count }, (_, i) => ({ value: `${i + 1}`, label: `${i + 1}` }));
   const rootNodes = Array.from({ length: 4 }, (_, i) => ({ value: `${i + 1}`, label: `${i + 1}` }));

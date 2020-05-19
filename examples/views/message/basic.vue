@@ -63,7 +63,7 @@
 
 
 <script>
-  import { Message as UxMessage } from '@suning/uxcool';
+  import { Message as UxMessage } from '@cloud-sn/uxcool';
   import ConfigDemo from './config.vue';
 
   export default {

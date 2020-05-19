@@ -1,4 +1,4 @@
-import { CollapseTransition } from '@suning/v-utils';
+import { CollapseTransition } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import Mixin from './mixin';
 

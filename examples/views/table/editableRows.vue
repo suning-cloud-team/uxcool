@@ -9,7 +9,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Divider, Table as UxTable, Modal } from '@suning/uxcool';
+  import { Divider, Table as UxTable, Modal } from '@cloud-sn/uxcool';
 
   // @vue/components
   const EditableCell = {

@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import '@suning/v-slider/css/index.scss';
+import '@cloud-sn/v-slider/css/index.scss';
 
-import VSlider from '@suning/v-slider';
+import VSlider from '@cloud-sn/v-slider';
 
 const vm = new Vue({
   el: '#app',

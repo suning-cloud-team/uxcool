@@ -1,5 +1,5 @@
-import { HTMLElementType, emitter } from '@suning/v-utils';
-import Align from '@suning/v-align';
+import { HTMLElementType, emitter } from '@cloud-sn/v-utils';
+import Align from '@cloud-sn/v-align';
 
 export default {
   components: {

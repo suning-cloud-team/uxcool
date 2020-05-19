@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import { Cascader } from '@suning/uxcool';
+  import { Cascader } from '@cloud-sn/uxcool';
 
   const defaultData = [
     {

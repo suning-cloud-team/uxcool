@@ -136,7 +136,7 @@
     Select,
     TreeSelect,
     Upload,
-  } from '@suning/uxcool';
+  } from '@cloud-sn/uxcool';
 
   Form.extendValidator('fileRequired', {
     validate(value) {

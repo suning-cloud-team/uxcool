@@ -28,9 +28,9 @@ http://localhost:8000/example/default.html
 
 ```
 
-npm config set @suning:registry http://snpm.cnsuning.com
+npm config set @cloud-sn:registry http://snpm.cnsuning.com
 
-yarn add @suning/v-pagination
+yarn add @cloud-sn/v-pagination
 
 ```
 
@@ -39,7 +39,7 @@ yarn add @suning/v-pagination
 ```
 
 import Vue from 'vue';
-import Pagination from '@suning/v-pagination';
+import Pagination from '@cloud-sn/v-pagination';
 
 ```
 

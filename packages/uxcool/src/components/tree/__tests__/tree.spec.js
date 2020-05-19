@@ -1,4 +1,4 @@
-import { mount, waitTime, $ } from '@suning/v-test-utils';
+import { mount, waitTime, $ } from '@cloud-sn/v-test-utils';
 import Tree from '../tree';
 import VitrualTree from '../virtualTree';
 
@@ -80,12 +80,12 @@ function getNodesCount(tree) {
 }
 
 function createNode(parentKey, key, longTitle) {
-  const longMsg = 'Zinedine Yazid Zidane O.L.H., A.O.M.N. (French pronunciation: [zinedin zidan],' +
-    ' born 23 June 1972), nicknamed "Zizou", is a French retired professional footballer and current ' +
-    'manager of Real Madrid. He played as an attacking midfielder for the France national team, Cannes, ' +
-    'Bordeaux, Juventus and Real Madrid.[3][4] An elite playmaker, renowned for his elegance, vision, ball ' +
-    'control and technique, Zidane was named the best European footballer of the past 50 years in the UEFA ' +
-    'Golden Jubilee Poll in 2004.[5] He is widely regarded as one of the greatest players of all time';
+  const longMsg = 'Zinedine Yazid Zidane O.L.H., A.O.M.N. (French pronunciation: [zinedin zidan],'
+    + ' born 23 June 1972), nicknamed "Zizou", is a French retired professional footballer and current '
+    + 'manager of Real Madrid. He played as an attacking midfielder for the France national team, Cannes, '
+    + 'Bordeaux, Juventus and Real Madrid.[3][4] An elite playmaker, renowned for his elegance, vision, ball '
+    + 'control and technique, Zidane was named the best European footballer of the past 50 years in the UEFA '
+    + 'Golden Jubilee Poll in 2004.[5] He is widely regarded as one of the greatest players of all time';
   const node = {
     title: longTitle ? `${parentKey}-${key}-${longMsg}` : `${parentKey}-${key}`,
     key: `${parentKey}-${key}`,
@@ -462,18 +462,18 @@ describe('Tree Component Render', () => {
           },
         });
         const newDataSource = [...dataSource, { title: '0-3', key: '0-3' }];
-        wrapper.setProps({dataSource: { title: '0-3', key: '0-3' }});
+        wrapper.setProps({ dataSource: { title: '0-3', key: '0-3' } });
         await waitTime();
-        wrapper.setProps({dataSource: newDataSource});
+        wrapper.setProps({ dataSource: newDataSource });
         await waitTime();
         expect(wrapper.find('span[title="0-3"]')).toBeDefined();
-        wrapper.setProps({expandedKeys: ['0-0', '0-1']});
+        wrapper.setProps({ expandedKeys: ['0-0', '0-1'] });
         await waitTime();
         expect(wrapper.find('span[title="0-1-0"]')).toBeDefined();
-        wrapper.setProps({selectedKeys: ['0-0-2']});
+        wrapper.setProps({ selectedKeys: ['0-0-2'] });
         await waitTime();
         expect(wrapper.find('.ux-tree-node-selected').attributes('title')).toBe('0-0-2');
-        wrapper.setProps({selectedKeys: ['0-1-0']});
+        wrapper.setProps({ selectedKeys: ['0-1-0'] });
         await waitTime();
         expect(wrapper.find('span[title="0-1-0"]').classes()).toContain('ux-tree-node-selected');
       });
@@ -683,7 +683,7 @@ describe('Tree Component Render', () => {
         expect(nodeArray.length).toBeLessThanOrEqual(total);
       });
 
-      it('test render virtual node auto height',async () => {
+      it('test render virtual node auto height', async () => {
         const dataSrc = createBigDataSource(10, 10, 0, true);
         const expandedKeys = ['0-0'];
         const wrapper = createVirtualTreeWrapper({
@@ -699,7 +699,7 @@ describe('Tree Component Render', () => {
         });
         const nodeArray = wrapper.findAll('li');
         expect(nodeArray.length).toBe(20);
-        wrapper.setProps({expandedKeys: ['0-1']});
+        wrapper.setProps({ expandedKeys: ['0-1'] });
         await waitTime();
         expect(wrapper.findAll('li').length).toBe(20);
         wrapper.findAll('li').at(0).find('.ux-tree-switcher').trigger('click');

@@ -13,7 +13,7 @@
 
 
 <script>
-  import { Notification, Button } from '@suning/uxcool';
+  import { Notification, Button } from '@cloud-sn/uxcool';
   import IconDemo from './icon.vue';
   import TypeDemo from './type.vue';
 

@@ -15,7 +15,7 @@
 
 
 <script>
-  import { TreeSelect } from '@suning/uxcool';
+  import { TreeSelect } from '@cloud-sn/uxcool';
 
   export default {
     components: {

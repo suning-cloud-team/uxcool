@@ -1,4 +1,4 @@
-import { mountPickerFactory, waitTime, triggerEvent } from '@suning/v-test-utils';
+import { mountPickerFactory, waitTime, triggerEvent } from '@cloud-sn/v-test-utils';
 import Table from '../table';
 import Checkbox from '../checkbox.vue';
 import CheckboxAll from '../checkboxAll.vue';

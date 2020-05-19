@@ -1,6 +1,6 @@
 {
-  "name": "@suning/v-align",
-  "version": "1.0.35",
+  "name": "@cloud-sn/v-align",
+  "version": "1.0.36",
   "description": "html source node与 target node自动对齐",
   "main": "./cjs/index.js",
   "module": "./es/index.js",
@@ -17,10 +17,11 @@
     "server": "v-tools run server"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.33",
+    "@cloud-sn/v-utils": "^1.0.34",
     "dom-align": "^1.8.3"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-test-utils": "^1.0.11",
+    "@cloud-sn/v-tools": "^1.0.36"
   }
 }

@@ -1,4 +1,4 @@
-import { triggerEvent, mountPickerFactory, getPortal } from '@suning/v-test-utils';
+import { triggerEvent, mountPickerFactory, getPortal } from '@cloud-sn/v-test-utils';
 import Popover from '../popover.vue';
 
 const mountPopover = mountPickerFactory(Popover);

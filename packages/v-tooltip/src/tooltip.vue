@@ -32,7 +32,7 @@
 
 
 <script>
-  import Trigger from '@suning/v-trigger';
+  import Trigger from '@cloud-sn/v-trigger';
   import placements from './placements';
 
   export default {

@@ -1,4 +1,4 @@
-import { mount, waitTime , triggerEvent} from '@suning/v-test-utils';
+import { mount, waitTime, triggerEvent } from '@cloud-sn/v-test-utils';
 import { UxAnchor, UxAnchorLink } from '..';
 
 describe('anchor', () => {
@@ -53,8 +53,8 @@ describe('anchor', () => {
       },
       data() {
         return {
-          getContainer: () => {document.body}
-        }
+          getContainer: () => { document.body; }
+        };
       },
       created() {
         setTimeout(() => {
@@ -104,9 +104,8 @@ describe('anchor', () => {
       attachToDocument: true
     });
     await triggerEvent(wrapper.find('[href="#secondDemo"]'), 'click');
-    const herf = window.location.href + '';
+    const herf = `${window.location.href}`;
     expect(herf.indexOf('#secondDemo') > -1).toBeTruthy();
     wrapper.destroy();
   });
-
 });

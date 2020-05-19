@@ -42,8 +42,7 @@ export default {
         <div class={`${prefixCls}-avatar`}>{slotAvatar}</div>
       ) : null;
 
-      const content =
-        titleContent || descContent ? (
+      const content = titleContent || descContent ? (
           <div class={`${prefixCls}-content`}>
             {titleContent ? <h4 class={`${prefixCls}-title`}>{titleContent}</h4> : null}
             {descContent ? <div class={`${prefixCls}-description`}>{descContent}</div> : null}

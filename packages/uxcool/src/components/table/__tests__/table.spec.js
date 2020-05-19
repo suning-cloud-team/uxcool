@@ -3,8 +3,8 @@ import {
   waitTime,
   triggerEvent,
   getVueCreateElement,
-} from '@suning/v-test-utils';
-import VTable from '@suning/v-table/src/table';
+} from '@cloud-sn/v-test-utils';
+import VTable from '@cloud-sn/v-table/src/table';
 import Table from '../table';
 import { getCols, getData } from './utils';
 

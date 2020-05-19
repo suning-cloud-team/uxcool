@@ -30,7 +30,7 @@
 
 <script>
   import { subDays, subSeconds, startOfDay, endOfDay } from 'date-fns';
-  import { Button, Datepicker } from '@suning/uxcool';
+  import { Button, Datepicker } from '@cloud-sn/uxcool';
 
   export default {
     components: {

@@ -88,7 +88,7 @@
 </template>
 
 <script>
-  import { Input, Icon, Select } from '@suning/uxcool';
+  import { Input, Icon, Select } from '@cloud-sn/uxcool';
 
   export default {
     components: {

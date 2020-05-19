@@ -10,7 +10,7 @@
 
 
 <script>
-  import { Datepicker, Button } from '@suning/uxcool';
+  import { Datepicker, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

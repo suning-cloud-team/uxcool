@@ -38,7 +38,7 @@
 <script>
   import omit from 'object.omit';
   import { format as formatDate } from 'date-fns';
-  import { VRangeDatePicker } from '@suning/v-datepicker';
+  import { VRangeDatePicker } from '@cloud-sn/v-datepicker';
   import { buildComponentName } from '../utils';
   import Icon from '../icon';
   import localeCN from './locale/zh_CN';

@@ -115,7 +115,7 @@
 
 
 <script>
-  import { Input, Grid as Row, Select, Datepicker } from '@suning/uxcool';
+  import { Input, Grid as Row, Select, Datepicker } from '@cloud-sn/uxcool';
 
   export default {
     components: {

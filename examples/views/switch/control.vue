@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { Switch } from '@suning/uxcool';
+  import { Switch } from '@cloud-sn/uxcool';
 
   export default {
     components: {

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
-import '@suning/v-timepicker/css/index.scss';
-import Combobox from '@suning/v-timepicker/src/combobox.vue';
+import '@cloud-sn/v-timepicker/css/index.scss';
+import Combobox from '@cloud-sn/v-timepicker/src/combobox.vue';
 
 function mock(n) {
   return Array(n)

@@ -83,7 +83,7 @@
   </div>
 </template>
 <script>
-  import { Icon, Dropdown, Menu, Button } from '@suning/uxcool';
+  import { Icon, Dropdown, Menu, Button } from '@cloud-sn/uxcool';
 
   function mock(cnt = 10) {
     return Array(cnt)

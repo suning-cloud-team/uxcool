@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import { addMonths, subDays, isBefore, startOfDay } from 'date-fns';
-import '@suning/v-datepicker/css/index.scss';
-import '@suning/v-timepicker/assets/index.css';
-import DatePicker, { VRangeDatePicker } from '@suning/v-datepicker';
+import '@cloud-sn/v-datepicker/css/index.scss';
+import '@cloud-sn/v-timepicker/assets/index.css';
+import DatePicker, { VRangeDatePicker } from '@cloud-sn/v-datepicker';
 
-// import Pikcer from '@suning/v-datepicker/picker.vue';
+// import Pikcer from '@cloud-sn/v-datepicker/picker.vue';
 const vm = new Vue({
   el: '#app',
   data: {

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import { Tooltip as UxTooltip } from '@suning/uxcool';
+  import { Tooltip as UxTooltip } from '@cloud-sn/uxcool';
 
   export default {
     components: { UxTooltip },

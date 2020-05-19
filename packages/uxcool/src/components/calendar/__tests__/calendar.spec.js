@@ -1,6 +1,6 @@
 import {
   mount, waitTime, removePopup, $
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import {
   addYears, isSameDay, format, addDays
 } from 'date-fns';

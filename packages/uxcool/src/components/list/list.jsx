@@ -1,4 +1,4 @@
-import { isFunction, warning } from '@suning/v-utils';
+import { isFunction, warning } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import Row from '../grid';
 import Pagination from '../pagination';

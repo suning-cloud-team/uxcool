@@ -55,7 +55,7 @@
     Select,
     Modal,
     Radio,
-  } from '@suning/uxcool';
+  } from '@cloud-sn/uxcool';
 
   const defaultForm = {
     title: 'a',

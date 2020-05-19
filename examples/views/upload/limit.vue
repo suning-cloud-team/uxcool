@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { Upload, Button, Message } from '@suning/uxcool';
+  import { Upload, Button, Message } from '@cloud-sn/uxcool';
 
   export default {
     components: {

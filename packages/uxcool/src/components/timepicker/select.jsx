@@ -136,7 +136,7 @@ export default {
       classes, children, options, onMouseEnter, onMouseLeave
     } = this;
     this.prevSelectedValue = this.currentSelectedValue;
-    this.currentSelectedValue = (options.filter(v => v.isSelected)[0] || {}).value || null;
+    this.currentSelectedValue = (options.filter((v) => v.isSelected)[0] || {}).value || null;
     return (
       <div ref="wrapRef" class={classes} on-mouseenter={onMouseEnter} on-mouseleave={onMouseLeave}>
         {children}

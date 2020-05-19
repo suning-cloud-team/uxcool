@@ -90,7 +90,7 @@ export default {
       } = this;
       setSelectedRowKeys(selectedRowKeys);
 
-      const selectedRows = flatData.filter(v => selectedRowKeys.indexOf(v.$$_key) > -1);
+      const selectedRows = flatData.filter((v) => selectedRowKeys.indexOf(v.$$_key) > -1);
       if (isFunction(rowSelection.onChange)) {
         rowSelection.onChange(selectedRowKeys, selectedRows, { type, checked }, prevSelectRowKeys);
       }
@@ -102,7 +102,7 @@ export default {
           rowSelection.onSelectAll(
             checked,
             selectedRows,
-            flatData.filter(v => changedRowKeys.indexOf(v.$$_key) > -1),
+            flatData.filter((v) => changedRowKeys.indexOf(v.$$_key) > -1),
             selectedRowKeys,
             prevSelectRowKeys
           );
@@ -114,7 +114,7 @@ export default {
     handleAllSelectionChange(op, onSelectFn, isDefaultSelection) {
       const { changeablePagerFlatData, onRowSelectionChange } = this;
       let selectedRowKeys = [...this.selectedRowKeys];
-      const changeableFlatDataKeys = changeablePagerFlatData.map(v => v.$$_key);
+      const changeableFlatDataKeys = changeablePagerFlatData.map((v) => v.$$_key);
       const p = {
         type: op,
         checked: false,
@@ -122,20 +122,20 @@ export default {
       };
       switch (op) {
         case 'all':
-          p.changedRowKeys = changeableFlatDataKeys.filter(k => selectedRowKeys.indexOf(k) === -1);
+          p.changedRowKeys = changeableFlatDataKeys.filter((k) => selectedRowKeys.indexOf(k) === -1);
           p.type = 'onSelectAll';
           p.checked = true;
           selectedRowKeys.push(...p.changedRowKeys);
           break;
         case 'removeAll':
-          p.changedRowKeys = changeableFlatDataKeys.filter(k => selectedRowKeys.indexOf(k) > -1);
+          p.changedRowKeys = changeableFlatDataKeys.filter((k) => selectedRowKeys.indexOf(k) > -1);
           p.type = 'onSelectAll';
           p.checked = false;
-          selectedRowKeys = selectedRowKeys.filter(k => changeableFlatDataKeys.indexOf(k) === -1);
+          selectedRowKeys = selectedRowKeys.filter((k) => changeableFlatDataKeys.indexOf(k) === -1);
           break;
         case 'invert':
           p.changedRowKeys = changeableFlatDataKeys;
-          selectedRowKeys = changeableFlatDataKeys.filter(k => selectedRowKeys.indexOf(k) === -1);
+          selectedRowKeys = changeableFlatDataKeys.filter((k) => selectedRowKeys.indexOf(k) === -1);
           p.type = 'onSelectInvert';
           break;
         default:

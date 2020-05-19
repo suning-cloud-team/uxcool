@@ -1,5 +1,7 @@
 import alignFn from 'dom-align';
-import { warning, isEqual, addEventListener, isAsyncPlaceholder } from '@suning/v-utils';
+import {
+  warning, isEqual, addEventListener, isAsyncPlaceholder
+} from '@cloud-sn/v-utils';
 
 function timerFn(fn, ms) {
   let timer;
@@ -155,7 +157,7 @@ export default {
       return null;
     }
 
-    const children = slotDefault.filter(v => v.tag || isAsyncPlaceholder(v));
+    const children = slotDefault.filter((v) => v.tag || isAsyncPlaceholder(v));
 
     if (!children.length) {
       return null;

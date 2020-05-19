@@ -161,9 +161,9 @@
 
 
 <script>
-  import '@suning/uxcool/src/components/tabs/style/index.scss';
-  import { UxSelect, UxOption } from '@suning/uxcool/src/components/select';
-  import { UxTabs, UxTabPane } from '@suning/uxcool/src/components/tabs';
+  import '@cloud-sn/uxcool/src/components/tabs/style/index.scss';
+  import { UxSelect, UxOption } from '@cloud-sn/uxcool/src/components/select';
+  import { UxTabs, UxTabPane } from '@cloud-sn/uxcool/src/components/tabs';
   import EventDemo from './event.vue';
   import ModalDemo from './modal.vue';
   import ControlDemo from './control.vue';

@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-  import { Timeline, Button } from '@suning/uxcool';
+  import { Timeline, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

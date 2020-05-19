@@ -2,12 +2,12 @@
   <div class="demo">
     <h4>search</h4>
     <ux-cascader :data-source="data"
-                 show-search/>
+                 show-search />
   </div>
 </template>
 
 <script>
-  import { Cascader } from '@suning/uxcool';
+  import { Cascader } from '@cloud-sn/uxcool';
 
   export default {
     components: {

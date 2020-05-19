@@ -16,7 +16,7 @@
 
 
 <script>
-  import { AutoComplete, Select } from '@suning/uxcool';
+  import { AutoComplete, Select } from '@cloud-sn/uxcool';
 
   export default {
     components: {

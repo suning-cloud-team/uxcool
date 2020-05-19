@@ -65,7 +65,7 @@
     Tooltip,
     Select,
     Datepicker,
-  } from '@suning/uxcool';
+  } from '@cloud-sn/uxcool';
 
   export default {
     components: {

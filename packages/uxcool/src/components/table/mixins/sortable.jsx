@@ -4,11 +4,11 @@ export default {
   computed: {
     defaultSortColumn() {
       const { flatColumns } = this;
-      return flatColumns.filter(v => v.defaultSortOrder)[0];
+      return flatColumns.filter((v) => v.defaultSortOrder)[0];
     },
     sortColumns() {
       const { flatColumns } = this;
-      return flatColumns.filter(v => 'sortOrder' in v);
+      return flatColumns.filter((v) => 'sortOrder' in v);
     },
   },
   methods: {
@@ -30,7 +30,7 @@ export default {
       let sort = sortInfo;
       // 受控模式
       if (sortColumns.length > 0) {
-        const col = sortColumns.filter(v => v.sortOrder)[0] || { order: null };
+        const col = sortColumns.filter((v) => v.sortOrder)[0] || { order: null };
         sort = {
           column: col,
           order: col.sortOrder,

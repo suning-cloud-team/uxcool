@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import { Transfer } from '@suning/uxcool';
+  import { Transfer } from '@cloud-sn/uxcool';
 
   function mockData(cnt = 10) {
     return Array(cnt)

@@ -11,7 +11,7 @@
 
 
 <script>
-  import { UxTable, Button } from '@suning/uxcool';
+  import { UxTable, Button } from '@cloud-sn/uxcool';
   import { getData } from './data';
 
   const columns = [

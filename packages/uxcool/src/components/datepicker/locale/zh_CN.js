@@ -1,4 +1,4 @@
-import CalendarLocale from '@suning/v-datepicker/es/locale/zh_CN';
+import CalendarLocale from '@cloud-sn/v-datepicker/es/locale/zh_CN';
 import DateFnsLocale from 'date-fns/locale/zh_cn';
 
 export default {

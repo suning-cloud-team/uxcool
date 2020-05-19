@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@suning/uxcool-table-search-form@^1.0.5":
-  version "1.0.5"
-  resolved "http://snpm.cnsuning.com/@suning%2fuxcool-table-search-form/-/uxcool-table-search-form-1.0.5.tgz#495833c22e5d7650f0d123ca7c9d49f330b61a91"
-  integrity sha1-SVgzwi5ddlDw0SPKfJ1J8zC2GpE=
-
 axios@^0.19.0:
   version "0.19.0"
   resolved "http://snpm.cnsuning.com/axios/-/axios-0.19.0.tgz#8e09bff3d9122e133f7b8101c8fbdd00ed3d2ab8"

@@ -4,10 +4,12 @@
     value: {{ value }}
     <ux-auto-complete v-model="value"
                       @search="onSearch"
-                      @change="onChange">
+                      @change="onChange"
+    >
       <ux-option v-for="(option,i) in dataSource"
                  :key="i"
-                 :value="option">
+                 :value="option"
+      >
         {{ option }}
       </ux-option>
     </ux-auto-complete>
@@ -16,7 +18,7 @@
 
 
 <script>
-  import { AutoComplete, Select } from '@suning/uxcool';
+  import { AutoComplete, Select } from '@cloud-sn/uxcool';
 
   export default {
     components: {
@@ -37,7 +39,7 @@
         let data = [];
 
         if (searchValue && searchValue.indexOf('@') === -1) {
-          data = ['@163.com', '@gmail.com', '@126.com'].map(v => `${searchValue}${v}`);
+          data = ['@163.com', '@gmail.com', '@126.com'].map((v) => `${searchValue}${v}`);
         }
         this.dataSource = data;
       },

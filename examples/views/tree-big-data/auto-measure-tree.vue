@@ -34,7 +34,7 @@
 
 
 <script>
-  import { Tree, Button } from '@suning/uxcool';
+  import { Tree, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

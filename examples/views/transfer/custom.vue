@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import { Transfer, Button } from '@suning/uxcool';
+  import { Transfer, Button } from '@cloud-sn/uxcool';
 
   function mockData(cnt = 10) {
     return Array(cnt)

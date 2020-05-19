@@ -6,7 +6,7 @@ import {
   triggerEvent,
   createWrapper,
   mountPickerFactory,
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import dayjs from 'dayjs';
 import { selectDate } from './utils';
 import RangeDatePicker from '../rangeDatePicker.vue';

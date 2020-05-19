@@ -1,4 +1,4 @@
-import { isFunction } from '@suning/v-utils';
+import { isFunction } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import { defaultInfoFormat } from './utils';
 import Icon from '../icon';

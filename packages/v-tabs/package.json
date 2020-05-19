@@ -1,6 +1,6 @@
 {
-  "name": "@suning/v-tabs",
-  "version": "1.0.45",
+  "name": "@cloud-sn/v-tabs",
+  "version": "1.0.46",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -18,10 +18,10 @@
     "start": "npm run server"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.36"
   },
   "dependencies": {
-    "@suning/v-utils": "^1.0.33",
+    "@cloud-sn/v-utils": "^1.0.34",
     "lodash": "^4.17.4"
   }
 }

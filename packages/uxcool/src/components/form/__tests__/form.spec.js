@@ -1,6 +1,6 @@
 import {
   mount, waitTime, triggerEvent, createWrapper
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import { UxForm, UxFormItem, UxFieldDecorator } from '..';
 import { UxInput } from '../../input/index';
 import { UxButton } from '../../button';

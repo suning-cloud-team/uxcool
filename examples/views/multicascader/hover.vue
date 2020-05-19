@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { UxMultiCascader } from '@suning/uxcool';
+  import { UxMultiCascader } from '@cloud-sn/uxcool';
 
   export default {
     components: {

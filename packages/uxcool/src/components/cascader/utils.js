@@ -1,4 +1,4 @@
-import { isFunction } from '@suning/v-utils';
+import { isFunction } from '@cloud-sn/v-utils';
 
 export const SPLIT_STR = '\u0001';
 

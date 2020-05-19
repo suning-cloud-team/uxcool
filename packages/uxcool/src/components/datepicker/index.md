@@ -16,7 +16,7 @@
 
 | 参数名                | 描述                                                                 | 类型                                                                                                                                | 默认                                                           | 版本 |
 | --------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ---- |
-| locale                | 国际化配置                                                           | Object                                                                                                                              | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |      |
+| locale                | 国际化配置                                                           | Object                                                                                                                              | import locale from '@cloud-sn/uxcool/es/datepicker/locale/zh_CN' |      |
 | theme                 | 主题                                                                 | light\|dark                                                                                                                         | light                                                          |      |
 | is-open               | 弹层是否展开                                                         | Boolean                                                                                                                             | false                                                          |      |
 | value                 | 当前选中值                                                           | Date                                                                                                                                |                                                                |      |
@@ -48,7 +48,7 @@
 
 | 参数名                | 描述                                                                 | 类型                                                                                                                                | 默认                                                           | 版本 |
 | --------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ---- |
-| locale                | 国际化配置                                                           | Object                                                                                                                              | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |      |
+| locale                | 国际化配置                                                           | Object                                                                                                                              | import locale from '@cloud-sn/uxcool/es/datepicker/locale/zh_CN' |      |
 | theme                 | 主题                                                                 | light\|dark                                                                                                                         | light                                                          |      |
 | is-open               | 弹层是否展开                                                         | Boolean                                                                                                                             | false                                                          |      |
 | selected-value        | 当前选中值                                                           | Array\<Date\>                                                                                                                       |                                                                |      |
@@ -80,7 +80,7 @@
 
 | 参数名              | 描述                                                                 | 类型                            | 默认                                                           | 版本 |
 | ------------------- | -------------------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------- | ---- |
-| locale              | 国际化配置                                                           | Object                          | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |      |
+| locale              | 国际化配置                                                           | Object                          | import locale from '@cloud-sn/uxcool/es/datepicker/locale/zh_CN' |      |
 | value               | 选中值(v-model)                                                      | Date                            |                                                                |      |
 | disabled            | 是否禁用                                                             | Boolean                         | false                                                          |      |
 | format              | 格式                                                                 | String                          | 'YYYY-MM'                                                      |      |
@@ -104,7 +104,7 @@
 
 | 参数名              | 描述                                                                 | 类型                            | 默认                                                           | 版本 |
 | ------------------- | -------------------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------- | ---- |
-| locale              | 国际化配置                                                           | Object                          | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |      |
+| locale              | 国际化配置                                                           | Object                          | import locale from '@cloud-sn/uxcool/es/datepicker/locale/zh_CN' |      |
 | visible             | 弹层是否展开                                                         | Boolean                         | false                                                          |      |
 | disabled            | 是否禁用                                                             | Boolean                         | false                                                          |      |
 | selected-value      | 选中值(v-model)                                                      | Array<Date>                     |                                                                |      |
@@ -130,7 +130,7 @@
 
 | 参数名              | 描述                                                                 | 类型                            | 默认                                                           | 版本 |
 | ------------------- | -------------------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------- | ---- |
-| locale              | 国际化配置                                                           | Object                          | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |      |
+| locale              | 国际化配置                                                           | Object                          | import locale from '@cloud-sn/uxcool/es/datepicker/locale/zh_CN' |      |
 | value               | 选中值(v-model)                                                      | Date                            |                                                                |      |
 | disabled            | 是否禁用                                                             | Boolean                         | false                                                          |      |
 | format              | 格式                                                                 | String                          | 'YYYY-MM'                                                      |      |
@@ -154,7 +154,7 @@
 
 | 参数名              | 描述                                                                 | 类型                            | 默认                                                           | 版本          |
 | ------------------- | -------------------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------- | ------------- |
-| locale              | 国际化配置                                                           | Object                          | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |               |
+| locale              | 国际化配置                                                           | Object                          | import locale from '@cloud-sn/uxcool/es/datepicker/locale/zh_CN' |               |
 | value               | 选中值(v-model)                                                      | Date                            |                                                                |               |
 | disabled            | 是否禁用                                                             | Boolean                         | false                                                          |               |
 | format              | 格式                                                                 | String                          | 'YYYY 第 WW 周'                                                |               |
@@ -179,7 +179,7 @@
 
 | 参数名              | 描述                                                                 | 类型                            | 默认                                                           | 版本 |
 | ------------------- | -------------------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------- | ---- |
-| locale              | 国际化配置                                                           | Object                          | import locale from '@suning/uxcool/es/datepicker/locale/zh_CN' |      |
+| locale              | 国际化配置                                                           | Object                          | import locale from '@cloud-sn/uxcool/es/datepicker/locale/zh_CN' |      |
 | picker-value        | 面板日期                                                             | Date                            |                                                                |      |
 | value               | 选中值(v-model)                                                      | Date                            |                                                                |      |
 | disabled            | 是否禁用                                                             | Boolean                         | false                                                          |      |

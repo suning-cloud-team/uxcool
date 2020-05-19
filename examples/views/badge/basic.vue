@@ -99,8 +99,8 @@
 </template>
 
 <script>
-  import '@suning/uxcool/src/components/badge/style/index.scss';
-  import Badge from '@suning/uxcool/src/components/badge/index';
+  import '@cloud-sn/uxcool/src/components/badge/style/index.scss';
+  import Badge from '@cloud-sn/uxcool/src/components/badge/index';
 
   export default {
     components: {

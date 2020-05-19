@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import { debounce } from '@suning/v-utils';
+  import { debounce } from '@cloud-sn/v-utils';
   import commonMixin from './mixins/common';
   import { getTitle } from './utils';
 

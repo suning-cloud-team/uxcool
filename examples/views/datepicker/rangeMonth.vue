@@ -79,9 +79,9 @@
 
 
 <script>
-  import { Datepicker, Button } from '@suning/uxcool';
+  import { Datepicker, Button } from '@cloud-sn/uxcool';
   import { subYears, addYears, isBefore, isAfter } from 'date-fns';
-  import localeEN from '@suning/uxcool/src/components/datepicker/locale/en_US.js';
+  import localeEN from '@cloud-sn/uxcool/src/components/datepicker/locale/en_US.js';
 
   export default {
     components: {

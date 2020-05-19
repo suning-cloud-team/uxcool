@@ -1,4 +1,4 @@
-import { isFunction, isEqual } from '@suning/v-utils';
+import { isFunction, isEqual } from '@cloud-sn/v-utils';
 import { normalizeContent } from '../utils';
 import Selector from '../selector';
 import SearchInput from '../searchInput';
@@ -65,7 +65,7 @@ export default {
               {isCanRemove ? (
                 <span
                   class={`${prefixCls}-selection__choice__remove`}
-                  on-click={$event => onRemove($event, value)}
+                  on-click={($event) => onRemove($event, value)}
                 />
               ) : null}
               <span class={`${prefixCls}-selection__choice__content`}>
@@ -79,7 +79,7 @@ export default {
           let tagTxt = `+ ${selectionSize - maxCnt} ...`;
           if (isFunction(maxTagPlaceholder)) {
             const extraSelections = selectionValue.slice(maxCnt);
-            tagTxt = maxTagPlaceholder(extraSelections.map(v => v.originNode));
+            tagTxt = maxTagPlaceholder(extraSelections.map((v) => v.originNode));
           } else if (typeof maxTagPlaceholder === 'string') {
             tagTxt = maxTagPlaceholder;
           }

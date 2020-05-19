@@ -1,6 +1,7 @@
 <template>
   <div class="demo"
-       style="margin-bottom:250px">
+       style="margin-bottom:250px"
+  >
     <h4>normal</h4>
     <ux-affix :offset-top="0">
       <ux-button>top</ux-button>
@@ -10,7 +11,7 @@
 
 
 <script>
-  import { Affix, Button } from '@suning/uxcool';
+  import { Affix, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

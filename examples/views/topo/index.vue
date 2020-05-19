@@ -23,8 +23,8 @@
 
 
 <script>
-import UxTopo from '@suning/uxcool/src/extra/topology/Topo.vue';
-import '@suning/uxcool/src/extra/topology/style/index.scss';
+import UxTopo from '@cloud-sn/uxcool/src/extra/topology/Topo.vue';
+import '@cloud-sn/uxcool/src/extra/topology/style/index.scss';
 
 export default {
   data() {

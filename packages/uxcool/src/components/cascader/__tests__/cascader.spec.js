@@ -1,6 +1,6 @@
 import {
   mount, waitTime, $, removePopup, createWrapper
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import UxCascader from '../index';
 
 const dataSource = [

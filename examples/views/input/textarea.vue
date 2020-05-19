@@ -46,7 +46,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Input } from '@suning/uxcool';
+  import { Input } from '@cloud-sn/uxcool';
 
   export default {
     components: {

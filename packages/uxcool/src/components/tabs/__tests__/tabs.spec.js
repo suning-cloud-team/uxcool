@@ -1,8 +1,8 @@
 import {
   mount, triggerEvent, waitTime, shallowMount
-} from '@suning/v-test-utils';
-import { VTabs } from '@suning/v-tabs';
-import TabBar from '@suning/v-tabs/src';
+} from '@cloud-sn/v-test-utils';
+import { VTabs } from '@cloud-sn/v-tabs';
+import TabBar from '@cloud-sn/v-tabs/src';
 import { UxTabs, UxTabPane } from '..';
 import { UxIcon } from '../../icon';
 
@@ -199,6 +199,4 @@ describe('UxTabs', () => {
       'this is slot header'
     );
   });
-
-
 });

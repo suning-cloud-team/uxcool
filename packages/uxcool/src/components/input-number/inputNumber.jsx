@@ -1,4 +1,4 @@
-import { isDef } from '@suning/v-utils';
+import { isDef } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import {
   isNotCompleteNumber, getMaxPrecision, isNaN, getRatio, getValidateValue

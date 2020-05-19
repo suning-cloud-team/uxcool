@@ -59,7 +59,7 @@
 
 
 <script>
-  import { Menu } from '@suning/uxcool';
+  import { Menu } from '@cloud-sn/uxcool';
 
   export default {
     components: {

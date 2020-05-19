@@ -1,5 +1,7 @@
-import { isFunction } from '@suning/v-utils';
-import { getUID, slice, toString, attrAccept, traverseFileTree, isCanChunkUpload } from '../utils';
+import { isFunction } from '@cloud-sn/v-utils';
+import {
+  getUID, slice, toString, attrAccept, traverseFileTree, isCanChunkUpload
+} from '../utils';
 import Props from './props';
 import defaultRequest from './request';
 import chunkRequest from './chunkRequest';
@@ -31,7 +33,9 @@ export default {
   },
   methods: {
     onClick() {
-      const { $refs: { fileInput } } = this;
+      const {
+        $refs: { fileInput },
+      } = this;
       if (fileInput) {
         fileInput.click();
       }
@@ -51,12 +55,11 @@ export default {
       }
 
       if (directory) {
-        traverseFileTree(e.dataTransfer.items, this.uploadFiles, _file =>
-          attrAccept(_file, accept));
+        traverseFileTree(e.dataTransfer.items, this.uploadFiles, (_file) => attrAccept(_file, accept));
       } else {
         const files = Array.prototype.slice
           .call(e.dataTransfer.files)
-          .filter(file => attrAccept(file, accept));
+          .filter((file) => attrAccept(file, accept));
         this.uploadFiles(files);
       }
     },
@@ -104,7 +107,7 @@ export default {
         onChunkSuccess,
         onChunkError,
       } = this;
-      const promises = [action, data].map(fn => Promise.resolve(isFunction(fn) ? fn(file) : fn));
+      const promises = [action, data].map((fn) => Promise.resolve(isFunction(fn) ? fn(file) : fn));
       Promise.all(promises)
         .then(([formAction, formData]) => {
           const { uid } = file;
@@ -129,7 +132,10 @@ export default {
             },
           };
           if (isCanChunkUpload(chunk)) {
-            chunkRequest(request, reqs)({
+            chunkRequest(
+              request,
+              reqs
+            )({
               ...options,
               maxChunkSize,
               uploadedBytes,
@@ -147,7 +153,7 @@ export default {
             // eslint-disable-next-line
             console && console.error(' Error: action or data %s', err);
           }
-      });
+        });
     },
     upload(file, files) {
       const { beforeUpload, post } = this;
@@ -266,7 +272,7 @@ export default {
         keydown: onKeyDown,
         drop: onDrop,
         dropover: onDrop,
-    };
+      };
 
     const inputAttrs = {
       type: 'file',

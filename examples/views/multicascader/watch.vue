@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import { UxMultiCascader, UxButton } from '@suning/uxcool';
+  import { UxMultiCascader, UxButton } from '@cloud-sn/uxcool';
 
   const ds1 = [
     {

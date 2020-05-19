@@ -7,7 +7,7 @@ import {
   createWrapper,
   destroyWrapper,
   removePopup
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import Modal from '../index';
 import { getPortal } from '../../../../../v-test-utils/src';
 
@@ -179,7 +179,7 @@ describe('modal', () => {
       })
         .then(() => {
           okFn();
-        },() => {
+        }, () => {
           cancelFn();
         });
       await waitTime(300);
@@ -198,7 +198,7 @@ describe('modal', () => {
       })
         .then(() => {
           okFn();
-        },() => {
+        }, () => {
           cancelFn();
         });
       await waitTime();

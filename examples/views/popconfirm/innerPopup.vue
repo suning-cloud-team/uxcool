@@ -20,7 +20,7 @@
 
 
 <script>
-  import { Popconfirm, Select } from '@suning/uxcool';
+  import { Popconfirm, Select } from '@cloud-sn/uxcool';
 
   export default {
     components: {

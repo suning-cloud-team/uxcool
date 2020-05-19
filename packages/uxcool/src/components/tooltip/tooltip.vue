@@ -15,7 +15,7 @@
 
 <script>
   import omit from 'object.omit';
-  import VTooltip from '@suning/v-tooltip';
+  import VTooltip from '@cloud-sn/v-tooltip';
   import { buildComponentName } from '../utils';
   import getPlacements from './placements';
 

@@ -1,4 +1,4 @@
-import { mountPickerFactory, waitTime, triggerEvent } from '@suning/v-test-utils';
+import { mountPickerFactory, waitTime, triggerEvent } from '@cloud-sn/v-test-utils';
 import Transfer from '../transfer';
 
 function mockData(cnt = 10, disbaled = true) {
@@ -73,7 +73,7 @@ describe('transfer', () => {
     expect(getKey(l1)).toEqual([0, 2, 3]);
     expect(getKey(r1)).toEqual([1, 4]);
 
-     // left: label0-disbaled label2  label3-disabled
+    // left: label0-disbaled label2  label3-disabled
     //  right: label1 label4
     const list = wrapper.findAll('.ux-transfer-list');
     const buttons = wrapper.find('.ux-transfer-operation').findAll('button');
@@ -90,7 +90,7 @@ describe('transfer', () => {
     await triggerEvent(label2, 'click');
     expect(leftList.findAll('.ux-checkbox-checked').length).toBe(0);
 
-    //点击disable
+    // 点击disable
     await triggerEvent(leftList.findAll('.ux-transfer-list-content-item').at(0), 'click');
     expect(leftList.findAll('.ux-checkbox-checked').exists()).toBe(false);
 
@@ -166,7 +166,7 @@ describe('transfer', () => {
   });
 
   it('search is correctly', async () => {
-    const filterOption = (text, item) => { return item.description.indexOf(text) > -1; };
+    const filterOption = (text, item) => item.description.indexOf(text) > -1;
     const dataSource = mockData(15, false);
     const wrapper = await mountTransfer({
       propsData: {
@@ -189,7 +189,7 @@ describe('transfer', () => {
     expect(wrapper.emitted('search-clear').length).toBe(1);
     expect(leftList.find('.ux-transfer-list-search').element.value).toBe('');
 
-    wrapper.setProps({filterOption});
+    wrapper.setProps({ filterOption });
     leftList.find('.ux-transfer-list-search').setValue('1');
     await waitTime();
     expect(leftList.findAll('.ux-transfer-list-content-item').length).toBe(6);

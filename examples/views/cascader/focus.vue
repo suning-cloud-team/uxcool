@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { Cascader, Button } from '@suning/uxcool';
+  import { Cascader, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {
@@ -69,13 +69,17 @@
     },
     methods: {
       focus() {
-        const { $refs: { cascaderRef } } = this;
+        const {
+          $refs: { cascaderRef },
+        } = this;
         if (cascaderRef) {
           cascaderRef.focus();
         }
       },
       blur() {
-        const { $refs: { cascaderRef } } = this;
+        const {
+          $refs: { cascaderRef },
+        } = this;
         if (cascaderRef) {
           cascaderRef.blur();
         }

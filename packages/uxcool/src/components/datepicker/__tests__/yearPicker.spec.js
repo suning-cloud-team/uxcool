@@ -1,6 +1,6 @@
 import {
   mountPickerFactory, triggerEvent, getPortal, waitTime
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import dayjs from 'dayjs';
 import YearPicker from '../yearPicker';
 import localeEN from '../locale/en_US';

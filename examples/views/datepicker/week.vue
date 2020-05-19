@@ -68,10 +68,10 @@
 </template>
 
 <script>
-  import { Datepicker, Button } from '@suning/uxcool';
+  import { Datepicker, Button } from '@cloud-sn/uxcool';
   import { addMonths } from 'date-fns';
-  import localeEN from '@suning/uxcool/src/components/datepicker/locale/en_US.js';
-  import localeCN from '@suning/uxcool/src/components/datepicker/locale/zh_CN.js';
+  import localeEN from '@cloud-sn/uxcool/src/components/datepicker/locale/en_US.js';
+  import localeCN from '@cloud-sn/uxcool/src/components/datepicker/locale/zh_CN.js';
 
   export default {
     components: {

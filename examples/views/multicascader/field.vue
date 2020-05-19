@@ -4,13 +4,12 @@
     <ux-multi-cascader :value="value"
                        :data-source="dataSource"
                        :field-names="fieldNames"
-                       style="width: 300px;"
-    />
+                       style="width: 300px;" />
   </div>
 </template>
 
 <script>
-  import { UxMultiCascader } from '@suning/uxcool';
+  import { UxMultiCascader } from '@cloud-sn/uxcool';
 
   export default {
     components: {

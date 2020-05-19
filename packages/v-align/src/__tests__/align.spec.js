@@ -1,4 +1,4 @@
-import { mount, waitTime } from '@suning/v-test-utils';
+import { mount, waitTime } from '@cloud-sn/v-test-utils';
 import Align from '../index';
 
 describe('Align', () => {
@@ -6,15 +6,15 @@ describe('Align', () => {
     props: {
       align: {
         type: Object,
-        default: () => {}
+        default: () => {},
       },
       disabled: {
         type: Boolean,
-        default: false
+        default: false,
       },
       monitorWinResize: {
         type: Boolean,
-        default: false
+        default: false,
       },
       monitorBufferTime: {
         type: Number,
@@ -24,7 +24,7 @@ describe('Align', () => {
     methods: {
       target() {
         return this.$refs.container;
-      }
+      },
     },
     render() {
       const {
@@ -32,7 +32,9 @@ describe('Align', () => {
       } = this;
       return (
         <div ref="container" style="width: 300px; height: 300px;">
-          <Align ref="alignWrapper" style="position:absolute; width: 60px; height: 60px;"
+          <Align
+            ref="alignWrapper"
+            style="position:absolute; width: 60px; height: 60px;"
             target={target}
             align={align}
             disabled={disabled}
@@ -59,7 +61,7 @@ describe('Align', () => {
         },
         disabled: false,
         monitorWinResize: true,
-        monitorBufferTime: 100
+        monitorBufferTime: 100,
       });
       await waitTime();
       expect(wrapper.html()).toMatchSnapshot();
@@ -72,7 +74,7 @@ describe('Align', () => {
       propsData: {
         disabled: false,
         monitorWinResize: true,
-      }
+      },
     });
     const alignWrapper = wrapper.find({ ref: 'alignWrapper' });
     expect(wrapper.html()).toMatchSnapshot();
@@ -84,7 +86,7 @@ describe('Align', () => {
           points: ['tl', 'tr'],
         },
         disabled: false,
-        monitorWinResize: false
+        monitorWinResize: false,
       });
       await waitTime();
       expect(wrapper.html()).toMatchSnapshot();
@@ -97,7 +99,7 @@ describe('Align', () => {
       propsData: {
         disabled: false,
         monitorWinResize: true,
-      }
+      },
     });
     const alignWrapper = wrapper.find({ ref: 'alignWrapper' });
     expect(wrapper.html()).toMatchSnapshot();
@@ -117,11 +119,10 @@ describe('Align', () => {
       render() {
         return (
           <div ref="container" style="width: 300px; height: 300px;">
-            <Align ref="alignWrapper" style="position:absolute; width: 60px; height: 60px;">
-            </Align>
+            <Align ref="alignWrapper" style="position:absolute; width: 60px; height: 60px;"></Align>
           </div>
         );
-      }
+      },
     });
     expect(wrapper.html()).toMatchSnapshot();
   });

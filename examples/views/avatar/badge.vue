@@ -18,7 +18,7 @@
 
 
 <script>
-  import { Avatar, Badge } from '@suning/uxcool';
+  import { Avatar, Badge } from '@cloud-sn/uxcool';
 
   export default {
     components: {

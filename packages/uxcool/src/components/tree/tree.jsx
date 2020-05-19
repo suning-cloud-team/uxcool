@@ -1,4 +1,6 @@
-import { isArray, isEqual, isFunction, debounce } from '@suning/v-utils';
+import {
+  isArray, isEqual, isFunction, debounce
+} from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import { getDragNodeKeys, calcDragOverGap } from './utils';
 import InnerNode from './innerNode';
@@ -387,7 +389,7 @@ export default {
 
       if (dragNode) {
         clearDragEnterTimer();
-        let treeData = this.nodes.map(v => v.originNode);
+        let treeData = this.nodes.map((v) => v.originNode);
         const { parent: dragParent } = dragNode;
         const dragParentChilds = !dragParent
           ? {
@@ -405,7 +407,7 @@ export default {
             get children() {
               return dragParent.originNode.children;
             },
-        };
+          };
 
         removeChildren(dragParentChilds, dragNode.originNode);
 
@@ -430,7 +432,7 @@ export default {
             get children() {
               return dropParent.originNode.children;
             },
-        };
+          };
         const { dragOverGap } = dragOverNode;
         const dropChilds = {
           set children(childs) {
@@ -443,10 +445,10 @@ export default {
         if (dragOverGap === 'mid') {
           addChildren(dropChilds, dragNode.originNode);
         } else if (
-          dragOverGap === 'bottom' &&
-          dropChilds.children &&
-          dropChilds.children.length > 0 &&
-          nDropNode.isExpanded
+          dragOverGap === 'bottom'
+          && dropChilds.children
+          && dropChilds.children.length > 0
+          && nDropNode.isExpanded
         ) {
           setChildren(dropChilds, dragNode.originNode, null, 0);
         } else {
@@ -460,7 +462,7 @@ export default {
         }
 
         this.nodes = createNodes(
-          treeData || this.nodes.map(v => v.originNode),
+          treeData || this.nodes.map((v) => v.originNode),
           null,
           0,
           true,
@@ -515,7 +517,7 @@ export default {
   },
   render() {
     const { prefixCls, filterNodes, classes } = this;
-    const childrens = filterNodes.map(node => (
+    const childrens = filterNodes.map((node) => (
       <InnerNode
         {...{
           props: {

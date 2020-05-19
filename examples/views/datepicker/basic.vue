@@ -8,8 +8,7 @@
                       format="YYYY/MM/DD HH:mm"
                       placeholder="Select Time"
                       @change="onChange"
-                      @ok="onOk"
-      />
+                      @ok="onOk" />
       <br>
       <ux-range-date-picker v-model="date1"
                             :theme="theme"
@@ -18,52 +17,44 @@
                             format="YYYY/MM/DD HH:mm"
                             @calendar-change="onCalendarChange"
                             @change="onChange"
-                            @ok="onOk"
-      />
+                            @ok="onOk" />
     </div>
     <div class="demo">
       <h6>不可选</h6>
       <ux-date-picker :theme="theme"
                       :show-time="{hideDisabledOptions:false}"
                       :disabled-date="disabledDate"
-                      :disabled-time="disabledTime"
-      />
+                      :disabled-time="disabledTime" />
       <br>
       <ux-range-date-picker :theme="theme"
                             :show-time="{hideDisabledOptions:true}"
                             :disabled-date="disabledDate"
-                            :disabled-time="disabledRangeTime"
-      />
+                            :disabled-time="disabledRangeTime" />
     </div>
     <div class="demo">
       <h6>禁用</h6>
       <ux-date-picker :theme="theme"
-                      disabled
-      />
+                      disabled />
       <br>
       <ux-range-date-picker :theme="theme"
-                            disabled
-      />
+                            disabled />
     </div>
     <div class="demo">
       <h6>v-model</h6>
       date: {{ date }} <br> rangeDate: {{ rangeDate }}
       <br>
       <ux-date-picker v-model="date"
-                      :theme="theme"
-      />
+                      :theme="theme" />
       <br>
       <ux-range-date-picker v-model="rangeDate"
-                            :theme="theme"
-      />
+                            :theme="theme" />
     </div>
     <div class="demo">
       <h6>默认时间</h6>
       <ux-date-picker :show-time="{defaultValue: new Date(2019, 3, 4, 12)}" />
       <ux-range-date-picker :show-time="{defaultValue: [
                               new Date(2019, 3, 4, 0), new Date(2019, 3, 4, 23, 59,59)]}"
-                            :theme="theme"
-      />
+                            :theme="theme" />
     </div>
     <placement-demo />
 
@@ -95,7 +86,7 @@
     endOfMonth,
     addMonths,
   } from 'date-fns';
-  import { Datepicker } from '@suning/uxcool';
+  import { Datepicker } from '@cloud-sn/uxcool';
   import MonthDemo from './month.vue';
   import PopupContainerDemo from './popupContainer.vue';
   import OkConfirmDemo from './okConfirm.vue';

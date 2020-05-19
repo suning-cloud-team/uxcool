@@ -1,4 +1,4 @@
-import { isArray, isEqual } from '@suning/v-utils';
+import { isArray, isEqual } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 
 export default {

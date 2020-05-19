@@ -1,4 +1,4 @@
-import { isFunction } from '@suning/v-utils';
+import { isFunction } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import { calcMultipleSearchInputWidth, includeSeparators, genInputElement } from './utils';
 import SubMixin from './mixins/sub';
@@ -56,9 +56,9 @@ export default {
       } = this;
       const { value } = e.target;
       if (
-        rootIsMultiple &&
-        rootTokenSeparators.length > 0 &&
-        includeSeparators(value, rootTokenSeparators)
+        rootIsMultiple
+        && rootTokenSeparators.length > 0
+        && includeSeparators(value, rootTokenSeparators)
       ) {
         onTokenSeparator(value);
         return;

@@ -16,7 +16,7 @@
 
 
 <script>
-  import { InputNumber, Button } from '@suning/uxcool';
+  import { InputNumber, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

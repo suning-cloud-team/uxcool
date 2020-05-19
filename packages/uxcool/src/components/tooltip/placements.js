@@ -1,4 +1,4 @@
-import vPlacements from '@suning/v-tooltip/es/placements';
+import vPlacements from '@cloud-sn/v-tooltip/es/placements';
 
 const autoAdjustOverflowEnabled = {
   adjustX: 1,

@@ -1,4 +1,4 @@
-import { isArray } from '@suning/v-utils';
+import { isArray } from '@cloud-sn/v-utils';
 
 export function isXHRFileUpload() {
   return !!window.FileReader;
@@ -34,7 +34,7 @@ export function attrAccept(file, acceptedFiles) {
       const validType = type.trim();
       if (validType.charAt(0) === '.') {
         return endsWith(fileName.toLowerCase(), validType.toLowerCase());
-      } else if (/\/\*$/.test(validType)) {
+      } if (/\/\*$/.test(validType)) {
         // This is something like a image/* mime type
         return baseMimeType === validType.replace(/\/.*$/, '');
       }
@@ -97,7 +97,7 @@ export function handleFileList(fileList = []) {
 }
 
 export function getFile(file, fileList = []) {
-  return fileList.filter(v => v.uid === file.uid)[0];
+  return fileList.filter((v) => v.uid === file.uid)[0];
 }
 
 const extname = (url) => {
@@ -118,10 +118,10 @@ export function isImageUrl(file) {
   const extension = extname(url);
   if (/^data:image\//.test(url) || /(webp|svg|png|gif|jpg|jpeg|bmp)$/i.test(extension)) {
     return true;
-  } else if (/^data:/.test(url)) {
+  } if (/^data:/.test(url)) {
     // other file types of base64
     return false;
-  } else if (extension) {
+  } if (extension) {
     // other file types which have extension
     return false;
   }

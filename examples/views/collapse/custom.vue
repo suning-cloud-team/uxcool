@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import { Collapse, Icon } from '@suning/uxcool';
+  import { Collapse, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {

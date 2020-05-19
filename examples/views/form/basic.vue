@@ -1,7 +1,6 @@
 <template>
   <div>
     <normal-demo />
-    <nolabel-demo />
     <extra-demo />
     <login-demo />
     <login-horizontal-demo />
@@ -34,12 +33,10 @@
   import ExtraDemo from './extra.vue';
   import FileDemo from './file.vue';
   import SearchFormDemo from './search-form.vue';
-  import NolabelDemo from './nolabel.vue';
 
   export default {
     components: {
       NormalDemo,
-      NolabelDemo,
       LoginDemo,
       LoginHorizontalDemo,
       RegisterDemo,

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
-import '@suning/v-input/css/index.scss';
-import { VTextarea } from '@suning/v-input';
+import '@cloud-sn/v-input/css/index.scss';
+import { VTextarea } from '@cloud-sn/v-input';
 
 const vm = new Vue({
   el: '#app',

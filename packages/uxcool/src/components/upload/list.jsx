@@ -1,4 +1,4 @@
-import { isFunction } from '@suning/v-utils';
+import { isFunction } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import { isImageUrl } from './utils';
 import Icon from '../icon';
@@ -124,7 +124,7 @@ export default {
           } else {
             const thumbnail = isImageUrl(file) ? (
               <img src={thumbUrl || url} alt={name} />
-              ) : (
+            ) : (
               <Icon type="file" class={`${prefixCls}-list-item-icon`} />
             );
             icon = (
@@ -143,15 +143,14 @@ export default {
 
         let opIcon = null;
         if (status !== 'success' && (showOperateIcon || chunk)) {
-          opIcon =
-            status === 'uploading' ? (
+          opIcon = status === 'uploading' ? (
               <Icon
                 title={locale.pause}
                 type="pause_circle_o"
                 class={`${prefixCls}-list-item-op`}
                 on-click={onBindPause}
               />
-              ) : (
+          ) : (
               <Icon
                 title={locale.run}
                 type="play_circle_o"
@@ -180,9 +179,9 @@ export default {
                   linkUrl
                     ? {}
                     : {
-                        pointerEvents: 'none',
-                        opacity: 0.5,
-                      }
+                      pointerEvents: 'none',
+                      opacity: 0.5,
+                    }
                 }
                 href={linkUrl}
                 on-click={onBindPreview}
@@ -198,8 +197,7 @@ export default {
           actions = <span class={`${prefixCls}-list-item-actions`}>{cardActions}</span>;
         }
 
-        const preview =
-          url || thumbUrl ? (
+        const preview = url || thumbUrl ? (
             <a
               {...{
                 class: `${prefixCls}-list-item-name`,
@@ -217,7 +215,7 @@ export default {
             >
               {name}
             </a>
-            ) : (
+        ) : (
             <span class={`${prefixCls}-list-item-name`} title={name} on-click={onBindPreview}>
               {name}
             </span>

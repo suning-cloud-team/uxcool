@@ -22,7 +22,7 @@
   </div>
 </template>
 <script>
-  import { Icon, Dropdown, Menu, Button, Message } from '@suning/uxcool';
+  import { Icon, Dropdown, Menu, Button, Message } from '@cloud-sn/uxcool';
 
   export default {
     components: {

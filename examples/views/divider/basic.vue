@@ -25,8 +25,8 @@
   </div>
 </template>
 <script>
-  import '@suning/uxcool/src/components/divider/style/index.scss';
-  import Divider from '@suning/uxcool/src/components/divider';
+  import '@cloud-sn/uxcool/src/components/divider/style/index.scss';
+  import Divider from '@cloud-sn/uxcool/src/components/divider';
 
   export default {
     components: {

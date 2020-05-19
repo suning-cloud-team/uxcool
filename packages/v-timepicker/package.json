@@ -1,6 +1,6 @@
 {
-  "name": "@suning/v-timepicker",
-  "version": "1.0.33",
+  "name": "@cloud-sn/v-timepicker",
+  "version": "1.0.34",
   "description": "时分秒选择基础组件",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -18,11 +18,11 @@
     "es"
   ],
   "dependencies": {
-    "@suning/v-utils": "^1.0.33",
+    "@cloud-sn/v-utils": "^1.0.34",
     "date-fns": "^1.29.0",
     "raf": "^3.4.0"
   },
   "devDependencies": {
-    "@suning/v-tools": "^1.0.35"
+    "@cloud-sn/v-tools": "^1.0.36"
   }
 }

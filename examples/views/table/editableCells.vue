@@ -11,7 +11,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Divider, Table as UxTable, Icon, UxModal } from '@suning/uxcool';
+  import { Divider, Table as UxTable, Icon, UxModal } from '@cloud-sn/uxcool';
 
   // @vue/components
   const EditableCell = {

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { mount } from '@suning/v-test-utils';
+import { mount } from '@cloud-sn/v-test-utils';
 import UxBox from '../index';
 
 describe('Uxbox', () => {

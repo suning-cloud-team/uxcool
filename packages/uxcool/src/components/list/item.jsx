@@ -1,4 +1,4 @@
-import { isArray, isVNode } from '@suning/v-utils';
+import { isArray, isVNode } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import Mixin from './mixin';
 
@@ -33,7 +33,9 @@ export default {
   },
   methods: {
     getVNodes() {
-      const { $slots: { default: slotDefault } } = this;
+      const {
+        $slots: { default: slotDefault },
+      } = this;
       let vnodes = {
         metas: [],
         others: [],
@@ -51,7 +53,11 @@ export default {
       return vnodes;
     },
     renderExtra(children) {
-      const { $slots: { extra: slotExtra }, prefixCls, extra } = this;
+      const {
+        $slots: { extra: slotExtra },
+        prefixCls,
+        extra,
+      } = this;
       const nExtra = slotExtra || extra;
       if (!nExtra) {
         return children;
@@ -64,7 +70,11 @@ export default {
       );
     },
     renderActions() {
-      const { $slots: { actions: slotActions }, prefixCls, actions } = this;
+      const {
+        $slots: { actions: slotActions },
+        prefixCls,
+        actions,
+      } = this;
 
       const nActions = slotActions || actions;
 

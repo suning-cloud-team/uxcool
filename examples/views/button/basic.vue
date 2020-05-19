@@ -243,7 +243,7 @@
 
 
 <script>
-  import { Button, Icon, Radio } from '@suning/uxcool';
+  import { Button, Icon, Radio } from '@cloud-sn/uxcool';
   import ChineseDemo from './chinese.vue';
   import TimeDemo from './time.vue';
 

@@ -1,4 +1,4 @@
-import { getPortal, triggerEvent } from '@suning/v-test-utils';
+import { getPortal, triggerEvent } from '@cloud-sn/v-test-utils';
 import Dropdown from '../../dropdown';
 
 export function getCols(cols = []) {

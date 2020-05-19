@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import { Slider } from '@suning/uxcool';
+  import { Slider } from '@cloud-sn/uxcool';
 
   function getMarks() {
     // 不可少

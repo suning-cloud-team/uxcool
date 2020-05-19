@@ -10,7 +10,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Divider, Table as UxTable } from '@suning/uxcool';
+  import { Divider, Table as UxTable } from '@cloud-sn/uxcool';
 
   function onCell(_, rowIdx) {
     return rowIdx === 4 ? { colspan: 0 } : null;

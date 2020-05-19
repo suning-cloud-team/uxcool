@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import { Cascader } from '@suning/uxcool';
+  import { Cascader } from '@cloud-sn/uxcool';
 
   function mock(node, cnt = 10) {
     return Array(cnt)
@@ -25,7 +25,7 @@
       .map((_, i) => ({
         label: `label-${node.value}-${i}`,
         value: `value-${node.value}-${i}`,
-    }));
+      }));
   }
   export default {
     components: {

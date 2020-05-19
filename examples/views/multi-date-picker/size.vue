@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import { Datepicker } from '@suning/uxcool';
+  import { Datepicker } from '@cloud-sn/uxcool';
 
   export default {
     components: {

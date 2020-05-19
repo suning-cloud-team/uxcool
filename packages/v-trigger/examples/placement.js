@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
-import Trigger from '@suning/v-trigger';
-import '@suning/v-trigger/css/index.scss';
+import Trigger from '@cloud-sn/v-trigger';
+import '@cloud-sn/v-trigger/css/index.scss';
 
 Vue.component('AB', {
   render(h) {

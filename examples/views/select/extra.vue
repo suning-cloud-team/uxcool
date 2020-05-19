@@ -45,7 +45,7 @@
 </template>
 
 <script>
-  import { Select, Icon, Grid } from '@suning/uxcool';
+  import { Select, Icon, Grid } from '@cloud-sn/uxcool';
 
   export default {
     components: {

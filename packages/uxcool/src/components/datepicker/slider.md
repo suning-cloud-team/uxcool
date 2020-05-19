@@ -2,7 +2,7 @@
 
 ### UxSliderDatePicker
 
-> refresh 功能需要 `@suning/uxcool >= 0.5.0-next.64`
+> refresh 功能需要 `@cloud-sn/uxcool >= 0.5.0-next.64`
 
 #### Props
 

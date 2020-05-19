@@ -17,8 +17,8 @@
 </template>
 <script >
   import { format } from 'date-fns';
-  import { Calendar, Badge } from '@suning/uxcool';
-  import CN from '@suning/uxcool/es/datepicker/locale/zh_CN';
+  import { Calendar, Badge } from '@cloud-sn/uxcool';
+  import CN from '@cloud-sn/uxcool/es/datepicker/locale/zh_CN';
 
   const dataSource = {
     '2018-8-2': [
@@ -92,7 +92,7 @@
         const list = monthDataSource[monthStr] || [];
         return (
           <ul>
-            {list.map(item => (
+            {list.map((item) => (
               <li>
                 <Badge status={item.type} text={item.msg} />
               </li>

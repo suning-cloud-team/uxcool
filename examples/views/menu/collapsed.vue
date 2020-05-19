@@ -67,7 +67,7 @@
 
 
 <script>
-  import { Menu, Button, Icon } from '@suning/uxcool';
+  import { Menu, Button, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {

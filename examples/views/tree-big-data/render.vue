@@ -39,7 +39,7 @@
 
 
 <script>
-  import { Tree, Icon } from '@suning/uxcool';
+  import { Tree, Icon } from '@cloud-sn/uxcool';
   import DataMixin from './tree-data';
 
   export default {

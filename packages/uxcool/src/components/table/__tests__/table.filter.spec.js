@@ -1,6 +1,6 @@
 import {
   mountPickerFactory, triggerEvent, waitTime, mount
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import { getData, getFilterDropdownPortal } from './utils';
 import Table from '../table';
 import FilterDropdown from '../filterDropdown';

@@ -25,16 +25,16 @@ http://localhost:8000/example/default.html
 ## Install
 
 ```
-npm config set @suning:registry http://snpm.cnsuning.com
+npm config set @cloud-sn:registry http://snpm.cnsuning.com
 
-yarn add @suning/v-datepicker
+yarn add @cloud-sn/v-datepicker
 ```
 
 ## Usage
 
 ```
 import Vue from 'vue';
-import DatePicker from '@suning/v-datepicker';
+import DatePicker from '@cloud-sn/v-datepicker';
 ```
 
 ## API

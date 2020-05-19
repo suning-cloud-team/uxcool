@@ -34,7 +34,7 @@
 
 
 <script>
-  import { List, Avatar, Button } from '@suning/uxcool';
+  import { List, Avatar, Button } from '@cloud-sn/uxcool';
 
   function mockData(cnt = 10) {
     return Array(cnt)

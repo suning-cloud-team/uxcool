@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import Align from '@suning/v-align';
+import Align from '@cloud-sn/v-align';
 
 Vue.config.productionTip = false;
 

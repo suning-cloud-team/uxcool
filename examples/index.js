@@ -1,10 +1,9 @@
 import Vue from 'vue';
 // import 'babel-polyfill';
-import '@suning/uxcool-table-search-form/assets/index.css';
 import router, { routes } from './router';
 import App from './app.vue';
 import store from './store';
-// import uxCool from '@suning/uxcool';
+// import uxCool from '@cloud-sn/uxcool';
 
 Vue.config.productionTip = false;
 // Vue.config.performance = true;

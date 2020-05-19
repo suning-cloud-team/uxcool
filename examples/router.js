@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 // eslint-disable-next-line
-import UxModal from '@suning/uxcool/src/components/modal';
+import UxModal from '@cloud-sn/uxcool/src/components/modal';
 
 Vue.use(Router);
 const routes = [
@@ -104,11 +104,6 @@ const routes = [
     name: 'Progress',
     path: '/progress',
     component: () => import('./views/progress/index'),
-  },
-  {
-    name: 'Card',
-    path: '/card',
-    component: () => import('./views/card/index'),
   },
   {
     name: 'Checkbox',
@@ -275,11 +270,6 @@ const routes = [
     path: '/treebigdata',
     component: () => import('./views/tree-big-data/index'),
   },
-  // {
-  //   name: 'Chart',
-  //   path: '/chart',
-  //   component: () => import('./views/chart/index'),
-  // },
   {
     name: 'MultiCascader',
     path: '/multicascader',

@@ -5,8 +5,8 @@ import {
   isVueComponent,
   cloneVNode,
   extractVNodeData,
-} from '@suning/v-utils';
-import Trigger from '@suning/v-trigger';
+} from '@cloud-sn/v-utils';
+import Trigger from '@cloud-sn/v-trigger';
 import Icon from '../icon';
 import Menu from './menu';
 import { buildComponentName } from '../utils';

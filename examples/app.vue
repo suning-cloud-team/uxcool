@@ -1,21 +1,27 @@
 <template>
   <div class="container  clearfix"
-       :style="style">
+       :style="style"
+  >
     <ul class="routes">
       <li v-for="(route,i) in routes"
-          :key="i">
-        <router-link :to="route.path">{{ route.name }}</router-link>
+          :key="i"
+      >
+        <router-link :to="route.path">
+          {{ route.name }}
+        </router-link>
       </li>
     </ul>
-    <ux-button @click="changeTheme">theme: {{ theme }}</ux-button>
+    <ux-button @click="changeTheme">
+      theme: {{ theme }}
+    </ux-button>
     <router-view style="margin-left:200px;overflow:hidden" />
   </div>
 </template>
 
 <script>
   import { mapState } from 'vuex';
-  import { Button } from '@suning/uxcool';
-  import '@suning/uxcool/src/components/style/index.scss';
+  import { Button } from '@cloud-sn/uxcool';
+  import '@cloud-sn/uxcool/src/components/style/index.scss';
   import './index.scss';
 
   export default {

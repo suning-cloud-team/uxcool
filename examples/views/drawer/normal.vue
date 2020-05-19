@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import { Drawer, Button } from '@suning/uxcool';
+  import { Drawer, Button } from '@cloud-sn/uxcool';
 
   export default {
     components: {

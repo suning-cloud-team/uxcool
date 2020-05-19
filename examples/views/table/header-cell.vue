@@ -9,7 +9,7 @@
 
 <script>
   import { mapState } from 'vuex';
-  import { Divider, Table as UxTable } from '@suning/uxcool';
+  import { Divider, Table as UxTable } from '@cloud-sn/uxcool';
 
   function getCols() {
     const that = this;

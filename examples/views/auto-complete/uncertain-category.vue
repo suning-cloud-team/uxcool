@@ -26,7 +26,7 @@
 
 
 <script>
-  import { AutoComplete, Select, Input } from '@suning/uxcool';
+  import { AutoComplete, Select, Input } from '@cloud-sn/uxcool';
 
   function getRandomInt(max, min = 0) {
     // eslint-disable-next-line no-mixed-operators
@@ -42,7 +42,7 @@
         value: `${query}${i}`,
         label: query,
         cnt: getRandomInt(300, 50),
-    }));
+      }));
   }
   export default {
     components: {

@@ -3,7 +3,7 @@ export default {
     validateFlags() {
       const { flags } = this.$validator;
 
-      return Object.keys(flags).map(k => flags[k]) || [];
+      return Object.keys(flags).map((k) => flags[k]) || [];
     },
     /*
     untouched: true,
@@ -18,31 +18,31 @@ export default {
     changed: false
   */
     untouched() {
-      return this.validateFlags.every(v => !!v.untouched);
+      return this.validateFlags.every((v) => !!v.untouched);
     },
     touched() {
       return !this.untouched;
     },
     pristine() {
-      return this.validateFlags.every(v => !!v.pristine);
+      return this.validateFlags.every((v) => !!v.pristine);
     },
     dirty() {
       return !this.pristine;
     },
     valid() {
-      return this.validateFlags.every(v => !!v.valid);
+      return this.validateFlags.every((v) => !!v.valid);
     },
     invalid() {
       return !this.valid;
     },
     validated() {
-      return this.validateFlags.some(v => !!v.validated);
+      return this.validateFlags.some((v) => !!v.validated);
     },
     pending() {
-      return this.validateFlags.some(v => !!v.pending);
+      return this.validateFlags.some((v) => !!v.pending);
     },
     changed() {
-      return this.validateFlags.some(v => !!v.changed);
+      return this.validateFlags.some((v) => !!v.changed);
     },
   },
   created() {

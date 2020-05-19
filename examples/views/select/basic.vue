@@ -144,7 +144,7 @@
 </template>
 
 <script>
-  import { Select } from '@suning/uxcool';
+  import { Select } from '@cloud-sn/uxcool';
   import AsyncDemo from './async.vue';
   import NumberDemo from './number.vue';
   import DisabledDemo from './disabled.vue';

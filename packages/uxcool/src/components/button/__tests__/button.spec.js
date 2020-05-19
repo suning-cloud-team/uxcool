@@ -1,4 +1,4 @@
-import { mountPickerFactory, waitTime } from '@suning/v-test-utils';
+import { mountPickerFactory, waitTime } from '@cloud-sn/v-test-utils';
 import Button from '../index';
 
 describe('button', () => {

@@ -12,7 +12,7 @@
 
 
 <script>
-  import { Avatar, Button } from '@suning/uxcool';
+  import { Avatar, Button } from '@cloud-sn/uxcool';
 
   const names = ['A', 'Ab', 'Abc', 'Abcd', 'Abcde', 'Abcdef'];
 

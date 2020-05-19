@@ -1,6 +1,6 @@
 import {
   mountPickerFactory, waitTime, triggerEvent, destroyWrapper
-} from '@suning/v-test-utils';
+} from '@cloud-sn/v-test-utils';
 import Radio from '../index';
 
 describe('radio', () => {

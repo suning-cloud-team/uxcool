@@ -46,7 +46,7 @@
 </template>
 
 <script>
-  import { Form, Input, Button, Icon, Checkbox } from '@suning/uxcool';
+  import { Form, Input, Button, Icon, Checkbox } from '@cloud-sn/uxcool';
 
   export default {
     components: {

@@ -12,13 +12,13 @@
 
 推荐使用 npm 或 yarn 方式进行开发.
 
-UXCool 以`@suning/uxcool`发布于 snpm 上,并且使用 sass 作为 css 开发环境,所以在安装之前需要对 npm 作一些设置:
+UXCool 以`@cloud-sn/uxcool`发布于 snpm 上,并且使用 sass 作为 css 开发环境,所以在安装之前需要对 npm 作一些设置:
 
 ```bash
 npm config set registry=http://snpm.cnsuning.com
 
 
-npm config set @suning:registry=http://snpm.cnsuning.com
+npm config set @cloud-sn:registry=http://snpm.cnsuning.com
 
 // 如未用到sass则不需此配置
 npm config set SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
@@ -29,18 +29,18 @@ npm config set SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
 下面可以安装 UXCool 了
 
 ```bash
-npm install @suning/uxcool --save
+npm install @cloud-sn/uxcool --save
 ```
 
 ```bash
-yarn add @suning/uxcool
+yarn add @cloud-sn/uxcool
 ```
 
 ## 浏览器引入
 
 在浏览器中使用`script`和 `link`标签直接引入文件, 并使用全局变脸`uxcool`.
 
-snpm 发布包内`@suning/uxcool/dist`目录下提供了`uxcool.js`,`uxcool.css`和`uxcool.min.js`, `uxcool.min.css`文件
+snpm 发布包内`@cloud-sn/uxcool/dist`目录下提供了`uxcool.js`,`uxcool.css`和`uxcool.min.js`, `uxcool.min.css`文件
 
 > 不推荐使用已构建文件,无法快速获得 bug 修复,且无法按需加载
 
@@ -48,7 +48,7 @@ snpm 发布包内`@suning/uxcool/dist`目录下提供了`uxcool.js`,`uxcool.css`
 
 ```javascript
 import Vue from 'vue';
-import UxCool from '@suning/uxcool';
+import UxCool from '@cloud-sn/uxcool';
 
 Vue.use(UxCool);
 ```
@@ -56,12 +56,12 @@ Vue.use(UxCool);
 引入样式:
 
 ```javascript
-import '@suning/uxcool/dist/uxcool.css';
+import '@cloud-sn/uxcool/dist/uxcool.css';
 ```
 
 #### 按需加载
 
 ```javascript
-import '@suning/uxcool/es/select/style/css';
-import { UxSelect, UxOption, UxOptionGroup } from '@suning/uxcool/es/select';
+import '@cloud-sn/uxcool/es/select/style/css';
+import { UxSelect, UxOption, UxOptionGroup } from '@cloud-sn/uxcool/es/select';
 ```

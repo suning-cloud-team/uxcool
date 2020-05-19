@@ -1,5 +1,5 @@
-import { isFunction, closest, isEqual } from '@suning/v-utils';
-import { VMenu as Menu, VSubMenu as SubMenu, VMenuItem as MenuItem } from '@suning/v-menu';
+import { isFunction, closest, isEqual } from '@cloud-sn/v-utils';
+import { VMenu as Menu, VSubMenu as SubMenu, VMenuItem as MenuItem } from '@cloud-sn/v-menu';
 
 import Dropdown from '../dropdown';
 import Icon from '../icon';

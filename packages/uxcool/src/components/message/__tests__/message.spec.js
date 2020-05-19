@@ -1,4 +1,4 @@
-import { waitTime, $ } from '@suning/v-test-utils';
+import { waitTime, $ } from '@cloud-sn/v-test-utils';
 import UxMessage from '..';
 
 describe.each(['info', 'success', 'error', 'warning'])('render correctly', (notice) => {

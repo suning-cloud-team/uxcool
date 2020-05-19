@@ -1,4 +1,6 @@
-import { isFunction, isEqual, warning, isDef, isPlainObject } from '@suning/v-utils';
+import {
+  isFunction, isEqual, warning, isDef, isPlainObject
+} from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 import List from './list';
 import Button from '../button';
@@ -252,7 +254,7 @@ export default {
       if (checked) {
         selectedKeys.push(key);
       } else {
-        selectedKeys = selectedKeys.filter(k => k !== key);
+        selectedKeys = selectedKeys.filter((k) => k !== key);
       }
       this[`${direction}SelectedKeys`] = selectedKeys;
       this.handleSelectChange(direction, [key], checked);
@@ -263,7 +265,7 @@ export default {
       if (checked) {
         selectedKeys.push(...changedKeys);
       } else {
-        selectedKeys = selectedKeys.filter(key => changedKeys.indexOf(key) === -1);
+        selectedKeys = selectedKeys.filter((key) => changedKeys.indexOf(key) === -1);
       }
       this[`${direction}SelectedKeys`] = selectedKeys;
       this.handleSelectChange(direction, changedKeys, checked);
@@ -284,12 +286,12 @@ export default {
       const changeDirection = direction === 'left' ? 'right' : 'left';
       const selectKeys = this[`${changeDirection}SelectedKeys`];
 
-      const moveKeys = selectKeys.filter(k => !(k in disabledItemKeys));
+      const moveKeys = selectKeys.filter((k) => !(k in disabledItemKeys));
 
       let nTargetKeys;
       // 向左移动
       if (direction === 'left') {
-        nTargetKeys = innerTargetKeys.filter(k => moveKeys.indexOf(k) === -1);
+        nTargetKeys = innerTargetKeys.filter((k) => moveKeys.indexOf(k) === -1);
       } else {
         nTargetKeys = [...innerTargetKeys];
         moveKeys.forEach((k) => {
@@ -304,7 +306,7 @@ export default {
       }
       this.innerTargetKeys = nTargetKeys;
 
-      this[`${changeDirection}SelectedKeys`] = selectKeys.filter(k => k in disabledItemKeys);
+      this[`${changeDirection}SelectedKeys`] = selectKeys.filter((k) => k in disabledItemKeys);
       handleSelectChange(changeDirection, moveKeys, false);
 
       handleChange(direction, moveKeys);
@@ -327,8 +329,7 @@ export default {
     },
     getValidSelectedKeys(selectedKeys) {
       const { dataSource } = this;
-      return selectedKeys.filter(key =>
-        dataSource.some(item => key === item.$$_key && !item.disabled));
+      return selectedKeys.filter((key) => dataSource.some((item) => key === item.$$_key && !item.disabled));
     },
     renderOperation() {
       const {
@@ -348,10 +349,8 @@ export default {
       const toRightOp = normalizeOperation(operations[1]);
 
       // http://opensource.cnsuning.com/uxcool/lerna-uxcool/issues/292
-      const leftDisabled =
-        disabled || toLeftOp.disabled || getValidSelectedKeys(rightSelectedKeys).length === 0;
-      const rightDisabled =
-        disabled || toRightOp.disabled || getValidSelectedKeys(leftSelectedKeys).length === 0;
+      const leftDisabled = disabled || toLeftOp.disabled || getValidSelectedKeys(rightSelectedKeys).length === 0;
+      const rightDisabled = disabled || toRightOp.disabled || getValidSelectedKeys(leftSelectedKeys).length === 0;
 
       const opBtns = [
         <Button

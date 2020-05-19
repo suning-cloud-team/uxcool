@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import { Backtop } from '@suning/uxcool';
+  import { Backtop } from '@cloud-sn/uxcool';
 
   export default {
     components: {

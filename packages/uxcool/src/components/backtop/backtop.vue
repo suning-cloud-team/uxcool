@@ -15,7 +15,7 @@
 
 <script>
   import debounce from 'lodash/debounce';
-  import { raf, easeInOutCubic, addEventListener, getScroll } from '@suning/v-utils';
+  import { raf, easeInOutCubic, addEventListener, getScroll } from '@cloud-sn/v-utils';
   import { buildComponentName } from '../utils';
 
   export default {

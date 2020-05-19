@@ -1,6 +1,6 @@
 <script>
-  import Trigger from '@suning/v-trigger';
-  import { isArray, warning } from '@suning/v-utils';
+  import Trigger from '@cloud-sn/v-trigger';
+  import { isArray, warning } from '@cloud-sn/v-utils';
   import commonMixin from './mixins/common';
   import Menu from './menu.vue';
   import { getRootSubMenu, getPopupPlacement, isTopSubMenu, getTitle } from './utils';

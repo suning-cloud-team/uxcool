@@ -45,7 +45,7 @@
 
 <script>
   import { mapState, mapMutations } from 'vuex';
-  import { Form, Input, Button, Icon } from '@suning/uxcool';
+  import { Form, Input, Button, Icon } from '@cloud-sn/uxcool';
 
   export default {
     components: {

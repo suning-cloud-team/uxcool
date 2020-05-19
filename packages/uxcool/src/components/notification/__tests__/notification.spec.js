@@ -1,4 +1,4 @@
-import { waitTime, $, getVueCreateElement } from '@suning/v-test-utils';
+import { waitTime, $, getVueCreateElement } from '@cloud-sn/v-test-utils';
 import UxNotification from '..';
 import { UxButton } from '../../button';
 import Icon from '../../icon';

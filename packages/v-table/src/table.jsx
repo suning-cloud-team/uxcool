@@ -1,7 +1,7 @@
 import debounce from 'lodash/debounce';
 import {
   isEqual, isArray, resetParentVisible, getScrollBarWidth
-} from '@suning/v-utils';
+} from '@cloud-sn/v-utils';
 import {
   noop, getRowKey, addEventListener, flatRows, calcDragPosition, flatCols
 } from './utils';

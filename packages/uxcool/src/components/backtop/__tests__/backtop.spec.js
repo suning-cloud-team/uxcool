@@ -1,4 +1,4 @@
-import { mount, waitTime } from '@suning/v-test-utils';
+import { mount, waitTime } from '@cloud-sn/v-test-utils';
 import UxBacktop from '../index';
 
 // build a test area here

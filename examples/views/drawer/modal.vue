@@ -50,7 +50,7 @@
 </template>
 
 <script>
-  import { Drawer, Button, Modal, Select } from '@suning/uxcool';
+  import { Drawer, Button, Modal, Select } from '@cloud-sn/uxcool';
 
   export default {
     components: {

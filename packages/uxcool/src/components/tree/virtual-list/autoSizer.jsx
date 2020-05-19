@@ -76,8 +76,8 @@ export default {
         const newHeight = height - paddingTop - paddingBottom;
         const newWidth = width - paddingLeft - paddingRight;
         if (
-          (!disableHeight && state.height !== newHeight) ||
-          (!disableWidth && state.width !== newWidth)
+          (!disableHeight && state.height !== newHeight)
+          || (!disableWidth && state.width !== newWidth)
         ) {
           state.height = newHeight;
           state.width = newWidth;

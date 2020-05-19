@@ -1,8 +1,9 @@
-import request from '.././request';
-import { actionUrl } from "./mock";
+import request from '../request';
+import { actionUrl } from './mock';
 
 const oldXMLHttpRequest = window.XMLHttpRequest;
-let open, send, onload, onerror, abort, upload;
+let open; let send; let onload; let onerror; let abort; let
+  upload;
 
 function createXHRmock({ responseText, status }) {
   open = jest.fn();
@@ -26,7 +27,7 @@ function createXHRmock({ responseText, status }) {
       status: status || 200,
       setRequestHeader: jest.fn(),
       withCredentials: true,
-      responseText: responseText,
+      responseText,
       getResponseHeader: jest.fn()
     };
   };
@@ -34,8 +35,7 @@ function createXHRmock({ responseText, status }) {
 }
 
 describe('Request', () => {
-
-  it("test resquest", () => {
+  it('test resquest', () => {
     const onProgress = jest.fn();
     const onSuccess = jest.fn();
     const onError = jest.fn();
@@ -53,22 +53,22 @@ describe('Request', () => {
     const Option = {
       action: actionUrl,
       onProgress,
-      data: new Object({ name: "demo.json" }),
-      fileName: "demo.json",
+      data: new Object({ name: 'demo.json' }),
+      fileName: 'demo.json',
       withCredentials: true,
       onSuccess,
       onError,
       headers: {
-        "X-Requested-With": "XMLHttpRequest"
+        'X-Requested-With': 'XMLHttpRequest'
       }
-    }
+    };
     request(Option);
     onload();
     expect(onSuccess).toBeCalled();
-  })
+  });
 
-  it("test resquest responseTest null", () => {
-    const responseText = "";
+  it('test resquest responseTest null', () => {
+    const responseText = '';
     const onProgress = jest.fn();
     const onSuccess = jest.fn();
     const onError = jest.fn();
@@ -76,23 +76,23 @@ describe('Request', () => {
     const Option = {
       action: actionUrl,
       onProgress,
-      data: new Object({ name: "demo.json" }),
-      fileName: "demo.json",
+      data: new Object({ name: 'demo.json' }),
+      fileName: 'demo.json',
       onSuccess,
       onError,
       headers: {
-        "X-Requested-With": "XMLHttpRequest"
+        'X-Requested-With': 'XMLHttpRequest'
       }
-    }
+    };
     request(Option);
     onload();
     expect(onSuccess).toBeCalled();
-    upload.onprogress({loaded:0,total:100})
+    upload.onprogress({ loaded: 0, total: 100 });
     expect(onProgress).toBeCalled();
-  })
+  });
 
-  it("test resquest responseTest non jsonString", () => {
-    const responseText = "string";
+  it('test resquest responseTest non jsonString', () => {
+    const responseText = 'string';
     const onProgress = jest.fn();
     const onSuccess = jest.fn();
     const onError = jest.fn();
@@ -100,21 +100,19 @@ describe('Request', () => {
     const Option = {
       action: actionUrl,
       onProgress,
-      data: new Object({ name: "demo.json" }),
-      fileName: "demo.json",
+      data: new Object({ name: 'demo.json' }),
+      fileName: 'demo.json',
       onSuccess,
       onError,
       headers: {
-        "X-Requested-With": "XMLHttpRequest"
+        'X-Requested-With': 'XMLHttpRequest'
       }
-    }
+    };
     request(Option).abort();
     onload();
     expect(onError).toBeCalled();
     expect(abort).toBeCalled();
-  })
+  });
 
-  window.XMLHttpRequest = oldXMLHttpRequest ;
-})
-
-
+  window.XMLHttpRequest = oldXMLHttpRequest;
+});
