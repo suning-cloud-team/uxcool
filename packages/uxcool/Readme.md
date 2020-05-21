@@ -4,7 +4,7 @@
 
 ## 支持环境
 
-* 现代浏览器和 IE10 及以上(需要 polyfills)
+- 现代浏览器和 IE10 及以上(需要 polyfills)
 
 ## 安装
 
@@ -12,21 +12,9 @@
 
 推荐使用 npm 或 yarn 方式进行开发.
 
-UXCool 以`@cloud-sn/uxcool`发布于 snpm 上,并且使用 sass 作为 css 开发环境,所以在安装之前需要对 npm 作一些设置:
+UXCool 以`@cloud-sn/uxcool`发布于 `npm` 上
 
-```bash
-npm config set registry=http://snpm.cnsuning.com
-
-
-npm config set @cloud-sn:registry=http://snpm.cnsuning.com
-
-// 如未用到sass则不需此配置
-npm config set SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
-```
-
-> 若 npm 配置了 proxy 或 http-proxy 则需先移除
-
-下面可以安装 UXCool 了
+安装 `UXCool` 了
 
 ```bash
 npm install @cloud-sn/uxcool --save
