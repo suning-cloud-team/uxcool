@@ -1,6 +1,6 @@
 # UXCool
 
-[示例网站](http://uxcool.cnsuning.com/vue/index.html)
+[示例网站](http://uxcool.suning.com/)
 
 ## 支持环境
 
@@ -14,7 +14,7 @@
 
 UXCool 以`@cloud-sn/uxcool`发布于 `npm` 上
 
-安装 `UXCool` 了
+安装 `UXCool`
 
 ```bash
 npm install @cloud-sn/uxcool --save
@@ -26,7 +26,7 @@ yarn add @cloud-sn/uxcool
 
 ## 浏览器引入
 
-在浏览器中使用`script`和 `link`标签直接引入文件, 并使用全局变脸`uxcool`.
+在浏览器中使用`script`和 `link`标签直接引入文件, 并使用全局变量`uxcool`.
 
 snpm 发布包内`@cloud-sn/uxcool/dist`目录下提供了`uxcool.js`,`uxcool.css`和`uxcool.min.js`, `uxcool.min.css`文件
 
