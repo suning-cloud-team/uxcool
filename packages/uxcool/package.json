@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/uxcool",
-  "version": "0.6.0-beta.1",
+  "version": "0.6.0",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "@cloud-sn/v-datepicker": "^1.0.82",
     "@cloud-sn/v-dialog": "^1.0.29",
     "@cloud-sn/v-menu": "^1.0.60",
-    "@cloud-sn/v-notification": "^1.0.15",
+    "@cloud-sn/v-notification": "^1.0.16",
     "@cloud-sn/v-pagination": "^1.0.35",
     "@cloud-sn/v-slider": "^1.0.35",
     "@cloud-sn/v-steps": "^1.0.18",
