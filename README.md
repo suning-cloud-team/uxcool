@@ -2,7 +2,7 @@
 
 
 
-[示例网站](http://uxcool.cnsuning.com/vue/index.html)
+[示例网站](http://uxcool.suning.com/)
 
 ## 支持环境
 
