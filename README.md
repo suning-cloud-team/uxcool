@@ -1,7 +1,6 @@
 # UXCool
 
-[![build status](http://opensource.cnsuning.com/uxcool/lerna-uxcool/badges/master/build.svg)](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/master)
-[![coverage report](http://opensource.cnsuning.com/uxcool/lerna-uxcool/badges/master/coverage.svg)](http://opensource.cnsuning.com/uxcool/lerna-uxcool/commits/master)
+
 
 [示例网站](http://uxcool.cnsuning.com/vue/index.html)
 
@@ -13,23 +12,9 @@
 
 ### 使用 npm 或者 yarn 安装
 
-推荐使用 npm 或 yarn 方式进行开发.
-
-UXCool 以`@cloud-sn/uxcool`发布于 snpm 上,并且使用 sass 作为 css 开发环境,所以在安装之前需要对 npm 作一些设置:
-
-```bash
-npm config set registry=http://snpm.cnsuning.com
-
-
-npm config set @cloud-sn:registry=http://snpm.cnsuning.com
-
-// 如未用到sass则不需此配置(需proxy配置)
-npm config set SASS_BINARY_SITE=http://npm.taobao.org/mirrors/node-sass
-```
-
-> 当使用 snpm registry 时,若 npm 配置了 proxy 或 http-proxy 则需先移除;使用 tabao registry 时,需要 proxy 配置, 两者互斥
-
-下面可以安装 UXCool 了
+推荐使用 npm 或 yarn 方式进行开发. 
+ 
+安装 UXCool 了
 
 ```bash
 npm install @cloud-sn/uxcool --save
@@ -69,4 +54,3 @@ import '@cloud-sn/uxcool/es/select/style/css';
 import { UxSelect, UxOption, UxOptionGroup } from '@cloud-sn/uxcool/es/select';
 ```
 
-> PS：附送前后端分离开发利器，[数据接口平台 DIP](http://dippre.cnsuning.com)
