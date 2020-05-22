@@ -53,3 +53,7 @@ import '@cloud-sn/uxcool/dist/uxcool.css';
 import '@cloud-sn/uxcool/es/select/style/css';
 import { UxSelect, UxOption, UxOptionGroup } from '@cloud-sn/uxcool/es/select';
 ```
+
+## LICENSE
+
+UXCool is [MIT licensed](https://github.com/cloud-sn/uxcool/blob/master/LICENSE).
