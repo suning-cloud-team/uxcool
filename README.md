@@ -58,7 +58,7 @@ import { UxSelect, UxOption, UxOptionGroup } from '@cloud-sn/uxcool/es/select';
 
 > 苏宁豆芽群
 
-> ![苏宁豆芽群](https://github.com/cloud-sn/uxcool/blob/master/static/uxcool.png)
+![苏宁豆芽群](https://github.com/cloud-sn/uxcool/blob/master/static/uxcool.png)
 
 
 
