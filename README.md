@@ -1,6 +1,6 @@
 # UXCool
 
-[TOC][示例网站](http://uxcool.suning.com/)
+[示例网站](http://uxcool.suning.com/)
 
 ## 支持环境
 
