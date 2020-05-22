@@ -1,8 +1,6 @@
 # UXCool
 
-
-
-[示例网站](http://uxcool.suning.com/)
+[TOC][示例网站](http://uxcool.suning.com/)
 
 ## 支持环境
 
@@ -12,8 +10,8 @@
 
 ### 使用 npm 或者 yarn 安装
 
-推荐使用 npm 或 yarn 方式进行开发. 
- 
+推荐使用 npm 或 yarn 方式进行开发.
+
 安装 UXCool 了
 
 ```bash
@@ -32,7 +30,7 @@ snpm 发布包内`@cloud-sn/uxcool/dist`目录下提供了`uxcool.js`,`uxcool.cs
 
 > 不推荐使用已构建文件,无法快速获得 bug 修复,且无法按需加载
 
-## 示例
+### 示例
 
 ```javascript
 import Vue from 'vue';
@@ -54,3 +52,12 @@ import '@cloud-sn/uxcool/es/select/style/css';
 import { UxSelect, UxOption, UxOptionGroup } from '@cloud-sn/uxcool/es/select';
 ```
 
+## 支持
+
+![苏宁云前端团队](https://github.com/cloud-sn/uxcool/blob/master/static/uxcool.png)
+
+苏宁云前端团队
+
+## LICENSE
+
+UXCool is [MIT licensed](https://github.com/cloud-sn/uxcool/blob/master/LICENSE).
