@@ -37,7 +37,11 @@ export function getNodeChildCheckState(children = []) {
     return -1;
   }
 
-  const childrensNoDisabled = children.filter(v => v.isParent || !v.isDisabled);
+  const childrensNoDisabled = children.filter((v) => v.isParent || !v.isDisabled);
+
+  if (childrensNoDisabled.length === 0) {
+    return 0;
+  }
 
   if (
     childrensNoDisabled.every((v) => {
@@ -54,8 +58,8 @@ export function getNodeChildCheckState(children = []) {
     childrensNoDisabled.some((v) => {
       if (v.isDisabled) {
         return (
-          v.$$tree_handler_attrs.childCheckState === 1 ||
-          v.$$tree_handler_attrs.childCheckState === 2
+          v.$$tree_handler_attrs.childCheckState === 1
+          || v.$$tree_handler_attrs.childCheckState === 2
         );
       }
       return v.isChecked || v.isHalfChecked;
@@ -116,7 +120,10 @@ function recursive(data = [], treeMap = {}, parent = null, level = 0, checkStric
 }
 
 function updateNodeParentChecked(node) {
-  const { $$tree_handler_attrs: { parent }, isChecked } = node;
+  const {
+    $$tree_handler_attrs: { parent },
+    isChecked,
+  } = node;
   let np = parent;
   while (np) {
     const childCheckState = getNodeChildCheckState(np.children || []);
@@ -175,9 +182,11 @@ export default class TreeHandler {
     this.treeMap = {};
     this.tree = this.createTree();
   }
+
   getTree() {
     return this.tree;
   }
+
   setDataSource(data = []) {
     this.dataSource = data || [];
     this.treeMap = {};
@@ -185,12 +194,21 @@ export default class TreeHandler {
     this.tree = tree;
     return tree;
   }
+
   createTree() {
-    const { dataSource, treeMap, options: { checkStrict } } = this;
+    const {
+      dataSource,
+      treeMap,
+      options: { checkStrict },
+    } = this;
     return recursive(dataSource, treeMap, null, 0, checkStrict);
   }
+
   handle(node, isChecked) {
-    const { options: { checkStrict }, treeMap } = this;
+    const {
+      options: { checkStrict },
+      treeMap,
+    } = this;
     const { uid } = node.$$tree_handler_attrs || {};
     if (!uid || !treeMap[uid]) {
       throw new Error('The node must be a tree handler node');
@@ -209,6 +227,7 @@ export default class TreeHandler {
 
     return this.tree;
   }
+
   getCheckedNodes() {
     const { treeMap } = this;
     return Object.keys(treeMap).reduce((r, k) => {
