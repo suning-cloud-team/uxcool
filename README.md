@@ -56,11 +56,9 @@ import { UxSelect, UxOption, UxOptionGroup } from '@cloud-sn/uxcool/es/select';
 
 苏宁云前端团队
 
-> 苏宁豆芽群
+> 微信群
 
-![苏宁豆芽群](https://github.com/cloud-sn/uxcool/blob/master/static/uxcool.png)
-
-
+<img alt="微信群" src="https://github.com/cloud-sn/uxcool/blob/master/static/uxcool-wx.png" width="250">
 
 ## LICENSE
 
