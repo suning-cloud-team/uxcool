@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- <normal-demo />
-    <bottom-demo /> -->
+    <normal-demo />
+    <bottom-demo />
     <container-demo />
-    <!-- <event-demo /> -->
+    <event-demo />
   </div>
 </template>
 
