@@ -2,3 +2,4 @@ dist
 es
 cjs
 assets
+node_modules

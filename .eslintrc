@@ -1,6 +1,11 @@
 {
   "root": true,
-  "extends": ["plugin:vue/recommended", "airbnb-base"],
+  "extends": [
+    "plugin:vue/recommended",
+    "airbnb-base",
+    "plugin:prettier/recommended",
+    "prettier/vue"
+  ],
   "parserOptions": {
     "parser": "babel-eslint",
     "ecmaVersion": 6,
