@@ -1,6 +1,4 @@
-import {
-  getScroll, offset, isNumber, addEventListener, debounce
-} from '@cloud-sn/v-utils';
+import { isNumber, addEventListener, debounce } from '@cloud-sn/v-utils';
 import { buildComponentName } from '../utils';
 
 export default {
@@ -42,9 +40,9 @@ export default {
       const { affixStyle } = this;
       return affixStyle
         ? {
-          position: 'fixed',
-          ...affixStyle,
-        }
+            position: 'fixed',
+            ...affixStyle,
+          }
         : null;
     },
     isAffixTop() {
@@ -58,27 +56,9 @@ export default {
     target() {
       return this.getTarget();
     },
-    targetRect() {
-      const { target } = this;
-      if (target.window !== window) {
-        const rect = target.getBoundingClientRect();
-        return {
-          top: rect.top,
-          left: rect.left,
-          bottom: rect.bottom,
-          right: rect.right,
-          width: rect.width,
-          height: rect.height,
-          cw: target.clientWidth,
-          ch: target.clientHeight,
-        };
-      }
-      return {
-        left: 0,
-        top: 0,
-        cw: target.innerWidth,
-        ch: target.innerHeight,
-      };
+    isWin() {
+      const { target, isWindow } = this;
+      return isWindow(target);
     },
   },
   mounted() {
@@ -89,7 +69,7 @@ export default {
   },
   beforeDestroy() {
     const { events } = this;
-    events.forEach((v) => v && v.remove());
+    events.forEach(v => v && v.remove());
   },
   methods: {
     isWindow(target) {
@@ -113,8 +93,9 @@ export default {
       return {
         left: 0,
         top: 0,
-        cw: target.innerWidth,
-        ch: target.innerHeight,
+        // excludes scrollbar
+        cw: document.documentElement.clientWidth,
+        ch: document.documentElement.clientHeight,
       };
     },
     updatePosition() {
@@ -128,31 +109,35 @@ export default {
         offsetBottom,
         isAffixTop,
         isAffixBottom,
-        isWindow,
+        isWin,
       } = this;
       const targetRect = getTargetRect();
-      const elemOffset = offset($el);
-      const scrollTop = getScroll(target);
+      const elemRect = $el.getBoundingClientRect();
       const affixHeight = affixRef.offsetHeight;
-      let top = elemOffset.top - targetRect.top;
-      top = isWindow(target) ? top : top - scrollTop;
+      // top border width of target
+      const targetClientTop = isWin ? 0 : target.clientTop;
+      const top = isWin ? elemRect.top : elemRect.top - targetRect.top - targetClientTop;
       let style = null;
-      // eslint-disable-next-line
-      const elemPosH = top + affixHeight + (offsetBottom || 0) - targetRect.ch;
-      if (scrollTop > top - (offsetTop || 0) && isAffixTop) {
+
+      if (isAffixTop && top < offsetTop) {
         style = {
           position: 'fixed',
-          top: `${targetRect.top + (offsetTop || 0)}px`,
-          left: `${elemOffset.left}px`,
-          width: `${elemOffset.width}px`,
+          top: `${targetRect.top + offsetTop + targetClientTop}px`,
+          left: `${elemRect.left}px`,
+          width: `${elemRect.width}px`,
         };
-      } else if (scrollTop < elemPosH && isAffixBottom) {
-        const bottom = isWindow(target) ? 0 : window.innerHeight - targetRect.bottom;
+      } else if (isAffixBottom && top + affixHeight + offsetBottom > targetRect.ch) {
+        const bottom = isWin
+          ? 0
+          : document.documentElement.clientHeight -
+            targetRect.top -
+            targetClientTop -
+            targetRect.ch;
         style = {
           position: 'fixed',
-          bottom: `${bottom + offsetBottom || 0}px`,
-          left: `${elemOffset.left}px`,
-          width: `${elemOffset.width}px`,
+          bottom: `${bottom + offsetBottom}px`,
+          left: `${elemRect.left}px`,
+          width: `${elemRect.width}px`,
         };
       }
 
@@ -168,9 +153,7 @@ export default {
     },
   },
   render() {
-    const {
-      $slots, $attrs, classes, styles
-    } = this;
+    const { $slots, $attrs, classes, styles } = this;
     const slotDefault = $slots.default;
     return (
       <div {...{ attrs: $attrs }}>

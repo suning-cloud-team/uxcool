@@ -6,6 +6,9 @@
     <ux-affix :offset-top="0">
       <ux-button>top</ux-button>
     </ux-affix>
+    <ux-affix :offset-top="100">
+      <ux-button>top</ux-button>
+    </ux-affix>
   </div>
 </template>
 
