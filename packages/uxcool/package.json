@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/uxcool",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -15,18 +15,18 @@
   },
   "dependencies": {
     "@cloud-sn/v-checkbox": "^1.0.14",
-    "@cloud-sn/v-datepicker": "^1.0.82",
-    "@cloud-sn/v-dialog": "^1.0.29",
-    "@cloud-sn/v-menu": "^1.0.60",
+    "@cloud-sn/v-datepicker": "^1.0.83",
+    "@cloud-sn/v-dialog": "^1.0.30",
+    "@cloud-sn/v-menu": "^1.0.61",
     "@cloud-sn/v-notification": "^1.0.16",
-    "@cloud-sn/v-pagination": "^1.0.35",
-    "@cloud-sn/v-slider": "^1.0.35",
+    "@cloud-sn/v-pagination": "^1.0.36",
+    "@cloud-sn/v-slider": "^1.0.36",
     "@cloud-sn/v-steps": "^1.0.18",
-    "@cloud-sn/v-table": "^1.0.49",
-    "@cloud-sn/v-tabs": "^1.0.46",
-    "@cloud-sn/v-tooltip": "^1.0.50",
-    "@cloud-sn/v-trigger": "^1.0.65",
-    "@cloud-sn/v-utils": "^1.0.34",
+    "@cloud-sn/v-table": "^1.0.50",
+    "@cloud-sn/v-tabs": "^1.0.47",
+    "@cloud-sn/v-tooltip": "^1.0.51",
+    "@cloud-sn/v-trigger": "^1.0.66",
+    "@cloud-sn/v-utils": "^1.0.35",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "date-fns": "^1.29.0",
     "humanize-duration": "^3.15.3",
@@ -37,7 +37,7 @@
     "vee-validate": "~2.0.9"
   },
   "devDependencies": {
-    "@cloud-sn/v-test-utils": "^1.0.11",
+    "@cloud-sn/v-test-utils": "^1.0.12",
     "dayjs": "^1.8.18"
   },
   "publishConfig": {

@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-timepicker",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "description": "时分秒选择基础组件",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -18,7 +18,7 @@
     "es"
   ],
   "dependencies": {
-    "@cloud-sn/v-utils": "^1.0.34",
+    "@cloud-sn/v-utils": "^1.0.35",
     "date-fns": "^1.29.0",
     "raf": "^3.4.0"
   },

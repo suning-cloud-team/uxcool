@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-tabs",
-  "version": "1.0.46",
+  "version": "1.0.47",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "@cloud-sn/v-tools": "^1.0.36"
   },
   "dependencies": {
-    "@cloud-sn/v-utils": "^1.0.34",
+    "@cloud-sn/v-utils": "^1.0.35",
     "lodash": "^4.17.4"
   }
 }

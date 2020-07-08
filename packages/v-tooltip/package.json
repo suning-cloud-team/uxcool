@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-tooltip",
-  "version": "1.0.50",
+  "version": "1.0.51",
   "main": "cjs/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "start": "npm run server"
   },
   "dependencies": {
-    "@cloud-sn/v-trigger": "^1.0.65"
+    "@cloud-sn/v-trigger": "^1.0.66"
   },
   "devDependencies": {
     "@cloud-sn/v-tools": "^1.0.36",
