@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-dialog",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "modal 基础库",
   "main": "cjs/index.js",
   "module": "es/index.js",
@@ -22,7 +22,7 @@
     "vue": ">= 2.5.*"
   },
   "dependencies": {
-    "@cloud-sn/v-utils": "^1.0.34"
+    "@cloud-sn/v-utils": "^1.0.35"
   },
   "devDependencies": {
     "@cloud-sn/v-tools": "^1.0.36"

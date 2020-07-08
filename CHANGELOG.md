@@ -1,3 +1,7 @@
+## 0.6.1 (2020-07-08)
+
+**Note:** Version bump only for package @cloud-sn/uxcool
+
 # 0.6.0 (2020-05-21)
 
 ### Performance Improvements

@@ -1,6 +1,6 @@
 {
   "name": "@cloud-sn/v-align",
-  "version": "1.0.36",
+  "version": "1.0.37",
   "description": "html source node与 target node自动对齐",
   "main": "./cjs/index.js",
   "module": "./es/index.js",
@@ -17,11 +17,11 @@
     "server": "v-tools run server"
   },
   "dependencies": {
-    "@cloud-sn/v-utils": "^1.0.34",
+    "@cloud-sn/v-utils": "^1.0.35",
     "dom-align": "^1.8.3"
   },
   "devDependencies": {
-    "@cloud-sn/v-test-utils": "^1.0.11",
+    "@cloud-sn/v-test-utils": "^1.0.12",
     "@cloud-sn/v-tools": "^1.0.36"
   }
 }
