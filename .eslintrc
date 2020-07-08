@@ -26,39 +26,39 @@
     }
   },
   "rules": {
-    "comma-dangle": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true
-      }
-    ],
-
-    "vue/script-indent": [
-      "error",
-      2,
-      {
-        "baseIndent": 1,
-        "switchCase": 1
-      }
-    ],
-    "vue/max-attributes-per-line": [
-      2,
-      {
-        "singleline": 1,
-        "multiline": {
-          "max": 1,
-          "allowFirstLine": true
-        }
-      }
-    ]
-  },
-  "overrides": [
-    {
-      "files": ["*.vue"],
-      "rules": {
-        "indent": "off"
-      }
-    }
-  ]
+    // "comma-dangle": "off",
+    // "import/no-extraneous-dependencies": [
+    //   "error",
+    //   {
+    //     "devDependencies": true
+    //   }
+    // ],
+    // "vue/script-indent": [
+    //   "error",
+    //   2,
+    //   {
+    //     "baseIndent": 1,
+    //     "switchCase": 1
+    //   }
+    // ]
+    // prettier 无法支持max-attribute-per-line,互相冲突,所以关掉
+    // "vue/max-attributes-per-line": [
+    //   2,
+    //   {
+    //     "singleline":1,
+    //     "multiline": {
+    //       "max": 1,
+    //       "allowFirstLine": false
+    //     }
+    //   }
+    // ]
+  }
+  // "overrides": [
+  //   {
+  //     "files": ["*.vue"],
+  //     "rules": {
+  //       "indent": "off"
+  //     }
+  //   }
+  // ]
 }
