@@ -58,7 +58,7 @@
     "vue-loader-options-plugin": "^0.1.0",
     "vue-template-compiler": "^2.*",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4",
+    "webpack-dev-server": "^5.2.5",
     "webpack-merge": "^4.1.1"
   }
 }
